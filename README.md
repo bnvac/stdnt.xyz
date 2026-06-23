@@ -1,84 +1,120 @@
-# 🎓 edu.edu — Free Stuff for Students
+<div align="center">
 
-A hand-curated, searchable directory of **free tools, software, courses, AI assistants and perks** you can get as a student — plus a pile of things that are genuinely free for *everyone* online.
+<img src="assets/banner.svg" alt="edu.edu — free stuff for students" width="100%" />
 
-From the **GitHub Student Developer Pack** and **Hack Club Toolbox** to free college courses, cloud credits, design software and scholarships, it's all in one filterable page.
+<h1>🎓 edu.edu</h1>
 
-> Inspired by Richard O.'s wonderful MIT Admissions blog,
-> [“Where the Free Things Are.”](https://mitadmissions.org/blogs/entry/where-the-free-things-are/)
+### Every free thing you can get as a student — in one fast, searchable page.
+
+Tools · **free LLM API keys** · student perks · **98 scholarships** · **214 STEM programs**
+
+<p>
+  <a href="#-quick-start"><img alt="Quick start" src="https://img.shields.io/badge/get_started-2_min-4f7cff?style=for-the-badge"></a>
+  <img alt="No build step" src="https://img.shields.io/badge/build_step-none-10b981?style=for-the-badge">
+  <img alt="Dependencies" src="https://img.shields.io/badge/dependencies-0-8b5cf6?style=for-the-badge">
+</p>
+
+<p>
+  <img alt="HTML" src="https://img.shields.io/badge/HTML-vanilla-e34f26?logo=html5&logoColor=white">
+  <img alt="CSS" src="https://img.shields.io/badge/CSS-no_framework-1572b6?logo=css3&logoColor=white">
+  <img alt="JS" src="https://img.shields.io/badge/JS-vanilla-f7df1e?logo=javascript&logoColor=black">
+  <img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen">
+  <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue">
+</p>
+
+<sub>⭐ Star it · 🔁 share it · 🛠️ PR your favourite freebie</sub>
+
+</div>
+
+---
+
+## 🤔 Why this exists
+
+Your `.edu` email (and honestly, just *being online*) unlocks **thousands of dollars** of free software, AI, hosting, scholarships and programs — but it's scattered across a hundred pages, blog posts and Google Sheets that quietly stop being updated.
+
+So this pulls the best of it into **one minimalist site you can actually search**:
+
+- 🎁 **Student packs** — GitHub Student Developer Pack ($200k+), Azure, Notion…
+- 🤖 **AI tools** — Copilot, Cursor, Perplexity & Gemini for students
+- 🔑 **Free API keys** — Gemini, Groq, Cerebras, OpenRouter, Hugging Face, Hack Club AI & more
+- 🚩 **Hack Club** — free hardware, Slack, HCB, Brilliant Premium, CDN…
+- 💻 **Dev / cloud / design / productivity** — JetBrains, Vercel, Figma, Microsoft 365…
+- 💰 **98 scholarships** — from full-rides to "describe your zombie-apocalypse escape plan"
+- 🔬 **214 STEM programs** — research, internships & summer programs, filterable by grade
+
+> Built to be the live home for community scholarship/program spreadsheets that
+> *"will no longer be updated"* — so nothing good gets lost.
 
 ## ✨ Features
 
-- 🔍 **Instant search** across names, descriptions, categories and tags (`/` to focus, `Esc` to clear)
-- 🏷️ **Two-axis filtering** — by category, and by access type:
-  - **Student** — free, but needs a `.edu` / student verification
-  - **Everyone** — free for anyone, no strings attached
-- ⭐ **Featured picks** float to the top
-- 🌙 **Dark / light theme** with system detection and saved preference
-- 📱 **Fully responsive** and accessible
-- ⚡ **Zero build step, zero dependencies** — plain HTML/CSS/JS
+| | |
+|---|---|
+| 🔎 **Instant search** | filter everything as you type (`/` to focus, `Esc` to clear) |
+| 🗂️ **3 tabs** | Tools & Perks · Scholarships · STEM Programs |
+| 🎚️ **Smart filters** | by category, access (student vs everyone), scholarship type, grade level, free-only |
+| ↕️ **Sorting** | scholarships by amount/deadline; programs by prestige/deadline |
+| 🏷️ **Real brand logos** | via [Simple Icons](https://simpleicons.org), with clean monogram fallbacks |
+| 🌗 **Dark / light** | system-aware, remembers your choice |
+| 👁️ **Live view counter** | because watching it climb is fun |
+| ⚡ **Zero dependencies** | pure HTML/CSS/JS — loads instantly, deploys anywhere |
 
-## 🗂️ Project structure
+## 🚀 Quick start
 
-```
-.
-├── index.html        # markup + content sections
-├── css/
-│   └── styles.css    # theming, layout, components
-└── js/
-    ├── data.js       # 👈 the catalog — edit this to add resources
-    └── app.js        # rendering, search, filtering, theme
+```bash
+git clone https://github.com/2008wbbv/edu.edu
+cd edu.edu
+python3 -m http.server 8000   # then open http://localhost:8000
 ```
 
-## ➕ Adding or editing a resource
+…or just open `index.html`. That's the whole setup. No `npm install`, no toolchain.
 
-Everything renders from `js/data.js`. Add an object to `window.RESOURCES`:
+### Deploy free on GitHub Pages
+**Settings → Pages → Deploy from a branch → `main` / `root`.** Done. (`.nojekyll` is included.)
+
+## 🧩 Project structure
+
+```
+edu.edu/
+├── index.html          # markup + the 3 tabs
+├── css/styles.css      # minimalist theme
+├── js/
+│   ├── data.js         # 👈 tools, perks & free APIs
+│   ├── scholarships.js # 👈 scholarship directory
+│   ├── programs.js     # 👈 STEM programs (generated from community sheets)
+│   └── app.js          # render, search, filter, sort, theme, counter
+└── assets/banner.svg
+```
+
+## ➕ Add a freebie (it's one object)
+
+Open `js/data.js` and add to `window.RESOURCES`:
 
 ```js
 {
   name: "Cool Free Thing",
   url: "https://example.com/",
-  category: "dev",          // must match an id in window.CATEGORIES
-  access: "student",        // "student" (needs .edu) or "everyone"
-  icon: "🚀",               // an emoji
-  desc: "One or two plain-language sentences about what it is.",
-  value: "$50 credit",      // optional headline perk
-  tags: ["keyword", "..."], // optional, improves search
-  featured: true            // optional, pins it to the top
+  category: "apis",        // see window.CATEGORIES
+  access: "everyone",      // "student" or "everyone"
+  slug: "github",          // a simpleicons.org slug (or omit for a monogram)
+  value: "$50 credit",     // optional highlight
+  desc: "One honest sentence about what it is.",
+  tags: ["llm", "api"]     // optional, helps search
 }
 ```
 
-The category chips, counts, search index and hero stats all update automatically.
+Counts, chips, search and the icon all update automatically. Scholarships and programs
+follow the same idea in their files. **PRs that add or fix freebies are the whole point —
+send them.** 💛
 
-## 🚀 Running locally
+## 🙏 Credits
 
-It's a static site — just open `index.html` in a browser. Or serve it:
+- Scholarship & STEM-program data adapted from open community spreadsheets.
+- Inspired by Richard O.'s MIT Admissions blog, [*"Where the Free Things Are."*](https://mitadmissions.org/blogs/entry/where-the-free-things-are/)
+- Brand icons by [Simple Icons](https://simpleicons.org). View counter by [Abacus](https://abacus.jasoncameron.dev).
 
-```bash
-python3 -m http.server 8000
-# then visit http://localhost:8000
-```
+## ⚖️ A note
 
-## 🌐 Deploying to GitHub Pages
+This is for *discovering* things you'll genuinely enjoy — **not** a checklist to grind.
+Pick a few, go deep, ignore the rest. Offers change, so always confirm on the provider's site.
 
-1. Push to GitHub (this repo).
-2. **Settings → Pages → Build and deployment → Deploy from a branch.**
-3. Pick the branch and the `/ (root)` folder, then save.
-
-The `.nojekyll` file is included so the `css/` and `js/` folders are served as-is.
-
-## 🤝 Contributing
-
-Spotted something outdated, broken or missing? Offers and eligibility change
-often, so PRs that fix links or add new freebies are very welcome. Keep
-descriptions honest and confirm the offer is real before adding it.
-
-## ⚖️ A note on the list
-
-This is meant to help you *discover* things you'll genuinely enjoy — **not** a
-checklist to grind through. As the original blog puts it: study hard, be nice,
-and pursue your passion. Pick the few resources that excite you and ignore the rest.
-
----
-
-Built for students, by students. 💛
+<div align="center"><sub>MIT licensed · made for students, by students</sub></div>
