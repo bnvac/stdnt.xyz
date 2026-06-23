@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="edu.edu — free stuff for students" width="100%" />
+<img src="assets/banner.svg" alt="edu.edu - free stuff for students" width="100%" />
 
 <h1>🎓 edu.edu</h1>
 
-### Every free thing you can get as a student — in one fast, searchable page.
+### Every free thing you can get as a student - in one fast, searchable page.
 
 Tools · **free LLM API keys** · student perks · **98 scholarships** · **214 STEM programs**
 
@@ -30,20 +30,20 @@ Tools · **free LLM API keys** · student perks · **98 scholarships** · **214 
 
 ## 🤔 Why this exists
 
-Your `.edu` email (and honestly, just *being online*) unlocks **thousands of dollars** of free software, AI, hosting, scholarships and programs — but it's scattered across a hundred pages, blog posts and Google Sheets that quietly stop being updated.
+Your `.edu` email (and honestly, just *being online*) unlocks **thousands of dollars** of free software, AI, hosting, scholarships and programs - but it's scattered across a hundred pages, blog posts and Google Sheets that quietly stop being updated.
 
 So this pulls the best of it into **one minimalist site you can actually search**:
 
-- 🎁 **Student packs** — GitHub Student Developer Pack ($200k+), Azure, Notion…
-- 🤖 **AI tools** — Copilot, Cursor, Perplexity & Gemini for students
-- 🔑 **Free API keys** — Gemini, Groq, Cerebras, OpenRouter, Hugging Face, Hack Club AI & more
-- 🚩 **Hack Club** — free hardware, Slack, HCB, Brilliant Premium, CDN…
-- 💻 **Dev / cloud / design / productivity** — JetBrains, Vercel, Figma, Microsoft 365…
-- 💰 **98 scholarships** — from full-rides to "describe your zombie-apocalypse escape plan"
-- 🔬 **214 STEM programs** — research, internships & summer programs, filterable by grade
+- 🎁 **Student packs** - GitHub Student Developer Pack ($200k+), Azure, Notion…
+- 🤖 **AI tools** - Copilot, Cursor, Perplexity & Gemini for students
+- 🔑 **Free API keys** - Gemini, Groq, Cerebras, OpenRouter, Hugging Face, Hack Club AI & more
+- 🚩 **Hack Club** - free hardware, Slack, HCB, Brilliant Premium, CDN…
+- 💻 **Dev / cloud / design / productivity** - JetBrains, Vercel, Figma, Microsoft 365…
+- 💰 **98 scholarships** - from full-rides to "describe your zombie-apocalypse escape plan"
+- 🔬 **214 STEM programs** - research, internships & summer programs, filterable by grade
 
 > Built to be the live home for community scholarship/program spreadsheets that
-> *"will no longer be updated"* — so nothing good gets lost.
+> *"will no longer be updated"* - so nothing good gets lost.
 
 ## ✨ Features
 
@@ -56,7 +56,7 @@ So this pulls the best of it into **one minimalist site you can actually search*
 | 🏷️ **Real brand logos** | via [Simple Icons](https://simpleicons.org), with clean monogram fallbacks |
 | 🌗 **Dark / light** | system-aware, remembers your choice |
 | 👁️ **Live view counter** | because watching it climb is fun |
-| ⚡ **Zero dependencies** | pure HTML/CSS/JS — loads instantly, deploys anywhere |
+| ⚡ **Zero dependencies** | pure HTML/CSS/JS - loads instantly, deploys anywhere |
 
 ## 🚀 Quick start
 
@@ -103,7 +103,7 @@ Open `js/data.js` and add to `window.RESOURCES`:
 ```
 
 Counts, chips, search and the icon all update automatically. Scholarships and programs
-follow the same idea in their files. **PRs that add or fix freebies are the whole point —
+follow the same idea in their files. **PRs that add or fix freebies are the whole point -
 send them.** 💛
 
 ## 🙏 Credits
@@ -114,7 +114,7 @@ send them.** 💛
 
 ## ⚖️ A note
 
-This is for *discovering* things you'll genuinely enjoy — **not** a checklist to grind.
+This is for *discovering* things you'll genuinely enjoy - **not** a checklist to grind.
 Pick a few, go deep, ignore the rest. Offers change, so always confirm on the provider's site.
 
 <div align="center"><sub>MIT licensed · made for students, by students</sub></div>

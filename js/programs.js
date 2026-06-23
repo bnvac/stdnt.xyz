@@ -1,5 +1,5 @@
 /*
- * programs.js — STEM summer programs, research & internships.
+ * programs.js - STEM summer programs, research & internships.
  * Auto-generated from community spreadsheets (THE_LIST + STEM Programs/Internships
  * by grade). 214 programs. Deadlines are approximate; verify on each site.
  */
