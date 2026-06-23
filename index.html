@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>edu.edu — Free Stuff for Students</title>
+  <meta name="description" content="A curated directory of free tools, software, courses and perks for students — from the GitHub Student Developer Pack and Hack Club Toolbox to free courses, AI tools and scholarships." />
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="edu.edu — Free Stuff for Students" />
+  <meta property="og:description" content="Every free tool, course and perk you can get as a student — and online in general." />
+
+  <!-- Inline SVG favicon: a graduation cap -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%93%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- ============================================================ HEADER -->
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="edu.edu home">
+      <span class="brand-mark">🎓</span>
+      <span class="brand-name">edu<span class="brand-dot">.edu</span></span>
+    </a>
+    <nav class="header-actions">
+      <a class="ghost-btn" href="https://github.com/2008wbbv/edu.edu" target="_blank" rel="noopener">
+        <span aria-hidden="true">★</span> Star on GitHub
+      </a>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle light and dark theme">
+        <span class="theme-icon-dark" aria-hidden="true">🌙</span>
+        <span class="theme-icon-light" aria-hidden="true">☀️</span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- ============================================================= HERO -->
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <p class="hero-eyebrow">Your <code>.edu</code> email is a treasure chest 🗝️</p>
+      <h1 class="hero-title">
+        All the <span class="grad-text">free things</span><br />
+        you get as a student.
+      </h1>
+      <p class="hero-sub">
+        A hand-curated directory of software, courses, AI tools and perks that cost you
+        nothing — from the <strong>GitHub Student Developer Pack</strong> and
+        <strong>Hack Club Toolbox</strong> to free college courses and scholarships.
+      </p>
+
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input
+          id="search"
+          class="search-input"
+          type="search"
+          placeholder="Search 60+ resources — try “domain”, “AI”, “design”…"
+          autocomplete="off"
+          aria-label="Search resources"
+        />
+        <kbd class="search-kbd">/</kbd>
+      </div>
+
+      <ul class="hero-stats" id="hero-stats">
+        <li><strong id="stat-total">0</strong><span>free resources</span></li>
+        <li><strong id="stat-cats">0</strong><span>categories</span></li>
+        <li><strong>$200k+</strong><span>in the GitHub pack alone</span></li>
+      </ul>
+    </section>
+
+    <!-- ========================================================== FILTERS -->
+    <section class="filters" aria-label="Filter resources">
+      <div class="filter-row access-row" role="group" aria-label="Filter by access type">
+        <button class="access-chip is-active" data-access="all" type="button">Everything</button>
+        <button class="access-chip" data-access="student" type="button">
+          <span class="dot dot-student" aria-hidden="true"></span> Student-verified
+        </button>
+        <button class="access-chip" data-access="everyone" type="button">
+          <span class="dot dot-everyone" aria-hidden="true"></span> Free for everyone
+        </button>
+      </div>
+      <div class="filter-row category-row" id="category-row" role="group" aria-label="Filter by category">
+        <!-- category chips injected by app.js -->
+      </div>
+    </section>
+
+    <!-- ============================================================ CARDS -->
+    <section class="results">
+      <p class="results-meta" id="results-meta" aria-live="polite"></p>
+      <div class="card-grid" id="card-grid">
+        <!-- cards injected by app.js -->
+      </div>
+      <div class="empty-state" id="empty-state" hidden>
+        <p class="empty-emoji" aria-hidden="true">🦗</p>
+        <p>No resources match that search.</p>
+        <button class="ghost-btn" id="clear-filters" type="button">Clear filters</button>
+      </div>
+    </section>
+
+    <!-- ============================================================= NOTE -->
+    <section class="legend">
+      <h2 class="legend-title">How to read this list</h2>
+      <div class="legend-grid">
+        <div class="legend-item">
+          <span class="badge badge-student">Student</span>
+          <p>Requires verifying you're a student — usually with a school email (<code>.edu</code>) or a service like SheerID. Free, just one extra step.</p>
+        </div>
+        <div class="legend-item">
+          <span class="badge badge-everyone">Everyone</span>
+          <p>Genuinely free for anyone online — no school, no verification, no catch. Great whether you're a student or not.</p>
+        </div>
+      </div>
+      <p class="legend-fine">
+        Offers and eligibility change over time, so always confirm details on each provider's site.
+        Spotted something outdated or missing?
+        <a href="https://github.com/2008wbbv/edu.edu" target="_blank" rel="noopener">Open a PR</a>.
+      </p>
+    </section>
+  </main>
+
+  <!-- ============================================================ FOOTER -->
+  <footer class="site-footer">
+    <p>
+      Built for students, by students. Inspired by Richard O.'s MIT Admissions blog
+      <a href="https://mitadmissions.org/blogs/entry/where-the-free-things-are/" target="_blank" rel="noopener">“Where the Free Things Are.”</a>
+    </p>
+    <p class="footer-fine">
+      Open source · <a href="https://github.com/2008wbbv/edu.edu" target="_blank" rel="noopener">contribute on GitHub</a> ·
+      Don't treat this as a checklist — pick the things you'll actually love. 💛
+    </p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
