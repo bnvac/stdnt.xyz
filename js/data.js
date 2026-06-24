@@ -257,10 +257,34 @@ window.RESOURCES = [
   { name: "Anki", url: "https://apps.ankiweb.net/", category: "learning", access: "everyone", slug: "anki",
     desc: "Free, powerful spaced-repetition flashcards, beloved by med students and language learners.", tags: ["flashcards", "spaced repetition", "memory"] },
   { name: "Wolfram Alpha", url: "https://www.wolframalpha.com/", category: "learning", access: "everyone", mono: "W|",
-    desc: "A computational engine for math, science and stats that returns instant answers free.", tags: ["math", "science", "compute"] }
+    desc: "A computational engine for math, science and stats that returns instant answers free.", tags: ["math", "science", "compute"] },
+  { name: "Symbolab", url: "https://www.symbolab.com/", category: "learning", access: "everyone", slug: "symbolab",
+    desc: "Step-by-step math solver for algebra, calculus, trig and more.", tags: ["math", "solver", "steps"] },
+  { name: "Google Scholar", url: "https://scholar.google.com/", category: "learning", access: "everyone", slug: "googlescholar",
+    desc: "Search scholarly papers, theses and citations across every discipline for free.", tags: ["research", "papers", "citations"] },
+  { name: "NotebookLM", url: "https://notebooklm.google.com/", category: "ai", access: "everyone", slug: "notebooklm",
+    desc: "Google's free AI research assistant that reasons over your own notes, PDFs and sources.", tags: ["ai", "research", "notes", "google"] },
+  { name: "Bitwarden", url: "https://bitwarden.com/", category: "productivity", access: "everyone", slug: "bitwarden",
+    desc: "Free, open-source password manager that syncs across all your devices.", tags: ["password", "security", "open source"] },
+  { name: "Proton", url: "https://proton.me/", category: "productivity", access: "everyone", slug: "proton",
+    desc: "Private, free email, calendar, drive and VPN with end-to-end encryption.", tags: ["email", "privacy", "vpn", "drive"] },
+  { name: "LibreOffice", url: "https://www.libreoffice.org/", category: "productivity", access: "everyone", slug: "libreoffice",
+    desc: "Free, open-source office suite: documents, spreadsheets and presentations.", tags: ["office", "documents", "open source"] },
+  { name: "Miro", url: "https://miro.com/", category: "productivity", access: "everyone", slug: "miro",
+    desc: "Online collaborative whiteboard with a free plan for brainstorming and planning.", tags: ["whiteboard", "collaborate", "planning"] },
+  { name: "Framer", url: "https://www.framer.com/", category: "design", access: "everyone", slug: "framer",
+    desc: "Design and publish a real website for free, no code required.", tags: ["website", "design", "no-code"] },
+  { name: "GIMP", url: "https://www.gimp.org/", category: "design", access: "everyone", slug: "gimp",
+    desc: "Free, open-source image editor, a powerful Photoshop alternative.", tags: ["image", "editor", "photoshop alternative"] },
+  { name: "Inkscape", url: "https://inkscape.org/", category: "design", access: "everyone", slug: "inkscape",
+    desc: "Free, open-source vector graphics editor for logos and illustrations.", tags: ["vector", "svg", "illustration"] },
+  { name: "tldraw", url: "https://www.tldraw.com/", category: "design", access: "everyone", slug: "tldraw",
+    desc: "A delightful, free infinite canvas for quick diagrams and sketches.", tags: ["whiteboard", "diagram", "canvas"] },
+  { name: "Audacity", url: "https://www.audacityteam.org/", category: "design", access: "everyone", slug: "audacity",
+    desc: "Free, open-source audio recorder and multi-track editor.", tags: ["audio", "editor", "podcast"] },
+  { name: "OBS Studio", url: "https://obsproject.com/", category: "design", access: "everyone", slug: "obsstudio",
+    desc: "Free, open-source software for screen recording and live streaming.", tags: ["screen record", "streaming", "video"] }
 ];
 
-/* Sponsors shown on the About tab. Edit freely. */
-window.SPONSORS = [
-  { name: "iLovePDF", url: "https://www.ilovepdf.com/", slug: "ilovepdf", note: "Free PDF tools" }
-];
+/* Sponsors shown on the About tab. Empty by default, add real sponsors only. */
+window.SPONSORS = [];

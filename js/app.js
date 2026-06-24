@@ -55,6 +55,17 @@
     var w = String(name).replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).filter(Boolean);
     return w.length ? w[0][0].toUpperCase() : "?";
   }
+  function accNum(p) { // acceptance rate -> number (lower = more selective)
+    var s = String(p.accRate || "").toLowerCase();
+    var m = s.match(/(\d+(?:\.\d+)?)/);
+    if (m) return parseFloat(m[1]);
+    if (/highly selective|elite|2 per/.test(s)) return 4;
+    if (/selective/.test(s)) return 18;
+    if (/accessible|high|test-based/.test(s)) return 55;
+    return 999;
+  }
+  function lc(arr) { return (arr || []).map(function (x) { return String(x).toLowerCase(); }); }
+  function inArr(a, x) { return a.indexOf(x) >= 0; }
   function iconHTML(item) {
     if (item.slug) return '<span class="ic-wrap"><span class="ic" style="--src:url(\'' + ICON_CDN + esc(item.slug) + '\')"></span></span>';
     return '<span class="ic-wrap"><span class="ic-mono">' + esc(item.mono || monoFrom(item.name)) + "</span></span>";
@@ -201,6 +212,7 @@
     list.sort(function (a, b) {
       if (by === "name") return a.name.localeCompare(b.name);
       if (by === "deadline") return dlSort(a.deadline) - dlSort(b.deadline);
+      if (by === "accept") return accNum(a) - accNum(b) || a.name.localeCompare(b.name);
       var ra = a.ranking in RANK ? RANK[a.ranking] : 50, rb = b.ranking in RANK ? RANK[b.ranking] : 50;
       return ra - rb || dlSort(a.deadline) - dlSort(b.deadline);
     });
@@ -258,12 +270,95 @@
     return total;
   }
 
+  // ---- FOR YOU (quiz) ------------------------------------------------
+  var QUIZ = [
+    { id: "grade", q: "What year are you?", opts: [
+      { v: "Freshman", l: "9th" }, { v: "Sophomore", l: "10th" }, { v: "Junior", l: "11th" },
+      { v: "Senior", l: "12th" }, { v: "College", l: "College" }, { v: "", l: "Skip" } ] },
+    { id: "income", q: "Household income?", opts: [
+      { v: "low", l: "Under $40k" }, { v: "mid", l: "$40k-80k" }, { v: "midhi", l: "$80k-150k" },
+      { v: "hi", l: "$150k+" }, { v: "", l: "Skip" } ] },
+    { id: "race", q: "Do you identify with an underrepresented group? (often unlocks more)", opts: [
+      { v: "black", l: "Black" }, { v: "hispanic", l: "Hispanic / Latino" }, { v: "native", l: "Native American" },
+      { v: "aapi", l: "Asian / Pacific Isl." }, { v: "", l: "Prefer not to say" } ] },
+    { id: "gender", q: "Gender?", opts: [
+      { v: "woman", l: "Woman" }, { v: "nonbinary", l: "Non-binary" }, { v: "man", l: "Man" }, { v: "", l: "Prefer not" } ] },
+    { id: "firstgen", q: "First-generation college student?", opts: [ { v: "yes", l: "Yes" }, { v: "", l: "No / skip" } ] },
+    { id: "immigrant", q: "Immigrant, DACA or undocumented?", opts: [ { v: "yes", l: "Yes" }, { v: "", l: "No / skip" } ] },
+    { id: "interest", q: "Main interest?", opts: [
+      { v: "stem", l: "STEM" }, { v: "arts", l: "Arts & Humanities" }, { v: "business", l: "Business" }, { v: "", l: "Undecided" } ] }
+  ];
+  var quiz = loadQuiz();
+  function loadQuiz() { try { return JSON.parse(localStorage.getItem("edu-quiz") || "{}") || {}; } catch (e) { return {}; } }
+  function saveQuiz() { try { localStorage.setItem("edu-quiz", JSON.stringify(quiz)); } catch (e) {} }
+
+  function buildQuiz() {
+    var form = $("#quiz-form"); if (!form) return;
+    form.innerHTML = QUIZ.map(function (b) {
+      var opts = b.opts.map(function (o) {
+        var on = o.v !== "" && (quiz[b.id] || "") === o.v;
+        return '<button class="qchip' + (on ? " is-active" : "") + '" type="button" data-q="' + b.id + '" data-v="' + esc(o.v) + '">' + esc(o.l) + "</button>";
+      }).join("");
+      return '<div class="qblock"><div class="qq">' + esc(b.q) + '</div><div class="qopts">' + opts + "</div></div>";
+    }).join("");
+  }
+  function schScore(s) {
+    var q = quiz, t = lc(s.tags), note = (s.note || "").toLowerCase(), name = s.name.toLowerCase(), sc = 0;
+    if ((q.income === "low" || q.income === "mid") && (inArr(t, "need-based") || inArr(t, "adversity"))) sc += 2;
+    if (q.race) {
+      if (inArr(t, "identity")) sc += 2;
+      var kw = ({ black: ["black", "african"], hispanic: ["hispanic", "latino", "latinx"], native: ["native", "indigenous"], aapi: ["asian", "pacific islander", "aapi"] }[q.race]) || [];
+      if (kw.some(function (k) { return note.indexOf(k) >= 0 || name.indexOf(k) >= 0; })) sc += 3;
+    }
+    if ((q.gender === "woman" || q.gender === "nonbinary") && inArr(t, "women")) sc += 2;
+    if (q.firstgen === "yes" && (inArr(t, "first gen") || note.indexOf("first-gen") >= 0 || note.indexOf("first gen") >= 0)) sc += 2;
+    if (q.immigrant === "yes" && (inArr(t, "immigrants") || note.indexOf("daca") >= 0 || note.indexOf("undocumented") >= 0)) sc += 3;
+    if (q.interest === "stem" && inArr(t, "stem")) sc += 1;
+    if (q.interest === "arts" && (inArr(t, "humanities") || inArr(t, "writing") || inArr(t, "art") || inArr(t, "music") || inArr(t, "poetry") || inArr(t, "literature"))) sc += 1;
+    return sc;
+  }
+  function progScore(p) {
+    var q = quiz, t = lc(p.tags), subj = lc(p.subjects), sc = 0;
+    if (q.grade && q.grade !== "College") { if ((p.grades || []).indexOf(q.grade) < 0) return -1; sc += 1; }
+    if ((q.income === "low" || q.income === "mid") && inArr(t, "low-income")) sc += 2;
+    if (q.race && inArr(t, "minority")) sc += 2;
+    if ((q.gender === "woman" || q.gender === "nonbinary") && inArr(t, "females")) sc += 2;
+    if (q.firstgen === "yes" && inArr(t, "first gen")) sc += 2;
+    if (q.interest) {
+      var want = ({ stem: ["stem", "engineering", "coding", "biology", "chemistry", "physics", "math", "research", "ai/tech", "neuroscience", "medicine"], arts: ["humanities", "writing", "art"], business: ["business"] }[q.interest]) || [];
+      if (want.some(function (w) { return inArr(subj, w); })) sc += 1;
+    }
+    return sc;
+  }
+  function renderQuiz() {
+    var res = $("#quiz-results");
+    var answered = Object.keys(quiz).some(function (k) { return quiz[k]; });
+    if (!answered) {
+      res.innerHTML = '<div class="quiz-empty">Pick an answer above and your personalized matches will appear right here.</div>';
+      meta.textContent = ""; empty.hidden = true; return;
+    }
+    var schM = SCH.map(function (s) { return { s: s, sc: schScore(s) }; }).filter(function (o) { return o.sc > 0; })
+      .sort(function (a, b) { return b.sc - a.sc || b.s.amount - a.s.amount; });
+    var progM = PROG.map(function (p) { return { p: p, sc: progScore(p) }; }).filter(function (o) { return o.sc > 0; })
+      .sort(function (a, b) { return b.sc - a.sc || accNum(a.p) - accNum(b.p); });
+    var html = '<h3 class="quiz-rh">Scholarships for you <span>' + schM.length + "</span></h3>";
+    html += schM.length ? '<div class="list">' + schM.slice(0, 30).map(function (o, i) { return schRow(o.s, i); }).join("") + "</div>"
+      : '<p class="muted">No specific scholarship matches yet, try adjusting your answers.</p>';
+    html += '<h3 class="quiz-rh">Programs for you <span>' + progM.length + "</span></h3>";
+    html += progM.length ? '<div class="list">' + progM.slice(0, 30).map(function (o, i) { return progRow(o.p, i); }).join("") + "</div>"
+      : '<p class="muted">No specific program matches with these answers.</p>';
+    res.innerHTML = html;
+    meta.textContent = "Matched " + schM.length + " scholarships and " + progM.length + " programs to you";
+    empty.hidden = true;
+  }
+
   // ---- shared --------------------------------------------------------
   function activate(box, btn) {
     box.querySelectorAll(".chip").forEach(function (c) { c.classList.toggle("is-active", c === btn); });
   }
   function render() {
     if (state.tab === "about") { meta.textContent = ""; empty.hidden = true; return; }
+    if (state.tab === "foryou") { renderQuiz(); return; }
     if (state.tab === "saved") { renderSaved(); return; }
     var n, total, label;
     if (state.tab === "tools") { n = renderTools(); total = RES.length; label = "tools"; }
@@ -276,9 +371,7 @@
     state.tab = tab;
     document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === tab); });
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
-    ["tools", "sch", "prog", "saved", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
-    var sw = document.querySelector(".search-wrap");
-    if (sw) sw.style.opacity = tab === "about" ? ".4" : "";
+    ["tools", "sch", "prog", "foryou", "saved", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
     search.placeholder = tab === "tools" ? "Search tools, APIs, perks..." :
       tab === "sch" ? "Search scholarships..." :
       tab === "prog" ? "Search programs, subjects..." :
@@ -317,6 +410,24 @@
       $("#tools-access").querySelectorAll(".seg").forEach(function (s) { s.classList.toggle("is-active", s.dataset.access === "all"); });
       render();
     });
+    // hero announcement / CTA buttons jump to a tab
+    document.addEventListener("click", function (e) {
+      var g = e.target.closest("[data-goto]"); if (!g) return;
+      switchTab(g.dataset.goto);
+      var nav = document.querySelector(".tabs"); if (nav) nav.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    // quiz answers
+    var qf = $("#quiz-form");
+    if (qf) qf.addEventListener("click", function (e) {
+      var b = e.target.closest(".qchip"); if (!b) return;
+      var id = b.dataset.q, v = b.dataset.v;
+      quiz[id] = (quiz[id] === v) ? "" : v;
+      saveQuiz();
+      qf.querySelectorAll('.qchip[data-q="' + id + '"]').forEach(function (c) { c.classList.toggle("is-active", c.dataset.v !== "" && c.dataset.v === (quiz[id] || "")); });
+      renderQuiz();
+    });
+    var qr = $("#quiz-reset");
+    if (qr) qr.addEventListener("click", function () { quiz = {}; saveQuiz(); buildQuiz(); renderQuiz(); });
     // star toggling (delegated; works inside anchors and across tabs)
     document.addEventListener("click", function (e) {
       var btn = e.target.closest(".star"); if (!btn) return;
@@ -337,19 +448,20 @@
     });
   }
 
-  // ---- marquee -------------------------------------------------------
-  function buildMarquee() {
+  // ---- hero logo collage ---------------------------------------------
+  function buildCollage() {
+    var L = $("#collage-l"), R = $("#collage-r"); if (!L || !R) return;
     var slugs = []; var seen = {};
     RES.forEach(function (r) { if (r.slug && !seen[r.slug]) { seen[r.slug] = 1; slugs.push(r.slug); } });
-    var half = Math.ceil(slugs.length / 2);
     function tiles(arr) {
-      return arr.map(function (s) {
-        return '<span class="logo-tile"><span class="ic" style="--src:url(\'' + ICON_CDN + s + '\')"></span></span>';
+      return arr.map(function (s, i) {
+        var rot = ((i * 5) % 9) - 4; // -4..4 deg
+        return '<span class="ctile" style="transform:rotate(' + rot + 'deg)"><span class="ic" style="--src:url(\'' + ICON_CDN + s + '\')"></span></span>';
       }).join("");
     }
-    var a = tiles(slugs.slice(0, half)), b = tiles(slugs.slice(half));
-    $("#mq1").innerHTML = a + a;
-    $("#mq2").innerHTML = b + b;
+    var n = Math.min(14, Math.floor(slugs.length / 2));
+    L.innerHTML = tiles(slugs.slice(0, n));
+    R.innerHTML = tiles(slugs.slice(n, n * 2));
   }
 
   // ---- sponsors + stats ----------------------------------------------
@@ -363,6 +475,7 @@
       return '<a class="sponsor" href="' + esc(s.url) + '" target="_blank" rel="noopener">' + logo +
         '<span class="sp-name">' + esc(s.name) + (s.note ? ' <span class="sp-note">' + esc(s.note) + "</span>" : "") + "</span></a>";
     }).join("");
+    if (!list.length) html = '<span class="sp-none">No sponsors yet, want to be the first?</span>';
     html += '<a class="sponsor sponsor-add" href="https://github.com/2008wbbv/edu.edu" target="_blank" rel="noopener"><span class="sp-plus">+</span><span class="sp-name">Your logo here</span></a>';
     box.innerHTML = html;
   }
@@ -405,10 +518,11 @@
   $("#n-saved").textContent = saved.size;
   fillStats();
   initTheme();
-  buildMarquee();
+  buildCollage();
   buildCatChips();
   buildSchChips();
   buildProgChips();
+  buildQuiz();
   renderSponsors();
   wire();
   initViews();

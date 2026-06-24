@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="edu.edu - free stuff for students" width="100%" />
+<img src="assets/banner.svg" alt="stdnt.xyz - free stuff for students" width="100%" />
 
-<h1>🎓 edu.edu</h1>
+<h1>🎓 stdnt.xyz</h1>
 
 ### Every free thing you can get as a student - in one fast, searchable page.
 
@@ -50,7 +50,8 @@ So this pulls the best of it into **one minimalist site you can actually search*
 | | |
 |---|---|
 | 🔎 **Instant search** | filter everything as you type (`/` to focus, `Esc` to clear) |
-| 🗂️ **5 tabs** | Tools & Perks · Scholarships · STEM Programs · Saved · About |
+| 🗂️ **6 tabs** | Tools & Perks · Scholarships · STEM Programs · For You · Saved · About |
+| ✦ **"For You" quiz** | answer a few questions (income, background, grade…) and get matched to scholarships & programs, all computed on-device |
 | ⭐ **Save to list** | star any item to build a personal list (saved on-device) |
 | 🎚️ **Smart filters** | segmented access toggle, category/type/grade chips, free-only |
 | ↕️ **Sorting** | scholarships by amount/deadline; programs by prestige/deadline |

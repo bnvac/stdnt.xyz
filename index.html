@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>edu.edu - free stuff for students</title>
-  <meta name="description" content="A curated directory of free tools, free LLM API keys, student perks, scholarships and STEM programs - GitHub Student Pack, Hack Club, free Gemini/Groq APIs, 80+ scholarships and 200+ summer programs." />
+  <title>stdnt.xyz - free stuff for students</title>
+  <meta name="description" content="A curated directory of free tools, free LLM API keys, perks, scholarships and STEM programs for students - GitHub Student Pack, Hack Club, free Gemini/Groq APIs, 98 scholarships and 214 summer programs, plus a quiz that matches you to what you qualify for." />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="edu.edu - free stuff for students" />
+  <meta property="og:title" content="stdnt.xyz - free stuff for students" />
   <meta property="og:description" content="Free tools, free API keys, scholarships & STEM programs for students. All in one place." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111'/%3E%3Ctext x='50%25' y='52%25' dominant-baseline='middle' text-anchor='middle' font-size='30' font-family='monospace' fill='%23fff'%3E.e%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234f7cff'/%3E%3Ctext x='50%25' y='53%25' dominant-baseline='middle' text-anchor='middle' font-size='34' font-weight='bold' font-family='monospace' fill='%23fff'%3Es%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=3" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
 </head>
 <body>
   <!-- ============================================================ HEADER -->
   <header class="hdr">
-    <a class="brand" href="#top" aria-label="edu.edu home">
-      <span class="brand-box">.e</span>
-      <span class="brand-name">edu.edu</span>
+    <a class="brand" href="#top" aria-label="stdnt.xyz home">
+      <span class="brand-box">s</span>
+      <span class="brand-name">stdnt<span class="brand-dim">.xyz</span></span>
     </a>
     <div class="hdr-right">
       <span class="views" id="views" title="page views" hidden>
@@ -40,31 +40,40 @@
     <!-- ============================================================= HERO -->
     <section class="hero">
       <div class="hero-bg" aria-hidden="true"></div>
-      <span class="eyebrow"><i class="dot dot-evr"></i> 100% free &middot; updated for 2026</span>
-      <h1 class="hero-title"><span class="grad">free stuff</span> for students.</h1>
-      <p class="hero-sub">
-        Tools, free API keys, perks, scholarships and STEM programs, all in one place.
-        Your <code>.edu</code> email is a treasure chest.
-      </p>
+      <div class="collage collage-l" id="collage-l" aria-hidden="true"></div>
+      <div class="collage collage-r" id="collage-r" aria-hidden="true"></div>
 
-      <div class="search-wrap">
-        <svg class="search-ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="m21 21-4.3-4.3M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-        <input id="search" class="search-input" type="search" autocomplete="off" aria-label="Search" placeholder="Search..." />
-        <kbd class="search-kbd">/</kbd>
+      <div class="hero-inner">
+        <button class="announce" type="button" data-goto="foryou">
+          <span class="announce-tag">New</span> Find scholarships &amp; programs matched to you <span aria-hidden="true">&rarr;</span>
+        </button>
+
+        <h1 class="hero-title">Where students<br />get <span class="grad">free stuff</span>.</h1>
+        <p class="hero-sub">
+          Every free tool, API key, scholarship and STEM program for students,
+          gathered into one searchable place.
+        </p>
+
+        <div class="search-wrap">
+          <svg class="search-ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="m21 21-4.3-4.3M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          <input id="search" class="search-input" type="search" autocomplete="off" aria-label="Search" placeholder="Search..." />
+          <kbd class="search-kbd">/</kbd>
+        </div>
+
+        <div class="hero-cta">
+          <button class="btn btn-primary" type="button" data-goto="foryou">Find your matches</button>
+          <button class="btn btn-ghost" type="button" data-goto="tools">Browse everything</button>
+        </div>
+        <p class="hero-note">100% free &middot; no signup &middot; <a href="https://github.com/2008wbbv/edu.edu" target="_blank" rel="noopener">open source</a></p>
       </div>
     </section>
-
-    <!-- ===================================================== LOGO MARQUEE -->
-    <div class="logo-marquee" aria-hidden="true">
-      <div class="marquee-row" id="mq1"></div>
-      <div class="marquee-row reverse" id="mq2"></div>
-    </div>
 
     <!-- ============================================================= TABS -->
     <nav class="tabs" role="tablist" aria-label="Sections">
       <button class="tab is-active" data-tab="tools"  role="tab" type="button">Tools &amp; Perks <span class="tab-n" id="n-tools">0</span></button>
       <button class="tab"           data-tab="sch"    role="tab" type="button">Scholarships <span class="tab-n" id="n-sch">0</span></button>
       <button class="tab"           data-tab="prog"   role="tab" type="button">STEM Programs <span class="tab-n" id="n-prog">0</span></button>
+      <button class="tab tab-foryou" data-tab="foryou" role="tab" type="button">&#10022; For You</button>
       <button class="tab tab-saved" data-tab="saved"  role="tab" type="button"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.6 1.1 6.45L12 18.9 6.2 21l1.1-6.45L2.6 9.95l6.5-.95z"/></svg> Saved <span class="tab-n" id="n-saved">0</span></button>
       <button class="tab"           data-tab="about"  role="tab" type="button">About</button>
     </nav>
@@ -104,6 +113,7 @@
         <label class="sortsel">Sort
           <select id="prog-sort">
             <option value="rank">Prestige</option>
+            <option value="accept">Acceptance rate</option>
             <option value="deadline">Deadline</option>
             <option value="name">Name</option>
           </select>
@@ -122,6 +132,15 @@
     </section>
     <section id="panel-prog" class="panel" role="tabpanel" hidden>
       <div class="list" id="prog-list"></div>
+    </section>
+    <section id="panel-foryou" class="panel" role="tabpanel" hidden>
+      <div class="quiz">
+        <h2 class="quiz-h">Find what you qualify for</h2>
+        <p class="quiz-sub">Answer a few optional questions and we'll match you to scholarships and programs. Everything stays on your device, nothing is sent anywhere.</p>
+        <div id="quiz-form"></div>
+        <div class="quiz-actions"><button class="btn btn-ghost" id="quiz-reset" type="button">Reset answers</button></div>
+        <div id="quiz-results"></div>
+      </div>
     </section>
     <section id="panel-saved" class="panel" role="tabpanel" hidden>
       <div id="saved-body"></div>
@@ -173,6 +192,13 @@
     <div class="empty" id="empty" hidden>
       <p>No matches. <button class="linkbtn" id="clear">Clear filters</button></p>
     </div>
+
+    <!-- ====================================================== PR CALLOUT -->
+    <a class="pr-callout" href="https://github.com/2008wbbv/edu.edu" target="_blank" rel="noopener">
+      <span class="pr-ico" aria-hidden="true">&plus;</span>
+      <span>Know a freebie we're missing? <b>Anyone can add one by opening a pull request</b> on GitHub. It's plain HTML/CSS/JS, no build step.</span>
+      <span class="pr-arrow" aria-hidden="true">&rarr;</span>
+    </a>
   </main>
 
   <footer class="ftr">
@@ -180,9 +206,9 @@
     <p class="ftr-fine">Not a checklist - pick the few things you'll actually love. Inspired by <a href="https://mitadmissions.org/blogs/entry/where-the-free-things-are/" target="_blank" rel="noopener">“Where the Free Things Are.”</a></p>
   </footer>
 
-  <script src="js/data.js?v=3"></script>
-  <script src="js/scholarships.js?v=3"></script>
-  <script src="js/programs.js?v=3"></script>
-  <script src="js/app.js?v=3"></script>
+  <script src="js/data.js?v=4"></script>
+  <script src="js/scholarships.js?v=4"></script>
+  <script src="js/programs.js?v=4"></script>
+  <script src="js/app.js?v=4"></script>
 </body>
 </html>
