@@ -283,7 +283,17 @@ window.RESOURCES = [
   { name: "Audacity", url: "https://www.audacityteam.org/", category: "design", access: "everyone", slug: "audacity",
     desc: "Free, open-source audio recorder and multi-track editor.", tags: ["audio", "editor", "podcast"] },
   { name: "OBS Studio", url: "https://obsproject.com/", category: "design", access: "everyone", slug: "obsstudio",
-    desc: "Free, open-source software for screen recording and live streaming.", tags: ["screen record", "streaming", "video"] }
+    desc: "Free, open-source software for screen recording and live streaming.", tags: ["screen record", "streaming", "video"] },
+  { name: "Pixlr", url: "https://pixlr.com/", category: "design", access: "everyone", slug: "pixlr",
+    desc: "Free browser-based photo editor with a friendly, Photoshop-lite interface.", tags: ["photo", "editor", "image"] },
+  { name: "Cleanup.pictures", url: "https://cleanup.pictures/", category: "design", access: "everyone", mono: "Cl",
+    desc: "Remove objects, people or text from photos for free with one brush.", tags: ["photo", "remove", "ai"] },
+  { name: "CapCut", url: "https://www.capcut.com/", category: "design", access: "everyone", mono: "Cc",
+    desc: "Free, easy video editor with captions, effects and templates for socials.", tags: ["video", "editing", "captions"] },
+  { name: "Loom", url: "https://www.loom.com/", category: "productivity", access: "everyone", slug: "loom",
+    desc: "Record your screen and camera to share quick video walkthroughs; free tier.", tags: ["screen record", "video", "async"] },
+  { name: "Mathway", url: "https://www.mathway.com/", category: "learning", access: "everyone", mono: "=",
+    desc: "Type any math problem and get the answer instantly for free (steps are paid).", tags: ["math", "solver"] }
 ];
 
 /* Sponsors shown on the About tab. Empty by default, add real sponsors only. */

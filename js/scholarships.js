@@ -124,6 +124,29 @@
     { name: "AtC Scholarship", level: "HS", amount: 1000, amountText: "$1,000", deadline: "Quarterly", url: s("AtC access scholarship"), find: true, group: "noessay", tags: ["No essay"] },
     { name: "CiE Scholarship", level: "16+", amount: 500, amountText: "$500", deadline: "Quarterly", url: s("CiE cedar scholarship"), find: true, group: "noessay", tags: ["No essay"] },
 
+    /* ---------------------------------------------------- more big & merit */
+    { name: "Cameron Impact Scholarship", level: "HS Senior", amount: FULL, amountText: "Full ride", deadline: "Sep", url: "https://www.bryancameroneducationfoundation.org/", group: "big", tags: ["Leadership", "Full ride"], note: "Full tuition, no income requirement, highly competitive." },
+    { name: "Stamps Scholarship", level: "HS Senior", amount: FULL, amountText: "Full ride+", deadline: "Varies", url: "https://stampsscholars.org/", group: "big", tags: ["Leadership", "Nomination", "Full ride"], note: "At partner universities; merit-based." },
+    { name: "Robertson Scholars (Duke/UNC)", level: "HS Senior", amount: FULL, amountText: "Full ride", deadline: "Nov", url: "https://robertsonscholars.org/", group: "big", tags: ["Leadership", "Full ride"] },
+    { name: "Morehead-Cain (UNC)", level: "HS Senior", amount: FULL, amountText: "Full ride", deadline: "Oct", url: "https://moreheadcain.org/", group: "big", tags: ["Leadership", "Nomination", "Full ride"] },
+    { name: "GE-Reagan Foundation Scholarship", level: "HS Senior", amount: 40000, amountText: "$40,000", deadline: "Jan", url: "https://www.reaganfoundation.org/education/scholarship-programs/ge-reagan-foundation-scholarship-program/", group: "big", tags: ["Leadership", "Need-based"] },
+    { name: "Foot Locker Scholar Athletes", level: "HS Senior", amount: 20000, amountText: "$20,000", deadline: "Jan", url: "https://www.footlockerscholarathletes.com/", group: "big", tags: ["Leadership", "Athletics"], note: "For student-athletes who lead." },
+    { name: "Comcast Leaders & Achievers", level: "HS Senior", amount: 10000, amountText: "Up to $10,000", deadline: "Dec", url: "https://comcast.scholarsapply.org/", group: "general", tags: ["Leadership"] },
+
+    /* ---------------------------------------------------- identity-based */
+    { name: "Hispanic Scholarship Fund", level: "HS Senior / Undergrad", amount: 5000, amountText: "Up to $5,000", deadline: "Feb", url: "https://www.hsf.net/scholarship", group: "big", tags: ["Identity"], note: "For students of Hispanic heritage." },
+    { name: "UNCF General Scholarship", level: "Undergrad", amount: 5000, amountText: "Varies", deadline: "Rolling", url: "https://uncf.org/scholarships", group: "general", tags: ["Identity"], note: "United Negro College Fund, for Black students." },
+    { name: "Point Foundation Scholarship", level: "Undergrad / Grad", amount: 0, amountText: "Varies", deadline: "Varies", url: "https://pointfoundation.org/", group: "general", tags: ["Identity", "LGBTQ"], note: "For LGBTQ students." },
+    { name: "Asian Pacific Fund Scholarships", level: "HS Senior / Undergrad", amount: 5000, amountText: "Varies", deadline: "Varies", url: "https://asianpacificfund.org/what-we-do/scholarships/", group: "general", tags: ["Identity"], note: "For Asian & Pacific Islander students." },
+    { name: "American Indian College Fund", level: "Undergrad", amount: 5000, amountText: "Varies", deadline: "May", url: "https://collegefund.org/students/scholarships/", group: "general", tags: ["Identity"], note: "For Native American students." },
+
+    /* ---------------------------------------------------- STEM & creative */
+    { name: "Regeneron Science Talent Search", level: "HS Senior", amount: 250000, amountText: "Up to $250,000", deadline: "Nov", url: "https://www.societyforscience.org/regeneron-sts/", group: "creative", tags: ["STEM", "Research"], note: "The premier high-school science research competition." },
+    { name: "Davidson Fellows", level: "Under 18", amount: 50000, amountText: "Up to $50,000", deadline: "Feb", url: "https://www.davidsongifted.org/gifted-programs/fellows-scholarship/", group: "creative", tags: ["STEM", "Research", "Art"], note: "For a significant STEM, literature or music project." },
+    { name: "Doodle for Google", level: "K-12", amount: 30000, amountText: "$30,000", deadline: "Varies", url: "https://doodles.google/d4g/", group: "creative", tags: ["Art", "Design"], note: "Design a Google Doodle." },
+    { name: "Prudential Emerging Visionaries", level: "14-18", amount: 15000, amountText: "Up to $15,000", deadline: "Nov", url: "https://www.prudential.com/links/about/corporate-social-responsibility/emerging-visionaries", group: "creative", tags: ["Service", "Leadership"], note: "For solving a community or financial problem." },
+    { name: "National Merit Scholarship", level: "HS Junior", amount: 2500, amountText: "$2,500+", deadline: "Junior PSAT", url: "https://www.nationalmerit.org/", group: "general", tags: ["Test-based"], note: "Qualify via the PSAT/NMSQT in junior year." },
+
     /* ---------------------------------------------------- directories (find more) */
     { name: "College Board BigFuture Directory", level: "All", amount: 0, amountText: "Directory", deadline: "-", url: "https://bigfuture.collegeboard.org/scholarships", group: "general", tags: ["Directory"], note: "Searchable directory - finding scholarships is the hard part, start here." },
     { name: "Scholarship America Directory", level: "All", amount: 0, amountText: "Directory", deadline: "-", url: "https://scholarshipamerica.org/students/browse-scholarships/", group: "general", tags: ["Directory"], note: "Another large, searchable scholarship directory." }

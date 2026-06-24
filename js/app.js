@@ -302,8 +302,17 @@
       return '<div class="qblock"><div class="qq">' + esc(b.q) + '</div><div class="qopts">' + opts + "</div></div>";
     }).join("");
   }
+  function levelOk(level, grade) {
+    var l = String(level || "").toLowerCase();
+    if (!l || /\ball\b|any|various/.test(l)) return true;
+    var hs = /(hs|high school|k-12|9-12|8-12|7-12|6-12|grade|sophomore|freshman|9th|10th|11th|12th|13-18|11-18|8-18|10-18)/.test(l);
+    var college = /(undergrad|college|graduate|postgrad|university)/.test(l);
+    if (grade === "College") return college || !hs;     // college: ok if college-ish or open (not strictly HS)
+    return !(college && !hs);                            // HS: ok unless clearly college/grad only
+  }
   function schScore(s) {
     var q = quiz, t = lc(s.tags), note = (s.note || "").toLowerCase(), name = s.name.toLowerCase(), sc = 0;
+    if (q.grade) { if (!levelOk(s.level, q.grade)) return -1; sc = 1; } // eligible-by-grade baseline
     if ((q.income === "low" || q.income === "mid") && (inArr(t, "need-based") || inArr(t, "adversity"))) sc += 2;
     if (q.race) {
       if (inArr(t, "identity")) sc += 2;
@@ -342,10 +351,10 @@
     var progM = PROG.map(function (p) { return { p: p, sc: progScore(p) }; }).filter(function (o) { return o.sc > 0; })
       .sort(function (a, b) { return b.sc - a.sc || accNum(a.p) - accNum(b.p); });
     var html = '<h3 class="quiz-rh">Scholarships for you <span>' + schM.length + "</span></h3>";
-    html += schM.length ? '<div class="list">' + schM.slice(0, 30).map(function (o, i) { return schRow(o.s, i); }).join("") + "</div>"
+    html += schM.length ? '<div class="list">' + schM.slice(0, 50).map(function (o, i) { return schRow(o.s, i); }).join("") + "</div>"
       : '<p class="muted">No specific scholarship matches yet, try adjusting your answers.</p>';
     html += '<h3 class="quiz-rh">Programs for you <span>' + progM.length + "</span></h3>";
-    html += progM.length ? '<div class="list">' + progM.slice(0, 30).map(function (o, i) { return progRow(o.p, i); }).join("") + "</div>"
+    html += progM.length ? '<div class="list">' + progM.slice(0, 50).map(function (o, i) { return progRow(o.p, i); }).join("") + "</div>"
       : '<p class="muted">No specific program matches with these answers.</p>';
     res.innerHTML = html;
     meta.textContent = "Matched " + schM.length + " scholarships and " + progM.length + " programs to you";
