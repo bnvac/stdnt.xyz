@@ -263,6 +263,7 @@
     box.querySelectorAll(".chip").forEach(function (c) { c.classList.toggle("is-active", c === btn); });
   }
   function render() {
+    if (state.tab === "about") { meta.textContent = ""; empty.hidden = true; return; }
     if (state.tab === "saved") { renderSaved(); return; }
     var n, total, label;
     if (state.tab === "tools") { n = renderTools(); total = RES.length; label = "tools"; }
@@ -275,10 +276,13 @@
     state.tab = tab;
     document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === tab); });
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
-    ["tools", "sch", "prog", "saved"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
+    ["tools", "sch", "prog", "saved", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
+    var sw = document.querySelector(".search-wrap");
+    if (sw) sw.style.opacity = tab === "about" ? ".4" : "";
     search.placeholder = tab === "tools" ? "Search tools, APIs, perks..." :
       tab === "sch" ? "Search scholarships..." :
-      tab === "prog" ? "Search programs, subjects..." : "Search your saved list...";
+      tab === "prog" ? "Search programs, subjects..." :
+      tab === "saved" ? "Search your saved list..." : "Search...";
     render();
   }
 
@@ -287,8 +291,10 @@
       t.addEventListener("click", function () { switchTab(t.dataset.tab); });
     });
     $("#tools-access").addEventListener("click", function (e) {
-      var b = e.target.closest(".chip"); if (!b) return;
-      state.tools.access = b.dataset.access; activate($("#tools-access"), b); render();
+      var b = e.target.closest(".seg"); if (!b) return;
+      state.tools.access = b.dataset.access;
+      $("#tools-access").querySelectorAll(".seg").forEach(function (s) { s.classList.toggle("is-active", s === b); });
+      render();
     });
     var deb;
     search.addEventListener("input", function (e) {
@@ -308,6 +314,7 @@
       document.querySelectorAll(".chips").forEach(function (box) {
         box.querySelectorAll(".chip").forEach(function (c, i) { c.classList.toggle("is-active", i === 0); });
       });
+      $("#tools-access").querySelectorAll(".seg").forEach(function (s) { s.classList.toggle("is-active", s.dataset.access === "all"); });
       render();
     });
     // star toggling (delegated; works inside anchors and across tabs)
@@ -345,6 +352,27 @@
     $("#mq2").innerHTML = b + b;
   }
 
+  // ---- sponsors + stats ----------------------------------------------
+  function renderSponsors() {
+    var box = $("#sponsors"); if (!box) return;
+    var list = window.SPONSORS || [];
+    var html = list.map(function (s) {
+      var logo = s.slug
+        ? '<img class="sp-logo" src="' + ICON_CDN + esc(s.slug) + '" alt="' + esc(s.name) + '" loading="lazy" />'
+        : '<span class="sp-mono">' + esc(s.name) + "</span>";
+      return '<a class="sponsor" href="' + esc(s.url) + '" target="_blank" rel="noopener">' + logo +
+        '<span class="sp-name">' + esc(s.name) + (s.note ? ' <span class="sp-note">' + esc(s.note) + "</span>" : "") + "</span></a>";
+    }).join("");
+    html += '<a class="sponsor sponsor-add" href="https://github.com/2008wbbv/edu.edu" target="_blank" rel="noopener"><span class="sp-plus">+</span><span class="sp-name">Your logo here</span></a>';
+    box.innerHTML = html;
+  }
+  function fillStats() {
+    [["#hs-tools", RES.length], ["#hs-sch", SCH.length], ["#hs-prog", PROG.length],
+     ["#ab-tools", RES.length], ["#ab-sch", SCH.length], ["#ab-prog", PROG.length]].forEach(function (p) {
+      var el = $(p[0]); if (el) el.textContent = commas(p[1]);
+    });
+  }
+
   // ---- theme ---------------------------------------------------------
   function initTheme() {
     var sv = localStorage.getItem("edu-theme");
@@ -375,11 +403,13 @@
   $("#n-sch").textContent = SCH.length;
   $("#n-prog").textContent = PROG.length;
   $("#n-saved").textContent = saved.size;
+  fillStats();
   initTheme();
   buildMarquee();
   buildCatChips();
   buildSchChips();
   buildProgChips();
+  renderSponsors();
   wire();
   initViews();
   render();

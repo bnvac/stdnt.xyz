@@ -50,8 +50,9 @@ So this pulls the best of it into **one minimalist site you can actually search*
 | | |
 |---|---|
 | 🔎 **Instant search** | filter everything as you type (`/` to focus, `Esc` to clear) |
-| 🗂️ **3 tabs** | Tools & Perks · Scholarships · STEM Programs |
-| 🎚️ **Smart filters** | by category, access (student vs everyone), scholarship type, grade level, free-only |
+| 🗂️ **5 tabs** | Tools & Perks · Scholarships · STEM Programs · Saved · About |
+| ⭐ **Save to list** | star any item to build a personal list (saved on-device) |
+| 🎚️ **Smart filters** | segmented access toggle, category/type/grade chips, free-only |
 | ↕️ **Sorting** | scholarships by amount/deadline; programs by prestige/deadline |
 | 🏷️ **Real brand logos** | via [Simple Icons](https://simpleicons.org), with clean monogram fallbacks |
 | 🌗 **Dark / light** | system-aware, remembers your choice |

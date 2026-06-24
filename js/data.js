@@ -25,6 +25,7 @@ window.CATEGORIES = [
   { id: "dev",          name: "Developer Tools", blurb: "IDEs, editors, domains - everything for shipping code." },
   { id: "cloud",        name: "Cloud & Hosting", blurb: "Deploy and run projects on generous free tiers." },
   { id: "design",       name: "Design",          blurb: "Graphics, 3D, video and photo tools." },
+  { id: "files",        name: "Files & PDFs",    blurb: "PDF tools, converters and file utilities." },
   { id: "productivity", name: "Productivity",    blurb: "Notes, docs, office suites and organization." },
   { id: "learning",     name: "Learn Anything",  blurb: "Courses, lectures & channels to self-study free." },
   { id: "testprep",     name: "Test Prep",       blurb: "Practice & tutoring for the SAT, ACT and APs." },
@@ -89,7 +90,7 @@ window.RESOURCES = [
     desc: "The world's largest nonprofit network of teen makers - free programs, grants, hardware and a huge Slack community.", tags: ["teens", "community", "maker", "free"] },
   { name: "Hack Club Toolbox", url: "https://toolbox.hackclub.com/", category: "hackclub", access: "student", slug: "hackclub",
     desc: "A directory of Hack Club's tools, programs and perks for teen hackers - YSWS programs, hosting, AI, search and more.", tags: ["directory", "tools", "teens"] },
-  { name: "Hack Club Slack", url: "https://hackclub.com/slack/", category: "hackclub", access: "student", slug: "slack",
+  { name: "Hack Club Slack", url: "https://hackclub.com/slack/", category: "hackclub", access: "student", mono: "Sl",
     desc: "130k+ members: chat, collaborate and get help from tens of thousands of teen makers, plus AMAs with people like Sal Khan.", tags: ["community", "slack", "chat", "teens"] },
   { name: "HCB (Fiscal Sponsorship)", url: "https://hackclub.com/hcb/", category: "hackclub", access: "student", slug: "hackclub",
     desc: "Run your hackathon or club like a real 501(c)(3): accept donations and manage money with no paperwork nightmare.", tags: ["nonprofit", "finance", "hackathon", "fundraising"] },
@@ -206,5 +207,60 @@ window.RESOURCES = [
   { name: "Student Beans", url: "https://www.studentbeans.com/", category: "lifestyle", access: "student", mono: "SB",
     desc: "Another big student-discount network with exclusive codes for tech, clothing, food and entertainment.", tags: ["discounts", "deals", "shopping"] },
   { name: "Apple Education Pricing", url: "https://www.apple.com/us-edu/store", category: "lifestyle", access: "student", slug: "apple",
-    desc: "Discounts on Mac and iPad for students and educators, often with seasonal back-to-school gift-card promos.", tags: ["apple", "mac", "ipad", "discount"] }
+    desc: "Discounts on Mac and iPad for students and educators, often with seasonal back-to-school gift-card promos.", tags: ["apple", "mac", "ipad", "discount"] },
+
+  /* ------------------------------------------------------------- files & pdfs */
+  { name: "iLovePDF", url: "https://www.ilovepdf.com/", category: "files", access: "everyone", slug: "ilovepdf", featured: true,
+    desc: "Every PDF tool you need in one place: merge, split, compress, convert, sign and edit PDFs free in your browser.", tags: ["pdf", "convert", "compress", "merge"] },
+  { name: "TinyWow", url: "https://tinywow.com/", category: "files", access: "everyone", mono: "TW",
+    desc: "A huge free toolbox for PDFs, images, video and writing, with no signup and no watermarks.", tags: ["pdf", "convert", "image", "tools"] },
+  { name: "PDF24 Tools", url: "https://tools.pdf24.org/", category: "files", access: "everyone", mono: "24",
+    desc: "Free, privacy-friendly PDF tools online or as a desktop app: convert, compress, edit and more.", tags: ["pdf", "convert", "compress"] },
+  { name: "Cobalt", url: "https://cobalt.tools/", category: "files", access: "everyone", mono: "co",
+    desc: "Clean, free, ad-free downloader for video and audio from across the web.", tags: ["download", "video", "audio"] },
+  { name: "Stirling PDF", url: "https://stirlingpdf.io/", category: "files", access: "everyone", mono: "St",
+    desc: "A self-hostable, open-source suite of 50+ PDF tools that runs entirely on your own machine.", tags: ["pdf", "open source", "self-host"] },
+
+  /* ----------------------------------------------- more design & media tools */
+  { name: "Photopea", url: "https://www.photopea.com/", category: "design", access: "everyone", slug: "photopea",
+    desc: "A full Photoshop-style image editor that runs free in your browser and even opens PSD files.", tags: ["photoshop", "editor", "image", "psd"] },
+  { name: "remove.bg", url: "https://www.remove.bg/", category: "design", access: "everyone", mono: "bg",
+    desc: "Remove the background from any photo automatically in one click.", tags: ["background", "image", "cutout"] },
+  { name: "Squoosh", url: "https://squoosh.app/", category: "design", access: "everyone", mono: "Sq",
+    desc: "Compress and convert images right in the browser (by Google). Perfect before uploading anywhere.", tags: ["image", "compress", "convert"] },
+  { name: "Pexels", url: "https://www.pexels.com/", category: "design", access: "everyone", slug: "pexels",
+    desc: "Free high-quality stock photos and videos you can use almost anywhere.", tags: ["photos", "video", "stock"] },
+  { name: "Pixabay", url: "https://pixabay.com/", category: "design", access: "everyone", slug: "pixabay",
+    desc: "Free photos, vectors, illustrations, music and sound effects under a permissive license.", tags: ["photos", "music", "vectors", "stock"] },
+  { name: "Coolors", url: "https://coolors.co/", category: "design", access: "everyone", mono: "Co",
+    desc: "Generate, save and explore color palettes for your designs in seconds.", tags: ["color", "palette", "design"] },
+  { name: "Excalidraw", url: "https://excalidraw.com/", category: "design", access: "everyone", slug: "excalidraw",
+    desc: "Free virtual whiteboard for hand-drawn-style diagrams, sketches and wireframes.", tags: ["whiteboard", "diagram", "sketch"] },
+  { name: "Tinkercad", url: "https://www.tinkercad.com/", category: "design", access: "everyone", slug: "tinkercad",
+    desc: "Free, beginner-friendly 3D design, electronics and block-coding from Autodesk.", tags: ["3d", "cad", "electronics", "beginner"] },
+
+  /* ---------------------------------------------------- more dev & productivity */
+  { name: "Carbon", url: "https://carbon.now.sh/", category: "dev", access: "everyone", mono: "</>",
+    desc: "Turn source code into beautiful, shareable images for slides and social posts.", tags: ["code", "screenshot", "share"] },
+  { name: "Regex101", url: "https://regex101.com/", category: "dev", access: "everyone", mono: ".*",
+    desc: "Build, test and debug regular expressions with a live, explained breakdown.", tags: ["regex", "testing", "debug"] },
+  { name: "draw.io (diagrams.net)", url: "https://app.diagrams.net/", category: "productivity", access: "everyone", slug: "diagramsdotnet",
+    desc: "Free diagramming for flowcharts, UML, network and architecture diagrams, saved to your own drive.", tags: ["diagram", "flowchart", "uml"] },
+  { name: "DeepL", url: "https://www.deepl.com/translator", category: "productivity", access: "everyone", slug: "deepl",
+    desc: "A translator that often reads more naturally than the alternatives, with a generous free tier.", tags: ["translate", "language", "writing"] },
+  { name: "Google Slides", url: "https://docs.google.com/presentation/", category: "productivity", access: "everyone", slug: "googleslides",
+    desc: "Free, collaborative presentations in the browser that auto-save to Google Drive.", tags: ["slides", "presentation", "google"] },
+
+  /* ----------------------------------------------------------- more learning */
+  { name: "Quizlet", url: "https://quizlet.com/", category: "learning", access: "everyone", slug: "quizlet",
+    desc: "Flashcards and study modes for any subject, with a solid free tier.", tags: ["flashcards", "study", "memorize"] },
+  { name: "Anki", url: "https://apps.ankiweb.net/", category: "learning", access: "everyone", slug: "anki",
+    desc: "Free, powerful spaced-repetition flashcards, beloved by med students and language learners.", tags: ["flashcards", "spaced repetition", "memory"] },
+  { name: "Wolfram Alpha", url: "https://www.wolframalpha.com/", category: "learning", access: "everyone", mono: "W|",
+    desc: "A computational engine for math, science and stats that returns instant answers free.", tags: ["math", "science", "compute"] }
+];
+
+/* Sponsors shown on the About tab. Edit freely. */
+window.SPONSORS = [
+  { name: "iLovePDF", url: "https://www.ilovepdf.com/", slug: "ilovepdf", note: "Free PDF tools" }
 ];

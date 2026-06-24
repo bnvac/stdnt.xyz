@@ -39,9 +39,11 @@
   <main id="top">
     <!-- ============================================================= HERO -->
     <section class="hero">
-      <h1 class="hero-title">free stuff for students.</h1>
+      <div class="hero-bg" aria-hidden="true"></div>
+      <span class="eyebrow"><i class="dot dot-evr"></i> 100% free &middot; updated for 2026</span>
+      <h1 class="hero-title"><span class="grad">free stuff</span> for students.</h1>
       <p class="hero-sub">
-        Tools, free API keys, student perks, scholarships &amp; STEM programs - all in one place.
+        Tools, free API keys, perks, scholarships and STEM programs, all in one place.
         Your <code>.edu</code> email is a treasure chest.
       </p>
 
@@ -50,6 +52,13 @@
         <input id="search" class="search-input" type="search" autocomplete="off" aria-label="Search" placeholder="Search..." />
         <kbd class="search-kbd">/</kbd>
       </div>
+
+      <ul class="hero-stats">
+        <li><b id="hs-tools">0</b> tools</li>
+        <li><b id="hs-sch">0</b> scholarships</li>
+        <li><b id="hs-prog">0</b> programs</li>
+        <li><b class="grad">free</b> API keys</li>
+      </ul>
     </section>
 
     <!-- ===================================================== LOGO MARQUEE -->
@@ -64,22 +73,23 @@
       <button class="tab"           data-tab="sch"    role="tab" type="button">Scholarships <span class="tab-n" id="n-sch">0</span></button>
       <button class="tab"           data-tab="prog"   role="tab" type="button">STEM Programs <span class="tab-n" id="n-prog">0</span></button>
       <button class="tab tab-saved" data-tab="saved"  role="tab" type="button"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.6 1.1 6.45L12 18.9 6.2 21l1.1-6.45L2.6 9.95l6.5-.95z"/></svg> Saved <span class="tab-n" id="n-saved">0</span></button>
+      <button class="tab"           data-tab="about"  role="tab" type="button">About</button>
     </nav>
 
     <!-- =========================================================== FILTERS -->
     <div class="toolbar">
       <!-- tools filters -->
       <div class="filterset" data-for="tools">
-        <div class="chips" id="tools-access" role="group" aria-label="Access">
-          <button class="chip is-active" data-access="all" type="button">All</button>
-          <button class="chip" data-access="student" type="button"><i class="dot dot-stu"></i>Student</button>
-          <button class="chip" data-access="everyone" type="button"><i class="dot dot-evr"></i>Everyone</button>
+        <div class="segmented" id="tools-access" role="group" aria-label="Access">
+          <button class="seg is-active" data-access="all" type="button">All</button>
+          <button class="seg" data-access="student" type="button"><i class="dot dot-stu"></i>Student</button>
+          <button class="seg" data-access="everyone" type="button"><i class="dot dot-evr"></i>Everyone</button>
         </div>
-        <div class="chips" id="tools-cats" role="group" aria-label="Category"></div>
+        <div class="chiprail"><div class="chips" id="tools-cats" role="group" aria-label="Category"></div></div>
       </div>
       <!-- scholarship filters -->
       <div class="filterset" data-for="sch" hidden>
-        <div class="chips" id="sch-groups" role="group" aria-label="Type"></div>
+        <div class="chiprail"><div class="chips" id="sch-groups" role="group" aria-label="Type"></div></div>
         <label class="sortsel">Sort
           <select id="sch-sort">
             <option value="amount">Amount</option>
@@ -90,14 +100,14 @@
       </div>
       <!-- program filters -->
       <div class="filterset" data-for="prog" hidden>
-        <div class="chips" id="prog-grades" role="group" aria-label="Grade">
+        <div class="chiprail"><div class="chips" id="prog-grades" role="group" aria-label="Grade">
           <button class="chip is-active" data-grade="all" type="button">All grades</button>
           <button class="chip" data-grade="Freshman" type="button">Freshman</button>
           <button class="chip" data-grade="Sophomore" type="button">Sophomore</button>
           <button class="chip" data-grade="Junior" type="button">Junior</button>
           <button class="chip" data-grade="Senior" type="button">Senior</button>
-        </div>
-        <label class="toggle"><input type="checkbox" id="prog-free" /> Free / funded only</label>
+        </div></div>
+        <label class="toggle"><input type="checkbox" id="prog-free" /> Free / funded</label>
         <label class="sortsel">Sort
           <select id="prog-sort">
             <option value="rank">Prestige</option>
@@ -124,16 +134,52 @@
       <div id="saved-body"></div>
     </section>
 
+    <!-- ============================================================ ABOUT -->
+    <section id="panel-about" class="panel" role="tabpanel" hidden>
+      <div class="about">
+        <h2 class="about-title">Everything free for students, in one place.</h2>
+        <p class="about-lead">edu.edu is a hand-curated, searchable directory of free tools, free API keys, student perks, scholarships and STEM programs. Being a student (and honestly, just being online) unlocks thousands of dollars of free stuff, it's just scattered everywhere. This pulls the best of it together.</p>
+
+        <div class="about-stats">
+          <div class="astat"><b id="ab-tools">0</b><span>tools &amp; perks</span></div>
+          <div class="astat"><b id="ab-sch">0</b><span>scholarships</span></div>
+          <div class="astat"><b id="ab-prog">0</b><span>STEM programs</span></div>
+          <div class="astat"><b>$200k+</b><span>in the GitHub pack</span></div>
+        </div>
+
+        <div class="about-grid">
+          <div>
+            <h3>How to read it</h3>
+            <p><span class="badge badge-stu">Student</span> needs a school email (<code>.edu</code>) or a quick verification such as SheerID. Hack Club perks are for teens 13-18.</p>
+            <p><span class="badge badge-evr">Everyone</span> is free for anyone, no strings attached.</p>
+            <p class="muted">Tap the star on anything to save it to your list. It stays on this device.</p>
+          </div>
+          <div>
+            <h3>How to use it</h3>
+            <ul class="about-ul">
+              <li>Search any tab from the box up top (or press <kbd>/</kbd>).</li>
+              <li>Filter Tools by category &amp; access, Scholarships by type, Programs by grade.</li>
+              <li>Sort scholarships by amount, programs by prestige.</li>
+              <li>Star favourites, then open the <b>Saved</b> tab.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="sponsors-h">Sponsors</h3>
+        <p class="muted">edu.edu is free and open source. These partners help keep it that way.</p>
+        <div class="sponsors" id="sponsors"></div>
+        <a class="cta" href="https://github.com/2008wbbv/edu.edu" target="_blank" rel="noopener">Become a sponsor &rarr;</a>
+
+        <h3>Contribute</h3>
+        <p>Spotted something outdated or missing? Offers change constantly, so PRs that fix a link or add a new freebie are very welcome. It is plain HTML/CSS/JS with no build step. <a href="https://github.com/2008wbbv/edu.edu" target="_blank" rel="noopener">Open the repo</a>.</p>
+
+        <p class="about-credits">Scholarship &amp; program data adapted from open community spreadsheets. Inspired by Richard O.'s MIT Admissions blog, <a href="https://mitadmissions.org/blogs/entry/where-the-free-things-are/" target="_blank" rel="noopener">"Where the Free Things Are."</a> Brand icons by Simple Icons. Not a checklist, pick the few things you will actually love.</p>
+      </div>
+    </section>
+
     <div class="empty" id="empty" hidden>
       <p>No matches. <button class="linkbtn" id="clear">Clear filters</button></p>
     </div>
-
-    <!-- =========================================================== LEGEND -->
-    <section class="note">
-      <span class="badge badge-stu">Student</span> needs a school email (<code>.edu</code>) or quick verification (e.g. SheerID). Hack Club perks are for teens 13-18.
-      <span class="badge badge-evr">Everyone</span> is free for anyone, no strings.
-      Offers change - always confirm on the provider's site.
-    </section>
   </main>
 
   <footer class="ftr">
