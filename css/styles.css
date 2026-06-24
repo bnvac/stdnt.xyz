@@ -112,13 +112,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .hero-sub { max-width: 520px; margin: 0 auto 1.7rem; color: var(--tx-2); font-size: clamp(.98rem, 2vw, 1.1rem); }
-.hero-stats {
-  list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1.4rem;
-  margin: 1.5rem 0 0; padding: 0; font-size: .85rem; color: var(--tx-3);
-}
-.hero-stats li { display: inline-flex; align-items: baseline; gap: .35rem; }
-.hero-stats b { font-size: 1rem; font-weight: 800; color: var(--tx); font-variant-numeric: tabular-nums; }
-.hero-stats b.grad { -webkit-text-fill-color: transparent; }
 
 .search-wrap { position: relative; max-width: 500px; margin: 0 auto; }
 .search-ico { position: absolute; left: .9rem; top: 50%; transform: translateY(-50%); color: var(--tx-3); }
@@ -305,8 +298,8 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
   transition: border-color .15s, transform .15s;
 }
 .logo-tile:hover { border-color: var(--accent); transform: translateY(-3px); }
-.logo-tile .ic { width: 26px; height: 26px; background-color: var(--tx-2); }
-.logo-tile:hover .ic { background-color: var(--accent); }
+.logo-tile .ic { width: 26px; height: 26px; background-color: var(--tx); opacity: .8; transition: opacity .15s, background-color .15s; }
+.logo-tile:hover .ic { background-color: var(--accent); opacity: 1; }
 @keyframes scrollx { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ============================================================== SAVED PANEL */
