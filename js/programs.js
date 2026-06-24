@@ -1,26 +1,22 @@
 /*
  * programs.js - STEM summer programs, research & internships.
  * Auto-generated from community spreadsheets (THE_LIST + STEM Programs/Internships
- * by grade). 214 programs. Deadlines are approximate; verify on each site.
+ * by grade). 217 programs. Deadlines are approximate; verify on each site.
  */
 window.PROGRAMS = [
  {
-  "name": "MITES (Minority Introduction to Engineering and Science)",
-  "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
-  "deadline": "February 1",
-  "when": "Late June - Early August (6 wks)",
+  "name": "Research Science Institute (RSI)",
+  "url": "https://www.cee.org/programs/apply-rsi",
+  "deadline": "December 1",
+  "when": "June 23 - August 3",
   "cost": "Free (Fully Funded)",
   "free": true,
   "subjects": [
-   "College Readiness",
-   "STEM",
-   "Engineering"
+   "Research",
+   "STEM Research"
   ],
   "tags": [
-   "US",
-   "In-person",
    "Residential",
-   "Minority",
    "MIT",
    "Cambridge",
    "MA"
@@ -28,9 +24,9 @@ window.PROGRAMS = [
   "grades": [
    "Junior"
   ],
-  "ranking": "S+",
-  "accRate": "~ 3-5%",
-  "details": "6-week residential program for highly driven, underrepresented students. Incredible pipeline to MIT and Ivies.",
+  "ranking": "S++",
+  "accRate": "< 3%",
+  "details": "Arguably the most prestigious STEM program globally. Students conduct full research cycle at MIT from lit review to formal presentation.",
   "flagship": true
  },
  {
@@ -53,6 +49,28 @@ window.PROGRAMS = [
   "ranking": "S+",
   "accRate": "~ 2-3%",
   "details": "Only 12 students selected globally. Highly intensive, multidisciplinary research at Texas Tech.",
+  "flagship": true
+ },
+ {
+  "name": "MITES (Minority Introduction to Engineering and Science)",
+  "url": "",
+  "deadline": "",
+  "when": "Late June - Early August (6 wks)",
+  "cost": "Free (Fully Funded)",
+  "free": true,
+  "subjects": [
+   "Engineering",
+   "STEM"
+  ],
+  "tags": [
+   "MIT",
+   "Cambridge",
+   "MA"
+  ],
+  "grades": [],
+  "ranking": "S+",
+  "accRate": "~ 3-5%",
+  "details": "6-week residential program for highly driven, underrepresented students. Incredible pipeline to MIT and Ivies.",
   "flagship": true
  },
  {
@@ -88,38 +106,6 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "Summer Science Program (SSP)",
-  "url": "https://www.cee.org/programs/apply-rsi",
-  "deadline": "December 1",
-  "when": "June 16 - July 24",
-  "cost": "$8,800 (Generous aid up to full fee + travel)",
-  "free": false,
-  "subjects": [
-   "Research",
-   "STEM Research",
-   "Astrophysics",
-   "Biochemistry",
-   "Genomics"
-  ],
-  "tags": [
-   "Residential",
-   "MIT",
-   "Cambridge",
-   "MA",
-   "Various (NMT",
-   "CU Boulder",
-   "Purdue",
-   "UNC)"
-  ],
-  "grades": [
-   "Junior"
-  ],
-  "ranking": "S",
-  "accRate": "~ 10%",
-  "details": "Arguably the most prestigious STEM program globally. Students conduct full research cycle at MIT from lit review to formal presentation.",
-  "flagship": true
- },
- {
   "name": "Stanford Institutes of Medicine Summer Research Program (SIMR)",
   "url": "",
   "deadline": "",
@@ -138,6 +124,30 @@ window.PROGRAMS = [
   "ranking": "S",
   "accRate": "~ 3%",
   "details": "Hands-on research in Stanford labs (immunology, neurobiology, cancer, etc.). Massive boost for pre-meds.",
+  "flagship": true
+ },
+ {
+  "name": "Summer Science Program (SSP)",
+  "url": "",
+  "deadline": "",
+  "when": "June 16 - July 24",
+  "cost": "$8,800 (Generous aid up to full fee + travel)",
+  "free": false,
+  "subjects": [
+   "Astrophysics",
+   "Biochemistry",
+   "Genomics"
+  ],
+  "tags": [
+   "Various (NMT",
+   "CU Boulder",
+   "Purdue",
+   "UNC)"
+  ],
+  "grades": [],
+  "ranking": "S",
+  "accRate": "~ 10%",
+  "details": "Historic, intense 39-day program where teams calculate asteroid orbits or sequence fungal genomes.",
   "flagship": true
  },
  {
@@ -2121,6 +2131,31 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
+  "name": "MITES Summer",
+  "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+  "deadline": "February 1",
+  "when": "",
+  "cost": "",
+  "free": false,
+  "subjects": [
+   "College Readiness",
+   "STEM"
+  ],
+  "tags": [
+   "US",
+   "In-person",
+   "Residential",
+   "Minority"
+  ],
+  "grades": [
+   "Junior"
+  ],
+  "ranking": "",
+  "accRate": "",
+  "details": "",
+  "flagship": false
+ },
+ {
   "name": "Pathways to Quantum Summer Immersion",
   "url": "https://sites.google.com/view/building-the-quantum-workforce/pathways-to-quantum-immersion-program?authuser=0",
   "deadline": "February 1",
@@ -3268,7 +3303,7 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Scripps translational research institute",
+  "name": "Scripps Research Translational Institute",
   "url": "https://www.scripps.edu/science-and-medicine/translational-institute/education-and-training/student-research-internship/?tab-2-drawers=1&tab-1-drawers=1",
   "deadline": "March 31",
   "when": "",
@@ -3293,7 +3328,7 @@ window.PROGRAMS = [
   "ranking": "",
   "accRate": "",
   "details": "",
-  "flagship": true
+  "flagship": false
  },
  {
   "name": "Santa Clara SES",
@@ -5221,6 +5256,21 @@ window.PROGRAMS = [
  },
  {
   "name": "UCSC Science Internship Program",
+  "url": "",
+  "deadline": "",
+  "when": "",
+  "cost": "",
+  "free": false,
+  "subjects": [],
+  "tags": [],
+  "grades": [],
+  "ranking": "",
+  "accRate": "",
+  "details": "",
+  "flagship": true
+ },
+ {
+  "name": "Scripps translational research institute",
   "url": "",
   "deadline": "",
   "when": "",

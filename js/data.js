@@ -29,7 +29,11 @@ window.CATEGORIES = [
   { id: "productivity", name: "Productivity",    blurb: "Notes, docs, office suites and organization." },
   { id: "learning",     name: "Learn Anything",  blurb: "Courses, lectures & channels to self-study free." },
   { id: "testprep",     name: "Test Prep",       blurb: "Practice & tutoring for the SAT, ACT and APs." },
-  { id: "lifestyle",    name: "Lifestyle",       blurb: "Music, shopping & streaming student discounts." }
+  { id: "lifestyle",    name: "Lifestyle",       blurb: "Music, shopping & streaming student discounts." },
+  { id: "jobs",         name: "Jobs & Internships", blurb: "Teen-friendly jobs, internships and gigs." },
+  { id: "compete",      name: "Competitions",    blurb: "Hackathons, science fairs and contests to enter." },
+  { id: "certs",        name: "Certifications",  blurb: "Free, resume-worthy certificates." },
+  { id: "college",      name: "College & Apply", blurb: "Fee waivers and tools for applying to college." }
 ];
 
 window.RESOURCES = [
@@ -293,7 +297,75 @@ window.RESOURCES = [
   { name: "Loom", url: "https://www.loom.com/", category: "productivity", access: "everyone", slug: "loom",
     desc: "Record your screen and camera to share quick video walkthroughs; free tier.", tags: ["screen record", "video", "async"] },
   { name: "Mathway", url: "https://www.mathway.com/", category: "learning", access: "everyone", mono: "=",
-    desc: "Type any math problem and get the answer instantly for free (steps are paid).", tags: ["math", "solver"] }
+    desc: "Type any math problem and get the answer instantly for free (steps are paid).", tags: ["math", "solver"] },
+
+  /* ------------------------------------------------------- jobs & internships */
+  { name: "Handshake", url: "https://joinhandshake.com/", category: "jobs", access: "everyone", slug: "handshake",
+    desc: "The biggest early-career network for campus jobs, internships and employer connections.", tags: ["jobs", "internships", "career"] },
+  { name: "Indeed", url: "https://www.indeed.com/", category: "jobs", access: "everyone", slug: "indeed",
+    desc: "Search millions of jobs and internships, including part-time and entry-level roles for teens.", tags: ["jobs", "internships", "part-time"] },
+  { name: "WayUp", url: "https://www.wayup.com/", category: "jobs", access: "everyone", mono: "Wu",
+    desc: "Internships and entry-level jobs aimed specifically at students and new grads.", tags: ["internships", "students", "entry-level"] },
+  { name: "Parker Dewey", url: "https://www.parkerdewey.com/", category: "jobs", access: "everyone", mono: "Pd",
+    desc: "Short, paid remote micro-internships you can do around school.", tags: ["micro-internship", "remote", "paid"] },
+  { name: "CareerOneStop", url: "https://www.careeronestop.org/", category: "jobs", access: "everyone", mono: "C1",
+    desc: "US Department of Labor hub for jobs, training and youth career programs.", tags: ["jobs", "training", "government"] },
+  { name: "Bank of America Student Leaders", url: "https://about.bankofamerica.com/en/making-an-impact/student-leaders", category: "jobs", access: "student", mono: "SL",
+    desc: "Paid summer internship plus a leadership summit for high-school juniors and seniors.", tags: ["internship", "paid", "leadership"] },
+  { name: "Internships.com", url: "https://www.internships.com/", category: "jobs", access: "everyone", mono: "In",
+    desc: "Large searchable database of internships across nearly every field.", tags: ["internships", "search"] },
+  { name: "VolunteerMatch", url: "https://www.volunteermatch.org/", category: "jobs", access: "everyone", mono: "Vm",
+    desc: "Find volunteer work to build experience and rack up service hours.", tags: ["volunteer", "service", "hours"] },
+
+  /* ----------------------------------------------- competitions & hackathons */
+  { name: "Devpost", url: "https://devpost.com/hackathons", category: "compete", access: "everyone", slug: "devpost",
+    desc: "Discover online and in-person hackathons with real prizes, for all skill levels.", tags: ["hackathon", "competition", "prizes"] },
+  { name: "Major League Hacking", url: "https://mlh.io/", category: "compete", access: "everyone", mono: "ML",
+    desc: "The official student hackathon league, with free events worldwide.", tags: ["hackathon", "mlh", "students"] },
+  { name: "Congressional App Challenge", url: "https://www.congressionalappchallenge.us/", category: "compete", access: "student", mono: "CA",
+    desc: "Build an app to represent your district; beginner-friendly and nationwide.", tags: ["coding", "app", "competition"] },
+  { name: "Regeneron ISEF", url: "https://www.societyforscience.org/isef/", category: "compete", access: "student", mono: "IS",
+    desc: "The world's largest pre-college STEM research fair, with millions in prizes.", tags: ["science fair", "research", "stem"] },
+  { name: "Science Olympiad", url: "https://www.soinc.org/", category: "compete", access: "student", mono: "SO",
+    desc: "Team STEM competition spanning biology, chemistry, physics and engineering.", tags: ["stem", "team", "competition"] },
+  { name: "FIRST Robotics", url: "https://www.firstinspires.org/", category: "compete", access: "student", mono: "Fr",
+    desc: "Build and compete with robots, backed by a huge scholarship network.", tags: ["robotics", "engineering", "scholarships"] },
+  { name: "MAA Math Competitions (AMC)", url: "https://maa.org/math-competitions/", category: "compete", access: "student", mono: "AMC",
+    desc: "AMC, AIME and USAMO, the main pathway in competition mathematics.", tags: ["math", "competition", "amc"] },
+  { name: "DECA", url: "https://www.deca.org/", category: "compete", access: "student", mono: "DE",
+    desc: "Business, marketing and entrepreneurship competitions for high schoolers.", tags: ["business", "marketing", "competition"] },
+  { name: "Hack Club Hackathons", url: "https://hackathons.hackclub.com/", category: "compete", access: "student", slug: "hackclub",
+    desc: "A directory of teen-run, teen-friendly hackathons happening around the world.", tags: ["hackathon", "teens", "hack club"] },
+
+  /* ------------------------------------------------------------- certifications */
+  { name: "Google Career Certificates", url: "https://grow.google/certificates/", category: "certs", access: "everyone", slug: "google",
+    desc: "Job-ready certificates in data analytics, IT, UX and more; financial aid available.", tags: ["certificate", "career", "google"] },
+  { name: "HubSpot Academy", url: "https://academy.hubspot.com/", category: "certs", access: "everyone", slug: "hubspot",
+    desc: "Free certifications in marketing, sales, content and social media.", tags: ["certificate", "marketing", "free"] },
+  { name: "Microsoft Learn", url: "https://learn.microsoft.com/", category: "certs", access: "everyone", mono: "ML",
+    desc: "Free learning paths and credentials for Azure, AI, data and development.", tags: ["certificate", "azure", "microsoft"] },
+  { name: "Cisco Networking Academy", url: "https://www.netacad.com/", category: "certs", access: "everyone", mono: "Ci",
+    desc: "Free courses and certificates in networking, Python and cybersecurity.", tags: ["certificate", "networking", "cybersecurity"] },
+  { name: "Kaggle Learn", url: "https://www.kaggle.com/learn", category: "certs", access: "everyone", slug: "kaggle",
+    desc: "Free, fast micro-courses in Python, machine learning and data science.", tags: ["certificate", "python", "ml", "data"] },
+  { name: "IBM SkillsBuild", url: "https://skillsbuild.org/", category: "certs", access: "everyone", mono: "IBM",
+    desc: "Free courses and digital credentials in AI, cybersecurity and data.", tags: ["certificate", "ai", "ibm"] },
+  { name: "Udacity Free Courses", url: "https://www.udacity.com/courses/all?price=Free", category: "certs", access: "everyone", slug: "udacity",
+    desc: "Free versions of many of Udacity's tech courses.", tags: ["courses", "tech", "free"] },
+
+  /* ------------------------------------------------------------ college & apply */
+  { name: "Common App", url: "https://www.commonapp.org/", category: "college", access: "everyone", mono: "App",
+    desc: "Apply to 1,000+ colleges with a single application.", tags: ["college", "application"] },
+  { name: "Common App Fee Waiver", url: "https://www.commonapp.org/apply/fee-waivers", category: "college", access: "student", mono: "Fw",
+    desc: "Eligible students can apply to college entirely free, with no application fees.", tags: ["fee waiver", "college", "free"] },
+  { name: "College Board Fee Waivers", url: "https://satsuite.collegeboard.org/sat/registration/fee-waivers", category: "college", access: "student", mono: "CB",
+    desc: "Free SAT registrations, score sends and college application fee waivers if eligible.", tags: ["fee waiver", "sat", "college"] },
+  { name: "ACT Fee Waiver", url: "https://www.act.org/content/act/en/products-and-services/the-act/registration/fees/fee-waivers.html", category: "college", access: "student", mono: "ACT",
+    desc: "Free ACT test registrations and college application fee waivers if eligible.", tags: ["fee waiver", "act", "college"] },
+  { name: "NACAC Application Fee Waiver", url: "https://www.nacacnet.org/", category: "college", access: "student", mono: "NA",
+    desc: "Request college application fee waivers accepted by hundreds of member colleges.", tags: ["fee waiver", "college", "application"] },
+  { name: "College Scorecard", url: "https://collegescorecard.ed.gov/", category: "college", access: "everyone", mono: "$",
+    desc: "US government data on college cost, financial aid and graduate outcomes.", tags: ["college", "cost", "data"] }
 ];
 
 /* Sponsors shown on the About tab. Empty by default, add real sponsors only. */

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>stdnt.xyz - free stuff for students</title>
-  <meta name="description" content="A curated directory of free tools, free LLM API keys, perks, scholarships and STEM programs for students - GitHub Student Pack, Hack Club, free Gemini/Groq APIs, 98 scholarships and 214 summer programs, plus a quiz that matches you to what you qualify for." />
+  <meta name="description" content="A curated directory of free tools, free LLM API keys, perks, scholarships and STEM programs for students - GitHub Student Pack, Hack Club, free Gemini/Groq APIs, 115 scholarships and 217 summer programs, plus a quiz that matches you to what you qualify for." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="stdnt.xyz - free stuff for students" />
   <meta property="og:description" content="Free tools, free API keys, scholarships & STEM programs for students. All in one place." />
@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=5" />
+  <link rel="stylesheet" href="css/styles.css?v=6" />
 </head>
 <body>
   <!-- ============================================================ HEADER -->
@@ -95,6 +95,7 @@
         <label class="sortsel">Sort
           <select id="sch-sort">
             <option value="amount">Amount</option>
+            <option value="soon">Closing soon</option>
             <option value="deadline">Deadline</option>
             <option value="name">Name</option>
           </select>
@@ -114,6 +115,7 @@
           <select id="prog-sort">
             <option value="rank">Prestige</option>
             <option value="accept">Acceptance rate</option>
+            <option value="soon">Closing soon</option>
             <option value="deadline">Deadline</option>
             <option value="name">Name</option>
           </select>
@@ -138,7 +140,11 @@
         <h2 class="quiz-h">Find what you qualify for</h2>
         <p class="quiz-sub">Answer a few optional questions and we'll match you to scholarships and programs. Everything stays on your device, nothing is sent anywhere.</p>
         <div id="quiz-form"></div>
-        <div class="quiz-actions"><button class="btn btn-ghost" id="quiz-reset" type="button">Reset answers</button></div>
+        <div class="quiz-actions">
+          <button class="btn btn-primary" id="quiz-share" type="button">Copy link to my matches</button>
+          <button class="btn btn-ghost" id="quiz-reset" type="button">Reset answers</button>
+          <span class="copied" id="quiz-copied" hidden>Copied!</span>
+        </div>
         <div id="quiz-results"></div>
       </div>
     </section>
@@ -150,7 +156,7 @@
     <section id="panel-about" class="panel" role="tabpanel" hidden>
       <div class="about">
         <h2 class="about-title">Everything free for students, in one place.</h2>
-        <p class="about-lead">edu.edu is a hand-curated, searchable directory of free tools, free API keys, student perks, scholarships and STEM programs. Being a student (and honestly, just being online) unlocks thousands of dollars of free stuff, it's just scattered everywhere. This pulls the best of it together.</p>
+        <p class="about-lead">stdnt.xyz is a hand-curated, searchable directory of free tools, free API keys, student perks, scholarships and STEM programs. Being a student (and honestly, just being online) unlocks thousands of dollars of free stuff, it's just scattered everywhere. This pulls the best of it together.</p>
 
         <div class="about-stats">
           <div class="astat"><b id="ab-tools">0</b><span>tools &amp; perks</span></div>
@@ -178,12 +184,17 @@
         </div>
 
         <h3 class="sponsors-h">Sponsors</h3>
-        <p class="muted">edu.edu is free and open source. These partners help keep it that way.</p>
+        <p class="muted">stdnt.xyz is free and open source. These partners help keep it that way.</p>
         <div class="sponsors" id="sponsors"></div>
         <a class="cta" href="https://github.com/2008wbbv/edu.edu" target="_blank" rel="noopener">Become a sponsor &rarr;</a>
 
         <h3>Contribute</h3>
-        <p>Spotted something outdated or missing? Offers change constantly, so PRs that fix a link or add a new freebie are very welcome. It is plain HTML/CSS/JS with no build step. <a href="https://github.com/2008wbbv/edu.edu" target="_blank" rel="noopener">Open the repo</a>.</p>
+        <p>Spotted something outdated or missing? Offers change constantly, so contributions are very welcome. It is plain HTML/CSS/JS with no build step.</p>
+        <p>
+          <a class="btn btn-primary" id="submit-resource" href="https://github.com/2008wbbv/edu.edu/issues/new" target="_blank" rel="noopener">Submit a resource</a>
+          <a class="btn btn-ghost" href="https://github.com/2008wbbv/edu.edu" target="_blank" rel="noopener">Open the repo</a>
+        </p>
+        <p class="muted">No coding needed, the button opens a prefilled GitHub issue. Or open a pull request to add it directly.</p>
 
         <p class="about-credits">Scholarship &amp; program data adapted from open community spreadsheets. Inspired by Richard O.'s MIT Admissions blog, <a href="https://mitadmissions.org/blogs/entry/where-the-free-things-are/" target="_blank" rel="noopener">"Where the Free Things Are."</a> Brand icons by Simple Icons. Not a checklist, pick the few things you will actually love.</p>
       </div>
@@ -206,9 +217,9 @@
     <p class="ftr-fine">Not a checklist - pick the few things you'll actually love. Inspired by <a href="https://mitadmissions.org/blogs/entry/where-the-free-things-are/" target="_blank" rel="noopener">“Where the Free Things Are.”</a></p>
   </footer>
 
-  <script src="js/data.js?v=5"></script>
-  <script src="js/scholarships.js?v=5"></script>
-  <script src="js/programs.js?v=5"></script>
-  <script src="js/app.js?v=5"></script>
+  <script src="js/data.js?v=6"></script>
+  <script src="js/scholarships.js?v=6"></script>
+  <script src="js/programs.js?v=6"></script>
+  <script src="js/app.js?v=6"></script>
 </body>
 </html>

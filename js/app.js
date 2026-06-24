@@ -66,6 +66,54 @@
   }
   function lc(arr) { return (arr || []).map(function (x) { return String(x).toLowerCase(); }); }
   function inArr(a, x) { return a.indexOf(x) >= 0; }
+
+  // ---- deadlines / calendar ------------------------------------------
+  var TODAY = new Date(); TODAY.setHours(0, 0, 0, 0);
+  var CAL_SVG = '<svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M7 2v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zM5 8h14v11H5V8zm6 2v3H8v2h3v3h2v-3h3v-2h-3v-3h-2z"/></svg>';
+  function dlInfo(d) {
+    var s = String(d || "").trim().toLowerCase();
+    if (!s || /rolling|monthly|quarterly|varies|dependent|psat|open|tbd|announce|check|nomination|^-$/.test(s)) return { rolling: true, date: null, days: null, soon: false };
+    var m = s.match(/(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s*(\d{1,2})?/);
+    if (!m) return { rolling: true, date: null, days: null, soon: false };
+    var dt = new Date(TODAY.getFullYear(), MONTHS[m[1]] - 1, m[2] ? +m[2] : 15); dt.setHours(0, 0, 0, 0);
+    if (dt < TODAY) dt = new Date(TODAY.getFullYear() + 1, MONTHS[m[1]] - 1, m[2] ? +m[2] : 15);
+    var days = Math.round((dt - TODAY) / 86400000);
+    return { rolling: false, date: dt, days: days, soon: days <= 30 };
+  }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function ymd(dt) { return dt.getFullYear() + pad(dt.getMonth() + 1) + pad(dt.getDate()); }
+  function gcal(name, url, dt) {
+    var d2 = new Date(dt.getTime() + 86400000);
+    return "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" +
+      encodeURIComponent("Apply: " + name) + "&dates=" + ymd(dt) + "/" + ymd(d2) +
+      "&details=" + encodeURIComponent("Application deadline for " + name + (url ? "\n" + url : ""));
+  }
+  function calCell(name, url, deadline) {
+    var info = dlInfo(deadline); var due = esc(deadline || "");
+    if (!info.date) return '<span class="row-due">' + (due || "Rolling") + "</span>";
+    var soon = info.soon ? " soon" : "";
+    var left = info.days <= 60 ? ' &middot; ' + info.days + "d" : "";
+    return '<span class="row-due' + soon + '">' + due + left +
+      ' <a class="cal" href="' + gcal(name, url, info.date) + '" target="_blank" rel="noopener" title="Add deadline to Google Calendar" aria-label="Add to calendar">' + CAL_SVG + "</a></span>";
+  }
+  function download(filename, text, mime) {
+    var blob = new Blob([text], { type: mime || "text/plain;charset=utf-8" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  }
+  function copyText(t) {
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t)["catch"](function () { fallbackCopy(t); }); }
+    else fallbackCopy(t);
+  }
+  function fallbackCopy(t) {
+    var ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch (e) {} ta.remove();
+  }
+  function flash(sel) { var el = $(sel); if (!el) return; el.hidden = false; clearTimeout(el._t); el._t = setTimeout(function () { el.hidden = true; }, 1600); }
+  function csvCell(v) { v = String(v == null ? "" : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+  function icsEsc(v) { return String(v || "").replace(/([,;\\])/g, "\\$1").replace(/\n/g, " "); }
   function iconHTML(item) {
     if (item.slug) return '<span class="ic-wrap"><span class="ic" style="--src:url(\'' + ICON_CDN + esc(item.slug) + '\')"></span></span>';
     return '<span class="ic-wrap"><span class="ic-mono">' + esc(item.mono || monoFrom(item.name)) + "</span></span>";
@@ -167,6 +215,7 @@
     list.sort(function (a, b) {
       if (by === "name") return a.name.localeCompare(b.name);
       if (by === "deadline") return dlSort(a.deadline) - dlSort(b.deadline) || b.amount - a.amount;
+      if (by === "soon") { var ia = dlInfo(a.deadline), ib = dlInfo(b.deadline); return (ia.date ? ia.days : 1e9) - (ib.date ? ib.days : 1e9) || b.amount - a.amount; }
       return b.amount - a.amount || a.name.localeCompare(b.name);
     });
     return list;
@@ -182,7 +231,7 @@
       (tags ? '<div class="row-tags">' + tags + "</div>" : "") + "</a>" +
       starBtn("sch", s.name) +
       '<div class="row-right"><span class="row-amt' + (amtFull ? " full" : "") + '">' + esc(s.amountText || "Varies") + "</span>" +
-      '<span class="row-due">' + esc(s.deadline || "Varies") + "</span></div></div>";
+      calCell(s.name, s.url, s.deadline) + "</div></div>";
   }
   function renderSch() {
     var list = schFiltered();
@@ -213,6 +262,7 @@
       if (by === "name") return a.name.localeCompare(b.name);
       if (by === "deadline") return dlSort(a.deadline) - dlSort(b.deadline);
       if (by === "accept") return accNum(a) - accNum(b) || a.name.localeCompare(b.name);
+      if (by === "soon") { var ia = dlInfo(a.deadline), ib = dlInfo(b.deadline); return (ia.date ? ia.days : 1e9) - (ib.date ? ib.days : 1e9); }
       var ra = a.ranking in RANK ? RANK[a.ranking] : 50, rb = b.ranking in RANK ? RANK[b.ranking] : 50;
       return ra - rb || dlSort(a.deadline) - dlSort(b.deadline);
     });
@@ -238,7 +288,7 @@
       '<div class="row-tags">' + grades + subs + "</div></a>" +
       starBtn("prog", p.name) +
       '<div class="row-right"><span class="row-amt' + (cost.full ? " full" : "") + '">' + esc(cost.t) + "</span>" +
-      '<span class="row-due">' + esc(p.deadline || "") + "</span></div></div>";
+      calCell(p.name, url, p.deadline) + "</div></div>";
   }
   function renderProg() {
     var list = progFiltered();
@@ -259,18 +309,47 @@
         "<p>Your list is empty.</p><p class=\"saved-hint\">Tap the star on any tool, scholarship or program to save it here. It stays on this device.</p></div>";
       meta.textContent = ""; empty.hidden = true; return 0;
     }
+    var toolbar = '<div class="saved-tools">' +
+      '<button class="btn btn-ghost" data-act="copy" type="button">Copy</button>' +
+      '<button class="btn btn-ghost" data-act="csv" type="button">Download CSV</button>' +
+      '<button class="btn btn-ghost" data-act="ics" type="button">Deadlines (.ics)</button>' +
+      '<button class="btn btn-ghost" data-act="print" type="button">Print</button>' +
+      '<span class="copied" id="saved-copied" hidden>Copied!</span></div>';
     var html = "";
     if (st.length) html += '<h3 class="saved-h">Tools &amp; Perks <span>' + st.length + "</span></h3><div class=\"grid\">" + st.map(toolCard).join("") + "</div>";
     if (ss.length) html += '<h3 class="saved-h">Scholarships <span>' + ss.length + "</span></h3><div class=\"list\">" + ss.map(schRow).join("") + "</div>";
     if (sp.length) html += '<h3 class="saved-h">STEM Programs <span>' + sp.length + "</span></h3><div class=\"list\">" + sp.map(progRow).join("") + "</div>";
     var total = st.length + ss.length + sp.length;
-    body.innerHTML = html || '<div class="saved-empty"><p>No saved items match that search.</p></div>';
+    body.innerHTML = toolbar + (html || '<p class="muted" style="padding:1rem 0">No saved items match that search.</p>');
     meta.textContent = total === saved.size ? ("You have " + saved.size + " saved item" + (saved.size === 1 ? "" : "s")) : ("Showing " + total + " of " + saved.size + " saved");
     empty.hidden = true;
     return total;
   }
+  function savedItems() {
+    var out = [];
+    RES.forEach(function (r) { if (saved.has(sid("tool", r.name))) out.push({ type: "Tool", name: r.name, url: r.url, detail: (CAT[r.category] || {}).name || "", deadline: "" }); });
+    SCH.forEach(function (s) { if (saved.has(sid("sch", s.name))) out.push({ type: "Scholarship", name: s.name, url: s.url, detail: s.amountText || "", deadline: s.deadline || "" }); });
+    PROG.forEach(function (p) { if (saved.has(sid("prog", p.name))) out.push({ type: "Program", name: p.name, url: p.url || "", detail: (p.subjects || []).join("; "), deadline: p.deadline || "" }); });
+    return out;
+  }
+  function toCSV(items) {
+    var rows = [["Type", "Name", "Link", "Detail", "Deadline"]];
+    items.forEach(function (it) { rows.push([it.type, it.name, it.url, it.detail, it.deadline]); });
+    return rows.map(function (r) { return r.map(csvCell).join(","); }).join("\r\n");
+  }
+  function toICS(items) {
+    var L = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//stdnt.xyz//EN", "CALSCALE:GREGORIAN"];
+    items.forEach(function (it) {
+      var info = dlInfo(it.deadline); if (!info.date) return;
+      L.push("BEGIN:VEVENT", "UID:" + Math.abs(it.name.split("").reduce(function (a, c) { return (a * 31 + c.charCodeAt(0)) | 0; }, 7)) + "@stdnt.xyz",
+        "DTSTART;VALUE=DATE:" + ymd(info.date), "DTEND;VALUE=DATE:" + ymd(new Date(info.date.getTime() + 86400000)),
+        "SUMMARY:Apply: " + icsEsc(it.name), "DESCRIPTION:" + icsEsc(it.url), "END:VEVENT");
+    });
+    L.push("END:VCALENDAR"); return L.join("\r\n");
+  }
 
   // ---- FOR YOU (quiz) ------------------------------------------------
+  var STATES = ["", "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
   var QUIZ = [
     { id: "grade", q: "What year are you?", opts: [
       { v: "Freshman", l: "9th" }, { v: "Sophomore", l: "10th" }, { v: "Junior", l: "11th" },
@@ -285,21 +364,35 @@
       { v: "woman", l: "Woman" }, { v: "nonbinary", l: "Non-binary" }, { v: "man", l: "Man" }, { v: "", l: "Prefer not" } ] },
     { id: "firstgen", q: "First-generation college student?", opts: [ { v: "yes", l: "Yes" }, { v: "", l: "No / skip" } ] },
     { id: "immigrant", q: "Immigrant, DACA or undocumented?", opts: [ { v: "yes", l: "Yes" }, { v: "", l: "No / skip" } ] },
-    { id: "interest", q: "Main interest?", opts: [
-      { v: "stem", l: "STEM" }, { v: "arts", l: "Arts & Humanities" }, { v: "business", l: "Business" }, { v: "", l: "Undecided" } ] }
+    { id: "field", q: "What field are you into?", opts: [
+      { v: "cs", l: "Computer Science" }, { v: "eng", l: "Engineering" }, { v: "med", l: "Medicine / Bio" },
+      { v: "math", l: "Math / Physics" }, { v: "business", l: "Business" }, { v: "arts", l: "Arts & Humanities" }, { v: "", l: "Undecided" } ] },
+    { id: "state", q: "Your state? (helps match local programs)", select: STATES }
   ];
   var quiz = loadQuiz();
   function loadQuiz() { try { return JSON.parse(localStorage.getItem("edu-quiz") || "{}") || {}; } catch (e) { return {}; } }
   function saveQuiz() { try { localStorage.setItem("edu-quiz", JSON.stringify(quiz)); } catch (e) {} }
+  function applyHash() { // shared link: #foryou&grade=Senior&income=low
+    var h = (location.hash || "").replace(/^#/, ""); if (!h) return false;
+    var parts = h.split("&"); if (parts[0] !== "foryou") return false;
+    parts.slice(1).forEach(function (p) { var i = p.indexOf("="); if (i > 0) quiz[p.slice(0, i)] = decodeURIComponent(p.slice(i + 1)); });
+    saveQuiz(); return true;
+  }
 
   function buildQuiz() {
     var form = $("#quiz-form"); if (!form) return;
     form.innerHTML = QUIZ.map(function (b) {
-      var opts = b.opts.map(function (o) {
+      if (b.select) {
+        var opts = b.select.map(function (st) {
+          return '<option value="' + esc(st) + '"' + ((quiz[b.id] || "") === st ? " selected" : "") + ">" + (st || "Any state") + "</option>";
+        }).join("");
+        return '<div class="qblock"><div class="qq">' + esc(b.q) + '</div><select class="qselect" data-q="' + b.id + '">' + opts + "</select></div>";
+      }
+      var btns = b.opts.map(function (o) {
         var on = o.v !== "" && (quiz[b.id] || "") === o.v;
         return '<button class="qchip' + (on ? " is-active" : "") + '" type="button" data-q="' + b.id + '" data-v="' + esc(o.v) + '">' + esc(o.l) + "</button>";
       }).join("");
-      return '<div class="qblock"><div class="qq">' + esc(b.q) + '</div><div class="qopts">' + opts + "</div></div>";
+      return '<div class="qblock"><div class="qq">' + esc(b.q) + '</div><div class="qopts">' + btns + "</div></div>";
     }).join("");
   }
   function levelOk(level, grade) {
@@ -322,8 +415,11 @@
     if ((q.gender === "woman" || q.gender === "nonbinary") && inArr(t, "women")) sc += 2;
     if (q.firstgen === "yes" && (inArr(t, "first gen") || note.indexOf("first-gen") >= 0 || note.indexOf("first gen") >= 0)) sc += 2;
     if (q.immigrant === "yes" && (inArr(t, "immigrants") || note.indexOf("daca") >= 0 || note.indexOf("undocumented") >= 0)) sc += 3;
-    if (q.interest === "stem" && inArr(t, "stem")) sc += 1;
-    if (q.interest === "arts" && (inArr(t, "humanities") || inArr(t, "writing") || inArr(t, "art") || inArr(t, "music") || inArr(t, "poetry") || inArr(t, "literature"))) sc += 1;
+    if (q.field) {
+      if (["cs", "eng", "med", "math"].indexOf(q.field) >= 0 && inArr(t, "stem")) sc += 1;
+      else if (q.field === "arts" && (inArr(t, "humanities") || inArr(t, "writing") || inArr(t, "art") || inArr(t, "music") || inArr(t, "poetry") || inArr(t, "literature"))) sc += 1;
+      else if (q.field === "business" && (inArr(t, "business") || name.indexOf("business") >= 0)) sc += 1;
+    }
     return sc;
   }
   function progScore(p) {
@@ -333,10 +429,11 @@
     if (q.race && inArr(t, "minority")) sc += 2;
     if ((q.gender === "woman" || q.gender === "nonbinary") && inArr(t, "females")) sc += 2;
     if (q.firstgen === "yes" && inArr(t, "first gen")) sc += 2;
-    if (q.interest) {
-      var want = ({ stem: ["stem", "engineering", "coding", "biology", "chemistry", "physics", "math", "research", "ai/tech", "neuroscience", "medicine"], arts: ["humanities", "writing", "art"], business: ["business"] }[q.interest]) || [];
-      if (want.some(function (w) { return inArr(subj, w); })) sc += 1;
+    if (q.field) {
+      var want = ({ cs: ["coding", "ai/tech"], eng: ["engineering"], med: ["medicine", "biology", "health", "cancer", "neuroscience", "reproductive health", "disabilities", "dentistry"], math: ["math", "physics", "astronomy"], business: ["business"], arts: ["humanities", "writing", "art"] }[q.field]) || [];
+      if (want.some(function (w) { return inArr(subj, w); })) sc += 2;
     }
+    if (q.state && inArr(t, q.state.toLowerCase())) sc += 2;
     return sc;
   }
   function renderQuiz() {
@@ -435,8 +532,27 @@
       qf.querySelectorAll('.qchip[data-q="' + id + '"]').forEach(function (c) { c.classList.toggle("is-active", c.dataset.v !== "" && c.dataset.v === (quiz[id] || "")); });
       renderQuiz();
     });
+    if (qf) qf.addEventListener("change", function (e) {
+      var sel = e.target.closest(".qselect"); if (!sel) return;
+      quiz[sel.dataset.q] = sel.value; saveQuiz(); renderQuiz();
+    });
     var qr = $("#quiz-reset");
     if (qr) qr.addEventListener("click", function () { quiz = {}; saveQuiz(); buildQuiz(); renderQuiz(); });
+    var qsh = $("#quiz-share");
+    if (qsh) qsh.addEventListener("click", function () {
+      var p = Object.keys(quiz).filter(function (k) { return quiz[k]; }).map(function (k) { return k + "=" + encodeURIComponent(quiz[k]); }).join("&");
+      copyText(location.origin + location.pathname + "#foryou" + (p ? "&" + p : ""));
+      flash("#quiz-copied");
+    });
+    // saved-list export
+    document.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-act]"); if (!b) return;
+      var act = b.dataset.act, items = savedItems();
+      if (act === "print") window.print();
+      else if (act === "copy") { copyText(items.map(function (it) { return it.name + " - " + it.url; }).join("\n")); flash("#saved-copied"); }
+      else if (act === "csv") download("stdnt-saved.csv", toCSV(items), "text/csv;charset=utf-8");
+      else if (act === "ics") download("stdnt-deadlines.ics", toICS(items), "text/calendar;charset=utf-8");
+    });
     // star toggling (delegated; works inside anchors and across tabs)
     document.addEventListener("click", function (e) {
       var btn = e.target.closest(".star"); if (!btn) return;
@@ -526,6 +642,11 @@
   $("#n-prog").textContent = PROG.length;
   $("#n-saved").textContent = saved.size;
   fillStats();
+  var deepLink = applyHash();
+  var subBtn = $("#submit-resource");
+  if (subBtn) subBtn.href = "https://github.com/2008wbbv/edu.edu/issues/new?title=" +
+    encodeURIComponent("Add a resource: ") + "&body=" +
+    encodeURIComponent("**Name:**\n**Link:**\n**Category:** (tool / scholarship / program)\n**Who it's for:** (student / everyone)\n**One-sentence description:**\n**Anything else:**\n");
   initTheme();
   buildCollage();
   buildCatChips();
@@ -535,5 +656,5 @@
   renderSponsors();
   wire();
   initViews();
-  render();
+  if (deepLink) switchTab("foryou"); else render();
 })();

@@ -398,6 +398,16 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
 .pr-arrow { margin-left: auto; color: var(--accent); font-size: 1.1rem; }
 .sp-none { color: var(--tx-3); font-size: .88rem; align-self: center; }
 
+/* ============================================================== DEADLINES / EXPORT */
+.row-due.soon { color: var(--accent); font-weight: 600; }
+.cal { display: inline-flex; vertical-align: -2px; margin-left: .3rem; color: var(--tx-3); }
+.cal:hover { color: var(--accent); }
+.saved-tools { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; margin: 0 0 1.3rem; }
+.saved-tools .btn { font-size: .82rem; padding: .4rem .8rem; }
+.copied { font-size: .8rem; color: var(--evr); font-weight: 600; }
+.quiz-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: .2rem 0 1.4rem; }
+.qselect { font: inherit; font-size: .85rem; color: var(--tx); background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: .45rem .6rem; min-width: 210px; cursor: pointer; }
+
 /* ============================================================== RESPONSIVE */
 @media (max-width: 560px) {
   .views { display: none; }

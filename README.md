@@ -6,7 +6,7 @@
 
 ### Every free thing you can get as a student - in one fast, searchable page.
 
-Tools · **free LLM API keys** · student perks · **98 scholarships** · **214 STEM programs**
+Tools · **free LLM API keys** · student perks · **115 scholarships** · **217 STEM programs**
 
 <p>
   <a href="#-quick-start"><img alt="Quick start" src="https://img.shields.io/badge/get_started-2_min-4f7cff?style=for-the-badge"></a>
@@ -39,8 +39,8 @@ So this pulls the best of it into **one minimalist site you can actually search*
 - 🔑 **Free API keys** - Gemini, Groq, Cerebras, OpenRouter, Hugging Face, Hack Club AI & more
 - 🚩 **Hack Club** - free hardware, Slack, HCB, Brilliant Premium, CDN…
 - 💻 **Dev / cloud / design / productivity** - JetBrains, Vercel, Figma, Microsoft 365…
-- 💰 **98 scholarships** - from full-rides to "describe your zombie-apocalypse escape plan"
-- 🔬 **214 STEM programs** - research, internships & summer programs, filterable by grade
+- 💰 **115 scholarships** - from full-rides to "describe your zombie-apocalypse escape plan"
+- 🔬 **217 STEM programs** - research, internships & summer programs, filterable by grade
 
 > Built to be the live home for community scholarship/program spreadsheets that
 > *"will no longer be updated"* - so nothing good gets lost.
@@ -54,7 +54,11 @@ So this pulls the best of it into **one minimalist site you can actually search*
 | ✦ **"For You" quiz** | answer a few questions (income, background, grade…) and get matched to scholarships & programs, all computed on-device |
 | ⭐ **Save to list** | star any item to build a personal list (saved on-device) |
 | 🎚️ **Smart filters** | segmented access toggle, category/type/grade chips, free-only |
-| ↕️ **Sorting** | scholarships by amount/deadline; programs by prestige/deadline |
+| ↕️ **Sorting** | by amount, **closing soon**, deadline, prestige, or **acceptance rate** |
+| 📅 **Deadlines** | "closing soon" badges + one-click **add-to-Google-Calendar**, and **.ics** export |
+| 🔗 **Shareable matches** | your quiz answers encode into a link you can send to anyone |
+| 📤 **Export saved** | copy, download **CSV**, export deadlines as **.ics**, or print |
+| ➕ **Submit a resource** | a button opens a prefilled GitHub issue, no coding needed |
 | 🏷️ **Real brand logos** | via [Simple Icons](https://simpleicons.org), with clean monogram fallbacks |
 | 🌗 **Dark / light** | system-aware, remembers your choice |
 | 👁️ **Live view counter** | because watching it climb is fun |
@@ -63,8 +67,8 @@ So this pulls the best of it into **one minimalist site you can actually search*
 ## 🚀 Quick start
 
 ```bash
-git clone https://github.com/2008wbbv/edu.edu
-cd edu.edu
+git clone https://github.com/2008wbbv/edu.edu stdnt.xyz
+cd stdnt.xyz
 python3 -m http.server 8000   # then open http://localhost:8000
 ```
 
@@ -76,8 +80,8 @@ python3 -m http.server 8000   # then open http://localhost:8000
 ## 🧩 Project structure
 
 ```
-edu.edu/
-├── index.html          # markup + the 3 tabs
+stdnt.xyz/
+├── index.html          # markup + the tabs
 ├── css/styles.css      # minimalist theme
 ├── js/
 │   ├── data.js         # 👈 tools, perks & free APIs
