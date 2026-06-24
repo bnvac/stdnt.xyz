@@ -67,6 +67,24 @@
   function lc(arr) { return (arr || []).map(function (x) { return String(x).toLowerCase(); }); }
   function inArr(a, x) { return a.indexOf(x) >= 0; }
 
+  // state-restricted programs (tagged with a state but not a broad/national scope)
+  var US_STATES = ["alabama", "alaska", "arizona", "arkansas", "california", "colorado", "connecticut", "delaware", "florida", "georgia", "hawaii", "idaho", "illinois", "indiana", "iowa", "kansas", "kentucky", "louisiana", "maine", "maryland", "massachusetts", "michigan", "minnesota", "mississippi", "missouri", "montana", "nebraska", "nevada", "new hampshire", "new jersey", "new mexico", "new york", "north carolina", "north dakota", "ohio", "oklahoma", "oregon", "pennsylvania", "rhode island", "south carolina", "south dakota", "tennessee", "texas", "utah", "vermont", "virginia", "washington", "west virginia", "wisconsin", "wyoming"];
+  var BROAD = ["us", "international", "national", "remote", "online", "virtual", "worldwide", "global", "anywhere"];
+  function titleCase(s) { return s.replace(/\b\w/g, function (c) { return c.toUpperCase(); }); }
+  function progStateInfo(p) {
+    var t = lc(p.tags || []);
+    var states = (p.tags || []).filter(function (x) { return US_STATES.indexOf(String(x).toLowerCase()) >= 0; });
+    var broad = t.some(function (x) { return BROAD.indexOf(x) >= 0; });
+    var blob = [p.name, p.cost, p.details].join(" ").toLowerCase();
+    var restricted = /\bresidents?\b/.test(blob); // "X Residents" -> residency-restricted (not "residential")
+    if (restricted && !states.length) states = US_STATES.filter(function (s) { return blob.indexOf(s) >= 0; }).map(titleCase);
+    return {
+      states: states,
+      located: states.length > 0 && states.length <= 3 && !broad,   // just located there, open to all
+      restricted: restricted && states.length > 0                    // residents only
+    };
+  }
+
   // ---- deadlines / calendar ------------------------------------------
   var TODAY = new Date(); TODAY.setHours(0, 0, 0, 0);
   var CAL_SVG = '<svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M7 2v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zM5 8h14v11H5V8zm6 2v3H8v2h3v3h2v-3h3v-2h-3v-3h-2z"/></svg>';
@@ -278,6 +296,9 @@
     var url = p.url || searchLink(p.name + " program");
     var rank = p.ranking ? '<span class="rank' + (/^S/.test(p.ranking) ? " s" : "") + '">' + esc(p.ranking) + "</span>" : '<span class="rank ghost"></span>';
     var grades = (p.grades || []).map(function (g) { return '<span class="tg tg-grade">' + esc(g) + "</span>"; }).join("");
+    var si = progStateInfo(p);
+    var stateTag = si.restricted ? '<span class="tg tg-state">&#128205; ' + esc(si.states.slice(0, 2).join("/")) + " only</span>"
+      : (si.located ? '<span class="tg tg-loc">&#128205; ' + esc(si.states.slice(0, 2).join("/")) + "</span>" : "");
     var subs = (p.subjects || []).slice(0, 3).map(function (s) { return '<span class="tg">' + esc(s) + "</span>"; }).join("");
     var sub = esc(p.details || (p.subjects || []).join(", ")) + (p.when ? ' <span class="find">&middot; ' + esc(p.when) + "</span>" : "");
     var cost = shortCost(p);
@@ -285,7 +306,7 @@
       '<a class="row-main" href="' + esc(url) + '" target="_blank" rel="noopener">' +
       '<div class="row-title">' + esc(p.name) + (p.flagship ? ' <span class="card-star">&#9733;</span>' : "") + ' <span class="ext">&#8599;</span></div>' +
       '<div class="row-sub">' + sub + "</div>" +
-      '<div class="row-tags">' + grades + subs + "</div></a>" +
+      '<div class="row-tags">' + stateTag + grades + subs + "</div></a>" +
       starBtn("prog", p.name) +
       '<div class="row-right"><span class="row-amt' + (cost.full ? " full" : "") + '">' + esc(cost.t) + "</span>" +
       calCell(p.name, url, p.deadline) + "</div></div>";
@@ -423,7 +444,7 @@
     return sc;
   }
   function progScore(p) {
-    var q = quiz, t = lc(p.tags), subj = lc(p.subjects), sc = 0;
+    var q = quiz, t = lc(p.tags), subj = lc(p.subjects), sc = 1; // baseline: eligible (excluded entries return -1)
     if (q.grade && q.grade !== "College") { if ((p.grades || []).indexOf(q.grade) < 0) return -1; sc += 1; }
     if ((q.income === "low" || q.income === "mid") && inArr(t, "low-income")) sc += 2;
     if (q.race && inArr(t, "minority")) sc += 2;
@@ -433,7 +454,14 @@
       var want = ({ cs: ["coding", "ai/tech"], eng: ["engineering"], med: ["medicine", "biology", "health", "cancer", "neuroscience", "reproductive health", "disabilities", "dentistry"], math: ["math", "physics", "astronomy"], business: ["business"], arts: ["humanities", "writing", "art"] }[q.field]) || [];
       if (want.some(function (w) { return inArr(subj, w); })) sc += 2;
     }
-    if (q.state && inArr(t, q.state.toLowerCase())) sc += 2;
+    if (q.state) {
+      var si = progStateInfo(p);
+      if (si.restricted) {
+        if (lc(si.states).indexOf(q.state.toLowerCase()) >= 0) sc += 3; // residents-only, you qualify
+        else return -1;                                                 // residents-only elsewhere: exclude
+      } else if (si.located && lc(si.states).indexOf(q.state.toLowerCase()) >= 0) sc += 2; // local to you
+      else if (inArr(t, q.state.toLowerCase())) sc += 1;
+    }
     return sc;
   }
   function renderQuiz() {

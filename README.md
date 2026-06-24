@@ -6,7 +6,7 @@
 
 ### Every free thing you can get as a student - in one fast, searchable page.
 
-Tools · **free LLM API keys** · student perks · **115 scholarships** · **217 STEM programs**
+Tools · **free LLM API keys** · student perks · **115 scholarships** · **224 STEM programs**
 
 <p>
   <a href="#-quick-start"><img alt="Quick start" src="https://img.shields.io/badge/get_started-2_min-4f7cff?style=for-the-badge"></a>
@@ -40,7 +40,7 @@ So this pulls the best of it into **one minimalist site you can actually search*
 - 🚩 **Hack Club** - free hardware, Slack, HCB, Brilliant Premium, CDN…
 - 💻 **Dev / cloud / design / productivity** - JetBrains, Vercel, Figma, Microsoft 365…
 - 💰 **115 scholarships** - from full-rides to "describe your zombie-apocalypse escape plan"
-- 🔬 **217 STEM programs** - research, internships & summer programs, filterable by grade
+- 🔬 **224 STEM programs** - research, internships & summer programs, filterable by grade
 
 > Built to be the live home for community scholarship/program spreadsheets that
 > *"will no longer be updated"* - so nothing good gets lost.

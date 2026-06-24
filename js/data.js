@@ -365,7 +365,21 @@ window.RESOURCES = [
   { name: "NACAC Application Fee Waiver", url: "https://www.nacacnet.org/", category: "college", access: "student", mono: "NA",
     desc: "Request college application fee waivers accepted by hundreds of member colleges.", tags: ["fee waiver", "college", "application"] },
   { name: "College Scorecard", url: "https://collegescorecard.ed.gov/", category: "college", access: "everyone", mono: "$",
-    desc: "US government data on college cost, financial aid and graduate outcomes.", tags: ["college", "cost", "data"] }
+    desc: "US government data on college cost, financial aid and graduate outcomes.", tags: ["college", "cost", "data"] },
+
+  /* --------------------------------------------- research finders & extras */
+  { name: "Pathways to Science", url: "https://www.pathwaystoscience.org/programs.aspx", category: "jobs", access: "everyone", mono: "Pw",
+    desc: "Searchable database of summer research programs, REUs and STEM opportunities by field and level.", tags: ["research", "summer", "database", "internships"] },
+  { name: "HighSchoolPathway", url: "https://highschoolpathway.com/", category: "jobs", access: "everyone", mono: "HP",
+    desc: "Student-built directory of competitions, research and opportunities for high schoolers, with how-to-apply notes.", tags: ["opportunities", "research", "competitions", "teens"] },
+  { name: "Cold-Email for Research", url: "https://www.pathwaystoscience.org/cold-email.aspx", category: "jobs", access: "everyone", mono: "✉",
+    desc: "Many students land free, remote research by cold-emailing professors: find their work on Google Scholar, suggest an extension, keep it short.", tags: ["research", "cold email", "guide"] },
+  { name: "Official Digital SAT Practice (Bluebook)", url: "https://satsuite.collegeboard.org/digital/digital-practice-preparation/", category: "testprep", access: "everyone", mono: "BB",
+    desc: "College Board's official Bluebook app with full-length adaptive Digital SAT practice tests, free.", tags: ["sat", "official", "practice", "bluebook"] },
+  { name: "edX", url: "https://www.edx.org/", category: "learning", access: "everyone", slug: "edx",
+    desc: "University courses from MIT, Harvard and more, free to audit (pay only for an optional certificate).", tags: ["courses", "university", "audit", "mooc"] },
+  { name: "Coursera", url: "https://www.coursera.org/", category: "learning", access: "everyone", slug: "coursera",
+    desc: "Thousands of courses you can audit for free; financial aid available for certificates.", tags: ["courses", "university", "audit", "mooc"] }
 ];
 
 /* Sponsors shown on the About tab. Empty by default, add real sponsors only. */
