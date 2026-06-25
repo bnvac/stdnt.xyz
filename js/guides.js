@@ -256,5 +256,260 @@ Best,
       <p>Can't relocate or didn't get a funded spot? Remote research is real — data, computational, and literature work all happen online. The most reliable way in is to email professors directly.</p>
       <p class="guide-xref">Next step: <a href="#guide/cold-email-research">Cold-email a professor for research</a> — the exact template that gets replies.</p>
     `
+  },
+
+  {
+    slug: "stem-competitions",
+    icon: "🏅",
+    title: "STEM competitions for high schoolers",
+    blurb: "The most beginner-friendly way to find what you love in STEM — the main contests and how to actually study for them.",
+    readMins: 7,
+    tags: ["competitions", "stem", "math", "science", "high school"],
+    body: `
+      <p class="guide-lead">Competitions are the best low-stakes way to discover what you enjoy — and you'll often place well at the regional level just by showing up prepared. If your school doesn't have a team, that's your opening: find a teacher and start one.</p>
+
+      <h3>Start here (team, beginner-friendly)</h3>
+      <ul>
+        <li><strong>Science Olympiad</strong> — a 15-person team with 20+ "events" across science and engineering (study, build, and lab events). Great for going deep on topics you like. Use the official site, the student-run wiki, and the forums.</li>
+        <li><strong>Science Bowl</strong> — fast buzzer trivia, teams of 4, covering physics, chem, bio, earth science, math, and a little CS. You either know it in 5–15 seconds or you don't.</li>
+        <li><strong>Quiz Bowl</strong> — buzzer trivia across <em>everything</em>: sciences, history, fine arts, and pop culture. Practice on Protobowl / QuizDB.</li>
+      </ul>
+
+      <h3>Subject olympiads (solo, deeper)</h3>
+      <ul>
+        <li><strong>Biology — USABO:</strong> a hard 50-minute exam; top scorers advance to semifinals and then a national camp. Read Campbell's, then a cell/molecular and a plant text, then drill past tests.</li>
+        <li><strong>Chemistry — USNCO</strong> (local → national → study camp). <strong>Physics — F=ma → USAPhO.</strong></li>
+        <li><strong>Computing — USACO:</strong> four contests a year, divisions Bronze → Silver → Gold → Platinum. Learn data structures &amp; algorithms and practice on usaco.guide and Codeforces.</li>
+        <li><strong>Astronomy (USAAAO), Earth Science (USESO), Neuroscience (Brain Bee — based on the <em>Brain Facts</em> book).</strong></li>
+      </ul>
+
+      <h3>Math</h3>
+      <p>The ladder is <strong>AMC 10/12 → AIME → USA(J)MO</strong>. Art of Problem Solving (AoPS) has a free wiki of past problems and forums; its books and classes cost money.</p>
+
+      <h3>Humanities &amp; beyond</h3>
+      <p>Academic Decathlon (10 events, GPA-based divisions), Speech &amp; Debate, Model UN, the Scholastic Art &amp; Writing Awards, Linguistics (NACLO), robotics (FRC/FTC/VEX), innovation/pitch contests (Conrad, Diamond Challenge), and <a href="https://hackathons.hackclub.com" target="_blank" rel="noopener">hackathons</a>.</p>
+
+      <div class="guide-note">
+        <strong>How to study (any of them):</strong> pick subjects you actually enjoy, learn from textbooks + Khan Academy/YouTube, and grind past papers — keeping a list of what you miss. Then join the Discord or forum for your competition; that's where the free practice tests, binders, and study groups live.
+      </div>
+
+      <p class="guide-xref">Ready to go deeper than contests? See <a href="#guide/hs-research">Do real research in high school</a> and <a href="#guide/summer-research">Land summer research / REUs</a>.</p>
+      <p class="guide-credit">Distilled from crowdsourced student guides — verify current rules and dates.</p>
+    `
+  },
+
+  {
+    slug: "hs-research",
+    icon: "🧪",
+    title: "Do real research in high school",
+    blurb: "How the research path actually works — getting a mentor, doing a project, and competing at science fairs like ISEF and STS.",
+    readMins: 7,
+    tags: ["research", "science fair", "isef", "mentorship", "high school"],
+    body: `
+      <p class="guide-lead">A genuine, hands-on project is your first real step into a scientific field — and a strong signal for college and beyond. Here's how the path actually works.</p>
+
+      <h3>Research vs. internship</h3>
+      <p>An <strong>internship</strong> means helping with or observing a mentor's work. <strong>Research</strong> means running your own project and writing your own paper you can submit to competitions. Aim for the latter when you can — but interning first is a perfectly good on-ramp.</p>
+
+      <h3>How to get started</h3>
+      <ol>
+        <li><strong>Find a topic.</strong> Read papers on things you're curious about (Google Scholar; Nature's "News &amp; Views" gives accessible summaries) or watch a research symposium.</li>
+        <li><strong>Get a mentor.</strong> Two routes: apply to programs that place you with one, or contact a professor directly.</li>
+        <li><strong>Start small.</strong> Shadow, learn to read the literature and the method, then take on a spinoff project of your own.</li>
+      </ol>
+
+      <div class="guide-note">
+        <strong>Treat program applications like college admissions.</strong> Many flagship programs admit under ~10%, and most applicants have similar clubs and awards — so the essays are where you stand out. Apply to a few less-famous "safety" programs too; don't bet everything on RSI.
+      </div>
+
+      <h3>Where to find mentors &amp; programs</h3>
+      <ul>
+        <li>The "educational outreach" / summer-research pages of universities near you — many fund travel and housing.</li>
+        <li>Established examples: Simons (Stony Brook), SSP, RSI (MIT — extremely selective), Garcia, CSHL Partners for the Future, state Governor's Schools, and MIT THINK (you propose a project instead of doing it first).</li>
+        <li><strong>Student-run research organizations and communities</strong> — groups like <strong>NSRI</strong> and <strong>Synthica</strong>, plus subject-specific Discords, where high schoolers share opportunities and find collaborators and mentors.</li>
+      </ul>
+
+      <h3>Compete with your project</h3>
+      <ul>
+        <li><strong>Regeneron ISEF</strong> — the largest fair; you qualify through a regional or state fair and present a board/poster.</li>
+        <li><strong>Regeneron STS</strong> — the most prestigious; it judges your research <em>and</em> your whole academic profile through many essays, so start early.</li>
+        <li>Also: JSHS, Davidson Fellows, Junior Academies of Science, BioGENEius, and the Breakthrough Junior Challenge.</li>
+      </ul>
+
+      <p class="guide-xref">Getting the mentor is the hard part — see <a href="#guide/cold-email-research">Cold-email a professor for research</a>. For funded summer placements, see <a href="#guide/summer-research">Land summer research / REUs</a>.</p>
+      <p class="guide-credit">Distilled from crowdsourced student guides — verify current programs and deadlines.</p>
+    `
+  },
+
+  {
+    slug: "college-admissions",
+    icon: "📋",
+    title: "The college admissions playbook",
+    blurb: "How holistic admissions really work — the 'spike,' what GPA/APs actually matter, and a grade-by-grade timeline.",
+    readMins: 7,
+    tags: ["college", "admissions", "gpa", "strategy", "high school"],
+    body: `
+      <p class="guide-lead">Admissions at selective schools are <strong>holistic</strong> — GPA and APs are a smaller piece than you think. The biggest lever is finding something you genuinely love and going deep on it.</p>
+
+      <div class="guide-note">
+        Don't start panicking freshman year — it's unhealthy and unnecessary. Spend most of high school exploring: join lots of clubs, then narrow to a handful you actually care about. <strong>Quality over quantity.</strong>
+      </div>
+
+      <h3>The "spike" / passion model</h3>
+      <p>Pick a subject or skill you find genuinely cool, then proactively pursue it until you're excellent. With internet access you can self-teach almost anything to a high level. This makes high school fulfilling, gives you real accomplishments to show — and even if you don't get your dream school, the skills set you up for success anyway. It's a win-win.</p>
+
+      <h3>GPA &amp; rank</h3>
+      <p>Don't obsess over GPA. Roughly above a 3.6 / 94 is excellent for top schools; aim to land within a school's 25th–75th percentile. <strong>Class rank</strong> (top 5–10%) often matters more than small GPA differences.</p>
+
+      <h3>APs</h3>
+      <p>You don't need 15 APs. Take the most rigorous courses that fit your interests and do well in them. Exam scores mostly earn college credit — and many schools grant little — so don't stress a couple of lower scores.</p>
+
+      <h3>A rough timeline</h3>
+      <ul>
+        <li><strong>Grades 9–10:</strong> explore widely, build extracurriculars.</li>
+        <li><strong>Early grade 11:</strong> study for the PSAT (National Merit), start the SAT/ACT, begin your college list.</li>
+        <li><strong>Summer before 12:</strong> draft essays, finalize your list.</li>
+        <li><strong>Fall grade 12:</strong> applications — and keep your grades up; colleges see senior year.</li>
+      </ul>
+
+      <p class="guide-xref">Go deeper: <a href="#guide/sat-act">Ace the SAT &amp; ACT</a> · <a href="#guide/college-essay">Write a standout college essay</a> · <a href="#guide/college-apps">College lists, deadlines &amp; rec letters</a>. Also browse <a href="#sch">Scholarships</a> and the <a href="#foryou">For You quiz</a>.</p>
+      <p class="guide-credit">Distilled from crowdsourced student advice — admissions specifics change, so verify before relying on any detail.</p>
+    `
+  },
+
+  {
+    slug: "sat-act",
+    icon: "✏️",
+    title: "Ace the SAT & ACT",
+    blurb: "How to choose between them, study for free to a great score, and why the PSAT might matter most of all.",
+    readMins: 6,
+    tags: ["sat", "act", "psat", "testing", "college"],
+    body: `
+      <p class="guide-lead">Test scores aren't the whole picture, but they're one of the first things an admissions officer notices — and nobody perfect-scores by winging it. The good news: you can self-study to a strong score for free.</p>
+
+      <h3>SAT or ACT?</h3>
+      <ul>
+        <li><strong>SAT:</strong> harder questions but more time each — rewards critical thinking.</li>
+        <li><strong>ACT:</strong> easier questions but very little time — rewards speed and fast reading, and has a science (graph-reading) section.</li>
+        <li><strong>Take one timed practice test of each before studying</strong>, then commit to whichever fits you. Rough targets: top schools ~1500+ SAT / ~34+ ACT; mid-high tier ~1430+ / ~30+. You do <em>not</em> need a perfect score to get in.</li>
+      </ul>
+
+      <h3>How to study (free first)</h3>
+      <ul>
+        <li>Official practice tests are the best resource. Do timed sections, then review <em>every</em> miss and write down why you got it wrong.</li>
+        <li><strong>Khan Academy</strong> (free) is excellent; <strong>UWorld</strong> (paid) is a strong extra question bank.</li>
+        <li>Popular books: <strong>College Panda</strong> (math), <strong>Erica Meltzer</strong> (English), and the SAT <strong>"Black Book"</strong> for strategy.</li>
+        <li>Join a study Discord for free PDFs and motivation.</li>
+      </ul>
+
+      <div class="guide-note">
+        <strong>Skip the $1,000s prep classes.</strong> Self-study is usually cheaper and more effective; if you need help, a basic math/English tutor beats a big-name course. And you can test almost any month (Sept–Aug) — there's no secret "easy curve" month.
+      </div>
+
+      <h3>Don't sleep on the PSAT</h3>
+      <p>A strong junior-year PSAT can make you a <strong>National Merit</strong> semifinalist/finalist — an award that brings real scholarship offers and perks. Plenty of students say it did more for them than the SAT itself.</p>
+
+      <p class="guide-xref">See the big picture in <a href="#guide/college-admissions">The college admissions playbook</a>.</p>
+    `
+  },
+
+  {
+    slug: "college-essay",
+    icon: "✍️",
+    title: "Write a standout college essay",
+    blurb: "The essay is where you stop being a stat sheet and become a person — a process that works, from blank page to final edit.",
+    readMins: 8,
+    tags: ["college", "essays", "personal statement", "writing"],
+    body: `
+      <p class="guide-lead">Your essays may matter as much as your resume and more than your test scores. Until your essay, you look like every other qualified applicant — the essay is where you become a person.</p>
+
+      <h3>What you're writing</h3>
+      <p>One <strong>650-word personal statement</strong> (sent to every school via the Common App) plus <strong>supplemental essays</strong> specific to each college (Why us / Why major / community, etc.). Supplements deserve equal attention — and require real research on the school.</p>
+
+      <h3>The personal statement is about you, not your achievements</h3>
+      <p>It should reveal the inner you that isn't visible anywhere else in your application. Be specific, honest, and a little vulnerable. A "generic" topic is fine if it's truly about how something <em>changed you</em>. Make it something only you could have written — if your activities are covered elsewhere, don't just re-list them here.</p>
+
+      <h3>A process that works <span style="font-weight:400">(adapted from AdmissionsMom's guide)</span></h3>
+      <ol>
+        <li><strong>Stop reading other people's accepted essays</strong> — they get in your head and most aren't as good as they seem.</li>
+        <li><strong>Warm up:</strong> set a one-minute timer and list everything you love / value / believe.</li>
+        <li><strong>Go within</strong> — write answers to: What do I believe? What keeps me up at night? What's my superpower? What reminds me of home?</li>
+        <li><strong>Free-write fast</strong> (try themostdangerouswritingapp.com) on a couple of those prompts.</li>
+        <li><strong>Draft</strong> using an "I believe / I wonder" lens — lean toward reflection, not just narrative.</li>
+        <li><strong>Add specific details</strong> — vague = forgettable. Fix every vague sentence.</li>
+        <li><strong>Edit hard</strong> — read it aloud, on paper, and backward; cut adverbs / "really" / "very"; use contractions; have one trusted person read it.</li>
+      </ol>
+
+      <div class="guide-note">
+        For "Why us" essays, name real classes, clubs, professors — even a campus problem you'd help fix. Saying you value community is fine; saying <em>exactly how</em> you'll contribute is a game-changer.
+      </div>
+
+      <h3>Free feedback</h3>
+      <p>Trade essays with other applicants, use CollegeVine, and the r/ApplyingToCollege and r/CollegeEssayReview communities (take all feedback with a grain of salt). Read real "essays that worked" published by schools like JHU, Tufts, and Harvard.</p>
+
+      <p class="guide-xref">Pair this with <a href="#guide/college-apps">College lists, deadlines &amp; rec letters</a>.</p>
+    `
+  },
+
+  {
+    slug: "college-apps",
+    icon: "🗂️",
+    title: "College lists, deadlines & rec letters",
+    blurb: "The strategy around your app — ED vs EA, a balanced list, fly-in programs, and how to get a glowing recommendation.",
+    readMins: 8,
+    tags: ["college", "early decision", "recommendations", "applications"],
+    body: `
+      <p class="guide-lead">Where you apply, when, and who vouches for you is as important as the application itself.</p>
+
+      <h3>Deadlines: ED / EA / REA / RD</h3>
+      <ul>
+        <li><strong>Regular Decision (RD):</strong> apply ~January, results ~March.</li>
+        <li><strong>Early Action (EA):</strong> apply ~November, results ~December; non-binding, can boost chances and unlock early scholarship offers at state schools.</li>
+        <li><strong>Early Decision (ED) / Restricted Early Action (REA):</strong> one school only. ED is <strong>binding</strong> (you must attend if admitted and the aid works). Do ED only for a clear #1 — it's the strongest "demonstrated interest" you can show.</li>
+        <li>Most ED/REA plans still let you apply EA to public/state schools — do that for a financial-aid backup. And keep senior grades up; colleges see them.</li>
+      </ul>
+
+      <h3>Build a balanced list</h3>
+      <ul>
+        <li><strong>Safety / Match / Reach</strong> — and don't apply to more than ~10 (quality drops fast). Pick for fit first (where you'd want to live and vibe with people), then for your major/field.</li>
+        <li>Research with current students (Reddit/Discord), accepted-student profiles, and tools like Naviance Supermatch. Treat rankings (even US News) as rough, and don't over-trust College Confidential.</li>
+        <li><strong>Premed tip:</strong> weigh GPA deflation — a high GPA matters a lot for med-school applications later.</li>
+      </ul>
+
+      <h3>Fly-in &amp; overnight programs</h3>
+      <p>Free multi-day campus visits (often for low-income or underrepresented students). They give deep insight into student life, frequently boost your admissions odds, sometimes waive fees — and double as great essay practice. Ask any school of interest whether they offer one.</p>
+
+      <h3>Your activities list &gt; your test score</h3>
+      <p>The Common App takes 10 activities. Caretaking, hobbies (with a sample of your work), and self-driven projects all count. Show <strong>initiative and impact</strong>, not just titles.</p>
+
+      <h3>Recommendation letters</h3>
+      <p>Usually one counselor + 1–2 teachers, ideally <strong>core-subject teachers from 10th/11th grade who know you well</strong>. An "A" isn't enough — pick teachers who can speak to your curiosity, maturity, and initiative. Don't exceed ~3–4 letters total, and avoid family/friend letters. Make it easy for them: thank them, then hand over a short "brag sheet" with 2–4 traits and specific moments you'd love them to highlight.</p>
+
+      <div class="guide-tpl">
+        <button class="guide-copy" type="button" data-copy aria-label="Copy brag sheet">Copy</button>
+        <pre>Dear [Teacher],
+
+Thank you so much for agreeing to write my recommendation. To make it
+easier, here are a few traits and specific moments I'd be grateful if
+you could highlight:
+
+1) [Trait, e.g. intellectual curiosity]: [a specific moment from your
+   class, e.g. the synesthesia paper I chose for our sophomore unit].
+2) [Trait, e.g. initiative / leadership]: [specific example, e.g. the
+   study guides I made before our exam].
+3) [Trait, e.g. resilience]: [specific example].
+
+For context, the through-line of my application is [your "brand" in one
+line, e.g. a quantitative thinker who wants to use data for social good].
+
+Thank you again — it genuinely means a lot.
+
+Best,
+[Your name]</pre>
+      </div>
+
+      <p class="guide-xref">See also <a href="#guide/college-essay">Write a standout college essay</a> and <a href="#guide/college-admissions">The college admissions playbook</a>.</p>
+      <p class="guide-credit">Distilled from crowdsourced student guides and r/ApplyingToCollege — verify current deadlines and policies.</p>
+    `
   }
 ];
