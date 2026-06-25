@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=12" />
+  <link rel="stylesheet" href="css/styles.css?v=13" />
 </head>
 <body>
   <!-- ============================================================ HEADER -->
@@ -73,9 +73,10 @@
       <button class="tab is-active" data-tab="tools"  role="tab" type="button">Tools &amp; Perks <span class="tab-n" id="n-tools">0</span></button>
       <button class="tab"           data-tab="sch"    role="tab" type="button">Scholarships <span class="tab-n" id="n-sch">0</span></button>
       <button class="tab"           data-tab="prog"   role="tab" type="button">STEM Programs <span class="tab-n" id="n-prog">0</span></button>
+      <button class="tab"           data-tab="guides" role="tab" type="button">Guides <span class="tab-n" id="n-guides">0</span></button>
+      <button class="tab"           data-tab="templates" role="tab" type="button">Templates <span class="tab-n" id="n-templates">0</span></button>
       <button class="tab tab-foryou" data-tab="foryou" role="tab" type="button">&#10022; For You</button>
       <button class="tab tab-saved" data-tab="saved"  role="tab" type="button"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.6 1.1 6.45L12 18.9 6.2 21l1.1-6.45L2.6 9.95l6.5-.95z"/></svg> Saved <span class="tab-n" id="n-saved">0</span></button>
-      <button class="tab"           data-tab="guides" role="tab" type="button">Guides <span class="tab-n" id="n-guides">0</span></button>
       <button class="tab"           data-tab="about"  role="tab" type="button">About</button>
     </nav>
 
@@ -160,6 +161,15 @@
         <p class="guides-sub">Short, practical how-tos for getting the free stuff above — written to be skimmed, not studied.</p>
       </div>
       <div class="guides-grid" id="guides-grid"></div>
+    </section>
+
+    <!-- ======================================================== TEMPLATES -->
+    <section id="panel-templates" class="panel" role="tabpanel" hidden>
+      <div class="guides-head">
+        <h2 class="guides-title">Templates</h2>
+        <p class="guides-sub">Free spreadsheet templates for staying on top of deadlines, money and applications. Download the <code>.csv</code> (opens in Excel) or copy it straight into Google Sheets.</p>
+      </div>
+      <div class="templates-grid" id="templates-grid"></div>
     </section>
 
     <!-- ============================================================ ABOUT -->
@@ -263,11 +273,12 @@
     </article>
   </div>
 
-  <script src="js/data.js?v=12"></script>
-  <script src="js/scholarships.js?v=12"></script>
-  <script src="js/programs.js?v=12"></script>
-  <script src="js/programs-extra.js?v=12"></script>
-  <script src="js/guides.js?v=12"></script>
-  <script src="js/app.js?v=12"></script>
+  <script src="js/data.js?v=13"></script>
+  <script src="js/scholarships.js?v=13"></script>
+  <script src="js/programs.js?v=13"></script>
+  <script src="js/programs-extra.js?v=13"></script>
+  <script src="js/guides.js?v=13"></script>
+  <script src="js/templates.js?v=13"></script>
+  <script src="js/app.js?v=13"></script>
 </body>
 </html>

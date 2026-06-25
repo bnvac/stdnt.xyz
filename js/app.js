@@ -11,6 +11,7 @@
   var SCH = window.SCHOLARSHIPS || [];
   var PROG = window.PROGRAMS || [];
   var GUIDES = window.GUIDES || [];
+  var TEMPLATES = window.TEMPLATES || [];
   var FULL = window.SCH_FULL || 1000000;
   var CAT = {}; CATS.forEach(function (c) { CAT[c.id] = c; });
 
@@ -503,6 +504,11 @@
       meta.textContent = state.q ? ("Showing " + gn + " of " + GUIDES.length + " guides") : (GUIDES.length + " guides");
       empty.hidden = true; return;
     }
+    if (state.tab === "templates") {
+      var tn = renderTemplates();
+      meta.textContent = state.q ? ("Showing " + tn + " of " + TEMPLATES.length + " templates") : (TEMPLATES.length + " templates");
+      empty.hidden = true; return;
+    }
     var n, total, label;
     if (state.tab === "tools") { n = renderTools(); total = RES.length; label = "tools"; }
     else if (state.tab === "sch") { n = renderSch(); total = SCH.length; label = "scholarships"; }
@@ -514,12 +520,13 @@
     state.tab = tab;
     document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === tab); });
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
-    ["tools", "sch", "prog", "foryou", "saved", "guides", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
+    ["tools", "sch", "prog", "foryou", "saved", "guides", "templates", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
     search.placeholder = tab === "tools" ? "Search tools, APIs, perks..." :
       tab === "sch" ? "Search scholarships..." :
       tab === "prog" ? "Search programs, subjects..." :
       tab === "saved" ? "Search your saved list..." :
-      tab === "guides" ? "Search guides..." : "Search...";
+      tab === "guides" ? "Search guides..." :
+      tab === "templates" ? "Search templates..." : "Search...";
     render();
   }
 
@@ -714,26 +721,20 @@
     if ((location.hash || "").indexOf("#guide/") === 0) location.hash = "guides"; // hashchange -> closeGuide
     else closeGuide();
   }
-  function copyText(text, btn) {
+  // copy + button "Copied!" feedback, reusing the shared copyText/fallbackCopy
+  function copyWithFeedback(text, btn) {
+    copyText(text);
     var label = btn.textContent;
-    var done = function () { btn.textContent = "Copied!"; btn.classList.add("is-copied"); setTimeout(function () { btn.textContent = label; btn.classList.remove("is-copied"); }, 1600); };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text); done(); });
-    } else { fallbackCopy(text); done(); }
-  }
-  function fallbackCopy(text) {
-    try {
-      var ta = document.createElement("textarea");
-      ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
-      document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
-    } catch (e) {}
+    btn.textContent = "Copied!";
+    btn.classList.add("is-copied");
+    setTimeout(function () { btn.textContent = label; btn.classList.remove("is-copied"); }, 1600);
   }
   function wireGuideOverlay() {
     var ov = $("#guide-overlay"); if (!ov) return;
     ov.addEventListener("click", function (e) {
       if (e.target.closest("[data-guide-close]")) { e.preventDefault(); closeReader(); return; }
       var cp = e.target.closest("[data-copy]");
-      if (cp) { var pre = cp.parentNode.querySelector("pre"); if (pre) copyText(pre.innerText || pre.textContent, cp); }
+      if (cp) { var pre = cp.parentNode.querySelector("pre"); if (pre) copyWithFeedback(pre.innerText || pre.textContent, cp); }
     });
   }
   function routeGuideHash() {
@@ -750,13 +751,59 @@
     }
     return false;
   }
-  var TAB_HASHES = { tools: 1, sch: 1, prog: 1, foryou: 1, saved: 1, guides: 1, about: 1 };
+  var TAB_HASHES = { tools: 1, sch: 1, prog: 1, foryou: 1, saved: 1, guides: 1, templates: 1, about: 1 };
   function routeHash() {
     if (routeGuideHash()) return true;
     if (guideOpen()) closeGuide();
     var h = (location.hash || "").replace(/^#/, "");
     if (TAB_HASHES[h]) { if (state.tab !== h) switchTab(h); return true; }
     return false;
+  }
+
+  // ---- TEMPLATES (spreadsheets) --------------------------------------
+  function templateBySlug(slug) {
+    for (var i = 0; i < TEMPLATES.length; i++) if (TEMPLATES[i].slug === slug) return TEMPLATES[i];
+    return null;
+  }
+  function templatesFiltered() {
+    var ts = terms();
+    return TEMPLATES.filter(function (t) {
+      if (!ts.length) return true;
+      return hit([t.title, t.blurb, (t.tags || []).join(" "), (t.columns || []).join(" ")].join(" "), ts);
+    });
+  }
+  function tplRows(t) { return [t.columns || []].concat(t.sample || []); }
+  function tplCSV(t) { return tplRows(t).map(function (r) { return r.map(csvCell).join(","); }).join("\r\n"); }
+  function tplTSV(t) { return tplRows(t).map(function (r) { return r.map(function (c) { return String(c == null ? "" : c).replace(/\t/g, " "); }).join("\t"); }).join("\n"); }
+  function downloadCSV(t) { download(t.slug + ".csv", "﻿" + tplCSV(t), "text/csv;charset=utf-8"); }
+  function templateCard(t, i) {
+    var cols = (t.columns || []).map(function (c) { return '<span class="tpl-col">' + esc(c) + "</span>"; }).join("");
+    return '<div class="tpl-card" style="animation-delay:' + Math.min(i * 40, 240) + 'ms">' +
+      '<div class="tpl-head"><span class="tpl-ico" aria-hidden="true">' + esc(t.icon) + "</span>" +
+        '<span class="tpl-headmain"><span class="tpl-title">' + esc(t.title) + "</span>" +
+        '<span class="tpl-blurb">' + esc(t.blurb) + "</span></span></div>" +
+      '<div class="tpl-cols">' + cols + "</div>" +
+      '<div class="tpl-actions">' +
+        '<button class="btn btn-grad tpl-btn" type="button" data-tpl-csv="' + esc(t.slug) + '">' +
+          '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Download .csv</button>' +
+        '<button class="btn btn-ghost tpl-btn" type="button" data-tpl-copy="' + esc(t.slug) + '">Copy for Sheets</button>' +
+      "</div></div>";
+  }
+  function renderTemplates() {
+    var box = $("#templates-grid"); if (!box) return 0;
+    var list = templatesFiltered();
+    box.innerHTML = list.length ? list.map(templateCard).join("")
+      : '<p class="muted guides-empty">No templates match your search.</p>';
+    return list.length;
+  }
+  function wireTemplates() {
+    var box = $("#templates-grid"); if (!box) return;
+    box.addEventListener("click", function (e) {
+      var d = e.target.closest("[data-tpl-csv]");
+      if (d) { var t = templateBySlug(d.getAttribute("data-tpl-csv")); if (t) downloadCSV(t); return; }
+      var c = e.target.closest("[data-tpl-copy]");
+      if (c) { var t2 = templateBySlug(c.getAttribute("data-tpl-copy")); if (t2) copyWithFeedback(tplTSV(t2), c); }
+    });
   }
 
   // ---- theme ---------------------------------------------------------
@@ -790,6 +837,7 @@
   $("#n-prog").textContent = PROG.length;
   $("#n-saved").textContent = saved.size;
   $("#n-guides").textContent = GUIDES.length;
+  $("#n-templates").textContent = TEMPLATES.length;
   fillStats();
   var deepLink = applyHash();
   var subBtn = $("#submit-resource");
@@ -804,8 +852,10 @@
   buildQuiz();
   renderSponsors();
   renderGuides();
+  renderTemplates();
   wire();
   wireGuideOverlay();
+  wireTemplates();
   initViews();
   window.addEventListener("hashchange", function () { routeHash(); });
   if (deepLink) switchTab("foryou");

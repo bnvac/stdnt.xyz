@@ -455,6 +455,29 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
 .guide-card:hover .guide-card-arrow { color: var(--accent); transform: translateX(3px); }
 .card-guide .card-cta { color: var(--accent); }
 
+/* ============================================================ TEMPLATES */
+.templates-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: .9rem; max-width: 920px; margin: 0 auto; }
+.tpl-card {
+  display: flex; flex-direction: column; gap: .9rem; padding: 1.2rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+  animation: rise .3s ease backwards; transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+.tpl-card:hover { border-color: var(--line-2); transform: translateY(-3px); box-shadow: 0 14px 34px -22px color-mix(in srgb, var(--accent) 70%, transparent); }
+.tpl-head { display: flex; align-items: flex-start; gap: .8rem; }
+.tpl-ico {
+  flex: none; display: grid; place-items: center; width: 44px; height: 44px; font-size: 1.35rem; border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg-2)); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.tpl-headmain { display: flex; flex-direction: column; gap: .25rem; min-width: 0; }
+.tpl-title { font-size: 1rem; font-weight: 700; color: var(--tx); letter-spacing: -.01em; }
+.tpl-blurb { font-size: .85rem; color: var(--tx-2); line-height: 1.45; }
+.tpl-cols { display: flex; flex-wrap: wrap; gap: .3rem; }
+.tpl-col { font-size: .67rem; color: var(--tx-3); background: var(--bg-2); border: 1px solid var(--line); border-radius: 6px; padding: .12rem .42rem; font-family: var(--mono); }
+.tpl-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: auto; padding-top: .2rem; }
+.tpl-btn { display: inline-flex; align-items: center; gap: .35rem; font-size: .82rem; padding: .5rem .95rem; }
+.tpl-btn.is-copied { color: #fff; background: var(--evr); border-color: var(--evr); }
+@media (max-width: 560px) { .templates-grid { grid-template-columns: 1fr; } }
+
 /* ====================================================== GUIDE READER */
 html.guide-open { overflow: hidden; }
 .guide-overlay { position: fixed; inset: 0; z-index: 200; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 5vh, 4rem) 1rem; }
