@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=13" />
+  <link rel="stylesheet" href="css/styles.css?v=14" />
 </head>
 <body>
   <!-- ============================================================ HEADER -->
@@ -73,6 +73,7 @@
       <button class="tab is-active" data-tab="tools"  role="tab" type="button">Tools &amp; Perks <span class="tab-n" id="n-tools">0</span></button>
       <button class="tab"           data-tab="sch"    role="tab" type="button">Scholarships <span class="tab-n" id="n-sch">0</span></button>
       <button class="tab"           data-tab="prog"   role="tab" type="button">STEM Programs <span class="tab-n" id="n-prog">0</span></button>
+      <button class="tab"           data-tab="deadlines" role="tab" type="button">Deadlines <span class="tab-n" id="n-deadlines">0</span></button>
       <button class="tab"           data-tab="guides" role="tab" type="button">Guides <span class="tab-n" id="n-guides">0</span></button>
       <button class="tab"           data-tab="templates" role="tab" type="button">Templates <span class="tab-n" id="n-templates">0</span></button>
       <button class="tab tab-foryou" data-tab="foryou" role="tab" type="button">&#10022; For You</button>
@@ -136,6 +137,28 @@
     </section>
     <section id="panel-prog" class="panel" role="tabpanel" hidden>
       <div class="list" id="prog-list"></div>
+    </section>
+    <section id="panel-deadlines" class="panel" role="tabpanel" hidden>
+      <div class="dl-controls">
+        <div class="segmented" id="dl-kind" role="group" aria-label="Type">
+          <button class="seg is-active" data-kind="all" type="button">All</button>
+          <button class="seg" data-kind="sch" type="button">Scholarships</button>
+          <button class="seg" data-kind="prog" type="button">Programs</button>
+        </div>
+        <label class="sortsel">Within
+          <select id="dl-window">
+            <option value="all">Any time</option>
+            <option value="30">30 days</option>
+            <option value="60">60 days</option>
+            <option value="90">90 days</option>
+          </select>
+        </label>
+        <div class="dl-export">
+          <button class="btn btn-ghost" id="dl-ics" type="button">Add all to calendar (.ics)</button>
+          <button class="btn btn-ghost" id="dl-csv" type="button">CSV</button>
+        </div>
+      </div>
+      <div class="list" id="deadlines-list"></div>
     </section>
     <section id="panel-foryou" class="panel" role="tabpanel" hidden>
       <div class="quiz">
@@ -273,12 +296,12 @@
     </article>
   </div>
 
-  <script src="js/data.js?v=13"></script>
-  <script src="js/scholarships.js?v=13"></script>
-  <script src="js/programs.js?v=13"></script>
-  <script src="js/programs-extra.js?v=13"></script>
-  <script src="js/guides.js?v=13"></script>
-  <script src="js/templates.js?v=13"></script>
-  <script src="js/app.js?v=13"></script>
+  <script src="js/data.js?v=14"></script>
+  <script src="js/scholarships.js?v=14"></script>
+  <script src="js/programs.js?v=14"></script>
+  <script src="js/programs-extra.js?v=14"></script>
+  <script src="js/guides.js?v=14"></script>
+  <script src="js/templates.js?v=14"></script>
+  <script src="js/app.js?v=14"></script>
 </body>
 </html>

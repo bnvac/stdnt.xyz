@@ -511,5 +511,54 @@ Best,
       <p class="guide-xref">See also <a href="#guide/college-essay">Write a standout college essay</a> and <a href="#guide/college-admissions">The college admissions playbook</a>.</p>
       <p class="guide-credit">Distilled from crowdsourced student guides and r/ApplyingToCollege — verify current deadlines and policies.</p>
     `
+  },
+
+  {
+    slug: "financial-aid",
+    icon: "💰",
+    title: "Get financial aid (FAFSA & beyond)",
+    blurb: "How to actually pay for college: file the FAFSA, understand grants vs loans, and appeal a weak offer.",
+    readMins: 7,
+    tags: ["financial aid", "fafsa", "money", "college", "loans"],
+    body: `
+      <p class="guide-lead">The sticker price of a college is almost never what people pay. Financial aid — grants, scholarships, work-study, and loans — is how. The single most important thing you can do is <strong>file the FAFSA</strong>, and file it early.</p>
+
+      <h3>Start with the FAFSA (it's free)</h3>
+      <ul>
+        <li>The <strong>FAFSA</strong> (Free Application for Federal Student Aid) unlocks federal grants, work-study, and loans — and most colleges and states use it for <em>their</em> aid too. Fill it out at <a href="https://studentaid.gov" target="_blank" rel="noopener">studentaid.gov</a>.</li>
+        <li><strong>File it even if you think you won't qualify.</strong> Many merit awards and payment options require a FAFSA on file, and eligibility surprises people.</li>
+        <li><strong>File as early as you can</strong> after it opens — some aid is first-come, first-served, and states/colleges have their own earlier deadlines.</li>
+        <li>Some private colleges also require the <strong>CSS Profile</strong> for their own institutional aid. Check each school's requirements.</li>
+      </ul>
+
+      <div class="guide-note">
+        <strong>It's called <em>Free</em> for a reason.</strong> Never pay a site to file your FAFSA — the official one at studentaid.gov costs nothing. Anyone charging to "submit" it for you is a scam or an upsell.
+      </div>
+
+      <h3>Know what kind of aid you're getting</h3>
+      <ul>
+        <li><strong>Grants &amp; scholarships</strong> — free money you don't repay (federal Pell Grant, state grants, college aid, outside scholarships). Maximize these first.</li>
+        <li><strong>Work-study</strong> — a part-time job, often on campus, funded through aid.</li>
+        <li><strong>Loans</strong> — money you repay <em>with interest</em>. Federal loans (especially subsidized) beat private loans on terms. Borrow only what you need.</li>
+      </ul>
+      <p>An award letter mixes these together, so read it carefully: a big number can be mostly loans. What matters is your <strong>net cost</strong> — total price minus grants and scholarships.</p>
+
+      <h3>Compare offers on net cost</h3>
+      <p>Line your offers up side by side and compare the real out-of-pocket cost per year, not the headline aid number.</p>
+      <p class="guide-xref">Use the <a href="#templates">College cost &amp; aid comparison template</a> to do exactly that, and the <a href="#sch">Scholarships tab</a> to stack on outside awards.</p>
+
+      <h3>Appeal a disappointing offer</h3>
+      <p>Aid offers aren't always final. If your family's finances changed (job loss, medical bills) or another comparable school gave you more, you can submit a <strong>financial aid appeal</strong> (sometimes called "professional judgment"). Email the financial aid office, be specific and polite, attach documentation, and ask if they can review your package. It often works.</p>
+
+      <h3>Don't forget</h3>
+      <ul>
+        <li><strong>Renew the FAFSA every year</strong> — it's not one-and-done.</li>
+        <li>Apply EA to state schools for early aid and scholarship offers.</li>
+        <li>Outside scholarships are real money — chase the local ones with smaller pools.</li>
+      </ul>
+
+      <p class="guide-xref">Related: <a href="#guide/win-scholarships">Find &amp; win scholarships</a> and <a href="#guide/college-apps">College lists, deadlines &amp; rec letters</a>.</p>
+      <p class="guide-credit">General guidance — financial-aid rules and deadlines change yearly, so confirm current details at studentaid.gov.</p>
+    `
   }
 ];

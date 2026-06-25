@@ -35,7 +35,8 @@
     tab: "tools", q: "",
     tools: { access: "all", cat: "all" },
     sch: { group: "all", sort: "amount" },
-    prog: { grade: "all", free: false, sort: "rank" }
+    prog: { grade: "all", free: false, sort: "rank" },
+    deadlines: { kind: "all", window: "all" }
   };
 
   // ---- helpers -------------------------------------------------------
@@ -509,6 +510,11 @@
       meta.textContent = state.q ? ("Showing " + tn + " of " + TEMPLATES.length + " templates") : (TEMPLATES.length + " templates");
       empty.hidden = true; return;
     }
+    if (state.tab === "deadlines") {
+      var dn = renderDeadlines();
+      meta.textContent = dn + " upcoming deadline" + (dn === 1 ? "" : "s") + (state.deadlines.window === "all" ? "" : " in the next " + state.deadlines.window + " days");
+      empty.hidden = true; return;
+    }
     var n, total, label;
     if (state.tab === "tools") { n = renderTools(); total = RES.length; label = "tools"; }
     else if (state.tab === "sch") { n = renderSch(); total = SCH.length; label = "scholarships"; }
@@ -520,10 +526,11 @@
     state.tab = tab;
     document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === tab); });
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
-    ["tools", "sch", "prog", "foryou", "saved", "guides", "templates", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
+    ["tools", "sch", "prog", "deadlines", "foryou", "saved", "guides", "templates", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
     search.placeholder = tab === "tools" ? "Search tools, APIs, perks..." :
       tab === "sch" ? "Search scholarships..." :
       tab === "prog" ? "Search programs, subjects..." :
+      tab === "deadlines" ? "Search deadlines..." :
       tab === "saved" ? "Search your saved list..." :
       tab === "guides" ? "Search guides..." :
       tab === "templates" ? "Search templates..." : "Search...";
@@ -751,7 +758,7 @@
     }
     return false;
   }
-  var TAB_HASHES = { tools: 1, sch: 1, prog: 1, foryou: 1, saved: 1, guides: 1, templates: 1, about: 1 };
+  var TAB_HASHES = { tools: 1, sch: 1, prog: 1, deadlines: 1, foryou: 1, saved: 1, guides: 1, templates: 1, about: 1 };
   function routeHash() {
     if (routeGuideHash()) return true;
     if (guideOpen()) closeGuide();
@@ -806,6 +813,66 @@
     });
   }
 
+  // ---- DEADLINES (aggregated) ----------------------------------------
+  var DL_MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  function deadlineItems() {
+    var out = [];
+    SCH.forEach(function (s) { var info = dlInfo(s.deadline); if (info.date) out.push({ kind: "sch", name: s.name, url: s.url, deadline: s.deadline, info: info, meta: s.amountText || "" }); });
+    PROG.forEach(function (p) { var info = dlInfo(p.deadline); if (info.date) out.push({ kind: "prog", name: p.name, url: p.url || searchLink(p.name + " program"), deadline: p.deadline, info: info, meta: p.ranking || "" }); });
+    out.sort(function (a, b) { return a.info.days - b.info.days || a.name.localeCompare(b.name); });
+    return out;
+  }
+  function deadlinesFiltered() {
+    var ts = terms(), k = state.deadlines.kind, w = state.deadlines.window;
+    var max = w === "all" ? Infinity : +w;
+    return deadlineItems().filter(function (it) {
+      if (k !== "all" && it.kind !== k) return false;
+      if (it.info.days > max) return false;
+      if (ts.length && !hit([it.name, it.meta].join(" "), ts)) return false;
+      return true;
+    });
+  }
+  function deadlineRow(it, i) {
+    var info = it.info;
+    var dleft = info.days <= 0 ? "today" : info.days + "d left";
+    var label = it.kind === "sch" ? "Scholarship" : "Program";
+    return '<div class="row" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' +
+      '<div class="dl-date' + (info.soon ? " soon" : "") + '"><b>' + DL_MON[info.date.getMonth()] + " " + info.date.getDate() + "</b><span>" + dleft + "</span></div>" +
+      '<a class="row-main" href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
+        '<div class="row-title">' + esc(it.name) + ' <span class="ext">&#8599;</span></div>' +
+        '<div class="row-tags"><span class="tg tg-' + it.kind + '">' + label + "</span>" + (it.meta ? '<span class="tg">' + esc(it.meta) + "</span>" : "") + "</div>" +
+      "</a>" +
+      starBtn(it.kind, it.name) +
+      '<div class="row-right">' + calCell(it.name, it.url, it.deadline) + "</div></div>";
+  }
+  function renderDeadlines() {
+    var box = $("#deadlines-list"); if (!box) return 0;
+    var list = deadlinesFiltered();
+    box.innerHTML = list.length ? list.map(deadlineRow).join("")
+      : '<p class="muted guides-empty">No deadlines match these filters.</p>';
+    return list.length;
+  }
+  function deadlineExportItems() {
+    return deadlinesFiltered().map(function (it) {
+      return { type: it.kind === "sch" ? "Scholarship" : "Program", name: it.name, url: it.url, detail: it.meta, deadline: it.deadline };
+    });
+  }
+  function wireDeadlines() {
+    var kind = $("#dl-kind");
+    if (kind) kind.addEventListener("click", function (e) {
+      var b = e.target.closest(".seg"); if (!b) return;
+      state.deadlines.kind = b.dataset.kind;
+      kind.querySelectorAll(".seg").forEach(function (s) { s.classList.toggle("is-active", s === b); });
+      render();
+    });
+    var win = $("#dl-window");
+    if (win) win.addEventListener("change", function (e) { state.deadlines.window = e.target.value; render(); });
+    var ics = $("#dl-ics");
+    if (ics) ics.addEventListener("click", function () { download("stdnt-deadlines.ics", toICS(deadlineExportItems()), "text/calendar;charset=utf-8"); });
+    var csv = $("#dl-csv");
+    if (csv) csv.addEventListener("click", function () { download("stdnt-deadlines.csv", "﻿" + toCSV(deadlineExportItems()), "text/csv;charset=utf-8"); });
+  }
+
   // ---- theme ---------------------------------------------------------
   function initTheme() {
     var sv = localStorage.getItem("edu-theme");
@@ -838,6 +905,7 @@
   $("#n-saved").textContent = saved.size;
   $("#n-guides").textContent = GUIDES.length;
   $("#n-templates").textContent = TEMPLATES.length;
+  $("#n-deadlines").textContent = deadlineItems().length;
   fillStats();
   var deepLink = applyHash();
   var subBtn = $("#submit-resource");
@@ -853,9 +921,11 @@
   renderSponsors();
   renderGuides();
   renderTemplates();
+  renderDeadlines();
   wire();
   wireGuideOverlay();
   wireTemplates();
+  wireDeadlines();
   initViews();
   window.addEventListener("hashchange", function () { routeHash(); });
   if (deepLink) switchTab("foryou");

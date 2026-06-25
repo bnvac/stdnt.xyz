@@ -106,5 +106,51 @@ window.TEMPLATES = [
       ["Example State University", "28,000", "12,000", "5,500", "2,000", "14,000", "In-state"],
       ["Example Private University", "78,000", "55,000", "5,500", "2,500", "20,500", "Great aid"]
     ]
+  },
+  {
+    slug: "internship-tracker",
+    icon: "💼",
+    title: "Internship & job application tracker",
+    blurb: "Track every internship and job you apply to: deadline, status, contact and follow-ups, all in one place.",
+    tags: ["internship", "jobs", "applications", "career"],
+    columns: ["Company", "Role", "Deadline", "Applied on", "Status", "Contact", "Link", "Next step / notes"],
+    sample: [
+      ["Example Lab", "Research intern", "2025-02-01", "", "Not started", "Dr. Rivera", "https://", "Cold-email mentor"],
+      ["Example Startup", "SWE intern", "2025-01-15", "2025-01-05", "Applied", "careers@", "https://", "Follow up in 1 week"]
+    ]
+  },
+  {
+    slug: "weekly-schedule",
+    icon: "🗓️",
+    title: "Weekly schedule / time blocker",
+    blurb: "Block out your week hour by hour — classes, study, work and downtime — so your time actually has a plan.",
+    tags: ["planner", "schedule", "time", "productivity"],
+    columns: ["Time", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    sample: [
+      ["7-8 AM", "", "", "", "", "", "", ""],
+      ["8-10 AM", "Class", "Class", "Class", "Class", "Class", "", ""],
+      ["10-12 PM", "Study", "Club", "Study", "Lab", "Study", "", ""],
+      ["12-1 PM", "Lunch", "Lunch", "Lunch", "Lunch", "Lunch", "", ""],
+      ["1-3 PM", "Class", "Study", "Class", "Study", "Class", "", ""],
+      ["3-5 PM", "Practice", "Work", "Practice", "Work", "Free", "", ""],
+      ["7-9 PM", "Homework", "Homework", "Homework", "Homework", "Free", "", ""]
+    ]
+  },
+  {
+    slug: "fafsa-checklist",
+    icon: "📄",
+    title: "FAFSA & CSS document checklist",
+    blurb: "Everything you need to gather before filing for financial aid, so you can fill it out in one sitting.",
+    tags: ["fafsa", "financial aid", "checklist", "college"],
+    columns: ["Document / item", "Whose", "Have it?", "Notes"],
+    sample: [
+      ["FSA ID (username + password)", "Student & parent", "No", "Create early at studentaid.gov"],
+      ["Social Security number", "Student & parent", "No", ""],
+      ["Federal tax return", "Parent", "No", "Prior-prior year"],
+      ["W-2s / income records", "Student & parent", "No", ""],
+      ["Bank & investment balances", "Student & parent", "No", "As of filing date"],
+      ["Records of untaxed income", "Parent", "No", "e.g. benefits"],
+      ["List of colleges to send to", "Student", "No", "Add every school you're considering"]
+    ]
   }
 ];
