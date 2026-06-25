@@ -256,7 +256,7 @@
     var sub = esc(s.level || "") + (s.note ? " &middot; " + esc(s.note) : "") + (s.find ? ' <span class="find">&middot; search</span>' : "");
     return '<div class="row" style="animation-delay:' + Math.min(i * 8, 180) + 'ms">' +
       '<a class="row-main" href="' + esc(s.url) + '" target="_blank" rel="noopener">' +
-      '<div class="row-title">' + esc(s.name) + ' <span class="ext">&#8599;</span></div>' +
+      '<div class="row-title">' + esc(s.name) + matchBadge("sch", s) + ' <span class="ext">&#8599;</span></div>' +
       '<div class="row-sub">' + sub + "</div>" +
       (tags ? '<div class="row-tags">' + tags + "</div>" : "") + "</a>" +
       starBtn("sch", s.name) +
@@ -316,7 +316,7 @@
     var cost = shortCost(p);
     return '<div class="row" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' + rank +
       '<a class="row-main" href="' + esc(url) + '" target="_blank" rel="noopener">' +
-      '<div class="row-title">' + esc(p.name) + (p.flagship ? ' <span class="card-star">&#9733;</span>' : "") + ' <span class="ext">&#8599;</span></div>' +
+      '<div class="row-title">' + esc(p.name) + (p.flagship ? ' <span class="card-star">&#9733;</span>' : "") + matchBadge("prog", p) + ' <span class="ext">&#8599;</span></div>' +
       '<div class="row-sub">' + sub + "</div>" +
       '<div class="row-tags">' + stateTag + grades + subs + "</div></a>" +
       starBtn("prog", p.name) +
@@ -479,6 +479,16 @@
     }
     return sc;
   }
+  // ---- personalization (quiz-driven match badges) --------------------
+  var FIELD_COMP = { cs: ["cs"], eng: ["robotics", "innovation"], med: ["science"], math: ["math"], business: ["innovation"], arts: ["humanities"] };
+  function quizAnswered() { for (var k in quiz) { if (quiz[k]) return true; } return false; }
+  function compScore(c) { var f = quiz.field; return (f && (FIELD_COMP[f] || []).indexOf(c.category) >= 0) ? 3 : 0; }
+  function matchBadge(kind, item) {
+    if (!quizAnswered()) return "";
+    var sc = kind === "sch" ? schScore(item) : kind === "prog" ? progScore(item) : compScore(item);
+    return sc >= 3 ? ' <span class="match-tag">&#10022; For you</span>' : "";
+  }
+
   function renderQuiz() {
     var res = $("#quiz-results");
     var answered = Object.keys(quiz).some(function (k) { return quiz[k]; });
@@ -546,6 +556,9 @@
     document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === tab); });
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
     ["tools", "discounts", "sch", "prog", "competitions", "deadlines", "foryou", "saved", "guides", "templates", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
+    document.title = (TAB_TITLES[tab] ? TAB_TITLES[tab] + " · " : "") + "stdnt.xyz - free stuff for students";
+    var moreBtn = $("#more-btn"); if (moreBtn) moreBtn.classList.toggle("is-active", !!OVERFLOW[tab]);
+    closeMore();
     search.placeholder = tab === "tools" ? "Search tools, APIs, perks..." :
       tab === "discounts" ? "Search student discounts..." :
       tab === "sch" ? "Search scholarships..." :
@@ -604,14 +617,14 @@
       quiz[id] = (quiz[id] === v) ? "" : v;
       saveQuiz();
       qf.querySelectorAll('.qchip[data-q="' + id + '"]').forEach(function (c) { c.classList.toggle("is-active", c.dataset.v !== "" && c.dataset.v === (quiz[id] || "")); });
-      renderQuiz();
+      renderQuiz(); renderHero();
     });
     if (qf) qf.addEventListener("change", function (e) {
       var sel = e.target.closest(".qselect"); if (!sel) return;
-      quiz[sel.dataset.q] = sel.value; saveQuiz(); renderQuiz();
+      quiz[sel.dataset.q] = sel.value; saveQuiz(); renderQuiz(); renderHero();
     });
     var qr = $("#quiz-reset");
-    if (qr) qr.addEventListener("click", function () { quiz = {}; saveQuiz(); buildQuiz(); renderQuiz(); });
+    if (qr) qr.addEventListener("click", function () { quiz = {}; saveQuiz(); buildQuiz(); renderQuiz(); renderHero(); });
     var qsh = $("#quiz-share");
     if (qsh) qsh.addEventListener("click", function () {
       var p = Object.keys(quiz).filter(function (k) { return quiz[k]; }).map(function (k) { return k + "=" + encodeURIComponent(quiz[k]); }).join("&");
@@ -780,6 +793,15 @@
     return false;
   }
   var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, deadlines: 1, foryou: 1, saved: 1, guides: 1, templates: 1, about: 1 };
+  var OVERFLOW = { guides: 1, templates: 1, about: 1 };   // tabs tucked into the "More" menu
+  var TAB_TITLES = { tools: "Free tools & perks", discounts: "Student discounts", sch: "Scholarships", prog: "STEM programs", competitions: "Competitions", deadlines: "Deadlines", foryou: "Find your matches", saved: "Saved", guides: "Guides", templates: "Templates", about: "About" };
+  function closeMore() { var m = $("#tab-menu"), b = $("#more-btn"); if (m && !m.hidden) { m.hidden = true; if (b) b.setAttribute("aria-expanded", "false"); } }
+  function wireMore() {
+    var btn = $("#more-btn"), menu = $("#tab-menu"); if (!btn || !menu) return;
+    btn.addEventListener("click", function (e) { e.stopPropagation(); var open = menu.hidden; menu.hidden = !open; btn.setAttribute("aria-expanded", String(open)); });
+    document.addEventListener("click", function (e) { if (!menu.hidden && !e.target.closest(".tab-more")) closeMore(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMore(); });
+  }
   function routeHash() {
     if (routeGuideHash()) return true;
     if (guideOpen()) closeGuide();
@@ -870,7 +892,7 @@
     var gr = c.grades ? '<span class="tg">Grades ' + esc(c.grades) + "</span>" : "";
     return '<a class="card" href="' + esc(c.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
       '<div class="card-top"><span class="comp-ico" aria-hidden="true">' + esc(COMP_EMOJI[c.category] || "🏆") + "</span>" +
-      '<span class="card-name">' + esc(c.name) + "</span>" +
+      '<span class="card-name">' + esc(c.name) + matchBadge("comp", c) + "</span>" +
       '<span class="card-meta">' + starBtn("comp", c.name) + "</span></div>" +
       '<p class="card-desc">' + esc(c.desc) + "</p>" +
       '<div class="card-foot comp-foot">' + dl + fmt + gr + "</div></a>";
@@ -959,6 +981,13 @@
   function renderHero() {
     var stat = $("#hero-stat");
     if (stat) { stat.innerHTML = "Over <b>" + moneyStat() + "</b> in scholarships, plus thousands in free tools and perks."; stat.hidden = false; }
+    if (quizAnswered()) {
+      var sm = 0, pm = 0;
+      SCH.forEach(function (s) { if (schScore(s) >= 3) sm++; });
+      PROG.forEach(function (p) { if (progScore(p) >= 3) pm++; });
+      var ann = document.querySelector(".announce");
+      if (ann && (sm + pm) > 0) ann.innerHTML = '<span class="announce-tag">&#10022; For you</span> ' + (sm + pm) + ' scholarships &amp; programs match your profile <span aria-hidden="true">&rarr;</span>';
+    }
     var box = $("#hero-soon"); if (!box) return;
     var all = deadlineItems().filter(function (it) { return it.info.days >= 0; });
     if (!all.length) { box.hidden = true; return; }
@@ -967,6 +996,34 @@
     }).join("");
     box.innerHTML = '<span class="soon-label">&#9200; Closing soon</span>' + chips + '<a class="soon-all" href="#deadlines">See all ' + all.length + " &rarr;</a>";
     box.hidden = false;
+  }
+
+  // ---- SEO (structured data, JS-rendered) ----------------------------
+  function injectStructuredData() {
+    try {
+      var origin = location.origin + location.pathname;
+      function itemList(name, arr, urlFn) {
+        return {
+          "@context": "https://schema.org", "@type": "ItemList", "name": name, "numberOfItems": arr.length,
+          "itemListElement": arr.slice(0, 100).map(function (x, i) { return { "@type": "ListItem", "position": i + 1, "name": x.name, "url": urlFn(x) }; })
+        };
+      }
+      var blocks = [
+        { "@context": "https://schema.org", "@type": "WebSite", "name": "stdnt.xyz", "url": origin, "description": "Every free thing you can get as a student - tools, free API keys, perks, scholarships, STEM programs and competitions, in one searchable place." },
+        { "@context": "https://schema.org", "@type": "EducationalOrganization", "name": "stdnt.xyz", "url": origin, "description": "A free, open-source directory of student resources: tools, scholarships, STEM programs, competitions and guides." },
+        itemList("Scholarships for students", SCH, function (s) { return s.url; }),
+        itemList("STEM programs for students", PROG, function (p) { return p.url || searchLink(p.name); })
+      ];
+      blocks.forEach(function (b) {
+        var el = document.createElement("script");
+        el.type = "application/ld+json";
+        el.textContent = JSON.stringify(b);
+        document.head.appendChild(el);
+      });
+      if (!document.querySelector("link[rel=canonical]")) {
+        var can = document.createElement("link"); can.rel = "canonical"; can.href = origin; document.head.appendChild(can);
+      }
+    } catch (e) {}
   }
 
   // ---- theme ---------------------------------------------------------
@@ -1027,6 +1084,8 @@
   wireGuideOverlay();
   wireTemplates();
   wireDeadlines();
+  wireMore();
+  injectStructuredData();
   initViews();
   window.addEventListener("hashchange", function () { routeHash(); });
   if (deepLink) switchTab("foryou");
