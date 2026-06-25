@@ -12,8 +12,14 @@
   var PROG = window.PROGRAMS || [];
   var GUIDES = window.GUIDES || [];
   var TEMPLATES = window.TEMPLATES || [];
+  var DISCOUNTS = window.DISCOUNTS || [];
+  var DISC_CATS = window.DISCOUNT_CATS || [];
+  var COMPS = window.COMPETITIONS || [];
+  var COMP_CATS = window.COMPETITION_CATS || [];
   var FULL = window.SCH_FULL || 1000000;
   var CAT = {}; CATS.forEach(function (c) { CAT[c.id] = c; });
+  DISC_CATS.forEach(function (c) { CAT[c.id] = c; });   // discount categories share the label map
+  var COMP_EMOJI = {}; COMP_CATS.forEach(function (c) { COMP_EMOJI[c.id] = c.emoji; });
 
   var ICON_CDN = "https://cdn.simpleicons.org/";
   var STAR = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.6 1.1 6.45L12 18.9 6.2 21l1.1-6.45L2.6 9.95l6.5-.95z"/></svg>';
@@ -327,9 +333,10 @@
   function renderSaved() {
     var ts = terms();
     function f(arr, fields) { return ts.length ? arr.filter(function (x) { return hit(fields(x), ts); }) : arr; }
-    var st = f(RES.filter(function (r) { return saved.has(sid("tool", r.name)); }), function (r) { return [r.name, r.desc, (r.tags || []).join(" ")].join(" "); });
+    var st = f(RES.concat(DISCOUNTS).filter(function (r) { return saved.has(sid("tool", r.name)); }), function (r) { return [r.name, r.desc, (r.tags || []).join(" ")].join(" "); });
     var ss = f(SCH.filter(function (s) { return saved.has(sid("sch", s.name)); }), function (s) { return [s.name, s.level, s.note].join(" "); });
     var sp = f(PROG.filter(function (p) { return saved.has(sid("prog", p.name)); }), function (p) { return [p.name, p.details, (p.subjects || []).join(" ")].join(" "); });
+    var sc = f(COMPS.filter(function (c) { return saved.has(sid("comp", c.name)); }), function (c) { return [c.name, c.desc, (c.tags || []).join(" ")].join(" "); });
     var body = $("#saved-body");
     if (saved.size === 0) {
       body.innerHTML = '<div class="saved-empty"><div class="saved-star">' + STAR + "</div>" +
@@ -343,10 +350,11 @@
       '<button class="btn btn-ghost" data-act="print" type="button">Print</button>' +
       '<span class="copied" id="saved-copied" hidden>Copied!</span></div>';
     var html = "";
-    if (st.length) html += '<h3 class="saved-h">Tools &amp; Perks <span>' + st.length + "</span></h3><div class=\"grid\">" + st.map(toolCard).join("") + "</div>";
+    if (st.length) html += '<h3 class="saved-h">Tools, Perks &amp; Discounts <span>' + st.length + "</span></h3><div class=\"grid\">" + st.map(toolCard).join("") + "</div>";
     if (ss.length) html += '<h3 class="saved-h">Scholarships <span>' + ss.length + "</span></h3><div class=\"list\">" + ss.map(schRow).join("") + "</div>";
     if (sp.length) html += '<h3 class="saved-h">STEM Programs <span>' + sp.length + "</span></h3><div class=\"list\">" + sp.map(progRow).join("") + "</div>";
-    var total = st.length + ss.length + sp.length;
+    if (sc.length) html += '<h3 class="saved-h">Competitions <span>' + sc.length + "</span></h3><div class=\"grid\">" + sc.map(competitionCard).join("") + "</div>";
+    var total = st.length + ss.length + sp.length + sc.length;
     body.innerHTML = toolbar + (html || '<p class="muted" style="padding:1rem 0">No saved items match that search.</p>');
     meta.textContent = total === saved.size ? ("You have " + saved.size + " saved item" + (saved.size === 1 ? "" : "s")) : ("Showing " + total + " of " + saved.size + " saved");
     empty.hidden = true;
@@ -354,9 +362,10 @@
   }
   function savedItems() {
     var out = [];
-    RES.forEach(function (r) { if (saved.has(sid("tool", r.name))) out.push({ type: "Tool", name: r.name, url: r.url, detail: (CAT[r.category] || {}).name || "", deadline: "" }); });
+    RES.concat(DISCOUNTS).forEach(function (r) { if (saved.has(sid("tool", r.name))) out.push({ type: "Tool", name: r.name, url: r.url, detail: (CAT[r.category] || {}).name || "", deadline: "" }); });
     SCH.forEach(function (s) { if (saved.has(sid("sch", s.name))) out.push({ type: "Scholarship", name: s.name, url: s.url, detail: s.amountText || "", deadline: s.deadline || "" }); });
     PROG.forEach(function (p) { if (saved.has(sid("prog", p.name))) out.push({ type: "Program", name: p.name, url: p.url || "", detail: (p.subjects || []).join("; "), deadline: p.deadline || "" }); });
+    COMPS.forEach(function (c) { if (saved.has(sid("comp", c.name))) out.push({ type: "Competition", name: c.name, url: c.url, detail: c.format || "", deadline: c.deadline || "" }); });
     return out;
   }
   function toCSV(items) {
@@ -515,6 +524,16 @@
       meta.textContent = dn + " upcoming deadline" + (dn === 1 ? "" : "s") + (state.deadlines.window === "all" ? "" : " in the next " + state.deadlines.window + " days");
       empty.hidden = true; return;
     }
+    if (state.tab === "discounts") {
+      var disc = renderDiscounts();
+      meta.textContent = state.q ? ("Showing " + disc + " of " + DISCOUNTS.length + " discounts") : (DISCOUNTS.length + " student discounts");
+      empty.hidden = true; return;
+    }
+    if (state.tab === "competitions") {
+      var cn = renderCompetitions();
+      meta.textContent = state.q ? ("Showing " + cn + " of " + COMPS.length + " competitions") : (COMPS.length + " competitions");
+      empty.hidden = true; return;
+    }
     var n, total, label;
     if (state.tab === "tools") { n = renderTools(); total = RES.length; label = "tools"; }
     else if (state.tab === "sch") { n = renderSch(); total = SCH.length; label = "scholarships"; }
@@ -526,10 +545,12 @@
     state.tab = tab;
     document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === tab); });
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
-    ["tools", "sch", "prog", "deadlines", "foryou", "saved", "guides", "templates", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
+    ["tools", "discounts", "sch", "prog", "competitions", "deadlines", "foryou", "saved", "guides", "templates", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
     search.placeholder = tab === "tools" ? "Search tools, APIs, perks..." :
+      tab === "discounts" ? "Search student discounts..." :
       tab === "sch" ? "Search scholarships..." :
       tab === "prog" ? "Search programs, subjects..." :
+      tab === "competitions" ? "Search competitions..." :
       tab === "deadlines" ? "Search deadlines..." :
       tab === "saved" ? "Search your saved list..." :
       tab === "guides" ? "Search guides..." :
@@ -758,7 +779,7 @@
     }
     return false;
   }
-  var TAB_HASHES = { tools: 1, sch: 1, prog: 1, deadlines: 1, foryou: 1, saved: 1, guides: 1, templates: 1, about: 1 };
+  var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, deadlines: 1, foryou: 1, saved: 1, guides: 1, templates: 1, about: 1 };
   function routeHash() {
     if (routeGuideHash()) return true;
     if (guideOpen()) closeGuide();
@@ -813,12 +834,67 @@
     });
   }
 
+  // ---- DISCOUNTS -----------------------------------------------------
+  function discountsFiltered() {
+    var ts = terms();
+    return DISCOUNTS.filter(function (d) {
+      if (!ts.length) return true;
+      var c = CAT[d.category];
+      return hit([d.name, d.desc, d.value, c && c.name, (d.tags || []).join(" ")].join(" "), ts);
+    });
+  }
+  function renderDiscounts() {
+    var box = $("#discounts-grid"); if (!box) return 0;
+    var list = discountsFiltered(), html = "";
+    DISC_CATS.forEach(function (cat) {
+      var items = list.filter(function (d) { return d.category === cat.id; });
+      if (!items.length) return;
+      html += '<h3 class="saved-h">' + esc(cat.name) + " <span>" + items.length + "</span></h3>" +
+        '<div class="grid">' + items.map(toolCard).join("") + "</div>";
+    });
+    box.innerHTML = html || '<p class="muted guides-empty">No discounts match your search.</p>';
+    return list.length;
+  }
+
+  // ---- COMPETITIONS --------------------------------------------------
+  function competitionsFiltered() {
+    var ts = terms();
+    return COMPS.filter(function (c) {
+      if (!ts.length) return true;
+      return hit([c.name, c.desc, c.category, c.format, (c.tags || []).join(" ")].join(" "), ts);
+    });
+  }
+  function competitionCard(c, i) {
+    var dl = c.deadline ? '<span class="tg tg-comp">&#9200; ' + esc(c.deadline) + "</span>" : "";
+    var fmt = c.format ? '<span class="tg">' + esc(c.format) + "</span>" : "";
+    var gr = c.grades ? '<span class="tg">Grades ' + esc(c.grades) + "</span>" : "";
+    return '<a class="card" href="' + esc(c.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
+      '<div class="card-top"><span class="comp-ico" aria-hidden="true">' + esc(COMP_EMOJI[c.category] || "🏆") + "</span>" +
+      '<span class="card-name">' + esc(c.name) + "</span>" +
+      '<span class="card-meta">' + starBtn("comp", c.name) + "</span></div>" +
+      '<p class="card-desc">' + esc(c.desc) + "</p>" +
+      '<div class="card-foot comp-foot">' + dl + fmt + gr + "</div></a>";
+  }
+  function renderCompetitions() {
+    var box = $("#competitions-grid"); if (!box) return 0;
+    var list = competitionsFiltered(), html = "";
+    COMP_CATS.forEach(function (cat) {
+      var items = list.filter(function (c) { return c.category === cat.id; });
+      if (!items.length) return;
+      html += '<h3 class="saved-h">' + esc(cat.emoji) + " " + esc(cat.name) + " <span>" + items.length + "</span></h3>" +
+        '<div class="grid">' + items.map(competitionCard).join("") + "</div>";
+    });
+    box.innerHTML = html || '<p class="muted guides-empty">No competitions match your search.</p>';
+    return list.length;
+  }
+
   // ---- DEADLINES (aggregated) ----------------------------------------
   var DL_MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   function deadlineItems() {
     var out = [];
     SCH.forEach(function (s) { var info = dlInfo(s.deadline); if (info.date) out.push({ kind: "sch", name: s.name, url: s.url, deadline: s.deadline, info: info, meta: s.amountText || "" }); });
     PROG.forEach(function (p) { var info = dlInfo(p.deadline); if (info.date) out.push({ kind: "prog", name: p.name, url: p.url || searchLink(p.name + " program"), deadline: p.deadline, info: info, meta: p.ranking || "" }); });
+    COMPS.forEach(function (c) { var info = dlInfo(c.deadline); if (info.date) out.push({ kind: "comp", name: c.name, url: c.url, deadline: c.deadline, info: info, meta: c.format || "" }); });
     out.sort(function (a, b) { return a.info.days - b.info.days || a.name.localeCompare(b.name); });
     return out;
   }
@@ -835,7 +911,7 @@
   function deadlineRow(it, i) {
     var info = it.info;
     var dleft = info.days <= 0 ? "today" : info.days + "d left";
-    var label = it.kind === "sch" ? "Scholarship" : "Program";
+    var label = { sch: "Scholarship", prog: "Program", comp: "Competition" }[it.kind] || "";
     return '<div class="row" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' +
       '<div class="dl-date' + (info.soon ? " soon" : "") + '"><b>' + DL_MON[info.date.getMonth()] + " " + info.date.getDate() + "</b><span>" + dleft + "</span></div>" +
       '<a class="row-main" href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
@@ -873,6 +949,26 @@
     if (csv) csv.addEventListener("click", function () { download("stdnt-deadlines.csv", "﻿" + toCSV(deadlineExportItems()), "text/csv;charset=utf-8"); });
   }
 
+  // ---- HERO (closing-soon strip + scholarship $ stat) ----------------
+  function moneyStat() {
+    var sum = SCH.reduce(function (a, s) { return a + ((s.amount > 0 && s.amount < FULL) ? s.amount : 0); }, 0);
+    if (sum >= 1e6) return "$" + (sum / 1e6).toFixed(1).replace(/\.0$/, "") + "M+";
+    if (sum >= 1e3) return "$" + Math.round(sum / 1e3) + "k+";
+    return "$" + commas(sum);
+  }
+  function renderHero() {
+    var stat = $("#hero-stat");
+    if (stat) { stat.innerHTML = "Over <b>" + moneyStat() + "</b> in scholarships, plus thousands in free tools and perks."; stat.hidden = false; }
+    var box = $("#hero-soon"); if (!box) return;
+    var all = deadlineItems().filter(function (it) { return it.info.days >= 0; });
+    if (!all.length) { box.hidden = true; return; }
+    var chips = all.slice(0, 4).map(function (it) {
+      return '<a class="soon-chip" href="' + esc(it.url) + '" target="_blank" rel="noopener"><b>' + DL_MON[it.info.date.getMonth()] + " " + it.info.date.getDate() + "</b> " + esc(it.name) + "</a>";
+    }).join("");
+    box.innerHTML = '<span class="soon-label">&#9200; Closing soon</span>' + chips + '<a class="soon-all" href="#deadlines">See all ' + all.length + " &rarr;</a>";
+    box.hidden = false;
+  }
+
   // ---- theme ---------------------------------------------------------
   function initTheme() {
     var sv = localStorage.getItem("edu-theme");
@@ -906,6 +1002,8 @@
   $("#n-guides").textContent = GUIDES.length;
   $("#n-templates").textContent = TEMPLATES.length;
   $("#n-deadlines").textContent = deadlineItems().length;
+  $("#n-discounts").textContent = DISCOUNTS.length;
+  $("#n-competitions").textContent = COMPS.length;
   fillStats();
   var deepLink = applyHash();
   var subBtn = $("#submit-resource");
@@ -922,6 +1020,9 @@
   renderGuides();
   renderTemplates();
   renderDeadlines();
+  renderDiscounts();
+  renderCompetitions();
+  renderHero();
   wire();
   wireGuideOverlay();
   wireTemplates();
