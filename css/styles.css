@@ -418,3 +418,140 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
   .filterset { gap: .6rem; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+/* ============================================================== GUIDES */
+.guides-head { max-width: 760px; margin: .4rem auto 1.4rem; }
+.guides-title { font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 800; letter-spacing: -.03em; margin: 0 0 .5rem; }
+.guides-sub { color: var(--tx-2); margin: 0; font-size: 1rem; }
+.guides-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: .9rem; max-width: 920px; margin: 0 auto; }
+.guides-empty { grid-column: 1 / -1; text-align: center; padding: 2rem 0; }
+.guide-card {
+  position: relative; display: flex; align-items: center; gap: 1rem;
+  padding: 1.1rem 1.2rem; background: var(--card); border: 1px solid var(--line);
+  border-radius: 16px; animation: rise .3s ease backwards;
+  transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+.guide-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px -22px color-mix(in srgb, var(--accent) 80%, transparent);
+}
+.guide-ico {
+  flex: none; display: grid; place-items: center; width: 50px; height: 50px; font-size: 1.5rem;
+  border-radius: 14px; background: color-mix(in srgb, var(--accent) 12%, var(--bg-2));
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.guide-card-main { display: flex; flex-direction: column; gap: .25rem; min-width: 0; }
+.guide-card-title { font-size: 1rem; font-weight: 700; color: var(--tx); letter-spacing: -.01em; }
+.guide-card-blurb { font-size: .86rem; color: var(--tx-2); line-height: 1.45; }
+.guide-card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin-top: .25rem; }
+.guide-mins {
+  font-size: .68rem; font-weight: 700; letter-spacing: .02em; text-transform: uppercase;
+  color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent);
+  padding: .12rem .45rem; border-radius: 999px;
+}
+.guide-tag { font-size: .68rem; color: var(--tx-3); background: var(--bg-2); border: 1px solid var(--line); padding: .12rem .45rem; border-radius: 999px; }
+.guide-card-arrow { margin-left: auto; flex: none; color: var(--tx-3); font-size: 1.2rem; transition: transform .15s, color .15s; }
+.guide-card:hover .guide-card-arrow { color: var(--accent); transform: translateX(3px); }
+.card-guide .card-cta { color: var(--accent); }
+
+/* ====================================================== GUIDE READER */
+html.guide-open { overflow: hidden; }
+.guide-overlay { position: fixed; inset: 0; z-index: 200; display: flex; align-items: flex-start; justify-content: center; padding: clamp(1rem, 5vh, 4rem) 1rem; }
+.guide-backdrop { position: absolute; inset: 0; background: color-mix(in srgb, var(--bg) 55%, rgba(0,0,0,.7)); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); animation: gfade .2s ease; }
+.guide-reader {
+  position: relative; width: 100%; max-width: 720px; max-height: 90vh; overflow-y: auto;
+  background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 20px;
+  padding: clamp(1.5rem, 4vw, 2.6rem); box-shadow: 0 40px 90px -30px rgba(0,0,0,.6);
+  animation: gpop .26s cubic-bezier(.2,.8,.2,1); outline: none;
+}
+@keyframes gfade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes gpop { from { opacity: 0; transform: translateY(14px) scale(.985); } to { opacity: 1; transform: none; } }
+.guide-close {
+  position: absolute; top: .9rem; right: .9rem; display: grid; place-items: center;
+  width: 38px; height: 38px; border-radius: 999px; cursor: pointer; color: var(--tx-2);
+  background: var(--card); border: 1px solid var(--line); transition: all .15s; z-index: 2;
+}
+.guide-close:hover { color: var(--tx); border-color: var(--line-2); transform: rotate(90deg); }
+.guide-rhead { margin: 0 0 1.4rem; padding-right: 2.5rem; }
+.guide-rico { display: inline-grid; place-items: center; width: 54px; height: 54px; font-size: 1.7rem; border-radius: 15px; margin-bottom: .8rem; background: color-mix(in srgb, var(--accent) 12%, var(--card)); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent); }
+.guide-rtitle { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; letter-spacing: -.03em; margin: 0 0 .6rem; line-height: 1.15; }
+.guide-rmeta { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0; }
+.guide-rbody { color: var(--tx-2); font-size: 1rem; line-height: 1.7; }
+.guide-rbody h3 { color: var(--tx); font-size: 1.12rem; font-weight: 700; letter-spacing: -.01em; margin: 1.8rem 0 .6rem; }
+.guide-rbody p { margin: .7rem 0; }
+.guide-rbody ul, .guide-rbody ol { margin: .6rem 0; padding-left: 1.3rem; }
+.guide-rbody li { margin: .4rem 0; }
+.guide-rbody li::marker { color: var(--accent); }
+.guide-rbody a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+.guide-rbody a:hover { text-decoration-color: var(--accent); }
+.guide-rbody strong { color: var(--tx); font-weight: 700; }
+.guide-lead { font-size: 1.08rem !important; color: var(--tx) !important; line-height: 1.6; margin: 0 0 1.4rem !important; }
+.guide-note { margin: 1.2rem 0; padding: .9rem 1.1rem; font-size: .92rem; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line)); background: color-mix(in srgb, var(--accent) 8%, transparent); border-left: 3px solid var(--accent); }
+.guide-note strong { color: var(--tx); }
+.guide-xref { margin-top: 1.4rem !important; font-size: .92rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.guide-tpl { position: relative; margin: 1rem 0 1.2rem; border: 1px solid var(--line-2); border-radius: 14px; background: var(--bg); overflow: hidden; }
+.guide-tpl pre {
+  margin: 0; padding: 1.1rem 1.2rem; padding-top: 2.7rem; font-family: var(--mono); font-size: .82rem;
+  line-height: 1.6; color: var(--tx); white-space: pre-wrap; word-break: break-word; overflow-x: auto;
+}
+.guide-copy {
+  position: absolute; top: .6rem; right: .6rem; font: inherit; font-size: .74rem; font-weight: 700;
+  color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius: 8px;
+  padding: .3rem .65rem; cursor: pointer; transition: all .15s; z-index: 1;
+}
+.guide-copy:hover { background: color-mix(in srgb, var(--accent) 20%, var(--card)); }
+.guide-copy.is-copied { color: #fff; background: var(--evr); border-color: var(--evr); }
+.guide-rback { display: inline-block; margin-top: 1.8rem; font-size: .9rem; font-weight: 600; color: var(--tx-2); }
+.guide-rback:hover { color: var(--accent); }
+
+/* ============================================== SPONSOR / CONTRIBUTE */
+.promo-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.4rem 0 .6rem; }
+.promo {
+  position: relative; overflow: hidden; padding: 1.5rem 1.5rem 1.6rem;
+  border: 1px solid var(--line); border-radius: 18px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 5%, var(--card)), var(--card));
+  transition: border-color .2s, transform .2s;
+}
+.promo:hover { border-color: var(--line-2); transform: translateY(-2px); }
+.promo-glow { position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; filter: blur(60px); opacity: .5; pointer-events: none; }
+.promo-sponsor .promo-glow { background: radial-gradient(circle, var(--accent), transparent 70%); }
+.promo-contribute .promo-glow { background: radial-gradient(circle, var(--stu), transparent 70%); }
+.promo-contribute { background: linear-gradient(180deg, color-mix(in srgb, var(--stu) 6%, var(--card)), var(--card)); }
+.promo-ico {
+  position: relative; display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: .9rem;
+  border-radius: 13px; color: #fff; background: linear-gradient(135deg, var(--accent), var(--stu));
+  box-shadow: 0 8px 22px -8px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+.promo-contribute .promo-ico { background: linear-gradient(135deg, var(--stu), var(--accent)); }
+.promo-title { position: relative; font-size: 1.15rem; font-weight: 800; letter-spacing: -.02em; margin: 0 0 .4rem; color: var(--tx); }
+.promo-text { position: relative; color: var(--tx-2); font-size: .92rem; line-height: 1.55; margin: 0 0 1.1rem; }
+.promo-actions { position: relative; display: flex; flex-wrap: wrap; gap: .6rem; }
+.promo-fine { position: relative; color: var(--tx-3); font-size: .8rem; margin: .9rem 0 0; }
+.cta-grad, .btn-grad {
+  position: relative; display: inline-flex; align-items: center; gap: .45rem; color: #fff;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 90%, #000), color-mix(in srgb, var(--stu) 88%, #000));
+  border: none; text-shadow: 0 1px 2px rgba(0,0,0,.28);
+  box-shadow: 0 8px 22px -12px color-mix(in srgb, var(--accent) 70%, transparent);
+  transition: transform .15s, box-shadow .15s, filter .15s;
+}
+.cta-grad { padding: .62rem 1.25rem; border-radius: 999px; font-size: .9rem; font-weight: 700; margin-top: .2rem; }
+.cta-grad:hover, .btn-grad:hover { transform: translateY(-2px); filter: brightness(1.06); box-shadow: 0 16px 34px -12px color-mix(in srgb, var(--accent) 85%, transparent); }
+.cta-grad svg, .btn-grad svg { transition: transform .15s; }
+.cta-grad:hover svg { transform: translateX(3px); }
+.btn-grad { display: inline-flex; align-items: center; gap: .4rem; }
+.btn-icon { display: inline-flex; align-items: center; gap: .4rem; }
+/* win over `.about a { color: var(--accent) }` so button labels read correctly */
+.about .cta-grad, .about .btn-grad { color: #fff; -webkit-text-fill-color: #fff; }
+.about .promo .btn-ghost { color: var(--tx); -webkit-text-fill-color: var(--tx); }
+.promo .sponsors { margin: 0 0 1.1rem; }
+.promo .sponsor-add { border-style: dashed; border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+.promo .sponsor-add:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 6%, var(--card)); }
+.promo .sp-none { color: var(--tx-3); font-size: .84rem; }
+
+@media (max-width: 560px) {
+  .guide-card { padding: 1rem; gap: .8rem; }
+  .guide-ico { width: 44px; height: 44px; font-size: 1.3rem; }
+  .guides-grid { grid-template-columns: 1fr; }
+}

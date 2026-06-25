@@ -10,6 +10,7 @@
   var CATS = window.CATEGORIES || [];
   var SCH = window.SCHOLARSHIPS || [];
   var PROG = window.PROGRAMS || [];
+  var GUIDES = window.GUIDES || [];
   var FULL = window.SCH_FULL || 1000000;
   var CAT = {}; CATS.forEach(function (c) { CAT[c.id] = c; });
 
@@ -191,7 +192,10 @@
     var badge = r.access === "student"
       ? '<span class="badge badge-stu">Student</span>'
       : '<span class="badge badge-evr">Everyone</span>';
-    return '<a class="card" href="' + esc(r.url) + '" target="_blank" rel="noopener" style="animation-delay:' +
+    var internal = /^#/.test(r.url || "");
+    var link = internal ? "" : ' target="_blank" rel="noopener"';
+    var cta = internal ? "Read the guide &rarr;" : "Get it &rarr;";
+    return '<a class="card' + (internal ? " card-guide" : "") + '" href="' + esc(r.url) + '"' + link + ' style="animation-delay:' +
       Math.min(i * 16, 240) + 'ms">' +
       '<div class="card-top">' + iconHTML(r) +
       '<span class="card-name">' + esc(r.name) + (r.featured ? ' <span class="card-star">&#9733;</span>' : "") + "</span>" +
@@ -199,7 +203,7 @@
       (r.value ? '<span class="card-value">' + esc(r.value) + "</span>" : "") +
       '<p class="card-desc">' + esc(r.desc) + "</p>" +
       '<div class="card-foot"><span class="card-cat">' + esc(c.name) + "</span>" +
-      '<span class="card-cta">Get it &rarr;</span></div></a>';
+      '<span class="card-cta">' + cta + "</span></div></a>";
   }
   function renderTools() {
     var list = toolsFiltered();
@@ -494,6 +498,11 @@
     if (state.tab === "about") { meta.textContent = ""; empty.hidden = true; return; }
     if (state.tab === "foryou") { renderQuiz(); return; }
     if (state.tab === "saved") { renderSaved(); return; }
+    if (state.tab === "guides") {
+      var gn = renderGuides();
+      meta.textContent = state.q ? ("Showing " + gn + " of " + GUIDES.length + " guides") : (GUIDES.length + " guides");
+      empty.hidden = true; return;
+    }
     var n, total, label;
     if (state.tab === "tools") { n = renderTools(); total = RES.length; label = "tools"; }
     else if (state.tab === "sch") { n = renderSch(); total = SCH.length; label = "scholarships"; }
@@ -505,11 +514,12 @@
     state.tab = tab;
     document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === tab); });
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
-    ["tools", "sch", "prog", "foryou", "saved", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
+    ["tools", "sch", "prog", "foryou", "saved", "guides", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
     search.placeholder = tab === "tools" ? "Search tools, APIs, perks..." :
       tab === "sch" ? "Search scholarships..." :
       tab === "prog" ? "Search programs, subjects..." :
-      tab === "saved" ? "Search your saved list..." : "Search...";
+      tab === "saved" ? "Search your saved list..." :
+      tab === "guides" ? "Search guides..." : "Search...";
     render();
   }
 
@@ -529,6 +539,7 @@
       deb = setTimeout(function () { state.q = v.trim(); render(); }, 110);
     });
     document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && guideOpen()) { e.preventDefault(); closeReader(); return; }
       if (e.key === "/" && document.activeElement !== search) { e.preventDefault(); search.focus(); }
       else if (e.key === "Escape" && document.activeElement === search) { search.value = ""; state.q = ""; render(); search.blur(); }
     });
@@ -639,6 +650,115 @@
     });
   }
 
+  // ---- GUIDES --------------------------------------------------------
+  function guideBySlug(slug) {
+    for (var i = 0; i < GUIDES.length; i++) if (GUIDES[i].slug === slug) return GUIDES[i];
+    return null;
+  }
+  function guidesFiltered() {
+    var ts = terms();
+    return GUIDES.filter(function (g) {
+      if (!ts.length) return true;
+      return hit([g.title, g.blurb, (g.tags || []).join(" ")].join(" "), ts);
+    });
+  }
+  function guideCard(g, i) {
+    var tags = (g.tags || []).slice(0, 3).map(function (t) { return '<span class="guide-tag">' + esc(t) + "</span>"; }).join("");
+    return '<a class="guide-card" href="#guide/' + esc(g.slug) + '" style="animation-delay:' + Math.min(i * 45, 270) + 'ms">' +
+      '<span class="guide-ico" aria-hidden="true">' + esc(g.icon) + "</span>" +
+      '<span class="guide-card-main">' +
+        '<span class="guide-card-title">' + esc(g.title) + "</span>" +
+        '<span class="guide-card-blurb">' + esc(g.blurb) + "</span>" +
+        '<span class="guide-card-meta"><span class="guide-mins">' + g.readMins + " min read</span>" + tags + "</span>" +
+      "</span>" +
+      '<span class="guide-card-arrow" aria-hidden="true">&rarr;</span></a>';
+  }
+  function renderGuides() {
+    var box = $("#guides-grid"); if (!box) return 0;
+    var list = guidesFiltered();
+    box.innerHTML = list.length ? list.map(guideCard).join("")
+      : '<p class="muted guides-empty">No guides match your search.</p>';
+    return list.length;
+  }
+  function guideReaderHTML(g) {
+    var tags = (g.tags || []).map(function (t) { return '<span class="guide-tag">' + esc(t) + "</span>"; }).join("");
+    return '<header class="guide-rhead">' +
+        '<span class="guide-rico" aria-hidden="true">' + esc(g.icon) + "</span>" +
+        '<h2 class="guide-rtitle" id="guide-reader-title">' + esc(g.title) + "</h2>" +
+        '<p class="guide-rmeta"><span class="guide-mins">' + g.readMins + " min read</span>" + tags + "</p>" +
+      "</header>" +
+      '<div class="guide-rbody">' + g.body + "</div>" +
+      '<a class="guide-rback" href="#guides">&larr; All guides</a>';
+  }
+  var lastFocus = null;
+  function guideOpen() { var ov = $("#guide-overlay"); return !!(ov && !ov.hidden); }
+  function openGuide(slug) {
+    var g = guideBySlug(slug); if (!g) { closeGuide(); return; }
+    var ov = $("#guide-overlay"), body = $("#guide-reader-body");
+    if (!ov || !body) return;
+    body.innerHTML = guideReaderHTML(g);
+    lastFocus = document.activeElement;
+    ov.hidden = false;
+    document.documentElement.classList.add("guide-open");
+    var reader = ov.querySelector(".guide-reader");
+    if (reader) { reader.scrollTop = 0; reader.focus(); }
+  }
+  function closeGuide() {
+    var ov = $("#guide-overlay"); if (!ov || ov.hidden) return;
+    ov.hidden = true;
+    document.documentElement.classList.remove("guide-open");
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function closeReader() {
+    if (!guideOpen()) return;
+    if ((location.hash || "").indexOf("#guide/") === 0) location.hash = "guides"; // hashchange -> closeGuide
+    else closeGuide();
+  }
+  function copyText(text, btn) {
+    var label = btn.textContent;
+    var done = function () { btn.textContent = "Copied!"; btn.classList.add("is-copied"); setTimeout(function () { btn.textContent = label; btn.classList.remove("is-copied"); }, 1600); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text); done(); });
+    } else { fallbackCopy(text); done(); }
+  }
+  function fallbackCopy(text) {
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
+    } catch (e) {}
+  }
+  function wireGuideOverlay() {
+    var ov = $("#guide-overlay"); if (!ov) return;
+    ov.addEventListener("click", function (e) {
+      if (e.target.closest("[data-guide-close]")) { e.preventDefault(); closeReader(); return; }
+      var cp = e.target.closest("[data-copy]");
+      if (cp) { var pre = cp.parentNode.querySelector("pre"); if (pre) copyText(pre.innerText || pre.textContent, cp); }
+    });
+  }
+  function routeGuideHash() {
+    var h = (location.hash || "").replace(/^#/, "");
+    if (h.indexOf("guide/") === 0) {
+      if (state.tab !== "guides") switchTab("guides");
+      openGuide(h.slice("guide/".length));
+      return true;
+    }
+    if (h === "guides") {
+      closeGuide();
+      if (state.tab !== "guides") switchTab("guides");
+      return true;
+    }
+    return false;
+  }
+  var TAB_HASHES = { tools: 1, sch: 1, prog: 1, foryou: 1, saved: 1, guides: 1, about: 1 };
+  function routeHash() {
+    if (routeGuideHash()) return true;
+    if (guideOpen()) closeGuide();
+    var h = (location.hash || "").replace(/^#/, "");
+    if (TAB_HASHES[h]) { if (state.tab !== h) switchTab(h); return true; }
+    return false;
+  }
+
   // ---- theme ---------------------------------------------------------
   function initTheme() {
     var sv = localStorage.getItem("edu-theme");
@@ -669,6 +789,7 @@
   $("#n-sch").textContent = SCH.length;
   $("#n-prog").textContent = PROG.length;
   $("#n-saved").textContent = saved.size;
+  $("#n-guides").textContent = GUIDES.length;
   fillStats();
   var deepLink = applyHash();
   var subBtn = $("#submit-resource");
@@ -682,7 +803,11 @@
   buildProgChips();
   buildQuiz();
   renderSponsors();
+  renderGuides();
   wire();
+  wireGuideOverlay();
   initViews();
-  if (deepLink) switchTab("foryou"); else render();
+  window.addEventListener("hashchange", function () { routeHash(); });
+  if (deepLink) switchTab("foryou");
+  else if (!routeHash()) render();
 })();
