@@ -972,15 +972,63 @@
   }
 
   // ---- HERO (closing-soon strip + scholarship $ stat) ----------------
-  function moneyStat() {
-    var sum = SCH.reduce(function (a, s) { return a + ((s.amount > 0 && s.amount < FULL) ? s.amount : 0); }, 0);
-    if (sum >= 1e6) return "$" + (sum / 1e6).toFixed(1).replace(/\.0$/, "") + "M+";
-    if (sum >= 1e3) return "$" + Math.round(sum / 1e3) + "k+";
-    return "$" + commas(sum);
+  function fmtMoney(n) {
+    if (n >= 1e6) return "$" + (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M+";
+    if (n >= 1e3) return "$" + Math.round(n / 1e3) + "k+";
+    return "$" + commas(n);
+  }
+  function countUp(el, target, money) {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !window.requestAnimationFrame) { el.textContent = money ? fmtMoney(target) : commas(target); return; }
+    var dur = 1100, start = 0;
+    function tick(now) {
+      if (!start) start = now;
+      var t = Math.min(1, (now - start) / dur), e = 1 - Math.pow(1 - t, 3), v = Math.round(target * e);
+      el.textContent = money ? fmtMoney(v) : commas(v);
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  function renderHeroStats() {
+    var box = $("#hero-stats"); if (!box) return;
+    var dollars = SCH.reduce(function (a, s) { return a + ((s.amount > 0 && s.amount < FULL) ? s.amount : 0); }, 0);
+    var cards = [
+      { icon: "💰", target: dollars, money: true, label: "in scholarships", cls: " money" },
+      { icon: "🏆", target: SCH.length, label: "scholarships", cls: "" },
+      { icon: "🎓", target: PROG.length, label: "STEM programs", cls: "" },
+      { icon: "⏰", target: deadlineItems().length, label: "live deadlines", cls: "" }
+    ];
+    box.innerHTML = cards.map(function (c, i) {
+      return '<div class="hstat' + c.cls + '" style="animation-delay:' + (i * 80) + 'ms">' +
+        '<span class="hstat-ico" aria-hidden="true">' + c.icon + "</span>" +
+        '<b class="hstat-n">' + (c.money ? "$0" : "0") + "</b>" +
+        '<span class="hstat-l">' + c.label + "</span></div>";
+    }).join("");
+    box.hidden = false;
+    var nums = box.querySelectorAll(".hstat-n");
+    cards.forEach(function (c, i) { if (nums[i]) countUp(nums[i], c.target, !!c.money); });
+  }
+  var INSTITUTIONS = [
+    { name: "MIT", domain: "mit.edu" }, { name: "Stanford", domain: "stanford.edu" }, { name: "Harvard", domain: "harvard.edu" },
+    { name: "Caltech", domain: "caltech.edu" }, { name: "Princeton", domain: "princeton.edu" }, { name: "Yale", domain: "yale.edu" },
+    { name: "Columbia", domain: "columbia.edu" }, { name: "UC Berkeley", domain: "berkeley.edu" }, { name: "Cornell", domain: "cornell.edu" },
+    { name: "Johns Hopkins", domain: "jhu.edu" }, { name: "Carnegie Mellon", domain: "cmu.edu" }, { name: "Stony Brook", domain: "stonybrook.edu" },
+    { name: "NASA", domain: "nasa.gov" }, { name: "NSF", domain: "nsf.gov" }, { name: "Cold Spring Harbor", domain: "cshl.edu" },
+    { name: "Brookhaven Lab", domain: "bnl.gov" }, { name: "Society for Science", domain: "societyforscience.org" }, { name: "Regeneron", domain: "regeneron.com" },
+    { name: "Davidson", domain: "davidsongifted.org" }, { name: "Coca-Cola", domain: "coca-cola.com" }, { name: "Gates Foundation", domain: "gatesfoundation.org" },
+    { name: "QuestBridge", domain: "questbridge.org" }, { name: "Posse Foundation", domain: "possefoundation.org" }, { name: "Google", domain: "google.com" }, { name: "Microsoft", domain: "microsoft.com" }
+  ];
+  function renderLogos() {
+    var t = $("#logos-track"); if (!t) return;
+    var html = INSTITUTIONS.map(function (o) {
+      return '<a class="logo-tile" href="https://' + o.domain + '" target="_blank" rel="noopener">' +
+        '<img src="https://www.google.com/s2/favicons?domain=' + o.domain + '&sz=64" alt="" loading="lazy" width="20" height="20" />' +
+        "<span>" + esc(o.name) + "</span></a>";
+    }).join("");
+    t.innerHTML = html + html;   // duplicate for a seamless marquee loop
+    t.querySelectorAll("img").forEach(function (img) { img.addEventListener("error", function () { img.style.display = "none"; }); });
   }
   function renderHero() {
-    var stat = $("#hero-stat");
-    if (stat) { stat.innerHTML = "Over <b>" + moneyStat() + "</b> in scholarships, plus thousands in free tools and perks."; stat.hidden = false; }
     if (quizAnswered()) {
       var sm = 0, pm = 0;
       SCH.forEach(function (s) { if (schScore(s) >= 3) sm++; });
@@ -1080,6 +1128,8 @@
   renderDiscounts();
   renderCompetitions();
   renderHero();
+  renderHeroStats();
+  renderLogos();
   wire();
   wireGuideOverlay();
   wireTemplates();

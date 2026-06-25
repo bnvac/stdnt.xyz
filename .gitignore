@@ -4,3 +4,6 @@ node_modules/
 
 # link checker output (generated in CI)
 link-report.md
+
+# local browser-verification artifacts
+.playwright-mcp/
