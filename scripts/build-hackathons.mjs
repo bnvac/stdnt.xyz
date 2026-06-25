@@ -77,6 +77,16 @@ async function main() {
     events.push(e);
   }
 
+  // skip rewriting when the events are unchanged, so the daily job doesn't
+  // create no-op commits just because the timestamp moved.
+  try {
+    const prev = JSON.parse(readFileSync("data/hackathons.json", "utf8"));
+    if (JSON.stringify(prev.events) === JSON.stringify(events)) {
+      console.log("no change -", events.length, "events; leaving file as is");
+      return;
+    }
+  } catch { /* no prior file - write a fresh one */ }
+
   const out = {
     updated: new Date().toISOString(),
     source: "hackathons.hackclub.com API + curated MLH",
