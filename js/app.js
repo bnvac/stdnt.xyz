@@ -16,6 +16,7 @@
   var DISC_CATS = window.DISCOUNT_CATS || [];
   var COMPS = window.COMPETITIONS || [];
   var COMP_CATS = window.COMPETITION_CATS || [];
+  var HACKATHONS = window.HACKATHONS || [];
   var FULL = window.SCH_FULL || 1000000;
   var CAT = {}; CATS.forEach(function (c) { CAT[c.id] = c; });
   DISC_CATS.forEach(function (c) { CAT[c.id] = c; });   // discount categories share the label map
@@ -23,6 +24,15 @@
 
   var ICON_CDN = "https://cdn.simpleicons.org/";
   var STAR = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.6 1.1 6.45L12 18.9 6.2 21l1.1-6.45L2.6 9.95l6.5-.95z"/></svg>';
+  // line icons (currentColor, sized by CSS) - used in the hero + hackathons tab
+  var SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+  var ICO_MONEY = SVG + '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5h0M18 14.5h0"/></svg>';
+  var ICO_TROPHY = SVG + '<path d="M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 6H4.5v1A3.5 3.5 0 0 0 8 10.5M17 6h2.5v1A3.5 3.5 0 0 1 16 10.5"/><path d="M9.5 18h5M12 14v4M8.5 21h7"/></svg>';
+  var ICO_CAP = SVG + '<path d="M12 4 2 9l10 5 10-5-10-5z"/><path d="M6 11.3V16c0 1.2 2.7 2.4 6 2.4s6-1.2 6-2.4v-4.7"/><path d="M22 9.2v5"/></svg>';
+  var ICO_CLOCK = SVG + '<circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 1.8"/></svg>';
+  var ICO_CAL = SVG + '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>';
+  var ICO_PIN = SVG + '<path d="M20 10c0 5.5-8 11-8 11s-8-5.5-8-11a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.6"/></svg>';
+  var ICO_GLOBE = SVG + '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15 0 18M12 3c-2.6 2.6-2.6 15 0 18"/></svg>';
   var RANK = { "S++": 0, "S+": 1, "S": 2, "S-": 3, "A+": 4, "A": 5, "A-": 6, "B+": 7, "B": 8, "B-": 9, "C+": 10, "C": 11, "C-": 12 };
   var MONTHS = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
   var SCH_GROUPS = [
@@ -544,6 +554,11 @@
       meta.textContent = state.q ? ("Showing " + cn + " of " + COMPS.length + " competitions") : (COMPS.length + " competitions");
       empty.hidden = true; return;
     }
+    if (state.tab === "hackathons") {
+      var hk = renderHackathons();
+      meta.textContent = state.q ? ("Showing " + hk + " of " + HACKATHONS.length + " hackathons") : (HACKATHONS.length + " upcoming hackathons");
+      empty.hidden = true; return;
+    }
     var n, total, label;
     if (state.tab === "tools") { n = renderTools(); total = RES.length; label = "tools"; }
     else if (state.tab === "sch") { n = renderSch(); total = SCH.length; label = "scholarships"; }
@@ -555,7 +570,7 @@
     state.tab = tab;
     document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === tab); });
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
-    ["tools", "discounts", "sch", "prog", "competitions", "deadlines", "foryou", "saved", "guides", "templates", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
+    ["tools", "discounts", "sch", "prog", "competitions", "deadlines", "foryou", "saved", "guides", "templates", "hackathons", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
     document.title = (TAB_TITLES[tab] ? TAB_TITLES[tab] + " · " : "") + "stdnt.xyz - free stuff for students";
     var moreBtn = $("#more-btn"); if (moreBtn) moreBtn.classList.toggle("is-active", !!OVERFLOW[tab]);
     closeMore();
@@ -564,6 +579,7 @@
       tab === "sch" ? "Search scholarships..." :
       tab === "prog" ? "Search programs, subjects..." :
       tab === "competitions" ? "Search competitions..." :
+      tab === "hackathons" ? "Search hackathons, cities..." :
       tab === "deadlines" ? "Search deadlines..." :
       tab === "saved" ? "Search your saved list..." :
       tab === "guides" ? "Search guides..." :
@@ -792,9 +808,9 @@
     }
     return false;
   }
-  var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, deadlines: 1, foryou: 1, saved: 1, guides: 1, templates: 1, about: 1 };
-  var OVERFLOW = { guides: 1, templates: 1, about: 1 };   // tabs tucked into the "More" menu
-  var TAB_TITLES = { tools: "Free tools & perks", discounts: "Student discounts", sch: "Scholarships", prog: "STEM programs", competitions: "Competitions", deadlines: "Deadlines", foryou: "Find your matches", saved: "Saved", guides: "Guides", templates: "Templates", about: "About" };
+  var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, deadlines: 1, foryou: 1, saved: 1, guides: 1, templates: 1, hackathons: 1, about: 1 };
+  var OVERFLOW = { guides: 1, templates: 1, hackathons: 1, about: 1 };   // tabs tucked into the "More" menu
+  var TAB_TITLES = { tools: "Free tools & perks", discounts: "Student discounts", sch: "Scholarships", prog: "STEM programs", competitions: "Competitions", deadlines: "Deadlines", foryou: "Find your matches", saved: "Saved", guides: "Guides", templates: "Templates", hackathons: "Hackathons", about: "About" };
   function closeMore() { var m = $("#tab-menu"), b = $("#more-btn"); if (m && !m.hidden) { m.hidden = true; if (b) b.setAttribute("aria-expanded", "false"); } }
   function wireMore() {
     var btn = $("#more-btn"), menu = $("#tab-menu"); if (!btn || !menu) return;
@@ -910,6 +926,91 @@
     return list.length;
   }
 
+  // ---- HACKATHONS ----------------------------------------------------
+  function hackathonsFiltered() {
+    var ts = terms();
+    return HACKATHONS.filter(function (h) {
+      if (!ts.length) return true;
+      return hit([h.name, h.city, h.region, h.country, h.format, h.source].join(" "), ts);
+    });
+  }
+  function hkParts(s) { var a = (s || "").split("-"); return a.length === 3 ? { y: +a[0], m: +a[1] - 1, d: +a[2] } : null; }
+  function hkDate(h) {
+    var s = hkParts(h.start), e = hkParts(h.end);
+    if (!s) return "Dates TBA";
+    var sm = DL_MON[s.m];
+    if (!e || (e.y === s.y && e.m === s.m && e.d === s.d)) return sm + " " + s.d;
+    if (e.y === s.y && e.m === s.m) return sm + " " + s.d + "–" + e.d;
+    return sm + " " + s.d + " – " + DL_MON[e.m] + " " + e.d;
+  }
+  function hkDays(s) {
+    var p = hkParts(s); if (!p) return null;
+    var now = new Date(); now.setHours(0, 0, 0, 0);
+    return Math.round((new Date(p.y, p.m, p.d) - now) / 86400000);
+  }
+  function hkLoc(h) {
+    if (h.format === "online") return "Online · Worldwide";
+    var loc = [h.city, h.region && h.region !== h.city ? h.region : h.country].filter(Boolean).join(", ");
+    return loc || (h.country || "In person");
+  }
+  function hkHue(s) { var n = 0; for (var i = 0; i < s.length; i++) n = (n * 31 + s.charCodeAt(i)) % 360; return n; }
+  function hackCard(h, i) {
+    var fmtCls = h.format === "online" ? "is-online" : h.format === "hybrid" ? "is-hybrid" : "is-inperson";
+    var fmtLbl = h.format === "online" ? "Online" : h.format === "hybrid" ? "Hybrid" : "In person";
+    var d0 = hkDays(h.start), d1 = hkDays(h.end), pill = "";
+    if (d0 !== null) {
+      if (d0 <= 0 && (d1 === null || d1 >= 0)) pill = '<span class="hk-pill hk-live">Live now</span>';
+      else if (d0 === 1) pill = '<span class="hk-pill hk-soon">Tomorrow</span>';
+      else if (d0 > 1 && d0 <= 14) pill = '<span class="hk-pill hk-soon">in ' + d0 + ' days</span>';
+    }
+    var tags = '<span class="tg hk-fmt ' + fmtCls + '">' + fmtLbl + "</span>";
+    if (h.hs) tags += '<span class="tg">High school</span>';
+    tags += '<span class="tg hk-src">' + esc(h.source) + "</span>";
+    return '<a class="card hk-card" href="' + esc(h.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
+      '<div class="card-top">' +
+        '<span class="hk-ava" style="--h:' + hkHue(h.name || "?") + '" aria-hidden="true">' + esc((h.name || "?").trim().charAt(0).toUpperCase()) + "</span>" +
+        '<span class="card-name">' + esc(h.name) + pill + "</span></div>" +
+      '<div class="hk-info">' +
+        '<span class="hk-line">' + ICO_CAL + "<span>" + hkDate(h) + "</span></span>" +
+        '<span class="hk-line">' + (h.format === "online" ? ICO_GLOBE : ICO_PIN) + "<span>" + esc(hkLoc(h)) + "</span></span></div>" +
+      '<div class="card-foot hk-foot">' + tags + "</div></a>";
+  }
+  function renderHackathons() {
+    var box = $("#hackathons-grid"); if (!box) return 0;
+    var list = hackathonsFiltered();
+    if (!list.length) { box.innerHTML = '<p class="muted guides-empty">No hackathons match your search.</p>'; return 0; }
+    var groups = [], idx = {}, n = 0;
+    list.forEach(function (h) {
+      var p = hkParts(h.start), key = p ? (DL_MON[p.m] + " " + p.y) : "Dates TBA";
+      if (idx[key] == null) { idx[key] = groups.length; groups.push({ key: key, items: [] }); }
+      groups[idx[key]].items.push(h);
+    });
+    box.innerHTML = groups.map(function (g) {
+      return '<h3 class="saved-h">' + esc(g.key) + " <span>" + g.items.length + "</span></h3>" +
+        '<div class="grid">' + g.items.map(function (h) { return hackCard(h, n++); }).join("") + "</div>";
+    }).join("");
+    return list.length;
+  }
+  // pull the freshest list (same-origin JSON, refreshed daily by CI); the
+  // baked-in window.HACKATHONS stays as the offline fallback.
+  function loadHackathons() {
+    fetch("data/hackathons.json", { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d || !d.events || !d.events.length) return;
+        HACKATHONS = d.events;
+        $("#n-hackathons").textContent = HACKATHONS.length;
+        var note = $("#hk-updated");
+        if (note && d.updated) {
+          var dt = new Date(d.updated);
+          note.textContent = "Live · updated " + DL_MON[dt.getMonth()] + " " + dt.getDate();
+          note.hidden = false;
+        }
+        if (state.tab === "hackathons") render();
+      })
+      .catch(function () {});
+  }
+
   // ---- DEADLINES (aggregated) ----------------------------------------
   var DL_MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   function deadlineItems() {
@@ -993,10 +1094,10 @@
     var box = $("#hero-stats"); if (!box) return;
     var dollars = SCH.reduce(function (a, s) { return a + ((s.amount > 0 && s.amount < FULL) ? s.amount : 0); }, 0);
     var cards = [
-      { icon: "💰", target: dollars, money: true, label: "in scholarships", cls: " money" },
-      { icon: "🏆", target: SCH.length, label: "scholarships", cls: "" },
-      { icon: "🎓", target: PROG.length, label: "STEM programs", cls: "" },
-      { icon: "⏰", target: deadlineItems().length, label: "live deadlines", cls: "" }
+      { icon: ICO_MONEY, target: dollars, money: true, label: "in scholarships", cls: " money" },
+      { icon: ICO_TROPHY, target: SCH.length, label: "scholarships", cls: "" },
+      { icon: ICO_CAP, target: PROG.length, label: "STEM programs", cls: "" },
+      { icon: ICO_CLOCK, target: deadlineItems().length, label: "live deadlines", cls: "" }
     ];
     box.innerHTML = cards.map(function (c, i) {
       return '<div class="hstat' + c.cls + '" style="animation-delay:' + (i * 80) + 'ms">' +
@@ -1042,7 +1143,7 @@
     var chips = all.slice(0, 4).map(function (it) {
       return '<a class="soon-chip" href="' + esc(it.url) + '" target="_blank" rel="noopener"><b>' + DL_MON[it.info.date.getMonth()] + " " + it.info.date.getDate() + "</b> " + esc(it.name) + "</a>";
     }).join("");
-    box.innerHTML = '<span class="soon-label">&#9200; Closing soon</span>' + chips + '<a class="soon-all" href="#deadlines">See all ' + all.length + " &rarr;</a>";
+    box.innerHTML = '<span class="soon-label">' + ICO_CLOCK + ' Closing soon</span>' + chips + '<a class="soon-all" href="#deadlines">See all ' + all.length + " &rarr;</a>";
     box.hidden = false;
   }
 
@@ -1109,6 +1210,7 @@
   $("#n-deadlines").textContent = deadlineItems().length;
   $("#n-discounts").textContent = DISCOUNTS.length;
   $("#n-competitions").textContent = COMPS.length;
+  $("#n-hackathons").textContent = HACKATHONS.length;
   fillStats();
   var deepLink = applyHash();
   var subBtn = $("#submit-resource");
@@ -1127,6 +1229,8 @@
   renderDeadlines();
   renderDiscounts();
   renderCompetitions();
+  renderHackathons();
+  loadHackathons();
   renderHero();
   renderHeroStats();
   renderLogos();

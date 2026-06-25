@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
   <meta name="theme-color" content="#0c0d10" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
-  <link rel="stylesheet" href="css/styles.css?v=19" />
+  <link rel="stylesheet" href="css/styles.css?v=20" />
 </head>
 <body>
   <!-- ============================================================ HEADER -->
@@ -91,9 +91,10 @@
       <div class="tab-more">
         <button class="tab-more-btn" id="more-btn" type="button" aria-haspopup="true" aria-expanded="false">More <span class="more-caret" aria-hidden="true">&#9662;</span></button>
         <div class="tab-menu" id="tab-menu" hidden>
-          <button class="tab" data-tab="guides"    role="tab" type="button">Guides <span class="tab-n" id="n-guides">0</span></button>
-          <button class="tab" data-tab="templates" role="tab" type="button">Templates <span class="tab-n" id="n-templates">0</span></button>
-          <button class="tab" data-tab="about"     role="tab" type="button">About</button>
+          <button class="tab" data-tab="guides"     role="tab" type="button">Guides <span class="tab-n" id="n-guides">0</span></button>
+          <button class="tab" data-tab="templates"  role="tab" type="button">Templates <span class="tab-n" id="n-templates">0</span></button>
+          <button class="tab" data-tab="hackathons" role="tab" type="button">Hackathons <span class="tab-n" id="n-hackathons">0</span></button>
+          <button class="tab" data-tab="about"      role="tab" type="button">About</button>
         </div>
       </div>
     </nav>
@@ -227,6 +228,15 @@
       <div class="templates-grid" id="templates-grid"></div>
     </section>
 
+    <!-- ======================================================= HACKATHONS -->
+    <section id="panel-hackathons" class="panel" role="tabpanel" hidden>
+      <div class="guides-head">
+        <h2 class="guides-title">Hackathons <span class="hk-updated" id="hk-updated" hidden></span></h2>
+        <p class="guides-sub">Upcoming hackathons worldwide — build something in a weekend, win prizes, meet people. <b>Online</b> events are open to anyone; <b>in-person</b> ones are grouped by month. Live listings from <a href="https://hackathons.hackclub.com/" target="_blank" rel="noopener">Hack Club</a> &amp; <a href="https://mlh.io/seasons/2026/events" target="_blank" rel="noopener">MLH</a>, refreshed daily.</p>
+      </div>
+      <div id="hackathons-grid"></div>
+    </section>
+
     <!-- ============================================================ ABOUT -->
     <section id="panel-about" class="panel" role="tabpanel" hidden>
       <div class="about">
@@ -328,14 +338,15 @@
     </article>
   </div>
 
-  <script src="js/data.js?v=19"></script>
-  <script src="js/scholarships.js?v=19"></script>
-  <script src="js/programs.js?v=19"></script>
-  <script src="js/programs-extra.js?v=19"></script>
-  <script src="js/guides.js?v=19"></script>
-  <script src="js/templates.js?v=19"></script>
-  <script src="js/discounts.js?v=19"></script>
-  <script src="js/competitions.js?v=19"></script>
-  <script src="js/app.js?v=19"></script>
+  <script src="js/data.js?v=20"></script>
+  <script src="js/scholarships.js?v=20"></script>
+  <script src="js/programs.js?v=20"></script>
+  <script src="js/programs-extra.js?v=20"></script>
+  <script src="js/guides.js?v=20"></script>
+  <script src="js/templates.js?v=20"></script>
+  <script src="js/discounts.js?v=20"></script>
+  <script src="js/competitions.js?v=20"></script>
+  <script src="js/hackathons.js?v=20"></script>
+  <script src="js/app.js?v=20"></script>
 </body>
 </html>
