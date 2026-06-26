@@ -104,6 +104,14 @@
     return '<button class="flag" type="button" data-flag-name="' + esc(name) + '" data-flag-url="' + esc(url || "") +
       '" title="Report a problem: dead link, ended, or wrong date" aria-label="Report a problem with this listing">' + FLAG_SVG + "</button>";
   }
+  // "verified" chip - shown only where a human last reviewed the listing (item.verified = "YYYY-MM")
+  var CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+  function verifiedChip(item) {
+    if (!item || !item.verified) return "";
+    var v = String(item.verified), p = v.split("-");
+    var label = (p.length >= 2 && DL_MON) ? (DL_MON[(+p[1]) - 1] + " '" + p[0].slice(2)) : v;
+    return ' <span class="vchip" title="Last reviewed by a human ' + esc(v) + '">' + CHECK_SVG + "Verified " + esc(label) + "</span>";
+  }
   // pull the weekly link-check results (same-origin JSON, refreshed by CI)
   function loadLinkStatus() {
     fetch("data/link-status.json", { cache: "no-cache" })
@@ -139,8 +147,8 @@
   var state = {
     tab: "tools", q: "",
     tools: { access: "all", cat: "all" },
-    sch: { group: "all", sort: "amount" },
-    prog: { grade: "all", free: false, sort: "rank" },
+    sch: { group: "all", sort: "amount", eligible: false },
+    prog: { grade: "all", free: false, sort: "rank", eligible: false },
     deadlines: { kind: "all", window: "all" }
   };
 
@@ -308,7 +316,7 @@
     return '<a class="card' + (internal ? " card-guide" : "") + '" href="' + esc(r.url) + '"' + link + ' style="animation-delay:' +
       Math.min(i * 16, 240) + 'ms">' +
       '<div class="card-top">' + iconHTML(r) +
-      '<span class="card-name">' + esc(r.name) + (r.featured ? ' <span class="card-star">&#9733;</span>' : "") + "</span>" +
+      '<span class="card-name">' + esc(r.name) + (r.featured ? ' <span class="card-star">&#9733;</span>' : "") + verifiedChip(r) + "</span>" +
       '<span class="card-meta">' + badge + starBtn("tool", r.name) + (internal ? "" : flagBtn(r.name, r.url)) + "</span></div>" +
       (r.value ? '<span class="card-value">' + esc(r.value) + "</span>" : "") +
       '<p class="card-desc">' + esc(r.desc) + "</p>" +
@@ -336,11 +344,14 @@
       state.sch.group = b.dataset.group; activate(box, b); render();
     });
     $("#sch-sort").addEventListener("change", function (e) { state.sch.sort = e.target.value; render(); });
+    var elig = $("#sch-eligible");
+    if (elig) elig.addEventListener("change", function (e) { state.sch.eligible = e.target.checked; render(); });
   }
   function schFiltered() {
-    var ts = terms();
+    var ts = terms(), onlyElig = state.sch.eligible && quizAnswered();
     var list = SCH.filter(function (s) {
       if (state.sch.group !== "all" && s.group !== state.sch.group) return false;
+      if (onlyElig && schScore(s) === -1) return false;
       if (ts.length && !hit([s.name, s.level, s.note, s.amountText, (s.tags || []).join(" ")].join(" "), ts)) return false;
       return true;
     });
@@ -357,12 +368,12 @@
     var amtFull = s.amount >= FULL || /full/i.test(s.amountText || "");
     var tags = (s.tags || []).map(function (t) { return '<span class="tg">' + esc(t) + "</span>"; }).join("");
     var sub = esc(s.level || "") + (s.note ? " &middot; " + esc(s.note) : "") + (s.find ? ' <span class="find">&middot; search</span>' : "");
-    var ft = freshTags(s, s.url);
+    var ft = freshTags(s, s.url), eg = eligChips(s);
     return '<div class="row' + (gone(s) ? " row-gone" : "") + '" style="animation-delay:' + Math.min(i * 8, 180) + 'ms">' +
       '<a class="row-main" href="' + esc(s.url) + '" target="_blank" rel="noopener">' +
-      '<div class="row-title">' + esc(s.name) + matchBadge("sch", s) + ' <span class="ext">&#8599;</span></div>' +
+      '<div class="row-title">' + esc(s.name) + matchBadge("sch", s) + verifiedChip(s) + ' <span class="ext">&#8599;</span></div>' +
       '<div class="row-sub">' + sub + "</div>" +
-      ((tags || ft) ? '<div class="row-tags">' + ft + tags + "</div>" : "") + "</a>" +
+      ((tags || ft || eg) ? '<div class="row-tags">' + ft + eg + tags + "</div>" : "") + "</a>" +
       '<span class="row-acts">' + starBtn("sch", s.name) + flagBtn(s.name, s.url) + "</span>" +
       '<div class="row-right"><span class="row-amt' + (amtFull ? " full" : "") + '">' + esc(s.amountText || "Varies") + "</span>" +
       calCell(s.name, s.url, s.deadline) + "</div></div>";
@@ -382,12 +393,15 @@
     });
     $("#prog-free").addEventListener("change", function (e) { state.prog.free = e.target.checked; render(); });
     $("#prog-sort").addEventListener("change", function (e) { state.prog.sort = e.target.value; render(); });
+    var elig = $("#prog-eligible");
+    if (elig) elig.addEventListener("change", function (e) { state.prog.eligible = e.target.checked; render(); });
   }
   function progFiltered() {
-    var ts = terms();
+    var ts = terms(), onlyElig = state.prog.eligible && quizAnswered();
     var list = PROG.filter(function (p) {
       if (state.prog.free && !p.free) return false;
       if (state.prog.grade !== "all" && (p.grades || []).indexOf(state.prog.grade) < 0) return false;
+      if (onlyElig && progScore(p) === -1) return false;
       if (ts.length && !hit([p.name, p.details, (p.subjects || []).join(" "), (p.tags || []).join(" "), (p.grades || []).join(" ")].join(" "), ts)) return false;
       return true;
     });
@@ -421,9 +435,9 @@
     var fav = (p.flagship && domainOf(p.url)) ? '<img class="row-fav" src="' + faviconURL(domainOf(p.url)) + '" alt="" loading="lazy" />' : "";
     return '<div class="row' + (gone(p) ? " row-gone" : "") + '" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' + rank +
       '<a class="row-main" href="' + esc(url) + '" target="_blank" rel="noopener">' +
-      '<div class="row-title">' + fav + esc(p.name) + (p.flagship ? ' <span class="card-star">&#9733;</span>' : "") + matchBadge("prog", p) + ' <span class="ext">&#8599;</span></div>' +
+      '<div class="row-title">' + fav + esc(p.name) + (p.flagship ? ' <span class="card-star">&#9733;</span>' : "") + matchBadge("prog", p) + verifiedChip(p) + ' <span class="ext">&#8599;</span></div>' +
       '<div class="row-sub">' + sub + "</div>" +
-      '<div class="row-tags">' + freshTags(p, url) + stateTag + grades + subs + "</div></a>" +
+      '<div class="row-tags">' + freshTags(p, url) + eligChips(p) + stateTag + grades + subs + "</div></a>" +
       '<span class="row-acts">' + starBtn("prog", p.name) + flagBtn(p.name, url) + "</span>" +
       '<div class="row-right"><span class="row-amt' + (cost.full ? " full" : "") + '">' + esc(cost.t) + "</span>" +
       calCell(p.name, url, p.deadline) + "</div></div>";
@@ -505,6 +519,10 @@
       { v: "woman", l: "Woman" }, { v: "nonbinary", l: "Non-binary" }, { v: "man", l: "Man" }, { v: "", l: "Prefer not" } ] },
     { id: "firstgen", q: "First-generation college student?", opts: [ { v: "yes", l: "Yes" }, { v: "", l: "No / skip" } ] },
     { id: "immigrant", q: "Immigrant, DACA or undocumented?", opts: [ { v: "yes", l: "Yes" }, { v: "", l: "No / skip" } ] },
+    { id: "citizenship", q: "Citizenship status?", opts: [
+      { v: "us", l: "US citizen / PR" }, { v: "intl", l: "International" }, { v: "", l: "Skip" } ] },
+    { id: "gpa", q: "Roughly your GPA? (filters out minimums you miss)", opts: [
+      { v: "3.9", l: "3.75+" }, { v: "3.5", l: "3.5-3.74" }, { v: "3.0", l: "3.0-3.49" }, { v: "2.5", l: "Below 3.0" }, { v: "", l: "Skip" } ] },
     { id: "field", q: "What field are you into?", opts: [
       { v: "cs", l: "Computer Science" }, { v: "eng", l: "Engineering" }, { v: "med", l: "Medicine / Bio" },
       { v: "math", l: "Math / Physics" }, { v: "business", l: "Business" }, { v: "arts", l: "Arts & Humanities" }, { v: "", l: "Undecided" } ] },
@@ -544,8 +562,56 @@
     if (grade === "College") return college || !hs;     // college: ok if college-ish or open (not strictly HS)
     return !(college && !hs);                            // HS: ok unless clearly college/grad only
   }
+  // ---- eligibility: turn buried requirements into structured fields ----
+  function eligibilityOf(item) {
+    var tags = lc(item.tags);
+    var strict = (item.name + " " + (item.note || "") + " " + tags.join(" ")).toLowerCase();
+    var full = (strict + " " + (item.details || "") + " " + (item.level || "") + " " + (item.amountText || "")).toLowerCase();
+    var e = { intlOk: null, needBased: false, incomeMax: null, firstGen: false, gpaMin: null, groups: {} };
+    if (/international|all nationalities|any nationality|regardless of citizenship|students worldwide|non-citizen/.test(full)) e.intlOk = true;
+    if (e.intlOk !== true && /u\.s\.? citizen|citizen or permanent|permanent resident|green card|citizens? only|must be a citizen|domestic student/.test(full)) e.intlOk = false;
+    if (inArr(tags, "need-based") || /need-based|financial need|low-income|low income|\bpell\b|family income|household income|economic hardship|adversity|demonstrated need/.test(full)) e.needBased = true;
+    if (/income|earn|families|household/.test(full)) {
+      var mk = full.match(/\$\s?([0-9]{1,3})\s?k\b/), mf = full.match(/\$\s?([0-9]{2,3}),([0-9]{3})\b/);
+      if (mk) e.incomeMax = +mk[1] * 1000; else if (mf) e.incomeMax = +(mf[1] + mf[2]);
+    }
+    var g = full.match(/([0-3]\.[0-9]{1,2})\s*(?:\+|or higher|gpa|minimum)|gpa[^0-9]{0,14}([0-3]\.[0-9]{1,2})/);
+    if (g) { var gv = parseFloat(g[1] || g[2]); if (gv >= 2 && gv <= 4) e.gpaMin = gv; }
+    if (inArr(tags, "first gen") || /first-gen|first generation/.test(full)) e.firstGen = true;
+    function grp(k, re) { if (re.test(strict)) e.groups[k] = true; }
+    grp("women", /\bwomen\b|\bwoman\b|female|\bgirls\b/);
+    grp("black", /black|african[ -]?american/);
+    grp("hispanic", /hispanic|latino|latina|latinx/);
+    grp("native", /native american|indigenous|american indian|alaska native/);
+    grp("aapi", /asian|pacific islander|\baapi\b/);
+    grp("lgbtq", /lgbtq|\blgbt\b|queer|transgender/);
+    grp("disability", /disabilit|disabled|\bdeaf\b|blind/);
+    grp("veteran", /veteran|military|armed forces/);
+    grp("immigrant", /\bdaca\b|undocumented|immigrant|dreamer/);
+    return e;
+  }
+  // hard ineligibility - only when the user actually told us, and only on
+  // confident signals (citizenship, GPA minimum, women-only, race-restricted)
+  function eligExclude(item) {
+    var q = quiz, el = eligibilityOf(item);
+    if (q.citizenship === "intl" && el.intlOk === false) return true;
+    if (q.gpa && el.gpaMin && parseFloat(q.gpa) < el.gpaMin) return true;
+    if (q.gender === "man" && el.groups.women) return true;
+    if (q.race) { var rk = ["black", "hispanic", "native", "aapi"].filter(function (r) { return el.groups[r]; }); if (rk.length && rk.indexOf(q.race) < 0) return true; }
+    return false;
+  }
+  function eligChips(item) {
+    var e = eligibilityOf(item), out = "";
+    function c(l) { out += '<span class="tg tg-elig">' + l + "</span>"; }
+    if (e.intlOk === true) c("Intl OK");
+    if (e.gpaMin) c("GPA " + e.gpaMin + "+");
+    if (e.incomeMax) c("Income &le; $" + (e.incomeMax >= 1000 ? Math.round(e.incomeMax / 1000) + "k" : e.incomeMax));
+    if (e.needBased && !inArr(lc(item.tags), "need-based")) c("Need-based");
+    return out;
+  }
   function schScore(s) {
     var q = quiz, t = lc(s.tags), note = (s.note || "").toLowerCase(), name = s.name.toLowerCase(), sc = 0;
+    if (eligExclude(s)) return -1;
     if (q.grade) { if (!levelOk(s.level, q.grade)) return -1; sc = 1; } // eligible-by-grade baseline
     if ((q.income === "low" || q.income === "mid") && (inArr(t, "need-based") || inArr(t, "adversity"))) sc += 2;
     if (q.race) {
@@ -565,6 +631,7 @@
   }
   function progScore(p) {
     var q = quiz, t = lc(p.tags), subj = lc(p.subjects), sc = 1; // baseline: eligible (excluded entries return -1)
+    if (eligExclude(p)) return -1;
     if (q.grade && q.grade !== "College") { if ((p.grades || []).indexOf(q.grade) < 0) return -1; sc += 1; }
     if ((q.income === "low" || q.income === "mid") && inArr(t, "low-income")) sc += 2;
     if (q.race && inArr(t, "minority")) sc += 2;

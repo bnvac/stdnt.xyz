@@ -329,6 +329,16 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
   border: 1px solid color-mix(in srgb, var(--evr) 26%, transparent); border-radius: 999px; padding: .2rem .6rem;
 }
 .fresh-help { margin: 0 0 1rem; font-size: .8rem; color: var(--tx-3); line-height: 1.5; max-width: 70ch; }
+
+/* ---- eligibility chips + verified chip ---- */
+.tg-elig { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 32%, transparent); background: color-mix(in srgb, var(--accent) 9%, transparent); font-weight: 600; }
+.vchip {
+  display: inline-flex; align-items: center; gap: .2rem; font-size: .62rem; font-weight: 700; letter-spacing: .01em;
+  color: var(--evr); background: color-mix(in srgb, var(--evr) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--evr) 28%, transparent); border-radius: 999px;
+  padding: .04rem .4rem; vertical-align: middle; white-space: nowrap;
+}
+.vchip svg { width: 10px; height: 10px; }
 .tg-pin { width: 11px; height: 11px; margin-right: 1px; vertical-align: -1px; }
 .row-fav { width: 18px; height: 18px; border-radius: 4px; object-fit: contain; background: #fff; flex: none; }
 .saved-h span {
