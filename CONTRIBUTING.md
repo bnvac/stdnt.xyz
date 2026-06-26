@@ -21,6 +21,10 @@ and pick a category:
 Each one is a short structured form. Submit it and it becomes a tracked issue — a
 maintainer copies it into the data and merges. **You don't need to touch any code.**
 
+Every form has an optional **logo / screenshot** field — just drag an image into it
+(or paste from your clipboard) and GitHub uploads it for you. A logo or a screenshot
+of the page is a big help.
+
 ## 2. The fast way — open a pull request
 
 Every listing is **one plain object** in a JS file. No build step, no framework.

@@ -37,3 +37,9 @@ body:
     attributes:
       label: Details
       placeholder: What did you find? A corrected link or deadline is hugely helpful.
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot (optional)
+      description: Drag in a screenshot of the broken page or wrong info — pasting from your clipboard works too.
+      placeholder: Drop a screenshot here...

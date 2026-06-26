@@ -1451,7 +1451,7 @@
     }).join("");
     var steps = [
       ["1", "Pick a category", "Choose what you want to add below."],
-      ["2", "Fill the form", "A short, structured form on GitHub — no coding."],
+      ["2", "Fill the form", "A short form on GitHub — you can even drag in a logo or screenshot."],
       ["3", "It's tracked", "It becomes an issue credited to your GitHub account."]
     ].map(function (s) {
       return '<div class="cb-step"><span class="cb-step-n">' + s[0] + "</span>" +
