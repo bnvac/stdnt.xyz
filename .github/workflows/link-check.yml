@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   issues: write
 
 jobs:
@@ -25,6 +25,19 @@ jobs:
         id: check
         run: node scripts/check-links.mjs
         continue-on-error: true
+
+      - name: Commit link status if changed
+        if: always()
+        run: |
+          if [ -n "$(git status --porcelain data/link-status.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/link-status.json
+            git commit -m "Update link status [skip ci]"
+            git push
+          else
+            echo "No link-status change."
+          fi
 
       - name: Open or update issue on failure
         if: steps.check.outcome == 'failure'

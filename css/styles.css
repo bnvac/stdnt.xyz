@@ -301,6 +301,34 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
 }
 .saved-h:first-child { margin-top: 0; }
 .saved-h-ico svg { width: 18px; height: 18px; flex: none; color: var(--accent); }
+
+/* ---- freshness: status flags, link-down badges & reporting ---- */
+.status {
+  display: inline-flex; align-items: center; gap: .25rem; font-size: .68rem; font-weight: 700;
+  letter-spacing: .01em; padding: .08rem .42rem .08rem .34rem; border-radius: 999px; white-space: nowrap;
+}
+.status svg { width: 12px; height: 12px; flex: none; }
+.status-defunct, .status-cancelled, .status-dead { color: #ef4444; background: color-mix(in srgb, #ef4444 14%, transparent); border: 1px solid color-mix(in srgb, #ef4444 32%, transparent); }
+.status-paused { color: #f59e0b; background: color-mix(in srgb, #f59e0b 14%, transparent); border: 1px solid color-mix(in srgb, #f59e0b 32%, transparent); }
+.status-unconfirmed { color: var(--tx-3); background: var(--bg-2); border: 1px solid var(--line); }
+.card-flags { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0 0 .55rem; }
+.row-acts { flex: none; display: inline-flex; align-items: center; gap: .15rem; }
+.flag {
+  flex: none; display: grid; place-items: center; width: 30px; height: 30px; padding: 0; border-radius: 8px;
+  background: transparent; border: 1px solid transparent; color: var(--tx-3); cursor: pointer;
+  transition: color .15s, background .15s, border-color .15s;
+}
+.flag svg { width: 15px; height: 15px; }
+.flag:hover { color: #ef4444; background: color-mix(in srgb, #ef4444 12%, transparent); border-color: color-mix(in srgb, #ef4444 30%, transparent); }
+.card-meta .flag { width: 26px; height: 26px; }
+.row-gone { opacity: .62; }
+.row-gone .row-amt { text-decoration: line-through; }
+.fresh-note {
+  display: inline-flex; align-items: center; gap: .4rem; margin: 0 0 .5rem; font-size: .74rem; font-weight: 600;
+  color: var(--evr); background: color-mix(in srgb, var(--evr) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--evr) 26%, transparent); border-radius: 999px; padding: .2rem .6rem;
+}
+.fresh-help { margin: 0 0 1rem; font-size: .8rem; color: var(--tx-3); line-height: 1.5; max-width: 70ch; }
 .tg-pin { width: 11px; height: 11px; margin-right: 1px; vertical-align: -1px; }
 .row-fav { width: 18px; height: 18px; border-radius: 4px; object-fit: contain; background: #fff; flex: none; }
 .saved-h span {

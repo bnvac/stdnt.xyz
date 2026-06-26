@@ -7,7 +7,7 @@
  *   node scripts/check-links.mjs            # check everything
  *   LINK_LIMIT=20 node scripts/check-links.mjs   # quick smoke test
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 
 const FILES = [
   "js/data.js", "js/scholarships.js", "js/programs.js",
@@ -88,6 +88,18 @@ if (broken.length) report += `## Broken links (need fixing)\n\n${broken.map(line
 if (warned.length) report += `<details><summary>${warned.length} links returned 401/403/429 (likely bot-blocking — usually fine, spot-check)</summary>\n\n${warned.map(line).join("\n")}\n\n</details>\n`;
 writeFileSync("link-report.md", report);
 console.log(report);
+
+// machine-readable status the static site reads to flag dead links in the UI.
+// Only write on a full run so a LINK_LIMIT smoke test never wipes the dead list.
+if (!Number.isFinite(LIMIT)) {
+  mkdirSync("data", { recursive: true });
+  writeFileSync("data/link-status.json", JSON.stringify({
+    updated: new Date().toISOString(),
+    checked: list.length,
+    dead: broken.map((r) => r.u).sort()
+  }, null, 2) + "\n");
+  console.log(`wrote data/link-status.json (${broken.length} dead)`);
+}
 
 if (broken.length) { console.error(`${broken.length} broken link(s) found.`); process.exit(1); }
 console.log("No broken links.");

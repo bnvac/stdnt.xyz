@@ -76,6 +76,52 @@
     var img = dom ? '<img class="logo-img" src="' + faviconURL(dom) + '" alt="" loading="lazy" />' : "";
     return '<span class="logo-ico" style="--h:' + hueOf(name) + '" aria-hidden="true">' + letter + img + "</span>";
   }
+
+  // ---- freshness: status flags, link checks & user reporting -----------
+  var WARN_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>';
+  var FLAG_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 4h11l-1.6 3.5L16 11H5"/></svg>';
+  var DEAD = {};   // url -> true, populated weekly by the link check (data/link-status.json)
+  // classify decay straight from the listing text - no backend needed
+  function statusOf(item) {
+    var t = [item.deadline, item.note, item.details, item.amountText, item.when, item.cost].filter(Boolean).join(" ").toLowerCase();
+    if (/defund|discontinu|no longer|shut down|shutter|defunct/.test(t)) return "defunct";
+    if (/cancel/.test(t)) return "cancelled";
+    if (/paused|on hold|hiatus|suspend/.test(t)) return "paused";
+    if (/check website|check site|\btbd\b|to be announced|to be determined|unconfirmed/.test(t)) return "unconfirmed";
+    return "";
+  }
+  function gone(item) { var s = statusOf(item); return s === "defunct" || s === "cancelled" || s === "paused"; }
+  var STATUS_LBL = { defunct: "May be defunct", cancelled: "Cancelled", paused: "Paused", unconfirmed: "Unconfirmed date" };
+  function statusBadge(item) {
+    var s = statusOf(item); if (!s) return "";
+    return '<span class="status status-' + s + '" title="Flagged from the listing text - verify before relying on it">' + WARN_SVG + STATUS_LBL[s] + "</span>";
+  }
+  function linkDownBadge(url) {
+    return (url && DEAD[url]) ? '<span class="status status-dead" title="Our weekly automated check could not reach this link">' + WARN_SVG + "Link may be down</span>" : "";
+  }
+  function freshTags(item, url) { return statusBadge(item) + linkDownBadge(url); }
+  function flagBtn(name, url) {
+    return '<button class="flag" type="button" data-flag-name="' + esc(name) + '" data-flag-url="' + esc(url || "") +
+      '" title="Report a problem: dead link, ended, or wrong date" aria-label="Report a problem with this listing">' + FLAG_SVG + "</button>";
+  }
+  // pull the weekly link-check results (same-origin JSON, refreshed by CI)
+  function loadLinkStatus() {
+    fetch("data/link-status.json", { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d) return;
+        if (d.dead && d.dead.length) { DEAD = {}; d.dead.forEach(function (u) { DEAD[u] = true; }); }
+        var note = $("#fresh-note");
+        if (note && d.updated) {
+          var dt = new Date(d.updated);
+          note.innerHTML = 'Links auto-checked weekly &middot; last run ' + DL_MON[dt.getMonth()] + " " + dt.getDate() + ", " + dt.getFullYear() +
+            (d.dead && d.dead.length ? " &middot; " + d.dead.length + " flagged" : " &middot; all reachable");
+          note.hidden = false;
+        }
+        render();
+      })
+      .catch(function () {});
+  }
   var RANK = { "S++": 0, "S+": 1, "S": 2, "S-": 3, "A+": 4, "A": 5, "A-": 6, "B+": 7, "B": 8, "B-": 9, "C+": 10, "C": 11, "C-": 12 };
   var MONTHS = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
   var SCH_GROUPS = [
@@ -263,9 +309,10 @@
       Math.min(i * 16, 240) + 'ms">' +
       '<div class="card-top">' + iconHTML(r) +
       '<span class="card-name">' + esc(r.name) + (r.featured ? ' <span class="card-star">&#9733;</span>' : "") + "</span>" +
-      '<span class="card-meta">' + badge + starBtn("tool", r.name) + "</span></div>" +
+      '<span class="card-meta">' + badge + starBtn("tool", r.name) + (internal ? "" : flagBtn(r.name, r.url)) + "</span></div>" +
       (r.value ? '<span class="card-value">' + esc(r.value) + "</span>" : "") +
       '<p class="card-desc">' + esc(r.desc) + "</p>" +
+      (linkDownBadge(r.url) ? '<div class="card-flags">' + linkDownBadge(r.url) + "</div>" : "") +
       '<div class="card-foot"><span class="card-cat">' + esc(c.name) + "</span>" +
       '<span class="card-cta">' + cta + "</span></div></a>";
   }
@@ -310,12 +357,13 @@
     var amtFull = s.amount >= FULL || /full/i.test(s.amountText || "");
     var tags = (s.tags || []).map(function (t) { return '<span class="tg">' + esc(t) + "</span>"; }).join("");
     var sub = esc(s.level || "") + (s.note ? " &middot; " + esc(s.note) : "") + (s.find ? ' <span class="find">&middot; search</span>' : "");
-    return '<div class="row" style="animation-delay:' + Math.min(i * 8, 180) + 'ms">' +
+    var ft = freshTags(s, s.url);
+    return '<div class="row' + (gone(s) ? " row-gone" : "") + '" style="animation-delay:' + Math.min(i * 8, 180) + 'ms">' +
       '<a class="row-main" href="' + esc(s.url) + '" target="_blank" rel="noopener">' +
       '<div class="row-title">' + esc(s.name) + matchBadge("sch", s) + ' <span class="ext">&#8599;</span></div>' +
       '<div class="row-sub">' + sub + "</div>" +
-      (tags ? '<div class="row-tags">' + tags + "</div>" : "") + "</a>" +
-      starBtn("sch", s.name) +
+      ((tags || ft) ? '<div class="row-tags">' + ft + tags + "</div>" : "") + "</a>" +
+      '<span class="row-acts">' + starBtn("sch", s.name) + flagBtn(s.name, s.url) + "</span>" +
       '<div class="row-right"><span class="row-amt' + (amtFull ? " full" : "") + '">' + esc(s.amountText || "Varies") + "</span>" +
       calCell(s.name, s.url, s.deadline) + "</div></div>";
   }
@@ -371,12 +419,12 @@
     var sub = esc(p.details || (p.subjects || []).join(", ")) + (p.when ? ' <span class="find">&middot; ' + esc(p.when) + "</span>" : "");
     var cost = shortCost(p);
     var fav = (p.flagship && domainOf(p.url)) ? '<img class="row-fav" src="' + faviconURL(domainOf(p.url)) + '" alt="" loading="lazy" />' : "";
-    return '<div class="row" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' + rank +
+    return '<div class="row' + (gone(p) ? " row-gone" : "") + '" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' + rank +
       '<a class="row-main" href="' + esc(url) + '" target="_blank" rel="noopener">' +
       '<div class="row-title">' + fav + esc(p.name) + (p.flagship ? ' <span class="card-star">&#9733;</span>' : "") + matchBadge("prog", p) + ' <span class="ext">&#8599;</span></div>' +
       '<div class="row-sub">' + sub + "</div>" +
-      '<div class="row-tags">' + stateTag + grades + subs + "</div></a>" +
-      starBtn("prog", p.name) +
+      '<div class="row-tags">' + freshTags(p, url) + stateTag + grades + subs + "</div></a>" +
+      '<span class="row-acts">' + starBtn("prog", p.name) + flagBtn(p.name, url) + "</span>" +
       '<div class="row-right"><span class="row-amt' + (cost.full ? " full" : "") + '">' + esc(cost.t) + "</span>" +
       calCell(p.name, url, p.deadline) + "</div></div>";
   }
@@ -712,6 +760,17 @@
       else if (act === "csv") download("stdnt-saved.csv", toCSV(items), "text/csv;charset=utf-8");
       else if (act === "ics") download("stdnt-deadlines.ics", toICS(items), "text/calendar;charset=utf-8");
     });
+    // report a problem (delegated) - opens a prefilled GitHub issue, no backend
+    document.addEventListener("click", function (e) {
+      var f = e.target.closest(".flag"); if (!f) return;
+      e.preventDefault(); e.stopPropagation();
+      var name = f.dataset.flagName || "", url = f.dataset.flagUrl || "";
+      var body = "**Listing:** " + name + "\n**Link:** " + url +
+        "\n\n**What's wrong?** (tick any)\n- [ ] Link is dead / 404\n- [ ] Program or scholarship no longer exists\n- [ ] Deadline is wrong or out of date\n- [ ] Other (explain below)\n\n**Details:**\n";
+      var href = "https://github.com/2008wbbv/edu.edu/issues/new?title=" +
+        encodeURIComponent("Listing issue: " + name) + "&body=" + encodeURIComponent(body);
+      window.open(href, "_blank", "noopener");
+    });
     // star toggling (delegated; works inside anchors and across tabs)
     document.addEventListener("click", function (e) {
       var btn = e.target.closest(".star"); if (!btn) return;
@@ -963,11 +1022,13 @@
     var dl = c.deadline ? '<span class="tg tg-comp">' + esc(c.deadline) + "</span>" : "";
     var fmt = c.format ? '<span class="tg">' + esc(c.format) + "</span>" : "";
     var gr = c.grades ? '<span class="tg">Grades ' + esc(c.grades) + "</span>" : "";
+    var ft = freshTags(c, c.url);
     return '<a class="card" href="' + esc(c.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
       '<div class="card-top">' + logoTile(c.name, c.url) +
       '<span class="card-name">' + esc(c.name) + matchBadge("comp", c) + "</span>" +
-      '<span class="card-meta">' + starBtn("comp", c.name) + "</span></div>" +
+      '<span class="card-meta">' + starBtn("comp", c.name) + flagBtn(c.name, c.url) + "</span></div>" +
       '<p class="card-desc">' + esc(c.desc) + "</p>" +
+      (ft ? '<div class="card-flags">' + ft + "</div>" : "") +
       '<div class="card-foot comp-foot">' + dl + fmt + gr + "</div></a>";
   }
   function renderCompetitions() {
@@ -1071,9 +1132,10 @@
   var DL_MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   function deadlineItems() {
     var out = [];
-    SCH.forEach(function (s) { var info = dlInfo(s.deadline); if (info.date) out.push({ kind: "sch", name: s.name, url: s.url, deadline: s.deadline, info: info, meta: s.amountText || "" }); });
-    PROG.forEach(function (p) { var info = dlInfo(p.deadline); if (info.date) out.push({ kind: "prog", name: p.name, url: p.url || searchLink(p.name + " program"), deadline: p.deadline, info: info, meta: p.ranking || "" }); });
-    COMPS.forEach(function (c) { var info = dlInfo(c.deadline); if (info.date) out.push({ kind: "comp", name: c.name, url: c.url, deadline: c.deadline, info: info, meta: c.format || "" }); });
+    // skip anything flagged defunct/cancelled/paused so dead opportunities never show as live deadlines
+    SCH.forEach(function (s) { if (gone(s)) return; var info = dlInfo(s.deadline); if (info.date) out.push({ kind: "sch", name: s.name, url: s.url, deadline: s.deadline, info: info, meta: s.amountText || "" }); });
+    PROG.forEach(function (p) { if (gone(p)) return; var info = dlInfo(p.deadline); if (info.date) out.push({ kind: "prog", name: p.name, url: p.url || searchLink(p.name + " program"), deadline: p.deadline, info: info, meta: p.ranking || "" }); });
+    COMPS.forEach(function (c) { if (gone(c)) return; var info = dlInfo(c.deadline); if (info.date) out.push({ kind: "comp", name: c.name, url: c.url, deadline: c.deadline, info: info, meta: c.format || "" }); });
     out.sort(function (a, b) { return a.info.days - b.info.days || a.name.localeCompare(b.name); });
     return out;
   }
@@ -1096,9 +1158,9 @@
       logoTile(it.name, it.url) +
       '<a class="row-main" href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
         '<div class="row-title">' + esc(it.name) + ' <span class="ext">&#8599;</span></div>' +
-        '<div class="row-tags"><span class="tg tg-' + it.kind + '">' + label + "</span>" + (it.meta ? '<span class="tg">' + esc(it.meta) + "</span>" : "") + "</div>" +
+        '<div class="row-tags"><span class="tg tg-' + it.kind + '">' + label + "</span>" + (it.meta ? '<span class="tg">' + esc(it.meta) + "</span>" : "") + linkDownBadge(it.url) + "</div>" +
       "</a>" +
-      starBtn(it.kind, it.name) +
+      '<span class="row-acts">' + starBtn(it.kind, it.name) + flagBtn(it.name, it.url) + "</span>" +
       '<div class="row-right">' + calCell(it.name, it.url, it.deadline) + "</div></div>";
   }
   function renderDeadlines() {
@@ -1288,6 +1350,7 @@
   renderCompetitions();
   renderHackathons();
   loadHackathons();
+  loadLinkStatus();
   renderHero();
   renderHeroStats();
   renderLogos();
