@@ -28,6 +28,8 @@ window.CATEGORIES = [
   { id: "files",        name: "Files & PDFs",    blurb: "PDF tools, converters and file utilities." },
   { id: "productivity", name: "Productivity",    blurb: "Notes, docs, office suites and organization." },
   { id: "learning",     name: "Learn Anything",  blurb: "Courses, lectures & channels to self-study free." },
+  { id: "research",     name: "Research & Papers", blurb: "Free, legal access to academic papers & journals." },
+  { id: "books",        name: "Books & Textbooks", blurb: "Free open textbooks, classics & public-domain libraries." },
   { id: "testprep",     name: "Test Prep",       blurb: "Practice & tutoring for the SAT, ACT and APs." },
   { id: "lifestyle",    name: "Lifestyle",       blurb: "Music, shopping & streaming student discounts." },
   { id: "jobs",         name: "Jobs & Internships", blurb: "Teen-friendly jobs, internships and gigs." },
@@ -379,7 +381,61 @@ window.RESOURCES = [
   { name: "edX", url: "https://www.edx.org/", category: "learning", access: "everyone", slug: "edx",
     desc: "University courses from MIT, Harvard and more, free to audit (pay only for an optional certificate).", tags: ["courses", "university", "audit", "mooc"] },
   { name: "Coursera", url: "https://www.coursera.org/", category: "learning", access: "everyone", slug: "coursera",
-    desc: "Thousands of courses you can audit for free; financial aid available for certificates.", tags: ["courses", "university", "audit", "mooc"] }
+    desc: "Thousands of courses you can audit for free; financial aid available for certificates.", tags: ["courses", "university", "audit", "mooc"] },
+
+  /* ------------------------------------------------ files: free converters */
+  { name: "Squoosh", url: "https://squoosh.app/", category: "files", access: "everyone",
+    desc: "Google's open-source image compressor & converter - resize and convert PNG/JPEG/WebP/AVIF right in your browser, no ads and nothing uploaded.", tags: ["image", "convert", "compress", "foss", "webp"] },
+  { name: "VERT", url: "https://vert.sh/", category: "files", access: "everyone",
+    desc: "Free, open-source file converter that runs entirely in your browser (images, audio, docs) - no ads and no upload to a server.", tags: ["convert", "foss", "image", "audio", "private"] },
+  { name: "Pandoc", url: "https://pandoc.org/", category: "files", access: "everyone",
+    desc: "The open-source 'universal document converter' - turn Markdown, Word, LaTeX, HTML and EPUB into one another.", tags: ["documents", "markdown", "latex", "convert", "foss"] },
+  { name: "HandBrake", url: "https://handbrake.fr/", category: "files", access: "everyone",
+    desc: "Free, open-source video transcoder for converting almost any video to MP4/MKV - no ads, no watermarks.", tags: ["video", "convert", "foss", "mp4"] },
+  { name: "FFmpeg", url: "https://ffmpeg.org/", category: "files", access: "everyone",
+    desc: "The open-source Swiss-army knife for audio & video - convert, trim and re-encode virtually any media format.", tags: ["video", "audio", "convert", "foss"] },
+
+  /* ------------------------------------------------ college: GPA calculators */
+  { name: "RogerHub Grade Calculator", url: "https://rogerhub.com/final-grade-calculator/", category: "college", access: "everyone",
+    desc: "A clean, ad-light final-grade & GPA calculator students have relied on for years - work out exactly what you need on the final.", tags: ["gpa", "grades", "calculator", "final"] },
+  { name: "GPA Calculator (Calculator.net)", url: "https://www.calculator.net/gpa-calculator.html", category: "college", access: "everyone",
+    desc: "Flexible weighted/unweighted GPA calculator - add courses, credits and grades with AP/honors weighting and a planning mode.", tags: ["gpa", "grades", "weighted", "calculator"] },
+
+  /* ------------------------------------------------------- research & papers */
+  { name: "arXiv", url: "https://arxiv.org/", category: "research", access: "everyone",
+    desc: "Open repository of 2M+ free preprints in physics, math, CS and biology - the papers themselves, free and legal to read.", tags: ["papers", "preprints", "physics", "cs", "open access"] },
+  { name: "PubMed Central (PMC)", url: "https://www.ncbi.nlm.nih.gov/pmc/", category: "research", access: "everyone",
+    desc: "Free full-text archive of millions of biomedical & life-sciences journal articles from the US National Institutes of Health.", tags: ["papers", "biology", "medicine", "open access"] },
+  { name: "Directory of Open Access Journals", url: "https://doaj.org/", category: "research", access: "everyone",
+    desc: "Index of 20,000+ vetted, fully open-access journals - search peer-reviewed articles that are free and legal to read.", tags: ["papers", "journals", "open access"] },
+  { name: "CORE", url: "https://core.ac.uk/", category: "research", access: "everyone",
+    desc: "The world's largest collection of open-access research papers, aggregated from repositories and journals worldwide.", tags: ["papers", "search", "open access"] },
+  { name: "Semantic Scholar", url: "https://www.semanticscholar.org/", category: "research", access: "everyone",
+    desc: "AI-powered academic search from the Allen Institute, with free PDFs, citation graphs and TLDR summaries.", tags: ["papers", "search", "ai", "citations"] },
+  { name: "Unpaywall", url: "https://unpaywall.org/", category: "research", access: "everyone",
+    desc: "Free browser extension that finds a legal, open-access copy of a paywalled paper, sourced from 50M+ author and repository uploads.", tags: ["papers", "open access", "extension", "legal"] },
+  { name: "Google Scholar", url: "https://scholar.google.com/", category: "research", access: "everyone",
+    desc: "Search across scholarly literature; check the '[PDF]' links on the right for free full-text versions.", tags: ["papers", "search", "citations"] },
+  { name: "OpenAlex", url: "https://openalex.org/", category: "research", access: "everyone",
+    desc: "A free, fully open index of 250M+ scholarly works, authors and institutions - an open replacement for paid research databases.", tags: ["papers", "open data", "search"] },
+
+  /* ------------------------------------------------------- books & textbooks */
+  { name: "OpenStax", url: "https://openstax.org/", category: "books", access: "everyone", featured: true,
+    desc: "Free, peer-reviewed college & high-school textbooks (math, science, social science, business) from Rice University - read online or download PDFs.", tags: ["textbooks", "free", "college", "pdf"] },
+  { name: "LibreTexts", url: "https://libretexts.org/", category: "books", access: "everyone",
+    desc: "The largest open-textbook library - free, remixable texts and homework across dozens of subjects.", tags: ["textbooks", "free", "open"] },
+  { name: "Open Textbook Library", url: "https://open.umn.edu/opentextbooks/", category: "books", access: "everyone",
+    desc: "1,000+ openly licensed, peer-reviewed textbooks you can read, download and print free, curated by the University of Minnesota.", tags: ["textbooks", "open", "free"] },
+  { name: "Project Gutenberg", url: "https://www.gutenberg.org/", category: "books", access: "everyone",
+    desc: "75,000+ free public-domain ebooks - the classics, fully legal, in EPUB and Kindle formats.", tags: ["ebooks", "classics", "public domain", "free"] },
+  { name: "Standard Ebooks", url: "https://standardebooks.org/", category: "books", access: "everyone",
+    desc: "Public-domain classics carefully reformatted and typeset into beautiful, free EPUBs - volunteer-run and ad-free.", tags: ["ebooks", "classics", "public domain", "free"] },
+  { name: "Open Library", url: "https://openlibrary.org/", category: "books", access: "everyone",
+    desc: "The Internet Archive's library: borrow scanned books free with a library-style account, plus millions of catalog records.", tags: ["books", "borrow", "library", "archive"] },
+  { name: "Wikibooks", url: "https://en.wikibooks.org/", category: "books", access: "everyone",
+    desc: "Wikimedia's collection of free, open-content textbooks and manuals anyone can read and edit.", tags: ["textbooks", "open", "wiki", "free"] },
+  { name: "Internet Archive", url: "https://archive.org/", category: "books", access: "everyone", featured: true,
+    desc: "A nonprofit digital library of millions of free books, plus public-domain movies, music, software and the Wayback Machine.", tags: ["archive", "books", "movies", "music", "wayback"] }
 ];
 
 /* Sponsors shown on the About tab. Empty by default, add real sponsors only. */
