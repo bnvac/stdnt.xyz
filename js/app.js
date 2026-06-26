@@ -17,7 +17,10 @@
   var COMPS = window.COMPETITIONS || [];
   var COMP_CATS = window.COMPETITION_CATS || [];
   var HACKATHONS = window.HACKATHONS || [];
+  var ROADMAPS = window.ROADMAPS || [];
   var FULL = window.SCH_FULL || 1000000;
+  // set to your Buttondown/Mailchimp embed-subscribe URL to enable email signup
+  var NEWSLETTER_ENDPOINT = "";
   var CAT = {}; CATS.forEach(function (c) { CAT[c.id] = c; });
   DISC_CATS.forEach(function (c) { CAT[c.id] = c; });   // discount categories share the label map
 
@@ -149,7 +152,8 @@
     tools: { access: "all", cat: "all" },
     sch: { group: "all", sort: "amount", eligible: false },
     prog: { grade: "all", free: false, sort: "rank", eligible: false },
-    deadlines: { kind: "all", window: "all" }
+    deadlines: { kind: "all", window: "all" },
+    roadmap: null
   };
 
   // ---- helpers -------------------------------------------------------
@@ -661,6 +665,34 @@
     return sc >= 3 ? ' <span class="match-tag">&#10022; For you</span>' : "";
   }
 
+  // "This week for you" - the soonest deadlines you actually qualify for,
+  // the on-site version of the weekly email digest (computed live, no backend)
+  function digestDeadlines(limit) {
+    var out = [];
+    SCH.forEach(function (s) { if (gone(s) || eligExclude(s)) return; var info = dlInfo(s.deadline); if (info.date && schScore(s) > 0) out.push({ name: s.name, url: s.url, info: info, meta: s.amountText || "" }); });
+    PROG.forEach(function (p) { if (gone(p) || eligExclude(p)) return; var info = dlInfo(p.deadline); if (info.date && progScore(p) > 0) out.push({ name: p.name, url: p.url || searchLink(p.name + " program"), info: info, meta: p.ranking || "" }); });
+    out.sort(function (a, b) { return a.info.days - b.info.days || a.name.localeCompare(b.name); });
+    return out.slice(0, limit || 5);
+  }
+  function digestHTML(schN, progN) {
+    var dig = digestDeadlines(5);
+    var h = '<div class="digest"><div class="digest-head"><span class="digest-ico" aria-hidden="true">' + icon("envelope") + "</span>" +
+      '<div><h3 class="digest-h">This week for you</h3>' +
+      '<p class="digest-sub">' + commas(schN) + " scholarships and " + commas(progN) + " programs match you — here are the closest deadlines, refreshed every visit.</p></div></div>";
+    if (dig.length) {
+      h += '<ul class="digest-list">' + dig.map(function (d) {
+        var left = d.info.days <= 0 ? "due today" : "in " + d.info.days + " day" + (d.info.days === 1 ? "" : "s");
+        return '<li><a href="' + esc(d.url) + '" target="_blank" rel="noopener">' +
+          '<span class="digest-when">' + DL_MON[d.info.date.getMonth()] + " " + d.info.date.getDate() + "</span>" +
+          '<span class="digest-name">' + esc(d.name) + "</span>" +
+          '<span class="digest-left' + (d.info.soon ? " soon" : "") + '">' + left + "</span></a></li>";
+      }).join("") + "</ul>";
+    } else {
+      h += '<p class="muted digest-none">No matched deadlines coming up right now — browse the full lists below.</p>';
+    }
+    return h + "</div>";
+  }
+
   function renderQuiz() {
     var res = $("#quiz-results");
     var answered = Object.keys(quiz).some(function (k) { return quiz[k]; });
@@ -672,7 +704,8 @@
       .sort(function (a, b) { return b.sc - a.sc || b.s.amount - a.s.amount; });
     var progM = PROG.map(function (p) { return { p: p, sc: progScore(p) }; }).filter(function (o) { return o.sc > 0; })
       .sort(function (a, b) { return b.sc - a.sc || accNum(a.p) - accNum(b.p); });
-    var html = '<h3 class="quiz-rh">Scholarships for you <span>' + schM.length + "</span></h3>";
+    var html = digestHTML(schM.length, progM.length);
+    html += '<h3 class="quiz-rh">Scholarships for you <span>' + schM.length + "</span></h3>";
     html += schM.length ? '<div class="list">' + schM.slice(0, 50).map(function (o, i) { return schRow(o.s, i); }).join("") + "</div>"
       : '<p class="muted">No specific scholarship matches yet, try adjusting your answers.</p>';
     html += '<h3 class="quiz-rh">Programs for you <span>' + progM.length + "</span></h3>";
@@ -721,6 +754,7 @@
       meta.textContent = state.q ? ("Showing " + hk + " of " + HACKATHONS.length + " hackathons") : (HACKATHONS.length + " upcoming hackathons");
       empty.hidden = true; return;
     }
+    if (state.tab === "roadmaps") { renderRoadmaps(); meta.textContent = ROADMAPS.length + " step-by-step roadmaps"; empty.hidden = true; return; }
     var n, total, label;
     if (state.tab === "tools") { n = renderTools(); total = RES.length; label = "tools"; }
     else if (state.tab === "sch") { n = renderSch(); total = SCH.length; label = "scholarships"; }
@@ -732,7 +766,7 @@
     state.tab = tab;
     document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === tab); });
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
-    ["tools", "discounts", "sch", "prog", "competitions", "deadlines", "foryou", "saved", "guides", "templates", "hackathons", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
+    ["tools", "discounts", "sch", "prog", "competitions", "deadlines", "roadmaps", "foryou", "saved", "guides", "templates", "hackathons", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
     document.title = (TAB_TITLES[tab] ? TAB_TITLES[tab] + " · " : "") + "stdnt.xyz - free stuff for students";
     var moreBtn = $("#more-btn"); if (moreBtn) moreBtn.classList.toggle("is-active", !!OVERFLOW[tab]);
     closeMore();
@@ -855,6 +889,36 @@
       });
       $("#n-saved").textContent = saved.size;
       if (state.tab === "saved") renderSaved();
+    });
+    // roadmaps: pick a goal, or follow a step that deep-links into another tab
+    document.addEventListener("click", function (e) {
+      var pick = e.target.closest("[data-rm-pick]");
+      if (pick) { state.roadmap = pick.getAttribute("data-rm-pick"); renderRoadmaps(); return; }
+      var go = e.target.closest("[data-rm-goto]"); if (!go) return;
+      e.preventDefault();
+      var tab = go.getAttribute("data-rm-goto"), q = go.getAttribute("data-rm-q") || "";
+      search.value = q; state.q = q.trim();
+      switchTab(tab);
+      var nav = document.querySelector(".tabs"); if (nav) nav.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
+  // newsletter signup - hands off to a third-party provider (no backend, no
+  // emails stored in this repo). Until one is wired up, the live on-page
+  // digest above is the working substitute.
+  function wireNewsletter() {
+    var form = $("#news-form"), note = $("#news-note"); if (!form) return;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var email = ($("#news-email").value || "").trim(); if (!email) return;
+      if (NEWSLETTER_ENDPOINT) {
+        var fd = new FormData(); fd.append("email", email);
+        fetch(NEWSLETTER_ENDPOINT, { method: "POST", body: fd, mode: "no-cors" }).catch(function () {});
+        note.textContent = "Thanks! Check your inbox to confirm your subscription.";
+        form.reset();
+      } else {
+        note.innerHTML = 'Email digests aren\'t switched on yet — but your matches above update live every visit. Want this? <a href="https://github.com/2008wbbv/edu.edu/issues/new?title=Enable+email+digest" target="_blank" rel="noopener">+1 it on GitHub</a>.';
+      }
     });
   }
 
@@ -991,9 +1055,9 @@
     }
     return false;
   }
-  var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, deadlines: 1, foryou: 1, saved: 1, guides: 1, templates: 1, hackathons: 1, about: 1 };
+  var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, deadlines: 1, roadmaps: 1, foryou: 1, saved: 1, guides: 1, templates: 1, hackathons: 1, about: 1 };
   var OVERFLOW = { guides: 1, templates: 1, hackathons: 1, about: 1 };   // tabs tucked into the "More" menu
-  var TAB_TITLES = { tools: "Free tools & perks", discounts: "Student discounts", sch: "Scholarships", prog: "STEM programs", competitions: "Competitions", deadlines: "Deadlines", foryou: "Find your matches", saved: "Saved", guides: "Guides", templates: "Templates", hackathons: "Hackathons", about: "About" };
+  var TAB_TITLES = { tools: "Free tools & perks", discounts: "Student discounts", sch: "Scholarships", prog: "STEM programs", competitions: "Competitions", deadlines: "Deadlines", roadmaps: "Roadmaps", foryou: "Find your matches", saved: "Saved", guides: "Guides", templates: "Templates", hackathons: "Hackathons", about: "About" };
   function closeMore() { var m = $("#tab-menu"), b = $("#more-btn"); if (m && !m.hidden) { m.hidden = true; if (b) b.setAttribute("aria-expanded", "false"); } }
   function wireMore() {
     var btn = $("#more-btn"), menu = $("#tab-menu"); if (!btn || !menu) return;
@@ -1193,6 +1257,80 @@
         if (state.tab === "hackathons") render();
       })
       .catch(function () {});
+  }
+
+  // ---- ROADMAPS (goal -> sequenced steps; the opportunity graph) ------
+  function roadmapById(id) { for (var i = 0; i < ROADMAPS.length; i++) if (ROADMAPS[i].id === id) return ROADMAPS[i]; return null; }
+  function defaultRoadmap() {
+    var map = { cs: "cs", eng: "stem", med: "premed", math: "stem", business: "business", arts: "arts" };
+    if (quiz.field && map[quiz.field]) return map[quiz.field];
+    if (quiz.firstgen === "yes" || quiz.income === "low") return "firstgen";
+    return ROADMAPS.length ? ROADMAPS[0].id : null;
+  }
+  // rough countdown: the September after the user finishes 12th grade
+  function collegeCountdown() {
+    var yrs = { Freshman: 3, Sophomore: 2, Junior: 1, Senior: 0 }[quiz.grade];
+    if (yrs == null) return null;                 // "College" or unanswered
+    var now = new Date();
+    var endYear = now.getMonth() >= 6 ? now.getFullYear() + 1 : now.getFullYear(); // academic year end
+    var start = new Date(endYear + yrs, 8, 1);     // ~Sep 1 of the start year
+    var days = Math.ceil((start - now) / 86400000);
+    if (days < 0) return null;
+    return { days: days, date: start };
+  }
+  function rmDoItem(d) {
+    var inner = '<span class="rm-do-tick" aria-hidden="true">' + icon("check") + "</span>";
+    if (d.url) {
+      return '<a class="rm-do" href="' + esc(d.url) + '" target="_blank" rel="noopener">' + inner +
+        '<span class="rm-do-t">' + esc(d.t) + ' <span class="ext">&#8599;</span></span></a>';
+    }
+    return '<button class="rm-do" type="button" data-rm-goto="' + esc(d.goto || "tools") + '" data-rm-q="' + esc(d.q || "") + '">' +
+      inner + '<span class="rm-do-t">' + esc(d.t) + "</span>" +
+      '<span class="rm-do-go" aria-hidden="true">&rarr;</span></button>';
+  }
+  function renderRoadmaps() {
+    var box = $("#roadmaps-body"); if (!box) return;
+    if (!ROADMAPS.length) { box.innerHTML = '<p class="muted">Roadmaps are loading…</p>'; return; }
+    if (!state.roadmap || !roadmapById(state.roadmap)) state.roadmap = defaultRoadmap();
+    var rm = roadmapById(state.roadmap) || ROADMAPS[0];
+
+    var chips = ROADMAPS.map(function (r) {
+      return '<button class="rm-goal' + (r.id === rm.id ? " is-active" : "") + '" type="button" data-rm-pick="' + esc(r.id) +
+        '" style="--rm-hue:' + r.hue + '"><span class="rm-goal-ico" aria-hidden="true">' + icon(r.icon) + "</span>" + esc(r.goal) + "</button>";
+    }).join("");
+
+    var cd = collegeCountdown(), cdHTML;
+    if (cd) {
+      cdHTML = '<div class="rm-countdown"><span class="rm-cd-ico" aria-hidden="true">' + icon("calendar") + "</span>" +
+        '<span class="rm-cd-txt"><b>&asymp; ' + commas(cd.days) + "</b> days until you start college " +
+        '<span class="rm-cd-sub">(' + DL_MON[cd.date.getMonth()] + " " + cd.date.getFullYear() + ", rough estimate)</span></span></div>";
+    } else {
+      cdHTML = '<div class="rm-countdown rm-cd-quiz"><span class="rm-cd-ico" aria-hidden="true">' + icon("calendar") + "</span>" +
+        '<span class="rm-cd-txt">Tell us your grade in <button class="linkbtn" type="button" data-rm-goto="foryou" data-rm-q="">For You</button> to see your countdown to college.</span></div>';
+    }
+
+    var stages = rm.stages.map(function (s, i) {
+      var dos = (s.do || []).map(rmDoItem).join("");
+      var unlocks = (s.unlocks || []).map(function (u) { return '<span class="rm-unlock">' + icon("check") + esc(u) + "</span>"; }).join("");
+      return '<div class="rm-stage" style="animation-delay:' + Math.min(i * 70, 350) + 'ms">' +
+        '<div class="rm-stage-rail" aria-hidden="true"><span class="rm-node">' + (i + 1) + "</span></div>" +
+        '<div class="rm-stage-body">' +
+          '<div class="rm-when">' + esc(s.when) + "</div>" +
+          '<h3 class="rm-stage-title">' + esc(s.title) + "</h3>" +
+          '<div class="rm-dos">' + dos + "</div>" +
+          (unlocks ? '<div class="rm-unlocks"><span class="rm-unlocks-l">Unlocks</span>' + unlocks + "</div>" : "") +
+        "</div></div>";
+    }).join("");
+
+    box.innerHTML =
+      '<p class="rm-intro">Pick a goal and follow the path. Each step links straight to the scholarships, programs and competitions you need — and shows what it <b>unlocks</b> next.</p>' +
+      '<div class="rm-goals">' + chips + "</div>" +
+      cdHTML +
+      '<div class="rm-current" style="--rm-hue:' + rm.hue + '">' +
+        '<div class="rm-current-head"><span class="rm-current-ico" aria-hidden="true">' + icon(rm.icon) + "</span>" +
+          '<div><h2 class="rm-current-goal">' + esc(rm.goal) + "</h2><p class=\"rm-current-blurb\">" + esc(rm.blurb) + "</p></div></div>" +
+        '<div class="rm-flow">' + stages + "</div>" +
+      "</div>";
   }
 
   // ---- DEADLINES (aggregated) ----------------------------------------
@@ -1397,6 +1535,7 @@
   $("#n-discounts").textContent = DISCOUNTS.length;
   $("#n-competitions").textContent = COMPS.length;
   $("#n-hackathons").textContent = HACKATHONS.length;
+  var nrm = $("#n-roadmaps"); if (nrm) nrm.textContent = ROADMAPS.length;
   fillStats();
   var deepLink = applyHash();
   var subBtn = $("#submit-resource");
@@ -1425,6 +1564,7 @@
   wireGuideOverlay();
   wireTemplates();
   wireDeadlines();
+  wireNewsletter();
   wireMore();
   injectStructuredData();
   initViews();
