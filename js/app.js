@@ -881,15 +881,14 @@
       else if (act === "csv") download("stdnt-saved.csv", toCSV(items), "text/csv;charset=utf-8");
       else if (act === "ics") download("stdnt-deadlines.ics", toICS(items), "text/calendar;charset=utf-8");
     });
-    // report a problem (delegated) - opens a prefilled GitHub issue, no backend
+    // report a problem (delegated) - opens the prefilled "report" issue form
     document.addEventListener("click", function (e) {
       var f = e.target.closest(".flag"); if (!f) return;
       e.preventDefault(); e.stopPropagation();
       var name = f.dataset.flagName || "", url = f.dataset.flagUrl || "";
-      var body = "**Listing:** " + name + "\n**Link:** " + url +
-        "\n\n**What's wrong?** (tick any)\n- [ ] Link is dead / 404\n- [ ] Program or scholarship no longer exists\n- [ ] Deadline is wrong or out of date\n- [ ] Other (explain below)\n\n**Details:**\n";
-      var href = "https://github.com/2008wbbv/edu.edu/issues/new?title=" +
-        encodeURIComponent("Listing issue: " + name) + "&body=" + encodeURIComponent(body);
+      var href = GH_REPO + "/issues/new?template=report.yml&title=" +
+        encodeURIComponent("[Fix] " + name) + "&listing=" + encodeURIComponent(name) +
+        "&url=" + encodeURIComponent(url);
       window.open(href, "_blank", "noopener");
     });
     // star toggling (delegated; works inside anchors and across tabs)
@@ -1687,9 +1686,7 @@
   fillStats();
   var deepLink = applyHash();
   var subBtn = $("#submit-resource");
-  if (subBtn) subBtn.href = "https://github.com/2008wbbv/edu.edu/issues/new?title=" +
-    encodeURIComponent("Add a resource: ") + "&body=" +
-    encodeURIComponent("**Name:**\n**Link:**\n**Category:** (tool / scholarship / program)\n**Who it's for:** (student / everyone)\n**One-sentence description:**\n**Anything else:**\n");
+  if (subBtn) subBtn.href = GH_REPO + "/issues/new/choose";   // the per-category contribute forms
   initTheme();
   buildCollage();
   buildCatChips();
