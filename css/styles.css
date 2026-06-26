@@ -191,7 +191,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
 
 /* ============================================================== ICONS */
 .ic-wrap {
-  flex: none; width: 38px; height: 38px; display: grid; place-items: center;
+  position: relative; flex: none; width: 38px; height: 38px; display: grid; place-items: center;
   background: var(--bg-2); border: 1px solid var(--line); border-radius: 9px; overflow: hidden;
 }
 .ic {
@@ -200,6 +200,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
   mask: var(--src) center / contain no-repeat;
 }
 .ic-mono { font-family: var(--mono); font-weight: 700; font-size: .82rem; color: var(--tx); letter-spacing: -.02em; }
+.ic-fav { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 7px; background: #fff; }
 
 /* ============================================================== CARDS (tools) */
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: .8rem; }
@@ -299,6 +300,9 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
   font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--tx-2);
 }
 .saved-h:first-child { margin-top: 0; }
+.saved-h-ico svg { width: 18px; height: 18px; flex: none; color: var(--accent); }
+.tg-pin { width: 11px; height: 11px; margin-right: 1px; vertical-align: -1px; }
+.row-fav { width: 18px; height: 18px; border-radius: 4px; object-fit: contain; background: #fff; flex: none; }
 .saved-h span {
   font-size: .72rem; color: var(--tx-3); background: var(--bg-2);
   border: 1px solid var(--line); border-radius: 999px; padding: .02rem .45rem; letter-spacing: 0;
@@ -437,10 +441,11 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
   box-shadow: 0 14px 34px -22px color-mix(in srgb, var(--accent) 80%, transparent);
 }
 .guide-ico {
-  flex: none; display: grid; place-items: center; width: 50px; height: 50px; font-size: 1.5rem;
+  flex: none; display: grid; place-items: center; width: 50px; height: 50px; color: var(--accent);
   border-radius: 14px; background: color-mix(in srgb, var(--accent) 12%, var(--bg-2));
   border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
 }
+.guide-ico svg { width: 26px; height: 26px; }
 .guide-card-main { display: flex; flex-direction: column; gap: .25rem; min-width: 0; }
 .guide-card-title { font-size: 1rem; font-weight: 700; color: var(--tx); letter-spacing: -.01em; }
 .guide-card-blurb { font-size: .86rem; color: var(--tx-2); line-height: 1.45; }
@@ -465,9 +470,10 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
 .tpl-card:hover { border-color: var(--line-2); transform: translateY(-3px); box-shadow: 0 14px 34px -22px color-mix(in srgb, var(--accent) 70%, transparent); }
 .tpl-head { display: flex; align-items: flex-start; gap: .8rem; }
 .tpl-ico {
-  flex: none; display: grid; place-items: center; width: 44px; height: 44px; font-size: 1.35rem; border-radius: 12px;
+  flex: none; display: grid; place-items: center; width: 44px; height: 44px; color: var(--accent); border-radius: 12px;
   background: color-mix(in srgb, var(--accent) 12%, var(--bg-2)); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
 }
+.tpl-ico svg { width: 24px; height: 24px; }
 .tpl-headmain { display: flex; flex-direction: column; gap: .25rem; min-width: 0; }
 .tpl-title { font-size: 1rem; font-weight: 700; color: var(--tx); letter-spacing: -.01em; }
 .tpl-blurb { font-size: .85rem; color: var(--tx-2); line-height: 1.45; }
@@ -511,12 +517,15 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
   border: 1px solid color-mix(in srgb, var(--evr) 30%, transparent);
 }
 .hk-card { display: flex; flex-direction: column; }
-.hk-ava {
-  flex: none; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 11px;
-  font-weight: 800; font-size: 1.05rem; color: hsl(var(--h) 80% 90%);
+/* reusable logo tile: real favicon over a coloured-letter fallback */
+.logo-ico {
+  position: relative; flex: none; display: grid; place-items: center; width: 38px; height: 38px;
+  border-radius: 11px; overflow: hidden; font-weight: 800; font-size: 1.05rem;
+  color: hsl(var(--h) 80% 90%);
   background: linear-gradient(150deg, hsl(var(--h) 58% 30%), hsl(var(--h) 55% 20%));
   border: 1px solid hsl(var(--h) 60% 45% / .55);
 }
+.logo-ico .logo-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 7px; background: #fff; }
 .hk-info { display: flex; flex-direction: column; gap: .32rem; margin: .15rem 0 .2rem; }
 .hk-line { display: flex; align-items: center; gap: .45rem; font-size: .82rem; color: var(--tx-2); min-width: 0; }
 .hk-line svg { width: 15px; height: 15px; flex: none; color: var(--tx-3); }
@@ -615,7 +624,8 @@ html.guide-open { overflow: hidden; }
 }
 .guide-close:hover { color: var(--tx); border-color: var(--line-2); transform: rotate(90deg); }
 .guide-rhead { margin: 0 0 1.4rem; padding-right: 2.5rem; }
-.guide-rico { display: inline-grid; place-items: center; width: 54px; height: 54px; font-size: 1.7rem; border-radius: 15px; margin-bottom: .8rem; background: color-mix(in srgb, var(--accent) 12%, var(--card)); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent); }
+.guide-rico { display: inline-grid; place-items: center; width: 54px; height: 54px; color: var(--accent); border-radius: 15px; margin-bottom: .8rem; background: color-mix(in srgb, var(--accent) 12%, var(--card)); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent); }
+.guide-rico svg { width: 28px; height: 28px; }
 .guide-rtitle { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; letter-spacing: -.03em; margin: 0 0 .6rem; line-height: 1.15; }
 .guide-rmeta { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0; }
 .guide-rbody { color: var(--tx-2); font-size: 1rem; line-height: 1.7; }

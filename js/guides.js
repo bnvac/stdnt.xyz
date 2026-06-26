@@ -7,7 +7,7 @@
 window.GUIDES = [
   {
     slug: "cold-email-research",
-    icon: "✉️",
+    icon: "envelope",
     title: "Cold-email a professor for research",
     blurb: "How students land free, often-remote research by emailing professors the right way — with a proven template.",
     readMins: 6,
@@ -74,7 +74,7 @@ Best,
 
   {
     slug: "github-student-pack",
-    icon: "🎓",
+    icon: "cap",
     title: "Claim the GitHub Student Pack",
     blurb: "Unlock $200k+ of free developer tools, cloud credits and domains — how to verify and what to redeem first.",
     readMins: 5,
@@ -124,7 +124,7 @@ Best,
 
   {
     slug: "verify-student",
-    icon: "🪪",
+    icon: "id",
     title: "Verify as a student",
     blurb: "How SheerID, .edu emails and document checks work — and how to pass them so perks actually unlock.",
     readMins: 5,
@@ -172,7 +172,7 @@ Best,
 
   {
     slug: "win-scholarships",
-    icon: "🏆",
+    icon: "trophy",
     title: "Find & win scholarships",
     blurb: "Where the legit money is, how to dodge scams, and an essay approach that actually wins.",
     readMins: 7,
@@ -218,7 +218,7 @@ Best,
 
   {
     slug: "summer-research",
-    icon: "🔬",
+    icon: "flask",
     title: "Land summer research / REUs",
     blurb: "Find funded summer research and REUs, hit the right timeline, and apply in a way that gets you in.",
     readMins: 6,
@@ -260,7 +260,7 @@ Best,
 
   {
     slug: "stem-competitions",
-    icon: "🏅",
+    icon: "medal",
     title: "STEM competitions for high schoolers",
     blurb: "The most beginner-friendly way to find what you love in STEM — the main contests and how to actually study for them.",
     readMins: 7,
@@ -300,7 +300,7 @@ Best,
 
   {
     slug: "hs-research",
-    icon: "🧪",
+    icon: "flask",
     title: "Do real research in high school",
     blurb: "How the research path actually works — getting a mentor, doing a project, and competing at science fairs like ISEF and STS.",
     readMins: 7,
@@ -343,7 +343,7 @@ Best,
 
   {
     slug: "college-admissions",
-    icon: "📋",
+    icon: "clipboard",
     title: "The college admissions playbook",
     blurb: "How holistic admissions really work — the 'spike,' what GPA/APs actually matter, and a grade-by-grade timeline.",
     readMins: 7,
@@ -379,7 +379,7 @@ Best,
 
   {
     slug: "sat-act",
-    icon: "✏️",
+    icon: "pencil",
     title: "Ace the SAT & ACT",
     blurb: "How to choose between them, study for free to a great score, and why the PSAT might matter most of all.",
     readMins: 6,
@@ -415,7 +415,7 @@ Best,
 
   {
     slug: "college-essay",
-    icon: "✍️",
+    icon: "pencil",
     title: "Write a standout college essay",
     blurb: "The essay is where you stop being a stat sheet and become a person — a process that works, from blank page to final edit.",
     readMins: 8,
@@ -453,7 +453,7 @@ Best,
 
   {
     slug: "college-apps",
-    icon: "🗂️",
+    icon: "folder",
     title: "College lists, deadlines & rec letters",
     blurb: "The strategy around your app — ED vs EA, a balanced list, fly-in programs, and how to get a glowing recommendation.",
     readMins: 8,
@@ -515,7 +515,7 @@ Best,
 
   {
     slug: "financial-aid",
-    icon: "💰",
+    icon: "cash",
     title: "Get financial aid (FAFSA & beyond)",
     blurb: "How to actually pay for college: file the FAFSA, understand grants vs loans, and appeal a weak offer.",
     readMins: 7,

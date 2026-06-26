@@ -372,7 +372,7 @@ window.RESOURCES = [
     desc: "Searchable database of summer research programs, REUs and STEM opportunities by field and level.", tags: ["research", "summer", "database", "internships"] },
   { name: "HighSchoolPathway", url: "https://highschoolpathway.com/", category: "jobs", access: "everyone", mono: "HP",
     desc: "Student-built directory of competitions, research and opportunities for high schoolers, with how-to-apply notes.", tags: ["opportunities", "research", "competitions", "teens"] },
-  { name: "Cold-Email for Research", url: "#guide/cold-email-research", category: "jobs", access: "everyone", mono: "✉",
+  { name: "Cold-Email for Research", url: "#guide/cold-email-research", category: "jobs", access: "everyone", mono: "@",
     desc: "A step-by-step guide: find a professor's work on Google Scholar, send a short, specific email, and follow up — with a copy-paste template that gets replies.", tags: ["research", "cold email", "guide"] },
   { name: "Official Digital SAT Practice (Bluebook)", url: "https://satsuite.collegeboard.org/digital/digital-practice-preparation/", category: "testprep", access: "everyone", mono: "BB",
     desc: "College Board's official Bluebook app with full-length adaptive Digital SAT practice tests, free.", tags: ["sat", "official", "practice", "bluebook"] },

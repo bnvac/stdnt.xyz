@@ -8,7 +8,7 @@
 window.TEMPLATES = [
   {
     slug: "scholarship-tracker",
-    icon: "🎯",
+    icon: "target",
     title: "Scholarship & deadline tracker",
     blurb: "Track every scholarship you find: amount, deadline, requirements and status, so nothing slips past you.",
     tags: ["scholarships", "deadlines", "money", "college"],
@@ -20,7 +20,7 @@ window.TEMPLATES = [
   },
   {
     slug: "college-app-tracker",
-    icon: "🎓",
+    icon: "cap",
     title: "College application tracker",
     blurb: "One row per school: plan, deadline, essays, recs and decision. The dashboard that keeps senior fall sane.",
     tags: ["college", "applications", "deadlines", "essays"],
@@ -32,7 +32,7 @@ window.TEMPLATES = [
   },
   {
     slug: "research-program-tracker",
-    icon: "🔬",
+    icon: "flask",
     title: "Research / program application tracker",
     blurb: "Keep summer research programs and REUs organized: eligibility, materials, recommenders and deadlines.",
     tags: ["research", "programs", "reu", "summer"],
@@ -44,7 +44,7 @@ window.TEMPLATES = [
   },
   {
     slug: "student-budget",
-    icon: "💵",
+    icon: "cash",
     title: "Monthly student budget",
     blurb: "See where your money goes each month. List income and expenses, set a budget, and compare it to what you actually spend.",
     tags: ["budget", "money", "finance", "spending"],
@@ -61,7 +61,7 @@ window.TEMPLATES = [
   },
   {
     slug: "subscription-tracker",
-    icon: "🔁",
+    icon: "refresh",
     title: "Free trial & subscription tracker",
     blurb: "Never get surprise-charged again. Log when each free trial ends and the date to cancel by.",
     tags: ["subscriptions", "free trials", "money", "perks"],
@@ -73,7 +73,7 @@ window.TEMPLATES = [
   },
   {
     slug: "activities-list",
-    icon: "📝",
+    icon: "note",
     title: "Common App activities list",
     blurb: "Draft your 10 activities with roles, hours and 150-character descriptions before you touch the real application.",
     tags: ["college", "activities", "resume", "common app"],
@@ -85,7 +85,7 @@ window.TEMPLATES = [
   },
   {
     slug: "assignment-planner",
-    icon: "✅",
+    icon: "check",
     title: "Assignment & study planner",
     blurb: "A simple homework and study tracker: what's due, when, how urgent, and whether it's done.",
     tags: ["school", "planner", "homework", "study"],
@@ -97,7 +97,7 @@ window.TEMPLATES = [
   },
   {
     slug: "college-cost-compare",
-    icon: "⚖️",
+    icon: "scale",
     title: "College cost & aid comparison",
     blurb: "Compare real offers side by side. Sticker price means little — this shows your actual net cost per year.",
     tags: ["college", "financial aid", "cost", "money"],
@@ -109,7 +109,7 @@ window.TEMPLATES = [
   },
   {
     slug: "internship-tracker",
-    icon: "💼",
+    icon: "briefcase",
     title: "Internship & job application tracker",
     blurb: "Track every internship and job you apply to: deadline, status, contact and follow-ups, all in one place.",
     tags: ["internship", "jobs", "applications", "career"],
@@ -121,7 +121,7 @@ window.TEMPLATES = [
   },
   {
     slug: "weekly-schedule",
-    icon: "🗓️",
+    icon: "calendar",
     title: "Weekly schedule / time blocker",
     blurb: "Block out your week hour by hour — classes, study, work and downtime — so your time actually has a plan.",
     tags: ["planner", "schedule", "time", "productivity"],
@@ -138,7 +138,7 @@ window.TEMPLATES = [
   },
   {
     slug: "fafsa-checklist",
-    icon: "📄",
+    icon: "doc",
     title: "FAFSA & CSS document checklist",
     blurb: "Everything you need to gather before filing for financial aid, so you can fill it out in one sitting.",
     tags: ["fafsa", "financial aid", "checklist", "college"],

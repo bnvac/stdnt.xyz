@@ -6,13 +6,13 @@
  * Dates are typical annual windows - always confirm the exact date on the site.
  */
 window.COMPETITION_CATS = [
-  { id: "science", name: "Science", emoji: "🔬" },
-  { id: "math", name: "Math", emoji: "➗" },
-  { id: "cs", name: "Computer science", emoji: "💻" },
-  { id: "research", name: "Research & science fairs", emoji: "🧪" },
-  { id: "innovation", name: "Innovation & entrepreneurship", emoji: "💡" },
-  { id: "humanities", name: "Humanities & arts", emoji: "📚" },
-  { id: "robotics", name: "Robotics", emoji: "🤖" }
+  { id: "science", name: "Science" },
+  { id: "math", name: "Math" },
+  { id: "cs", name: "Computer science" },
+  { id: "research", name: "Research & science fairs" },
+  { id: "innovation", name: "Innovation & entrepreneurship" },
+  { id: "humanities", name: "Humanities & arts" },
+  { id: "robotics", name: "Robotics" }
 ];
 
 window.COMPETITIONS = [

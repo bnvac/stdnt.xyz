@@ -20,7 +20,6 @@
   var FULL = window.SCH_FULL || 1000000;
   var CAT = {}; CATS.forEach(function (c) { CAT[c.id] = c; });
   DISC_CATS.forEach(function (c) { CAT[c.id] = c; });   // discount categories share the label map
-  var COMP_EMOJI = {}; COMP_CATS.forEach(function (c) { COMP_EMOJI[c.id] = c.emoji; });
 
   var ICON_CDN = "https://cdn.simpleicons.org/";
   var STAR = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.6 1.1 6.45L12 18.9 6.2 21l1.1-6.45L2.6 9.95l6.5-.95z"/></svg>';
@@ -33,6 +32,50 @@
   var ICO_CAL = SVG + '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>';
   var ICO_PIN = SVG + '<path d="M20 10c0 5.5-8 11-8 11s-8-5.5-8-11a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.6"/></svg>';
   var ICO_GLOBE = SVG + '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15 0 18M12 3c-2.6 2.6-2.6 15 0 18"/></svg>';
+  // named line-icon set - data files reference these keys, rendered via icon()
+  var ICONS = {
+    target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/>',
+    cap: '<path d="M12 4 2 9l10 5 10-5-10-5z"/><path d="M6 11.3V16c0 1.2 2.7 2.4 6 2.4s6-1.2 6-2.4v-4.7"/><path d="M22 9.2v5"/>',
+    flask: '<path d="M9 3h6M10 3v6l-5.2 8.3A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3.7L14 9V3"/><path d="M7.5 14h9"/>',
+    cash: '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5h0M18 14.5h0"/>',
+    refresh: '<path d="M20.5 12a8.5 8.5 0 1 1-2.5-6"/><path d="M20.5 4v5h-5"/>',
+    note: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h6"/>',
+    check: '<circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.4 2.4 4.6-5"/>',
+    scale: '<path d="M12 4v16M8 20h8M6 7h12M12 5 6 7l-3 6a3 3 0 0 0 6 0zM12 5l6 2 3 6a3 3 0 0 1-6 0z"/>',
+    briefcase: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/>',
+    calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/>',
+    doc: '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 17h4"/>',
+    envelope: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+    id: '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M5.8 16c.5-1.4 1.7-2.1 3.2-2.1s2.7.7 3.2 2.1M14 10h4M14 13h4"/>',
+    trophy: '<path d="M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 6H4.5v1A3.5 3.5 0 0 0 8 10.5M17 6h2.5v1A3.5 3.5 0 0 1 16 10.5"/><path d="M9.5 18h5M12 14v4M8.5 21h7"/>',
+    medal: '<circle cx="12" cy="15" r="5"/><path d="M8.5 3 12 10M15.5 3 12 10M8 3h8"/><path d="M12 13.2 12.9 15h-1.8z"/>',
+    clipboard: '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1V6H9z"/><path d="M9 11h6M9 15h4"/>',
+    pencil: '<path d="M4 20h4L19 9a2.1 2.1 0 0 0-3-3L5 17z"/><path d="m14 7 3 3"/>',
+    folder: '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+    math: '<path d="M5 12h14"/><circle cx="12" cy="6.5" r="1"/><circle cx="12" cy="17.5" r="1"/>',
+    code: '<path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/>',
+    atom: '<circle cx="12" cy="12" r="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/>',
+    bulb: '<path d="M9.5 18h5M10.5 21h3"/><path d="M12 3a6 6 0 0 0-3.8 10.6c.6.5 1.1 1.2 1.2 2.4h5.2c.1-1.2.6-1.9 1.2-2.4A6 6 0 0 0 12 3z"/>',
+    book: '<path d="M12 6c-1.6-1-4-1.5-6-1.5-1.2 0-2 .2-2 .2v13s.8-.2 2-.2c2 0 4.4.5 6 1.5M12 6c1.6-1 4-1.5 6-1.5 1.2 0 2 .2 2 .2v13s-.8-.2-2-.2c-2 0-4.4.5-6 1.5M12 6v13"/>',
+    robot: '<rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 8V5"/><circle cx="12" cy="3.5" r="1.5"/><circle cx="9.5" cy="13" r="1"/><circle cx="14.5" cy="13" r="1"/><path d="M10 16h4M3 12v3M21 12v3"/>'
+  };
+  function icon(key) { return SVG + (ICONS[key] || ICONS.target) + "</svg>"; }
+  var COMP_ICON = { science: "flask", math: "math", cs: "code", research: "atom", innovation: "bulb", humanities: "book", robotics: "robot" };
+  var PIN_SVG = '<svg class="tg-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.5-8 11-8 11s-8-5.5-8-11a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.4"/></svg>';
+
+  // ---- favicon logos (graceful) --------------------------------------
+  function faviconURL(d) { return "https://www.google.com/s2/favicons?domain=" + encodeURIComponent(d) + "&sz=64"; }
+  function domainOf(u) {
+    if (!u || !/^https?:\/\//i.test(u) || /google\.com\/search/.test(u)) return "";
+    try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return ""; }
+  }
+  function hueOf(s) { var n = 0; s = s || "?"; for (var i = 0; i < s.length; i++) n = (n * 31 + s.charCodeAt(i)) % 360; return n; }
+  // a square logo tile: real favicon when we have a domain, coloured letter fallback otherwise
+  function logoTile(name, url) {
+    var dom = domainOf(url), letter = esc((name || "?").trim().charAt(0).toUpperCase());
+    var img = dom ? '<img class="logo-img" src="' + faviconURL(dom) + '" alt="" loading="lazy" />' : "";
+    return '<span class="logo-ico" style="--h:' + hueOf(name) + '" aria-hidden="true">' + letter + img + "</span>";
+  }
   var RANK = { "S++": 0, "S+": 1, "S": 2, "S-": 3, "A+": 4, "A": 5, "A-": 6, "B+": 7, "B": 8, "B-": 9, "C+": 10, "C": 11, "C-": 12 };
   var MONTHS = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
   var SCH_GROUPS = [
@@ -153,7 +196,10 @@
   function icsEsc(v) { return String(v || "").replace(/([,;\\])/g, "\\$1").replace(/\n/g, " "); }
   function iconHTML(item) {
     if (item.slug) return '<span class="ic-wrap"><span class="ic" style="--src:url(\'' + ICON_CDN + esc(item.slug) + '\')"></span></span>';
-    return '<span class="ic-wrap"><span class="ic-mono">' + esc(item.mono || monoFrom(item.name)) + "</span></span>";
+    var dom = domainOf(item.url);
+    var inner = '<span class="ic-mono">' + esc(item.mono || monoFrom(item.name)) + "</span>";
+    if (dom) inner += '<img class="ic-fav" src="' + faviconURL(dom) + '" alt="" loading="lazy" />';
+    return '<span class="ic-wrap">' + inner + "</span>";
   }
   function searchLink(name) { return "https://www.google.com/search?q=" + encodeURIComponent(name); }
 
@@ -319,14 +365,15 @@
     var rank = p.ranking ? '<span class="rank' + (/^S/.test(p.ranking) ? " s" : "") + '">' + esc(p.ranking) + "</span>" : '<span class="rank ghost"></span>';
     var grades = (p.grades || []).map(function (g) { return '<span class="tg tg-grade">' + esc(g) + "</span>"; }).join("");
     var si = progStateInfo(p);
-    var stateTag = si.restricted ? '<span class="tg tg-state">&#128205; ' + esc(si.states.slice(0, 2).join("/")) + " only</span>"
-      : (si.located ? '<span class="tg tg-loc">&#128205; ' + esc(si.states.slice(0, 2).join("/")) + "</span>" : "");
+    var stateTag = si.restricted ? '<span class="tg tg-state">' + PIN_SVG + esc(si.states.slice(0, 2).join("/")) + " only</span>"
+      : (si.located ? '<span class="tg tg-loc">' + PIN_SVG + esc(si.states.slice(0, 2).join("/")) + "</span>" : "");
     var subs = (p.subjects || []).slice(0, 3).map(function (s) { return '<span class="tg">' + esc(s) + "</span>"; }).join("");
     var sub = esc(p.details || (p.subjects || []).join(", ")) + (p.when ? ' <span class="find">&middot; ' + esc(p.when) + "</span>" : "");
     var cost = shortCost(p);
+    var fav = (p.flagship && domainOf(p.url)) ? '<img class="row-fav" src="' + faviconURL(domainOf(p.url)) + '" alt="" loading="lazy" />' : "";
     return '<div class="row" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' + rank +
       '<a class="row-main" href="' + esc(url) + '" target="_blank" rel="noopener">' +
-      '<div class="row-title">' + esc(p.name) + (p.flagship ? ' <span class="card-star">&#9733;</span>' : "") + matchBadge("prog", p) + ' <span class="ext">&#8599;</span></div>' +
+      '<div class="row-title">' + fav + esc(p.name) + (p.flagship ? ' <span class="card-star">&#9733;</span>' : "") + matchBadge("prog", p) + ' <span class="ext">&#8599;</span></div>' +
       '<div class="row-sub">' + sub + "</div>" +
       '<div class="row-tags">' + stateTag + grades + subs + "</div></a>" +
       starBtn("prog", p.name) +
@@ -588,6 +635,15 @@
   }
 
   function wire() {
+    // hide favicons that fail to load so the letter/silhouette fallback shows
+    // (error events don't bubble, so listen in the capture phase)
+    document.addEventListener("error", function (e) {
+      var t = e.target;
+      if (t && t.tagName === "IMG" && t.classList &&
+        (t.classList.contains("logo-img") || t.classList.contains("ic-fav") || t.classList.contains("row-fav"))) {
+        t.style.display = "none";
+      }
+    }, true);
     document.querySelectorAll(".tab").forEach(function (t) {
       t.addEventListener("click", function () { switchTab(t.dataset.tab); });
     });
@@ -709,7 +765,8 @@
   }
   function fillStats() {
     [["#hs-tools", RES.length], ["#hs-sch", SCH.length], ["#hs-prog", PROG.length],
-     ["#ab-tools", RES.length], ["#ab-sch", SCH.length], ["#ab-prog", PROG.length]].forEach(function (p) {
+     ["#ab-tools", RES.length], ["#ab-sch", SCH.length], ["#ab-prog", PROG.length],
+     ["#ab-comp", COMPS.length], ["#ab-hack", HACKATHONS.length]].forEach(function (p) {
       var el = $(p[0]); if (el) el.textContent = commas(p[1]);
     });
   }
@@ -729,7 +786,7 @@
   function guideCard(g, i) {
     var tags = (g.tags || []).slice(0, 3).map(function (t) { return '<span class="guide-tag">' + esc(t) + "</span>"; }).join("");
     return '<a class="guide-card" href="#guide/' + esc(g.slug) + '" style="animation-delay:' + Math.min(i * 45, 270) + 'ms">' +
-      '<span class="guide-ico" aria-hidden="true">' + esc(g.icon) + "</span>" +
+      '<span class="guide-ico" aria-hidden="true">' + icon(g.icon) + "</span>" +
       '<span class="guide-card-main">' +
         '<span class="guide-card-title">' + esc(g.title) + "</span>" +
         '<span class="guide-card-blurb">' + esc(g.blurb) + "</span>" +
@@ -747,7 +804,7 @@
   function guideReaderHTML(g) {
     var tags = (g.tags || []).map(function (t) { return '<span class="guide-tag">' + esc(t) + "</span>"; }).join("");
     return '<header class="guide-rhead">' +
-        '<span class="guide-rico" aria-hidden="true">' + esc(g.icon) + "</span>" +
+        '<span class="guide-rico" aria-hidden="true">' + icon(g.icon) + "</span>" +
         '<h2 class="guide-rtitle" id="guide-reader-title">' + esc(g.title) + "</h2>" +
         '<p class="guide-rmeta"><span class="guide-mins">' + g.readMins + " min read</span>" + tags + "</p>" +
       "</header>" +
@@ -845,7 +902,7 @@
   function templateCard(t, i) {
     var cols = (t.columns || []).map(function (c) { return '<span class="tpl-col">' + esc(c) + "</span>"; }).join("");
     return '<div class="tpl-card" style="animation-delay:' + Math.min(i * 40, 240) + 'ms">' +
-      '<div class="tpl-head"><span class="tpl-ico" aria-hidden="true">' + esc(t.icon) + "</span>" +
+      '<div class="tpl-head"><span class="tpl-ico" aria-hidden="true">' + icon(t.icon) + "</span>" +
         '<span class="tpl-headmain"><span class="tpl-title">' + esc(t.title) + "</span>" +
         '<span class="tpl-blurb">' + esc(t.blurb) + "</span></span></div>" +
       '<div class="tpl-cols">' + cols + "</div>" +
@@ -903,11 +960,11 @@
     });
   }
   function competitionCard(c, i) {
-    var dl = c.deadline ? '<span class="tg tg-comp">&#9200; ' + esc(c.deadline) + "</span>" : "";
+    var dl = c.deadline ? '<span class="tg tg-comp">' + esc(c.deadline) + "</span>" : "";
     var fmt = c.format ? '<span class="tg">' + esc(c.format) + "</span>" : "";
     var gr = c.grades ? '<span class="tg">Grades ' + esc(c.grades) + "</span>" : "";
     return '<a class="card" href="' + esc(c.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
-      '<div class="card-top"><span class="comp-ico" aria-hidden="true">' + esc(COMP_EMOJI[c.category] || "🏆") + "</span>" +
+      '<div class="card-top">' + logoTile(c.name, c.url) +
       '<span class="card-name">' + esc(c.name) + matchBadge("comp", c) + "</span>" +
       '<span class="card-meta">' + starBtn("comp", c.name) + "</span></div>" +
       '<p class="card-desc">' + esc(c.desc) + "</p>" +
@@ -919,7 +976,7 @@
     COMP_CATS.forEach(function (cat) {
       var items = list.filter(function (c) { return c.category === cat.id; });
       if (!items.length) return;
-      html += '<h3 class="saved-h">' + esc(cat.emoji) + " " + esc(cat.name) + " <span>" + items.length + "</span></h3>" +
+      html += '<h3 class="saved-h saved-h-ico">' + icon(COMP_ICON[cat.id]) + esc(cat.name) + " <span>" + items.length + "</span></h3>" +
         '<div class="grid">' + items.map(competitionCard).join("") + "</div>";
     });
     box.innerHTML = html || '<p class="muted guides-empty">No competitions match your search.</p>';
@@ -953,7 +1010,6 @@
     var loc = [h.city, h.region && h.region !== h.city ? h.region : h.country].filter(Boolean).join(", ");
     return loc || (h.country || "In person");
   }
-  function hkHue(s) { var n = 0; for (var i = 0; i < s.length; i++) n = (n * 31 + s.charCodeAt(i)) % 360; return n; }
   function hackCard(h, i) {
     var fmtCls = h.format === "online" ? "is-online" : h.format === "hybrid" ? "is-hybrid" : "is-inperson";
     var fmtLbl = h.format === "online" ? "Online" : h.format === "hybrid" ? "Hybrid" : "In person";
@@ -967,8 +1023,7 @@
     if (h.hs) tags += '<span class="tg">High school</span>';
     tags += '<span class="tg hk-src">' + esc(h.source) + "</span>";
     return '<a class="card hk-card" href="' + esc(h.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
-      '<div class="card-top">' +
-        '<span class="hk-ava" style="--h:' + hkHue(h.name || "?") + '" aria-hidden="true">' + esc((h.name || "?").trim().charAt(0).toUpperCase()) + "</span>" +
+      '<div class="card-top">' + logoTile(h.name, h.url) +
         '<span class="card-name">' + esc(h.name) + pill + "</span></div>" +
       '<div class="hk-info">' +
         '<span class="hk-line">' + ICO_CAL + "<span>" + hkDate(h) + "</span></span>" +
@@ -1000,6 +1055,7 @@
         if (!d || !d.events || !d.events.length) return;
         HACKATHONS = d.events;
         $("#n-hackathons").textContent = HACKATHONS.length;
+        var abh = $("#ab-hack"); if (abh) abh.textContent = commas(HACKATHONS.length);
         var note = $("#hk-updated");
         if (note && d.updated) {
           var dt = new Date(d.updated);
@@ -1037,6 +1093,7 @@
     var label = { sch: "Scholarship", prog: "Program", comp: "Competition" }[it.kind] || "";
     return '<div class="row" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' +
       '<div class="dl-date' + (info.soon ? " soon" : "") + '"><b>' + DL_MON[info.date.getMonth()] + " " + info.date.getDate() + "</b><span>" + dleft + "</span></div>" +
+      logoTile(it.name, it.url) +
       '<a class="row-main" href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
         '<div class="row-title">' + esc(it.name) + ' <span class="ext">&#8599;</span></div>' +
         '<div class="row-tags"><span class="tg tg-' + it.kind + '">' + label + "</span>" + (it.meta ? '<span class="tg">' + esc(it.meta) + "</span>" : "") + "</div>" +
