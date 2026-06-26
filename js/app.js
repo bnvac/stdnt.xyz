@@ -18,6 +18,7 @@
   var COMP_CATS = window.COMPETITION_CATS || [];
   var HACKATHONS = window.HACKATHONS || [];
   var ROADMAPS = window.ROADMAPS || [];
+  var COLLEGE_CHECKLIST = window.COLLEGE_CHECKLIST || [];
   var FULL = window.SCH_FULL || 1000000;
   // set to your Buttondown/Mailchimp embed-subscribe URL to enable email signup
   var NEWSLETTER_ENDPOINT = "";
@@ -147,6 +148,7 @@
   var empty = $("#empty");
 
   var saved = loadSaved();
+  var checklist = loadChecklist();
   var state = {
     tab: "tools", q: "",
     tools: { access: "all", cat: "all" },
@@ -268,6 +270,13 @@
   }
   function persistSaved() {
     try { localStorage.setItem("edu-saved", JSON.stringify(Array.from(saved))); } catch (e) {}
+  }
+  function loadChecklist() {
+    try { return new Set(JSON.parse(localStorage.getItem("edu-checklist") || "[]")); }
+    catch (e) { return new Set(); }
+  }
+  function saveChecklist() {
+    try { localStorage.setItem("edu-checklist", JSON.stringify(Array.from(checklist))); } catch (e) {}
   }
   function sid(type, name) { return type + "::" + name; }
   function starBtn(type, name) {
@@ -901,23 +910,39 @@
       switchTab(tab);
       var nav = document.querySelector(".tabs"); if (nav) nav.scrollIntoView({ behavior: "smooth", block: "start" });
     });
+    // checklist: tick items off (persisted on this device)
+    document.addEventListener("click", function (e) {
+      var c = e.target.closest(".ck-check"); if (!c) return;
+      var id = c.getAttribute("data-ck");
+      if (checklist.has(id)) checklist.delete(id); else checklist.add(id);
+      saveChecklist();
+      var on = checklist.has(id), li = c.closest(".ck-item");
+      if (li) li.classList.toggle("is-done", on);
+      c.setAttribute("aria-checked", on);
+      updateChecklistProgress();
+    });
   }
 
   // newsletter signup - hands off to a third-party provider (no backend, no
   // emails stored in this repo). Until one is wired up, the live on-page
   // digest above is the working substitute.
   function wireNewsletter() {
-    var form = $("#news-form"), note = $("#news-note"); if (!form) return;
-    form.addEventListener("submit", function (e) {
+    // delegated so any number of .news-form signups (For You + the site-wide
+    // band) work from one handler
+    document.addEventListener("submit", function (e) {
+      var form = e.target.closest(".news-form"); if (!form) return;
       e.preventDefault();
-      var email = ($("#news-email").value || "").trim(); if (!email) return;
+      var input = form.querySelector(".news-input");
+      var box = form.closest(".news, .news-band") || form.parentNode;
+      var note = box ? box.querySelector(".news-note") : null;
+      var email = (input && input.value || "").trim(); if (!email) return;
       if (NEWSLETTER_ENDPOINT) {
         var fd = new FormData(); fd.append("email", email);
         fetch(NEWSLETTER_ENDPOINT, { method: "POST", body: fd, mode: "no-cors" }).catch(function () {});
-        note.textContent = "Thanks! Check your inbox to confirm your subscription.";
+        if (note) note.textContent = "Thanks! Check your inbox to confirm your subscription.";
         form.reset();
-      } else {
-        note.innerHTML = 'Email digests aren\'t switched on yet — but your matches above update live every visit. Want this? <a href="https://github.com/2008wbbv/edu.edu/issues/new?title=Enable+email+digest" target="_blank" rel="noopener">+1 it on GitHub</a>.';
+      } else if (note) {
+        note.innerHTML = 'Email digests aren\'t switched on yet — but your matches update live every visit. Want this? <a href="https://github.com/2008wbbv/edu.edu/issues/new?title=Enable+email+digest" target="_blank" rel="noopener">+1 it on GitHub</a>.';
       }
     });
   }
@@ -1032,6 +1057,29 @@
     btn.textContent = "Copied!";
     btn.classList.add("is-copied");
     setTimeout(function () { btn.textContent = label; btn.classList.remove("is-copied"); }, 1600);
+  }
+  // ---- MEDIA KIT (downloadable wordmark + brand) ---------------------
+  function wordmarkSVG(theme) {
+    var main = theme === "dark" ? "#ecedf1" : "#16181d";
+    var dim = theme === "dark" ? "#6b6f7d" : "#9296a3";
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="430" height="100" viewBox="0 0 430 100">' +
+      '<text x="14" y="64" font-family="\'JetBrains Mono\', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="54" font-weight="700" letter-spacing="-1.5">' +
+      '<tspan fill="' + main + '">stdnt</tspan><tspan fill="' + dim + '">.xyz</tspan></text></svg>';
+  }
+  function wireMediaKit() {
+    var kit = $("#mediakit"); if (!kit) return;
+    kit.addEventListener("click", function (e) {
+      var dl = e.target.closest("[data-mk-dl]");
+      if (dl) { var t = dl.getAttribute("data-mk-dl"); download("stdnt-xyz-wordmark-" + t + ".svg", wordmarkSVG(t), "image/svg+xml"); return; }
+      var sw = e.target.closest("[data-mk-copy]");
+      if (sw) {
+        copyText(sw.getAttribute("data-mk-copy"));
+        var lab = sw.querySelector(".mk-swatch-hex") || sw, old = lab.textContent;
+        lab.textContent = "Copied!"; setTimeout(function () { lab.textContent = old; }, 1200); return;
+      }
+      var bp = e.target.closest("[data-mk-boiler]");
+      if (bp) { var bo = $("#mk-boiler"); if (bo) copyWithFeedback(bo.textContent.trim(), bp); return; }
+    });
   }
   function wireGuideOverlay() {
     var ov = $("#guide-overlay"); if (!ov) return;
@@ -1288,6 +1336,53 @@
       inner + '<span class="rm-do-t">' + esc(d.t) + "</span>" +
       '<span class="rm-do-go" aria-hidden="true">&rarr;</span></button>';
   }
+  // ---- countdown-to-college checklist (persisted, deep-linked) -------
+  function checklistStats() {
+    var total = 0, done = 0;
+    COLLEGE_CHECKLIST.forEach(function (ph) { ph.items.forEach(function (it) { total++; if (checklist.has(it.id)) done++; }); });
+    return { total: total, done: done, pct: total ? Math.round(done / total * 100) : 0 };
+  }
+  function nowPhase() { return { Freshman: 0, Sophomore: 0, Junior: 1, Senior: 3 }[quiz.grade]; }
+  function ckRing(pct) {
+    var C = 2 * Math.PI * 20;
+    return '<span class="ck-ring-wrap"><svg class="ck-ring" viewBox="0 0 48 48" width="46" height="46" aria-hidden="true">' +
+      '<circle class="ck-ring-bg" cx="24" cy="24" r="20"/>' +
+      '<circle class="ck-ring-fg" cx="24" cy="24" r="20" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + (C * (1 - pct / 100)).toFixed(1) + '"/>' +
+      '</svg><span class="ck-ring-num">' + pct + '%</span></span>';
+  }
+  function renderChecklist() {
+    if (!COLLEGE_CHECKLIST.length) return "";
+    var st = checklistStats(), now = nowPhase();
+    var phases = COLLEGE_CHECKLIST.map(function (ph, pi) {
+      var items = ph.items.map(function (it) {
+        var on = checklist.has(it.id);
+        var go = it.goto ? '<button class="ck-go" type="button" data-rm-goto="' + esc(it.goto) + '" data-rm-q="' + esc(it.q || "") + '" aria-label="Open in site">&rarr;</button>' : "";
+        return '<li class="ck-item' + (on ? " is-done" : "") + '">' +
+          '<button class="ck-check" type="button" role="checkbox" aria-checked="' + on + '" data-ck="' + esc(it.id) + '">' +
+            '<span class="ck-box" aria-hidden="true">' + icon("check") + "</span>" +
+            '<span class="ck-t">' + esc(it.t) + "</span></button>" + go + "</li>";
+      }).join("");
+      var isNow = pi === now;
+      return '<div class="ck-phase' + (isNow ? " is-now" : "") + '">' +
+        '<div class="ck-phase-h">' + esc(ph.phase) + (isNow ? ' <span class="ck-now">You are here</span>' : "") + "</div>" +
+        '<ul class="ck-list">' + items + "</ul></div>";
+    }).join("");
+    return '<div class="ck">' +
+      '<div class="ck-head">' + ckRing(st.pct) +
+        '<div class="ck-head-txt"><h3 class="ck-h">Countdown checklist</h3>' +
+        '<p class="ck-sub">The things that actually get you in — tick them off as you go. Saved on this device.</p>' +
+        '<div class="ck-progtxt"><b>' + st.done + "</b> of " + st.total + " done</div></div></div>" +
+      '<div class="ck-bar"><span style="width:' + st.pct + '%"></span></div>' +
+      '<div class="ck-phases">' + phases + "</div></div>";
+  }
+  function updateChecklistProgress() {
+    var st = checklistStats(), C = 2 * Math.PI * 20;
+    var bar = document.querySelector(".ck-bar span"); if (bar) bar.style.width = st.pct + "%";
+    var txt = document.querySelector(".ck-progtxt"); if (txt) txt.innerHTML = "<b>" + st.done + "</b> of " + st.total + " done";
+    var fg = document.querySelector(".ck-ring-fg"); if (fg) fg.setAttribute("stroke-dashoffset", (C * (1 - st.pct / 100)).toFixed(1));
+    var num = document.querySelector(".ck-ring-num"); if (num) num.textContent = st.pct + "%";
+  }
+
   function renderRoadmaps() {
     var box = $("#roadmaps-body"); if (!box) return;
     if (!ROADMAPS.length) { box.innerHTML = '<p class="muted">Roadmaps are loading…</p>'; return; }
@@ -1326,6 +1421,7 @@
       '<p class="rm-intro">Pick a goal and follow the path. Each step links straight to the scholarships, programs and competitions you need — and shows what it <b>unlocks</b> next.</p>' +
       '<div class="rm-goals">' + chips + "</div>" +
       cdHTML +
+      renderChecklist() +
       '<div class="rm-current" style="--rm-hue:' + rm.hue + '">' +
         '<div class="rm-current-head"><span class="rm-current-ico" aria-hidden="true">' + icon(rm.icon) + "</span>" +
           '<div><h2 class="rm-current-goal">' + esc(rm.goal) + "</h2><p class=\"rm-current-blurb\">" + esc(rm.blurb) + "</p></div></div>" +
@@ -1565,6 +1661,7 @@
   wireTemplates();
   wireDeadlines();
   wireNewsletter();
+  wireMediaKit();
   wireMore();
   injectStructuredData();
   initViews();

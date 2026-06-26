@@ -165,3 +165,40 @@ window.ROADMAPS = [
     ]
   }
 ];
+
+/*
+ * The countdown-to-college checklist: the concrete, time-ordered to-do list
+ * that actually gets you in. Each item has a stable id (so checked state
+ * survives edits/reordering) and can deep-link into the site (goto + q).
+ */
+window.COLLEGE_CHECKLIST = [
+  { phase: "9th-10th grade", grades: ["Freshman", "Sophomore"], items: [
+      { id: "early-classes", t: "Take challenging classes & protect your GPA", goto: "tools", q: "gpa" },
+      { id: "early-explore", t: "Explore interests: a club, a competition, volunteering", goto: "competitions", q: "" },
+      { id: "early-brag", t: "Start a \"brag sheet\" - log every award & activity", goto: "templates", q: "" },
+      { id: "early-study", t: "Lock in free study tools (Khan, OpenStax)", goto: "tools", q: "openstax" },
+      { id: "early-summer", t: "Find a free summer program for next year", goto: "prog", q: "free" } ] },
+  { phase: "11th grade (junior)", grades: ["Junior"], items: [
+      { id: "jr-psat", t: "Take the PSAT/NMSQT (gateway to National Merit)", goto: "sch", q: "national merit" },
+      { id: "jr-test", t: "Register & study for the SAT/ACT (free prep)", goto: "tools", q: "test prep" },
+      { id: "jr-list", t: "Build your college list (BigFuture)", goto: "tools", q: "bigfuture" },
+      { id: "jr-sch", t: "Find scholarships you actually qualify for", goto: "foryou", q: "" },
+      { id: "jr-recs", t: "Line up 2-3 recommendation letters", goto: "guides", q: "recommendation" },
+      { id: "jr-visit", t: "Visit campuses or apply to free fly-in programs", goto: "prog", q: "" } ] },
+  { phase: "Summer before senior year", grades: [], items: [
+      { id: "su-essay", t: "Draft your personal statement", goto: "guides", q: "essay" },
+      { id: "su-deadlines", t: "Finalize your list & save every deadline", goto: "deadlines", q: "" },
+      { id: "su-waiver", t: "Request application fee waivers", goto: "tools", q: "fee waiver" },
+      { id: "su-resume", t: "Polish your activities list / resume", goto: "templates", q: "" } ] },
+  { phase: "Senior fall", grades: ["Senior"], items: [
+      { id: "sr-fafsa", t: "File the FAFSA (opens Oct 1 - do it early)", goto: "tools", q: "fafsa" },
+      { id: "sr-css", t: "Submit the CSS Profile if your colleges require it", goto: "tools", q: "fafsa" },
+      { id: "sr-ea", t: "Submit Early Action / Early Decision apps", goto: "deadlines", q: "" },
+      { id: "sr-sch", t: "Send out scholarship applications", goto: "sch", q: "" },
+      { id: "sr-recs", t: "Confirm teachers submitted your rec letters", goto: "guides", q: "recommendation" } ] },
+  { phase: "Senior spring", grades: [], items: [
+      { id: "sp-apps", t: "Submit your remaining regular applications", goto: "deadlines", q: "" },
+      { id: "sp-sch", t: "Keep applying for scholarships - it never stops", goto: "sch", q: "" },
+      { id: "sp-aid", t: "Compare your financial-aid award letters", goto: "tools", q: "fafsa" },
+      { id: "sp-commit", t: "Commit & deposit by May 1 (Decision Day)", q: "" } ] }
+];

@@ -836,3 +836,83 @@ html.guide-open { overflow: hidden; }
   .news { flex-direction: column; gap: .7rem; }
   .news-form .btn { width: 100%; }
 }
+
+/* =========================================================== CHECKLIST */
+.ck { margin: 0 0 1.6rem; padding: 1.2rem 1.3rem; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(180deg, color-mix(in srgb, var(--evr) 5%, var(--card)), var(--card)); }
+.ck-head { display: flex; align-items: center; gap: 1rem; margin-bottom: .9rem; }
+.ck-head-txt { flex: 1; min-width: 0; }
+.ck-h { font-size: 1.15rem; font-weight: 800; letter-spacing: -.02em; margin: 0 0 .15rem; }
+.ck-sub { color: var(--tx-2); font-size: .86rem; margin: 0 0 .3rem; }
+.ck-progtxt { font-size: .82rem; color: var(--tx-3); }
+.ck-progtxt b { color: var(--evr); font-size: 1rem; }
+.ck-ring-wrap { position: relative; display: inline-grid; place-items: center; flex: none; width: 46px; height: 46px; }
+.ck-ring { transform: rotate(-90deg); }
+.ck-ring-bg { fill: none; stroke: var(--line-2); stroke-width: 4; }
+.ck-ring-fg { fill: none; stroke: var(--evr); stroke-width: 4; stroke-linecap: round; transition: stroke-dashoffset .45s ease; }
+.ck-ring-num { position: absolute; font-size: .66rem; font-weight: 700; color: var(--tx); }
+.ck-bar { height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; margin-bottom: 1.1rem; }
+.ck-bar span { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--evr), color-mix(in srgb, var(--evr) 55%, var(--accent))); transition: width .45s ease; }
+.ck-phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem .9rem; }
+.ck-phase-h { font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--tx-3); margin-bottom: .5rem; padding-bottom: .35rem; border-bottom: 1px solid var(--line); }
+.ck-phase.is-now .ck-phase-h { color: var(--evr); border-color: color-mix(in srgb, var(--evr) 40%, var(--line)); }
+.ck-now { display: inline-block; margin-left: .35rem; font-size: .6rem; font-weight: 700; color: #fff; background: var(--evr); padding: .1rem .4rem; border-radius: 999px; letter-spacing: .02em; vertical-align: middle; }
+.ck-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .2rem; }
+.ck-item { display: flex; align-items: center; gap: .25rem; }
+.ck-check { flex: 1; min-width: 0; display: flex; align-items: center; gap: .55rem; font: inherit; text-align: left; color: var(--tx); background: none; border: none; border-radius: 8px; padding: .35rem .4rem; cursor: pointer; transition: background .15s; }
+.ck-check:hover { background: color-mix(in srgb, var(--evr) 7%, transparent); }
+.ck-box { flex: none; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 7px; border: 1.5px solid var(--line-2); color: transparent; transition: all .15s; }
+.ck-box svg { width: 15px; height: 15px; }
+.ck-item.is-done .ck-box { background: var(--evr); border-color: var(--evr); color: #fff; }
+.ck-t { font-size: .88rem; line-height: 1.35; }
+.ck-item.is-done .ck-t { color: var(--tx-3); text-decoration: line-through; }
+.ck-go { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 7px; font-size: 1rem; font-weight: 700; color: var(--tx-3); background: none; border: 1px solid transparent; cursor: pointer; transition: all .15s; }
+.ck-go:hover { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 30%, var(--line)); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+
+/* ===================================================== NEWSLETTER BAND */
+.news-band { position: relative; overflow: hidden; margin: 2.2rem 0 .5rem; padding: clamp(1.4rem, 4vw, 2rem) clamp(1.2rem, 4vw, 2.2rem); border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--line)); border-radius: 20px; background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 10%, var(--card)), color-mix(in srgb, var(--stu) 9%, var(--card))); }
+.news-band-glow { position: absolute; top: -90px; right: -40px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, var(--accent), transparent 70%); filter: blur(70px); opacity: .35; pointer-events: none; }
+.news-band-inner { position: relative; display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; }
+.news-band-ico { display: inline-grid; place-items: center; width: 50px; height: 50px; flex: none; border-radius: 14px; color: #fff; background: linear-gradient(135deg, var(--accent), var(--stu)); box-shadow: 0 10px 26px -10px color-mix(in srgb, var(--accent) 75%, transparent); }
+.news-band-txt { flex: 1; min-width: 220px; }
+.news-band-h { font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 800; letter-spacing: -.02em; margin: 0 0 .2rem; }
+.news-band-sub { color: var(--tx-2); font-size: .92rem; margin: 0; }
+.news-band-form { flex: none; display: flex; gap: .5rem; flex-wrap: wrap; }
+.news-band-form .news-input { min-width: 220px; }
+.news-band-note { position: relative; color: var(--tx-3); font-size: .8rem; margin: .9rem 0 0; }
+.news-band-note a { color: var(--accent); text-decoration: underline; }
+
+/* ============================================================ MEDIA KIT */
+.mediakit { margin: 1.8rem 0 .4rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 18px; background: var(--card); }
+.mediakit .mk-title { font-size: 1.15rem; font-weight: 800; letter-spacing: -.02em; margin: 0 0 .3rem; }
+.mediakit .mk-lead { color: var(--tx-2); font-size: .9rem; margin: 0 0 1.2rem; max-width: 62ch; }
+.mk-logos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .9rem; margin-bottom: 1.4rem; }
+.mk-logo { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 1.7rem 1rem; border-radius: 14px; border: 1px solid var(--line); }
+.mk-logo-dark { background: #0c0d10; border-color: #23252e; }
+.mk-logo-light { background: #fbfbfd; border-color: #eaeaef; }
+.mk-wordmark { font-family: var(--mono); font-weight: 700; font-size: 1.75rem; letter-spacing: -.04em; }
+.mk-logo-dark .mk-wordmark { color: #ecedf1; }
+.mk-logo-dark .mk-dim { color: #6b6f7d; }
+.mk-logo-light .mk-wordmark { color: #16181d; }
+.mk-logo-light .mk-dim { color: #9296a3; }
+.mk-dl { font: inherit; font-size: .8rem; font-weight: 600; color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent); border-radius: 999px; padding: .35rem .9rem; cursor: pointer; transition: all .15s; }
+.mk-dl:hover { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.mediakit .mk-sub { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--tx-2); margin: 0 0 .6rem; }
+.mk-hint { font-size: .68rem; font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--tx-3); }
+.mk-copy { font: inherit; font-size: .68rem; font-weight: 600; text-transform: none; letter-spacing: 0; margin-left: .4rem; color: var(--accent); background: none; border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent); border-radius: 6px; padding: .1rem .45rem; cursor: pointer; }
+.mk-copy.is-copied { color: #fff; background: var(--evr); border-color: var(--evr); }
+.mk-swatches { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.4rem; }
+.mk-swatch { display: inline-flex; align-items: center; gap: .5rem; font: inherit; color: var(--tx); background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px; padding: .4rem .7rem .4rem .45rem; cursor: pointer; transition: all .15s; }
+.mk-swatch:hover { border-color: var(--line-2); transform: translateY(-1px); }
+.mk-swatch-c { width: 22px; height: 22px; border-radius: 6px; flex: none; }
+.mk-swatch-c-line { border: 1px solid var(--line-2); }
+.mk-swatch-name { font-size: .82rem; font-weight: 600; }
+.mk-swatch-hex { font-family: var(--mono); font-size: .76rem; color: var(--tx-3); }
+.mk-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+.mediakit .mk-fonts { color: var(--tx-2); font-size: .88rem; margin: 0; line-height: 1.7; }
+.mediakit .mk-fonts b { color: var(--tx); }
+.mediakit .mk-boiler { color: var(--tx-2); font-size: .88rem; margin: 0; line-height: 1.6; }
+
+@media (max-width: 560px) {
+  .news-band-form { width: 100%; }
+  .news-band-form .news-input { flex: 1; min-width: 0; }
+}
