@@ -47,6 +47,9 @@ Example — add a tool in `js/data.js`:
   category: "apis",        // see window.CATEGORIES
   access: "everyone",      // "student" or "everyone"
   slug: "github",          // a simpleicons.org slug (or omit for a monogram)
+  logo: "https://...",     // optional: a logo image URL (e.g. one a contributor
+                           //   dropped into the form). Shown contained on a white
+                           //   tile — square-ish logos look best. Wins over slug/favicon.
   value: "$50 credit",     // optional highlight
   desc: "One honest sentence about what it is.",
   tags: ["llm", "api"],    // optional, helps search

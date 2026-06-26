@@ -200,7 +200,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
   mask: var(--src) center / contain no-repeat;
 }
 .ic-mono { font-family: var(--mono); font-weight: 700; font-size: .82rem; color: var(--tx); letter-spacing: -.02em; }
-.ic-fav { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 7px; background: #fff; }
+.ic-fav { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 6px; background: #fff; box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); }
 
 /* ============================================================== CARDS (tools) */
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: .8rem; }
@@ -340,7 +340,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
 }
 .vchip svg { width: 10px; height: 10px; }
 .tg-pin { width: 11px; height: 11px; margin-right: 1px; vertical-align: -1px; }
-.row-fav { width: 18px; height: 18px; border-radius: 4px; object-fit: contain; background: #fff; flex: none; }
+.row-fav { width: 18px; height: 18px; border-radius: 4px; object-fit: contain; background: #fff; flex: none; box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); }
 .saved-h span {
   font-size: .72rem; color: var(--tx-3); background: var(--bg-2);
   border: 1px solid var(--line); border-radius: 999px; padding: .02rem .45rem; letter-spacing: 0;
@@ -563,7 +563,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
   background: linear-gradient(150deg, hsl(var(--h) 58% 30%), hsl(var(--h) 55% 20%));
   border: 1px solid hsl(var(--h) 60% 45% / .55);
 }
-.logo-ico .logo-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 7px; background: #fff; }
+.logo-ico .logo-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 6px; background: #fff; box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); }
 .hk-info { display: flex; flex-direction: column; gap: .32rem; margin: .15rem 0 .2rem; }
 .hk-line { display: flex; align-items: center; gap: .45rem; font-size: .82rem; color: var(--tx-2); min-width: 0; }
 .hk-line svg { width: 15px; height: 15px; flex: none; color: var(--tx-3); }

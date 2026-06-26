@@ -84,10 +84,12 @@
     try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return ""; }
   }
   function hueOf(s) { var n = 0; s = s || "?"; for (var i = 0; i < s.length; i++) n = (n * 31 + s.charCodeAt(i)) % 360; return n; }
-  // a square logo tile: real favicon when we have a domain, coloured letter fallback otherwise
-  function logoTile(name, url) {
+  // a square logo tile: an explicit logo if the listing has one, else the real
+  // favicon, else a coloured-letter fallback. object-fit keeps any shape tidy.
+  function logoTile(name, url, logo) {
     var dom = domainOf(url), letter = esc((name || "?").trim().charAt(0).toUpperCase());
-    var img = dom ? '<img class="logo-img" src="' + faviconURL(dom) + '" alt="" loading="lazy" />' : "";
+    var src = logo || (dom ? faviconURL(dom) : "");
+    var img = src ? '<img class="logo-img" src="' + esc(src) + '" alt="" loading="lazy" />' : "";
     return '<span class="logo-ico" style="--h:' + hueOf(name) + '" aria-hidden="true">' + letter + img + "</span>";
   }
 
@@ -265,9 +267,11 @@
   function csvCell(v) { v = String(v == null ? "" : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
   function icsEsc(v) { return String(v || "").replace(/([,;\\])/g, "\\$1").replace(/\n/g, " "); }
   function iconHTML(item) {
+    // an explicit logo wins, then a Simple Icons slug, then favicon, then a monogram
+    var inner = '<span class="ic-mono">' + esc(item.mono || monoFrom(item.name)) + "</span>";
+    if (item.logo) return '<span class="ic-wrap">' + inner + '<img class="ic-fav" src="' + esc(item.logo) + '" alt="" loading="lazy" /></span>';
     if (item.slug) return '<span class="ic-wrap"><span class="ic" style="--src:url(\'' + ICON_CDN + esc(item.slug) + '\')"></span></span>';
     var dom = domainOf(item.url);
-    var inner = '<span class="ic-mono">' + esc(item.mono || monoFrom(item.name)) + "</span>";
     if (dom) inner += '<img class="ic-fav" src="' + faviconURL(dom) + '" alt="" loading="lazy" />';
     return '<span class="ic-wrap">' + inner + "</span>";
   }
@@ -455,7 +459,8 @@
     var subs = (p.subjects || []).slice(0, 3).map(function (s) { return '<span class="tg">' + esc(s) + "</span>"; }).join("");
     var sub = esc(p.details || (p.subjects || []).join(", ")) + (p.when ? ' <span class="find">&middot; ' + esc(p.when) + "</span>" : "");
     var cost = shortCost(p);
-    var fav = (p.flagship && domainOf(p.url)) ? '<img class="row-fav" src="' + faviconURL(domainOf(p.url)) + '" alt="" loading="lazy" />' : "";
+    var favSrc = p.logo || (p.flagship && domainOf(p.url) ? faviconURL(domainOf(p.url)) : "");
+    var fav = favSrc ? '<img class="row-fav" src="' + esc(favSrc) + '" alt="" loading="lazy" />' : "";
     return '<div class="row' + (gone(p) ? " row-gone" : "") + '" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' + rank +
       '<a class="row-main" href="' + esc(url) + '" target="_blank" rel="noopener">' +
       '<div class="row-title">' + fav + esc(p.name) + (p.flagship ? ' <span class="card-star">&#9733;</span>' : "") + matchBadge("prog", p) + verifiedChip(p) + ' <span class="ext">&#8599;</span></div>' +
@@ -1213,7 +1218,7 @@
     var gr = c.grades ? '<span class="tg">Grades ' + esc(c.grades) + "</span>" : "";
     var ft = freshTags(c, c.url);
     return '<a class="card" href="' + esc(c.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
-      '<div class="card-top">' + logoTile(c.name, c.url) +
+      '<div class="card-top">' + logoTile(c.name, c.url, c.logo) +
       '<span class="card-name">' + esc(c.name) + matchBadge("comp", c) + "</span>" +
       '<span class="card-meta">' + starBtn("comp", c.name) + flagBtn(c.name, c.url) + "</span></div>" +
       '<p class="card-desc">' + esc(c.desc) + "</p>" +
@@ -1273,7 +1278,7 @@
     if (h.hs) tags += '<span class="tg">High school</span>';
     tags += '<span class="tg hk-src">' + esc(h.source) + "</span>";
     return '<a class="card hk-card" href="' + esc(h.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
-      '<div class="card-top">' + logoTile(h.name, h.url) +
+      '<div class="card-top">' + logoTile(h.name, h.url, h.logo) +
         '<span class="card-name">' + esc(h.name) + pill + "</span></div>" +
       '<div class="hk-info">' +
         '<span class="hk-line">' + ICO_CAL + "<span>" + hkDate(h) + "</span></span>" +
@@ -1485,9 +1490,9 @@
   function deadlineItems() {
     var out = [];
     // skip anything flagged defunct/cancelled/paused so dead opportunities never show as live deadlines
-    SCH.forEach(function (s) { if (gone(s)) return; var info = dlInfo(s.deadline); if (info.date) out.push({ kind: "sch", name: s.name, url: s.url, deadline: s.deadline, info: info, meta: s.amountText || "" }); });
-    PROG.forEach(function (p) { if (gone(p)) return; var info = dlInfo(p.deadline); if (info.date) out.push({ kind: "prog", name: p.name, url: p.url || searchLink(p.name + " program"), deadline: p.deadline, info: info, meta: p.ranking || "" }); });
-    COMPS.forEach(function (c) { if (gone(c)) return; var info = dlInfo(c.deadline); if (info.date) out.push({ kind: "comp", name: c.name, url: c.url, deadline: c.deadline, info: info, meta: c.format || "" }); });
+    SCH.forEach(function (s) { if (gone(s)) return; var info = dlInfo(s.deadline); if (info.date) out.push({ kind: "sch", name: s.name, url: s.url, logo: s.logo, deadline: s.deadline, info: info, meta: s.amountText || "" }); });
+    PROG.forEach(function (p) { if (gone(p)) return; var info = dlInfo(p.deadline); if (info.date) out.push({ kind: "prog", name: p.name, url: p.url || searchLink(p.name + " program"), logo: p.logo, deadline: p.deadline, info: info, meta: p.ranking || "" }); });
+    COMPS.forEach(function (c) { if (gone(c)) return; var info = dlInfo(c.deadline); if (info.date) out.push({ kind: "comp", name: c.name, url: c.url, logo: c.logo, deadline: c.deadline, info: info, meta: c.format || "" }); });
     out.sort(function (a, b) { return a.info.days - b.info.days || a.name.localeCompare(b.name); });
     return out;
   }
@@ -1507,7 +1512,7 @@
     var label = { sch: "Scholarship", prog: "Program", comp: "Competition" }[it.kind] || "";
     return '<div class="row" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' +
       '<div class="dl-date' + (info.soon ? " soon" : "") + '"><b>' + DL_MON[info.date.getMonth()] + " " + info.date.getDate() + "</b><span>" + dleft + "</span></div>" +
-      logoTile(it.name, it.url) +
+      logoTile(it.name, it.url, it.logo) +
       '<a class="row-main" href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
         '<div class="row-title">' + esc(it.name) + ' <span class="ext">&#8599;</span></div>' +
         '<div class="row-tags"><span class="tg tg-' + it.kind + '">' + label + "</span>" + (it.meta ? '<span class="tg">' + esc(it.meta) + "</span>" : "") + linkDownBadge(it.url) + "</div>" +
