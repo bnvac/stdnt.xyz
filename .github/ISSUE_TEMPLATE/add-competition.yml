@@ -1,0 +1,61 @@
+name: Add a competition
+description: An academic competition, contest, or olympiad
+title: "[Competition] "
+labels: ["contribution", "competition"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Adding a competition? Fill this in and submit — it becomes a tracked issue
+        credited to your GitHub account.
+  - type: input
+    id: name
+    attributes:
+      label: Competition name
+      placeholder: e.g. Science Olympiad
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Official link
+      placeholder: https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Science
+        - Math
+        - Computer Science
+        - Engineering / Robotics
+        - Innovation / Entrepreneurship
+        - Humanities / Writing / Arts
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: format
+    attributes:
+      label: Format
+      placeholder: e.g. Team, Individual, Online, In-person
+  - type: input
+    id: deadline
+    attributes:
+      label: Registration deadline / typical window
+      placeholder: e.g. Nov, or "Fall registration"
+  - type: textarea
+    id: desc
+    attributes:
+      label: One sentence on what it is
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Quick checks
+      options:
+        - label: This competition is open to students and currently active
+          required: true

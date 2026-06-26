@@ -112,6 +112,26 @@ Counts, chips, search and the icon all update automatically. Scholarships and pr
 follow the same idea in their files. **PRs that add or fix freebies are the whole point -
 send them.** 💛
 
+## 🤝 Contributing
+
+Two ways, **both credit you automatically**:
+
+1. **No coding** — open the [Contribute page](https://2008wbbv.github.io/edu.edu/#contribute)
+   or pick a category at [New issue](https://github.com/2008wbbv/edu.edu/issues/new/choose).
+   Each is a short form (tool, scholarship, program, competition, discount, or a
+   fix report). Submit it and it becomes a tracked, labelled issue.
+2. **A pull request** — every listing is one object in a `js/*.js` file (see above).
+
+Full details, data shapes and how contributions are tracked are in
+**[CONTRIBUTING.md](CONTRIBUTING.md)**.
+
+## 📧 Newsletter
+
+The site is static, so the weekly email digest hands signups to a third-party
+provider (Buttondown / Mailchimp). It's off by default — the on-site
+*"This week for you"* digest works regardless. To switch email on, follow
+**[NEWSLETTER.md](NEWSLETTER.md)** (it's one variable plus a cache bump).
+
 ## 🙏 Credits
 
 - Scholarship & STEM-program data adapted from open community spreadsheets.

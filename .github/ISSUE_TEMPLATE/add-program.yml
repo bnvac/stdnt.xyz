@@ -1,0 +1,77 @@
+name: Add a STEM / summer program
+description: A summer, research, or enrichment program for students
+title: "[Program] "
+labels: ["contribution", "program"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Adding a program? Fill this in and submit — it becomes a tracked issue
+        credited to your GitHub account.
+  - type: input
+    id: name
+    attributes:
+      label: Program name
+      placeholder: e.g. MIT MITES
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Official link
+      placeholder: https://...
+    validations:
+      required: true
+  - type: input
+    id: subjects
+    attributes:
+      label: Subjects / focus
+      placeholder: e.g. Research, Engineering, Biology, CS
+    validations:
+      required: true
+  - type: dropdown
+    id: grades
+    attributes:
+      label: Grade level
+      multiple: true
+      options:
+        - Freshman
+        - Sophomore
+        - Junior
+        - Senior
+        - Undergraduate
+    validations:
+      required: true
+  - type: dropdown
+    id: cost
+    attributes:
+      label: Cost
+      options:
+        - Free
+        - Free + stipend / paid
+        - Paid (has aid)
+        - Paid
+    validations:
+      required: true
+  - type: input
+    id: deadline
+    attributes:
+      label: Application deadline
+      placeholder: e.g. Feb 1, or "Rolling"
+  - type: input
+    id: location
+    attributes:
+      label: Location (optional)
+      placeholder: e.g. Online, or "Cambridge, MA", or a state for residents-only
+  - type: textarea
+    id: note
+    attributes:
+      label: Eligibility & notes (optional)
+      placeholder: Selectivity, residency requirements, who it's aimed at, etc.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Quick checks
+      options:
+        - label: This program is currently running (not cancelled or on hiatus)
+          required: true

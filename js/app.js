@@ -22,6 +22,16 @@
   var FULL = window.SCH_FULL || 1000000;
   // set to your Buttondown/Mailchimp embed-subscribe URL to enable email signup
   var NEWSLETTER_ENDPOINT = "";
+  var GH_REPO = "https://github.com/2008wbbv/edu.edu";
+  // contribute categories -> their GitHub issue-form templates (tracked + credited)
+  var CONTRIB = [
+    { icon: "code", label: "Tool or perk", desc: "Free software, an API, an app or a student perk.", template: "add-tool.yml" },
+    { icon: "cap", label: "Scholarship", desc: "A scholarship, grant or fellowship students can apply for.", template: "add-scholarship.yml" },
+    { icon: "flask", label: "STEM / summer program", desc: "A research, summer or enrichment program.", template: "add-program.yml" },
+    { icon: "trophy", label: "Competition", desc: "An academic competition, contest or olympiad.", template: "add-competition.yml" },
+    { icon: "cash", label: "Student discount", desc: "An everyday student deal or discount.", template: "add-discount.yml" },
+    { icon: "refresh", label: "Report a problem", desc: "A dead link, wrong deadline or defunct listing.", template: "report.yml" }
+  ];
   var CAT = {}; CATS.forEach(function (c) { CAT[c.id] = c; });
   DISC_CATS.forEach(function (c) { CAT[c.id] = c; });   // discount categories share the label map
 
@@ -764,6 +774,7 @@
       empty.hidden = true; return;
     }
     if (state.tab === "roadmaps") { renderRoadmaps(); meta.textContent = ROADMAPS.length + " step-by-step roadmaps"; empty.hidden = true; return; }
+    if (state.tab === "contribute") { renderContribute(); meta.textContent = ""; empty.hidden = true; return; }
     var n, total, label;
     if (state.tab === "tools") { n = renderTools(); total = RES.length; label = "tools"; }
     else if (state.tab === "sch") { n = renderSch(); total = SCH.length; label = "scholarships"; }
@@ -775,7 +786,7 @@
     state.tab = tab;
     document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === tab); });
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
-    ["tools", "discounts", "sch", "prog", "competitions", "deadlines", "roadmaps", "foryou", "saved", "guides", "templates", "hackathons", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
+    ["tools", "discounts", "sch", "prog", "competitions", "deadlines", "roadmaps", "foryou", "saved", "guides", "templates", "hackathons", "contribute", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
     document.title = (TAB_TITLES[tab] ? TAB_TITLES[tab] + " · " : "") + "stdnt.xyz - free stuff for students";
     var moreBtn = $("#more-btn"); if (moreBtn) moreBtn.classList.toggle("is-active", !!OVERFLOW[tab]);
     closeMore();
@@ -1103,9 +1114,9 @@
     }
     return false;
   }
-  var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, deadlines: 1, roadmaps: 1, foryou: 1, saved: 1, guides: 1, templates: 1, hackathons: 1, about: 1 };
-  var OVERFLOW = { guides: 1, templates: 1, hackathons: 1, about: 1 };   // tabs tucked into the "More" menu
-  var TAB_TITLES = { tools: "Free tools & perks", discounts: "Student discounts", sch: "Scholarships", prog: "STEM programs", competitions: "Competitions", deadlines: "Deadlines", roadmaps: "Roadmaps", foryou: "Find your matches", saved: "Saved", guides: "Guides", templates: "Templates", hackathons: "Hackathons", about: "About" };
+  var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, deadlines: 1, roadmaps: 1, foryou: 1, saved: 1, guides: 1, templates: 1, hackathons: 1, contribute: 1, about: 1 };
+  var OVERFLOW = { guides: 1, templates: 1, hackathons: 1, contribute: 1, about: 1 };   // tabs tucked into the "More" menu
+  var TAB_TITLES = { tools: "Free tools & perks", discounts: "Student discounts", sch: "Scholarships", prog: "STEM programs", competitions: "Competitions", deadlines: "Deadlines", roadmaps: "Roadmaps", foryou: "Find your matches", saved: "Saved", guides: "Guides", templates: "Templates", hackathons: "Hackathons", contribute: "Contribute", about: "About" };
   function closeMore() { var m = $("#tab-menu"), b = $("#more-btn"); if (m && !m.hidden) { m.hidden = true; if (b) b.setAttribute("aria-expanded", "false"); } }
   function wireMore() {
     var btn = $("#more-btn"), menu = $("#tab-menu"); if (!btn || !menu) return;
@@ -1426,6 +1437,47 @@
         '<div class="rm-current-head"><span class="rm-current-ico" aria-hidden="true">' + icon(rm.icon) + "</span>" +
           '<div><h2 class="rm-current-goal">' + esc(rm.goal) + "</h2><p class=\"rm-current-blurb\">" + esc(rm.blurb) + "</p></div></div>" +
         '<div class="rm-flow">' + stages + "</div>" +
+      "</div>";
+  }
+
+  // ---- CONTRIBUTE (GitHub issue forms, per category, all tracked) ----
+  function renderContribute() {
+    var box = $("#contribute-body"); if (!box) return;
+    var cards = CONTRIB.map(function (c) {
+      return '<a class="cb-card" href="' + GH_REPO + "/issues/new?template=" + esc(c.template) + '" target="_blank" rel="noopener">' +
+        '<span class="cb-card-ico" aria-hidden="true">' + icon(c.icon) + "</span>" +
+        '<span class="cb-card-main"><span class="cb-card-t">' + esc(c.label) + "</span>" +
+        '<span class="cb-card-d">' + esc(c.desc) + "</span></span>" +
+        '<span class="cb-card-go" aria-hidden="true">&rarr;</span></a>';
+    }).join("");
+    var steps = [
+      ["1", "Pick a category", "Choose what you want to add below."],
+      ["2", "Fill the form", "A short, structured form on GitHub — no coding."],
+      ["3", "It's tracked", "It becomes an issue credited to your GitHub account."]
+    ].map(function (s) {
+      return '<div class="cb-step"><span class="cb-step-n">' + s[0] + "</span>" +
+        "<div><b>" + esc(s[1]) + "</b><span>" + esc(s[2]) + "</span></div></div>";
+    }).join("");
+    box.innerHTML =
+      '<div class="cb-steps">' + steps + "</div>" +
+      '<h3 class="cb-h">What are you adding?</h3>' +
+      '<div class="cb-grid">' + cards + "</div>" +
+      '<div class="cb-split">' +
+        '<div class="cb-panel cb-pr">' +
+          '<span class="cb-panel-ico" aria-hidden="true">' + icon("code") + "</span>" +
+          "<h4>Comfortable with code?</h4>" +
+          "<p>Every listing is one object in a <code>js/*.js</code> file — no build step. Open a pull request and add it directly.</p>" +
+          '<a class="btn btn-grad" href="' + GH_REPO + '/blob/HEAD/CONTRIBUTING.md" target="_blank" rel="noopener">Read the contributor guide</a>' +
+        "</div>" +
+        '<div class="cb-panel cb-track">' +
+          '<span class="cb-panel-ico" aria-hidden="true">' + icon("check") + "</span>" +
+          "<h4>Every contribution is credited</h4>" +
+          "<p>It all runs through GitHub, so each addition is attributed to you — by issue label and in the contributors graph.</p>" +
+          '<div class="cb-track-links">' +
+            '<a href="' + GH_REPO + '/issues?q=is%3Aissue+label%3Acontribution" target="_blank" rel="noopener">See contributions <span class="ext">&#8599;</span></a>' +
+            '<a href="' + GH_REPO + '/graphs/contributors" target="_blank" rel="noopener">Contributors <span class="ext">&#8599;</span></a>' +
+          "</div>" +
+        "</div>" +
       "</div>";
   }
 

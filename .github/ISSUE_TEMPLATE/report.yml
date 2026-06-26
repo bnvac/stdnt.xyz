@@ -1,0 +1,39 @@
+name: Report a problem (dead link / outdated)
+description: A broken link, wrong deadline, or a listing that no longer exists
+title: "[Fix] "
+labels: ["fix"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Spotted something stale? Thank you — keeping listings fresh is the
+        single most valuable thing you can do here.
+  - type: input
+    id: listing
+    attributes:
+      label: Which listing?
+      placeholder: The name as it appears on the site
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Its link (if you have it)
+      placeholder: https://...
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What's wrong?
+      options:
+        - Link is dead / 404
+        - Program or scholarship no longer exists
+        - Deadline is wrong or out of date
+        - Offer changed (price, eligibility, etc.)
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      placeholder: What did you find? A corrected link or deadline is hugely helpful.

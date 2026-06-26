@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Add it yourself in a pull request
+    url: https://github.com/2008wbbv/edu.edu/blob/claude/nifty-shannon-rb05g2/CONTRIBUTING.md
+    about: Comfortable with code? It's one object in a JS file - add it directly.
+  - name: See all the ways to contribute
+    url: https://github.com/2008wbbv/edu.edu#-contributing
+    about: The full contributor guide, in the README.

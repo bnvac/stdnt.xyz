@@ -1,0 +1,62 @@
+name: Add a student discount
+description: An everyday student discount or deal
+title: "[Discount] "
+labels: ["contribution", "discount"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Adding a discount? Fill this in and submit — it becomes a tracked issue
+        credited to your GitHub account.
+  - type: input
+    id: name
+    attributes:
+      label: Brand / service
+      placeholder: e.g. Spotify Premium Student
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Link to the student offer
+      placeholder: https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Streaming & music
+        - Software & tech
+        - Shopping & fashion
+        - Food & drink
+        - Travel & transport
+        - News & learning
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: deal
+    attributes:
+      label: The deal
+      placeholder: e.g. 50% off, or "$5.99/mo"
+    validations:
+      required: true
+  - type: dropdown
+    id: verify
+    attributes:
+      label: How do you verify?
+      options:
+        - UNiDAYS
+        - Student Beans
+        - SheerID
+        - .edu email
+        - Other / in-store ID
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Quick checks
+      options:
+        - label: This discount is live right now
+          required: true

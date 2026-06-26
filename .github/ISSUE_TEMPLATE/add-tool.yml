@@ -1,0 +1,64 @@
+name: Add a tool or perk
+description: A free tool, API, app, or student perk
+title: "[Tool] "
+labels: ["contribution", "tool"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for adding a freebie! Fill this in and submit — it becomes a tracked
+        issue credited to your GitHub account. No coding needed.
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      placeholder: e.g. GitHub Student Developer Pack
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Link
+      placeholder: https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: access
+    attributes:
+      label: Who is it for?
+      options:
+        - Everyone (free for anyone)
+        - Students only (needs .edu / SheerID / verification)
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      placeholder: e.g. AI, APIs, Hosting, Design, Productivity, Hardware
+  - type: textarea
+    id: desc
+    attributes:
+      label: One honest sentence about what it is
+      placeholder: What does a student actually get?
+    validations:
+      required: true
+  - type: input
+    id: value
+    attributes:
+      label: Headline value (optional)
+      placeholder: e.g. "$100 in credit" or "Free Pro plan"
+  - type: input
+    id: tags
+    attributes:
+      label: Tags (optional, comma-separated)
+      placeholder: llm, api, free-tier
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Quick checks
+      options:
+        - label: This is genuinely free (or free for students), not a trial that auto-charges
+          required: true
+        - label: The link works and goes straight to the offer
+          required: true
