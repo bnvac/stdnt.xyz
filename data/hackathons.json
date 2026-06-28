@@ -1,34 +1,8 @@
 {
-  "updated": "2026-06-25T16:20:33.476Z",
+  "updated": "2026-06-28T08:41:19.217Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 27,
+  "count": 25,
   "events": [
-    {
-      "name": "Cove Hacks",
-      "url": "https://www.covehacks.dev/",
-      "start": "2026-06-26",
-      "end": "2026-06-28",
-      "city": "Palo Alto",
-      "region": "California",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "CSI Hacks",
-      "url": "https://www.csihacks.com/",
-      "start": "2026-06-27",
-      "end": "2026-06-27",
-      "city": "Pleasanton",
-      "region": "California",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
     {
       "name": "Pixel Forge Jam #2 [Haunted Edition]",
       "url": "https://pixelforgejam.org/",
