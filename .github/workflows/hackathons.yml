@@ -1,0 +1,38 @@
+name: Refresh hackathons
+
+# Pulls fresh hackathon listings from the Hack Club Hackathons API server-side
+# (the API sends no CORS header, so the browser can't call it directly) and
+# commits data/hackathons.json, which the static site loads same-origin.
+# Runs daily and on demand.
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # daily 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build data/hackathons.json
+        run: node scripts/build-hackathons.mjs
+
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain data/hackathons.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/hackathons.json
+            git commit -m "Refresh hackathons data [skip ci]"
+            git push
+          else
+            echo "No changes."
+          fi
