@@ -1,21 +1,8 @@
 {
-  "updated": "2026-06-28T08:41:19.217Z",
+  "updated": "2026-07-05T08:41:20.298Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 25,
+  "count": 24,
   "events": [
-    {
-      "name": "Pixel Forge Jam #2 [Haunted Edition]",
-      "url": "https://pixelforgejam.org/",
-      "start": "2026-06-27",
-      "end": "2026-07-04",
-      "city": "",
-      "region": "",
-      "country": "Worldwide",
-      "cc": "",
-      "format": "online",
-      "source": "Hack Club",
-      "hs": true
-    },
     {
       "name": "Brilliant Move",
       "url": "https://www.thebrilliantmove.com/",
