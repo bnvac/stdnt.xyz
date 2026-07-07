@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-05T08:41:20.298Z",
+  "updated": "2026-07-07T09:24:52.120Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 24,
+  "count": 25,
   "events": [
     {
       "name": "Brilliant Move",
@@ -288,6 +288,19 @@
       "format": "online",
       "source": "MLH",
       "hs": false
+    },
+    {
+      "name": "Animal Hack",
+      "url": "https://animalhack.org",
+      "start": "2026-09-13",
+      "end": "2026-09-13",
+      "city": "",
+      "region": "",
+      "country": "Worldwide",
+      "cc": "",
+      "format": "online",
+      "source": "Hack Club",
+      "hs": true
     },
     {
       "name": "Hyphen-Hacks",
