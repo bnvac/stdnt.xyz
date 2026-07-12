@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-07T09:24:52.120Z",
+  "updated": "2026-07-12T08:02:13.096Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 25,
+  "count": 21,
   "events": [
     {
       "name": "Brilliant Move",
@@ -41,58 +41,6 @@
       "format": "online",
       "source": "MLH",
       "hs": false
-    },
-    {
-      "name": "Horizons Crux",
-      "url": "https://crux.hackclub.com",
-      "start": "2026-07-10",
-      "end": "2026-07-12",
-      "city": "",
-      "region": "",
-      "country": "",
-      "cc": "",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "FireHacks",
-      "url": "https://firehacks.codestarters.org/",
-      "start": "2026-07-11",
-      "end": "2026-07-11",
-      "city": "Mountain View",
-      "region": "California",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "JecHacks",
-      "url": "https://www.jechacks.com",
-      "start": "2026-07-11",
-      "end": "2026-07-11",
-      "city": "",
-      "region": "",
-      "country": "",
-      "cc": "",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "The Vakathon",
-      "url": "https://thevakathon.com",
-      "start": "2026-07-11",
-      "end": "2026-07-11",
-      "city": "San Ramon",
-      "region": "California",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
     },
     {
       "name": "vsHacks",
