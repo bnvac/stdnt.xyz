@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-12T08:02:13.096Z",
+  "updated": "2026-07-13T08:50:19.304Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 21,
+  "count": 20,
   "events": [
     {
       "name": "Brilliant Move",
@@ -41,19 +41,6 @@
       "format": "online",
       "source": "MLH",
       "hs": false
-    },
-    {
-      "name": "vsHacks",
-      "url": "https://vshacks.com/",
-      "start": "2026-07-11",
-      "end": "2026-07-12",
-      "city": "",
-      "region": "",
-      "country": "Worldwide",
-      "cc": "",
-      "format": "online",
-      "source": "Hack Club",
-      "hs": true
     },
     {
       "name": "Outpost",
