@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-17T07:52:56.915Z",
+  "updated": "2026-07-19T08:01:51.309Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 19,
+  "count": 18,
   "events": [
     {
       "name": "Brilliant Move",
@@ -38,19 +38,6 @@
       "region": "",
       "country": "",
       "cc": "",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "Garuda Hacks 7.0",
-      "url": "https://www.garudahacks.com/",
-      "start": "2026-07-16",
-      "end": "2026-07-18",
-      "city": "Kelapa Dua",
-      "region": "Banten",
-      "country": "Indonesia",
-      "cc": "ID",
       "format": "in-person",
       "source": "Hack Club",
       "hs": true
