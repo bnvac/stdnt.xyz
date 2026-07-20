@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-19T08:01:51.309Z",
+  "updated": "2026-07-20T08:41:48.694Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 18,
+  "count": 16,
   "events": [
     {
       "name": "Brilliant Move",
@@ -28,32 +28,6 @@
       "format": "online",
       "source": "Hack Club",
       "hs": true
-    },
-    {
-      "name": "Outpost",
-      "url": "https://outpost.hackclub.com",
-      "start": "2026-07-14",
-      "end": "2026-07-19",
-      "city": "",
-      "region": "",
-      "country": "",
-      "cc": "",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "Hack the 6ix",
-      "url": "https://hackthe6ix.com/",
-      "start": "2026-07-17",
-      "end": "2026-07-19",
-      "city": "Toronto",
-      "region": "Ontario",
-      "country": "Canada",
-      "cc": "CA",
-      "format": "in-person",
-      "source": "MLH",
-      "hs": false
     },
     {
       "name": "Hexafalls 2",
