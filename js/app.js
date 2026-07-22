@@ -19,6 +19,7 @@
   var HACKATHONS = window.HACKATHONS || [];
   var ROADMAPS = window.ROADMAPS || [];
   var COLLEGES = window.COLLEGES || [];
+  var COLLEGE_META = window.COLLEGE_META || {};
   var COLLEGE_CHECKLIST = window.COLLEGE_CHECKLIST || [];
   var FULL = window.SCH_FULL || 1000000;
   // set to your Buttondown/Mailchimp embed-subscribe URL to enable email signup
@@ -1528,6 +1529,13 @@
     SCH.forEach(function (s) { if (gone(s)) return; var info = dlInfo(s.deadline); if (info.date) out.push({ kind: "sch", name: s.name, url: s.url, logo: s.logo, deadline: s.deadline, info: info, meta: s.amountText || "" }); });
     PROG.forEach(function (p) { if (gone(p)) return; var info = dlInfo(p.deadline); if (info.date) out.push({ kind: "prog", name: p.name, url: p.url || searchLink(p.name + " program"), logo: p.logo, deadline: p.deadline, info: info, meta: p.ranking || "" }); });
     COMPS.forEach(function (c) { if (gone(c)) return; var info = dlInfo(c.deadline); if (info.date) out.push({ kind: "comp", name: c.name, url: c.url, logo: c.logo, deadline: c.deadline, info: info, meta: c.format || "" }); });
+    // the student's own college list: their picks + typical application deadlines
+    myColleges.forEach(function (c) {
+      var m = metaFor(c); if (!m) return;
+      var url = c.url || searchLink(c.name);
+      if (m.early) { var ie = dlInfo(m.early); if (ie.date) out.push({ kind: "college", name: c.name, url: url, logo: c.url ? faviconURL(domainOf(c.url)) : null, deadline: m.early, info: ie, meta: m.plan === "Rolling" ? "Priority" : m.plan }); }
+      if (m.rd) { var ir = dlInfo(m.rd); if (ir.date) out.push({ kind: "college", name: c.name, url: url, logo: c.url ? faviconURL(domainOf(c.url)) : null, deadline: m.rd, info: ir, meta: "Regular decision" }); }
+    });
     out.sort(function (a, b) { return a.info.days - b.info.days || a.name.localeCompare(b.name); });
     return out;
   }
@@ -1545,7 +1553,7 @@
   function deadlineRow(it, i) {
     var info = it.info;
     var dleft = info.days <= 0 ? "today" : info.days + "d left";
-    var label = { sch: "Scholarship", prog: "Program", comp: "Competition" }[it.kind] || "";
+    var label = { sch: "Scholarship", prog: "Program", comp: "Competition", college: "College" }[it.kind] || "";
     return '<div class="row" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' +
       '<div class="dl-date' + (info.soon ? " soon" : "") + '"><b>' + DL_MON[info.date.getMonth()] + " " + info.date.getDate() + "</b><span>" + dleft + "</span></div>" +
       logoTile(it.name, it.url, it.logo) +
@@ -1746,11 +1754,33 @@
     return { id: c.id, name: c.name, city: c.city, state: c.state, url: c.url, own: c.own,
       admit: c.admit, net: c.net, cost: c.cost, sat: c.sat, act: c.act, size: c.size, grad: c.grad };
   }
-  function addCollege(c) { if (c && !hasCollege(c.id)) { myColleges.push(colToEntry(c)); saveColleges(); updateCollegeCount(); } }
-  function removeCollege(id) { myColleges = myColleges.filter(function (c) { return String(c.id) !== String(id); }); saveColleges(); updateCollegeCount(); }
+  function refreshDeadlineCount() { var nd = $("#n-deadlines"); if (nd) nd.textContent = deadlineItems().length; }
+  function addCollege(c) { if (c && !hasCollege(c.id)) { myColleges.push(colToEntry(c)); saveColleges(); updateCollegeCount(); refreshDeadlineCount(); } }
+  function removeCollege(id) { myColleges = myColleges.filter(function (c) { return String(c.id) !== String(id); }); saveColleges(); updateCollegeCount(); refreshDeadlineCount(); }
   function colPct(x) { return x == null ? "n/a" : Math.round(x * 100) + "%"; }
   function colMoney(x) { return x == null ? "n/a" : "$" + Math.round(x).toLocaleString("en-US"); }
   function colScore(c) { return c.sat ? "SAT " + c.sat : (c.act ? "ACT " + c.act : "SAT n/a"); }
+  function metaFor(c) { return COLLEGE_META[(c.name || "").toLowerCase()] || null; }
+  // "how annoying to apply" from the number of supplemental essays (+ CSS Profile)
+  function effortOf(m) {
+    var n = m.essays || 0;
+    var lvl = n === 0 ? { l: "Light apply", c: "safety" } : n <= 2 ? { l: "Moderate", c: "match" }
+      : n <= 4 ? { l: "Essay-heavy", c: "amber" } : { l: "Very heavy", c: "reach" };
+    var txt = n === 0 ? "No supp essays" : n + " supp essay" + (n === 1 ? "" : "s");
+    if (m.css) txt += " + CSS";
+    return { label: lvl.l, cls: lvl.c, text: txt };
+  }
+  // compact deadline string for a college, e.g. "EA Nov 1 - RD Jan 4"
+  function colDeadlineStr(m) {
+    if (!m) return "";
+    var parts = [];
+    if (m.early) parts.push((m.plan === "Rolling" ? "Priority" : m.plan) + " " + m.early);
+    if (m.rd) parts.push((m.early ? "RD " : "") + m.rd);
+    if (!parts.length && m.plan === "Rolling") return "Rolling admission";
+    return parts.join(" - ");
+  }
+  // the date the tracker/calendar should use (earliest concrete deadline)
+  function colPrimaryDeadline(m) { return m ? (m.early || m.rd || "") : ""; }
   function tierRank(c) { var t = rateFit(c); return t === "Reach" ? 0 : t === "Match" ? 1 : t === "Safety" ? 2 : 3; }
   function colSort(a, b) { return tierRank(a) - tierRank(b) || a.name.localeCompare(b.name); }
   function searchBundle(q) {
@@ -1834,10 +1864,21 @@
     var t = rateFit(c); if (!t) return "";
     return '<span class="col-fit col-tier-' + t.toLowerCase() + '" title="Estimated from your stats vs this school - a starting signal, not a guarantee">' + t + ' <i>fit</i></span>';
   }
+  var CAL_SVG = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>';
+  var PEN_SVG = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>';
   function colCard(c) {
     var loc = [c.city, c.state].filter(Boolean).join(", ");
     var meta = [loc, COL_OWN[c.own], c.size ? c.size.toLocaleString("en-US") + " students" : ""].filter(Boolean).join(" &middot; ");
     var link = c.url || searchLink(c.name);
+    var m = metaFor(c), mrow = "";
+    if (m) {
+      var ef = effortOf(m), dl = colDeadlineStr(m);
+      mrow = '<div class="col-meta">' +
+        (dl ? '<span class="col-mchip">' + CAL_SVG + " " + esc(dl) + "</span>" : "") +
+        '<span class="col-mchip col-effort-' + ef.cls + '">' + PEN_SVG + " " + esc(ef.text) + ' &middot; <b>' + esc(ef.label) + "</b></span>" +
+        (m.app ? '<span class="col-mchip col-mchip-plain">' + esc(m.app) + "</span>" : "") +
+        "</div>";
+    }
     return '<div class="col-card" data-id="' + esc(String(c.id)) + '">' +
       '<div class="col-card-top">' + logoTile(c.name, c.url) +
         '<div class="col-card-id"><a class="col-card-name" href="' + esc(link) + '" target="_blank" rel="noopener">' + esc(c.name) + ' <span class="ext">&#8599;</span></a>' +
@@ -1850,7 +1891,7 @@
         '<span class="col-stat"><b>' + colMoney(c.net) + "</b><span>avg net price</span></span>" +
         '<span class="col-stat"><b>' + esc(colScore(c)) + "</b><span>median score</span></span>" +
         '<span class="col-stat"><b>' + colPct(c.grad) + "</b><span>grad rate</span></span>" +
-      "</div></div>";
+      "</div>" + mrow + "</div>";
   }
   function renderColSummary() {
     var el = $("#col-summary-stats"); if (!el) return;
@@ -1876,14 +1917,16 @@
   // build a ready-to-fill spreadsheet: college + stats + estimated tier are
   // pre-filled; the planning columns are left blank for the student to track.
   function collegesCSV() {
-    var head = ["College", "City", "State", "Est. tier", "Website", "Admit %", "Avg net price", "Cost/yr",
-      "Median SAT", "Median ACT", "Size", "Grad %"]
-      .concat(["Deadline", "Plan", "Portal"]).concat(COL_STEPS).concat(["Decision", "Notes"]);
-    var blanks = new Array(3 + COL_STEPS.length + 2).fill(""); // Deadline..Notes for you to fill
+    var info = ["College", "City", "State", "Est. tier", "Website", "Admit %", "Avg net price", "Cost/yr",
+      "Median SAT", "Median ACT", "Size", "Grad %", "Plan", "Early deadline", "Regular deadline", "Supp essays", "CSS Profile", "Platform"];
+    var head = info.concat(COL_STEPS).concat(["Decision", "Notes"]);
+    var blanks = new Array(COL_STEPS.length + 2).fill(""); // to-dos + Decision + Notes, for you to fill
     var rows = myColleges.slice().sort(colSort).map(function (c) {
+      var m = metaFor(c) || {};
       return [c.name, c.city, c.state, rateFit(c) || "", c.url || "",
         c.admit == null ? "" : Math.round(c.admit * 100) + "%", c.net == null ? "" : c.net, c.cost == null ? "" : c.cost,
-        c.sat || "", c.act || "", c.size || "", c.grad == null ? "" : Math.round(c.grad * 100) + "%"].concat(blanks);
+        c.sat || "", c.act || "", c.size || "", c.grad == null ? "" : Math.round(c.grad * 100) + "%",
+        m.plan || "", m.early || "", m.rd || "", m.essays == null ? "" : m.essays, m.css ? "Required" : "", m.app || ""].concat(blanks);
     });
     return [head].concat(rows).map(function (r) { return r.map(csvCell).join(","); }).join("\r\n");
   }
@@ -2090,6 +2133,11 @@
   wireMore();
   injectStructuredData();
   initViews();
+  (function () {
+    var hdr = document.querySelector(".hdr"); if (!hdr) return;
+    var onScroll = function () { hdr.classList.toggle("is-stuck", window.scrollY > 4); };
+    window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  })();
   window.addEventListener("hashchange", function () { routeHash(); });
   if (deepLink) switchTab("foryou");
   else if (!routeHash()) render();
