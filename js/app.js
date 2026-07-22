@@ -168,7 +168,7 @@
     tools: { access: "all", cat: "all" },
     sch: { group: "all", sort: "amount", eligible: false, minAmt: 0, noEssay: false },
     prog: { grade: "all", free: false, sort: "rank", eligible: false, subject: "all", remote: false },
-    deadlines: { kind: "all", window: "all" },
+    deadlines: { kind: "all", window: "all", view: "list", savedOnly: false, calYM: null, selKey: null },
     roadmap: null
   };
 
@@ -1527,6 +1527,7 @@
     var max = w === "all" ? Infinity : +w;
     return deadlineItems().filter(function (it) {
       if (k !== "all" && it.kind !== k) return false;
+      if (state.deadlines.savedOnly && !saved.has(sid(it.kind, it.name))) return false;
       if (it.info.days > max) return false;
       if (ts.length && !hit([it.name, it.meta].join(" "), ts)) return false;
       return true;
@@ -1549,9 +1550,73 @@
   function renderDeadlines() {
     var box = $("#deadlines-list"); if (!box) return 0;
     var list = deadlinesFiltered();
-    box.innerHTML = list.length ? list.map(deadlineRow).join("")
-      : '<p class="muted guides-empty">No deadlines match these filters.</p>';
+    if (state.deadlines.view === "cal") {
+      box.classList.remove("list");
+      renderDeadlineCalendar(box, list);
+    } else {
+      box.classList.add("list");
+      box.innerHTML = list.length ? list.map(deadlineRow).join("")
+        : '<p class="muted guides-empty">No deadlines match these filters.</p>';
+    }
     return list.length;
+  }
+  function daysInMonth(y, m) { return new Date(y, m + 1, 0).getDate(); }
+  function visibleYM(list) {
+    if (state.deadlines.calYM) return state.deadlines.calYM;
+    var t = new Date();
+    // default to the current month; if it has nothing upcoming, jump to the earliest month that does
+    var thisMonth = list.some(function (it) {
+      var d = it.info.date;
+      return d.getFullYear() === t.getFullYear() && d.getMonth() === t.getMonth() && it.info.days >= 0;
+    });
+    if (thisMonth || !list.length) return { y: t.getFullYear(), m: t.getMonth() };
+    var up = list.filter(function (it) { return it.info.days >= 0; });
+    var d2 = (up[0] || list[0]).info.date;
+    return { y: d2.getFullYear(), m: d2.getMonth() };
+  }
+  var WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  function renderDeadlineCalendar(box, list) {
+    var ym = visibleYM(list), y = ym.y, m = ym.m;
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var todayKey = ymd(today);
+    var byDay = {};
+    list.forEach(function (it) { var k = ymd(it.info.date); (byDay[k] = byDay[k] || []).push(it); });
+    var monthItems = list.filter(function (it) { var d = it.info.date; return d.getFullYear() === y && d.getMonth() === m; });
+    var lead = new Date(y, m, 1).getDay(), total = daysInMonth(y, m);
+    var h = '<div class="dl-cal"><div class="dl-cal-head">' +
+      '<button class="dl-cal-nav" data-cal-nav="prev" type="button" aria-label="Previous month">&#8249;</button>' +
+      '<div class="dl-cal-title">' + DL_MON[m] + " " + y +
+        ' <span class="dl-cal-count">' + monthItems.length + " deadline" + (monthItems.length === 1 ? "" : "s") + "</span></div>" +
+      '<button class="dl-cal-nav" data-cal-nav="next" type="button" aria-label="Next month">&#8250;</button>' +
+      '<button class="dl-cal-today btn btn-ghost" data-cal-nav="today" type="button">Today</button></div>';
+    h += '<div class="dl-cal-grid dl-cal-wd">' + WEEKDAYS.map(function (w) { return "<div>" + w + "</div>"; }).join("") + "</div>";
+    h += '<div class="dl-cal-grid">';
+    for (var i = 0; i < lead; i++) h += '<div class="dl-cal-cell empty"></div>';
+    for (var d = 1; d <= total; d++) {
+      var key = "" + y + pad(m + 1) + pad(d), items = byDay[key] || [];
+      var cls = "dl-cal-cell";
+      if (key === todayKey) cls += " today";
+      if (key === state.deadlines.selKey) cls += " sel";
+      if (items.length) cls += " has";
+      if (key < todayKey) cls += " past";
+      var dots = "";
+      if (items.length) {
+        var kinds = {}; items.forEach(function (it) { kinds[it.kind] = 1; });
+        dots = '<span class="dl-cal-dots">' + Object.keys(kinds).map(function (k) { return '<span class="dl-cal-dot dot-' + k + '"></span>'; }).join("") + "</span>";
+      }
+      var badge = items.length > 1 ? '<span class="dl-cal-n">' + items.length + "</span>" : "";
+      h += '<button class="' + cls + '"' + (items.length ? ' data-cal-day="' + key + '"' : " disabled") +
+        ' type="button"><span class="dl-cal-d">' + d + "</span>" + dots + badge + "</button>";
+    }
+    h += "</div>";
+    var sel = state.deadlines.selKey && byDay[state.deadlines.selKey];
+    var agenda = sel || monthItems;
+    var label = sel ? (DL_MON[m] + " " + (+state.deadlines.selKey.slice(6, 8))) : (DL_MON[m] + " " + y);
+    h += '<div class="dl-cal-agenda"><h3 class="dl-cal-ag-h">' + (sel ? "Due " : "All deadlines in ") + label +
+      (sel ? ' <button class="dl-cal-clear" data-cal-nav="clearsel" type="button">show whole month</button>' : "") + "</h3>";
+    h += '<div class="list">' + (agenda.length ? agenda.map(deadlineRow).join("")
+      : '<p class="muted guides-empty">No deadlines ' + (sel ? "on this day" : "this month") + '. Use the arrows to browse other months.</p>') + "</div></div></div>";
+    box.innerHTML = h;
   }
   function deadlineExportItems() {
     return deadlinesFiltered().map(function (it) {
@@ -1559,6 +1624,14 @@
     });
   }
   function wireDeadlines() {
+    var view = $("#dl-view");
+    if (view) view.addEventListener("click", function (e) {
+      var b = e.target.closest(".seg"); if (!b) return;
+      state.deadlines.view = b.dataset.view;
+      state.deadlines.selKey = null;
+      view.querySelectorAll(".seg").forEach(function (s) { s.classList.toggle("is-active", s === b); });
+      render();
+    });
     var kind = $("#dl-kind");
     if (kind) kind.addEventListener("click", function (e) {
       var b = e.target.closest(".seg"); if (!b) return;
@@ -1568,6 +1641,22 @@
     });
     var win = $("#dl-window");
     if (win) win.addEventListener("change", function (e) { state.deadlines.window = e.target.value; render(); });
+    var savedTog = $("#dl-saved");
+    if (savedTog) savedTog.addEventListener("change", function (e) { state.deadlines.savedOnly = e.target.checked; render(); });
+    var dlist = $("#deadlines-list");
+    if (dlist) dlist.addEventListener("click", function (e) {
+      var nav = e.target.closest("[data-cal-nav]");
+      if (nav) {
+        var a = nav.dataset.calNav, ym = visibleYM(deadlinesFiltered()), nd;
+        if (a === "prev") { nd = new Date(ym.y, ym.m - 1, 1); state.deadlines.calYM = { y: nd.getFullYear(), m: nd.getMonth() }; state.deadlines.selKey = null; }
+        else if (a === "next") { nd = new Date(ym.y, ym.m + 1, 1); state.deadlines.calYM = { y: nd.getFullYear(), m: nd.getMonth() }; state.deadlines.selKey = null; }
+        else if (a === "today") { nd = new Date(); state.deadlines.calYM = { y: nd.getFullYear(), m: nd.getMonth() }; state.deadlines.selKey = null; }
+        else if (a === "clearsel") { state.deadlines.selKey = null; }
+        render(); return;
+      }
+      var day = e.target.closest("[data-cal-day]");
+      if (day) { var k = day.dataset.calDay; state.deadlines.selKey = (state.deadlines.selKey === k ? null : k); render(); }
+    });
     var ics = $("#dl-ics");
     if (ics) ics.addEventListener("click", function () { download("stdnt-deadlines.ics", toICS(deadlineExportItems()), "text/calendar;charset=utf-8"); });
     var csv = $("#dl-csv");
