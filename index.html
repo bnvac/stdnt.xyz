@@ -189,6 +189,10 @@
     </section>
     <section id="panel-deadlines" class="panel" role="tabpanel" hidden>
       <div class="dl-controls">
+        <div class="segmented" id="dl-view" role="group" aria-label="View">
+          <button class="seg is-active" data-view="list" type="button">List</button>
+          <button class="seg" data-view="cal" type="button">Calendar</button>
+        </div>
         <div class="segmented" id="dl-kind" role="group" aria-label="Type">
           <button class="seg is-active" data-kind="all" type="button">All</button>
           <button class="seg" data-kind="sch" type="button">Scholarships</button>
@@ -203,6 +207,7 @@
             <option value="90">90 days</option>
           </select>
         </label>
+        <label class="toggle" title="Only deadlines you've saved with the star button"><input type="checkbox" id="dl-saved" /> Saved only</label>
         <div class="dl-export">
           <button class="btn btn-ghost" id="dl-ics" type="button">Add all to calendar (.ics)</button>
           <button class="btn btn-ghost" id="dl-csv" type="button">CSV</button>
