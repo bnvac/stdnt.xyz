@@ -702,7 +702,7 @@
     var dig = digestDeadlines(5);
     var h = '<div class="digest"><div class="digest-head"><span class="digest-ico" aria-hidden="true">' + icon("envelope") + "</span>" +
       '<div><h3 class="digest-h">This week for you</h3>' +
-      '<p class="digest-sub">' + commas(schN) + " scholarships and " + commas(progN) + " programs match you — here are the closest deadlines, refreshed every visit.</p></div></div>";
+      '<p class="digest-sub">' + commas(schN) + " scholarships and " + commas(progN) + " programs match you - here are the closest deadlines, refreshed every visit.</p></div></div>";
     if (dig.length) {
       h += '<ul class="digest-list">' + dig.map(function (d) {
         var left = d.info.days <= 0 ? "due today" : "in " + d.info.days + " day" + (d.info.days === 1 ? "" : "s");
@@ -712,7 +712,7 @@
           '<span class="digest-left' + (d.info.soon ? " soon" : "") + '">' + left + "</span></a></li>";
       }).join("") + "</ul>";
     } else {
-      h += '<p class="muted digest-none">No matched deadlines coming up right now — browse the full lists below.</p>';
+      h += '<p class="muted digest-none">No matched deadlines coming up right now - browse the full lists below.</p>';
     }
     return h + "</div>";
   }
@@ -957,7 +957,7 @@
         if (note) note.textContent = "Thanks! Check your inbox to confirm your subscription.";
         form.reset();
       } else if (note) {
-        note.innerHTML = 'Email digests aren\'t switched on yet — but your matches update live every visit. Want this? <a href="https://github.com/2008wbbv/edu.edu/issues/new?title=Enable+email+digest" target="_blank" rel="noopener">+1 it on GitHub</a>.';
+        note.innerHTML = 'Email digests aren\'t switched on yet - but your matches update live every visit. Want this? <a href="https://github.com/2008wbbv/edu.edu/issues/new?title=Enable+email+digest" target="_blank" rel="noopener">+1 it on GitHub</a>.';
       }
     });
   }
@@ -1252,8 +1252,8 @@
     if (!s) return "Dates TBA";
     var sm = DL_MON[s.m];
     if (!e || (e.y === s.y && e.m === s.m && e.d === s.d)) return sm + " " + s.d;
-    if (e.y === s.y && e.m === s.m) return sm + " " + s.d + "–" + e.d;
-    return sm + " " + s.d + " – " + DL_MON[e.m] + " " + e.d;
+    if (e.y === s.y && e.m === s.m) return sm + " " + s.d + "-" + e.d;
+    return sm + " " + s.d + " - " + DL_MON[e.m] + " " + e.d;
   }
   function hkDays(s) {
     var p = hkParts(s); if (!p) return null;
@@ -1385,7 +1385,7 @@
     return '<div class="ck">' +
       '<div class="ck-head">' + ckRing(st.pct) +
         '<div class="ck-head-txt"><h3 class="ck-h">Countdown checklist</h3>' +
-        '<p class="ck-sub">The things that actually get you in — tick them off as you go. Saved on this device.</p>' +
+        '<p class="ck-sub">The things that actually get you in - tick them off as you go. Saved on this device.</p>' +
         '<div class="ck-progtxt"><b>' + st.done + "</b> of " + st.total + " done</div></div></div>" +
       '<div class="ck-bar"><span style="width:' + st.pct + '%"></span></div>' +
       '<div class="ck-phases">' + phases + "</div></div>";
@@ -1433,7 +1433,7 @@
     }).join("");
 
     box.innerHTML =
-      '<p class="rm-intro">Pick a goal and follow the path. Each step links straight to the scholarships, programs and competitions you need — and shows what it <b>unlocks</b> next.</p>' +
+      '<p class="rm-intro">Pick a goal and follow the path. Each step links straight to the scholarships, programs and competitions you need - and shows what it <b>unlocks</b> next.</p>' +
       '<div class="rm-goals">' + chips + "</div>" +
       cdHTML +
       renderChecklist() +
@@ -1456,7 +1456,7 @@
     }).join("");
     var steps = [
       ["1", "Pick a category", "Choose what you want to add below."],
-      ["2", "Fill the form", "A short form on GitHub — you can even drag in a logo or screenshot."],
+      ["2", "Fill the form", "A short form on GitHub - you can even drag in a logo or screenshot."],
       ["3", "It's tracked", "It becomes an issue credited to your GitHub account."]
     ].map(function (s) {
       return '<div class="cb-step"><span class="cb-step-n">' + s[0] + "</span>" +
@@ -1470,13 +1470,13 @@
         '<div class="cb-panel cb-pr">' +
           '<span class="cb-panel-ico" aria-hidden="true">' + icon("code") + "</span>" +
           "<h4>Comfortable with code?</h4>" +
-          "<p>Every listing is one object in a <code>js/*.js</code> file — no build step. Open a pull request and add it directly.</p>" +
+          "<p>Every listing is one object in a <code>js/*.js</code> file - no build step. Open a pull request and add it directly.</p>" +
           '<a class="btn btn-grad" href="' + GH_REPO + '/blob/HEAD/CONTRIBUTING.md" target="_blank" rel="noopener">Read the contributor guide</a>' +
         "</div>" +
         '<div class="cb-panel cb-track">' +
           '<span class="cb-panel-ico" aria-hidden="true">' + icon("check") + "</span>" +
           "<h4>Every contribution is credited</h4>" +
-          "<p>It all runs through GitHub, so each addition is attributed to you — by issue label and in the contributors graph.</p>" +
+          "<p>It all runs through GitHub, so each addition is attributed to you - by issue label and in the contributors graph.</p>" +
           '<div class="cb-track-links">' +
             '<a href="' + GH_REPO + '/issues?q=is%3Aissue+label%3Acontribution" target="_blank" rel="noopener">See contributions <span class="ext">&#8599;</span></a>' +
             '<a href="' + GH_REPO + '/graphs/contributors" target="_blank" rel="noopener">Contributors <span class="ext">&#8599;</span></a>' +

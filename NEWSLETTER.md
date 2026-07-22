@@ -1,11 +1,11 @@
 # Setting up the newsletter
 
-The site is **100% static** — there is no backend, no database, and no way to
+The site is **100% static** - there is no backend, no database, and no way to
 store subscriber emails in this repo (nor would you want to). So the email
 newsletter works by handing signups off to a **third-party email provider**.
 
 Until you connect one, the signup forms still render and the on-site
-**"This week for you"** digest (in the **For You** tab) does the real work — it's
+**"This week for you"** digest (in the **For You** tab) does the real work - it's
 computed live in the browser, so subscribers aren't missing anything.
 
 There are signup forms in two places, both wired to the same setting:
@@ -65,8 +65,7 @@ browser never sees a CORS error and the subscriber is added on the provider's si
 On submit, the helper text updates to a confirmation message.
 
 > **Note:** with `no-cors` the browser can't read the response, so the form always
-> shows the optimistic "check your inbox to confirm" message. That's expected —
-> the provider handles double-opt-in confirmation. To show real success/error
+> shows the optimistic "check your inbox to confirm" message. That's expected - > the provider handles double-opt-in confirmation. To show real success/error
 > states instead, switch to the provider's JSON API with a CORS-enabled request.
 
 ---
@@ -76,8 +75,7 @@ On submit, the helper text updates to a confirmation message.
 The on-site digest is generated live; the **email** is a separate send you compose
 in your provider. Two ways:
 
-- **By hand (simplest):** once a week, open your provider, write a short issue —
-  5 new scholarships, 3 deadlines, 2 programs — and send. The site's
+- **By hand (simplest):** once a week, open your provider, write a short issue - 5 new scholarships, 3 deadlines, 2 programs - and send. The site's
   **Deadlines** and **For You** tabs are your source material.
 - **Automated:** add a GitHub Action (like the existing
   `.github/workflows/link-check.yml`) on a weekly `cron` that builds a digest from
@@ -89,6 +87,6 @@ in your provider. Two ways:
 ## How it behaves with no endpoint set
 
 If `NEWSLETTER_ENDPOINT` is `""` (the default), submitting a form shows an honest
-message — *"Email digests aren't switched on yet, but your matches update live
-every visit"* — and points to a GitHub issue so people can ask for it. Nothing
+message - *"Email digests aren't switched on yet, but your matches update live
+every visit"* - and points to a GitHub issue so people can ask for it. Nothing
 breaks, and no emails are collected or lost.

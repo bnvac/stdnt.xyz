@@ -1,9 +1,9 @@
 # Contributing to stdnt.xyz
 
-Thank you — keeping this list fresh and growing is the whole point. There are
+Thank you - keeping this list fresh and growing is the whole point. There are
 **two ways** to contribute, and **both credit you** automatically.
 
-## 1. The easy way — fill out a form (no coding)
+## 1. The easy way - fill out a form (no coding)
 
 Go to the **[Contribute page](https://2008wbbv.github.io/edu.edu/#contribute)** on
 the site, or open a [new issue](https://github.com/2008wbbv/edu.edu/issues/new/choose)
@@ -18,14 +18,14 @@ and pick a category:
 | **Add a student discount** | An everyday student deal |
 | **Report a problem** | A dead link, wrong deadline, or defunct listing |
 
-Each one is a short structured form. Submit it and it becomes a tracked issue — a
+Each one is a short structured form. Submit it and it becomes a tracked issue - a
 maintainer copies it into the data and merges. **You don't need to touch any code.**
 
-Every form has an optional **logo / screenshot** field — just drag an image into it
+Every form has an optional **logo / screenshot** field - just drag an image into it
 (or paste from your clipboard) and GitHub uploads it for you. A logo or a screenshot
 of the page is a big help.
 
-## 2. The fast way — open a pull request
+## 2. The fast way - open a pull request
 
 Every listing is **one plain object** in a JS file. No build step, no framework.
 
@@ -38,7 +38,7 @@ Every listing is **one plain object** in a JS file. No build step, no framework.
 | `js/discounts.js` | student discounts |
 | `js/roadmaps.js` | goal roadmaps & the college checklist |
 
-Example — add a tool in `js/data.js`:
+Example - add a tool in `js/data.js`:
 
 ```js
 {
@@ -49,7 +49,7 @@ Example — add a tool in `js/data.js`:
   slug: "github",          // a simpleicons.org slug (or omit for a monogram)
   logo: "https://...",     // optional: a logo image URL (e.g. one a contributor
                            //   dropped into the form). Shown contained on a white
-                           //   tile — square-ish logos look best. Wins over slug/favicon.
+                           //   tile - square-ish logos look best. Wins over slug/favicon.
   value: "$50 credit",     // optional highlight
   desc: "One honest sentence about what it is.",
   tags: ["llm", "api"],    // optional, helps search
@@ -84,7 +84,7 @@ Everything runs through GitHub, so credit is automatic:
 ## What belongs here
 
 - **Free** (or free-for-students) things that are **real and currently live**.
-- Official links — not aggregators, referral links, or affiliate wrappers.
+- Official links - not aggregators, referral links, or affiliate wrappers.
 - No piracy / paywall-bypass / "shadow library" sites. Open-access and legal
   free alternatives only.
 

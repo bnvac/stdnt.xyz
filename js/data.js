@@ -35,7 +35,8 @@ window.CATEGORIES = [
   { id: "jobs",         name: "Jobs & Internships", blurb: "Teen-friendly jobs, internships and gigs." },
   { id: "compete",      name: "Competitions",    blurb: "Hackathons, science fairs and contests to enter." },
   { id: "certs",        name: "Certifications",  blurb: "Free, resume-worthy certificates." },
-  { id: "college",      name: "College & Apply", blurb: "Fee waivers and tools for applying to college." }
+  { id: "college",      name: "College & Apply", blurb: "Fee waivers and tools for applying to college." },
+  { id: "intl",         name: "International",    blurb: "Scholarships and resources for students outside the US." }
 ];
 
 window.RESOURCES = [
@@ -375,7 +376,7 @@ window.RESOURCES = [
   { name: "HighSchoolPathway", url: "https://highschoolpathway.com/", category: "jobs", access: "everyone", mono: "HP",
     desc: "Student-built directory of competitions, research and opportunities for high schoolers, with how-to-apply notes.", tags: ["opportunities", "research", "competitions", "teens"] },
   { name: "Cold-Email for Research", url: "#guide/cold-email-research", category: "jobs", access: "everyone", mono: "@",
-    desc: "A step-by-step guide: find a professor's work on Google Scholar, send a short, specific email, and follow up — with a copy-paste template that gets replies.", tags: ["research", "cold email", "guide"] },
+    desc: "A step-by-step guide: find a professor's work on Google Scholar, send a short, specific email, and follow up - with a copy-paste template that gets replies.", tags: ["research", "cold email", "guide"] },
   { name: "Official Digital SAT Practice (Bluebook)", url: "https://satsuite.collegeboard.org/digital/digital-practice-preparation/", category: "testprep", access: "everyone", mono: "BB",
     desc: "College Board's official Bluebook app with full-length adaptive Digital SAT practice tests, free.", tags: ["sat", "official", "practice", "bluebook"] },
   { name: "edX", url: "https://www.edx.org/", category: "learning", access: "everyone", slug: "edx",
@@ -455,7 +456,37 @@ window.RESOURCES = [
   { name: "NSF Graduate Research Fellowship", url: "https://www.nsfgrfp.org/", category: "research", access: "everyone", verified: "2026-06",
     desc: "Three years of funding (~$37k/yr stipend + tuition) for early-stage STEM grad students - apply senior year or first/second year of grad school.", tags: ["grad", "phd", "stipend", "research", "stem"] },
   { name: "Princeton Summer Journalism Program", url: "https://psjp.princeton.edu/", category: "learning", access: "everyone", verified: "2026-06",
-    desc: "A free, all-expenses-paid journalism program for high-achieving low-income high-school juniors - one of the few serious free journalism opportunities.", tags: ["journalism", "writing", "free", "low-income"] }
+    desc: "A free, all-expenses-paid journalism program for high-achieving low-income high-school juniors - one of the few serious free journalism opportunities.", tags: ["journalism", "writing", "free", "low-income"] },
+
+  /* --------------------------------------------------- more textbooks & OER */
+  { name: "PhET Simulations", url: "https://phet.colorado.edu/", category: "books", access: "everyone", verified: "2026-07",
+    desc: "Free interactive math and science simulations from CU Boulder - great for actually seeing concepts work.", tags: ["science", "math", "simulations", "interactive"] },
+  { name: "OER Commons", url: "https://oercommons.org/", category: "books", access: "everyone", verified: "2026-07",
+    desc: "Searchable library of open educational resources, full courses and lesson materials.", tags: ["oer", "resources", "lessons"] },
+  { name: "MIT Press Open", url: "https://direct.mit.edu/books/pages/open-access", category: "books", access: "everyone", verified: "2026-07",
+    desc: "Free open-access scholarly books from MIT Press.", tags: ["books", "academic", "mit"] },
+  { name: "Bookshare", url: "https://www.bookshare.org/", category: "books", access: "student", verified: "2026-07",
+    desc: "Free ebook library for students with a reading or print disability.", tags: ["accessibility", "ebooks", "disability"] },
+
+  /* ------------------------------------------------------------- international */
+  { name: "Chevening (UK)", url: "https://www.chevening.org/", category: "intl", access: "everyone", verified: "2026-07",
+    desc: "Fully-funded UK master's scholarships from the UK government, open to students worldwide.", tags: ["uk", "scholarship", "masters", "fully funded"] },
+  { name: "DAAD (Germany)", url: "https://www.daad.de/en/", category: "intl", access: "everyone", verified: "2026-07",
+    desc: "Germany's academic exchange service: scholarships and info to study in Germany.", tags: ["germany", "scholarship", "exchange"] },
+  { name: "Erasmus+ (EU)", url: "https://erasmus-plus.ec.europa.eu/", category: "intl", access: "everyone", verified: "2026-07",
+    desc: "EU funding for study, training and exchange across Europe.", tags: ["eu", "europe", "exchange"] },
+  { name: "Commonwealth Scholarships", url: "https://cscuk.fcdo.gov.uk/", category: "intl", access: "everyone", verified: "2026-07",
+    desc: "UK-funded scholarships for students from Commonwealth countries.", tags: ["uk", "scholarship", "commonwealth"] },
+  { name: "MEXT (Japan)", url: "https://www.studyinjapan.go.jp/en/", category: "intl", access: "everyone", verified: "2026-07",
+    desc: "Japanese government scholarships and info for studying in Japan.", tags: ["japan", "scholarship"] },
+  { name: "EduCanada", url: "https://www.educanada.ca/scholarships-bourses/", category: "intl", access: "everyone", verified: "2026-07",
+    desc: "Scholarships and official information for studying in Canada.", tags: ["canada", "scholarship"] },
+  { name: "Mastercard Foundation Scholars", url: "https://mastercardfdn.org/en/what-we-do/our-programs/mastercard-foundation-scholars-program/", category: "intl", access: "everyone", verified: "2026-07",
+    desc: "Full scholarships for young people, primarily from Africa, to attend partner universities.", tags: ["africa", "scholarship", "full ride"] },
+  { name: "EducationUSA", url: "https://educationusa.state.gov/", category: "intl", access: "everyone", verified: "2026-07",
+    desc: "US State Dept network advising international students on studying in the US.", tags: ["usa", "advising", "international"] },
+  { name: "IEFA", url: "https://www.iefa.org/", category: "intl", access: "everyone", verified: "2026-07",
+    desc: "Searchable database of international financial aid and scholarships.", tags: ["financial aid", "database", "international"] }
 ];
 
 /* Sponsors shown on the About tab. Empty by default, add real sponsors only. */
