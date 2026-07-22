@@ -1696,11 +1696,11 @@
       ["catch"](function () { note.textContent = "Couldn't reach the reminder service, check the endpoint setup."; note.className = "rem-note err"; });
   }
 
-  // ---- COLLEGES (application tracker) --------------------------------
-  var COL_TIERS = ["", "Safety", "Match", "Reach"];
-  var COL_PLANS = ["", "ED", "ED II", "EA", "EA II", "REA", "RD", "Rolling"];
-  var COL_DEC = ["", "Applied", "Accepted", "Waitlisted", "Deferred", "Denied"];
-  var COL_STEPS = [["app", "App"], ["essay", "Essays"], ["recs", "Recs"], ["transcript", "Transcript"], ["scores", "Scores"], ["aid", "Aid"]];
+  // ---- COLLEGES (explore + export a spreadsheet tracker) ------------
+  // The site is an info browser: search colleges, see their stats and an
+  // auto reach/match/safety rating. The actual tracking (deadlines, essays,
+  // decisions) lives in the spreadsheet you export - not on the page.
+  var COL_STEPS = ["App", "Essays", "Recs", "Transcript", "Scores", "Aid"];
   var COL_OWN = { 1: "Public", 2: "Private", 3: "Private (for-profit)" };
   var COL_ALIAS = {
     mit: "massachusetts institute of technology", gt: "georgia institute of technology", "georgia tech": "georgia institute",
@@ -1724,7 +1724,6 @@
   function actToSat(act) { return ACT_SAT[Math.round(act)] || null; }
   function myEffSat() { return myStats.sat ? +myStats.sat : (myStats.act ? actToSat(+myStats.act) : null); }
   function schoolEffSat(c) { return c.sat ? c.sat : (c.act ? actToSat(c.act) : null); }
-  function hasMyStats() { return !!(myStats.sat || myStats.act); }
   // rate a college reach/match/safety from the student's score vs the school's
   // median and its admission rate; returns null until the student adds a score.
   function rateFit(c) {
@@ -1737,33 +1736,23 @@
     if (a != null && a >= 0.85) t = Math.max(t, 2);      // near-open admission is a safety
     return ["Reach", "Match", "Safety"][Math.max(0, Math.min(2, t))];
   }
-  function effTier(c) { return c.tier || rateFit(c) || ""; }
   function fillMyStats() {
     var m = { sat: "#my-sat", act: "#my-act", gpa: "#my-gpa" };
     Object.keys(m).forEach(function (k) { var el = $(m[k]); if (el && myStats[k] != null) el.value = myStats[k]; });
   }
   function updateCollegeCount() { var n = $("#n-colleges"); if (n) n.textContent = myColleges.length; }
   function hasCollege(id) { return myColleges.some(function (c) { return String(c.id) === String(id); }); }
-  function findMyCollege(id) { return myColleges.filter(function (c) { return String(c.id) === String(id); })[0]; }
   function colToEntry(c) {
-    return {
-      id: c.id, name: c.name, city: c.city, state: c.state, url: c.url, own: c.own,
-      admit: c.admit, net: c.net, cost: c.cost, sat: c.sat, act: c.act, size: c.size, grad: c.grad,
-      tier: "", plan: "", deadline: "", portal: "", decision: "",
-      status: { app: false, essay: false, recs: false, transcript: false, scores: false, aid: false }, notes: ""
-    };
+    return { id: c.id, name: c.name, city: c.city, state: c.state, url: c.url, own: c.own,
+      admit: c.admit, net: c.net, cost: c.cost, sat: c.sat, act: c.act, size: c.size, grad: c.grad };
   }
   function addCollege(c) { if (c && !hasCollege(c.id)) { myColleges.push(colToEntry(c)); saveColleges(); updateCollegeCount(); } }
   function removeCollege(id) { myColleges = myColleges.filter(function (c) { return String(c.id) !== String(id); }); saveColleges(); updateCollegeCount(); }
   function colPct(x) { return x == null ? "n/a" : Math.round(x * 100) + "%"; }
   function colMoney(x) { return x == null ? "n/a" : "$" + Math.round(x).toLocaleString("en-US"); }
   function colScore(c) { return c.sat ? "SAT " + c.sat : (c.act ? "ACT " + c.act : "SAT n/a"); }
-  function colProgTxt(c) { var d = 0; COL_STEPS.forEach(function (s) { if (c.status[s[0]]) d++; }); return d + "/" + COL_STEPS.length; }
-  function colSort(a, b) {
-    var ia = dlInfo(a.deadline), ib = dlInfo(b.deadline);
-    var da = ia.date ? ia.days : 1e9, db = ib.date ? ib.days : 1e9;
-    return da - db || a.name.localeCompare(b.name);
-  }
+  function tierRank(c) { var t = rateFit(c); return t === "Reach" ? 0 : t === "Match" ? 1 : t === "Safety" ? 2 : 3; }
+  function colSort(a, b) { return tierRank(a) - tierRank(b) || a.name.localeCompare(b.name); }
   function searchBundle(q) {
     q = q.toLowerCase().trim(); if (!q) return [];
     var qs = [q];
@@ -1841,62 +1830,39 @@
     html += '<div class="col-live-bar">' + (matches.length ? "Not the one? " : "") + msg + "</div>";
     box.innerHTML = html;
   }
-  function colSelect(field, val, opts) {
-    return '<select data-col-f="' + field + '">' + opts.map(function (o) {
-      return '<option value="' + esc(o) + '"' + (o === val ? " selected" : "") + ">" + (o || ("- " + field + " -")) + "</option>";
-    }).join("") + "</select>";
+  function fitTag(c) {
+    var t = rateFit(c); if (!t) return "";
+    return '<span class="col-fit col-tier-' + t.toLowerCase() + '" title="Estimated from your stats vs this school - a starting signal, not a guarantee">' + t + ' <i>fit</i></span>';
   }
   function colCard(c) {
     var loc = [c.city, c.state].filter(Boolean).join(", ");
     var meta = [loc, COL_OWN[c.own], c.size ? c.size.toLocaleString("en-US") + " students" : ""].filter(Boolean).join(" &middot; ");
     var link = c.url || searchLink(c.name);
-    var steps = COL_STEPS.map(function (s) {
-      return '<label class="col-step"><input type="checkbox" data-col-step="' + s[0] + '"' + (c.status[s[0]] ? " checked" : "") + " /> " + s[1] + "</label>";
-    }).join("");
-    var et = effTier(c), auto = !c.tier && !!et;
-    var tag = et ? '<span class="col-card-tiertag col-tier-' + et.toLowerCase() + (auto ? " is-auto" : "") + '"' +
-      (auto ? ' title="Auto-rated from your stats - set a Tier below to override"' : ' title="Your tier"') + ">" + et + (auto ? ' <i>fit</i>' : "") + "</span>" : "";
     return '<div class="col-card" data-id="' + esc(String(c.id)) + '">' +
       '<div class="col-card-top">' + logoTile(c.name, c.url) +
         '<div class="col-card-id"><a class="col-card-name" href="' + esc(link) + '" target="_blank" rel="noopener">' + esc(c.name) + ' <span class="ext">&#8599;</span></a>' +
-        '<div class="col-card-loc">' + meta + "</div></div>" +
-        tag +
-        '<button class="col-rm" data-col-rm="' + esc(String(c.id)) + '" type="button" aria-label="Remove">&times;</button>' +
+          '<div class="col-card-loc">' + meta + "</div></div>" +
+        fitTag(c) +
+        '<button class="col-rm" data-col-rm="' + esc(String(c.id)) + '" type="button" aria-label="Remove ' + esc(c.name) + '">&times;</button>' +
       "</div>" +
       '<div class="col-stats">' +
         '<span class="col-stat"><b>' + colPct(c.admit) + "</b><span>admit rate</span></span>" +
         '<span class="col-stat"><b>' + colMoney(c.net) + "</b><span>avg net price</span></span>" +
         '<span class="col-stat"><b>' + esc(colScore(c)) + "</b><span>median score</span></span>" +
         '<span class="col-stat"><b>' + colPct(c.grad) + "</b><span>grad rate</span></span>" +
-      "</div>" +
-      '<div class="col-fields">' +
-        '<label class="col-field">Tier ' + colSelect("tier", c.tier, COL_TIERS) + "</label>" +
-        '<label class="col-field">Plan ' + colSelect("plan", c.plan, COL_PLANS) + "</label>" +
-        '<label class="col-field">Deadline <input data-col-f="deadline" value="' + esc(c.deadline) + '" placeholder="e.g. Nov 1" /></label>' +
-        '<label class="col-field">Portal <input data-col-f="portal" value="' + esc(c.portal) + '" placeholder="e.g. Common App" /></label>' +
-        '<label class="col-field">Decision ' + colSelect("decision", c.decision, COL_DEC) + "</label>" +
-      "</div>" +
-      '<div class="col-steps"><span class="col-steps-lbl">To-do <span class="col-prog">' + colProgTxt(c) + "</span></span>" + steps + "</div>" +
-      '<input class="col-notes" data-col-f="notes" value="' + esc(c.notes) + '" placeholder="Notes: essay angle, aid, fit, why this school..." />' +
-      "</div>";
+      "</div></div>";
   }
   function renderColSummary() {
     var el = $("#col-summary-stats"); if (!el) return;
-    var n = myColleges.length, byTier = { Reach: 0, Match: 0, Safety: 0 }, total = 0, done = 0, next = null;
-    myColleges.forEach(function (c) {
-      var et = effTier(c); if (byTier[et] != null) byTier[et]++;
-      COL_STEPS.forEach(function (s) { total++; if (c.status[s[0]]) done++; });
-      var info = dlInfo(c.deadline);
-      if (info.date && info.days >= 0 && (!next || info.days < next.days)) next = { name: c.name, days: info.days, date: info.date };
-    });
-    var pct = total ? Math.round(done / total * 100) : 0;
+    var n = myColleges.length, byTier = { Reach: 0, Match: 0, Safety: 0 }, rated = false;
+    myColleges.forEach(function (c) { var t = rateFit(c); if (byTier[t] != null) { byTier[t]++; rated = true; } });
     el.innerHTML =
       '<span class="col-chip"><b>' + n + "</b> college" + (n === 1 ? "" : "s") + "</span>" +
-      '<span class="col-chip col-chip-reach"><b>' + byTier.Reach + "</b> reach</span>" +
-      '<span class="col-chip col-chip-match"><b>' + byTier.Match + "</b> match</span>" +
-      '<span class="col-chip col-chip-safety"><b>' + byTier.Safety + "</b> safety</span>" +
-      '<span class="col-chip"><b>' + pct + "%</b> to-dos done</span>" +
-      (next ? '<span class="col-chip col-chip-next">next deadline <b>' + DL_MON[next.date.getMonth()] + " " + next.date.getDate() + "</b></span>" : "");
+      (rated
+        ? '<span class="col-chip col-chip-reach"><b>' + byTier.Reach + "</b> reach</span>" +
+          '<span class="col-chip col-chip-match"><b>' + byTier.Match + "</b> match</span>" +
+          '<span class="col-chip col-chip-safety"><b>' + byTier.Safety + "</b> safety</span>"
+        : '<span class="col-chip col-chip-hint">add your SAT/ACT above to auto-rate reach / match / safety</span>');
   }
   function renderColList() {
     var box = $("#col-list"), empty = $("#col-empty"), sum = $("#col-summary");
@@ -1907,36 +1873,19 @@
     renderColSummary();
   }
   function renderColleges() { renderColResults(); renderColList(); }
-  function onColEdit(e) {
-    var card = e.target.closest(".col-card"); if (!card) return;
-    var c = findMyCollege(card.dataset.id); if (!c) return;
-    var f = e.target.getAttribute("data-col-f"), step = e.target.getAttribute("data-col-step");
-    if (f) {
-      c[f] = e.target.value; saveColleges();
-      if (f === "tier" || f === "plan" || f === "deadline" || f === "decision") renderColList(); else renderColSummary();
-    } else if (step) {
-      c.status[step] = e.target.checked; saveColleges();
-      var p = card.querySelector(".col-prog"); if (p) p.textContent = colProgTxt(c);
-      renderColSummary();
-    }
-  }
+  // build a ready-to-fill spreadsheet: college + stats + estimated tier are
+  // pre-filled; the planning columns are left blank for the student to track.
   function collegesCSV() {
-    var head = ["Deadline", "Plan", "Tier", "College", "City", "State", "Portal", "Admit %", "Avg net price", "Cost/yr",
-      "SAT", "ACT", "Size", "Grad %", "App", "Essays", "Recs", "Transcript", "Scores", "Aid", "Decision", "Notes"];
-    var yn = function (b) { return b ? "Yes" : ""; };
+    var head = ["College", "City", "State", "Est. tier", "Website", "Admit %", "Avg net price", "Cost/yr",
+      "Median SAT", "Median ACT", "Size", "Grad %"]
+      .concat(["Deadline", "Plan", "Portal"]).concat(COL_STEPS).concat(["Decision", "Notes"]);
+    var blanks = new Array(3 + COL_STEPS.length + 2).fill(""); // Deadline..Notes for you to fill
     var rows = myColleges.slice().sort(colSort).map(function (c) {
-      return [c.deadline, c.plan, c.tier, c.name, c.city, c.state, c.portal,
+      return [c.name, c.city, c.state, rateFit(c) || "", c.url || "",
         c.admit == null ? "" : Math.round(c.admit * 100) + "%", c.net == null ? "" : c.net, c.cost == null ? "" : c.cost,
-        c.sat || "", c.act || "", c.size || "", c.grad == null ? "" : Math.round(c.grad * 100) + "%",
-        yn(c.status.app), yn(c.status.essay), yn(c.status.recs), yn(c.status.transcript), yn(c.status.scores), yn(c.status.aid),
-        c.decision, c.notes];
+        c.sat || "", c.act || "", c.size || "", c.grad == null ? "" : Math.round(c.grad * 100) + "%"].concat(blanks);
     });
     return [head].concat(rows).map(function (r) { return r.map(csvCell).join(","); }).join("\r\n");
-  }
-  function collegesICS() {
-    return toICS(myColleges.filter(function (c) { return c.deadline; }).map(function (c) {
-      return { name: c.name, url: c.url || searchLink(c.name), deadline: c.deadline };
-    }));
   }
   function wireColleges() {
     fillMyStats();
@@ -1957,14 +1906,9 @@
       if (e.target.closest("[data-col-live]")) doLiveSearch();
     });
     var list = $("#col-list");
-    if (list) {
-      list.addEventListener("change", onColEdit);
-      list.addEventListener("click", function (e) { var rm = e.target.closest("[data-col-rm]"); if (rm) { removeCollege(rm.dataset.colRm); renderColList(); renderColResults(); } });
-    }
+    if (list) list.addEventListener("click", function (e) { var rm = e.target.closest("[data-col-rm]"); if (rm) { removeCollege(rm.dataset.colRm); renderColList(); renderColResults(); } });
     var csv = $("#col-export-csv");
-    if (csv) csv.addEventListener("click", function () { if (myColleges.length) download("my-college-list.csv", "﻿" + collegesCSV(), "text/csv;charset=utf-8"); });
-    var ics = $("#col-export-ics");
-    if (ics) ics.addEventListener("click", function () { if (myColleges.length) download("my-college-deadlines.ics", collegesICS(), "text/calendar;charset=utf-8"); });
+    if (csv) csv.addEventListener("click", function () { if (myColleges.length) download("my-college-tracker.csv", "﻿" + collegesCSV(), "text/csv;charset=utf-8"); });
     var clr = $("#col-clear");
     if (clr) clr.addEventListener("click", function () {
       if (myColleges.length && window.confirm("Remove all " + myColleges.length + " colleges from your list? This can't be undone.")) {

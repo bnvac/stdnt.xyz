@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
   <meta name="theme-color" content="#0c0d10" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
-  <link rel="stylesheet" href="css/styles.css?v=32" />
+  <link rel="stylesheet" href="css/styles.css?v=33" />
 </head>
 <body>
   <!-- ============================================================ HEADER -->
@@ -226,31 +226,36 @@
     </section>
     <section id="panel-colleges" class="panel" role="tabpanel" hidden>
       <div class="guides-head">
-        <h2 class="guides-title">College application tracker</h2>
-        <p class="guides-sub">Search real U.S. colleges, add them to your list, and track every deadline, plan and to-do in one place - then export it as a spreadsheet. Live stats (admit rate, net price, SAT, size, grad rate) come from the U.S. Dept of Education <a href="https://collegescorecard.ed.gov/" target="_blank" rel="noopener">College Scorecard</a>. Saved on this device only.</p>
+        <h2 class="guides-title">College explorer</h2>
+        <p class="guides-sub">Search real U.S. colleges and see their stats - admit rate, net price, SAT, size and grad rate - from the U.S. Dept of Education <a href="https://collegescorecard.ed.gov/" target="_blank" rel="noopener">College Scorecard</a>. Shortlist the ones you like, add your test scores to see how you match, then download a spreadsheet tracker to plan your deadlines and essays. Saved on this device only.</p>
       </div>
       <div class="col-mystats">
         <span class="col-mystats-lbl">Your stats</span>
         <label class="col-mystat">SAT <input id="my-sat" type="number" inputmode="numeric" min="400" max="1600" step="10" placeholder="1400" /></label>
         <label class="col-mystat">ACT <input id="my-act" type="number" inputmode="numeric" min="1" max="36" placeholder="32" /></label>
         <label class="col-mystat">GPA <input id="my-gpa" type="number" step="0.01" min="0" max="5" placeholder="3.9" /></label>
-        <span class="col-mystats-hint">Enter a test score and every school is auto-rated <b class="col-tier-reach">reach</b> / <b class="col-tier-match">match</b> / <b class="col-tier-safety">safety</b>. Set a Tier on any card to override.</span>
+        <span class="col-mystats-hint">Add a test score and every school is rated <b class="col-tier-reach">reach</b> / <b class="col-tier-match">match</b> / <b class="col-tier-safety">safety</b> for you.</span>
       </div>
       <div class="col-search">
         <input id="col-q" type="search" placeholder="Search colleges to add (e.g. MIT, Alabama, Boston)..." autocomplete="off" aria-label="Search colleges" />
         <div id="col-results" class="col-results" hidden></div>
       </div>
       <div class="col-summary" id="col-summary" hidden>
-        <div class="col-summary-stats" id="col-summary-stats"></div>
-        <div class="col-summary-acts">
-          <button class="btn btn-ghost" id="col-export-csv" type="button">Export spreadsheet (.csv)</button>
-          <button class="btn btn-ghost" id="col-export-ics" type="button">Deadlines (.ics)</button>
-          <button class="btn btn-ghost" id="col-clear" type="button">Clear list</button>
+        <div class="col-export-cta">
+          <button class="btn btn-primary col-export-btn" id="col-export-csv" type="button">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>
+            Download spreadsheet tracker
+          </button>
+          <span class="col-export-note">A ready-to-fill <b>.csv</b> with your colleges, their stats and reach/match/safety - opens in Excel or Google Sheets, with blank columns for deadlines, essays and decisions.</span>
+        </div>
+        <div class="col-summary-foot">
+          <div class="col-summary-stats" id="col-summary-stats"></div>
+          <button class="btn btn-ghost col-clear-btn" id="col-clear" type="button">Clear list</button>
         </div>
       </div>
       <div class="col-list" id="col-list"></div>
       <div class="col-empty" id="col-empty">
-        <p class="muted">Your college list is empty. Search above to add your first school - try <b>MIT</b>, <b>Georgia Tech</b> or your state flagship.</p>
+        <p class="muted">No colleges yet. Search above to add your first school - try <b>MIT</b>, <b>Georgia Tech</b> or your state flagship.</p>
       </div>
     </section>
     <section id="panel-roadmaps" class="panel" role="tabpanel" hidden>
@@ -488,17 +493,17 @@
     </article>
   </div>
 
-  <script src="js/data.js?v=32"></script>
-  <script src="js/scholarships.js?v=32"></script>
-  <script src="js/programs.js?v=32"></script>
-  <script src="js/programs-extra.js?v=32"></script>
-  <script src="js/guides.js?v=32"></script>
-  <script src="js/templates.js?v=32"></script>
-  <script src="js/discounts.js?v=32"></script>
-  <script src="js/competitions.js?v=32"></script>
-  <script src="js/hackathons.js?v=32"></script>
-  <script src="js/roadmaps.js?v=32"></script>
-  <script src="js/colleges.js?v=32"></script>
-  <script src="js/app.js?v=32"></script>
+  <script src="js/data.js?v=33"></script>
+  <script src="js/scholarships.js?v=33"></script>
+  <script src="js/programs.js?v=33"></script>
+  <script src="js/programs-extra.js?v=33"></script>
+  <script src="js/guides.js?v=33"></script>
+  <script src="js/templates.js?v=33"></script>
+  <script src="js/discounts.js?v=33"></script>
+  <script src="js/competitions.js?v=33"></script>
+  <script src="js/hackathons.js?v=33"></script>
+  <script src="js/roadmaps.js?v=33"></script>
+  <script src="js/colleges.js?v=33"></script>
+  <script src="js/app.js?v=33"></script>
 </body>
 </html>
