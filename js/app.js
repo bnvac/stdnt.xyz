@@ -22,6 +22,8 @@
   var FULL = window.SCH_FULL || 1000000;
   // set to your Buttondown/Mailchimp embed-subscribe URL to enable email signup
   var NEWSLETTER_ENDPOINT = "";
+  // set to your Apps Script / Worker URL to enable deadline email reminders (see docs/EMAIL_REMINDERS.md)
+  var REMINDER_ENDPOINT = "";
   var GH_REPO = "https://github.com/2008wbbv/edu.edu";
   // contribute categories -> their GitHub issue-form templates (tracked + credited)
   var CONTRIB = [
@@ -164,8 +166,8 @@
   var state = {
     tab: "tools", q: "",
     tools: { access: "all", cat: "all" },
-    sch: { group: "all", sort: "amount", eligible: false },
-    prog: { grade: "all", free: false, sort: "rank", eligible: false },
+    sch: { group: "all", sort: "amount", eligible: false, minAmt: 0, noEssay: false },
+    prog: { grade: "all", free: false, sort: "rank", eligible: false, subject: "all", remote: false },
     deadlines: { kind: "all", window: "all" },
     roadmap: null
   };
@@ -373,11 +375,17 @@
     $("#sch-sort").addEventListener("change", function (e) { state.sch.sort = e.target.value; render(); });
     var elig = $("#sch-eligible");
     if (elig) elig.addEventListener("change", function (e) { state.sch.eligible = e.target.checked; render(); });
+    var amt = $("#sch-amt");
+    if (amt) amt.addEventListener("change", function (e) { state.sch.minAmt = +e.target.value; render(); });
+    var ne = $("#sch-noessay");
+    if (ne) ne.addEventListener("change", function (e) { state.sch.noEssay = e.target.checked; render(); });
   }
   function schFiltered() {
     var ts = terms(), onlyElig = state.sch.eligible && quizAnswered();
     var list = SCH.filter(function (s) {
       if (state.sch.group !== "all" && s.group !== state.sch.group) return false;
+      if (state.sch.minAmt && (s.amount || 0) < state.sch.minAmt) return false;
+      if (state.sch.noEssay && s.group !== "noessay" && !(s.tags || []).some(function (t) { return /no.?essay/i.test(t); })) return false;
       if (onlyElig && schScore(s) === -1) return false;
       if (ts.length && !hit([s.name, s.level, s.note, s.amountText, (s.tags || []).join(" ")].join(" "), ts)) return false;
       return true;
@@ -422,12 +430,27 @@
     $("#prog-sort").addEventListener("change", function (e) { state.prog.sort = e.target.value; render(); });
     var elig = $("#prog-eligible");
     if (elig) elig.addEventListener("change", function (e) { state.prog.eligible = e.target.checked; render(); });
+    buildSubjectOptions();
+    var subj = $("#prog-subject");
+    if (subj) subj.addEventListener("change", function (e) { state.prog.subject = e.target.value; render(); });
+    var rem = $("#prog-remote");
+    if (rem) rem.addEventListener("change", function (e) { state.prog.remote = e.target.checked; render(); });
+  }
+  function buildSubjectOptions() {
+    var sel = $("#prog-subject"); if (!sel) return;
+    var freq = {};
+    PROG.forEach(function (p) { (p.subjects || []).forEach(function (s) { freq[s] = (freq[s] || 0) + 1; }); });
+    var top = Object.keys(freq).sort(function (a, b) { return freq[b] - freq[a]; }).slice(0, 16).sort();
+    sel.innerHTML = '<option value="all">All subjects</option>' +
+      top.map(function (s) { return '<option value="' + esc(s) + '">' + esc(s) + "</option>"; }).join("");
   }
   function progFiltered() {
     var ts = terms(), onlyElig = state.prog.eligible && quizAnswered();
     var list = PROG.filter(function (p) {
       if (state.prog.free && !p.free) return false;
       if (state.prog.grade !== "all" && (p.grades || []).indexOf(state.prog.grade) < 0) return false;
+      if (state.prog.subject !== "all" && (p.subjects || []).indexOf(state.prog.subject) < 0) return false;
+      if (state.prog.remote && !(p.tags || []).some(function (t) { return /remote|hybrid|virtual|online/i.test(t); })) return false;
       if (onlyElig && progScore(p) === -1) return false;
       if (ts.length && !hit([p.name, p.details, (p.subjects || []).join(" "), (p.tags || []).join(" "), (p.grades || []).join(" ")].join(" "), ts)) return false;
       return true;
@@ -840,9 +863,12 @@
     $("#clear").addEventListener("click", function () {
       state.q = ""; search.value = "";
       state.tools = { access: "all", cat: "all" };
-      state.sch = { group: "all", sort: state.sch.sort };
-      state.prog = { grade: "all", free: false, sort: state.prog.sort };
+      state.sch = { group: "all", sort: state.sch.sort, eligible: false, minAmt: 0, noEssay: false };
+      state.prog = { grade: "all", free: false, sort: state.prog.sort, eligible: false, subject: "all", remote: false };
       $("#prog-free").checked = false;
+      ["#sch-noessay", "#sch-eligible", "#prog-remote", "#prog-eligible"].forEach(function (s) { var el = $(s); if (el) el.checked = false; });
+      var amtSel = $("#sch-amt"); if (amtSel) amtSel.value = "0";
+      var subjSel = $("#prog-subject"); if (subjSel) subjSel.value = "all";
       document.querySelectorAll(".chips").forEach(function (box) {
         box.querySelectorAll(".chip").forEach(function (c, i) { c.classList.toggle("is-active", i === 0); });
       });
@@ -1546,6 +1572,30 @@
     if (ics) ics.addEventListener("click", function () { download("stdnt-deadlines.ics", toICS(deadlineExportItems()), "text/calendar;charset=utf-8"); });
     var csv = $("#dl-csv");
     if (csv) csv.addEventListener("click", function () { download("stdnt-deadlines.csv", "﻿" + toCSV(deadlineExportItems()), "text/csv;charset=utf-8"); });
+    var rem = $("#dl-remind"), panel = $("#dl-remind-panel");
+    if (rem && panel) rem.addEventListener("click", function () {
+      panel.hidden = !panel.hidden;
+      if (!panel.hidden) { var f = $("#rem-email"); if (f) f.focus(); }
+    });
+    var send = $("#rem-send");
+    if (send) send.addEventListener("click", sendReminders);
+  }
+  function sendReminders() {
+    var emailEl = $("#rem-email"), note = $("#rem-note"); if (!emailEl || !note) return;
+    var email = (emailEl.value || "").trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { note.textContent = "Enter a valid email address."; note.className = "rem-note err"; return; }
+    var items = deadlinesFiltered().map(function (it) {
+      return { name: it.name, url: it.url, deadline: it.deadline, date: ymd(it.info.date) };
+    });
+    if (!items.length) { note.textContent = "No deadlines in view. Widen the filters above, then try again."; note.className = "rem-note"; return; }
+    if (!REMINDER_ENDPOINT) {
+      note.innerHTML = 'Email reminders need a one-time free setup, see <a href="' + GH_REPO + '/blob/main/docs/EMAIL_REMINDERS.md" target="_blank" rel="noopener">docs/EMAIL_REMINDERS.md</a>. Until then, use <b>Add all to calendar (.ics)</b> to get every deadline into your calendar app.';
+      note.className = "rem-note"; return;
+    }
+    note.textContent = "Sending..."; note.className = "rem-note";
+    fetch(REMINDER_ENDPOINT, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ email: email, items: items }) })
+      .then(function () { note.textContent = "Done. You'll get an email before each deadline."; note.className = "rem-note ok"; })
+      ["catch"](function () { note.textContent = "Couldn't reach the reminder service, check the endpoint setup."; note.className = "rem-note err"; });
   }
 
   // ---- HERO (closing-soon strip + scholarship $ stat) ----------------
