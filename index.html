@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
   <meta name="theme-color" content="#0c0d10" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
-  <link rel="stylesheet" href="css/styles.css?v=30" />
+  <link rel="stylesheet" href="css/styles.css?v=31" />
 </head>
 <body>
   <!-- ============================================================ HEADER -->
@@ -85,6 +85,7 @@
       <button class="tab"           data-tab="prog"   role="tab" type="button">STEM Programs <span class="tab-n" id="n-prog">0</span></button>
       <button class="tab"           data-tab="competitions" role="tab" type="button">Competitions <span class="tab-n" id="n-competitions">0</span></button>
       <button class="tab"           data-tab="deadlines" role="tab" type="button">Deadlines <span class="tab-n" id="n-deadlines">0</span></button>
+      <button class="tab"           data-tab="colleges" role="tab" type="button">Colleges <span class="tab-n" id="n-colleges">0</span></button>
       <button class="tab"           data-tab="roadmaps" role="tab" type="button">Roadmaps <span class="tab-n" id="n-roadmaps">0</span></button>
       <button class="tab tab-foryou" data-tab="foryou" role="tab" type="button">&#10022; For You</button>
       <button class="tab tab-saved" data-tab="saved"  role="tab" type="button"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.6 1.1 6.45L12 18.9 6.2 21l1.1-6.45L2.6 9.95l6.5-.95z"/></svg> Saved <span class="tab-n" id="n-saved">0</span></button>
@@ -222,6 +223,28 @@
       <p class="fresh-note" id="fresh-note" hidden></p>
       <p class="fresh-help">Dates are typical windows - always confirm on the official site. Defunct, cancelled and paused listings are hidden here, and anything our weekly link check can't reach is flagged. Spotted something stale? Use the flag button on any listing to report it.</p>
       <div class="list" id="deadlines-list"></div>
+    </section>
+    <section id="panel-colleges" class="panel" role="tabpanel" hidden>
+      <div class="guides-head">
+        <h2 class="guides-title">College application tracker</h2>
+        <p class="guides-sub">Search real U.S. colleges, add them to your list, and track every deadline, plan and to-do in one place - then export it as a spreadsheet. Live stats (admit rate, net price, SAT, size, grad rate) come from the U.S. Dept of Education <a href="https://collegescorecard.ed.gov/" target="_blank" rel="noopener">College Scorecard</a>. Saved on this device only.</p>
+      </div>
+      <div class="col-search">
+        <input id="col-q" type="search" placeholder="Search colleges to add (e.g. MIT, Alabama, Boston)..." autocomplete="off" aria-label="Search colleges" />
+        <div id="col-results" class="col-results" hidden></div>
+      </div>
+      <div class="col-summary" id="col-summary" hidden>
+        <div class="col-summary-stats" id="col-summary-stats"></div>
+        <div class="col-summary-acts">
+          <button class="btn btn-ghost" id="col-export-csv" type="button">Export spreadsheet (.csv)</button>
+          <button class="btn btn-ghost" id="col-export-ics" type="button">Deadlines (.ics)</button>
+          <button class="btn btn-ghost" id="col-clear" type="button">Clear list</button>
+        </div>
+      </div>
+      <div class="col-list" id="col-list"></div>
+      <div class="col-empty" id="col-empty">
+        <p class="muted">Your college list is empty. Search above to add your first school - try <b>MIT</b>, <b>Georgia Tech</b> or your state flagship.</p>
+      </div>
     </section>
     <section id="panel-roadmaps" class="panel" role="tabpanel" hidden>
       <div class="guides-head">
@@ -458,16 +481,17 @@
     </article>
   </div>
 
-  <script src="js/data.js?v=30"></script>
-  <script src="js/scholarships.js?v=30"></script>
-  <script src="js/programs.js?v=30"></script>
-  <script src="js/programs-extra.js?v=30"></script>
-  <script src="js/guides.js?v=30"></script>
-  <script src="js/templates.js?v=30"></script>
-  <script src="js/discounts.js?v=30"></script>
-  <script src="js/competitions.js?v=30"></script>
-  <script src="js/hackathons.js?v=30"></script>
-  <script src="js/roadmaps.js?v=30"></script>
-  <script src="js/app.js?v=30"></script>
+  <script src="js/data.js?v=31"></script>
+  <script src="js/scholarships.js?v=31"></script>
+  <script src="js/programs.js?v=31"></script>
+  <script src="js/programs-extra.js?v=31"></script>
+  <script src="js/guides.js?v=31"></script>
+  <script src="js/templates.js?v=31"></script>
+  <script src="js/discounts.js?v=31"></script>
+  <script src="js/competitions.js?v=31"></script>
+  <script src="js/hackathons.js?v=31"></script>
+  <script src="js/roadmaps.js?v=31"></script>
+  <script src="js/colleges.js?v=31"></script>
+  <script src="js/app.js?v=31"></script>
 </body>
 </html>

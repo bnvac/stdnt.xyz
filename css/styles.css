@@ -593,6 +593,78 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
   .dl-cal-n { font-size: .58rem; }
 }
 
+/* ==================================================== COLLEGE TRACKER */
+.col-search { position: relative; margin: 0 0 1rem; }
+#col-q {
+  width: 100%; padding: .7rem 1rem; border-radius: 12px; border: 1px solid var(--line);
+  background: var(--bg-2); color: var(--tx); font: inherit; font-size: .95rem;
+}
+#col-q:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+.col-results {
+  margin-top: .5rem; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-2);
+  overflow: hidden; box-shadow: 0 8px 30px color-mix(in srgb, #000 8%, transparent);
+}
+.col-result { display: flex; align-items: center; gap: .8rem; padding: .6rem .8rem; border-bottom: 1px solid var(--line); }
+.col-result:last-of-type { border-bottom: 0; }
+.col-result-main { min-width: 0; flex: 1; }
+.col-result-name { font-weight: 600; color: var(--tx); font-size: .9rem; }
+.col-result-sub { font-size: .76rem; color: var(--tx-3); margin-top: .1rem; }
+.col-result .btn { flex: none; padding: .4rem .8rem; font-size: .82rem; }
+.btn.is-added { color: var(--evr); border-color: color-mix(in srgb, var(--evr) 40%, transparent); }
+.col-live-head { padding: .45rem .8rem; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--tx-3); background: color-mix(in srgb, var(--accent) 7%, var(--bg-2)); border-bottom: 1px solid var(--line); }
+.col-live-bar { padding: .6rem .8rem; font-size: .82rem; color: var(--tx-3); background: color-mix(in srgb, var(--accent) 5%, var(--bg-2)); }
+.col-live-btn { border: 0; background: none; color: var(--accent); font: inherit; font-size: .82rem; font-weight: 600; cursor: pointer; padding: 0; }
+.col-live-btn:hover { text-decoration: underline; }
+.col-live-msg { color: var(--tx-2); }
+.col-nomatch { padding: .8rem; margin: 0; font-size: .85rem; }
+.col-summary { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; margin: 0 0 1.1rem; }
+.col-summary-stats { display: flex; flex-wrap: wrap; gap: .5rem; }
+.col-chip { font-size: .8rem; color: var(--tx-2); background: var(--bg-2); border: 1px solid var(--line); border-radius: 999px; padding: .3rem .7rem; }
+.col-chip b { color: var(--tx); font-weight: 700; }
+.col-chip-reach b { color: #ef4444; }
+.col-chip-match b { color: var(--accent); }
+.col-chip-safety b { color: var(--evr); }
+.col-chip-next { border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+.col-summary-acts { display: flex; flex-wrap: wrap; gap: .5rem; margin-left: auto; }
+.col-summary-acts .btn { font-size: .82rem; padding: .45rem .85rem; }
+.col-list { display: flex; flex-direction: column; gap: .9rem; }
+.col-card { border: 1px solid var(--line); border-radius: 14px; background: var(--bg-2); padding: 1rem 1.1rem; }
+.col-card-top { display: flex; align-items: flex-start; gap: .6rem; }
+.col-card-id { min-width: 0; flex: 1; }
+.col-card-name { font-weight: 700; font-size: 1.02rem; color: var(--tx); letter-spacing: -.01em; text-decoration: none; }
+.col-card-name:hover { color: var(--accent); }
+.col-card-loc { font-size: .78rem; color: var(--tx-3); margin-top: .15rem; }
+.col-card-tiertag { flex: none; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; padding: .2rem .5rem; border-radius: 6px; align-self: center; }
+.col-card-tiertag:empty { display: none; }
+.col-tier-reach { color: #ef4444; background: color-mix(in srgb, #ef4444 13%, transparent); }
+.col-tier-match { color: var(--accent); background: color-mix(in srgb, var(--accent) 13%, transparent); }
+.col-tier-safety { color: var(--evr); background: color-mix(in srgb, var(--evr) 13%, transparent); }
+.col-rm { flex: none; width: 28px; height: 28px; border-radius: 7px; border: 1px solid var(--line); background: transparent; color: var(--tx-3); font-size: 1.15rem; line-height: 1; cursor: pointer; }
+.col-rm:hover { color: #ef4444; border-color: color-mix(in srgb, #ef4444 40%, var(--line)); }
+.col-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; margin: .85rem 0; }
+.col-stat { display: flex; flex-direction: column; gap: .1rem; padding: .5rem .6rem; border-radius: 9px; background: var(--bg); border: 1px solid var(--line); }
+.col-stat b { font-size: 1rem; font-weight: 700; color: var(--tx); letter-spacing: -.01em; }
+.col-stat span { font-size: .68rem; color: var(--tx-3); }
+.col-fields { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: .7rem; }
+.col-field { display: flex; flex-direction: column; gap: .2rem; font-size: .7rem; font-weight: 600; color: var(--tx-3); text-transform: uppercase; letter-spacing: .03em; flex: 1 1 130px; }
+.col-field select, .col-field input, .col-notes {
+  font: inherit; font-size: .85rem; font-weight: 400; text-transform: none; letter-spacing: 0;
+  padding: .4rem .55rem; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--tx);
+}
+.col-field select:focus, .col-field input:focus, .col-notes:focus { outline: none; border-color: var(--accent); }
+.col-steps { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .9rem; padding: .6rem 0; border-top: 1px solid var(--line); }
+.col-steps-lbl { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: var(--tx-3); }
+.col-prog { color: var(--accent); margin-left: .2rem; }
+.col-step { display: inline-flex; align-items: center; gap: .3rem; font-size: .82rem; color: var(--tx-2); cursor: pointer; }
+.col-step input { accent-color: var(--accent); }
+.col-notes { width: 100%; margin-top: .3rem; }
+.col-empty { padding: 1.5rem 0; }
+@media (max-width: 560px) {
+  .col-stats { grid-template-columns: repeat(2, 1fr); }
+  .col-summary-acts { margin-left: 0; width: 100%; }
+  .col-field { flex-basis: 100%; }
+}
+
 /* ========================================================= COMPETITIONS */
 .comp-ico {
   flex: none; display: grid; place-items: center; width: 38px; height: 38px; font-size: 1.2rem; border-radius: 11px;
