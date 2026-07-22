@@ -659,10 +659,25 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
 .col-step input { accent-color: var(--accent); }
 .col-notes { width: 100%; margin-top: .3rem; }
 .col-empty { padding: 1.5rem 0; }
+/* your-stats bar */
+.col-mystats { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .8rem; margin: 0 0 1rem; padding: .7rem .9rem; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-2); }
+.col-mystats-lbl { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--tx-3); }
+.col-mystat { display: inline-flex; align-items: center; gap: .35rem; font-size: .82rem; font-weight: 600; color: var(--tx-2); }
+.col-mystat input { width: 72px; padding: .35rem .5rem; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--tx); font: inherit; font-weight: 400; }
+.col-mystat input:focus { outline: none; border-color: var(--accent); }
+.col-mystats-hint { flex: 1 1 260px; min-width: 0; font-size: .76rem; color: var(--tx-3); }
+.col-mystats-hint b { font-weight: 700; }
+/* auto-rated "fit" badge (dashed = computed, solid = your own tier) */
+.col-card-tiertag.is-auto { background: transparent; border: 1px dashed currentColor; }
+.col-card-tiertag i { font-style: normal; font-weight: 600; font-size: .82em; opacity: .75; margin-left: .15em; }
+/* logo tiles inside cards + results */
+.col-card-top > .logo-ico { margin-right: .1rem; }
+.col-result > .logo-ico { width: 30px; height: 30px; border-radius: 9px; font-size: .9rem; }
 @media (max-width: 560px) {
   .col-stats { grid-template-columns: repeat(2, 1fr); }
   .col-summary-acts { margin-left: 0; width: 100%; }
   .col-field { flex-basis: 100%; }
+  .col-mystats-hint { flex-basis: 100%; }
 }
 
 /* ========================================================= COMPETITIONS */
