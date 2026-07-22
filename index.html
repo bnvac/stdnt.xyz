@@ -115,6 +115,16 @@
       <div class="filterset" data-for="sch" hidden>
         <div class="chiprail"><div class="chips" id="sch-groups" role="group" aria-label="Type"></div></div>
         <label class="toggle" title="Hide ones you're not eligible for (fill the For You quiz first)"><input type="checkbox" id="sch-eligible" /> Eligible to me</label>
+        <label class="sortsel">Min award
+          <select id="sch-amt">
+            <option value="0">Any amount</option>
+            <option value="1000">$1k+</option>
+            <option value="5000">$5k+</option>
+            <option value="10000">$10k+</option>
+            <option value="1000000">Full ride</option>
+          </select>
+        </label>
+        <label class="toggle" title="Only scholarships with no essay required"><input type="checkbox" id="sch-noessay" /> No essay</label>
         <label class="sortsel">Sort
           <select id="sch-sort">
             <option value="amount">Amount</option>
@@ -135,6 +145,10 @@
         </div></div>
         <label class="toggle"><input type="checkbox" id="prog-free" /> Free / funded</label>
         <label class="toggle" title="Hide ones you're not eligible for (fill the For You quiz first)"><input type="checkbox" id="prog-eligible" /> Eligible to me</label>
+        <label class="sortsel">Subject
+          <select id="prog-subject"><option value="all">All subjects</option></select>
+        </label>
+        <label class="toggle" title="Programs that run remote, hybrid or online"><input type="checkbox" id="prog-remote" /> Remote OK</label>
         <label class="sortsel">Sort
           <select id="prog-sort">
             <option value="rank">Prestige</option>
@@ -192,6 +206,12 @@
         <div class="dl-export">
           <button class="btn btn-ghost" id="dl-ics" type="button">Add all to calendar (.ics)</button>
           <button class="btn btn-ghost" id="dl-csv" type="button">CSV</button>
+          <button class="btn btn-ghost" id="dl-remind" type="button">Email me reminders</button>
+        </div>
+        <div class="dl-remind" id="dl-remind-panel" hidden>
+          <input id="rem-email" type="email" placeholder="you@example.com" autocomplete="email" aria-label="Your email" />
+          <button class="btn btn-primary" id="rem-send" type="button">Send</button>
+          <span class="rem-note" id="rem-note"></span>
         </div>
       </div>
       <p class="fresh-note" id="fresh-note" hidden></p>
