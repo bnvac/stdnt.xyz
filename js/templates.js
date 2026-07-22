@@ -99,7 +99,7 @@ window.TEMPLATES = [
     slug: "college-cost-compare",
     icon: "scale",
     title: "College cost & aid comparison",
-    blurb: "Compare real offers side by side. Sticker price means little — this shows your actual net cost per year.",
+    blurb: "Compare real offers side by side. Sticker price means little - this shows your actual net cost per year.",
     tags: ["college", "financial aid", "cost", "money"],
     columns: ["School", "Sticker price", "Grants / scholarships", "Loans offered", "Work-study", "Net cost / year", "Notes"],
     sample: [
@@ -123,7 +123,7 @@ window.TEMPLATES = [
     slug: "weekly-schedule",
     icon: "calendar",
     title: "Weekly schedule / time blocker",
-    blurb: "Block out your week hour by hour — classes, study, work and downtime — so your time actually has a plan.",
+    blurb: "Block out your week hour by hour - classes, study, work and downtime - so your time actually has a plan.",
     tags: ["planner", "schedule", "time", "productivity"],
     columns: ["Time", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     sample: [

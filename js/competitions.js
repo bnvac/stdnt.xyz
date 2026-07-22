@@ -70,7 +70,7 @@ window.COMPETITIONS = [
   { name: "Academic Decathlon", url: "https://www.usad.org/", category: "humanities", format: "Team", grades: "9-12", deadline: "",
     desc: "Ten-event academic competition with GPA-based divisions, built so everyone can compete.", tags: ["academic", "team"] },
   { name: "NACLO (Linguistics)", url: "https://www.nacloweb.org/", category: "humanities", format: "Solo", grades: "9-12", deadline: "January",
-    desc: "North American Computational Linguistics Open — fun logic puzzles, no prior linguistics needed.", tags: ["linguistics", "puzzles"] },
+    desc: "North American Computational Linguistics Open - fun logic puzzles, no prior linguistics needed.", tags: ["linguistics", "puzzles"] },
   { name: "Scholastic Art & Writing Awards", url: "https://www.artandwriting.org/", category: "humanities", format: "Solo", grades: "7-12", deadline: "December",
     desc: "The most recognized creative arts & writing awards for teens; colleges know them.", tags: ["art", "writing"] },
 
