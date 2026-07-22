@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-20T08:41:48.694Z",
+  "updated": "2026-07-22T08:09:12.561Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 16,
+  "count": 17,
   "events": [
     {
       "name": "Brilliant Move",
@@ -78,6 +78,19 @@
       "country": "United States",
       "cc": "US",
       "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Reverie Hacks",
+      "url": "https://reveriehacks.org/",
+      "start": "2026-08-02",
+      "end": "2026-08-17",
+      "city": "",
+      "region": "",
+      "country": "Worldwide",
+      "cc": "",
+      "format": "online",
       "source": "Hack Club",
       "hs": true
     },
