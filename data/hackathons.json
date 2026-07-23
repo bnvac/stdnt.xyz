@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-22T08:09:12.561Z",
+  "updated": "2026-07-23T08:12:34.456Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 17,
+  "count": 18,
   "events": [
     {
       "name": "Brilliant Move",
@@ -204,6 +204,19 @@
       "start": "2026-09-26",
       "end": "2026-09-26",
       "city": "San Francisco",
+      "region": "California",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Dublin hacx",
+      "url": "https://www.dublinhacx.com/",
+      "start": "2026-10-03",
+      "end": "2026-10-03",
+      "city": "San Ramon",
       "region": "California",
       "country": "United States",
       "cc": "US",
