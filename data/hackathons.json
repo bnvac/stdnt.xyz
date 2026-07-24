@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-23T08:12:34.456Z",
+  "updated": "2026-07-24T08:08:35.639Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 18,
+  "count": 20,
   "events": [
     {
       "name": "Brilliant Move",
@@ -169,6 +169,32 @@
       "country": "Worldwide",
       "cc": "",
       "format": "online",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "8-Bit Jam",
+      "url": "https://8bitjam.win",
+      "start": "2026-08-22",
+      "end": "2026-08-22",
+      "city": "Great Falls",
+      "region": "Virginia",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "FireHacks",
+      "url": "https://firehacks.codestarters.org/",
+      "start": "2026-09-09",
+      "end": "2026-09-09",
+      "city": "Mountain View",
+      "region": "California",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
       "source": "Hack Club",
       "hs": true
     },
