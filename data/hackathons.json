@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-24T08:08:35.639Z",
+  "updated": "2026-07-27T09:32:41.795Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 20,
+  "count": 18,
   "events": [
     {
       "name": "Brilliant Move",
@@ -26,32 +26,6 @@
       "country": "Worldwide",
       "cc": "",
       "format": "online",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "Hexafalls 2",
-      "url": "https://mlh.io/seasons/2026/events",
-      "start": "2026-07-24",
-      "end": "2026-07-26",
-      "city": "Kolkata",
-      "region": "West Bengal",
-      "country": "India",
-      "cc": "IN",
-      "format": "in-person",
-      "source": "MLH",
-      "hs": false
-    },
-    {
-      "name": "Horizons Europa",
-      "url": "https://horizons.hackclub.com/europa",
-      "start": "2026-07-24",
-      "end": "2026-07-26",
-      "city": "Berlin",
-      "region": "Berlin",
-      "country": "Germany",
-      "cc": "DE",
-      "format": "in-person",
       "source": "Hack Club",
       "hs": true
     },
