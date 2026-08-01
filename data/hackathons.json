@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-28T08:15:10.164Z",
+  "updated": "2026-08-01T08:04:40.053Z",
   "source": "hackathons.hackclub.com API + curated MLH",
   "count": 18,
   "events": [
@@ -13,19 +13,6 @@
       "country": "",
       "cc": "",
       "format": "hybrid",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "Hack the Arts",
-      "url": "https://www.hackthearts.net",
-      "start": "2026-07-01",
-      "end": "2026-08-01",
-      "city": "",
-      "region": "",
-      "country": "Worldwide",
-      "cc": "",
-      "format": "online",
       "source": "Hack Club",
       "hs": true
     },
@@ -93,6 +80,19 @@
       "format": "online",
       "source": "MLH",
       "hs": false
+    },
+    {
+      "name": "Horizons Polaris",
+      "url": "https://horizons.hackclub.com/",
+      "start": "2026-08-07",
+      "end": "2026-08-09",
+      "city": "Toronto",
+      "region": "Ontario",
+      "country": "Canada",
+      "cc": "CA",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
     },
     {
       "name": "Bay-Valley Hacks",
