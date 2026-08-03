@@ -1,7 +1,7 @@
 {
-  "updated": "2026-08-01T08:04:40.053Z",
+  "updated": "2026-08-03T09:22:57.837Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 18,
+  "count": 16,
   "events": [
     {
       "name": "Brilliant Move",
@@ -13,32 +13,6 @@
       "country": "",
       "cc": "",
       "format": "hybrid",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "Horizons Arcana",
-      "url": "https://arcana.hackclub.com/",
-      "start": "2026-07-31",
-      "end": "2026-08-02",
-      "city": "Singapore",
-      "region": "Singapore",
-      "country": "Singapore",
-      "cc": "SG",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "MarinHacks",
-      "url": "https://marinhacks.com/",
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "city": "Kentfield",
-      "region": "California",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
       "source": "Hack Club",
       "hs": true
     },
