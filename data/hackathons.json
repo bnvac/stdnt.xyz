@@ -1,21 +1,8 @@
 {
-  "updated": "2026-08-03T09:22:57.837Z",
+  "updated": "2026-08-04T08:22:22.407Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 16,
+  "count": 15,
   "events": [
-    {
-      "name": "Brilliant Move",
-      "url": "https://www.thebrilliantmove.com/",
-      "start": "2026-06-29",
-      "end": "2026-08-03",
-      "city": "",
-      "region": "",
-      "country": "",
-      "cc": "",
-      "format": "hybrid",
-      "source": "Hack Club",
-      "hs": true
-    },
     {
       "name": "Reverie Hacks",
       "url": "https://reveriehacks.org/",
