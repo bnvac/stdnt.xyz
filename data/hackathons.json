@@ -1,7 +1,7 @@
 {
-  "updated": "2026-08-04T08:22:22.407Z",
+  "updated": "2026-08-07T07:00:37.601Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 15,
+  "count": 14,
   "events": [
     {
       "name": "Reverie Hacks",
@@ -13,19 +13,6 @@
       "country": "Worldwide",
       "cc": "",
       "format": "online",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "Paradox",
-      "url": "https://paradox.hackclub.com",
-      "start": "2026-08-03",
-      "end": "2026-08-06",
-      "city": "London",
-      "region": "England",
-      "country": "United Kingdom",
-      "cc": "GB",
-      "format": "in-person",
       "source": "Hack Club",
       "hs": true
     },
