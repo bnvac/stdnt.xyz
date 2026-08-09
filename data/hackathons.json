@@ -1,7 +1,7 @@
 {
-  "updated": "2026-08-07T07:00:37.601Z",
+  "updated": "2026-08-09T06:38:49.488Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 14,
+  "count": 13,
   "events": [
     {
       "name": "Reverie Hacks",
@@ -38,19 +38,6 @@
       "region": "Ontario",
       "country": "Canada",
       "cc": "CA",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "Bay-Valley Hacks",
-      "url": "https://bayvalleyhacks.com/",
-      "start": "2026-08-08",
-      "end": "2026-08-08",
-      "city": "Dublin",
-      "region": "California",
-      "country": "United States",
-      "cc": "US",
       "format": "in-person",
       "source": "Hack Club",
       "hs": true
