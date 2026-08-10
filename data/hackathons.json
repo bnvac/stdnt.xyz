@@ -1,7 +1,7 @@
 {
-  "updated": "2026-08-09T06:38:49.488Z",
+  "updated": "2026-08-10T07:11:28.789Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 13,
+  "count": 11,
   "events": [
     {
       "name": "Reverie Hacks",
@@ -28,32 +28,6 @@
       "format": "online",
       "source": "MLH",
       "hs": false
-    },
-    {
-      "name": "Horizons Polaris",
-      "url": "https://horizons.hackclub.com/",
-      "start": "2026-08-07",
-      "end": "2026-08-09",
-      "city": "Toronto",
-      "region": "Ontario",
-      "country": "Canada",
-      "cc": "CA",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "FireHacks",
-      "url": "https://firehacks.codestarters.org/",
-      "start": "2026-08-09",
-      "end": "2026-08-09",
-      "city": "Mountain View",
-      "region": "California",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
     },
     {
       "name": "Horizons Equinox",
