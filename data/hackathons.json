@@ -1,7 +1,7 @@
 {
-  "updated": "2026-08-10T07:11:28.789Z",
+  "updated": "2026-08-12T07:08:56.598Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 11,
+  "count": 12,
   "events": [
     {
       "name": "Reverie Hacks",
@@ -77,6 +77,19 @@
       "region": "Virginia",
       "country": "United States",
       "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Hackside Down",
+      "url": "https://hacksidedown.xyz",
+      "start": "2026-08-22",
+      "end": "2026-08-23",
+      "city": "Faridabad",
+      "region": "Haryana",
+      "country": "India",
+      "cc": "IN",
       "format": "in-person",
       "source": "Hack Club",
       "hs": true
