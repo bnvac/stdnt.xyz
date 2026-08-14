@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-13T07:13:07.778Z",
+  "updated": "2026-08-14T07:10:07.578Z",
   "source": "hackathons.hackclub.com API + curated MLH",
   "count": 12,
   "events": [
@@ -15,19 +15,6 @@
       "format": "online",
       "source": "Hack Club",
       "hs": true
-    },
-    {
-      "name": "Global Hack Week: Agents",
-      "url": "https://ghw.mlh.io/",
-      "start": "2026-08-07",
-      "end": "2026-08-13",
-      "city": "",
-      "region": "",
-      "country": "Worldwide",
-      "cc": "",
-      "format": "online",
-      "source": "MLH",
-      "hs": false
     },
     {
       "name": "Horizons Equinox",
@@ -90,6 +77,19 @@
       "region": "Haryana",
       "country": "India",
       "cc": "IN",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "RePlay Alexandria: Shipaton Edition",
+      "url": "https://alexandria.party/",
+      "start": "2026-09-05",
+      "end": "2026-09-05",
+      "city": "Alexandria",
+      "region": "Alexandria",
+      "country": "Egypt",
+      "cc": "EG",
       "format": "in-person",
       "source": "Hack Club",
       "hs": true
