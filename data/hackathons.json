@@ -1,7 +1,7 @@
 {
-  "updated": "2026-08-14T07:10:07.578Z",
+  "updated": "2026-08-16T06:23:33.684Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 12,
+  "count": 11,
   "events": [
     {
       "name": "Reverie Hacks",
@@ -25,19 +25,6 @@
       "region": "Cairo",
       "country": "Egypt",
       "cc": "EG",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "Code Arizona",
-      "url": "https://codearizona.codehatch.org/",
-      "start": "2026-08-15",
-      "end": "2026-08-15",
-      "city": "Scottsdale",
-      "region": "Arizona",
-      "country": "United States",
-      "cc": "US",
       "format": "in-person",
       "source": "Hack Club",
       "hs": true
