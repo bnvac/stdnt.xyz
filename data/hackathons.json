@@ -1,34 +1,8 @@
 {
-  "updated": "2026-08-16T06:23:33.684Z",
+  "updated": "2026-08-17T06:34:33.951Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 11,
+  "count": 9,
   "events": [
-    {
-      "name": "Reverie Hacks",
-      "url": "https://reveriehacks.org/",
-      "start": "2026-08-02",
-      "end": "2026-08-17",
-      "city": "",
-      "region": "",
-      "country": "Worldwide",
-      "cc": "",
-      "format": "online",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "Horizons Equinox",
-      "url": "https://equinox.hackclub.com/",
-      "start": "2026-08-14",
-      "end": "2026-08-16",
-      "city": "Qesm El Nozha",
-      "region": "Cairo",
-      "country": "Egypt",
-      "cc": "EG",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
     {
       "name": "Pixel Forge AI Hackathon",
       "url": "https://pixelforgehackathons.info/",
