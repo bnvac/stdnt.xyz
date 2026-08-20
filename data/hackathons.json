@@ -1,7 +1,7 @@
 {
-  "updated": "2026-08-17T06:34:33.951Z",
+  "updated": "2026-08-20T06:28:19.146Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 9,
+  "count": 10,
   "events": [
     {
       "name": "Pixel Forge AI Hackathon",
@@ -67,6 +67,19 @@
       "format": "online",
       "source": "MLH",
       "hs": false
+    },
+    {
+      "name": "Hack the Track",
+      "url": "https://www.hackthetrack.org/",
+      "start": "2026-09-11",
+      "end": "2026-09-12",
+      "city": "Prospect",
+      "region": "Kentucky",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
     },
     {
       "name": "Animal Hack",
