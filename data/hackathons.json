@@ -1,34 +1,8 @@
 {
-  "updated": "2026-08-20T06:28:19.146Z",
+  "updated": "2026-08-23T06:24:12.713Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 10,
+  "count": 8,
   "events": [
-    {
-      "name": "Pixel Forge AI Hackathon",
-      "url": "https://pixelforgehackathons.info/",
-      "start": "2026-08-15",
-      "end": "2026-08-22",
-      "city": "",
-      "region": "",
-      "country": "Worldwide",
-      "cc": "",
-      "format": "online",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "8-Bit Jam",
-      "url": "https://8bitjam.win",
-      "start": "2026-08-22",
-      "end": "2026-08-22",
-      "city": "Great Falls",
-      "region": "Virginia",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
     {
       "name": "Hackside Down",
       "url": "https://hacksidedown.xyz",
