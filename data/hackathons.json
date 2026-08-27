@@ -1,7 +1,7 @@
 {
-  "updated": "2026-08-23T06:24:12.713Z",
+  "updated": "2026-08-27T17:07:05.548Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 8,
+  "count": 13,
   "events": [
     {
       "name": "Hackside Down",
@@ -69,6 +69,19 @@
       "hs": true
     },
     {
+      "name": "MoonStone",
+      "url": "https://www.moonstone.org.cn",
+      "start": "2026-09-25",
+      "end": "2026-09-27",
+      "city": "Shanghai",
+      "region": "Shanghai",
+      "country": "China",
+      "cc": "CN",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
       "name": "Dublin hacx",
       "url": "https://www.dublinhacx.com/",
       "start": "2026-10-03",
@@ -95,10 +108,62 @@
       "hs": true
     },
     {
+      "name": "hackPHS",
+      "url": "https://hackphs.tech",
+      "start": "2026-10-10",
+      "end": "2026-10-11",
+      "city": "Princeton",
+      "region": "New Jersey",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
       "name": "Hyphen-Hacks",
       "url": "https://www.hyphen-hacks.com/",
       "start": "2026-10-10",
       "end": "2026-10-10",
+      "city": "San Francisco",
+      "region": "California",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "804 Hacks",
+      "url": "https://www.804hacks.org/",
+      "start": "2026-10-24",
+      "end": "2026-10-24",
+      "city": "Richmond",
+      "region": "Virginia",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Sierra Hacks",
+      "url": "https://www.sierrahacks.tech/",
+      "start": "2026-10-24",
+      "end": "2026-10-24",
+      "city": "Manteca",
+      "region": "California",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Snowglobe",
+      "url": "https://snowglobe.hackclub.com/",
+      "start": "2026-11-20",
+      "end": "2026-11-22",
       "city": "San Francisco",
       "region": "California",
       "country": "United States",
