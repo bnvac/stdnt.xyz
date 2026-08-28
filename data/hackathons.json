@@ -1,7 +1,7 @@
 {
-  "updated": "2026-08-27T17:07:05.548Z",
+  "updated": "2026-08-28T17:54:22.621Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 13,
+  "count": 14,
   "events": [
     {
       "name": "Hackside Down",
@@ -155,6 +155,19 @@
       "region": "California",
       "country": "United States",
       "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Haven",
+      "url": "https://haven.hackclub.com",
+      "start": "2026-11-14",
+      "end": "2026-11-15",
+      "city": "Charters Towers",
+      "region": "Queensland",
+      "country": "Australia",
+      "cc": "AU",
       "format": "in-person",
       "source": "Hack Club",
       "hs": true
