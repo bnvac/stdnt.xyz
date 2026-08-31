@@ -1,21 +1,8 @@
 {
-  "updated": "2026-08-28T17:54:22.621Z",
+  "updated": "2026-08-31T12:11:25.337Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 14,
+  "count": 13,
   "events": [
-    {
-      "name": "Hackside Down",
-      "url": "https://hacksidedown.xyz",
-      "start": "2026-08-29",
-      "end": "2026-08-30",
-      "city": "Faridabad",
-      "region": "Haryana",
-      "country": "India",
-      "cc": "IN",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
     {
       "name": "RePlay Alexandria: Shipaton Edition",
       "url": "https://alexandria.party/",
