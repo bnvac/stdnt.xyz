@@ -1,8 +1,21 @@
 {
-  "updated": "2026-08-31T12:11:25.337Z",
+  "updated": "2026-09-03T10:24:34.750Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 13,
+  "count": 14,
   "events": [
+    {
+      "name": "Capitol",
+      "url": "https://capitol.hackclub.com/",
+      "start": "2026-09-01",
+      "end": "2026-10-09",
+      "city": "Washington",
+      "region": "District of Columbia",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
     {
       "name": "RePlay Alexandria: Shipaton Edition",
       "url": "https://alexandria.party/",
