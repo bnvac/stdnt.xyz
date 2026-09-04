@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-03T10:24:34.750Z",
+  "updated": "2026-09-04T10:11:05.364Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 14,
+  "count": 15,
   "events": [
     {
       "name": "Capitol",
@@ -156,6 +156,19 @@
       "country": "United States",
       "cc": "US",
       "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Build for Earth",
+      "url": "https://earth.firstcommit.xyz",
+      "start": "2026-11-08",
+      "end": "2027-01-16",
+      "city": "",
+      "region": "",
+      "country": "Worldwide",
+      "cc": "",
+      "format": "online",
       "source": "Hack Club",
       "hs": true
     },
