@@ -20,6 +20,7 @@
   var ROADMAPS = window.ROADMAPS || [];
   var COLLEGES = window.COLLEGES || [];
   var COLLEGE_META = window.COLLEGE_META || {};
+  var FINAID = window.FINAID || [];
   var COLLEGE_CHECKLIST = window.COLLEGE_CHECKLIST || [];
   var FULL = window.SCH_FULL || 1000000;
   // set to your Buttondown/Mailchimp embed-subscribe URL to enable email signup
@@ -173,7 +174,7 @@
     sch: { group: "all", sort: "amount", eligible: false, minAmt: 0, noEssay: false },
     prog: { grade: "all", free: false, sort: "rank", eligible: false, subject: "all", remote: false },
     deadlines: { kind: "all", window: "all", view: "list", savedOnly: false, calYM: null, selKey: null },
-    col: { q: "", live: null, liveMsg: "" },
+    col: { q: "", live: null, liveMsg: "", view: "cards" },
     roadmap: null
   };
 
@@ -1536,6 +1537,8 @@
       if (m.early) { var ie = dlInfo(m.early); if (ie.date) out.push({ kind: "college", name: c.name, url: url, logo: c.url ? faviconURL(domainOf(c.url)) : null, deadline: m.early, info: ie, meta: m.plan === "Rolling" ? "Priority" : m.plan }); }
       if (m.rd) { var ir = dlInfo(m.rd); if (ir.date) out.push({ kind: "college", name: c.name, url: url, logo: c.url ? faviconURL(domainOf(c.url)) : null, deadline: m.rd, info: ir, meta: "Regular decision" }); }
     });
+    // universal financial-aid dates (FAFSA, CSS Profile, state priority)
+    FINAID.forEach(function (a) { var info = dlInfo(a.deadline); if (info.date) out.push({ kind: "aid", name: a.name, url: a.url, logo: null, deadline: a.deadline, info: info, meta: a.tag || "Financial aid" }); });
     out.sort(function (a, b) { return a.info.days - b.info.days || a.name.localeCompare(b.name); });
     return out;
   }
@@ -1553,7 +1556,7 @@
   function deadlineRow(it, i) {
     var info = it.info;
     var dleft = info.days <= 0 ? "today" : info.days + "d left";
-    var label = { sch: "Scholarship", prog: "Program", comp: "Competition", college: "College" }[it.kind] || "";
+    var label = { sch: "Scholarship", prog: "Program", comp: "Competition", college: "College", aid: "Financial aid" }[it.kind] || "";
     return '<div class="row" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' +
       '<div class="dl-date' + (info.soon ? " soon" : "") + '"><b>' + DL_MON[info.date.getMonth()] + " " + info.date.getDate() + "</b><span>" + dleft + "</span></div>" +
       logoTile(it.name, it.url, it.logo) +
@@ -1905,12 +1908,38 @@
           '<span class="col-chip col-chip-safety"><b>' + byTier.Safety + "</b> safety</span>"
         : '<span class="col-chip col-chip-hint">add your SAT/ACT above to auto-rate reach / match / safety</span>');
   }
+  function renderCompare(list) {
+    var rows = [
+      ["Fit", function (c) { var t = rateFit(c); return t ? '<span class="col-fit col-tier-' + t.toLowerCase() + '">' + t + "</span>" : "-"; }],
+      ["Admit rate", function (c) { return colPct(c.admit); }],
+      ["Avg net price", function (c) { return colMoney(c.net); }],
+      ["Sticker cost/yr", function (c) { return colMoney(c.cost); }],
+      ["Median score", function (c) { return esc(colScore(c)); }],
+      ["Undergrads", function (c) { return c.size ? c.size.toLocaleString("en-US") : "n/a"; }],
+      ["Grad rate", function (c) { return colPct(c.grad); }],
+      ["Type", function (c) { return COL_OWN[c.own] || "n/a"; }],
+      ["Deadline", function (c) { var m = metaFor(c); return m ? esc(colDeadlineStr(m) || "-") : '<span class="cmp-dim">not listed</span>'; }],
+      ["Supp essays", function (c) { var m = metaFor(c); if (!m) return '<span class="cmp-dim">-</span>'; var ef = effortOf(m); return (m.essays === 0 ? "None" : m.essays) + ' <span class="cmp-eff col-effort-' + ef.cls + '">' + ef.label + "</span>"; }],
+      ["CSS Profile", function (c) { var m = metaFor(c); return m ? (m.css ? "Required" : "No") : '<span class="cmp-dim">-</span>'; }]
+    ];
+    var cols = list.slice(0, 8);
+    var h = '<div class="cmp-wrap"><table class="cmp"><thead><tr><th class="cmp-rowhead"></th>' +
+      cols.map(function (c) {
+        return '<th>' + logoTile(c.name, c.url) + '<a href="' + esc(c.url || searchLink(c.name)) + '" target="_blank" rel="noopener">' + esc(c.name.replace(/-Main Campus| in the City of New York|The /g, "")) + "</a></th>";
+      }).join("") + "</tr></thead><tbody>" +
+      rows.map(function (r) {
+        return "<tr><th>" + r[0] + "</th>" + cols.map(function (c) { return "<td>" + r[1](c) + "</td>"; }).join("") + "</tr>";
+      }).join("") + "</tbody></table></div>" +
+      (list.length > 8 ? '<p class="muted cmp-note">Showing the first 8 - remove some to compare others.</p>' : "");
+    return h;
+  }
   function renderColList() {
     var box = $("#col-list"), empty = $("#col-empty"), sum = $("#col-summary");
     if (!box) return;
     if (!myColleges.length) { box.innerHTML = ""; if (empty) empty.hidden = false; if (sum) sum.hidden = true; return; }
     if (empty) empty.hidden = true; if (sum) sum.hidden = false;
-    box.innerHTML = myColleges.slice().sort(colSort).map(colCard).join("");
+    var list = myColleges.slice().sort(colSort);
+    box.innerHTML = state.col.view === "compare" ? renderCompare(list) : list.map(colCard).join("");
     renderColSummary();
   }
   function renderColleges() { renderColResults(); renderColList(); }
@@ -1952,6 +1981,13 @@
     if (list) list.addEventListener("click", function (e) { var rm = e.target.closest("[data-col-rm]"); if (rm) { removeCollege(rm.dataset.colRm); renderColList(); renderColResults(); } });
     var csv = $("#col-export-csv");
     if (csv) csv.addEventListener("click", function () { if (myColleges.length) download("my-college-tracker.csv", "﻿" + collegesCSV(), "text/csv;charset=utf-8"); });
+    var vseg = $("#col-view");
+    if (vseg) vseg.addEventListener("click", function (e) {
+      var b = e.target.closest(".seg"); if (!b) return;
+      state.col.view = b.dataset.cview;
+      vseg.querySelectorAll(".seg").forEach(function (s) { s.classList.toggle("is-active", s === b); });
+      renderColList();
+    });
     var clr = $("#col-clear");
     if (clr) clr.addEventListener("click", function () {
       if (myColleges.length && window.confirm("Remove all " + myColleges.length + " colleges from your list? This can't be undone.")) {

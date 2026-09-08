@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
   <meta name="theme-color" content="#0c0d10" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
-  <link rel="stylesheet" href="css/styles.css?v=34" />
+  <link rel="stylesheet" href="css/styles.css?v=35" />
 </head>
 <body>
   <!-- ============================================================ HEADER -->
@@ -202,6 +202,7 @@
           <button class="seg" data-kind="prog" type="button">Programs</button>
           <button class="seg" data-kind="comp" type="button">Competitions</button>
           <button class="seg" data-kind="college" type="button">Colleges</button>
+          <button class="seg" data-kind="aid" type="button">Aid</button>
         </div>
         <label class="sortsel">Within
           <select id="dl-window">
@@ -253,6 +254,10 @@
         </div>
         <div class="col-summary-foot">
           <div class="col-summary-stats" id="col-summary-stats"></div>
+          <div class="segmented col-viewseg" id="col-view" role="group" aria-label="View">
+            <button class="seg is-active" data-cview="cards" type="button">Cards</button>
+            <button class="seg" data-cview="compare" type="button">Compare</button>
+          </div>
           <button class="btn btn-ghost col-clear-btn" id="col-clear" type="button">Clear list</button>
         </div>
       </div>
@@ -496,18 +501,19 @@
     </article>
   </div>
 
-  <script src="js/data.js?v=34"></script>
-  <script src="js/scholarships.js?v=34"></script>
-  <script src="js/programs.js?v=34"></script>
-  <script src="js/programs-extra.js?v=34"></script>
-  <script src="js/guides.js?v=34"></script>
-  <script src="js/templates.js?v=34"></script>
-  <script src="js/discounts.js?v=34"></script>
-  <script src="js/competitions.js?v=34"></script>
-  <script src="js/hackathons.js?v=34"></script>
-  <script src="js/roadmaps.js?v=34"></script>
-  <script src="js/colleges.js?v=34"></script>
-  <script src="js/college-meta.js?v=34"></script>
-  <script src="js/app.js?v=34"></script>
+  <script src="js/data.js?v=35"></script>
+  <script src="js/scholarships.js?v=35"></script>
+  <script src="js/programs.js?v=35"></script>
+  <script src="js/programs-extra.js?v=35"></script>
+  <script src="js/guides.js?v=35"></script>
+  <script src="js/templates.js?v=35"></script>
+  <script src="js/discounts.js?v=35"></script>
+  <script src="js/competitions.js?v=35"></script>
+  <script src="js/hackathons.js?v=35"></script>
+  <script src="js/roadmaps.js?v=35"></script>
+  <script src="js/colleges.js?v=35"></script>
+  <script src="js/college-meta.js?v=35"></script>
+  <script src="js/finaid.js?v=35"></script>
+  <script src="js/app.js?v=35"></script>
 </body>
 </html>
