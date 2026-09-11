@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-06T09:55:24.157Z",
+  "updated": "2026-09-11T10:15:10.825Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 14,
+  "count": 16,
   "events": [
     {
       "name": "Capitol",
@@ -147,6 +147,19 @@
       "hs": true
     },
     {
+      "name": "SteelByte'26",
+      "url": "https://steelbyte-26.vercel.app/",
+      "start": "2026-11-01",
+      "end": "2026-11-01",
+      "city": "Hill View Colony",
+      "region": "Jharkhand",
+      "country": "India",
+      "cc": "IN",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
       "name": "Build for Earth",
       "url": "https://earth.firstcommit.xyz",
       "start": "2026-11-08",
@@ -168,6 +181,19 @@
       "region": "Queensland",
       "country": "Australia",
       "cc": "AU",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "ONHacks",
+      "url": "https://onhacks.ca",
+      "start": "2026-11-15",
+      "end": "2026-11-15",
+      "city": "Toronto",
+      "region": "Ontario",
+      "country": "Canada",
+      "cc": "CA",
       "format": "in-person",
       "source": "Hack Club",
       "hs": true
