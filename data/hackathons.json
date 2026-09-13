@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-11T10:15:10.825Z",
+  "updated": "2026-09-13T10:49:07.393Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 16,
+  "count": 15,
   "events": [
     {
       "name": "Capitol",
@@ -28,19 +28,6 @@
       "format": "online",
       "source": "MLH",
       "hs": false
-    },
-    {
-      "name": "Hack the Track",
-      "url": "https://www.hackthetrack.org/",
-      "start": "2026-09-11",
-      "end": "2026-09-12",
-      "city": "Prospect",
-      "region": "Kentucky",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
     },
     {
       "name": "Animal Hack",
