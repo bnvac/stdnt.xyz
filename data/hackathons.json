@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-13T10:49:07.393Z",
+  "updated": "2026-09-14T11:16:21.578Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 15,
+  "count": 14,
   "events": [
     {
       "name": "Capitol",
@@ -28,19 +28,6 @@
       "format": "online",
       "source": "MLH",
       "hs": false
-    },
-    {
-      "name": "Animal Hack",
-      "url": "https://animalhack.org",
-      "start": "2026-09-13",
-      "end": "2026-09-13",
-      "city": "",
-      "region": "",
-      "country": "Worldwide",
-      "cc": "",
-      "format": "online",
-      "source": "Hack Club",
-      "hs": true
     },
     {
       "name": "MoonStone",
