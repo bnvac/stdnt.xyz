@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-14T11:16:21.578Z",
+  "updated": "2026-09-16T10:30:32.027Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 14,
+  "count": 17,
   "events": [
     {
       "name": "Capitol",
@@ -56,6 +56,19 @@
       "hs": true
     },
     {
+      "name": "VNU '26 - Connect The Dots",
+      "url": "https://vnuhack.com/",
+      "start": "2026-10-04",
+      "end": "2026-10-05",
+      "city": "București",
+      "region": "București",
+      "country": "Romania",
+      "cc": "RO",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
       "name": "Banana Hacks",
       "url": "https://www.bananahacks.tech",
       "start": "2026-10-09",
@@ -95,6 +108,19 @@
       "hs": true
     },
     {
+      "name": "Blank Page",
+      "url": "https://blankpagehacks.com",
+      "start": "2026-10-17",
+      "end": "2026-10-17",
+      "city": "Cambridge",
+      "region": "Massachusetts",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
       "name": "804 Hacks",
       "url": "https://www.804hacks.org/",
       "start": "2026-10-24",
@@ -116,19 +142,6 @@
       "region": "California",
       "country": "United States",
       "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "SteelByte'26",
-      "url": "https://steelbyte-26.vercel.app/",
-      "start": "2026-11-01",
-      "end": "2026-11-01",
-      "city": "Hill View Colony",
-      "region": "Jharkhand",
-      "country": "India",
-      "cc": "IN",
       "format": "in-person",
       "source": "Hack Club",
       "hs": true
@@ -179,6 +192,32 @@
       "end": "2026-11-22",
       "city": "San Francisco",
       "region": "California",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Cosmo Hacks",
+      "url": "https://www.cosmohacks.com/",
+      "start": "2026-12-18",
+      "end": "2026-12-21",
+      "city": "",
+      "region": "",
+      "country": "Worldwide",
+      "cc": "",
+      "format": "online",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "PHANTOM",
+      "url": "https://phantom.hackclub.com",
+      "start": "2027-02-12",
+      "end": "2027-02-14",
+      "city": "Philadelphia",
+      "region": "Pennsylvania",
       "country": "United States",
       "cc": "US",
       "format": "in-person",
