@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-16T10:30:32.027Z",
+  "updated": "2026-09-18T10:15:59.727Z",
   "source": "hackathons.hackclub.com API + curated MLH",
   "count": 17,
   "events": [
@@ -15,19 +15,6 @@
       "format": "in-person",
       "source": "Hack Club",
       "hs": true
-    },
-    {
-      "name": "Global Hack Week: Data",
-      "url": "https://ghw.mlh.io/",
-      "start": "2026-09-11",
-      "end": "2026-09-17",
-      "city": "",
-      "region": "",
-      "country": "Worldwide",
-      "cc": "",
-      "format": "online",
-      "source": "MLH",
-      "hs": false
     },
     {
       "name": "MoonStone",
@@ -116,6 +103,19 @@
       "region": "Massachusetts",
       "country": "United States",
       "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "MathHacks 2.0",
+      "url": "https://mathhacks.ca/",
+      "start": "2026-10-17",
+      "end": "2026-10-18",
+      "city": "Toronto",
+      "region": "Ontario",
+      "country": "Canada",
+      "cc": "CA",
       "format": "in-person",
       "source": "Hack Club",
       "hs": true
