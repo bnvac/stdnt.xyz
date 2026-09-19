@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-18T10:15:59.727Z",
+  "updated": "2026-09-19T09:58:37.215Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 17,
+  "count": 18,
   "events": [
     {
       "name": "Capitol",
@@ -25,6 +25,19 @@
       "region": "Shanghai",
       "country": "China",
       "cc": "CN",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Bay-Valley Hacks",
+      "url": "https://bayvalleyhacks.com/",
+      "start": "2026-09-26",
+      "end": "2026-09-26",
+      "city": "Mountain House",
+      "region": "California",
+      "country": "United States",
+      "cc": "US",
       "format": "in-person",
       "source": "Hack Club",
       "hs": true
