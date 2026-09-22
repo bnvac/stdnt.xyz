@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-19T09:58:37.215Z",
+  "updated": "2026-09-22T10:36:24.123Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 18,
+  "count": 19,
   "events": [
     {
       "name": "Capitol",
@@ -136,9 +136,9 @@
     {
       "name": "804 Hacks",
       "url": "https://www.804hacks.org/",
-      "start": "2026-10-24",
-      "end": "2026-10-24",
-      "city": "Richmond",
+      "start": "2026-10-18",
+      "end": "2026-10-18",
+      "city": "Ashland",
       "region": "Virginia",
       "country": "United States",
       "cc": "US",
@@ -208,6 +208,19 @@
       "country": "United States",
       "cc": "US",
       "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Pixel Forge Mega Jam",
+      "url": "https://pixelforgejam.org/",
+      "start": "2026-11-28",
+      "end": "2026-12-08",
+      "city": "",
+      "region": "",
+      "country": "Worldwide",
+      "cc": "",
+      "format": "online",
       "source": "Hack Club",
       "hs": true
     },
