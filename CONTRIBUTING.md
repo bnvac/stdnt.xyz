@@ -36,7 +36,7 @@ Every listing is **one plain object** in a JS file. No build step, no framework.
 | `js/programs.js`, `js/programs-extra.js` | STEM programs |
 | `js/competitions.js` | competitions |
 | `js/discounts.js` | student discounts |
-| `js/roadmaps.js` | goal roadmaps & the college checklist |
+| `js/finaid.js` | FAFSA / CSS Profile / state financial-aid dates |
 
 Example - add a tool in `js/data.js`:
 

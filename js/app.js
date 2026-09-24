@@ -17,18 +17,12 @@
   var COMPS = window.COMPETITIONS || [];
   var COMP_CATS = window.COMPETITION_CATS || [];
   var HACKATHONS = window.HACKATHONS || [];
-  var ROADMAPS = window.ROADMAPS || [];
-  var COLLEGES = window.COLLEGES || [];
-  var COLLEGE_META = window.COLLEGE_META || {};
   var FINAID = window.FINAID || [];
-  var COLLEGE_CHECKLIST = window.COLLEGE_CHECKLIST || [];
   var FULL = window.SCH_FULL || 1000000;
   // set to your Buttondown/Mailchimp embed-subscribe URL to enable email signup
   var NEWSLETTER_ENDPOINT = "";
   // set to your Apps Script / Worker URL to enable deadline email reminders (see docs/EMAIL_REMINDERS.md)
   var REMINDER_ENDPOINT = "";
-  // optional free api.data.gov key for the College tracker's live search (defaults to DEMO_KEY, ~30 lookups/hr per visitor)
-  var SCORECARD_API_KEY = "";
   var GH_REPO = "https://github.com/2008wbbv/edu.edu";
   // contribute categories -> their GitHub issue-form templates (tracked + credited)
   var CONTRIB = [
@@ -167,15 +161,12 @@
   var empty = $("#empty");
 
   var saved = loadSaved();
-  var checklist = loadChecklist();
   var state = {
     tab: "tools", q: "",
     tools: { access: "all", cat: "all" },
     sch: { group: "all", sort: "amount", eligible: false, minAmt: 0, noEssay: false },
     prog: { grade: "all", free: false, sort: "rank", eligible: false, subject: "all", remote: false },
-    deadlines: { kind: "all", window: "all", view: "list", savedOnly: false, calYM: null, selKey: null },
-    col: { q: "", live: null, liveMsg: "", view: "cards" },
-    roadmap: null
+    deadlines: { kind: "all", window: "all", view: "list", savedOnly: false, calYM: null, selKey: null }
   };
 
   // ---- helpers -------------------------------------------------------
@@ -292,13 +283,6 @@
   }
   function persistSaved() {
     try { localStorage.setItem("edu-saved", JSON.stringify(Array.from(saved))); } catch (e) {}
-  }
-  function loadChecklist() {
-    try { return new Set(JSON.parse(localStorage.getItem("edu-checklist") || "[]")); }
-    catch (e) { return new Set(); }
-  }
-  function saveChecklist() {
-    try { localStorage.setItem("edu-checklist", JSON.stringify(Array.from(checklist))); } catch (e) {}
   }
   function sid(type, name) { return type + "::" + name; }
   function starBtn(type, name) {
@@ -807,12 +791,6 @@
       meta.textContent = state.q ? ("Showing " + hk + " of " + HACKATHONS.length + " hackathons") : (HACKATHONS.length + " upcoming hackathons");
       empty.hidden = true; return;
     }
-    if (state.tab === "colleges") {
-      renderColleges();
-      meta.textContent = myColleges.length ? (myColleges.length + " college" + (myColleges.length === 1 ? "" : "s") + " on your list") : "Search real U.S. colleges and build your application list";
-      empty.hidden = true; return;
-    }
-    if (state.tab === "roadmaps") { renderRoadmaps(); meta.textContent = ROADMAPS.length + " step-by-step roadmaps"; empty.hidden = true; return; }
     if (state.tab === "contribute") { renderContribute(); meta.textContent = ""; empty.hidden = true; return; }
     var n, total, label;
     if (state.tab === "tools") { n = renderTools(); total = RES.length; label = "tools"; }
@@ -825,7 +803,7 @@
     state.tab = tab;
     document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === tab); });
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
-    ["tools", "discounts", "sch", "prog", "competitions", "deadlines", "colleges", "roadmaps", "foryou", "saved", "guides", "templates", "hackathons", "contribute", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
+    ["tools", "discounts", "sch", "prog", "competitions", "deadlines", "foryou", "saved", "guides", "templates", "hackathons", "contribute", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
     document.title = (TAB_TITLES[tab] ? TAB_TITLES[tab] + " · " : "") + "stdnt.xyz - free stuff for students";
     var moreBtn = $("#more-btn"); if (moreBtn) moreBtn.classList.toggle("is-active", !!OVERFLOW[tab]);
     closeMore();
@@ -950,28 +928,6 @@
       });
       $("#n-saved").textContent = saved.size;
       if (state.tab === "saved") renderSaved();
-    });
-    // roadmaps: pick a goal, or follow a step that deep-links into another tab
-    document.addEventListener("click", function (e) {
-      var pick = e.target.closest("[data-rm-pick]");
-      if (pick) { state.roadmap = pick.getAttribute("data-rm-pick"); renderRoadmaps(); return; }
-      var go = e.target.closest("[data-rm-goto]"); if (!go) return;
-      e.preventDefault();
-      var tab = go.getAttribute("data-rm-goto"), q = go.getAttribute("data-rm-q") || "";
-      search.value = q; state.q = q.trim();
-      switchTab(tab);
-      var nav = document.querySelector(".tabs"); if (nav) nav.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-    // checklist: tick items off (persisted on this device)
-    document.addEventListener("click", function (e) {
-      var c = e.target.closest(".ck-check"); if (!c) return;
-      var id = c.getAttribute("data-ck");
-      if (checklist.has(id)) checklist.delete(id); else checklist.add(id);
-      saveChecklist();
-      var on = checklist.has(id), li = c.closest(".ck-item");
-      if (li) li.classList.toggle("is-done", on);
-      c.setAttribute("aria-checked", on);
-      updateChecklistProgress();
     });
   }
 
@@ -1155,9 +1111,9 @@
     }
     return false;
   }
-  var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, deadlines: 1, roadmaps: 1, foryou: 1, saved: 1, guides: 1, templates: 1, hackathons: 1, contribute: 1, about: 1 };
+  var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, deadlines: 1, foryou: 1, saved: 1, guides: 1, templates: 1, hackathons: 1, contribute: 1, about: 1 };
   var OVERFLOW = { guides: 1, templates: 1, hackathons: 1, contribute: 1, about: 1 };   // tabs tucked into the "More" menu
-  var TAB_TITLES = { tools: "Free tools & perks", discounts: "Student discounts", sch: "Scholarships", prog: "STEM programs", competitions: "Competitions", deadlines: "Deadlines", colleges: "College tracker", roadmaps: "Roadmaps", foryou: "Find your matches", saved: "Saved", guides: "Guides", templates: "Templates", hackathons: "Hackathons", contribute: "Contribute", about: "About" };
+  var TAB_TITLES = { tools: "Free tools & perks", discounts: "Student discounts", sch: "Scholarships", prog: "STEM programs", competitions: "Competitions", deadlines: "Deadlines", foryou: "Find your matches", saved: "Saved", guides: "Guides", templates: "Templates", hackathons: "Hackathons", contribute: "Contribute", about: "About" };
   function closeMore() { var m = $("#tab-menu"), b = $("#more-btn"); if (m && !m.hidden) { m.hidden = true; if (b) b.setAttribute("aria-expanded", "false"); } }
   function wireMore() {
     var btn = $("#more-btn"), menu = $("#tab-menu"); if (!btn || !menu) return;
@@ -1359,128 +1315,6 @@
       .catch(function () {});
   }
 
-  // ---- ROADMAPS (goal -> sequenced steps; the opportunity graph) ------
-  function roadmapById(id) { for (var i = 0; i < ROADMAPS.length; i++) if (ROADMAPS[i].id === id) return ROADMAPS[i]; return null; }
-  function defaultRoadmap() {
-    var map = { cs: "cs", eng: "stem", med: "premed", math: "stem", business: "business", arts: "arts" };
-    if (quiz.field && map[quiz.field]) return map[quiz.field];
-    if (quiz.firstgen === "yes" || quiz.income === "low") return "firstgen";
-    return ROADMAPS.length ? ROADMAPS[0].id : null;
-  }
-  // rough countdown: the September after the user finishes 12th grade
-  function collegeCountdown() {
-    var yrs = { Freshman: 3, Sophomore: 2, Junior: 1, Senior: 0 }[quiz.grade];
-    if (yrs == null) return null;                 // "College" or unanswered
-    var now = new Date();
-    var endYear = now.getMonth() >= 6 ? now.getFullYear() + 1 : now.getFullYear(); // academic year end
-    var start = new Date(endYear + yrs, 8, 1);     // ~Sep 1 of the start year
-    var days = Math.ceil((start - now) / 86400000);
-    if (days < 0) return null;
-    return { days: days, date: start };
-  }
-  function rmDoItem(d) {
-    var inner = '<span class="rm-do-tick" aria-hidden="true">' + icon("check") + "</span>";
-    if (d.url) {
-      return '<a class="rm-do" href="' + esc(d.url) + '" target="_blank" rel="noopener">' + inner +
-        '<span class="rm-do-t">' + esc(d.t) + ' <span class="ext">&#8599;</span></span></a>';
-    }
-    return '<button class="rm-do" type="button" data-rm-goto="' + esc(d.goto || "tools") + '" data-rm-q="' + esc(d.q || "") + '">' +
-      inner + '<span class="rm-do-t">' + esc(d.t) + "</span>" +
-      '<span class="rm-do-go" aria-hidden="true">&rarr;</span></button>';
-  }
-  // ---- countdown-to-college checklist (persisted, deep-linked) -------
-  function checklistStats() {
-    var total = 0, done = 0;
-    COLLEGE_CHECKLIST.forEach(function (ph) { ph.items.forEach(function (it) { total++; if (checklist.has(it.id)) done++; }); });
-    return { total: total, done: done, pct: total ? Math.round(done / total * 100) : 0 };
-  }
-  function nowPhase() { return { Freshman: 0, Sophomore: 0, Junior: 1, Senior: 3 }[quiz.grade]; }
-  function ckRing(pct) {
-    var C = 2 * Math.PI * 20;
-    return '<span class="ck-ring-wrap"><svg class="ck-ring" viewBox="0 0 48 48" width="46" height="46" aria-hidden="true">' +
-      '<circle class="ck-ring-bg" cx="24" cy="24" r="20"/>' +
-      '<circle class="ck-ring-fg" cx="24" cy="24" r="20" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + (C * (1 - pct / 100)).toFixed(1) + '"/>' +
-      '</svg><span class="ck-ring-num">' + pct + '%</span></span>';
-  }
-  function renderChecklist() {
-    if (!COLLEGE_CHECKLIST.length) return "";
-    var st = checklistStats(), now = nowPhase();
-    var phases = COLLEGE_CHECKLIST.map(function (ph, pi) {
-      var items = ph.items.map(function (it) {
-        var on = checklist.has(it.id);
-        var go = it.goto ? '<button class="ck-go" type="button" data-rm-goto="' + esc(it.goto) + '" data-rm-q="' + esc(it.q || "") + '" aria-label="Open in site">&rarr;</button>' : "";
-        return '<li class="ck-item' + (on ? " is-done" : "") + '">' +
-          '<button class="ck-check" type="button" role="checkbox" aria-checked="' + on + '" data-ck="' + esc(it.id) + '">' +
-            '<span class="ck-box" aria-hidden="true">' + icon("check") + "</span>" +
-            '<span class="ck-t">' + esc(it.t) + "</span></button>" + go + "</li>";
-      }).join("");
-      var isNow = pi === now;
-      return '<div class="ck-phase' + (isNow ? " is-now" : "") + '">' +
-        '<div class="ck-phase-h">' + esc(ph.phase) + (isNow ? ' <span class="ck-now">You are here</span>' : "") + "</div>" +
-        '<ul class="ck-list">' + items + "</ul></div>";
-    }).join("");
-    return '<div class="ck">' +
-      '<div class="ck-head">' + ckRing(st.pct) +
-        '<div class="ck-head-txt"><h3 class="ck-h">Countdown checklist</h3>' +
-        '<p class="ck-sub">The things that actually get you in - tick them off as you go. Saved on this device.</p>' +
-        '<div class="ck-progtxt"><b>' + st.done + "</b> of " + st.total + " done</div></div></div>" +
-      '<div class="ck-bar"><span style="width:' + st.pct + '%"></span></div>' +
-      '<div class="ck-phases">' + phases + "</div></div>";
-  }
-  function updateChecklistProgress() {
-    var st = checklistStats(), C = 2 * Math.PI * 20;
-    var bar = document.querySelector(".ck-bar span"); if (bar) bar.style.width = st.pct + "%";
-    var txt = document.querySelector(".ck-progtxt"); if (txt) txt.innerHTML = "<b>" + st.done + "</b> of " + st.total + " done";
-    var fg = document.querySelector(".ck-ring-fg"); if (fg) fg.setAttribute("stroke-dashoffset", (C * (1 - st.pct / 100)).toFixed(1));
-    var num = document.querySelector(".ck-ring-num"); if (num) num.textContent = st.pct + "%";
-  }
-
-  function renderRoadmaps() {
-    var box = $("#roadmaps-body"); if (!box) return;
-    if (!ROADMAPS.length) { box.innerHTML = '<p class="muted">Roadmaps are loading…</p>'; return; }
-    if (!state.roadmap || !roadmapById(state.roadmap)) state.roadmap = defaultRoadmap();
-    var rm = roadmapById(state.roadmap) || ROADMAPS[0];
-
-    var chips = ROADMAPS.map(function (r) {
-      return '<button class="rm-goal' + (r.id === rm.id ? " is-active" : "") + '" type="button" data-rm-pick="' + esc(r.id) +
-        '" style="--rm-hue:' + r.hue + '"><span class="rm-goal-ico" aria-hidden="true">' + icon(r.icon) + "</span>" + esc(r.goal) + "</button>";
-    }).join("");
-
-    var cd = collegeCountdown(), cdHTML;
-    if (cd) {
-      cdHTML = '<div class="rm-countdown"><span class="rm-cd-ico" aria-hidden="true">' + icon("calendar") + "</span>" +
-        '<span class="rm-cd-txt"><b>&asymp; ' + commas(cd.days) + "</b> days until you start college " +
-        '<span class="rm-cd-sub">(' + DL_MON[cd.date.getMonth()] + " " + cd.date.getFullYear() + ", rough estimate)</span></span></div>";
-    } else {
-      cdHTML = '<div class="rm-countdown rm-cd-quiz"><span class="rm-cd-ico" aria-hidden="true">' + icon("calendar") + "</span>" +
-        '<span class="rm-cd-txt">Tell us your grade in <button class="linkbtn" type="button" data-rm-goto="foryou" data-rm-q="">For You</button> to see your countdown to college.</span></div>';
-    }
-
-    var stages = rm.stages.map(function (s, i) {
-      var dos = (s.do || []).map(rmDoItem).join("");
-      var unlocks = (s.unlocks || []).map(function (u) { return '<span class="rm-unlock">' + icon("check") + esc(u) + "</span>"; }).join("");
-      return '<div class="rm-stage" style="animation-delay:' + Math.min(i * 70, 350) + 'ms">' +
-        '<div class="rm-stage-rail" aria-hidden="true"><span class="rm-node">' + (i + 1) + "</span></div>" +
-        '<div class="rm-stage-body">' +
-          '<div class="rm-when">' + esc(s.when) + "</div>" +
-          '<h3 class="rm-stage-title">' + esc(s.title) + "</h3>" +
-          '<div class="rm-dos">' + dos + "</div>" +
-          (unlocks ? '<div class="rm-unlocks"><span class="rm-unlocks-l">Unlocks</span>' + unlocks + "</div>" : "") +
-        "</div></div>";
-    }).join("");
-
-    box.innerHTML =
-      '<p class="rm-intro">Pick a goal and follow the path. Each step links straight to the scholarships, programs and competitions you need - and shows what it <b>unlocks</b> next.</p>' +
-      '<div class="rm-goals">' + chips + "</div>" +
-      cdHTML +
-      renderChecklist() +
-      '<div class="rm-current" style="--rm-hue:' + rm.hue + '">' +
-        '<div class="rm-current-head"><span class="rm-current-ico" aria-hidden="true">' + icon(rm.icon) + "</span>" +
-          '<div><h2 class="rm-current-goal">' + esc(rm.goal) + "</h2><p class=\"rm-current-blurb\">" + esc(rm.blurb) + "</p></div></div>" +
-        '<div class="rm-flow">' + stages + "</div>" +
-      "</div>";
-  }
-
   // ---- CONTRIBUTE (GitHub issue forms, per category, all tracked) ----
   function renderContribute() {
     var box = $("#contribute-body"); if (!box) return;
@@ -1530,13 +1364,6 @@
     SCH.forEach(function (s) { if (gone(s)) return; var info = dlInfo(s.deadline); if (info.date) out.push({ kind: "sch", name: s.name, url: s.url, logo: s.logo, deadline: s.deadline, info: info, meta: s.amountText || "" }); });
     PROG.forEach(function (p) { if (gone(p)) return; var info = dlInfo(p.deadline); if (info.date) out.push({ kind: "prog", name: p.name, url: p.url || searchLink(p.name + " program"), logo: p.logo, deadline: p.deadline, info: info, meta: p.ranking || "" }); });
     COMPS.forEach(function (c) { if (gone(c)) return; var info = dlInfo(c.deadline); if (info.date) out.push({ kind: "comp", name: c.name, url: c.url, logo: c.logo, deadline: c.deadline, info: info, meta: c.format || "" }); });
-    // the student's own college list: their picks + typical application deadlines
-    myColleges.forEach(function (c) {
-      var m = metaFor(c); if (!m) return;
-      var url = c.url || searchLink(c.name);
-      if (m.early) { var ie = dlInfo(m.early); if (ie.date) out.push({ kind: "college", name: c.name, url: url, logo: c.url ? faviconURL(domainOf(c.url)) : null, deadline: m.early, info: ie, meta: m.plan === "Rolling" ? "Priority" : m.plan }); }
-      if (m.rd) { var ir = dlInfo(m.rd); if (ir.date) out.push({ kind: "college", name: c.name, url: url, logo: c.url ? faviconURL(domainOf(c.url)) : null, deadline: m.rd, info: ir, meta: "Regular decision" }); }
-    });
     // universal financial-aid dates (FAFSA, CSS Profile, state priority)
     FINAID.forEach(function (a) { var info = dlInfo(a.deadline); if (info.date) out.push({ kind: "aid", name: a.name, url: a.url, logo: null, deadline: a.deadline, info: info, meta: a.tag || "Financial aid" }); });
     out.sort(function (a, b) { return a.info.days - b.info.days || a.name.localeCompare(b.name); });
@@ -1556,7 +1383,7 @@
   function deadlineRow(it, i) {
     var info = it.info;
     var dleft = info.days <= 0 ? "today" : info.days + "d left";
-    var label = { sch: "Scholarship", prog: "Program", comp: "Competition", college: "College", aid: "Financial aid" }[it.kind] || "";
+    var label = { sch: "Scholarship", prog: "Program", comp: "Competition", aid: "Financial aid" }[it.kind] || "";
     return '<div class="row" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' +
       '<div class="dl-date' + (info.soon ? " soon" : "") + '"><b>' + DL_MON[info.date.getMonth()] + " " + info.date.getDate() + "</b><span>" + dleft + "</span></div>" +
       logoTile(it.name, it.url, it.logo) +
@@ -1609,6 +1436,8 @@
         ' <span class="dl-cal-count">' + monthItems.length + " deadline" + (monthItems.length === 1 ? "" : "s") + "</span></div>" +
       '<button class="dl-cal-nav" data-cal-nav="next" type="button" aria-label="Next month">&#8250;</button>' +
       '<button class="dl-cal-today btn btn-ghost" data-cal-nav="today" type="button">Today</button></div>';
+    h += '<div class="dl-cal-legend"><span class="k-sch">Scholarship</span><span class="k-prog">Program</span>' +
+      '<span class="k-comp">Competition</span><span class="k-aid">Financial aid</span></div>';
     h += '<div class="dl-cal-grid dl-cal-wd">' + WEEKDAYS.map(function (w) { return "<div>" + w + "</div>"; }).join("") + "</div>";
     h += '<div class="dl-cal-grid">';
     for (var i = 0; i < lead; i++) h += '<div class="dl-cal-cell empty"></div>';
@@ -1619,14 +1448,20 @@
       if (key === state.deadlines.selKey) cls += " sel";
       if (items.length) cls += " has";
       if (key < todayKey) cls += " past";
-      var dots = "";
+      // up to 3 distinct logos per day (the count badge shows the total)
+      var logos = "";
       if (items.length) {
-        var kinds = {}; items.forEach(function (it) { kinds[it.kind] = 1; });
-        dots = '<span class="dl-cal-dots">' + Object.keys(kinds).map(function (k) { return '<span class="dl-cal-dot dot-' + k + '"></span>'; }).join("") + "</span>";
+        var seen = {}, tiles = [];
+        items.forEach(function (it) {
+          var k = domainOf(it.url) || it.name;
+          if (seen[k] || tiles.length >= 3) return; seen[k] = 1;
+          tiles.push('<span class="dl-cal-lg k-' + it.kind + '" title="' + esc(it.name) + '">' + logoTile(it.name, it.url, it.logo) + "</span>");
+        });
+        logos = '<span class="dl-cal-logos">' + tiles.join("") + "</span>";
       }
       var badge = items.length > 1 ? '<span class="dl-cal-n">' + items.length + "</span>" : "";
       h += '<button class="' + cls + '"' + (items.length ? ' data-cal-day="' + key + '"' : " disabled") +
-        ' type="button"><span class="dl-cal-d">' + d + "</span>" + dots + badge + "</button>";
+        ' type="button"><span class="dl-cal-d">' + d + "</span>" + logos + badge + "</button>";
     }
     h += "</div>";
     var sel = state.deadlines.selKey && byDay[state.deadlines.selKey];
@@ -1705,295 +1540,6 @@
     fetch(REMINDER_ENDPOINT, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ email: email, items: items }) })
       .then(function () { note.textContent = "Done. You'll get an email before each deadline."; note.className = "rem-note ok"; })
       ["catch"](function () { note.textContent = "Couldn't reach the reminder service, check the endpoint setup."; note.className = "rem-note err"; });
-  }
-
-  // ---- COLLEGES (explore + export a spreadsheet tracker) ------------
-  // The site is an info browser: search colleges, see their stats and an
-  // auto reach/match/safety rating. The actual tracking (deadlines, essays,
-  // decisions) lives in the spreadsheet you export - not on the page.
-  var COL_STEPS = ["App", "Essays", "Recs", "Transcript", "Scores", "Aid"];
-  var COL_OWN = { 1: "Public", 2: "Private", 3: "Private (for-profit)" };
-  var COL_ALIAS = {
-    mit: "massachusetts institute of technology", gt: "georgia institute of technology", "georgia tech": "georgia institute",
-    cmu: "carnegie mellon", usc: "university of southern california", ucla: "california-los angeles",
-    ucb: "california-berkeley", cal: "california-berkeley", berkeley: "california-berkeley", upenn: "university of pennsylvania",
-    penn: "university of pennsylvania", nyu: "new york university", bu: "boston university", bc: "boston college",
-    uf: "university of florida", "nc state": "north carolina state", ncsu: "north carolina state",
-    wpi: "worcester polytechnic", vt: "virginia polytechnic", "virginia tech": "virginia polytechnic",
-    uga: "university of georgia", "ut austin": "texas at austin", "penn state": "pennsylvania state",
-    bama: "the university of alabama", umass: "massachusetts-amherst", "uiuc": "illinois at urbana", jhu: "johns hopkins"
-  };
-  var myColleges = loadColleges();
-  var myStats = loadMyStats();
-  var colResultsById = {};
-  function loadColleges() { try { return JSON.parse(localStorage.getItem("edu-colleges") || "[]") || []; } catch (e) { return []; } }
-  function saveColleges() { try { localStorage.setItem("edu-colleges", JSON.stringify(myColleges)); } catch (e) {} }
-  function loadMyStats() { try { return JSON.parse(localStorage.getItem("edu-mystats") || "{}") || {}; } catch (e) { return {}; } }
-  function saveMyStats() { try { localStorage.setItem("edu-mystats", JSON.stringify(myStats)); } catch (e) {} }
-  // rough ACT -> SAT concordance so a school and a student can be compared on one scale
-  var ACT_SAT = { 36: 1590, 35: 1540, 34: 1500, 33: 1460, 32: 1420, 31: 1400, 30: 1370, 29: 1340, 28: 1310, 27: 1280, 26: 1240, 25: 1210, 24: 1180, 23: 1140, 22: 1110, 21: 1070, 20: 1030, 19: 1000, 18: 960, 17: 920, 16: 880 };
-  function actToSat(act) { return ACT_SAT[Math.round(act)] || null; }
-  function myEffSat() { return myStats.sat ? +myStats.sat : (myStats.act ? actToSat(+myStats.act) : null); }
-  function schoolEffSat(c) { return c.sat ? c.sat : (c.act ? actToSat(c.act) : null); }
-  // rate a college reach/match/safety from the student's score vs the school's
-  // median and its admission rate; returns null until the student adds a score.
-  function rateFit(c) {
-    var ms = myEffSat(); if (!ms) return null;
-    var a = c.admit, ss = schoolEffSat(c), mod = 0;
-    if (ss) { var d = ms - ss; mod = d >= 60 ? 1 : (d <= -60 ? -1 : 0); }
-    var base = a == null ? 1 : (a < 0.20 ? 0 : (a < 0.50 ? 1 : 2));
-    var t = base + mod;
-    if (a != null && a < 0.10) t = Math.min(t, 0);       // sub-10% admit is a reach for everyone
-    if (a != null && a >= 0.85) t = Math.max(t, 2);      // near-open admission is a safety
-    return ["Reach", "Match", "Safety"][Math.max(0, Math.min(2, t))];
-  }
-  function fillMyStats() {
-    var m = { sat: "#my-sat", act: "#my-act", gpa: "#my-gpa" };
-    Object.keys(m).forEach(function (k) { var el = $(m[k]); if (el && myStats[k] != null) el.value = myStats[k]; });
-  }
-  function updateCollegeCount() { var n = $("#n-colleges"); if (n) n.textContent = myColleges.length; }
-  function hasCollege(id) { return myColleges.some(function (c) { return String(c.id) === String(id); }); }
-  function colToEntry(c) {
-    return { id: c.id, name: c.name, city: c.city, state: c.state, url: c.url, own: c.own,
-      admit: c.admit, net: c.net, cost: c.cost, sat: c.sat, act: c.act, size: c.size, grad: c.grad };
-  }
-  function refreshDeadlineCount() { var nd = $("#n-deadlines"); if (nd) nd.textContent = deadlineItems().length; }
-  function addCollege(c) { if (c && !hasCollege(c.id)) { myColleges.push(colToEntry(c)); saveColleges(); updateCollegeCount(); refreshDeadlineCount(); } }
-  function removeCollege(id) { myColleges = myColleges.filter(function (c) { return String(c.id) !== String(id); }); saveColleges(); updateCollegeCount(); refreshDeadlineCount(); }
-  function colPct(x) { return x == null ? "n/a" : Math.round(x * 100) + "%"; }
-  function colMoney(x) { return x == null ? "n/a" : "$" + Math.round(x).toLocaleString("en-US"); }
-  function colScore(c) { return c.sat ? "SAT " + c.sat : (c.act ? "ACT " + c.act : "SAT n/a"); }
-  function metaFor(c) { return COLLEGE_META[(c.name || "").toLowerCase()] || null; }
-  // "how annoying to apply" from the number of supplemental essays (+ CSS Profile)
-  function effortOf(m) {
-    var n = m.essays || 0;
-    var lvl = n === 0 ? { l: "Light apply", c: "safety" } : n <= 2 ? { l: "Moderate", c: "match" }
-      : n <= 4 ? { l: "Essay-heavy", c: "amber" } : { l: "Very heavy", c: "reach" };
-    var txt = n === 0 ? "No supp essays" : n + " supp essay" + (n === 1 ? "" : "s");
-    if (m.css) txt += " + CSS";
-    return { label: lvl.l, cls: lvl.c, text: txt };
-  }
-  // compact deadline string for a college, e.g. "EA Nov 1 - RD Jan 4"
-  function colDeadlineStr(m) {
-    if (!m) return "";
-    var parts = [];
-    if (m.early) parts.push((m.plan === "Rolling" ? "Priority" : m.plan) + " " + m.early);
-    if (m.rd) parts.push((m.early ? "RD " : "") + m.rd);
-    if (!parts.length && m.plan === "Rolling") return "Rolling admission";
-    return parts.join(" - ");
-  }
-  // the date the tracker/calendar should use (earliest concrete deadline)
-  function colPrimaryDeadline(m) { return m ? (m.early || m.rd || "") : ""; }
-  function tierRank(c) { var t = rateFit(c); return t === "Reach" ? 0 : t === "Match" ? 1 : t === "Safety" ? 2 : 3; }
-  function colSort(a, b) { return tierRank(a) - tierRank(b) || a.name.localeCompare(b.name); }
-  function searchBundle(q) {
-    q = q.toLowerCase().trim(); if (!q) return [];
-    var qs = [q];
-    Object.keys(COL_ALIAS).forEach(function (k) { if (q === k || (k.length >= 3 && q.indexOf(k) === 0)) qs.push(COL_ALIAS[k]); });
-    return COLLEGES.filter(function (c) {
-      var s = (c.name + " " + (c.city || "") + " " + (c.state || "")).toLowerCase();
-      return qs.some(function (n) { return s.indexOf(n) >= 0; });
-    }).sort(function (a, b) {
-      var sa = a.name.toLowerCase().indexOf(q) === 0 ? 0 : 1, sb = b.name.toLowerCase().indexOf(q) === 0 ? 0 : 1;
-      return sa - sb || (a.admit == null ? 1 : a.admit) - (b.admit == null ? 1 : b.admit);
-    }).slice(0, 14);
-  }
-  function normLive(r) {
-    var sat = r["latest.admissions.sat_scores.midpoint.overall"] ||
-      ((r["latest.admissions.sat_scores.midpoint.critical_reading"] && r["latest.admissions.sat_scores.midpoint.math"]) ?
-        r["latest.admissions.sat_scores.midpoint.critical_reading"] + r["latest.admissions.sat_scores.midpoint.math"] : null);
-    var u = (r["school.school_url"] || "").replace(/\/+$/, "");
-    return {
-      id: r.id, name: r["school.name"], city: r["school.city"], state: r["school.state"],
-      url: u ? (/^https?:/.test(u) ? u : "https://" + u) : "", own: r["school.ownership"] || null,
-      admit: r["latest.admissions.admission_rate.overall"], net: r["latest.cost.avg_net_price.overall"],
-      cost: r["latest.cost.attendance.academic_year"], sat: sat,
-      act: r["latest.admissions.act_scores.midpoint.cumulative"], size: r["latest.student.size"],
-      grad: r["latest.completion.completion_rate_4yr_150nt"]
-    };
-  }
-  function liveSearch(q, cb) {
-    var key = SCORECARD_API_KEY || "DEMO_KEY";
-    var fields = ["id", "school.name", "school.city", "school.state", "school.school_url", "school.ownership",
-      "latest.admissions.admission_rate.overall", "latest.cost.avg_net_price.overall", "latest.cost.attendance.academic_year",
-      "latest.admissions.sat_scores.midpoint.overall", "latest.admissions.sat_scores.midpoint.critical_reading",
-      "latest.admissions.sat_scores.midpoint.math", "latest.admissions.act_scores.midpoint.cumulative",
-      "latest.student.size", "latest.completion.completion_rate_4yr_150nt"].join(",");
-    var url = "https://api.data.gov/ed/collegescorecard/v1/schools?api_key=" + encodeURIComponent(key) +
-      "&school.operating=1&school.name=" + encodeURIComponent(q) + "&fields=" + fields + "&per_page=15&sort=latest.student.size:desc";
-    fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function (d) { cb(null, (d.results || []).filter(function (r) { return r["school.name"]; }).map(normLive)); })
-      ["catch"](function (e) { cb(e); });
-  }
-  function doLiveSearch() {
-    state.col.liveMsg = "Searching all U.S. colleges..."; state.col.live = null; renderColResults();
-    liveSearch(state.col.q, function (err, res) {
-      if (err) { state.col.live = null; state.col.liveMsg = /429/.test(String(err && err.message || err)) ? "Live search is busy (rate limit) - try again in a minute, or add a free api.data.gov key." : "Live search failed - check your connection and try again."; }
-      else { state.col.live = res; state.col.liveMsg = res.length ? "" : "No colleges found for that name."; }
-      renderColResults();
-    });
-  }
-  function colResultRow(c) {
-    colResultsById[String(c.id)] = c;
-    var added = hasCollege(c.id);
-    return '<div class="col-result">' + logoTile(c.name, c.url) +
-      '<div class="col-result-main"><div class="col-result-name">' + esc(c.name) + "</div>" +
-      '<div class="col-result-sub">' + esc([c.city, c.state].filter(Boolean).join(", ")) +
-      " &middot; " + colPct(c.admit) + " admit &middot; " + colMoney(c.net) + " net &middot; " + esc(colScore(c)) + "</div></div>" +
-      '<button class="btn ' + (added ? "btn-ghost is-added" : "btn-primary") + '" data-col-add="' + esc(String(c.id)) + '"' +
-      (added ? " disabled" : "") + ' type="button">' + (added ? "Added ✓" : "+ Add") + "</button></div>";
-  }
-  function renderColResults() {
-    var box = $("#col-results"); if (!box) return;
-    var q = (state.col.q || "").trim();
-    if (!q) { box.hidden = true; box.innerHTML = ""; return; }
-    box.hidden = false;
-    colResultsById = {};
-    var matches = searchBundle(q);
-    var liveIds = {}; matches.forEach(function (c) { liveIds[String(c.id)] = 1; });
-    var html = matches.map(colResultRow).join("");
-    if (state.col.live && state.col.live.length) {
-      var extra = state.col.live.filter(function (c) { return !liveIds[String(c.id)]; });
-      if (extra.length) html += '<div class="col-live-head">More from College Scorecard</div>' + extra.map(colResultRow).join("");
-    }
-    if (!matches.length && !(state.col.live && state.col.live.length)) html += '<p class="col-nomatch muted">No local match for &ldquo;' + esc(q) + "&rdquo;.</p>";
-    var msg = state.col.liveMsg
-      ? '<span class="col-live-msg">' + esc(state.col.liveMsg) + "</span>"
-      : '<button class="col-live-btn" data-col-live type="button">Search all 6,000+ U.S. colleges &#8599;</button>';
-    html += '<div class="col-live-bar">' + (matches.length ? "Not the one? " : "") + msg + "</div>";
-    box.innerHTML = html;
-  }
-  function fitTag(c) {
-    var t = rateFit(c); if (!t) return "";
-    return '<span class="col-fit col-tier-' + t.toLowerCase() + '" title="Estimated from your stats vs this school - a starting signal, not a guarantee">' + t + ' <i>fit</i></span>';
-  }
-  var CAL_SVG = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>';
-  var PEN_SVG = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>';
-  function colCard(c) {
-    var loc = [c.city, c.state].filter(Boolean).join(", ");
-    var meta = [loc, COL_OWN[c.own], c.size ? c.size.toLocaleString("en-US") + " students" : ""].filter(Boolean).join(" &middot; ");
-    var link = c.url || searchLink(c.name);
-    var m = metaFor(c), mrow = "";
-    if (m) {
-      var ef = effortOf(m), dl = colDeadlineStr(m);
-      mrow = '<div class="col-meta">' +
-        (dl ? '<span class="col-mchip">' + CAL_SVG + " " + esc(dl) + "</span>" : "") +
-        '<span class="col-mchip col-effort-' + ef.cls + '">' + PEN_SVG + " " + esc(ef.text) + ' &middot; <b>' + esc(ef.label) + "</b></span>" +
-        (m.app ? '<span class="col-mchip col-mchip-plain">' + esc(m.app) + "</span>" : "") +
-        "</div>";
-    }
-    return '<div class="col-card" data-id="' + esc(String(c.id)) + '">' +
-      '<div class="col-card-top">' + logoTile(c.name, c.url) +
-        '<div class="col-card-id"><a class="col-card-name" href="' + esc(link) + '" target="_blank" rel="noopener">' + esc(c.name) + ' <span class="ext">&#8599;</span></a>' +
-          '<div class="col-card-loc">' + meta + "</div></div>" +
-        fitTag(c) +
-        '<button class="col-rm" data-col-rm="' + esc(String(c.id)) + '" type="button" aria-label="Remove ' + esc(c.name) + '">&times;</button>' +
-      "</div>" +
-      '<div class="col-stats">' +
-        '<span class="col-stat"><b>' + colPct(c.admit) + "</b><span>admit rate</span></span>" +
-        '<span class="col-stat"><b>' + colMoney(c.net) + "</b><span>avg net price</span></span>" +
-        '<span class="col-stat"><b>' + esc(colScore(c)) + "</b><span>median score</span></span>" +
-        '<span class="col-stat"><b>' + colPct(c.grad) + "</b><span>grad rate</span></span>" +
-      "</div>" + mrow + "</div>";
-  }
-  function renderColSummary() {
-    var el = $("#col-summary-stats"); if (!el) return;
-    var n = myColleges.length, byTier = { Reach: 0, Match: 0, Safety: 0 }, rated = false;
-    myColleges.forEach(function (c) { var t = rateFit(c); if (byTier[t] != null) { byTier[t]++; rated = true; } });
-    el.innerHTML =
-      '<span class="col-chip"><b>' + n + "</b> college" + (n === 1 ? "" : "s") + "</span>" +
-      (rated
-        ? '<span class="col-chip col-chip-reach"><b>' + byTier.Reach + "</b> reach</span>" +
-          '<span class="col-chip col-chip-match"><b>' + byTier.Match + "</b> match</span>" +
-          '<span class="col-chip col-chip-safety"><b>' + byTier.Safety + "</b> safety</span>"
-        : '<span class="col-chip col-chip-hint">add your SAT/ACT above to auto-rate reach / match / safety</span>');
-  }
-  function renderCompare(list) {
-    var rows = [
-      ["Fit", function (c) { var t = rateFit(c); return t ? '<span class="col-fit col-tier-' + t.toLowerCase() + '">' + t + "</span>" : "-"; }],
-      ["Admit rate", function (c) { return colPct(c.admit); }],
-      ["Avg net price", function (c) { return colMoney(c.net); }],
-      ["Sticker cost/yr", function (c) { return colMoney(c.cost); }],
-      ["Median score", function (c) { return esc(colScore(c)); }],
-      ["Undergrads", function (c) { return c.size ? c.size.toLocaleString("en-US") : "n/a"; }],
-      ["Grad rate", function (c) { return colPct(c.grad); }],
-      ["Type", function (c) { return COL_OWN[c.own] || "n/a"; }],
-      ["Deadline", function (c) { var m = metaFor(c); return m ? esc(colDeadlineStr(m) || "-") : '<span class="cmp-dim">not listed</span>'; }],
-      ["Supp essays", function (c) { var m = metaFor(c); if (!m) return '<span class="cmp-dim">-</span>'; var ef = effortOf(m); return (m.essays === 0 ? "None" : m.essays) + ' <span class="cmp-eff col-effort-' + ef.cls + '">' + ef.label + "</span>"; }],
-      ["CSS Profile", function (c) { var m = metaFor(c); return m ? (m.css ? "Required" : "No") : '<span class="cmp-dim">-</span>'; }]
-    ];
-    var cols = list.slice(0, 8);
-    var h = '<div class="cmp-wrap"><table class="cmp"><thead><tr><th class="cmp-rowhead"></th>' +
-      cols.map(function (c) {
-        return '<th>' + logoTile(c.name, c.url) + '<a href="' + esc(c.url || searchLink(c.name)) + '" target="_blank" rel="noopener">' + esc(c.name.replace(/-Main Campus| in the City of New York|The /g, "")) + "</a></th>";
-      }).join("") + "</tr></thead><tbody>" +
-      rows.map(function (r) {
-        return "<tr><th>" + r[0] + "</th>" + cols.map(function (c) { return "<td>" + r[1](c) + "</td>"; }).join("") + "</tr>";
-      }).join("") + "</tbody></table></div>" +
-      (list.length > 8 ? '<p class="muted cmp-note">Showing the first 8 - remove some to compare others.</p>' : "");
-    return h;
-  }
-  function renderColList() {
-    var box = $("#col-list"), empty = $("#col-empty"), sum = $("#col-summary");
-    if (!box) return;
-    if (!myColleges.length) { box.innerHTML = ""; if (empty) empty.hidden = false; if (sum) sum.hidden = true; return; }
-    if (empty) empty.hidden = true; if (sum) sum.hidden = false;
-    var list = myColleges.slice().sort(colSort);
-    box.innerHTML = state.col.view === "compare" ? renderCompare(list) : list.map(colCard).join("");
-    renderColSummary();
-  }
-  function renderColleges() { renderColResults(); renderColList(); }
-  // build a ready-to-fill spreadsheet: college + stats + estimated tier are
-  // pre-filled; the planning columns are left blank for the student to track.
-  function collegesCSV() {
-    var info = ["College", "City", "State", "Est. tier", "Website", "Admit %", "Avg net price", "Cost/yr",
-      "Median SAT", "Median ACT", "Size", "Grad %", "Plan", "Early deadline", "Regular deadline", "Supp essays", "CSS Profile", "Platform"];
-    var head = info.concat(COL_STEPS).concat(["Decision", "Notes"]);
-    var blanks = new Array(COL_STEPS.length + 2).fill(""); // to-dos + Decision + Notes, for you to fill
-    var rows = myColleges.slice().sort(colSort).map(function (c) {
-      var m = metaFor(c) || {};
-      return [c.name, c.city, c.state, rateFit(c) || "", c.url || "",
-        c.admit == null ? "" : Math.round(c.admit * 100) + "%", c.net == null ? "" : c.net, c.cost == null ? "" : c.cost,
-        c.sat || "", c.act || "", c.size || "", c.grad == null ? "" : Math.round(c.grad * 100) + "%",
-        m.plan || "", m.early || "", m.rd || "", m.essays == null ? "" : m.essays, m.css ? "Required" : "", m.app || ""].concat(blanks);
-    });
-    return [head].concat(rows).map(function (r) { return r.map(csvCell).join(","); }).join("\r\n");
-  }
-  function wireColleges() {
-    fillMyStats();
-    [["#my-sat", "sat"], ["#my-act", "act"], ["#my-gpa", "gpa"]].forEach(function (pair) {
-      var el = $(pair[0]); if (!el) return;
-      el.addEventListener("input", function (e) {
-        var v = e.target.value.trim();
-        if (v === "") delete myStats[pair[1]]; else myStats[pair[1]] = +v;
-        saveMyStats(); renderColList();
-      });
-    });
-    var q = $("#col-q");
-    if (q) { var deb; q.addEventListener("input", function (e) { var v = e.target.value; clearTimeout(deb); deb = setTimeout(function () { state.col.q = v; state.col.live = null; state.col.liveMsg = ""; renderColResults(); }, 160); }); }
-    var results = $("#col-results");
-    if (results) results.addEventListener("click", function (e) {
-      var add = e.target.closest("[data-col-add]");
-      if (add) { addCollege(colResultsById[add.dataset.colAdd]); renderColResults(); renderColList(); return; }
-      if (e.target.closest("[data-col-live]")) doLiveSearch();
-    });
-    var list = $("#col-list");
-    if (list) list.addEventListener("click", function (e) { var rm = e.target.closest("[data-col-rm]"); if (rm) { removeCollege(rm.dataset.colRm); renderColList(); renderColResults(); } });
-    var csv = $("#col-export-csv");
-    if (csv) csv.addEventListener("click", function () { if (myColleges.length) download("my-college-tracker.csv", "﻿" + collegesCSV(), "text/csv;charset=utf-8"); });
-    var vseg = $("#col-view");
-    if (vseg) vseg.addEventListener("click", function (e) {
-      var b = e.target.closest(".seg"); if (!b) return;
-      state.col.view = b.dataset.cview;
-      vseg.querySelectorAll(".seg").forEach(function (s) { s.classList.toggle("is-active", s === b); });
-      renderColList();
-    });
-    var clr = $("#col-clear");
-    if (clr) clr.addEventListener("click", function () {
-      if (myColleges.length && window.confirm("Remove all " + myColleges.length + " colleges from your list? This can't be undone.")) {
-        myColleges = []; saveColleges(); updateCollegeCount(); renderColList(); renderColResults();
-      }
-    });
   }
 
   // ---- HERO (closing-soon strip + scholarship $ stat) ----------------
@@ -2135,8 +1681,6 @@
   $("#n-discounts").textContent = DISCOUNTS.length;
   $("#n-competitions").textContent = COMPS.length;
   $("#n-hackathons").textContent = HACKATHONS.length;
-  var nrm = $("#n-roadmaps"); if (nrm) nrm.textContent = ROADMAPS.length;
-  updateCollegeCount();
   fillStats();
   var deepLink = applyHash();
   var subBtn = $("#submit-resource");
@@ -2163,7 +1707,6 @@
   wireGuideOverlay();
   wireTemplates();
   wireDeadlines();
-  wireColleges();
   wireNewsletter();
   wireMediaKit();
   wireMore();
