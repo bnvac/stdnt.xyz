@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-22T10:36:24.123Z",
+  "updated": "2026-09-24T10:45:52.012Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 19,
+  "count": 20,
   "events": [
     {
       "name": "Capitol",
@@ -244,6 +244,19 @@
       "end": "2027-02-14",
       "city": "Philadelphia",
       "region": "Pennsylvania",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Telos Hacks",
+      "url": "https://hack.telost.org",
+      "start": "2027-04-17",
+      "end": "2027-04-18",
+      "city": "San Francisco",
+      "region": "California",
       "country": "United States",
       "cc": "US",
       "format": "in-person",
