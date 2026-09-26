@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-24T10:45:52.012Z",
+  "updated": "2026-09-26T10:31:31.688Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 20,
+  "count": 21,
   "events": [
     {
       "name": "Capitol",
@@ -234,6 +234,19 @@
       "country": "Worldwide",
       "cc": "",
       "format": "online",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Sentinel Hacks",
+      "url": "https://www.sentinelhacks.tech/",
+      "start": "2027-01-09",
+      "end": "2027-01-09",
+      "city": "Sunnyvale",
+      "region": "California",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
       "source": "Hack Club",
       "hs": true
     },
