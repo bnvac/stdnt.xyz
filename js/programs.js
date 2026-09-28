@@ -1,7 +1,7 @@
 /*
  * programs.js - STEM summer programs, research & internships.
  * Auto-generated from community spreadsheets (THE_LIST + STEM Programs/Internships
- * by grade). 187 programs. Deadlines are approximate; verify on each site.
+ * by grade). 183 programs. Deadlines are approximate; verify on each site.
  */
 window.PROGRAMS = [
  {
@@ -517,27 +517,6 @@ window.PROGRAMS = [
   "ranking": "A",
   "accRate": "2 per state",
   "details": "Fully funded STEAM camp in West Virginia's Monongahela National Forest, blending lectures with outdoor adventure. Typically two delegates per state.",
-  "flagship": true
- },
- {
-  "name": "Stanford Molecular Imaging",
-  "url": "",
-  "deadline": "",
-  "when": "June 17 - August 2",
-  "cost": "Free",
-  "free": true,
-  "subjects": [
-   "Medical Imaging",
-   "Bioengineering"
-  ],
-  "tags": [
-   "Stanford",
-   "CA"
-  ],
-  "grades": [],
-  "ranking": "A",
-  "accRate": "Highly Selective",
-  "details": "Highly specialized bioengineering and medical imaging research.",
   "flagship": true
  },
  {
@@ -2448,8 +2427,8 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Kaiser Permanente SYEP",
-  "url": "https://community.kp.org/downloads/15892_Summer%2BYouthEmploymentProgramSCALNCAL.pdf",
+  "name": "Kaiser Permanente Summer Youth Employment Program (LAUNCH)",
+  "url": "https://community.kp.org/about/program/summer-youth-employment-program",
   "deadline": "March 1",
   "when": "",
   "cost": "",
@@ -2474,7 +2453,7 @@ window.PROGRAMS = [
   ],
   "ranking": "",
   "accRate": "",
-  "details": "",
+  "details": "Paid summer health-care jobs for Southern California high schoolers 16 and up, with weekly workshops and mentoring.",
   "flagship": false
  },
  {
@@ -2728,12 +2707,12 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Stanford SMYSP",
-  "url": "https://med.stanford.edu/odme/high-school-students/smysp/about.html",
+  "name": "Stanford Medical Youth Science Program (SMYSP)",
+  "url": "https://smysp.spcs.stanford.edu/",
   "deadline": "March 23",
   "when": "",
-  "cost": "",
-  "free": false,
+  "cost": "Free",
+  "free": true,
   "subjects": [
    "Health",
    "Medicine",
@@ -2754,7 +2733,7 @@ window.PROGRAMS = [
   ],
   "ranking": "",
   "accRate": "",
-  "details": "",
+  "details": "Five-week, tuition-free Stanford Medicine program for low-income, first-generation juniors from eligible California counties.",
   "flagship": false
  },
  {
@@ -2990,33 +2969,6 @@ window.PROGRAMS = [
   ],
   "grades": [
    "Junior"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
-  "name": "California STEM Academy ISSM",
-  "url": "https://www.californiastemacademy.org/issm-summer-program",
-  "deadline": "April 1",
-  "when": "",
-  "cost": "",
-  "free": false,
-  "subjects": [
-   "Research",
-   "STEM"
-  ],
-  "tags": [
-   "International",
-   "Remote",
-   "Mentorship"
-  ],
-  "grades": [
-   "Freshman",
-   "Sophomore",
-   "Junior",
-   "Senior"
   ],
   "ranking": "",
   "accRate": "",
@@ -3912,61 +3864,30 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "ADRC High School Scholars",
-  "url": "https://www.neurology.columbia.edu/research/research-centers-and-programs/alzheimers-disease-research-center-adrc/adrc-high-school-scholars",
+  "name": "Summer Healthcare Experience (SHE) in Oncology",
+  "url": "https://www.uchicagomedicine.org/cancer/education-outreach/student-education/high-school-undergraduate/she",
   "deadline": "?",
   "when": "",
-  "cost": "",
-  "free": false,
+  "cost": "Free (+$500 stipend)",
+  "free": true,
   "subjects": [
    "Medicine",
-   "College Readiness",
-   "STEM",
-   "Neuroscience",
+   "Cancer",
    "Research"
   ],
   "tags": [
-   "New York",
-   "In-person",
-   "Year-Long",
+   "US",
+   "Remote",
+   "Stipend",
    "Mentorship"
   ],
   "grades": [
-   "Freshman",
-   "Sophomore",
    "Junior",
    "Senior"
   ],
   "ranking": "",
   "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
-  "name": "SHE in Oncology",
-  "url": "",
-  "deadline": "?",
-  "when": "",
-  "cost": "",
-  "free": true,
-  "subjects": [
-   "STEM",
-   "Research",
-   "Medicine",
-   "Biology"
-  ],
-  "tags": [
-   "Remote",
-   "Stipend",
-   "Mentorship",
-   "US"
-  ],
-  "grades": [
-   "Freshman"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
+  "details": "Free two-week virtual program run with cancer centers across the country: a genetics research project, a patient case study and a $500 stipend.",
   "flagship": false
  },
  {
@@ -4350,23 +4271,6 @@ window.PROGRAMS = [
  {
   "name": "Johns Hopkins APL ASPIRE Program",
   "url": "https://www.jhuapl.edu/education/stem-outreach/aspire",
-  "deadline": "?",
-  "when": "",
-  "cost": "",
-  "free": false,
-  "subjects": [],
-  "tags": [],
-  "grades": [
-   "Junior"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
-  "name": "Fermilab TARGET Program",
-  "url": "https://internships.fnal.gov/target/",
   "deadline": "?",
   "when": "",
   "cost": "",

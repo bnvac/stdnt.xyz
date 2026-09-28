@@ -49,7 +49,7 @@ async function check(u) {
   // sites were reported dead without ever being retried
   const opts = (method) => ({
     method, redirect: "follow",
-    headers: { "User-Agent": "Mozilla/5.0 (compatible; stdnt-xyz-linkcheck/1.0; +https://github.com/2008wbbv/edu.edu)" },
+    headers: { "User-Agent": "Mozilla/5.0 (compatible; stdnt-xyz-linkcheck/1.0; +https://github.com/bnvac/stdnt.xyz)" },
     signal: AbortSignal.timeout(TIMEOUT)
   });
   try {
