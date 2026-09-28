@@ -6,7 +6,7 @@ There are **two ways** to contribute, and **both credit you** automatically.
 
 ## 1. The easy way - fill out a form (no coding)
 
-Go to the **[Contribute page](https://stdnt.xyz/#contribute)** on
+Go to the **[Contribute page](https://bnvac.github.io/stdnt.xyz/#contribute)** on
 the site, or open a [new issue](https://github.com/bnvac/stdnt.xyz/issues/new/choose)
 and pick a category:
 
@@ -88,8 +88,8 @@ Before opening a pull request:
    on every asset in `site/index.html` (search-and-replace `?v=NN`).
 3. Use plain hyphens, commas or colons rather than em or en dashes.
 
-See the **Development** section of the [README](README.md) for
-every script.
+Every script, the project layout and how deploys work are in
+**[docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)**.
 
 ## How contributions are tracked
 

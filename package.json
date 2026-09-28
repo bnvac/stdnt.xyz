@@ -12,6 +12,7 @@
     "build": "node scripts/build-hackathons.mjs && node scripts/build-logos.mjs && node scripts/build-calendar.mjs && node scripts/build-pages.mjs",
     "build:pages": "node scripts/build-calendar.mjs && node scripts/build-pages.mjs",
     "images": "node scripts/build-images.mjs",
+    "banner": "node scripts/build-banner.mjs",
     "check": "node scripts/check-data.mjs",
     "check:links": "node scripts/check-links.mjs",
     "test": "node scripts/check-data.mjs && node --test tests/*.test.mjs"
