@@ -224,10 +224,14 @@
   function dlInfo(d) {
     var s = String(d || "").trim().toLowerCase();
     if (!s || /rolling|monthly|quarterly|varies|dependent|psat|open|tbd|announce|check|nomination|^-$/.test(s)) return { rolling: true, date: null, days: null, soon: false };
-    var m = s.match(/(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s*(\d{1,2})?/);
-    if (!m) return { rolling: true, date: null, days: null, soon: false };
-    var dt = new Date(TODAY.getFullYear(), MONTHS[m[1]] - 1, m[2] ? +m[2] : 15); dt.setHours(0, 0, 0, 0);
-    if (dt < TODAY) dt = new Date(TODAY.getFullYear() + 1, MONTHS[m[1]] - 1, m[2] ? +m[2] : 15);
+    // several dates ("Apr / Aug", "Part 1: Dec 10 | Part 2: Late Feb") -> whichever is due next
+    var re = /(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s*(\d{1,2})?/g, m, dt = null;
+    while ((m = re.exec(s))) {
+      var c = new Date(TODAY.getFullYear(), MONTHS[m[1]] - 1, m[2] ? +m[2] : 15);
+      if (c < TODAY) c = new Date(TODAY.getFullYear() + 1, MONTHS[m[1]] - 1, m[2] ? +m[2] : 15);
+      if (!dt || c < dt) dt = c;
+    }
+    if (!dt) return { rolling: true, date: null, days: null, soon: false };
     var days = Math.round((dt - TODAY) / 86400000);
     return { rolling: false, date: dt, days: days, soon: days <= 30 };
   }
@@ -335,8 +339,9 @@
     return '<a class="card' + (internal ? " card-guide" : "") + '" href="' + esc(r.url) + '"' + link + ' style="animation-delay:' +
       Math.min(i * 16, 240) + 'ms">' +
       '<div class="card-top">' + iconHTML(r) +
-      '<span class="card-name">' + esc(r.name) + (r.featured ? ' <span class="card-star">&#9733;</span>' : "") + verifiedChip(r) + "</span>" +
-      '<span class="card-meta">' + badge + starBtn("tool", r.name) + (internal ? "" : flagBtn(r.name, r.url)) + "</span></div>" +
+      '<div class="card-head"><span class="card-name">' + esc(r.name) + (r.featured ? '&nbsp;<span class="card-star">&#9733;</span>' : "") + "</span>" +
+      '<span class="card-badges">' + badge + verifiedChip(r) + "</span></div>" +
+      '<span class="card-meta">' + starBtn("tool", r.name) + (internal ? "" : flagBtn(r.name, r.url)) + "</span></div>" +
       (r.value ? '<span class="card-value">' + esc(r.value) + "</span>" : "") +
       '<p class="card-desc">' + esc(r.desc) + "</p>" +
       (linkDownBadge(r.url) ? '<div class="card-flags">' + linkDownBadge(r.url) + "</div>" : "") +
@@ -391,14 +396,17 @@
   }
   function schRow(s, i) {
     var amtFull = s.amount >= FULL || /full/i.test(s.amountText || "");
-    var tags = (s.tags || []).map(function (t) { return '<span class="tg">' + esc(t) + "</span>"; }).join("");
-    var sub = esc(s.level || "") + (s.note ? " &middot; " + esc(s.note) : "") + (s.find ? ' <span class="find">&middot; search</span>' : "");
-    var ft = freshTags(s, s.url), eg = eligChips(s);
+    var rq = reqList(s, "sch"), req = reqHTML(rq.list);
+    var tags = (s.tags || []).filter(function (t) { return !rq.used[String(t).toLowerCase()]; })
+      .map(function (t) { return '<span class="tg">' + esc(t) + "</span>"; }).join("");
+    var sub = [s.note ? esc(s.note) : "", s.find ? '<span class="find">search link</span>' : ""].filter(Boolean).join(" &middot; ");
+    var ft = freshTags(s, s.url);
     return '<div class="row' + (gone(s) ? " row-gone" : "") + '" style="animation-delay:' + Math.min(i * 8, 180) + 'ms">' +
+      logoTile(s.name, s.url, s.logo) +
       '<a class="row-main" href="' + esc(s.url) + '" target="_blank" rel="noopener">' +
-      '<div class="row-title">' + esc(s.name) + matchBadge("sch", s) + verifiedChip(s) + ' <span class="ext">&#8599;</span></div>' +
-      '<div class="row-sub">' + sub + "</div>" +
-      ((tags || ft || eg) ? '<div class="row-tags">' + ft + eg + tags + "</div>" : "") + "</a>" +
+      '<div class="row-title">' + esc(s.name) + matchBadge("sch", s) + verifiedChip(s) + '&nbsp;<span class="ext">&#8599;</span></div>' +
+      (sub ? '<div class="row-sub">' + sub + "</div>" : "") +
+      ((tags || ft || req) ? '<div class="row-tags">' + ft + req + tags + "</div>" : "") + "</a>" +
       '<span class="row-acts">' + starBtn("sch", s.name) + flagBtn(s.name, s.url) + "</span>" +
       '<div class="row-right"><span class="row-amt' + (amtFull ? " full" : "") + '">' + esc(s.amountText || "Varies") + "</span>" +
       calCell(s.name, s.url, s.deadline) + "</div></div>";
@@ -465,20 +473,19 @@
   function progRow(p, i) {
     var url = p.url || searchLink(p.name + " program");
     var rank = p.ranking ? '<span class="rank' + (/^S/.test(p.ranking) ? " s" : "") + '">' + esc(p.ranking) + "</span>" : '<span class="rank ghost"></span>';
-    var grades = (p.grades || []).map(function (g) { return '<span class="tg tg-grade">' + esc(g) + "</span>"; }).join("");
+    var req = reqHTML(reqList(p, "prog").list);
     var si = progStateInfo(p);
     var stateTag = si.restricted ? '<span class="tg tg-state">' + PIN_SVG + esc(si.states.slice(0, 2).join("/")) + " only</span>"
       : (si.located ? '<span class="tg tg-loc">' + PIN_SVG + esc(si.states.slice(0, 2).join("/")) + "</span>" : "");
     var subs = (p.subjects || []).slice(0, 3).map(function (s) { return '<span class="tg">' + esc(s) + "</span>"; }).join("");
     var sub = esc(p.details || (p.subjects || []).join(", ")) + (p.when ? ' <span class="find">&middot; ' + esc(p.when) + "</span>" : "");
     var cost = shortCost(p);
-    var favSrc = p.logo || (p.flagship && domainOf(p.url) ? faviconURL(domainOf(p.url)) : "");
-    var fav = favSrc ? '<img class="row-fav" src="' + esc(favSrc) + '" alt="" loading="lazy" />' : "";
     return '<div class="row' + (gone(p) ? " row-gone" : "") + '" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' + rank +
+      logoTile(p.name, p.url, p.logo) +
       '<a class="row-main" href="' + esc(url) + '" target="_blank" rel="noopener">' +
-      '<div class="row-title">' + fav + esc(p.name) + (p.flagship ? ' <span class="card-star">&#9733;</span>' : "") + matchBadge("prog", p) + verifiedChip(p) + ' <span class="ext">&#8599;</span></div>' +
+      '<div class="row-title">' + esc(p.name) + (p.flagship ? '&nbsp;<span class="card-star">&#9733;</span>' : "") + matchBadge("prog", p) + verifiedChip(p) + '&nbsp;<span class="ext">&#8599;</span></div>' +
       '<div class="row-sub">' + sub + "</div>" +
-      '<div class="row-tags">' + freshTags(p, url) + eligChips(p) + stateTag + grades + subs + "</div></a>" +
+      '<div class="row-tags">' + freshTags(p, url) + req + stateTag + subs + "</div></a>" +
       '<span class="row-acts">' + starBtn("prog", p.name) + flagBtn(p.name, url) + "</span>" +
       '<div class="row-right"><span class="row-amt' + (cost.full ? " full" : "") + '">' + esc(cost.t) + "</span>" +
       calCell(p.name, url, p.deadline) + "</div></div>";
@@ -641,14 +648,67 @@
     if (q.race) { var rk = ["black", "hispanic", "native", "aapi"].filter(function (r) { return el.groups[r]; }); if (rk.length && rk.indexOf(q.race) < 0) return true; }
     return false;
   }
-  function eligChips(item) {
-    var e = eligibilityOf(item), out = "";
-    function c(l) { out += '<span class="tg tg-elig">' + l + "</span>"; }
-    if (e.intlOk === true) c("Intl OK");
-    if (e.gpaMin) c("GPA " + e.gpaMin + "+");
-    if (e.incomeMax) c("Income &le; $" + (e.incomeMax >= 1000 ? Math.round(e.incomeMax / 1000) + "k" : e.incomeMax));
-    if (e.needBased && !inArr(lc(item.tags), "need-based")) c("Need-based");
-    return out;
+  // ---- requirement chips: who can apply + what it takes, at a glance ----
+  // Built on eligibilityOf(). Requirement-type tags (Essay, Need-based,
+  // Women...) turn into chips and are dropped from the plain topic tags.
+  var REQ_ICON = { who: "cap", cit: "id", gpa: "medal", money: "cash", grp: "check", apply: "pencil" };
+  var GRADE_NUM = { Freshman: 9, Sophomore: 10, Junior: 11, Senior: 12 };
+  var GRADE_ONE = { 9: "Freshmen", 10: "Sophomores", 11: "Juniors", 12: "Seniors" };
+  var GROUP_LABEL = { women: "Women", black: "Black students", hispanic: "Hispanic / Latino", native: "Native American", aapi: "Asian / Pacific Isl.",
+    lgbtq: "LGBTQ+", disability: "Disability", veteran: "Military / veteran", immigrant: "DACA / immigrant" };
+  function whoLabel(level) {
+    var v = String(level || "").trim(), m;
+    if (!v) return null;
+    if (/^(all|any)\b/i.test(v)) return { l: "Open to all", good: true };
+    if ((m = v.match(/^(\d{1,2})\+$/))) return { l: "Ages " + m[1] + "+" };
+    if ((m = v.match(/^(k|\d{1,2})(?:st|nd|rd|th)?\s*-\s*(\d{1,2})(?:st|nd|rd|th)?$/i))) return { l: (+m[2] <= 12 ? "Grades " : "Ages ") + m[1].toUpperCase() + "-" + m[2] };
+    if ((m = v.match(/^(?:≤|<=)\s*(\d{1,2})$/))) return { l: "Ages " + m[1] + " & under" };
+    if ((m = v.match(/^(\d{1,2})$/))) return { l: +m[1] <= 12 ? "Grade " + m[1] : "Age " + m[1] };
+    if (/^(k|\d)/i.test(v)) return { l: "Grades " + v };
+    return { l: v };
+  }
+  function gradesLabel(grades) {
+    var n = (grades || []).map(function (g) { return GRADE_NUM[g]; }).filter(Boolean).sort(function (a, b) { return a - b; });
+    if (!n.length) return "";
+    if (n.length === 1) return GRADE_ONE[n[0]];
+    return n[n.length - 1] - n[0] === n.length - 1 ? "Grades " + n[0] + "-" + n[n.length - 1] : "Grades " + n.join(", ");
+  }
+  function reqList(item, kind) {
+    var e = eligibilityOf(item), t = lc(item.tags), out = [], used = {};
+    function add(k, l, good) { if (l) out.push({ k: k, l: l, good: !!good }); }
+    function has(tag) { if (inArr(t, tag)) { used[tag] = 1; return true; } return false; }
+    var w = kind === "prog" ? { l: gradesLabel(item.grades) } : whoLabel(kind === "comp" ? item.grades : item.level);
+    if (w && w.l) add("who", e.groups.immigrant ? w.l.replace(/\s*\/\s*DACA\b/i, "") : w.l, w.good);
+    // citizenship: explicit wording first, then the programs' US / International tags
+    var countries = ["us", "canada", "mexico", "puerto rico"].filter(function (c) { return inArr(t, c); });
+    if (e.intlOk === false) add("cit", "US citizens / PR");
+    else if (e.intlOk === true) { add("cit", "Intl OK", true); used.international = 1; }
+    else if (countries.length > 1) { add("cit", countries.map(function (c) { return c === "us" ? "US" : c.replace(/\b\w/g, function (x) { return x.toUpperCase(); }); }).join(" / ")); countries.forEach(function (c) { used[c] = 1; }); }
+    else if (countries[0] === "us") { add("cit", "US students only"); used.us = 1; }
+    if (e.gpaMin) add("gpa", "GPA " + e.gpaMin + "+");
+    // programs: tuition waived under an income line (a perk, not an eligibility rule)
+    var waive = kind === "prog" && String(item.cost || "").match(/free[^;()]*?(?:under|below|less than)\s*\$\s?(\d{2,3})(?:k|,000)/i);
+    if (waive) add("money", "Free if income < $" + waive[1] + "k", true);
+    else if (e.incomeMax) { add("money", "Income ≤ $" + Math.round(e.incomeMax / 1000) + "k"); has("need-based"); has("low-income"); }
+    else if (has("low-income")) add("money", "Low-income");
+    else if (has("need-based") || e.needBased) add("money", "Need-based");
+    var grp = Object.keys(GROUP_LABEL).filter(function (g) { return e.groups[g]; });
+    grp.forEach(function (g) { add("grp", GROUP_LABEL[g]); });
+    if (grp.length) ["women", "immigrants", "daca", "undocumented", "identity"].forEach(function (x) { used[x] = 1; });
+    if (e.firstGen || has("first gen")) { add("grp", "First-gen"); used["first gen"] = 1; }
+    if ((has("minority") || /\bminority\b|underrepresented|under-represented/i.test(item.name + " " + (item.details || ""))) && !grp.length) add("grp", "Underrepresented");
+    if (has("no essay") || item.group === "noessay") add("apply", "No essay", true);
+    else if (has("essay")) add("apply", "Essay");
+    if (has("short answer")) add("apply", "Short answer");
+    if (has("video")) add("apply", "Video");
+    if (has("nomination")) add("apply", "Nomination");
+    if (kind === "comp" && item.format) add("apply", item.format);
+    return { list: out, used: used };
+  }
+  function reqHTML(list) {
+    return list.map(function (r) {
+      return '<span class="tg tg-req' + (r.good ? " good" : "") + '">' + icon(REQ_ICON[r.k]) + esc(r.l) + "</span>";
+    }).join("");
   }
   function schScore(s) {
     var q = quiz, t = lc(s.tags), note = (s.note || "").toLowerCase(), name = s.name.toLowerCase(), sc = 0;
@@ -932,9 +992,14 @@
   }
 
   // newsletter signup - hands off to a third-party provider (no backend, no
-  // emails stored in this repo). Until one is wired up, the live on-page
-  // digest above is the working substitute.
+  // emails stored in this repo). The signups stay hidden until
+  // NEWSLETTER_ENDPOINT is set, so nobody types an email into a dead form;
+  // the live on-page digest above covers it meanwhile.
   function wireNewsletter() {
+    if (!NEWSLETTER_ENDPOINT) {
+      document.querySelectorAll(".news, .news-band").forEach(function (el) { el.hidden = true; });
+      return;
+    }
     // delegated so any number of .news-form signups (For You + the site-wide
     // band) work from one handler
     document.addEventListener("submit", function (e) {
@@ -944,14 +1009,10 @@
       var box = form.closest(".news, .news-band") || form.parentNode;
       var note = box ? box.querySelector(".news-note") : null;
       var email = (input && input.value || "").trim(); if (!email) return;
-      if (NEWSLETTER_ENDPOINT) {
-        var fd = new FormData(); fd.append("email", email);
-        fetch(NEWSLETTER_ENDPOINT, { method: "POST", body: fd, mode: "no-cors" }).catch(function () {});
-        if (note) note.textContent = "Thanks! Check your inbox to confirm your subscription.";
-        form.reset();
-      } else if (note) {
-        note.innerHTML = 'Email digests aren\'t switched on yet - but your matches update live every visit. Want this? <a href="https://github.com/2008wbbv/edu.edu/issues/new?title=Enable+email+digest" target="_blank" rel="noopener">+1 it on GitHub</a>.';
-      }
+      var fd = new FormData(); fd.append("email", email);
+      fetch(NEWSLETTER_ENDPOINT, { method: "POST", body: fd, mode: "no-cors" }).catch(function () {});
+      if (note) note.textContent = "Thanks! Check your inbox to confirm your subscription.";
+      form.reset();
     });
   }
 
@@ -1207,8 +1268,7 @@
   }
   function competitionCard(c, i) {
     var dl = c.deadline ? '<span class="tg tg-comp">' + esc(c.deadline) + "</span>" : "";
-    var fmt = c.format ? '<span class="tg">' + esc(c.format) + "</span>" : "";
-    var gr = c.grades ? '<span class="tg">Grades ' + esc(c.grades) + "</span>" : "";
+    var req = reqHTML(reqList(c, "comp").list);
     var ft = freshTags(c, c.url);
     return '<a class="card" href="' + esc(c.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
       '<div class="card-top">' + logoTile(c.name, c.url, c.logo) +
@@ -1216,7 +1276,7 @@
       '<span class="card-meta">' + starBtn("comp", c.name) + flagBtn(c.name, c.url) + "</span></div>" +
       '<p class="card-desc">' + esc(c.desc) + "</p>" +
       (ft ? '<div class="card-flags">' + ft + "</div>" : "") +
-      '<div class="card-foot comp-foot">' + dl + fmt + gr + "</div></a>";
+      '<div class="card-foot comp-foot">' + dl + req + "</div></a>";
   }
   function renderCompetitions() {
     var box = $("#competitions-grid"); if (!box) return 0;
@@ -1388,7 +1448,7 @@
       '<div class="dl-date' + (info.soon ? " soon" : "") + '"><b>' + DL_MON[info.date.getMonth()] + " " + info.date.getDate() + "</b><span>" + dleft + "</span></div>" +
       logoTile(it.name, it.url, it.logo) +
       '<a class="row-main" href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
-        '<div class="row-title">' + esc(it.name) + ' <span class="ext">&#8599;</span></div>' +
+        '<div class="row-title">' + esc(it.name) + '&nbsp;<span class="ext">&#8599;</span></div>' +
         '<div class="row-tags"><span class="tg tg-' + it.kind + '">' + label + "</span>" + (it.meta ? '<span class="tg">' + esc(it.meta) + "</span>" : "") + linkDownBadge(it.url) + "</div>" +
       "</a>" +
       '<span class="row-acts">' + starBtn(it.kind, it.name) + flagBtn(it.name, it.url) + "</span>" +
@@ -1517,7 +1577,9 @@
     var csv = $("#dl-csv");
     if (csv) csv.addEventListener("click", function () { download("stdnt-deadlines.csv", "﻿" + toCSV(deadlineExportItems()), "text/csv;charset=utf-8"); });
     var rem = $("#dl-remind"), panel = $("#dl-remind-panel");
-    if (rem && panel) rem.addEventListener("click", function () {
+    // hidden until REMINDER_ENDPOINT is set up (docs/EMAIL_REMINDERS.md)
+    if (rem && !REMINDER_ENDPOINT) rem.hidden = true;
+    else if (rem && panel) rem.addEventListener("click", function () {
       panel.hidden = !panel.hidden;
       if (!panel.hidden) { var f = $("#rem-email"); if (f) f.focus(); }
     });
@@ -1532,10 +1594,6 @@
       return { name: it.name, url: it.url, deadline: it.deadline, date: ymd(it.info.date) };
     });
     if (!items.length) { note.textContent = "No deadlines in view. Widen the filters above, then try again."; note.className = "rem-note"; return; }
-    if (!REMINDER_ENDPOINT) {
-      note.innerHTML = 'Email reminders need a one-time free setup, see <a href="' + GH_REPO + '/blob/main/docs/EMAIL_REMINDERS.md" target="_blank" rel="noopener">docs/EMAIL_REMINDERS.md</a>. Until then, use <b>Add all to calendar (.ics)</b> to get every deadline into your calendar app.';
-      note.className = "rem-note"; return;
-    }
     note.textContent = "Sending..."; note.className = "rem-note";
     fetch(REMINDER_ENDPOINT, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ email: email, items: items }) })
       .then(function () { note.textContent = "Done. You'll get an email before each deadline."; note.className = "rem-note ok"; })
