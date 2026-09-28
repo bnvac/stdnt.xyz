@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-27T11:02:59.290Z",
+  "updated": "2026-09-28T12:23:40.176Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 20,
+  "count": 19,
   "events": [
     {
       "name": "Capitol",
@@ -12,19 +12,6 @@
       "region": "District of Columbia",
       "country": "United States",
       "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "MoonStone",
-      "url": "https://www.moonstone.org.cn",
-      "start": "2026-09-25",
-      "end": "2026-09-27",
-      "city": "Shanghai",
-      "region": "Shanghai",
-      "country": "China",
-      "cc": "CN",
       "format": "in-person",
       "source": "Hack Club",
       "hs": true
