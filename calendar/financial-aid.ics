@@ -1,0 +1,148 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//stdnt.xyz//Deadlines//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:stdnt.xyz financial aid dates
+X-WR-CALDESC:FAFSA\, CSS Profile and state aid dates.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:aid-css-profile-opens-20261001@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+SUMMARY:CSS Profile opens
+DESCRIPTION:Financial aid · CSS Profile\nDeadline listed as: Oct 1\nhttps:
+ //cssprofile.collegeboard.org/\nMore deadlines: https://stdnt.xyz/#deadlin
+ es
+URL:https://cssprofile.collegeboard.org/
+CATEGORIES:Financial aid
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile opens
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile opens
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aid-fafsa-opens-20261001@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+SUMMARY:FAFSA opens
+DESCRIPTION:Financial aid · FAFSA\nDeadline listed as: Oct 1\nhttps://stud
+ entaid.gov/h/apply-for-aid/fafsa\nMore deadlines: https://stdnt.xyz/#deadl
+ ines
+URL:https://studentaid.gov/h/apply-for-aid/fafsa
+CATEGORIES:Financial aid
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:FAFSA opens
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:FAFSA opens
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aid-css-profile-due-early-decision-action-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:CSS Profile due (Early Decision / Action)
+DESCRIPTION:Financial aid · CSS Profile\nDeadline listed as: Nov 1\nhttps:
+ //cssprofile.collegeboard.org/\nMore deadlines: https://stdnt.xyz/#deadlin
+ es
+URL:https://cssprofile.collegeboard.org/
+CATEGORIES:Financial aid
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile due (Early Decision / Action)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile due (Early Decision / Action)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aid-css-profile-due-regular-decision-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:CSS Profile due (Regular Decision)
+DESCRIPTION:Financial aid · CSS Profile\nDeadline listed as: Feb 1\nhttps:
+ //cssprofile.collegeboard.org/\nMore deadlines: https://stdnt.xyz/#deadlin
+ es
+URL:https://cssprofile.collegeboard.org/
+CATEGORIES:Financial aid
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile due (Regular Decision)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile due (Regular Decision)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aid-priority-fafsa-state-aid-many-states-20270215@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270215
+DTEND;VALUE=DATE:20270216
+SUMMARY:Priority FAFSA / state aid (many states)
+DESCRIPTION:Financial aid · State aid\nDeadline listed as: Feb 15\nhttps:/
+ /studentaid.gov/apply-for-aid/fafsa/fafsa-deadlines\nMore deadlines: https
+ ://stdnt.xyz/#deadlines
+URL:https://studentaid.gov/apply-for-aid/fafsa/fafsa-deadlines
+CATEGORIES:Financial aid
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Priority FAFSA / state aid (many states)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Priority FAFSA / state aid (many states)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aid-fafsa-federal-deadline-20270630@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270630
+DTEND;VALUE=DATE:20270701
+SUMMARY:FAFSA federal deadline
+DESCRIPTION:Financial aid · FAFSA\nDeadline listed as: Jun 30\nhttps://stu
+ dentaid.gov/h/apply-for-aid/fafsa\nMore deadlines: https://stdnt.xyz/#dead
+ lines
+URL:https://studentaid.gov/h/apply-for-aid/fafsa
+CATEGORIES:Financial aid
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:FAFSA federal deadline
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:FAFSA federal deadline
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+END:VCALENDAR

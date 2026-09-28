@@ -1,0 +1,4883 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//stdnt.xyz//Deadlines//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:stdnt.xyz deadlines
+X-WR-CALDESC:Scholarship\, program\, competition and financial-aid deadline
+ s from stdnt.xyz.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:aid-css-profile-opens-20261001@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+SUMMARY:CSS Profile opens
+DESCRIPTION:Financial aid · CSS Profile\nDeadline listed as: Oct 1\nhttps:
+ //cssprofile.collegeboard.org/\nMore deadlines: https://stdnt.xyz/#deadlin
+ es
+URL:https://cssprofile.collegeboard.org/
+CATEGORIES:Financial aid
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile opens
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile opens
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aid-fafsa-opens-20261001@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+SUMMARY:FAFSA opens
+DESCRIPTION:Financial aid · FAFSA\nDeadline listed as: Oct 1\nhttps://stud
+ entaid.gov/h/apply-for-aid/fafsa\nMore deadlines: https://stdnt.xyz/#deadl
+ ines
+URL:https://studentaid.gov/h/apply-for-aid/fafsa
+CATEGORIES:Financial aid
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:FAFSA opens
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:FAFSA opens
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-morehead-cain-unc-20261001@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+SUMMARY:Deadline in October: Morehead-Cain (UNC)
+DESCRIPTION:Scholarship · Full ride\nDeadline listed as: Oct (exact day va
+ ries\, check the site)\nhttps://moreheadcain.org/\nMore deadlines: https:/
+ /stdnt.xyz/#deadlines
+URL:https://moreheadcain.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in October: Morehead-Cain (UNC)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in October: Morehead-Cain (UNC)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-national-youngarts-award-20261001@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+SUMMARY:Deadline in October: National YoungArts Award
+DESCRIPTION:Scholarship · Up to $10\,000\nDeadline listed as: Oct (exact d
+ ay varies\, check the site)\nhttps://www.youngarts.org/\nMore deadlines: h
+ ttps://stdnt.xyz/#deadlines
+URL:https://www.youngarts.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in October: National YoungArts Award
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in October: National YoungArts Award
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-phi-theta-kappa-transfer-scholarships-20261001@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+SUMMARY:Deadline in October: Phi Theta Kappa Transfer Scholarships
+DESCRIPTION:Scholarship · $1\,000-$1\,500\nDeadline listed as: Oct (exact 
+ day varies\, check the site)\nhttps://www.ptk.org/scholarships/\nMore dead
+ lines: https://stdnt.xyz/#deadlines
+URL:https://www.ptk.org/scholarships/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in October: Phi Theta Kappa Transfer Scholarships
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in October: Phi Theta Kappa Transfer Scholarships
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-dr-pepper-tuition-giveaway-20261011@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Deadline: Dr Pepper Tuition Giveaway
+DESCRIPTION:Scholarship · $100\,000\nDeadline listed as: Oct 11\nhttps://w
+ ww.drpeppertuition.com/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.drpeppertuition.com/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Dr Pepper Tuition Giveaway
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Dr Pepper Tuition Giveaway
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-chick-fil-a-leadership-scholarship-20261018@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Deadline: Chick-fil-A Leadership Scholarship
+DESCRIPTION:Scholarship · Up to $25\,000\nDeadline listed as: Oct 18\nhttp
+ s://www.chick-fil-a.com/scholarships\nMore deadlines: https://stdnt.xyz/#d
+ eadlines
+URL:https://www.chick-fil-a.com/scholarships
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Chick-fil-A Leadership Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Chick-fil-A Leadership Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-ohsu-science-ambassador-20261019@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261019
+DTEND;VALUE=DATE:20261020
+SUMMARY:Deadline: OHSU Science Ambassador
+DESCRIPTION:Program\nDeadline listed as: October 19\nhttps://www.ohsu.edu/o
+ nprc/volunteer-opportunities\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.ohsu.edu/onprc/volunteer-opportunities
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: OHSU Science Ambassador
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: OHSU Science Ambassador
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-us-bank-student-scholarship-20261030@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261031
+SUMMARY:Deadline: U.S. Bank Student Scholarship
+DESCRIPTION:Scholarship · Up to $20\,000\nDeadline listed as: Oct 30\nhttp
+ s://www.usbank.com/about-us-bank/community/student-scholarship.html\nMore 
+ deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.usbank.com/about-us-bank/community/student-scholarship.html
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: U.S. Bank Student Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: U.S. Bank Student Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-coca-cola-scholars-20261031@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Deadline: Coca-Cola Scholars
+DESCRIPTION:Scholarship · $20\,000\nDeadline listed as: Oct 31\nhttps://ww
+ w.coca-colascholarsfoundation.org/\nMore deadlines: https://stdnt.xyz/#dea
+ dlines
+URL:https://www.coca-colascholarsfoundation.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Coca-Cola Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Coca-Cola Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-vfw-voice-of-democracy-20261031@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Deadline: VFW Voice of Democracy
+DESCRIPTION:Scholarship · Up to $35\,000\nDeadline listed as: Oct 31\nhttp
+ s://www.vfw.org/community/youth-and-education/youth-scholarships\nMore dea
+ dlines: https://stdnt.xyz/#deadlines
+URL:https://www.vfw.org/community/youth-and-education/youth-scholarships
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: VFW Voice of Democracy
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: VFW Voice of Democracy
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-amc-aime-usamo-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Deadline in November: AMC → AIME → USAMO
+DESCRIPTION:Competition · Solo\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://maa.org/maa-invitational-competitions\nMor
+ e deadlines: https://stdnt.xyz/#deadlines
+URL:https://maa.org/maa-invitational-competitions
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: AMC → AIME → USAMO
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: AMC → AIME → USAMO
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-carbrain-scholarship-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Deadline: CarBrain Scholarship
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Nov 1\nhttps://carb
+ rain.com/scholarship\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://carbrain.com/scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: CarBrain Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: CarBrain Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-conrad-challenge-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Deadline in November: Conrad Challenge
+DESCRIPTION:Competition · Team\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://www.conradchallenge.org/\nMore deadlines: 
+ https://stdnt.xyz/#deadlines
+URL:https://www.conradchallenge.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Conrad Challenge
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Conrad Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aid-css-profile-due-early-decision-action-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:CSS Profile due (Early Decision / Action)
+DESCRIPTION:Financial aid · CSS Profile\nDeadline listed as: Nov 1\nhttps:
+ //cssprofile.collegeboard.org/\nMore deadlines: https://stdnt.xyz/#deadlin
+ es
+URL:https://cssprofile.collegeboard.org/
+CATEGORIES:Financial aid
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile due (Early Decision / Action)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile due (Early Decision / Action)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-diamond-challenge-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Deadline in November: Diamond Challenge
+DESCRIPTION:Competition · Team\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://diamondchallenge.org/\nMore deadlines: htt
+ ps://stdnt.xyz/#deadlines
+URL:https://diamondchallenge.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Diamond Challenge
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Diamond Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-nreip-naval-research-enterprise-internship-program-20261101@stdnt.
+ xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Deadline: NREIP (Naval Research Enterprise Internship Program)
+DESCRIPTION:Program · Free (+ stipend)\nDeadline listed as: Nov 1\nhttps:/
+ /www.navalsteminterns.us/internships/nreip/\nMore deadlines: https://stdnt
+ .xyz/#deadlines
+URL:https://www.navalsteminterns.us/internships/nreip/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NREIP (Naval Research Enterprise Internship Program)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NREIP (Naval Research Enterprise Internship Program)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-regeneron-science-talent-search-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Deadline in November: Regeneron Science Talent Search
+DESCRIPTION:Scholarship · Up to $250\,000\nDeadline listed as: Nov (exact 
+ day varies\, check the site)\nhttps://www.societyforscience.org/regeneron-
+ sts/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.societyforscience.org/regeneron-sts/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Regeneron Science Talent Search
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Regeneron Science Talent Search
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-regeneron-science-talent-search-sts-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Deadline in November: Regeneron Science Talent Search (STS)
+DESCRIPTION:Competition · Solo\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://www.societyforscience.org/regeneron-sts/\n
+ More deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.societyforscience.org/regeneron-sts/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Regeneron Science Talent Search (STS)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Regeneron Science Talent Search (STS)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-robertson-scholars-dukeunc-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Deadline in November: Robertson Scholars (Duke/UNC)
+DESCRIPTION:Scholarship · Full ride\nDeadline listed as: Nov (exact day va
+ ries\, check the site)\nhttps://robertsonscholars.org/\nMore deadlines: ht
+ tps://stdnt.xyz/#deadlines
+URL:https://robertsonscholars.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Robertson Scholars (Duke/UNC)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Robertson Scholars (Duke/UNC)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-seap-science-engineering-apprenticeship-program-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Deadline: SEAP (Science & Engineering Apprenticeship Program)
+DESCRIPTION:Program · Free (+ stipend ~$4\,000)\nDeadline listed as: Novem
+ ber 1\nhttps://www.navalsteminterns.us/internships/seap/\nMore deadlines: 
+ https://stdnt.xyz/#deadlines
+URL:https://www.navalsteminterns.us/internships/seap/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SEAP (Science & Engineering Apprenticeship Program)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SEAP (Science & Engineering Apprenticeship Program)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-prudential-emerging-visionaries-20261104@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261105
+SUMMARY:Deadline: Prudential Emerging Visionaries
+DESCRIPTION:Scholarship · Up to $15\,000\nDeadline listed as: Nov 4\nhttps
+ ://www.changemakers.com/en/challenge/emergingvisionaries\nMore deadlines: 
+ https://stdnt.xyz/#deadlines
+URL:https://www.changemakers.com/en/challenge/emergingvisionaries
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Prudential Emerging Visionaries
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Prudential Emerging Visionaries
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-elks-national-foundation-mvs-20261113@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:Deadline: Elks National Foundation MVS
+DESCRIPTION:Scholarship · Up to $50\,000\nDeadline listed as: Nov 13\nhttp
+ s://www.elks.org/scholars/scholarships/mvs.cfm\nMore deadlines: https://st
+ dnt.xyz/#deadlines
+URL:https://www.elks.org/scholars/scholarships/mvs.cfm
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Elks National Foundation MVS
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Elks National Foundation MVS
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-jack-kent-cooke-foundation-20261116@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261117
+SUMMARY:Deadline: Jack Kent Cooke Foundation
+DESCRIPTION:Scholarship · Up to $55k/yr\nDeadline listed as: Nov 16\nhttps
+ ://www.jkcf.org/our-scholarships/college-scholarship-program/\nMore deadli
+ nes: https://stdnt.xyz/#deadlines
+URL:https://www.jkcf.org/our-scholarships/college-scholarship-program/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Jack Kent Cooke Foundation
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Jack Kent Cooke Foundation
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-americanism-essay-contest-fra-20261201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Deadline: Americanism Essay Contest (FRA)
+DESCRIPTION:Scholarship · Up to $5\,000\nDeadline listed as: Dec 1\nhttps:
+ //www.fra.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.fra.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Americanism Essay Contest (FRA)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Americanism Essay Contest (FRA)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-bbg-garden-apprenticeship-20261201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Deadline: BBG Garden Apprenticeship
+DESCRIPTION:Program\nDeadline listed as: December 1\nhttps://www.bbg.org/le
+ arn/gap\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.bbg.org/learn/gap
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: BBG Garden Apprenticeship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: BBG Garden Apprenticeship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-borlaug-ruan-international-internship-20261201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Deadline: Borlaug-Ruan International Internship
+DESCRIPTION:Program\nDeadline listed as: December 1\nhttps://www.worldfoodp
+ rize.org/en/youth_programs/borlaugruan_international_internship/\nMore dea
+ dlines: https://stdnt.xyz/#deadlines
+URL:https://www.worldfoodprize.org/en/youth_programs/borlaugruan_internatio
+ nal_internship/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Borlaug-Ruan International Internship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Borlaug-Ruan International Internship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-dell-scholars-20261201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Deadline: Dell Scholars
+DESCRIPTION:Scholarship · $20\,000\nDeadline listed as: Dec 1\nhttps://www
+ .dellscholars.org/scholarship/\nMore deadlines: https://stdnt.xyz/#deadlin
+ es
+URL:https://www.dellscholars.org/scholarship/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Dell Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Dell Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-harvard-yes-for-cure-25-yr-20261201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Deadline: Harvard YES for CURE (2.5 yr)
+DESCRIPTION:Program\nDeadline listed as: December 1\nhttps://www.dfhcc.harv
+ ard.edu/research/cancer-disparities/students/yes-for-cure\nMore deadlines:
+  https://stdnt.xyz/#deadlines
+URL:https://www.dfhcc.harvard.edu/research/cancer-disparities/students/yes-
+ for-cure
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Harvard YES for CURE (2.5 yr)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Harvard YES for CURE (2.5 yr)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-research-science-institute-rsi-20261201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Deadline: Research Science Institute (RSI)
+DESCRIPTION:Program · Free (Fully Funded)\nDeadline listed as: December 1\
+ nhttps://www.cee.org/programs/apply-rsi\nMore deadlines: https://stdnt.xyz
+ /#deadlines
+URL:https://www.cee.org/programs/apply-rsi
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Research Science Institute (RSI)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Research Science Institute (RSI)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-scholastic-art-writing-awards-20261201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Deadline in December: Scholastic Art & Writing Awards
+DESCRIPTION:Competition · Solo\nDeadline listed as: December (exact day va
+ ries\, check the site)\nhttps://www.artandwriting.org/\nMore deadlines: ht
+ tps://stdnt.xyz/#deadlines
+URL:https://www.artandwriting.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in December: Scholastic Art & Writing Awards
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in December: Scholastic Art & Writing Awards
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-smart-scholarship-dod-20261201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Deadline: SMART Scholarship (DoD)
+DESCRIPTION:Scholarship · Full ride + job\nDeadline listed as: Dec 1\nhttp
+ s://www.smartscholarship.org/smart\nMore deadlines: https://stdnt.xyz/#dea
+ dlines
+URL:https://www.smartscholarship.org/smart
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SMART Scholarship (DoD)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SMART Scholarship (DoD)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-the-franklin-institute-stem-scholars-20261201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Deadline: The Franklin Institute STEM Scholars
+DESCRIPTION:Program\nDeadline listed as: December 1\nhttps://fi.edu/en/scie
+ nce-and-education/stem-scholars#10\nMore deadlines: https://stdnt.xyz/#dea
+ dlines
+URL:https://fi.edu/en/science-and-education/stem-scholars#10
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: The Franklin Institute STEM Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: The Franklin Institute STEM Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-yes-in-the-heights-20261201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Deadline: YES in THE HEIGHTS
+DESCRIPTION:Program\nDeadline listed as: December 1\nhttps://www.cancer.col
+ umbia.edu/education/educational-opportunities/high-school-and-undergraduat
+ e-programs/yes-heights-program\nMore deadlines: https://stdnt.xyz/#deadlin
+ es
+URL:https://www.cancer.columbia.edu/education/educational-opportunities/hig
+ h-school-and-undergraduate-programs/yes-heights-program
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: YES in THE HEIGHTS
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: YES in THE HEIGHTS
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-partnership-for-scientific-inquiry-20261205@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Deadline: Partnership for Scientific Inquiry
+DESCRIPTION:Program\nDeadline listed as: December 5\nhttps://www.psiprogram
+ ohsu.com/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.psiprogramohsu.com/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Partnership for Scientific Inquiry
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Partnership for Scientific Inquiry
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-leda-scholars-20261210@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261210
+DTEND;VALUE=DATE:20261211
+SUMMARY:Deadline: LEDA Scholars
+DESCRIPTION:Program · Free (Fully funded including travel)\nDeadline liste
+ d as: Part 1: December 10 | Part 2: Late February\nhttps://ledascholars.or
+ g/our-program/leda-scholars-program/recruitment-admissions/apply/\nMore de
+ adlines: https://stdnt.xyz/#deadlines
+URL:https://ledascholars.org/our-program/leda-scholars-program/recruitment-
+ admissions/apply/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: LEDA Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: LEDA Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-burger-king-scholars-20261215@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:Deadline: Burger King Scholars
+DESCRIPTION:Scholarship · Up to $60\,000\nDeadline listed as: Dec 15\nhttp
+ s://www.burgerkingfoundation.org/programs/burger-king-sm-scholars\nMore de
+ adlines: https://stdnt.xyz/#deadlines
+URL:https://www.burgerkingfoundation.org/programs/burger-king-sm-scholars
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Burger King Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Burger King Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-mit-womens-technology-program-wtp-20261215@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:Deadline: MIT Women’s Technology Program (WTP)
+DESCRIPTION:Program · Free for family income under $120k\nDeadline listed 
+ as: December 15\nhttps://wtp.mit.edu/\nMore deadlines: https://stdnt.xyz/#
+ deadlines
+URL:https://wtp.mit.edu/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: MIT Women’s Technology Program (WTP)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: MIT Women’s Technology Program (WTP)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-working-student-scholarship-20261215@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:Deadline: Working Student Scholarship
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Dec 15\nhttps://www
+ .google.com/search?q=working%20student%20scholarship\nMore deadlines: http
+ s://stdnt.xyz/#deadlines
+URL:https://www.google.com/search?q=working%20student%20scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Working Student Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Working Student Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-sallie-mae-scholarship-20261231@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:Deadline: Sallie Mae Scholarship
+DESCRIPTION:Scholarship · $2\,000\nDeadline listed as: Dec 31\nhttps://www
+ .salliemae.com/scholarships/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.salliemae.com/scholarships/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Sallie Mae Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Sallie Mae Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-aspirnaut-summer-research-internship-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline: Aspirnaut Summer Research Internship
+DESCRIPTION:Program\nDeadline listed as: January 1\nhttps://aspirnaut.org/h
+ igh-school-internships/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://aspirnaut.org/high-school-internships/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Aspirnaut Summer Research Internship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Aspirnaut Summer Research Internship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-columbia-brainstorm-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline: Columbia BrainSTORM
+DESCRIPTION:Program\nDeadline listed as: January 1\nhttps://www.neurology.c
+ olumbia.edu/education/additional-educational-programs/brain-seminar-teens-
+ and-opportunities-research-mentorship-brainstorm\nMore deadlines: https://
+ stdnt.xyz/#deadlines
+URL:https://www.neurology.columbia.edu/education/additional-educational-pro
+ grams/brain-seminar-teens-and-opportunities-research-mentorship-brainstorm
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Columbia BrainSTORM
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Columbia BrainSTORM
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-foot-locker-scholar-athletes-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline in January: Foot Locker Scholar Athletes
+DESCRIPTION:Scholarship · $20\,000\nDeadline listed as: Jan (exact day var
+ ies\, check the site)\nhttps://bgca.scholarsapply.org/foot-locker-scholar-
+ athletes-program/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://bgca.scholarsapply.org/foot-locker-scholar-athletes-program/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: Foot Locker Scholar Athletes
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: Foot Locker Scholar Athletes
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-ge-reagan-foundation-scholarship-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline in January: GE-Reagan Foundation Scholarship
+DESCRIPTION:Scholarship · $40\,000\nDeadline listed as: Jan (exact day var
+ ies\, check the site)\nhttps://www.reaganfoundation.org/education/scholars
+ hip-programs/ge-reagan-foundation-scholarship-program/\nMore deadlines: ht
+ tps://stdnt.xyz/#deadlines
+URL:https://www.reaganfoundation.org/education/scholarship-programs/ge-reag
+ an-foundation-scholarship-program/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: GE-Reagan Foundation Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: GE-Reagan Foundation Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-goldwater-scholarship-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline in January: Goldwater Scholarship
+DESCRIPTION:Scholarship · Up to $7\,500\nDeadline listed as: Jan (exact da
+ y varies\, check the site)\nhttps://goldwaterscholarship.gov/\nMore deadli
+ nes: https://stdnt.xyz/#deadlines
+URL:https://goldwaterscholarship.gov/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: Goldwater Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: Goldwater Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-jack-kent-cooke-undergraduate-transfer-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline in January: Jack Kent Cooke Undergraduate Transfer
+DESCRIPTION:Scholarship · Up to $55\,000/yr\nDeadline listed as: Jan (exac
+ t day varies\, check the site)\nhttps://www.jkcf.org/our-scholarships/unde
+ rgraduate-transfer-scholarship/\nMore deadlines: https://stdnt.xyz/#deadli
+ nes
+URL:https://www.jkcf.org/our-scholarships/undergraduate-transfer-scholarshi
+ p/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: Jack Kent Cooke Undergraduate Transfer
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: Jack Kent Cooke Undergraduate Transfer
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-jfk-profile-in-courage-essay-contest-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline in January: JFK Profile in Courage Essay Contest
+DESCRIPTION:Scholarship · $10\,000\nDeadline listed as: Jan (exact day var
+ ies\, check the site)\nhttps://www.jfklibrary.org/learn/education/profile-
+ in-courage-essay-contest\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.jfklibrary.org/learn/education/profile-in-courage-essay-con
+ test
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: JFK Profile in Courage Essay Contest
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: JFK Profile in Courage Essay Contest
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-mit-think-scholars-program-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline: MIT Think Scholars Program
+DESCRIPTION:Program\nDeadline listed as: January 1\nhttps://think.mit.edu/\
+ nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://think.mit.edu/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: MIT Think Scholars Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: MIT Think Scholars Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-naclo-linguistics-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline in January: NACLO (Linguistics)
+DESCRIPTION:Competition · Solo\nDeadline listed as: January (exact day var
+ ies\, check the site)\nhttps://www.nacloweb.org/\nMore deadlines: https://
+ stdnt.xyz/#deadlines
+URL:https://www.nacloweb.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: NACLO (Linguistics)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: NACLO (Linguistics)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-ohsu-cure-program-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline: OHSU CURE Program
+DESCRIPTION:Program\nDeadline listed as: January 1\nhttps://www.ohsu.edu/kn
+ ight-cancer-institute/ted-r-lilley-cure-program\nMore deadlines: https://s
+ tdnt.xyz/#deadlines
+URL:https://www.ohsu.edu/knight-cancer-institute/ted-r-lilley-cure-program
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: OHSU CURE Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: OHSU CURE Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-ohsu-ucedd-internship-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline: OHSU UCEDD Internship
+DESCRIPTION:Program\nDeadline listed as: January 1\nhttps://www.ohsu.edu/un
+ iversity-center-excellence-development-disability/summer-internship-progra
+ m\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.ohsu.edu/university-center-excellence-development-disabilit
+ y/summer-internship-program
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: OHSU UCEDD Internship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: OHSU UCEDD Internship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-sphinx-competition-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline in January: Sphinx Competition
+DESCRIPTION:Scholarship · Up to $50\,000\nDeadline listed as: Jan (exact d
+ ay varies\, check the site)\nhttps://www.sphinxmusic.org/sphinx-competitio
+ n\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.sphinxmusic.org/sphinx-competition
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: Sphinx Competition
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: Sphinx Competition
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-swe-scholarships-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline in January: SWE Scholarships
+DESCRIPTION:Scholarship · Up to $20\,000\nDeadline listed as: Jan / Mar (e
+ xact day varies\, check the site)\nhttps://swe.org/scholarships/\nMore dea
+ dlines: https://stdnt.xyz/#deadlines
+URL:https://swe.org/scholarships/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: SWE Scholarships
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: SWE Scholarships
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-usc-bovard-scholars-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline: USC Bovard Scholars
+DESCRIPTION:Program\nDeadline listed as: January 1\nhttps://bovardscholars.
+ usc.edu/our-program/how-to-apply/\nMore deadlines: https://stdnt.xyz/#dead
+ lines
+URL:https://bovardscholars.usc.edu/our-program/how-to-apply/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: USC Bovard Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: USC Bovard Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-ut-biomedical-sciences-program-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline: UT Biomedical Sciences Program
+DESCRIPTION:Program\nDeadline listed as: January 1\nhttps://www.mdanderson.
+ org/education-training/research-training/early-career-pathway-programs/sum
+ mer-research-programs/programs/high-school-summer-program.html\nMore deadl
+ ines: https://stdnt.xyz/#deadlines
+URL:https://www.mdanderson.org/education-training/research-training/early-c
+ areer-pathway-programs/summer-research-programs/programs/high-school-summe
+ r-program.html
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UT Biomedical Sciences Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UT Biomedical Sciences Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-duke-star-summer-training-in-academic-research-20270102@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270102
+DTEND;VALUE=DATE:20270103
+SUMMARY:Deadline: Duke STAR (Summer Training in Academic Research)
+DESCRIPTION:Program · Free (+$4\,000 stipend for high schoolers)\nDeadline
+  listed as: January 2\nhttps://dcri.org/education/dukes-star-program\nMore
+  deadlines: https://stdnt.xyz/#deadlines
+URL:https://dcri.org/education/dukes-star-program
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Duke STAR (Summer Training in Academic Research)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Duke STAR (Summer Training in Academic Research)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-rockefeller-university-summer-science-research-program-ssrp-202701
+ 02@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270102
+DTEND;VALUE=DATE:20270103
+SUMMARY:Deadline: Rockefeller University Summer Science Research Program (S
+ SRP)
+DESCRIPTION:Program · Free (No stipend\, housing not provided)\nDeadline l
+ isted as: January 2\nhttps://www.rockefeller.edu/outreach/ssrp/\nMore dead
+ lines: https://stdnt.xyz/#deadlines
+URL:https://www.rockefeller.edu/outreach/ssrp/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Rockefeller University Summer Science Research Progra
+ m (SSRP)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Rockefeller University Summer Science Research Progra
+ m (SSRP)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-graduate-women-in-science-fellowship-20270108@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270108
+DTEND;VALUE=DATE:20270109
+SUMMARY:Deadline: Graduate Women in Science Fellowship
+DESCRIPTION:Scholarship · $10\,000\nDeadline listed as: Jan 8\nhttps://www
+ .gwis.org/page/fellowship_program\nMore deadlines: https://stdnt.xyz/#dead
+ lines
+URL:https://www.gwis.org/page/fellowship_program
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Graduate Women in Science Fellowship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Graduate Women in Science Fellowship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-aanapisi-scholars-20270109@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270109
+DTEND;VALUE=DATE:20270110
+SUMMARY:Deadline: AANAPISI Scholars
+DESCRIPTION:Scholarship · $10\,000\nDeadline listed as: Jan 9\nhttps://api
+ ascholars.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://apiascholars.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: AANAPISI Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: AANAPISI Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-apia-scholars-20270109@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270109
+DTEND;VALUE=DATE:20270110
+SUMMARY:Deadline: APIA Scholars
+DESCRIPTION:Scholarship · Up to $20\,000\nDeadline listed as: Jan 9\nhttps
+ ://apiascholars.org/scholarship/apia-scholarship/\nMore deadlines: https:/
+ /stdnt.xyz/#deadlines
+URL:https://apiascholars.org/scholarship/apia-scholarship/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: APIA Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: APIA Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-jackie-robinson-foundation-20270110@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270110
+DTEND;VALUE=DATE:20270111
+SUMMARY:Deadline: Jackie Robinson Foundation
+DESCRIPTION:Scholarship · Up to $30\,000\nDeadline listed as: Jan 10\nhttp
+ s://jackierobinson.org/apply/\nMore deadlines: https://stdnt.xyz/#deadline
+ s
+URL:https://jackierobinson.org/apply/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Jackie Robinson Foundation
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Jackie Robinson Foundation
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-carson-scholars-fund-20270112@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270112
+DTEND;VALUE=DATE:20270113
+SUMMARY:Deadline: Carson Scholars Fund
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Jan 12\nhttps://car
+ sonscholars.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://carsonscholars.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Carson Scholars Fund
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Carson Scholars Fund
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-jfk-profile-in-courage-essay-20270112@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270112
+DTEND;VALUE=DATE:20270113
+SUMMARY:Deadline: JFK Profile in Courage Essay
+DESCRIPTION:Scholarship · $10\,000\nDeadline listed as: Jan 12\nhttps://ww
+ w.jfklibrary.org/learn/education/profile-in-courage-essay-contest\nMore de
+ adlines: https://stdnt.xyz/#deadlines
+URL:https://www.jfklibrary.org/learn/education/profile-in-courage-essay-con
+ test
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: JFK Profile in Courage Essay
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: JFK Profile in Courage Essay
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-hutton-junior-fisheries-biology-program-20270119@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270119
+DTEND;VALUE=DATE:20270120
+SUMMARY:Deadline: Hutton Junior Fisheries Biology Program
+DESCRIPTION:Program\nDeadline listed as: January 19\nhttps://hutton.fisheri
+ es.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://hutton.fisheries.org/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Hutton Junior Fisheries Biology Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Hutton Junior Fisheries Biology Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-bezos-scholars-program-20270125@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270125
+DTEND;VALUE=DATE:20270126
+SUMMARY:Deadline: Bezos Scholars Program
+DESCRIPTION:Scholarship · Program\nDeadline listed as: Jan 25\nhttps://www
+ .bezosscholars.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.bezosscholars.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Bezos Scholars Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Bezos Scholars Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-jhu-explore-engineering-innovation-pre-college-program-20270130@st
+ dnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270130
+DTEND;VALUE=DATE:20270131
+SUMMARY:Deadline: JHU Explore Engineering Innovation Pre-college Program
+DESCRIPTION:Program · $3\,550 (Commuter) / $5\,500 (Residential)\nDeadline
+  listed as: January 30 (early action)\nhttps://ei.jhu.edu/programs/eei/\nM
+ ore deadlines: https://stdnt.xyz/#deadlines
+URL:https://ei.jhu.edu/programs/eei/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: JHU Explore Engineering Innovation Pre-college Progra
+ m
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: JHU Explore Engineering Innovation Pre-college Progra
+ m
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-against-all-odds-scholarship-20270131@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Deadline: Against All Odds Scholarship
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Jan 31\nhttps://www
+ .google.com/search?q=Against%20All%20Odds%20scholarship\nMore deadlines: h
+ ttps://stdnt.xyz/#deadlines
+URL:https://www.google.com/search?q=Against%20All%20Odds%20scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Against All Odds Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Against All Odds Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-alexander-hamilton-scholars-20270131@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Deadline: Alexander Hamilton Scholars
+DESCRIPTION:Scholarship · Program\nDeadline listed as: Jan 31\nhttps://www
+ .hamiltonscholars.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.hamiltonscholars.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Alexander Hamilton Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Alexander Hamilton Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-roswell-park-sure-can-high-school-summer-research-experience-in-ca
+ ncer-20270131@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Deadline: Roswell Park SURE-CAN (High School Summer Research Experi
+ ence in Cancer)
+DESCRIPTION:Program · Free (no application fee)\nDeadline listed as: Janua
+ ry 31\nhttps://www.roswellpark.org/education/high-school-undergrad/high-sc
+ hool-summer-research-program\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.roswellpark.org/education/high-school-undergrad/high-school
+ -summer-research-program
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Roswell Park SURE-CAN (High School Summer Research Ex
+ perience in Cancer)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Roswell Park SURE-CAN (High School Summer Research Ex
+ perience in Cancer)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-supercollege-scholarship-20270131@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Deadline: SuperCollege Scholarship
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Jan 31\nhttps://www
+ .supercollege.com/scholarship/\nMore deadlines: https://stdnt.xyz/#deadlin
+ es
+URL:https://www.supercollege.com/scholarship/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SuperCollege Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SuperCollege Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-toshibansta-exploravision-20270131@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Deadline: Toshiba/NSTA ExploraVision
+DESCRIPTION:Scholarship · Up to $10\,000\nDeadline listed as: Jan 31\nhttp
+ s://www.exploravision.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.exploravision.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Toshiba/NSTA ExploraVision
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Toshiba/NSTA ExploraVision
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-aspfm-scholarship-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: ASPFM Scholarship
+DESCRIPTION:Scholarship · $40\,000\nDeadline listed as: Feb 1\nhttps://www
+ .google.com/search?q=ASPFM%20scholarship\nMore deadlines: https://stdnt.xy
+ z/#deadlines
+URL:https://www.google.com/search?q=ASPFM%20scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: ASPFM Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: ASPFM Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-carnegie-mellon-ai-scholars-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: Carnegie Mellon AI Scholars
+DESCRIPTION:Program\nDeadline listed as: February 1\nhttps://www.cmu.edu/pr
+ e-college/academic-programs/ai_scholars.html\nMore deadlines: https://stdn
+ t.xyz/#deadlines
+URL:https://www.cmu.edu/pre-college/academic-programs/ai_scholars.html
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Carnegie Mellon AI Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Carnegie Mellon AI Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-carnegie-mellon-cs-scholars-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: Carnegie Mellon CS Scholars
+DESCRIPTION:Program\nDeadline listed as: February 1\nhttps://www.cmu.edu/pr
+ e-college/academic-programs/computer-science-scholars.html\nMore deadlines
+ : https://stdnt.xyz/#deadlines
+URL:https://www.cmu.edu/pre-college/academic-programs/computer-science-scho
+ lars.html
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Carnegie Mellon CS Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Carnegie Mellon CS Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-carnegie-mellon-sams-summer-academy-for-math-and-science-20270201@
+ stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: Carnegie Mellon SAMS (Summer Academy for Math and Science
+ )
+DESCRIPTION:Program · Free\nDeadline listed as: February 1\nhttps://www.cm
+ u.edu/pre-college/academic-programs/sams.html\nMore deadlines: https://std
+ nt.xyz/#deadlines
+URL:https://www.cmu.edu/pre-college/academic-programs/sams.html
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Carnegie Mellon SAMS (Summer Academy for Math and Sci
+ ence)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Carnegie Mellon SAMS (Summer Academy for Math and Sci
+ ence)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-cincinnati-childrens-hospital-summer-internship-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: Cincinnati Children's Hospital Summer Internship
+DESCRIPTION:Program\nDeadline listed as: February 1\nhttps://www.cincinnati
+ childrens.org/education/research/high-school/summer-internship\nMore deadl
+ ines: https://stdnt.xyz/#deadlines
+URL:https://www.cincinnatichildrens.org/education/research/high-school/summ
+ er-internship
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Cincinnati Children's Hospital Summer Internship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Cincinnati Children's Hospital Summer Internship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-community-champ-scholarship-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: Community Champ Scholarship
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Feb 1\nhttps://www.
+ google.com/search?q=Community%20Champion%20scholarship\nMore deadlines: ht
+ tps://stdnt.xyz/#deadlines
+URL:https://www.google.com/search?q=Community%20Champion%20scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Community Champ Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Community Champ Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aid-css-profile-due-regular-decision-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:CSS Profile due (Regular Decision)
+DESCRIPTION:Financial aid · CSS Profile\nDeadline listed as: Feb 1\nhttps:
+ //cssprofile.collegeboard.org/\nMore deadlines: https://stdnt.xyz/#deadlin
+ es
+URL:https://cssprofile.collegeboard.org/
+CATEGORIES:Financial aid
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile due (Regular Decision)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile due (Regular Decision)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-davidson-fellows-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline in February: Davidson Fellows
+DESCRIPTION:Scholarship · Up to $50\,000\nDeadline listed as: Feb (exact d
+ ay varies\, check the site)\nhttps://www.davidsongifted.org/gifted-program
+ s/fellows-scholarship/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.davidsongifted.org/gifted-programs/fellows-scholarship/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: Davidson Fellows
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: Davidson Fellows
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-davidson-fellows-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline in February: Davidson Fellows
+DESCRIPTION:Competition · Solo\nDeadline listed as: February (exact day va
+ ries\, check the site)\nhttps://www.davidsongifted.org/gifted-programs/fel
+ lows-scholarship/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.davidsongifted.org/gifted-programs/fellows-scholarship/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: Davidson Fellows
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: Davidson Fellows
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-european-summer-program-on-rationality-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline in February: European Summer Program on Rationality
+DESCRIPTION:Program\nDeadline listed as: February? (exact day varies\, chec
+ k the site)\nhttps://espr.camp/\nMore deadlines: https://stdnt.xyz/#deadli
+ nes
+URL:https://espr.camp/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: European Summer Program on Rationality
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: European Summer Program on Rationality
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-hightech-bound-internship-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: HighTech Bound Internship
+DESCRIPTION:Program\nDeadline listed as: February 1\nhttps://www.iol.unh.ed
+ u/stem/hightech-bound\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.iol.unh.edu/stem/hightech-bound
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: HighTech Bound Internship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: HighTech Bound Internship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-hispanic-scholarship-fund-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline in February: Hispanic Scholarship Fund
+DESCRIPTION:Scholarship · Up to $5\,000\nDeadline listed as: Feb (exact da
+ y varies\, check the site)\nhttps://www.hsf.net/scholarship\nMore deadline
+ s: https://stdnt.xyz/#deadlines
+URL:https://www.hsf.net/scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: Hispanic Scholarship Fund
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: Hispanic Scholarship Fund
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-leda-scholars-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline in February: LEDA Scholars
+DESCRIPTION:Program · Free (Fully funded including travel)\nDeadline liste
+ d as: Part 1: December 10 | Part 2: Late February (exact day varies\, chec
+ k the site)\nhttps://ledascholars.org/our-program/leda-scholars-program/re
+ cruitment-admissions/apply/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://ledascholars.org/our-program/leda-scholars-program/recruitment-
+ admissions/apply/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: LEDA Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: LEDA Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-mites-semester-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: MITES Semester
+DESCRIPTION:Program\nDeadline listed as: February 1\nhttps://mites.mit.edu/
+ discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mi
+ tes-semester/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-applic
+ ation-mites-summer-and-mites-semester/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: MITES Semester
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: MITES Semester
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-mites-summer-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: MITES Summer
+DESCRIPTION:Program · Free (Fully Funded)\nDeadline listed as: February 1\
+ nhttps://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-applicat
+ ion-mites-summer-and-mites-semester/\nMore deadlines: https://stdnt.xyz/#d
+ eadlines
+URL:https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-applic
+ ation-mites-summer-and-mites-semester/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: MITES Summer
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: MITES Summer
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-monell-center-apprenticeship-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline in February: Monell Center Apprenticeship
+DESCRIPTION:Program\nDeadline listed as: February? (exact day varies\, chec
+ k the site)\nhttps://monell.org/science-apprenticeship-program/\nMore dead
+ lines: https://stdnt.xyz/#deadlines
+URL:https://monell.org/science-apprenticeship-program/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: Monell Center Apprenticeship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: Monell Center Apprenticeship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-navin-narayan-college-scholarship-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline in February: Navin Narayan College Scholarship
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Feb (exact day vari
+ es\, check the site)\nhttps://www.google.com/search?q=Navin%20Narayan%20co
+ llege%20Red%20Cross%20scholarship\nMore deadlines: https://stdnt.xyz/#dead
+ lines
+URL:https://www.google.com/search?q=Navin%20Narayan%20college%20Red%20Cross
+ %20scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: Navin Narayan College Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: Navin Narayan College Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-nih-nhlbi-summer-internship-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: NIH NHLBI Summer Internship
+DESCRIPTION:Program\nDeadline listed as: February 1\nhttps://www.nhlbi.nih.
+ gov/grants-and-training/training-and-career-development/summer-internship-
+ program\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.nhlbi.nih.gov/grants-and-training/training-and-career-devel
+ opment/summer-internship-program
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NIH NHLBI Summer Internship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NIH NHLBI Summer Internship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-nist-ship-summer-high-school-internship-program-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline in February: NIST SHIP (Summer High School Internship Prog
+ ram)
+DESCRIPTION:Program · Free (volunteer)\nDeadline listed as: Feb (exact day
+  varies\, check the site)\nhttps://www.nist.gov/ship\nMore deadlines: http
+ s://stdnt.xyz/#deadlines
+URL:https://www.nist.gov/ship
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: NIST SHIP (Summer High School Internship 
+ Program)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: NIST SHIP (Summer High School Internship 
+ Program)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-pathways-to-quantum-summer-immersion-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: Pathways to Quantum Summer Immersion
+DESCRIPTION:Program\nDeadline listed as: February 1\nhttps://sites.google.c
+ om/view/building-the-quantum-workforce/pathways-to-quantum-immersion-progr
+ am?authuser=0\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://sites.google.com/view/building-the-quantum-workforce/pathways-t
+ o-quantum-immersion-program?authuser=0
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Pathways to Quantum Summer Immersion
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Pathways to Quantum Summer Immersion
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-reap-research-engineering-apprenticeship-program-20270201@stdnt.xy
+ z
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline in February: REAP (Research & Engineering Apprenticeship P
+ rogram)
+DESCRIPTION:Program · Free (+ stipend)\nDeadline listed as: Feb (exact day
+  varies\, check the site)\nhttps://www.usaeop.com/program/reap/\nMore dead
+ lines: https://stdnt.xyz/#deadlines
+URL:https://www.usaeop.com/program/reap/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: REAP (Research & Engineering Apprenticesh
+ ip Program)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: REAP (Research & Engineering Apprenticesh
+ ip Program)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-simons-summer-research-program-stony-brook-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: Simons Summer Research Program (Stony Brook)
+DESCRIPTION:Program · Free (+$1\,000 stipend)\nDeadline listed as: Februar
+ y 1\nhttps://www.stonybrook.edu/commcms/simons/about/about.php\nMore deadl
+ ines: https://stdnt.xyz/#deadlines
+URL:https://www.stonybrook.edu/commcms/simons/about/about.php
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Simons Summer Research Program (Stony Brook)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Simons Summer Research Program (Stony Brook)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-stanford-pediatrics-internship-program-pips-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: Stanford Pediatrics Internship Program (PIPS)
+DESCRIPTION:Program · Free (+$3\,000 stipend)\nDeadline listed as: Februar
+ y 1\nhttps://med.stanford.edu/pediatrics/education/pediatrics-internship-p
+ rogram.html\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://med.stanford.edu/pediatrics/education/pediatrics-internship-pro
+ gram.html
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Stanford Pediatrics Internship Program (PIPS)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Stanford Pediatrics Internship Program (PIPS)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-tgen-helios-scholars-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: TGen Helios Scholars
+DESCRIPTION:Program\nDeadline listed as: February 1\nhttps://www.tgen.org/e
+ ducation/helios-scholars-at-tgen/\nMore deadlines: https://stdnt.xyz/#dead
+ lines
+URL:https://www.tgen.org/education/helios-scholars-at-tgen/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: TGen Helios Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: TGen Helios Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-thedreamus-national-scholarship-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline in February: TheDream.US National Scholarship
+DESCRIPTION:Scholarship · Up to $33\,000\nDeadline listed as: Feb (exact d
+ ay varies\, check the site)\nhttps://www.thedream.us/scholarships/national
+ -scholarship/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.thedream.us/scholarships/national-scholarship/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: TheDream.US National Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: TheDream.US National Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-ucolorado-child-health-research-internship-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: UColorado Child Health Research Internship
+DESCRIPTION:Program\nDeadline listed as: February 1\nhttps://www.childrensc
+ olorado.org/research-innovation/training-opportunities/\nMore deadlines: h
+ ttps://stdnt.xyz/#deadlines
+URL:https://www.childrenscolorado.org/research-innovation/training-opportun
+ ities/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UColorado Child Health Research Internship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UColorado Child Health Research Internship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-unc-ishtar-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: UNC ISHTaR
+DESCRIPTION:Program · Free\nDeadline listed as: February 1\nhttps://www.me
+ d.unc.edu/emergmed/education/ishtar/\nMore deadlines: https://stdnt.xyz/#d
+ eadlines
+URL:https://www.med.unc.edu/emergmed/education/ishtar/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UNC ISHTaR
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UNC ISHTaR
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-vahlen-stem-academy-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: Vahlen STEM Academy
+DESCRIPTION:Program\nDeadline listed as: February 1\nhttps://science.gmu.ed
+ u/academics/special-study-options/k-12-stem-programs/valhen-stem-academy\n
+ More deadlines: https://stdnt.xyz/#deadlines
+URL:https://science.gmu.edu/academics/special-study-options/k-12-stem-progr
+ ams/valhen-stem-academy
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Vahlen STEM Academy
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Vahlen STEM Academy
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-wavehill-forest-project-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline: WaveHill Forest Project
+DESCRIPTION:Program\nDeadline listed as: February 1\nhttps://www.wavehill.o
+ rg/education/youth-internships/forest-project\nMore deadlines: https://std
+ nt.xyz/#deadlines
+URL:https://www.wavehill.org/education/youth-internships/forest-project
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: WaveHill Forest Project
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: WaveHill Forest Project
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-mcdonalds-hacer-scholarship-20270205@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270205
+DTEND;VALUE=DATE:20270206
+SUMMARY:Deadline: McDonald's HACER Scholarship
+DESCRIPTION:Scholarship · Up to $100\,000\nDeadline listed as: Feb 5\nhttp
+ s://www.mcdonalds.com/us/en-us/community/hacer.html\nMore deadlines: https
+ ://stdnt.xyz/#deadlines
+URL:https://www.mcdonalds.com/us/en-us/community/hacer.html
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: McDonald's HACER Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: McDonald's HACER Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-harvard-cure-summer-20270206@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270206
+DTEND;VALUE=DATE:20270207
+SUMMARY:Deadline: Harvard CURE Summer
+DESCRIPTION:Program\nDeadline listed as: February 6\nhttps://www.dfhcc.harv
+ ard.edu/research/cancer-disparities/students/cure-overview\nMore deadlines
+ : https://stdnt.xyz/#deadlines
+URL:https://www.dfhcc.harvard.edu/research/cancer-disparities/students/cure
+ -overview
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Harvard CURE Summer
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Harvard CURE Summer
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-memorial-sloan-kettering-hopp-summer-student-program-20270206@stdn
+ t.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270206
+DTEND;VALUE=DATE:20270207
+SUMMARY:Deadline: Memorial Sloan Kettering (HOPP) Summer Student Program
+DESCRIPTION:Program · Free (+$1\,250 stipend)\nDeadline listed as: Februar
+ y 6\nhttps://www.mskcc.org/education-training/summer-student\nMore deadlin
+ es: https://stdnt.xyz/#deadlines
+URL:https://www.mskcc.org/education-training/summer-student
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Memorial Sloan Kettering (HOPP) Summer Student Progra
+ m
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Memorial Sloan Kettering (HOPP) Summer Student Progra
+ m
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-magee-womens-research-institute-internship-20270207@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270207
+DTEND;VALUE=DATE:20270208
+SUMMARY:Deadline: Magee-Womens Research Institute Internship
+DESCRIPTION:Program\nDeadline listed as: February 7\nhttps://mageewomens.or
+ g/for-researchers/education/high-school-summer-internship-program\nMore de
+ adlines: https://stdnt.xyz/#deadlines
+URL:https://mageewomens.org/for-researchers/education/high-school-summer-in
+ ternship-program
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Magee-Womens Research Institute Internship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Magee-Womens Research Institute Internship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-ucsf-cure-20270208@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270208
+DTEND;VALUE=DATE:20270209
+SUMMARY:Deadline: UCSF CURE
+DESCRIPTION:Program\nDeadline listed as: February 8\nhttps://cseo.ucsf.edu/
+ cure-internship\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://cseo.ucsf.edu/cure-internship
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UCSF CURE
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UCSF CURE
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-neuroscience-high-school-scholars-20270209@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270209
+DTEND;VALUE=DATE:20270210
+SUMMARY:Deadline: Neuroscience High School Scholars
+DESCRIPTION:Program\nDeadline listed as: February 9\nhttps://eastonad.ucla.
+ edu/about/neuroscience-high-school-scholars-program\nMore deadlines: https
+ ://stdnt.xyz/#deadlines
+URL:https://eastonad.ucla.edu/about/neuroscience-high-school-scholars-progr
+ am
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Neuroscience High School Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Neuroscience High School Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-ucsf-summer-student-research-program-20270214@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270214
+DTEND;VALUE=DATE:20270215
+SUMMARY:Deadline: UCSF Summer Student Research Program
+DESCRIPTION:Program\nDeadline listed as: February 14\nhttps://summerstudent
+ s.ucsf.edu/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://summerstudents.ucsf.edu/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UCSF Summer Student Research Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UCSF Summer Student Research Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-george-mason-assip-aspiring-scientists-summer-internship-program-2
+ 0270215@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270215
+DTEND;VALUE=DATE:20270216
+SUMMARY:Deadline: George Mason ASSIP (Aspiring Scientists Summer Internship
+  Program)
+DESCRIPTION:Program · $1\,299 tuition for 3 college credits + $25 applicat
+ ion fee (both waivable with need)\nDeadline listed as: February 15\nhttps:
+ //science.gmu.edu/assip\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://science.gmu.edu/assip
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: George Mason ASSIP (Aspiring Scientists Summer Intern
+ ship Program)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: George Mason ASSIP (Aspiring Scientists Summer Intern
+ ship Program)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-harris-internship-20270215@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270215
+DTEND;VALUE=DATE:20270216
+SUMMARY:Deadline: Harris Internship
+DESCRIPTION:Program\nDeadline listed as: February 15\nhttps://med.stanford.
+ edu/neurosurgery/education/JClub/HarrisInternship.html\nMore deadlines: ht
+ tps://stdnt.xyz/#deadlines
+URL:https://med.stanford.edu/neurosurgery/education/JClub/HarrisInternship.
+ html
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Harris Internship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Harris Internship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aid-priority-fafsa-state-aid-many-states-20270215@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270215
+DTEND;VALUE=DATE:20270216
+SUMMARY:Priority FAFSA / state aid (many states)
+DESCRIPTION:Financial aid · State aid\nDeadline listed as: Feb 15\nhttps:/
+ /studentaid.gov/apply-for-aid/fafsa/fafsa-deadlines\nMore deadlines: https
+ ://stdnt.xyz/#deadlines
+URL:https://studentaid.gov/apply-for-aid/fafsa/fafsa-deadlines
+CATEGORIES:Financial aid
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Priority FAFSA / state aid (many states)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Priority FAFSA / state aid (many states)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-vegetarian-resource-group-20270220@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270220
+DTEND;VALUE=DATE:20270221
+SUMMARY:Deadline: Vegetarian Resource Group
+DESCRIPTION:Scholarship · Up to $10\,000\nDeadline listed as: Feb 20\nhttp
+ s://www.vrg.org/student/scholar.htm\nMore deadlines: https://stdnt.xyz/#de
+ adlines
+URL:https://www.vrg.org/student/scholar.htm
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Vegetarian Resource Group
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Vegetarian Resource Group
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-nyu-arise-20270221@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270221
+DTEND;VALUE=DATE:20270222
+SUMMARY:Deadline: NYU ARISE
+DESCRIPTION:Program\nDeadline listed as: February 21\nhttps://k12stem.engin
+ eering.nyu.edu/programs/arise\nMore deadlines: https://stdnt.xyz/#deadline
+ s
+URL:https://k12stem.engineering.nyu.edu/programs/arise
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NYU ARISE
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NYU ARISE
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-stanford-institutes-of-medicine-summer-research-program-simr-20270
+ 221@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270221
+DTEND;VALUE=DATE:20270222
+SUMMARY:Deadline: Stanford Institutes of Medicine Summer Research Program (
+ SIMR)
+DESCRIPTION:Program · Free (+$500 to $1\,500 stipend based on need)\nDeadl
+ ine listed as: February 21\nhttps://simr.stanford.edu/\nMore deadlines: ht
+ tps://stdnt.xyz/#deadlines
+URL:https://simr.stanford.edu/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Stanford Institutes of Medicine Summer Research Progr
+ am (SIMR)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Stanford Institutes of Medicine Summer Research Progr
+ am (SIMR)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-nasa-sees-apply-for-scholarship-20270222@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270222
+DTEND;VALUE=DATE:20270223
+SUMMARY:Deadline: NASA SEES (apply for scholarship)
+DESCRIPTION:Program\nDeadline listed as: February 22\nhttps://csr.utexas.ed
+ u/education-outreach/high-school-internships/sees/\nMore deadlines: https:
+ //stdnt.xyz/#deadlines
+URL:https://csr.utexas.edu/education-outreach/high-school-internships/sees/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NASA SEES (apply for scholarship)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NASA SEES (apply for scholarship)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-pomona-college-academy-for-youth-success-20270223@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270223
+DTEND;VALUE=DATE:20270224
+SUMMARY:Deadline: Pomona College Academy for Youth Success
+DESCRIPTION:Program\nDeadline listed as: February 23\nhttps://www.pomona.ed
+ u/administration/draper-center/pays\nMore deadlines: https://stdnt.xyz/#de
+ adlines
+URL:https://www.pomona.edu/administration/draper-center/pays
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Pomona College Academy for Youth Success
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Pomona College Academy for Youth Success
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-cancer-pathways-teen-writing-contest-20270227@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270227
+DTEND;VALUE=DATE:20270228
+SUMMARY:Deadline: Cancer Pathways Teen Writing Contest
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Feb 27\nhttps://can
+ cerpathways.org/programs/teen-writing-contest/\nMore deadlines: https://st
+ dnt.xyz/#deadlines
+URL:https://cancerpathways.org/programs/teen-writing-contest/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Cancer Pathways Teen Writing Contest
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Cancer Pathways Teen Writing Contest
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-promys-20270227@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270227
+DTEND;VALUE=DATE:20270228
+SUMMARY:Deadline: PROMYS
+DESCRIPTION:Program · $6\,000 (Free for families making under $80\,000)\nD
+ eadline listed as: February 27\nhttps://promys.org/programs/\nMore deadlin
+ es: https://stdnt.xyz/#deadlines
+URL:https://promys.org/programs/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: PROMYS
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: PROMYS
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-rochester-summer-research-program-20270227@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270227
+DTEND;VALUE=DATE:20270228
+SUMMARY:Deadline: Rochester Summer Research Program
+DESCRIPTION:Program\nDeadline listed as: February 27\nhttps://www.lle.roche
+ ster.edu/education/summer-research-program-for-high-school-juniors/\nMore 
+ deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.lle.rochester.edu/education/summer-research-program-for-hig
+ h-school-juniors/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Rochester Summer Research Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Rochester Summer Research Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-choc-mi4-20270228@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270228
+DTEND;VALUE=DATE:20270301
+SUMMARY:Deadline: CHOC Mi4
+DESCRIPTION:Program\nDeadline listed as: February 28\nhttps://choc.org/medi
+ cal-intelligence-and-innovation-institute/mi4-summer-internship-program/\n
+ More deadlines: https://stdnt.xyz/#deadlines
+URL:https://choc.org/medical-intelligence-and-innovation-institute/mi4-summ
+ er-internship-program/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: CHOC Mi4
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: CHOC Mi4
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-idaho-national-lab-internship-20270228@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270228
+DTEND;VALUE=DATE:20270301
+SUMMARY:Deadline: Idaho National Lab Internship
+DESCRIPTION:Program\nDeadline listed as: February 28\nhttps://inl.gov/inl-i
+ nitiatives/education/high-school-internships/\nMore deadlines: https://std
+ nt.xyz/#deadlines
+URL:https://inl.gov/inl-initiatives/education/high-school-internships/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Idaho National Lab Internship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Idaho National Lab Internship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-johns-hopkins-ispeed-20270228@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270228
+DTEND;VALUE=DATE:20270301
+SUMMARY:Deadline: Johns Hopkins ISPEED
+DESCRIPTION:Program\nDeadline listed as: February 28\nhttps://www.bme.jhu.e
+ du/academics/pre-college/apply-to-ispeed-bme/\nMore deadlines: https://std
+ nt.xyz/#deadlines
+URL:https://www.bme.jhu.edu/academics/pre-college/apply-to-ispeed-bme/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Johns Hopkins ISPEED
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Johns Hopkins ISPEED
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-summet-at-colorado-mines-20270228@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270228
+DTEND;VALUE=DATE:20270301
+SUMMARY:Deadline: SUMMET at Colorado MINES
+DESCRIPTION:Program\nDeadline listed as: February 28\nhttps://www.mines.edu
+ /undergraduate-admissions/summer-mines-engineering-and-training-summet/\nM
+ ore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.mines.edu/undergraduate-admissions/summer-mines-engineering
+ -and-training-summet/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SUMMET at Colorado MINES
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SUMMET at Colorado MINES
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-ai4all-20270301@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline: AI4All
+DESCRIPTION:Program\nDeadline listed as: March 1\nhttps://ai4all.ucsf.edu/a
+ pply.html\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://ai4all.ucsf.edu/apply.html
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: AI4All
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: AI4All
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-careers-in-science-intern-program-20270301@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline: Careers in Science Intern Program
+DESCRIPTION:Program\nDeadline listed as: March 1\nhttps://www.calacademy.or
+ g/careers-in-science-cis-intern-program\nMore deadlines: https://stdnt.xyz
+ /#deadlines
+URL:https://www.calacademy.org/careers-in-science-cis-intern-program
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Careers in Science Intern Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Careers in Science Intern Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-dreamus-national-scholarship-20270301@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline: Dream.US National Scholarship
+DESCRIPTION:Scholarship · Up to $33\,000\nDeadline listed as: Feb 29\nhttp
+ s://www.thedream.us/scholarships/national-scholarship/\nMore deadlines: ht
+ tps://stdnt.xyz/#deadlines
+URL:https://www.thedream.us/scholarships/national-scholarship/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Dream.US National Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Dream.US National Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-engebretson-foundation-scholarship-20270301@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline: Engebretson Foundation Scholarship
+DESCRIPTION:Scholarship · $20\,000\nDeadline listed as: Mar 1\nhttps://www
+ .google.com/search?q=Engebretson%20Foundation%20scholarship\nMore deadline
+ s: https://stdnt.xyz/#deadlines
+URL:https://www.google.com/search?q=Engebretson%20Foundation%20scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Engebretson Foundation Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Engebretson Foundation Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-explorations-in-neuroscience-research-internship-20270301@stdnt.xy
+ z
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline: Explorations in Neuroscience Research Internship
+DESCRIPTION:Program\nDeadline listed as: March 1\nhttps://medicine.osu.edu/
+ departments/neuroscience/outreach-and-events/internship\nMore deadlines: h
+ ttps://stdnt.xyz/#deadlines
+URL:https://medicine.osu.edu/departments/neuroscience/outreach-and-events/i
+ nternship
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Explorations in Neuroscience Research Internship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Explorations in Neuroscience Research Internship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-gallery-collection-greeting-card-20270301@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline: Gallery Collection Greeting Card
+DESCRIPTION:Scholarship · $10\,000\nDeadline listed as: Mar 1\nhttps://www
+ .gallerycollection.com/greeting-cards-scholarship.htm\nMore deadlines: htt
+ ps://stdnt.xyz/#deadlines
+URL:https://www.gallerycollection.com/greeting-cards-scholarship.htm
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Gallery Collection Greeting Card
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Gallery Collection Greeting Card
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-hagan-scholarship-20270301@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline: Hagan Scholarship
+DESCRIPTION:Scholarship · $60\,000\nDeadline listed as: Mar 1\nhttps://hag
+ anscholarships.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://haganscholarships.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Hagan Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Hagan Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-heithoff-brody-high-school-scholars-program-20270301@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline: Heithoff-Brody High School Scholars Program
+DESCRIPTION:Program\nDeadline listed as: March 1\nhttps://www.salk.edu/abou
+ t/education-outreach/programs/high-school-scholars/\nMore deadlines: https
+ ://stdnt.xyz/#deadlines
+URL:https://www.salk.edu/about/education-outreach/programs/high-school-scho
+ lars/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Heithoff-Brody High School Scholars Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Heithoff-Brody High School Scholars Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-kaiser-permanente-summer-youth-employment-program-launch-20270301@
+ stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline: Kaiser Permanente Summer Youth Employment Program (LAUNCH
+ )
+DESCRIPTION:Program\nDeadline listed as: March 1\nhttps://community.kp.org/
+ about/program/summer-youth-employment-program\nMore deadlines: https://std
+ nt.xyz/#deadlines
+URL:https://community.kp.org/about/program/summer-youth-employment-program
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Kaiser Permanente Summer Youth Employment Program (LA
+ UNCH)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Kaiser Permanente Summer Youth Employment Program (LA
+ UNCH)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-rockefeller-summer-neuroscience-program-20270301@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline: Rockefeller Summer Neuroscience Program
+DESCRIPTION:Program\nDeadline listed as: March 1\nhttps://www.rockefeller.e
+ du/outreach/snp/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.rockefeller.edu/outreach/snp/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Rockefeller Summer Neuroscience Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Rockefeller Summer Neuroscience Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-swe-scholarships-20270301@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline in March: SWE Scholarships
+DESCRIPTION:Scholarship · Up to $20\,000\nDeadline listed as: Jan / Mar (e
+ xact day varies\, check the site)\nhttps://swe.org/scholarships/\nMore dea
+ dlines: https://stdnt.xyz/#deadlines
+URL:https://swe.org/scholarships/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in March: SWE Scholarships
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in March: SWE Scholarships
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-ucsd-rimse-20270301@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline: UCSD RIMSE
+DESCRIPTION:Program\nDeadline listed as: March 1\nhttps://mrsec.ucsd.edu/ri
+ mse/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://mrsec.ucsd.edu/rimse/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UCSD RIMSE
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UCSD RIMSE
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-ucsf-pitch-20270301@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline: UCSF PITCH
+DESCRIPTION:Program\nDeadline listed as: March 1\nhttps://cseo.ucsf.edu/PIT
+ CH\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://cseo.ucsf.edu/PITCH
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UCSF PITCH
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UCSF PITCH
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-ashg-dna-day-essay-contest-20270304@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270304
+DTEND;VALUE=DATE:20270305
+SUMMARY:Deadline: ASHG DNA Day Essay Contest
+DESCRIPTION:Scholarship · Up to $1\,000\nDeadline listed as: Mar 4\nhttps:
+ //www.ashg.org/dna-day/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.ashg.org/dna-day/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: ASHG DNA Day Essay Contest
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: ASHG DNA Day Essay Contest
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-apprenticeships-in-science-engineering-20270306@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270306
+DTEND;VALUE=DATE:20270307
+SUMMARY:Deadline: Apprenticeships in Science & Engineering
+DESCRIPTION:Program\nDeadline listed as: March 6\nhttps://www.saturdayacade
+ my.org/ase\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.saturdayacademy.org/ase
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Apprenticeships in Science & Engineering
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Apprenticeships in Science & Engineering
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-seattle-childrens-research-training-program-20270308@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270308
+DTEND;VALUE=DATE:20270309
+SUMMARY:Deadline: Seattle Children’s Research Training Program
+DESCRIPTION:Program · Free (+$2\,000 stipend)\nDeadline listed as: March 8
+ \nhttps://www.seattlechildrens.org/research/centers-programs/science-educa
+ tion-department/high-school-training-programs/\nMore deadlines: https://st
+ dnt.xyz/#deadlines
+URL:https://www.seattlechildrens.org/research/centers-programs/science-educ
+ ation-department/high-school-training-programs/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Seattle Children’s Research Training Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Seattle Children’s Research Training Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-courageous-persuaders-20270311@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270311
+DTEND;VALUE=DATE:20270312
+SUMMARY:Deadline: Courageous Persuaders
+DESCRIPTION:Scholarship · Up to $3\,000\nDeadline listed as: Mar 11\nhttps
+ ://www.courageouspersuaders.com/\nMore deadlines: https://stdnt.xyz/#deadl
+ ines
+URL:https://www.courageouspersuaders.com/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Courageous Persuaders
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Courageous Persuaders
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-fontana-transport-inc-scholars-program-20270313@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270313
+DTEND;VALUE=DATE:20270314
+SUMMARY:Deadline: Fontana Transport Inc. Scholars Program
+DESCRIPTION:Scholarship · $5\,000\nDeadline listed as: Mar 13\nhttps://www
+ .fontanatransportincscholarsprogram.com/\nMore deadlines: https://stdnt.xy
+ z/#deadlines
+URL:https://www.fontanatransportincscholarsprogram.com/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Fontana Transport Inc. Scholars Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Fontana Transport Inc. Scholars Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-fred-hutch-summer-high-school-internship-20270313@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270313
+DTEND;VALUE=DATE:20270314
+SUMMARY:Deadline: Fred Hutch Summer High School Internship
+DESCRIPTION:Program\nDeadline listed as: March 13\nhttps://www.fredhutch.or
+ g/en/education-training/high-school-students/summer-high-school-internship
+ -program.html\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.fredhutch.org/en/education-training/high-school-students/su
+ mmer-high-school-internship-program.html
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Fred Hutch Summer High School Internship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Fred Hutch Summer High School Internship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-beyond-the-boroughs-20270315@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270315
+DTEND;VALUE=DATE:20270316
+SUMMARY:Deadline: Beyond the Boroughs
+DESCRIPTION:Scholarship · $20\,000\nDeadline listed as: Mar 15\nhttps://ww
+ w.beyondtheboroughs.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.beyondtheboroughs.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Beyond the Boroughs
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Beyond the Boroughs
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-frame-my-future-scholarship-20270315@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270315
+DTEND;VALUE=DATE:20270316
+SUMMARY:Deadline: Frame My Future Scholarship
+DESCRIPTION:Scholarship · $2\,000\nDeadline listed as: Mar 15\nhttps://www
+ .framemyfuture.com/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.framemyfuture.com/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Frame My Future Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Frame My Future Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-horatio-alger-scholarship-20270315@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270315
+DTEND;VALUE=DATE:20270316
+SUMMARY:Deadline: Horatio Alger Scholarship
+DESCRIPTION:Scholarship · Up to $25\,000\nDeadline listed as: Mar 15\nhttp
+ s://scholars.horatioalger.org/\nMore deadlines: https://stdnt.xyz/#deadlin
+ es
+URL:https://scholars.horatioalger.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Horatio Alger Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Horatio Alger Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-linc-summer-program-20270315@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270315
+DTEND;VALUE=DATE:20270316
+SUMMARY:Deadline: LINC Summer Program
+DESCRIPTION:Program\nDeadline listed as: March 15\nhttps://www.parksconserv
+ ancy.org/programs/linc-summer-high-school-program\nMore deadlines: https:/
+ /stdnt.xyz/#deadlines
+URL:https://www.parksconservancy.org/programs/linc-summer-high-school-progr
+ am
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: LINC Summer Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: LINC Summer Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-nasa-genelab-20270315@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270315
+DTEND;VALUE=DATE:20270316
+SUMMARY:Deadline: NASA Genelab
+DESCRIPTION:Program\nDeadline listed as: March 15\nhttps://www.nasa.gov/ame
+ s/genelab-for-high-schools/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.nasa.gov/ames/genelab-for-high-schools/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NASA Genelab
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NASA Genelab
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-princeton-laboratory-learning-program-20270315@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270315
+DTEND;VALUE=DATE:20270316
+SUMMARY:Deadline: Princeton Laboratory Learning Program
+DESCRIPTION:Program · Free (Housing/transport not provided)\nDeadline list
+ ed as: March 15\nhttps://scienceoutreach.princeton.edu/laboratory-learning
+ -program\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://scienceoutreach.princeton.edu/laboratory-learning-program
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Princeton Laboratory Learning Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Princeton Laboratory Learning Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-jbei-iclem-20270320@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270320
+DTEND;VALUE=DATE:20270321
+SUMMARY:Deadline: JBEI iCLEM
+DESCRIPTION:Program\nDeadline listed as: March 20\nhttps://www.jbei.org/edu
+ cation/research-experiences/iclem-program/\nMore deadlines: https://stdnt.
+ xyz/#deadlines
+URL:https://www.jbei.org/education/research-experiences/iclem-program/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: JBEI iCLEM
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: JBEI iCLEM
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-wistar-institute-biomedical-research-20270320@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270320
+DTEND;VALUE=DATE:20270321
+SUMMARY:Deadline: Wistar Institute Biomedical Research
+DESCRIPTION:Program\nDeadline listed as: March 20\nhttps://www.wistar.org/e
+ ducation-training/high-school-program-biomedical-research/\nMore deadlines
+ : https://stdnt.xyz/#deadlines
+URL:https://www.wistar.org/education-training/high-school-program-biomedica
+ l-research/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Wistar Institute Biomedical Research
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Wistar Institute Biomedical Research
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-stossel-in-the-classroom-20270322@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270322
+DTEND;VALUE=DATE:20270323
+SUMMARY:Deadline: Stossel in the Classroom
+DESCRIPTION:Scholarship · Up to $2\,500\nDeadline listed as: Mar 22\nhttps
+ ://stosselintheclassroom.org/contest/\nMore deadlines: https://stdnt.xyz/#
+ deadlines
+URL:https://stosselintheclassroom.org/contest/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Stossel in the Classroom
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Stossel in the Classroom
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-stanford-medical-youth-science-program-smysp-20270323@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270323
+DTEND;VALUE=DATE:20270324
+SUMMARY:Deadline: Stanford Medical Youth Science Program (SMYSP)
+DESCRIPTION:Program · Free\nDeadline listed as: March 23\nhttps://smysp.sp
+ cs.stanford.edu/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://smysp.spcs.stanford.edu/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Stanford Medical Youth Science Program (SMYSP)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Stanford Medical Youth Science Program (SMYSP)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-beinecke-scholarship-20270329@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270329
+DTEND;VALUE=DATE:20270330
+SUMMARY:Deadline: Beinecke Scholarship
+DESCRIPTION:Scholarship · $35\,000\nDeadline listed as: Mar 29\nhttps://be
+ ineckescholarship.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://beineckescholarship.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Beinecke Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Beinecke Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-national-youth-science-camp-20270330@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270330
+DTEND;VALUE=DATE:20270331
+SUMMARY:Deadline: National Youth Science Camp
+DESCRIPTION:Program · Free (Fully Funded)\nDeadline listed as: March 30\nh
+ ttps://www.nysacademy.org/programs/nyscamp/\nMore deadlines: https://stdnt
+ .xyz/#deadlines
+URL:https://www.nysacademy.org/programs/nyscamp/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: National Youth Science Camp
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: National Youth Science Camp
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-cip-scholarship-20270331@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Deadline: CiP Scholarship
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Mar 31\nhttps://www
+ .google.com/search?q=CiP%20scholarship%20why%20college%20scholarship\nMore
+  deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.google.com/search?q=CiP%20scholarship%20why%20college%20sch
+ olarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: CiP Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: CiP Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-grhs-heritage-essay-20270331@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Deadline: GRHS Heritage Essay
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Mar 31\nhttps://www
+ .grhs.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.grhs.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: GRHS Heritage Essay
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: GRHS Heritage Essay
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-lindsey-vonn-foundation-scholarship-20270331@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Deadline: Lindsey Vonn Foundation Scholarship
+DESCRIPTION:Scholarship · $5\,000\nDeadline listed as: Mar 31\nhttps://www
+ .lindseyvonnfoundation.org/scholarships\nMore deadlines: https://stdnt.xyz
+ /#deadlines
+URL:https://www.lindseyvonnfoundation.org/scholarships
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Lindsey Vonn Foundation Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Lindsey Vonn Foundation Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-lombardi-cancer-research-volunteer-program-20270331@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Deadline: Lombardi Cancer Research Volunteer Program
+DESCRIPTION:Program\nDeadline listed as: March 31\nhttps://lombardi.georget
+ own.edu/education/summer_volunteer/summer_volunteer_application/\nMore dea
+ dlines: https://stdnt.xyz/#deadlines
+URL:https://lombardi.georgetown.edu/education/summer_volunteer/summer_volun
+ teer_application/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Lombardi Cancer Research Volunteer Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Lombardi Cancer Research Volunteer Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-mit-beaver-works-summer-institute-bwsi-20270331@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Deadline: MIT Beaver Works Summer Institute (BWSI)
+DESCRIPTION:Program · Free for family income under $200k ($3\,000 otherwis
+ e\; housing not included)\nDeadline listed as: March 31\nhttps://bwsi.mit.
+ edu/apply-now/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://bwsi.mit.edu/apply-now/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: MIT Beaver Works Summer Institute (BWSI)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: MIT Beaver Works Summer Institute (BWSI)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-santa-clara-ses-20270331@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Deadline: Santa Clara SES
+DESCRIPTION:Program\nDeadline listed as: March 31\nhttps://www.scu.edu/engi
+ neering/beyond-the-classroom/outreach/summer-engineering-seminar-ses/\nMor
+ e deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.scu.edu/engineering/beyond-the-classroom/outreach/summer-en
+ gineering-seminar-ses/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Santa Clara SES
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Santa Clara SES
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-sbo-essay-scholarship-20270331@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Deadline: SBO Essay Scholarship
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Mar 31\nhttps://www
+ .google.com/search?q=School%20Band%20and%20Orchestra%20essay%20scholarship
+ \nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.google.com/search?q=School%20Band%20and%20Orchestra%20essay
+ %20scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SBO Essay Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SBO Essay Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-scripps-research-translational-institute-20270331@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Deadline: Scripps Research Translational Institute
+DESCRIPTION:Program\nDeadline listed as: March 31\nhttps://www.scripps.edu/
+ science/translational-institute/education-training/student-research-intern
+ ship-program/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.scripps.edu/science/translational-institute/education-train
+ ing/student-research-internship-program/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Scripps Research Translational Institute
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Scripps Research Translational Institute
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-uiuc-grainger-engineering-young-scholars-genyus-20270331@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Deadline: UIUC Grainger Engineering Young Scholars (GEnYuS)
+DESCRIPTION:Program\nDeadline listed as: March 31\nhttps://wyse.grainger.il
+ linois.edu/summer-programs/young-scholars-summer-research\nMore deadlines:
+  https://stdnt.xyz/#deadlines
+URL:https://wyse.grainger.illinois.edu/summer-programs/young-scholars-summe
+ r-research
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UIUC Grainger Engineering Young Scholars (GEnYuS)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UIUC Grainger Engineering Young Scholars (GEnYuS)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-uiuc-spheres-20270331@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Deadline: UIUC SpHERES
+DESCRIPTION:Program\nDeadline listed as: March 31\nhttps://wyse.grainger.il
+ linois.edu/summer-programs/young-scholars-summer-research\nMore deadlines:
+  https://stdnt.xyz/#deadlines
+URL:https://wyse.grainger.illinois.edu/summer-programs/young-scholars-summe
+ r-research
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UIUC SpHERES
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UIUC SpHERES
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-umd-esteemser-quest-summer-20270331@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Deadline: UMD ESTEEM/SER-Quest Summer
+DESCRIPTION:Program\nDeadline listed as: March 31\nhttps://eng.umd.edu/cmse
+ /pre-college-programs/esteem-ser-quest#programdescription\nMore deadlines:
+  https://stdnt.xyz/#deadlines
+URL:https://eng.umd.edu/cmse/pre-college-programs/esteem-ser-quest#programd
+ escription
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UMD ESTEEM/SER-Quest Summer
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UMD ESTEEM/SER-Quest Summer
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-youth-mental-health-academy-20270331@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Deadline: Youth Mental Health Academy
+DESCRIPTION:Program\nDeadline listed as: March 31\nhttps://childmind.org/yo
+ uth-mental-health-academy/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://childmind.org/youth-mental-health-academy/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Youth Mental Health Academy
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Youth Mental Health Academy
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-zombie-apocalypse-scholarship-unigo-20270331@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Deadline: Zombie Apocalypse Scholarship (Unigo)
+DESCRIPTION:Scholarship · $2\,000\nDeadline listed as: Mar 31\nhttps://www
+ .unigo.com/scholarships/our-scholarships/zombie-apocalypse-scholarship\nMo
+ re deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.unigo.com/scholarships/our-scholarships/zombie-apocalypse-s
+ cholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Zombie Apocalypse Scholarship (Unigo)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Zombie Apocalypse Scholarship (Unigo)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-davis-putter-scholarship-20270401@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Deadline: Davis-Putter Scholarship
+DESCRIPTION:Scholarship · Up to $15\,000\nDeadline listed as: Apr 1\nhttps
+ ://www.davisputter.org/apply\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.davisputter.org/apply
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Davis-Putter Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Davis-Putter Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-forsyth-student-scholars-20270401@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Deadline: Forsyth Student Scholars
+DESCRIPTION:Program\nDeadline listed as: April 1\nhttps://forsyth.org/forsy
+ th-student-scholars-summer-program/\nMore deadlines: https://stdnt.xyz/#de
+ adlines
+URL:https://forsyth.org/forsyth-student-scholars-summer-program/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Forsyth Student Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Forsyth Student Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-harvard-sri-openbio-laboratory-20270401@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Deadline: Harvard SRI (OpenBio Laboratory)
+DESCRIPTION:Program\nDeadline listed as: April 1\nhttps://soco.college.harv
+ ard.edu/00003/application/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://soco.college.harvard.edu/00003/application/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Harvard SRI (OpenBio Laboratory)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Harvard SRI (OpenBio Laboratory)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-mikeroweworks-work-ethic-scholarship-20270401@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Deadline in April: mikeroweWORKS Work Ethic Scholarship
+DESCRIPTION:Scholarship · Up to $7\,000\nDeadline listed as: Apr (exact da
+ y varies\, check the site)\nhttps://www.mikeroweworks.org/scholarship/\nMo
+ re deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.mikeroweworks.org/scholarship/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in April: mikeroweWORKS Work Ethic Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in April: mikeroweWORKS Work Ethic Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-project-yellow-light-20270401@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Deadline: Project Yellow Light
+DESCRIPTION:Scholarship · Up to $8\,000\nDeadline listed as: Apr 1\nhttps:
+ //www.projectyellowlight.com/\nMore deadlines: https://stdnt.xyz/#deadline
+ s
+URL:https://www.projectyellowlight.com/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Project Yellow Light
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Project Yellow Light
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-realtyhop-scholarship-20270401@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Deadline in April: RealtyHop Scholarship
+DESCRIPTION:Scholarship · $2\,000\nDeadline listed as: Apr / Aug (exact da
+ y varies\, check the site)\nhttps://www.realtyhop.com/scholarship\nMore de
+ adlines: https://stdnt.xyz/#deadlines
+URL:https://www.realtyhop.com/scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in April: RealtyHop Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in April: RealtyHop Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-rlds-rosenberg-poetry-fellowship-20270401@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Deadline: RL+DS Rosenberg Poetry Fellowship
+DESCRIPTION:Scholarship · $27\,000\nDeadline listed as: Apr 1\nhttps://www
+ .google.com/search?q=Rosenberg%20poetry%20fellowship%20scholarship\nMore d
+ eadlines: https://stdnt.xyz/#deadlines
+URL:https://www.google.com/search?q=Rosenberg%20poetry%20fellowship%20schol
+ arship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: RL+DS Rosenberg Poetry Fellowship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: RL+DS Rosenberg Poetry Fellowship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-spinwip-20270401@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Deadline: SPINWIP
+DESCRIPTION:Program\nDeadline listed as: April 1\nhttps://physics.stanford.
+ edu/about/inclusion/spinwip\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://physics.stanford.edu/about/inclusion/spinwip
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SPINWIP
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SPINWIP
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-yale-young-writers-workshop-20270401@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Deadline: Yale Young Writers’ Workshop
+DESCRIPTION:Program · $3\,085 (residential) / $1\,380 (online)\nDeadline l
+ isted as: April 1\nhttps://summer.yale.edu/academics/yale-young-writers-wo
+ rkshop\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://summer.yale.edu/academics/yale-young-writers-workshop
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Yale Young Writers’ Workshop
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Yale Young Writers’ Workshop
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-yale-cci-exposures-program-20270404@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270404
+DTEND;VALUE=DATE:20270405
+SUMMARY:Deadline: Yale CCI Exposures Program
+DESCRIPTION:Program\nDeadline listed as: April 4\nhttps://medicine.yale.edu
+ /center-clinical-investigation/workforce-development-education/internship-
+ opportunities/exposures-program/\nMore deadlines: https://stdnt.xyz/#deadl
+ ines
+URL:https://medicine.yale.edu/center-clinical-investigation/workforce-devel
+ opment-education/internship-opportunities/exposures-program/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Yale CCI Exposures Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Yale CCI Exposures Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-ohsu-knight-cardiovascular-internship-20270406@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270406
+DTEND;VALUE=DATE:20270407
+SUMMARY:Deadline: OHSU Knight Cardiovascular Internship
+DESCRIPTION:Program\nDeadline listed as: April 6\nhttps://www.ohsu.edu/knig
+ ht-cardiovascular-institute/knight-cardiovascular-internship-high-school-s
+ tudents\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.ohsu.edu/knight-cardiovascular-institute/knight-cardiovascu
+ lar-internship-high-school-students
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: OHSU Knight Cardiovascular Internship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: OHSU Knight Cardiovascular Internship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-simply-neuroscience-apap-20270413@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270413
+DTEND;VALUE=DATE:20270414
+SUMMARY:Deadline: Simply Neuroscience APAP
+DESCRIPTION:Program\nDeadline listed as: April 13\nhttps://www.simplyneuros
+ cience.org/advising-program\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.simplyneuroscience.org/advising-program
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Simply Neuroscience APAP
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Simply Neuroscience APAP
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-gloria-barron-prize-for-young-heroes-20270415@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270415
+DTEND;VALUE=DATE:20270416
+SUMMARY:Deadline: Gloria Barron Prize for Young Heroes
+DESCRIPTION:Scholarship · $10\,000\nDeadline listed as: Apr 15\nhttps://ba
+ rronprize.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://barronprize.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Gloria Barron Prize for Young Heroes
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Gloria Barron Prize for Young Heroes
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-umaine-consider-engineering-program-20270415@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270415
+DTEND;VALUE=DATE:20270416
+SUMMARY:Deadline: UMaine Consider Engineering Program
+DESCRIPTION:Program\nDeadline listed as: April 15\nhttps://umaineppf.org/co
+ nsider-engineering/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://umaineppf.org/consider-engineering/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UMaine Consider Engineering Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UMaine Consider Engineering Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-world-science-scholars-20270415@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270415
+DTEND;VALUE=DATE:20270416
+SUMMARY:Deadline: World Science Scholars
+DESCRIPTION:Program\nDeadline listed as: April 15\nhttps://worldsciencescho
+ lars.com/application-details/\nMore deadlines: https://stdnt.xyz/#deadline
+ s
+URL:https://worldsciencescholars.com/application-details/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: World Science Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: World Science Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-ayn-rand-institute-essay-contests-20270425@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270425
+DTEND;VALUE=DATE:20270426
+SUMMARY:Deadline: Ayn Rand Institute Essay Contests
+DESCRIPTION:Scholarship · Up to $5\,000\nDeadline listed as: Apr 25\nhttps
+ ://aynrand.org/students/essay-contests/\nMore deadlines: https://stdnt.xyz
+ /#deadlines
+URL:https://aynrand.org/students/essay-contests/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Ayn Rand Institute Essay Contests
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Ayn Rand Institute Essay Contests
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-cri-scholarship-20270425@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270425
+DTEND;VALUE=DATE:20270426
+SUMMARY:Deadline: CRI Scholarship
+DESCRIPTION:Scholarship · $1\,500\nDeadline listed as: Apr 25\nhttps://www
+ .google.com/search?q=CRI%20design%20video%20scholarship\nMore deadlines: h
+ ttps://stdnt.xyz/#deadlines
+URL:https://www.google.com/search?q=CRI%20design%20video%20scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: CRI Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: CRI Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-ucla-neurocamp-20270426@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270426
+DTEND;VALUE=DATE:20270427
+SUMMARY:Deadline: UCLA Neurocamp
+DESCRIPTION:Program\nDeadline listed as: April 26\nhttps://bri.ucla.edu/out
+ reach/neurocamp-grades-9-12/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://bri.ucla.edu/outreach/neurocamp-grades-9-12/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UCLA Neurocamp
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: UCLA Neurocamp
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-sara-scholarship-womens-golf-20270430@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270430
+DTEND;VALUE=DATE:20270501
+SUMMARY:Deadline: SARA Scholarship (Women's Golf)
+DESCRIPTION:Scholarship · $2\,500\nDeadline listed as: Apr 30\nhttps://www
+ .google.com/search?q=SARA%20women%20golf%20scholarship\nMore deadlines: ht
+ tps://stdnt.xyz/#deadlines
+URL:https://www.google.com/search?q=SARA%20women%20golf%20scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SARA Scholarship (Women's Golf)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SARA Scholarship (Women's Golf)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-spark-internships-20270430@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270430
+DTEND;VALUE=DATE:20270501
+SUMMARY:Deadline: Spark Internships
+DESCRIPTION:Program\nDeadline listed as: April 30\nhttps://sparksmp.org/\nM
+ ore deadlines: https://stdnt.xyz/#deadlines
+URL:https://sparksmp.org/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Spark Internships
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Spark Internships
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-american-indian-college-fund-20270501@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+SUMMARY:Deadline in May: American Indian College Fund
+DESCRIPTION:Scholarship · Varies\nDeadline listed as: May (exact day varie
+ s\, check the site)\nhttps://collegefund.org/students/scholarships/\nMore 
+ deadlines: https://stdnt.xyz/#deadlines
+URL:https://collegefund.org/students/scholarships/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in May: American Indian College Fund
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in May: American Indian College Fund
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-iyna-intro-to-neuroscience-program-20270501@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+SUMMARY:Deadline in May: IYNA Intro to Neuroscience Program
+DESCRIPTION:Program\nDeadline listed as: May (exact day varies\, check the 
+ site)\nhttps://youthneuro.org/summer-program\nMore deadlines: https://stdn
+ t.xyz/#deadlines
+URL:https://youthneuro.org/summer-program
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in May: IYNA Intro to Neuroscience Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in May: IYNA Intro to Neuroscience Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-sci-mi-science-mentorship-institute-20270501@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+SUMMARY:Deadline: Sci-MI (Science Mentorship Institute)
+DESCRIPTION:Program · Free\nDeadline listed as: May 1\nhttps://sci-mi.org/
+ \nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://sci-mi.org/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Sci-MI (Science Mentorship Institute)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Sci-MI (Science Mentorship Institute)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-thermo-fisher-antibody-scholarship-20270501@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+SUMMARY:Deadline: Thermo Fisher Antibody Scholarship
+DESCRIPTION:Scholarship · $10\,000\nDeadline listed as: May 1\nhttps://www
+ .thermofisher.com/us/en/home/life-science/antibodies/thermo-fisher-scienti
+ fic-antibody-scholarship-program.html\nMore deadlines: https://stdnt.xyz/#
+ deadlines
+URL:https://www.thermofisher.com/us/en/home/life-science/antibodies/thermo-
+ fisher-scientific-antibody-scholarship-program.html
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Thermo Fisher Antibody Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Thermo Fisher Antibody Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-wash-summer-research-institute-20270501@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+SUMMARY:Deadline in May: WASH Summer Research Institute
+DESCRIPTION:Program\nDeadline listed as: May (exact day varies\, check the 
+ site)\nhttps://womensalliancestem.wixsite.com/wash/wash-sri-2025\nMore dea
+ dlines: https://stdnt.xyz/#deadlines
+URL:https://womensalliancestem.wixsite.com/wash/wash-sri-2025
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in May: WASH Summer Research Institute
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in May: WASH Summer Research Institute
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-american-college-foundation-visionary-20270601@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270601
+DTEND;VALUE=DATE:20270602
+SUMMARY:Deadline: American College Foundation Visionary
+DESCRIPTION:Scholarship · $5\,000\nDeadline listed as: Jun 1\nhttps://www.
+ americancollegefoundation.org/\nMore deadlines: https://stdnt.xyz/#deadlin
+ es
+URL:https://www.americancollegefoundation.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: American College Foundation Visionary
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: American College Foundation Visionary
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-breakthrough-junior-challenge-20270601@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270601
+DTEND;VALUE=DATE:20270602
+SUMMARY:Deadline in June: Breakthrough Junior Challenge
+DESCRIPTION:Scholarship · $250\,000\nDeadline listed as: ~Late June (exact
+  day varies\, check the site)\nhttps://breakthroughjuniorchallenge.org/\nM
+ ore deadlines: https://stdnt.xyz/#deadlines
+URL:https://breakthroughjuniorchallenge.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in June: Breakthrough Junior Challenge
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in June: Breakthrough Junior Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-breakthrough-junior-challenge-20270601@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270601
+DTEND;VALUE=DATE:20270602
+SUMMARY:Deadline in June: Breakthrough Junior Challenge
+DESCRIPTION:Competition · Solo\nDeadline listed as: June (exact day varies
+ \, check the site)\nhttps://breakthroughjuniorchallenge.org/\nMore deadlin
+ es: https://stdnt.xyz/#deadlines
+URL:https://breakthroughjuniorchallenge.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in June: Breakthrough Junior Challenge
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in June: Breakthrough Junior Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-jasna-essay-contest-20270601@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270601
+DTEND;VALUE=DATE:20270602
+SUMMARY:Deadline: JASNA Essay Contest
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Jun 1\nhttps://jasn
+ a.org/programs/essay-contest/\nMore deadlines: https://stdnt.xyz/#deadline
+ s
+URL:https://jasna.org/programs/essay-contest/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: JASNA Essay Contest
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: JASNA Essay Contest
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-stanford-igem-bioengineering-research-program-20270601@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270601
+DTEND;VALUE=DATE:20270602
+SUMMARY:Deadline in June: Stanford iGEM Bioengineering Research Program
+DESCRIPTION:Program · Free\nDeadline listed as: June (exact day varies\, c
+ heck the site)\nhttps://igem.stanford.edu/education\nMore deadlines: https
+ ://stdnt.xyz/#deadlines
+URL:https://igem.stanford.edu/education
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in June: Stanford iGEM Bioengineering Research Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in June: Stanford iGEM Bioengineering Research Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-teens-in-health-summer-program-20270601@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270601
+DTEND;VALUE=DATE:20270602
+SUMMARY:Deadline in June: Teens in Health Summer Program
+DESCRIPTION:Program\nDeadline listed as: June (exact day varies\, check the
+  site)\nhttps://teensinhealth.org/\nMore deadlines: https://stdnt.xyz/#dea
+ dlines
+URL:https://teensinhealth.org/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in June: Teens in Health Summer Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in June: Teens in Health Summer Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-ynps-research-mentorship-summer-cohort-20270601@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270601
+DTEND;VALUE=DATE:20270602
+SUMMARY:Deadline: YNPS Research Mentorship Summer Cohort
+DESCRIPTION:Program\nDeadline listed as: June 1\nhttps://youthneuropsycholo
+ gy.com/mentorship/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://youthneuropsychology.com/mentorship/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: YNPS Research Mentorship Summer Cohort
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: YNPS Research Mentorship Summer Cohort
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-bow-seat-blue-planet-awareness-contest-20270607@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270607
+DTEND;VALUE=DATE:20270608
+SUMMARY:Deadline: Bow Seat Blue Planet Awareness Contest
+DESCRIPTION:Scholarship · Up to $1\,000\nDeadline listed as: Jun 7\nhttps:
+ //bowseat.org/programs/blue-planet-awareness-contest/\nMore deadlines: htt
+ ps://stdnt.xyz/#deadlines
+URL:https://bowseat.org/programs/blue-planet-awareness-contest/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Bow Seat Blue Planet Awareness Contest
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Bow Seat Blue Planet Awareness Contest
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-scientific-enrichment-month-program-20270619@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270619
+DTEND;VALUE=DATE:20270620
+SUMMARY:Deadline: Scientific Enrichment Month Program
+DESCRIPTION:Program\nDeadline listed as: June 19\nhttps://www.cancer.columb
+ ia.edu/education/educational-opportunities/high-school-and-undergraduate-p
+ rograms/scientific-enrichment-month\nMore deadlines: https://stdnt.xyz/#de
+ adlines
+URL:https://www.cancer.columbia.edu/education/educational-opportunities/hig
+ h-school-and-undergraduate-programs/scientific-enrichment-month
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Scientific Enrichment Month Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Scientific Enrichment Month Program
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aid-fafsa-federal-deadline-20270630@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270630
+DTEND;VALUE=DATE:20270701
+SUMMARY:FAFSA federal deadline
+DESCRIPTION:Financial aid · FAFSA\nDeadline listed as: Jun 30\nhttps://stu
+ dentaid.gov/h/apply-for-aid/fafsa\nMore deadlines: https://stdnt.xyz/#dead
+ lines
+URL:https://studentaid.gov/h/apply-for-aid/fafsa
+CATEGORIES:Financial aid
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:FAFSA federal deadline
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:FAFSA federal deadline
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-apex-minecraft-hosting-scholarship-20270731@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270731
+DTEND;VALUE=DATE:20270801
+SUMMARY:Deadline: Apex Minecraft Hosting Scholarship
+DESCRIPTION:Scholarship · $2\,000\nDeadline listed as: Jul 31\nhttps://ape
+ xminecrafthosting.com/minecraft-scholarship/\nMore deadlines: https://stdn
+ t.xyz/#deadlines
+URL:https://apexminecrafthosting.com/minecraft-scholarship/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Apex Minecraft Hosting Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Apex Minecraft Hosting Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-gen-kelly-tanabe-scholarship-20270731@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270731
+DTEND;VALUE=DATE:20270801
+SUMMARY:Deadline: Gen & Kelly Tanabe Scholarship
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Jul 31\nhttps://www
+ .gkscholarship.com/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.gkscholarship.com/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Gen & Kelly Tanabe Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Gen & Kelly Tanabe Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-realtyhop-scholarship-20270801@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270801
+DTEND;VALUE=DATE:20270802
+SUMMARY:Deadline in August: RealtyHop Scholarship
+DESCRIPTION:Scholarship · $2\,000\nDeadline listed as: Apr / Aug (exact da
+ y varies\, check the site)\nhttps://www.realtyhop.com/scholarship\nMore de
+ adlines: https://stdnt.xyz/#deadlines
+URL:https://www.realtyhop.com/scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in August: RealtyHop Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in August: RealtyHop Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-american-red-cross-leaders-save-lives-20270831@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270831
+DTEND;VALUE=DATE:20270901
+SUMMARY:Deadline: American Red Cross Leaders Save Lives
+DESCRIPTION:Scholarship · Up to $2\,500\nDeadline listed as: Aug 31\nhttps
+ ://www.redcrossblood.org/hosting-a-blood-drive/leaders-save-lives.html\nMo
+ re deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.redcrossblood.org/hosting-a-blood-drive/leaders-save-lives.
+ html
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: American Red Cross Leaders Save Lives
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: American Red Cross Leaders Save Lives
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-cameron-impact-scholarship-20270901@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270901
+DTEND;VALUE=DATE:20270902
+SUMMARY:Deadline in September: Cameron Impact Scholarship
+DESCRIPTION:Scholarship · Full ride\nDeadline listed as: Sep (exact day va
+ ries\, check the site)\nhttps://www.bryancameroneducationfoundation.org/\n
+ More deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.bryancameroneducationfoundation.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in September: Cameron Impact Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in September: Cameron Impact Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-gates-scholarship-formerly-gates-millennium-20270901@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270901
+DTEND;VALUE=DATE:20270902
+SUMMARY:Deadline in September: Gates Scholarship (formerly Gates Millennium
+ )
+DESCRIPTION:Scholarship · Full ride\nDeadline listed as: Mid-Sep (exact da
+ y varies\, check the site)\nhttps://www.thegatesscholarship.org/scholarshi
+ p\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.thegatesscholarship.org/scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in September: Gates Scholarship (formerly Gates Millen
+ nium)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in September: Gates Scholarship (formerly Gates Millen
+ nium)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-questbridge-national-college-match-20270901@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270901
+DTEND;VALUE=DATE:20270902
+SUMMARY:Deadline in September: QuestBridge National College Match
+DESCRIPTION:Scholarship · Full 4-yr ride\nDeadline listed as: Late Sep (ex
+ act day varies\, check the site)\nhttps://www.questbridge.org/\nMore deadl
+ ines: https://stdnt.xyz/#deadlines
+URL:https://www.questbridge.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in September: QuestBridge National College Match
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in September: QuestBridge National College Match
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-health-services-mentorship-program-hsmp-20270919@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270919
+DTEND;VALUE=DATE:20270920
+SUMMARY:Deadline: Health Services Mentorship Program (HSMP)
+DESCRIPTION:Program\nDeadline listed as: September 19\nhttps://sites.google
+ .com/view/hsmp-gmu/application-information?authuser=0\nMore deadlines: htt
+ ps://stdnt.xyz/#deadlines
+URL:https://sites.google.com/view/hsmp-gmu/application-information?authuser
+ =0
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Health Services Mentorship Program (HSMP)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Health Services Mentorship Program (HSMP)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+END:VCALENDAR

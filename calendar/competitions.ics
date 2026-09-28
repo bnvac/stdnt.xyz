@@ -1,0 +1,194 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//stdnt.xyz//Deadlines//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:stdnt.xyz competition deadlines
+X-WR-CALDESC:Academic competition deadlines from stdnt.xyz.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:comp-amc-aime-usamo-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Deadline in November: AMC → AIME → USAMO
+DESCRIPTION:Competition · Solo\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://maa.org/maa-invitational-competitions\nMor
+ e deadlines: https://stdnt.xyz/#deadlines
+URL:https://maa.org/maa-invitational-competitions
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: AMC → AIME → USAMO
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: AMC → AIME → USAMO
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-conrad-challenge-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Deadline in November: Conrad Challenge
+DESCRIPTION:Competition · Team\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://www.conradchallenge.org/\nMore deadlines: 
+ https://stdnt.xyz/#deadlines
+URL:https://www.conradchallenge.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Conrad Challenge
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Conrad Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-diamond-challenge-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Deadline in November: Diamond Challenge
+DESCRIPTION:Competition · Team\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://diamondchallenge.org/\nMore deadlines: htt
+ ps://stdnt.xyz/#deadlines
+URL:https://diamondchallenge.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Diamond Challenge
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Diamond Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-regeneron-science-talent-search-sts-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Deadline in November: Regeneron Science Talent Search (STS)
+DESCRIPTION:Competition · Solo\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://www.societyforscience.org/regeneron-sts/\n
+ More deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.societyforscience.org/regeneron-sts/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Regeneron Science Talent Search (STS)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Regeneron Science Talent Search (STS)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-scholastic-art-writing-awards-20261201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Deadline in December: Scholastic Art & Writing Awards
+DESCRIPTION:Competition · Solo\nDeadline listed as: December (exact day va
+ ries\, check the site)\nhttps://www.artandwriting.org/\nMore deadlines: ht
+ tps://stdnt.xyz/#deadlines
+URL:https://www.artandwriting.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in December: Scholastic Art & Writing Awards
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in December: Scholastic Art & Writing Awards
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-naclo-linguistics-20270101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Deadline in January: NACLO (Linguistics)
+DESCRIPTION:Competition · Solo\nDeadline listed as: January (exact day var
+ ies\, check the site)\nhttps://www.nacloweb.org/\nMore deadlines: https://
+ stdnt.xyz/#deadlines
+URL:https://www.nacloweb.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: NACLO (Linguistics)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in January: NACLO (Linguistics)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-davidson-fellows-20270201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+SUMMARY:Deadline in February: Davidson Fellows
+DESCRIPTION:Competition · Solo\nDeadline listed as: February (exact day va
+ ries\, check the site)\nhttps://www.davidsongifted.org/gifted-programs/fel
+ lows-scholarship/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.davidsongifted.org/gifted-programs/fellows-scholarship/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: Davidson Fellows
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in February: Davidson Fellows
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-breakthrough-junior-challenge-20270601@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270601
+DTEND;VALUE=DATE:20270602
+SUMMARY:Deadline in June: Breakthrough Junior Challenge
+DESCRIPTION:Competition · Solo\nDeadline listed as: June (exact day varies
+ \, check the site)\nhttps://breakthroughjuniorchallenge.org/\nMore deadlin
+ es: https://stdnt.xyz/#deadlines
+URL:https://breakthroughjuniorchallenge.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in June: Breakthrough Junior Challenge
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in June: Breakthrough Junior Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+END:VCALENDAR

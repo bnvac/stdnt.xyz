@@ -1,0 +1,87 @@
+#!/usr/bin/env node
+/*
+ * build-logos.mjs - caches every logo the site shows into logos/ so visitors
+ * load them from this site instead of ~470 requests to third-party icon
+ * services (faster, and those services never see who's browsing).
+ *
+ *   node scripts/build-logos.mjs            # fetch only what's missing
+ *   LOGO_REFRESH=1 node scripts/build-logos.mjs   # re-fetch everything
+ *
+ * Writes logos/<domain>.<png|jpg|gif|webp|ico> (site favicons), logos/si/<slug>.svg (brand icons)
+ * and js/logos.js, the manifest the app checks before falling back to the
+ * remote services. Run by .github/workflows/site-build.yml, so new listings
+ * get cached automatically.
+ */
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync, unlinkSync } from "node:fs";
+import { loadData, domainOf } from "./lib/data.mjs";
+
+const W = loadData();
+const domains = new Set(), slugs = new Set(["reddit"]);   // reddit: the mark on guide tip boxes
+const url = (u) => { const d = domainOf(u); if (d) domains.add(d); };
+[W.RESOURCES, W.DISCOUNTS].forEach((a) => (a || []).forEach((r) => { if (r.logo) return; if (r.slug) slugs.add(r.slug); else url(r.url); }));
+[W.SCHOLARSHIPS, W.PROGRAMS, W.COMPETITIONS, W.HACKATHONS, W.FINAID].forEach((a) => (a || []).forEach((x) => { if (!x.logo) url(x.url); }));
+try { JSON.parse(readFileSync("data/hackathons.json", "utf8")).events.forEach((e) => url(e.url)); } catch {}
+for (const m of readFileSync("js/app.js", "utf8").matchAll(/domain: "([a-z0-9.-]+)"/g)) domains.add(m[1]);   // hero marquee
+(W.SPONSORS || []).forEach((s) => s.slug && slugs.add(s.slug));
+
+mkdirSync("logos/si", { recursive: true });
+const refresh = process.env.LOGO_REFRESH === "1";
+let none = new Set();   // sites Google has no icon for: the app shows a letter tile without asking
+try { none = new Set(Object.keys(JSON.parse(readFileSync("js/logos.js", "utf8").match(/window\.LOGOS = (.*);/)[1]).none || {})); } catch {}
+const retryNone = refresh || new Date().getUTCDate() === 1;   // re-check them monthly
+const EXT = /\.(png|jpg|gif|webp|ico)$/;
+const have = new Map(readdirSync("logos").filter((f) => EXT.test(f)).map((f) => [f.replace(EXT, ""), f.match(EXT)[1]]));   // domain -> file extension
+const haveSi = new Set(readdirSync("logos/si").filter((f) => f.endsWith(".svg")).map((f) => f.slice(0, -4)));
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+async function get(u) {
+  for (let i = 0; i < 3; i++) {
+    try {
+      const r = await fetch(u, { signal: AbortSignal.timeout(12000), headers: { "User-Agent": "stdnt-xyz-logos/1.0 (+https://stdnt.xyz)" } });
+      if (r.ok) return Buffer.from(await r.arrayBuffer());
+      if (r.status === 404) return "missing";   // Google answers 404 (with a generic globe) when a site has no icon
+    } catch {}
+    await sleep(400 * (i + 1));
+  }
+  return null;
+}
+// Google serves PNG for most sites and JPEG (or others) for some; keep whatever real image comes back
+function imageExt(b) {
+  if (!Buffer.isBuffer(b) || b.length < 60) return "";
+  if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4e && b[3] === 0x47) return "png";
+  if (b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff) return "jpg";
+  if (b.subarray(0, 3).toString() === "GIF") return "gif";
+  if (b.subarray(0, 4).toString() === "RIFF" && b.subarray(8, 12).toString() === "WEBP") return "webp";
+  if (b[0] === 0 && b[1] === 0 && b[2] === 1 && b[3] === 0) return "ico";
+  return "";
+}
+const isSVG = (b) => Buffer.isBuffer(b) && /^\s*<svg[\s>]/.test(b.subarray(0, 200).toString("utf8"));
+
+const jobs = [];
+for (const d of domains) if (refresh || (!have.has(d) && (retryNone || !none.has(d)))) jobs.push(async () => {
+  const b = await get(`https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=64`);
+  const ext = imageExt(b);
+  if (ext) {
+    if (have.has(d) && have.get(d) !== ext) unlinkSync(`logos/${d}.${have.get(d)}`);
+    writeFileSync(`logos/${d}.${ext}`, b); have.set(d, ext); none.delete(d);
+  }
+  else if (b === "missing") none.add(d);
+});
+for (const s of slugs) if (refresh || !haveSi.has(s)) jobs.push(async () => {
+  const b = await get(`https://cdn.simpleicons.org/${encodeURIComponent(s)}`);
+  if (isSVG(b)) { writeFileSync(`logos/si/${s}.svg`, b); haveSi.add(s); }
+});
+let next = 0;
+await Promise.all(Array.from({ length: 6 }, async () => { while (next < jobs.length) await jobs[next++](); }));
+
+// drop logos nothing references any more
+for (const [d, ext] of [...have]) if (!domains.has(d)) { unlinkSync(`logos/${d}.${ext}`); have.delete(d); }
+for (const d of [...none]) if (!domains.has(d) || have.has(d)) none.delete(d);
+for (const s of [...haveSi]) if (!slugs.has(s)) { unlinkSync(`logos/si/${s}.svg`); haveSi.delete(s); }
+
+const map = (set) => Object.fromEntries([...set].sort().map((k) => [k, 1]));
+const extMap = (m) => Object.fromEntries([...m].sort(([a], [b]) => a.localeCompare(b)));
+writeFileSync("js/logos.js", "/*\n * logos.js - generated by scripts/build-logos.mjs; do not edit by hand.\n" +
+  " * Domains and brand icons cached in logos/, so the app serves them locally.\n */\n" +
+  "window.LOGOS = " + JSON.stringify({ d: extMap(have), si: map(haveSi), none: map(none) }) + ";\n");
+console.log(`logos: ${have.size}/${domains.size} site icons (${none.size} sites have none), ${haveSi.size}/${slugs.size} brand icons (${jobs.length} fetched this run)`);

@@ -5,8 +5,8 @@ Thank you - keeping this list fresh and growing is the whole point. There are
 
 ## 1. The easy way - fill out a form (no coding)
 
-Go to the **[Contribute page](https://2008wbbv.github.io/edu.edu/#contribute)** on
-the site, or open a [new issue](https://github.com/2008wbbv/edu.edu/issues/new/choose)
+Go to the **[Contribute page](https://stdnt.xyz/#contribute)** on
+the site, or open a [new issue](https://github.com/bnvac/stdnt.xyz/issues/new/choose)
 and pick a category:
 
 | Category | What it's for |
@@ -59,11 +59,20 @@ Example - add a tool in `js/data.js`:
 
 Counts, chips, search, logos and deadlines all update automatically.
 
+**Generated files - don't edit by hand.** The `site-build` workflow rebuilds these
+from the data files on every change (and daily): the crawlable pages in
+`guides/`, `scholarships/`, `programs/`, `competitions/`, `tools/`, `discounts/`,
+`deadlines/` and `sitemap.xml` (`scripts/build-pages.mjs`), the calendar feeds in
+`calendar/` (`scripts/build-calendar.mjs`), and the cached logos in `logos/` +
+`js/logos.js` (`scripts/build-logos.mjs`). Run any of them locally with `node`.
+Share images (`og.png`, `guides/*/og.png`) are rendered manually with
+`scripts/build-og.mjs` after adding a guide.
+
 ### Run it locally
 
 ```bash
-git clone https://github.com/2008wbbv/edu.edu
-cd edu.edu
+git clone https://github.com/bnvac/stdnt.xyz
+cd stdnt.xyz
 python3 -m http.server 8000   # open http://localhost:8000
 ```
 
@@ -76,9 +85,9 @@ Everything runs through GitHub, so credit is automatic:
 
 - **Issue forms** are authored by *you* and labelled by category
   (`contribution`, `tool`, `scholarship`, …). Filter them any time:
-  [`label:contribution`](https://github.com/2008wbbv/edu.edu/issues?q=is%3Aissue+label%3Acontribution).
+  [`label:contribution`](https://github.com/bnvac/stdnt.xyz/issues?q=is%3Aissue+label%3Acontribution).
 - **Pull requests** show up in the repo's
-  [contributors graph](https://github.com/2008wbbv/edu.edu/graphs/contributors)
+  [contributors graph](https://github.com/bnvac/stdnt.xyz/graphs/contributors)
   and on your GitHub profile.
 
 ## What belongs here
