@@ -52,7 +52,7 @@ window.DISCOUNTS = [
   // shopping & tech
   { name: "Amazon Prime Student", url: "https://www.amazon.com/amazonprime", category: "shopping", access: "student", mono: "Pr",
     desc: "6-month free trial, then 50% off Prime: fast shipping, Prime Video and student deals.", value: "50% off", tags: ["shopping", "shipping", "video"] },
-  { name: "Samsung Education Store", url: "https://www.samsung.com/us/shop/offer/education", category: "shopping", access: "student", mono: "Sm",
+  { name: "Samsung Education Store", url: "https://www.samsung.com/us/shop/offer-program/education/", category: "shopping", access: "student", mono: "Sm",
     desc: "Student and education discounts on Galaxy phones, tablets and laptops.", tags: ["phone", "laptop", "devices"] },
   { name: "Dell University", url: "https://www.dell.com/en-us/lp/university", category: "shopping", access: "student", mono: "De",
     desc: "Member-exclusive student coupons and pricing on laptops and accessories.", tags: ["laptop", "devices"] },

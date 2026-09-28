@@ -1,7 +1,7 @@
 /*
  * programs.js - STEM summer programs, research & internships.
  * Auto-generated from community spreadsheets (THE_LIST + STEM Programs/Internships
- * by grade). 183 programs. Deadlines are approximate; verify on each site.
+ * by grade). 181 programs. Deadlines are approximate; verify on each site.
  */
 window.PROGRAMS = [
  {
@@ -3410,34 +3410,6 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "YNPS Research Mentorship Summer Cohort",
-  "url": "https://youthneuropsychology.com/mentorship/",
-  "deadline": "June 1",
-  "when": "",
-  "cost": "",
-  "free": false,
-  "subjects": [
-   "Research",
-   "Psychology",
-   "Neuroscience"
-  ],
-  "tags": [
-   "International",
-   "Remote",
-   "Mentorship"
-  ],
-  "grades": [
-   "Freshman",
-   "Sophomore",
-   "Junior",
-   "Senior"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
   "name": "Scientific Enrichment Month Program",
   "url": "https://www.cancer.columbia.edu/education/educational-opportunities/high-school-and-undergraduate-programs/scientific-enrichment-month",
   "deadline": "June 19",
@@ -3835,7 +3807,7 @@ window.PROGRAMS = [
  {
   "name": "World Food Prize Youth Institute",
   "url": "https://www.worldfoodprize.org/en/youth_programs/world_food_prize_youth_institutes/",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": false,
@@ -3866,7 +3838,7 @@ window.PROGRAMS = [
  {
   "name": "Summer Healthcare Experience (SHE) in Oncology",
   "url": "https://www.uchicagomedicine.org/cancer/education-outreach/student-education/high-school-undergraduate/she",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "Free (+$500 stipend)",
   "free": true,
@@ -3972,37 +3944,9 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "YNPS Research Mentorship Winter Cohort",
-  "url": "https://youthneuropsychology.com/mentorship/",
-  "deadline": "?",
-  "when": "",
-  "cost": "",
-  "free": false,
-  "subjects": [
-   "Research",
-   "Psychology",
-   "Neuroscience"
-  ],
-  "tags": [
-   "International",
-   "Remote",
-   "Mentorship"
-  ],
-  "grades": [
-   "Freshman",
-   "Sophomore",
-   "Junior",
-   "Senior"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
   "name": "Memorial Sloan Kettering B2BSP",
   "url": "https://www.mskcc.org/education-training/bridge-to-biostats-summer-program-b2bsp",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": true,
@@ -4028,7 +3972,7 @@ window.PROGRAMS = [
  {
   "name": "UCI SREI",
   "url": "https://summerresearch.wixsite.com/srei",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": false,
@@ -4055,7 +3999,7 @@ window.PROGRAMS = [
  {
   "name": "Scripps College Academy Scholars",
   "url": "https://www.scrippscollege.edu/academy/sca-scholar-program/about-scripps-college-academy-scholars",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": false,
@@ -4082,7 +4026,7 @@ window.PROGRAMS = [
  {
   "name": "OHSU School of Dentistry Research Internship",
   "url": "https://www.ohsu.edu/school-of-dentistry/research-internship-program#section-2140346",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": true,
@@ -4113,7 +4057,7 @@ window.PROGRAMS = [
  {
   "name": "Columbia BRAINYAC",
   "url": "https://zuckermaninstitute.columbia.edu/brainyac",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": false,
@@ -4140,7 +4084,7 @@ window.PROGRAMS = [
  {
   "name": "UChicago EYES",
   "url": "https://www.uchicagomedicine.org/cancer/education-outreach/student-education/high-school-undergraduate/eyes",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": true,
@@ -4227,7 +4171,7 @@ window.PROGRAMS = [
  {
   "name": "Teen Internship Program",
   "url": "https://www.colorado.edu/project/bbb/teen-internship-program",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": true,
@@ -4254,7 +4198,7 @@ window.PROGRAMS = [
  {
   "name": "WashU Young Scientist Program",
   "url": "https://sites.wustl.edu/wustlysp/",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": false,
@@ -4271,7 +4215,7 @@ window.PROGRAMS = [
  {
   "name": "Johns Hopkins APL ASPIRE Program",
   "url": "https://www.jhuapl.edu/education/stem-outreach/aspire",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": false,
@@ -4288,7 +4232,7 @@ window.PROGRAMS = [
  {
   "name": "PNNL Young Women in Science",
   "url": "https://www.pnnl.gov/young-women-science",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": false,
@@ -4305,7 +4249,7 @@ window.PROGRAMS = [
  {
   "name": "WaveHill ACES Internship",
   "url": "https://www.wavehill.org/education/youth-internships/aces",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": false,
@@ -4327,7 +4271,7 @@ window.PROGRAMS = [
  {
   "name": "WaveHill Ecology Research Mentorship",
   "url": "https://www.wavehill.org/education/youth-internships/werm/",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": false,
@@ -4349,7 +4293,7 @@ window.PROGRAMS = [
  {
   "name": "Columbia EARTH Program",
   "url": "https://www.publichealth.columbia.edu/academics/departments/environmental-health-sciences/educational-programs/non-degree-offerings/earth",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": false,
@@ -4367,7 +4311,7 @@ window.PROGRAMS = [
  {
   "name": "Columbia SS Field Research Program",
   "url": "https://lamont.columbia.edu/education-outreach/student-summer-opportunities-SSFRP",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": false,
@@ -4429,7 +4373,7 @@ window.PROGRAMS = [
  {
   "name": "SLAC Youth Opportunity Program",
   "url": "https://careers.slac.stanford.edu/youth-opportunity-program-yop",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": false,
@@ -4448,7 +4392,7 @@ window.PROGRAMS = [
  {
   "name": "PNNL High School Research Internship",
   "url": "https://www.pnnl.gov/high-school-research-internship",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": false,
@@ -4538,7 +4482,7 @@ window.PROGRAMS = [
  {
   "name": "Jane Street Academy of Math and Programming",
   "url": "https://www.janestreet.com/join-jane-street/programs-and-events/amp/#who-is-program-for",
-  "deadline": "?",
+  "deadline": "Varies",
   "when": "",
   "cost": "",
   "free": false,

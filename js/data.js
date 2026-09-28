@@ -79,8 +79,6 @@ window.RESOURCES = [
     desc: "Extremely fast open-model inference with a free API tier - great when you need speed for free.", tags: ["llm", "api", "fast", "inference"] },
   { name: "Mistral AI (La Plateforme)", url: "https://console.mistral.ai/", category: "apis", access: "everyone", slug: "mistralai",
     desc: "Free experimentation tier for Mistral's open and frontier models via a clean API.", tags: ["llm", "api", "mistral"] },
-  { name: "GitHub Models", url: "https://github.com/marketplace/models", category: "apis", access: "everyone", slug: "github",
-    desc: "Free playground and API access to top models (GPT, Llama, Phi and more) right from your GitHub account.", tags: ["llm", "api", "models", "github"] },
   { name: "Cloudflare Workers AI", url: "https://developers.cloudflare.com/workers-ai/", category: "apis", access: "everyone", slug: "cloudflare",
     desc: "Run open models on Cloudflare's edge with a free daily allocation - pairs perfectly with free Workers hosting.", tags: ["llm", "api", "edge", "cloudflare"] },
   { name: "Hugging Face Inference", url: "https://huggingface.co/", category: "apis", access: "everyone", slug: "huggingface",
