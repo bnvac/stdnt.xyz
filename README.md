@@ -49,17 +49,19 @@ So this pulls the best of it into **one minimalist site you can actually search*
 
 | | |
 |---|---|
-| 🔎 **Instant search** | filter everything as you type (`/` to focus, `Esc` to clear) |
-| 🗂️ **6 tabs** | Tools & Perks · Scholarships · STEM Programs · For You · Saved · About |
+| 🔎 **Instant search** | filter as you type, with live match counts on every tab and shareable `?q=` links (`/` to focus, `Esc` to clear) |
+| 🗂️ **13 sections** | Tools · Discounts · Scholarships · STEM Programs · Competitions · Deadlines · For You · Saved · Guides · Templates · Hackathons · Contribute · About |
 | ✦ **"For You" quiz** | answer a few questions (income, background, grade…) and get matched to scholarships & programs, all computed on-device |
 | ⭐ **Save to list** | star any item to build a personal list (saved on-device) |
 | 🎚️ **Smart filters** | segmented access toggle, category/type/grade chips, free-only |
-| ↕️ **Sorting** | by amount, **closing soon**, deadline, prestige, or **acceptance rate** |
-| 📅 **Deadlines** | "closing soon" badges + one-click **add-to-Google-Calendar**, and **.ics** export |
+| ↕️ **Sorting** | by amount, **closing soon**, deadline, **top picks**, or **acceptance rate** |
+| 📅 **Deadlines** | "closing soon" badges, a month calendar, **.ics** export, and **subscribable feeds** for Google, Apple and Outlook that update themselves |
+| 📚 **Guides** | practical how-tos with tips students share on Reddit, each also a standalone page search engines can index |
+| 👑 **Editor's choice** | a short, unpaid list of standout tools and programs; see *How we pick* on the About tab |
 | 🔗 **Shareable matches** | your quiz answers encode into a link you can send to anyone |
 | 📤 **Export saved** | copy, download **CSV**, export deadlines as **.ics**, or print |
 | ➕ **Submit a resource** | a button opens a prefilled GitHub issue, no coding needed |
-| 🏷️ **Real brand logos** | via [Simple Icons](https://simpleicons.org), with clean monogram fallbacks |
+| 🏷️ **Real brand logos** | self-hosted from [Simple Icons](https://simpleicons.org) and site favicons, with clean monogram fallbacks |
 | 🌗 **Dark / light** | system-aware, remembers your choice |
 | 👁️ **Live view counter** | because watching it climb is fun |
 | ⚡ **Zero dependencies** | pure HTML/CSS/JS - loads instantly, deploys anywhere |
@@ -67,7 +69,7 @@ So this pulls the best of it into **one minimalist site you can actually search*
 ## 🚀 Quick start
 
 ```bash
-git clone https://github.com/2008wbbv/edu.edu stdnt.xyz
+git clone https://github.com/bnvac/stdnt.xyz
 cd stdnt.xyz
 python3 -m http.server 8000   # then open http://localhost:8000
 ```
@@ -116,8 +118,8 @@ send them.** 💛
 
 Two ways, **both credit you automatically**:
 
-1. **No coding** - open the [Contribute page](https://2008wbbv.github.io/edu.edu/#contribute)
-   or pick a category at [New issue](https://github.com/2008wbbv/edu.edu/issues/new/choose).
+1. **No coding** - open the [Contribute page](https://stdnt.xyz/#contribute)
+   or pick a category at [New issue](https://github.com/bnvac/stdnt.xyz/issues/new/choose).
    Each is a short form (tool, scholarship, program, competition, discount, or a
    fix report). Submit it and it becomes a tracked, labelled issue.
 2. **A pull request** - every listing is one object in a `js/*.js` file (see above).

@@ -532,6 +532,14 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
 .tpl-blurb { font-size: .85rem; color: var(--tx-2); line-height: 1.45; }
 /* spreadsheet preview: column letters, row numbers, header row, sample rows */
 .tpl-card { min-width: 0; }
+/* search across tabs */
+.tab.tab-miss { opacity: .45; }
+.more-n { margin-right: .2rem; }
+.xsearch { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin: -.35rem 0 1rem; font-size: .8rem; color: var(--tx-3); }
+.xs-lead { margin-right: .15rem; }
+.xs-chip { display: inline-flex; align-items: center; gap: .35rem; padding: .22rem .6rem; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); background: color-mix(in srgb, var(--accent) 8%, var(--bg-2)); color: var(--tx); font: inherit; font-weight: 600; cursor: pointer; transition: border-color .15s, background .15s; }
+.xs-chip:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, var(--bg-2)); }
+.xs-n { font-family: var(--mono); font-size: .72rem; color: var(--accent); }
 .tpl-sheet { min-width: 0; border: 1px solid var(--line-2); border-radius: 10px; overflow: hidden; background: var(--bg); }
 .tpl-sheet-scroll { overflow-x: auto; scrollbar-width: thin; }
 .tpl-grid { border-collapse: collapse; width: max-content; min-width: 100%; font-size: .7rem; color: var(--tx-2); }
@@ -555,6 +563,20 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
 .dl-controls { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin: 0 0 1.1rem; }
 .dl-export { display: flex; flex-wrap: wrap; gap: .5rem; margin-left: auto; }
 .dl-export .btn { font-size: .82rem; padding: .45rem .85rem; }
+.about-pick { margin: 2rem 0 .5rem; padding: 1.3rem 1.4rem; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+.about-pick h3 { margin: 0 0 .9rem; }
+.pick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem 1.6rem; }
+.pick-grid h4 { margin: 0 0 .4rem; font-size: .95rem; color: var(--tx); }
+.pick-grid p, .pick-grid li { font-size: .88rem; color: var(--tx-2); line-height: 1.55; }
+.pick-grid p { margin: 0; }
+.ftr-browse { margin: 0 0 .5rem; font-size: .82rem; color: var(--tx-3); }
+.ftr-browse a { color: var(--tx-2); }
+.dl-sub { width: 100%; margin-top: .2rem; padding: .95rem 1.05rem; border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line)); border-radius: 14px; background: color-mix(in srgb, var(--accent) 6%, var(--card)); display: flex; flex-direction: column; gap: .7rem; }
+.dl-sub-lead { margin: 0; font-size: .86rem; color: var(--tx-2); line-height: 1.5; }
+.dl-sub-lead strong { color: var(--tx); }
+.dl-sub .segmented { flex-wrap: wrap; align-self: flex-start; }
+.dl-sub-actions { display: flex; flex-wrap: wrap; gap: .45rem; }
+.dl-sub-actions .btn { font-size: .82rem; padding: .45rem .85rem; }
 .dl-remind { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; width: 100%; margin-top: .1rem; }
 .dl-remind input { flex: 1 1 220px; min-width: 0; padding: .5rem .7rem; border-radius: 10px; border: 1px solid var(--line); background: var(--bg-2); color: var(--tx); font: inherit; }
 .dl-remind input:focus { outline: none; border-color: var(--accent); }

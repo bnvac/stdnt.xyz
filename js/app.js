@@ -23,7 +23,7 @@
   var NEWSLETTER_ENDPOINT = "";
   // set to your Apps Script / Worker URL to enable deadline email reminders (see docs/EMAIL_REMINDERS.md)
   var REMINDER_ENDPOINT = "";
-  var GH_REPO = "https://github.com/2008wbbv/edu.edu";
+  var GH_REPO = "https://github.com/bnvac/stdnt.xyz";
   // contribute categories -> their GitHub issue-form templates (tracked + credited)
   var CONTRIB = [
     { icon: "code", label: "Tool or perk", desc: "Free software, an API, an app or a student perk.", template: "add-tool.yml" },
@@ -79,7 +79,17 @@
   var PIN_SVG = '<svg class="tg-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.5-8 11-8 11s-8-5.5-8-11a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.4"/></svg>';
 
   // ---- favicon logos (graceful) --------------------------------------
-  function faviconURL(d) { return "https://www.google.com/s2/favicons?domain=" + encodeURIComponent(d) + "&sz=64"; }
+  // logos are cached in logos/ by scripts/build-logos.mjs (js/logos.js lists them);
+  // only listings added since the last build fall back to the remote services
+  var LOGOS = window.LOGOS || { d: {}, si: {}, none: {} };
+  function faviconURL(d) {
+    if (LOGOS.d && LOGOS.d[d]) return "logos/" + d + "." + (LOGOS.d[d] === 1 ? "png" : LOGOS.d[d]);
+    if (LOGOS.none && LOGOS.none[d]) return "";   // the site has no icon: show the letter tile
+    return "https://www.google.com/s2/favicons?domain=" + encodeURIComponent(d) + "&sz=64";
+  }
+  // absolute on purpose: brand icons are CSS masks (--src:url(...)), and a relative
+  // url() inside a custom property resolves against the stylesheet, not the page
+  function siURL(slug) { return LOGOS.si && LOGOS.si[slug] ? new URL("logos/si/" + slug + ".svg", document.baseURI).href : ICON_CDN + slug; }
   function domainOf(u) {
     if (!u || !/^https?:\/\//i.test(u) || /google\.com\/search/.test(u)) return "";
     try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return ""; }
@@ -273,9 +283,9 @@
     // an explicit logo wins, then a Simple Icons slug, then favicon, then a monogram
     var inner = '<span class="ic-mono">' + esc(item.mono || monoFrom(item.name)) + "</span>";
     if (item.logo) return '<span class="ic-wrap">' + inner + '<img class="ic-fav" src="' + esc(item.logo) + '" alt="" loading="lazy" /></span>';
-    if (item.slug) return '<span class="ic-wrap"><span class="ic" style="--src:url(\'' + ICON_CDN + esc(item.slug) + '\')"></span></span>';
+    if (item.slug) return '<span class="ic-wrap"><span class="ic" style="--src:url(\'' + esc(siURL(item.slug)) + '\')"></span></span>';
     var dom = domainOf(item.url);
-    if (dom) inner += '<img class="ic-fav" src="' + faviconURL(dom) + '" alt="" loading="lazy" />';
+    if (dom && faviconURL(dom)) inner += '<img class="ic-fav" src="' + faviconURL(dom) + '" alt="" loading="lazy" />';
     return '<span class="ic-wrap">' + inner + "</span>";
   }
   function searchLink(name) { return "https://www.google.com/search?q=" + encodeURIComponent(name); }
@@ -330,7 +340,7 @@
   }
   // one "Editor's choice" marker site-wide: featured tools and the top-tier
   // programs (it replaces a gold star that looked like the save button)
-  var PICK = '<span class="ed-pick" title="Editor&#39;s choice: one of our top picks">&#128081; Editor&#39;s choice</span>';
+  var PICK = '<span class="ed-pick" title="Editor&#39;s choice: see How we pick in About">&#128081; Editor&#39;s choice</span>';
   function toolCard(r, i) {
     var c = CAT[r.category] || { name: r.category };
     var badge = r.access === "student"
@@ -833,7 +843,43 @@
   function activate(box, btn) {
     box.querySelectorAll(".chip").forEach(function (c) { c.classList.toggle("is-active", c === btn); });
   }
-  function render() {
+  function render() { renderTab(); syncSearch(); }
+  // ---- search across every tab: live counts + "also matching" jumps ----
+  var SEARCHABLE = [
+    ["tools", "Tools", function () { return toolsFiltered().length; }, function () { return RES.length; }],
+    ["discounts", "Discounts", function () { return discountsFiltered().length; }, function () { return DISCOUNTS.length; }],
+    ["sch", "Scholarships", function () { return schFiltered().length; }, function () { return SCH.length; }],
+    ["prog", "STEM programs", function () { return progFiltered().length; }, function () { return PROG.length; }],
+    ["competitions", "Competitions", function () { return competitionsFiltered().length; }, function () { return COMPS.length; }],
+    ["deadlines", "Deadlines", function () { return deadlinesFiltered().length; }, function () { return deadlineItems().length; }],
+    ["guides", "Guides", function () { return guidesFiltered().length; }, function () { return GUIDES.length; }],
+    ["templates", "Templates", function () { return templatesFiltered().length; }, function () { return TEMPLATES.length; }],
+    ["hackathons", "Hackathons", function () { return hackathonsFiltered().length; }, function () { return HACKATHONS.length; }]
+  ];
+  function syncSearch() {
+    var q = state.q, others = [], more = 0;
+    SEARCHABLE.forEach(function (s) {
+      var n = q ? s[2]() : s[3](), el = $("#n-" + s[0]);
+      if (el) { el.textContent = n; el.parentNode.classList.toggle("tab-miss", !!q && n === 0); }
+      if (!q || !n) return;
+      if (OVERFLOW[s[0]]) more += n;
+      if (s[0] !== state.tab) others.push('<button class="xs-chip" type="button" data-xs="' + s[0] + '">' + esc(s[1]) + ' <span class="xs-n">' + n + "</span></button>");
+    });
+    var mn = $("#more-n"); if (mn) { mn.textContent = more; mn.hidden = !more; }
+    var box = $("#xsearch"); if (!box) return;
+    box.hidden = !others.length;
+    box.innerHTML = others.length ? '<span class="xs-lead">Also matching &ldquo;' + esc(q) + "&rdquo;</span>" + others.join("") : "";
+  }
+  // keep ?q= in the address bar so a search can be shared or bookmarked
+  function setQuery(v) {
+    state.q = String(v || "").trim();
+    try {
+      var u = new URL(location.href);
+      if (state.q) u.searchParams.set("q", state.q); else u.searchParams.delete("q");
+      history.replaceState(history.state, "", u.pathname + u.search + u.hash);
+    } catch (e) {}
+  }
+  function renderTab() {
     if (state.tab === "about") { meta.textContent = ""; empty.hidden = true; return; }
     if (state.tab === "foryou") { renderQuiz(); return; }
     if (state.tab === "saved") { renderSaved(); return; }
@@ -880,7 +926,7 @@
     document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === tab); });
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
     ["tools", "discounts", "sch", "prog", "competitions", "deadlines", "foryou", "saved", "guides", "templates", "hackathons", "contribute", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
-    document.title = (TAB_TITLES[tab] ? TAB_TITLES[tab] + " · " : "") + "stdnt.xyz - free stuff for students";
+    document.title = (TAB_TITLES[tab] ? TAB_TITLES[tab] + " · " : "") + "stdnt.xyz";
     var moreBtn = $("#more-btn"); if (moreBtn) moreBtn.classList.toggle("is-active", !!OVERFLOW[tab]);
     closeMore();
     search.placeholder = tab === "tools" ? "Search tools, APIs, perks..." :
@@ -918,15 +964,21 @@
     var deb;
     search.addEventListener("input", function (e) {
       clearTimeout(deb); var v = e.target.value;
-      deb = setTimeout(function () { state.q = v.trim(); render(); }, 110);
+      deb = setTimeout(function () { setQuery(v); render(); }, 110);
+    });
+    var xs = $("#xsearch");
+    if (xs) xs.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-xs]"); if (!b) return;
+      switchTab(b.getAttribute("data-xs"));
+      var p = $("#panel-" + state.tab); if (p) p.scrollIntoView({ block: "start" });
     });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && guideOpen()) { e.preventDefault(); closeReader(); return; }
       if (e.key === "/" && document.activeElement !== search) { e.preventDefault(); search.focus(); }
-      else if (e.key === "Escape" && document.activeElement === search) { search.value = ""; state.q = ""; render(); search.blur(); }
+      else if (e.key === "Escape" && document.activeElement === search) { search.value = ""; setQuery(""); render(); search.blur(); }
     });
     $("#clear").addEventListener("click", function () {
-      state.q = ""; search.value = "";
+      setQuery(""); search.value = "";
       state.tools = { access: "all", cat: "all" };
       state.sch = { group: "all", sort: state.sch.sort, eligible: false, minAmt: 0, noEssay: false };
       state.prog = { grade: "all", free: false, sort: state.prog.sort, eligible: false, subject: "all", remote: false };
@@ -1040,7 +1092,7 @@
     function tiles(arr) {
       return arr.map(function (s, i) {
         var rot = ((i * 5) % 9) - 4; // -4..4 deg
-        return '<span class="ctile" style="transform:rotate(' + rot + 'deg)"><span class="ic" style="--src:url(\'' + ICON_CDN + s + '\')"></span></span>';
+        return '<span class="ctile" style="transform:rotate(' + rot + 'deg)"><span class="ic" style="--src:url(\'' + siURL(s) + '\')"></span></span>';
       }).join("");
     }
     var n = Math.min(14, Math.floor(slugs.length / 2));
@@ -1054,13 +1106,13 @@
     var list = window.SPONSORS || [];
     var html = list.map(function (s) {
       var logo = s.slug
-        ? '<img class="sp-logo" src="' + ICON_CDN + esc(s.slug) + '" alt="' + esc(s.name) + '" loading="lazy" />'
+        ? '<img class="sp-logo" src="' + esc(siURL(s.slug)) + '" alt="' + esc(s.name) + '" loading="lazy" />'
         : '<span class="sp-mono">' + esc(s.name) + "</span>";
       return '<a class="sponsor" href="' + esc(s.url) + '" target="_blank" rel="noopener">' + logo +
         '<span class="sp-name">' + esc(s.name) + (s.note ? ' <span class="sp-note">' + esc(s.note) + "</span>" : "") + "</span></a>";
     }).join("");
     if (!list.length) html = '<span class="sp-none">No sponsors yet, want to be the first?</span>';
-    html += '<a class="sponsor sponsor-add" href="https://github.com/2008wbbv/edu.edu" target="_blank" rel="noopener"><span class="sp-plus">+</span><span class="sp-name">Your logo here</span></a>';
+    html += '<a class="sponsor sponsor-add" href="https://github.com/bnvac/stdnt.xyz" target="_blank" rel="noopener"><span class="sp-plus">+</span><span class="sp-name">Your logo here</span></a>';
     box.innerHTML = html;
   }
   function fillStats() {
@@ -1408,7 +1460,7 @@
       .then(function (d) {
         if (!d || !d.events || !d.events.length) return;
         HACKATHONS = d.events;
-        $("#n-hackathons").textContent = HACKATHONS.length;
+        syncSearch();
         var abh = $("#ab-hack"); if (abh) abh.textContent = commas(HACKATHONS.length);
         var note = $("#hk-updated");
         if (note && d.updated) {
@@ -1622,6 +1674,25 @@
     if (ics) ics.addEventListener("click", function () { download("stdnt-deadlines.ics", toICS(deadlineExportItems()), "text/calendar;charset=utf-8"); });
     var csv = $("#dl-csv");
     if (csv) csv.addEventListener("click", function () { download("stdnt-deadlines.csv", "﻿" + toCSV(deadlineExportItems()), "text/csv;charset=utf-8"); });
+    // subscribable feeds (calendar/*.ics, rebuilt daily by CI): one link per app
+    var subBtn = $("#dl-sub"), subPanel = $("#dl-sub-panel"), subFeed = "all";
+    function feedURL(f) { return location.origin + location.pathname.replace(/[^/]*$/, "") + "calendar/" + f + ".ics"; }
+    function syncSub() {
+      var https = feedURL(subFeed), webcal = https.replace(/^https?:/, "webcal:"), name = "stdnt.xyz " + (subFeed === "all" ? "deadlines" : subFeed.replace("-", " ") + " deadlines");
+      $("#sub-google").href = "https://calendar.google.com/calendar/r?cid=" + encodeURIComponent(webcal);
+      $("#sub-apple").href = webcal;
+      $("#sub-outlook").href = "https://outlook.live.com/calendar/0/addfromweb?url=" + encodeURIComponent(https) + "&name=" + encodeURIComponent(name);
+    }
+    if (subBtn && subPanel) {
+      subBtn.addEventListener("click", function () { subPanel.hidden = !subPanel.hidden; subBtn.setAttribute("aria-expanded", String(!subPanel.hidden)); syncSub(); });
+      $("#dl-sub-feed").addEventListener("click", function (e) {
+        var b = e.target.closest(".seg"); if (!b) return;
+        subFeed = b.dataset.feed; syncSub();
+        $("#dl-sub-feed").querySelectorAll(".seg").forEach(function (s) { s.classList.toggle("is-active", s === b); });
+      });
+      $("#sub-copy").addEventListener("click", function (e) { copyWithFeedback(feedURL(subFeed), e.currentTarget); });
+      syncSub();
+    }
     var rem = $("#dl-remind"), panel = $("#dl-remind-panel");
     // hidden until REMINDER_ENDPOINT is set up (docs/EMAIL_REMINDERS.md)
     if (rem && !REMINDER_ENDPOINT) rem.hidden = true;
@@ -1697,7 +1768,7 @@
     var t = $("#logos-track"); if (!t) return;
     var html = INSTITUTIONS.map(function (o) {
       return '<a class="logo-tile" href="https://' + o.domain + '" target="_blank" rel="noopener">' +
-        '<img src="https://www.google.com/s2/favicons?domain=' + o.domain + '&sz=64" alt="" loading="lazy" width="20" height="20" />' +
+        (faviconURL(o.domain) ? '<img src="' + faviconURL(o.domain) + '" alt="" loading="lazy" width="20" height="20" />' : "") +
         "<span>" + esc(o.name) + "</span></a>";
     }).join("");
     t.innerHTML = html + html;   // duplicate for a seamless marquee loop
@@ -1722,32 +1793,6 @@
   }
 
   // ---- SEO (structured data, JS-rendered) ----------------------------
-  function injectStructuredData() {
-    try {
-      var origin = location.origin + location.pathname;
-      function itemList(name, arr, urlFn) {
-        return {
-          "@context": "https://schema.org", "@type": "ItemList", "name": name, "numberOfItems": arr.length,
-          "itemListElement": arr.slice(0, 100).map(function (x, i) { return { "@type": "ListItem", "position": i + 1, "name": x.name, "url": urlFn(x) }; })
-        };
-      }
-      var blocks = [
-        { "@context": "https://schema.org", "@type": "WebSite", "name": "stdnt.xyz", "url": origin, "description": "Every free thing you can get as a student - tools, free API keys, perks, scholarships, STEM programs and competitions, in one searchable place." },
-        { "@context": "https://schema.org", "@type": "EducationalOrganization", "name": "stdnt.xyz", "url": origin, "description": "A free, open-source directory of student resources: tools, scholarships, STEM programs, competitions and guides." },
-        itemList("Scholarships for students", SCH, function (s) { return s.url; }),
-        itemList("STEM programs for students", PROG, function (p) { return p.url || searchLink(p.name); })
-      ];
-      blocks.forEach(function (b) {
-        var el = document.createElement("script");
-        el.type = "application/ld+json";
-        el.textContent = JSON.stringify(b);
-        document.head.appendChild(el);
-      });
-      if (!document.querySelector("link[rel=canonical]")) {
-        var can = document.createElement("link"); can.rel = "canonical"; can.href = origin; document.head.appendChild(can);
-      }
-    } catch (e) {}
-  }
 
   // ---- theme ---------------------------------------------------------
   function initTheme() {
@@ -1814,7 +1859,6 @@
   wireNewsletter();
   wireMediaKit();
   wireMore();
-  injectStructuredData();
   initViews();
   (function () {
     var hdr = document.querySelector(".hdr"); if (!hdr) return;
@@ -1822,6 +1866,7 @@
     window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
   })();
   window.addEventListener("hashchange", function () { routeHash(); });
+  try { var q0 = new URLSearchParams(location.search).get("q"); if (q0) { search.value = q0; state.q = q0.trim(); } } catch (e) {}
   if (deepLink) switchTab("foryou");
   else if (!routeHash()) render();
 })();

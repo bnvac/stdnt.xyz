@@ -69,7 +69,7 @@ Best,
       <h3>6. After you get a yes</h3>
       <p>Reply fast, be honest about your time and skills, and deliver the first small task well. One good lab experience leads to a recommendation letter, a co-authorship, and a much easier "yes" the next time.</p>
       <section class="guide-reddit">
-        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <h3><img class="guide-reddit-logo" src="logos/si/reddit.svg" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
         <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/labrats/" target="_blank" rel="noopener">r/labrats</a>, <a href="https://www.reddit.com/r/gradadmissions/" target="_blank" rel="noopener">r/gradadmissions</a> and <a href="https://www.reddit.com/r/ApplyingToCollege/" target="_blank" rel="noopener">r/ApplyingToCollege</a>:</p>
         <ul>
           <li><strong>Email the grad students and postdocs too.</strong> They often reply faster than the professor, and they're usually the ones who would mentor you day to day.</li>
@@ -130,7 +130,7 @@ Best,
         <li>Keep your school email attached to GitHub so renewals stay frictionless.</li>
       </ul>
       <section class="guide-reddit">
-        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <h3><img class="guide-reddit-logo" src="logos/si/reddit.svg" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
         <p class="guide-reddit-src">Common fixes from <a href="https://www.reddit.com/r/github/" target="_blank" rel="noopener">r/github</a> and <a href="https://www.reddit.com/r/csMajors/" target="_blank" rel="noopener">r/csMajors</a> threads, and they match <a href="https://github.com/orgs/community/discussions/111352" target="_blank" rel="noopener">GitHub's own FAQ</a>:</p>
         <ul>
           <li><strong>Turn off your VPN and allow location.</strong> "Not near any campus" is one of the most common rejection reasons. Apply from home or school with location on.</li>
@@ -190,7 +190,7 @@ Best,
         <strong>Privacy:</strong> verifiers only confirm enrollment status - they don't share your documents with the company offering the perk. Still, only upload to the official verification page (check the URL), never to a random link from an email.
       </div>
       <section class="guide-reddit">
-        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <h3><img class="guide-reddit-logo" src="logos/si/reddit.svg" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
         <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/college/" target="_blank" rel="noopener">r/college</a> and <a href="https://www.reddit.com/r/Frugal/" target="_blank" rel="noopener">r/Frugal</a>:</p>
         <ul>
           <li><strong>Your student portal is a proof machine.</strong> Most portals can print an enrollment verification or current-term schedule with your name, school and date on it, which is exactly what verifiers want.</li>
@@ -246,7 +246,7 @@ Best,
       <h3>After you apply</h3>
       <p>Track outcomes, reuse and improve your strongest essays, and send a short thank-you if you win - some awards renew yearly, and a good impression matters. Rejections are just odds; keep volume up.</p>
       <section class="guide-reddit">
-        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <h3><img class="guide-reddit-logo" src="logos/si/reddit.svg" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
         <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/scholarships/" target="_blank" rel="noopener">r/scholarships</a> and <a href="https://www.reddit.com/r/ApplyingToCollege/" target="_blank" rel="noopener">r/ApplyingToCollege</a>:</p>
         <ul>
           <li><strong>Local beats national.</strong> The most common success story is several $500 to $2,000 local awards (community foundations, Rotary, credit unions, employers), not one big national win.</li>
@@ -297,7 +297,7 @@ Best,
       <h3>Remote &amp; free options</h3>
       <p>Can't relocate or didn't get a funded spot? Remote research is real - data, computational, and literature work all happen online. The most reliable way in is to email professors directly.</p>
       <section class="guide-reddit">
-        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <h3><img class="guide-reddit-logo" src="logos/si/reddit.svg" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
         <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/gradadmissions/" target="_blank" rel="noopener">r/gradadmissions</a>, <a href="https://www.reddit.com/r/labrats/" target="_blank" rel="noopener">r/labrats</a> and <a href="https://www.reddit.com/r/college/" target="_blank" rel="noopener">r/college</a>:</p>
         <ul>
           <li><strong>Apply to more than feels reasonable.</strong> Popular REUs get hundreds of applications for about ten spots, so students commonly apply to ten or more to land one.</li>
@@ -347,7 +347,7 @@ Best,
       </div>
 
       <section class="guide-reddit">
-        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <h3><img class="guide-reddit-logo" src="logos/si/reddit.svg" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
         <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/ScienceOlympiad/" target="_blank" rel="noopener">r/ScienceOlympiad</a> and <a href="https://www.reddit.com/r/math/" target="_blank" rel="noopener">r/math</a>:</p>
         <ul>
           <li><strong>Past papers are the whole game for AMC.</strong> The Art of Problem Solving wiki has every past AMC and AIME problem with solutions. Timed past tests beat any textbook.</li>
@@ -400,7 +400,7 @@ Best,
       </ul>
 
       <section class="guide-reddit">
-        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <h3><img class="guide-reddit-logo" src="logos/si/reddit.svg" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
         <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/ApplyingToCollege/" target="_blank" rel="noopener">r/ApplyingToCollege</a>, <a href="https://www.reddit.com/r/labrats/" target="_blank" rel="noopener">r/labrats</a> and <a href="https://www.reddit.com/r/highschool/" target="_blank" rel="noopener">r/highschool</a>:</p>
         <ul>
           <li><strong>Be skeptical of pricey research programs.</strong> Admissions readers see thousands of pay-to-play projects. A small, real project with a teacher or local professor often reads better than a $5,000 mentorship.</li>
@@ -447,7 +447,7 @@ Best,
       </ul>
 
       <section class="guide-reddit">
-        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <h3><img class="guide-reddit-logo" src="logos/si/reddit.svg" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
         <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/ApplyingToCollege/" target="_blank" rel="noopener">r/ApplyingToCollege</a> and <a href="https://www.reddit.com/r/collegeresults/" target="_blank" rel="noopener">r/collegeresults</a>:</p>
         <ul>
           <li><strong>Look up each school's Common Data Set (section C7).</strong> It lists how much the school says it weighs rigor, GPA, essays, recommendations, interviews and demonstrated interest.</li>
@@ -495,7 +495,7 @@ Best,
       <p>A strong junior-year PSAT can make you a <strong>National Merit</strong> semifinalist/finalist - an award that brings real scholarship offers and perks. Plenty of students say it did more for them than the SAT itself.</p>
 
       <section class="guide-reddit">
-        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <h3><img class="guide-reddit-logo" src="logos/si/reddit.svg" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
         <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/Sat/" target="_blank" rel="noopener">r/Sat</a> and <a href="https://www.reddit.com/r/ACT/" target="_blank" rel="noopener">r/ACT</a>:</p>
         <ul>
           <li><strong>Save the official Bluebook practice tests.</strong> They're adaptive like the real digital SAT and the best predictor of your score, so take them timed, one at a time, and review every miss.</li>
@@ -544,7 +544,7 @@ Best,
       <p>Trade essays with other applicants, use CollegeVine, and the r/ApplyingToCollege and r/CollegeEssayReview communities (take all feedback with a grain of salt). Read real "essays that worked" published by schools like JHU, Tufts, and Harvard.</p>
 
       <section class="guide-reddit">
-        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <h3><img class="guide-reddit-logo" src="logos/si/reddit.svg" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
         <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/ApplyingToCollege/" target="_blank" rel="noopener">r/ApplyingToCollege</a>:</p>
         <ul>
           <li><strong>Cut your first paragraph.</strong> First drafts usually spend the opening warming up. Try deleting it and starting where the story actually begins.</li>
@@ -616,7 +616,7 @@ Best,
       </div>
 
       <section class="guide-reddit">
-        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <h3><img class="guide-reddit-logo" src="logos/si/reddit.svg" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
         <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/ApplyingToCollege/" target="_blank" rel="noopener">r/ApplyingToCollege</a>:</p>
         <ul>
           <li><strong>Submit a few days early.</strong> The Common App tends to slow down right before big deadlines like November 1 and January 1, and late-night submissions are when things break.</li>
@@ -676,7 +676,7 @@ Best,
       </ul>
 
       <section class="guide-reddit">
-        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <h3><img class="guide-reddit-logo" src="logos/si/reddit.svg" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
         <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/financialaid/" target="_blank" rel="noopener">r/financialaid</a> and <a href="https://www.reddit.com/r/StudentLoans/" target="_blank" rel="noopener">r/StudentLoans</a>:</p>
         <ul>
           <li><strong>Set up StudentAid.gov accounts early.</strong> You and each parent contributor need your own account for the FAFSA, and identity checks can take a few days, so don't wait for the deadline.</li>
