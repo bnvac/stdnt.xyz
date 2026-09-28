@@ -29,10 +29,10 @@
       subjects: ["Aerospace", "Engineering", "Research", "STEM", "Coding"], tags: ["US", "Paid", "Stipend", "Remote", "In-person"], grades: ["Junior", "Senior"],
       ranking: "A", accRate: "Selective", flagship: true,
       details: "Paid NASA internships across centers; some roles are open to high-school students aged 16+." },
-    { name: "NIST SHIP (Summer High School Internship Program)", url: "https://www.nist.gov/iaao/academic-affairs-office/student-programs/summer-high-school-internship-program-ship", deadline: "Feb", when: "Summer (8 weeks)", cost: "Free (volunteer)", free: true,
-      subjects: ["Research", "STEM", "Engineering", "Coding"], tags: ["Maryland", "Colorado", "In-person", "Lab Work"], grades: ["Senior"],
+    { name: "NIST SHIP (Summer High School Internship Program)", url: "https://www.nist.gov/ship", deadline: "Feb", when: "Summer (7 weeks)", cost: "Free (volunteer)", free: true,
+      subjects: ["Research", "STEM", "Engineering", "Coding"], tags: ["Maryland", "Colorado", "In-person", "Lab Work"], grades: ["Junior", "Senior"],
       ranking: "B+", accRate: "Selective", flagship: false,
-      details: "Volunteer summer research at NIST campuses (MD and CO) for rising seniors and recent grads." }
+      details: "Unpaid 7-week research internship with NIST scientists in Gaithersburg, MD or Boulder, CO. For high school juniors and seniors who are U.S. citizens with a 3.0+ unweighted GPA." }
   ];
   // Drop any community-sheet stub these entries replace (e.g. a bare "SEAP"),
   // so regenerating programs.js can't bring the duplicate back.

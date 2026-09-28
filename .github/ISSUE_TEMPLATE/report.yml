@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Spotted something stale? Thank you — keeping listings fresh is the
+        Spotted something stale? Thank you - keeping listings fresh is the
         single most valuable thing you can do here.
   - type: input
     id: listing
@@ -41,5 +41,5 @@ body:
     id: screenshot
     attributes:
       label: Screenshot (optional)
-      description: Drag in a screenshot of the broken page or wrong info — pasting from your clipboard works too.
+      description: Drag in a screenshot of the broken page or wrong info - pasting from your clipboard works too.
       placeholder: Drop a screenshot here...

@@ -10,8 +10,8 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 
 const FILES = [
-  "js/data.js", "js/scholarships.js", "js/programs.js",
-  "js/programs-extra.js", "js/guides.js", "js/templates.js"
+  "js/data.js", "js/scholarships.js", "js/programs.js", "js/programs-extra.js",
+  "js/competitions.js", "js/discounts.js", "js/finaid.js", "js/guides.js", "js/templates.js"
 ];
 const URL_RE = /https?:\/\/[^\s"'`<>)\]]+/g;
 const TIMEOUT = 15000;
@@ -44,21 +44,28 @@ if (Number.isFinite(LIMIT)) list = list.slice(0, LIMIT);
 console.log(`Checking ${list.length} unique URLs from ${FILES.length} files...`);
 
 async function check(u) {
-  const opts = {
-    redirect: "follow",
+  // a fresh timeout per request: one shared signal meant a HEAD that hung
+  // until the timeout left the GET retry already aborted, so slow-but-live
+  // sites were reported dead without ever being retried
+  const opts = (method) => ({
+    method, redirect: "follow",
     headers: { "User-Agent": "Mozilla/5.0 (compatible; stdnt-xyz-linkcheck/1.0; +https://github.com/2008wbbv/edu.edu)" },
     signal: AbortSignal.timeout(TIMEOUT)
-  };
+  });
   try {
-    let res = await fetch(u, { ...opts, method: "HEAD" });
-    if (res.status === 405 || res.status === 501) res = await fetch(u, { ...opts, method: "GET" });
+    let res = await fetch(u, opts("HEAD"));
+    if (res.status === 405 || res.status === 501) res = await fetch(u, opts("GET"));
     return { u, status: res.status, ok: res.ok };
   } catch {
     try {
-      const res = await fetch(u, { ...opts, method: "GET" });
+      const res = await fetch(u, opts("GET"));
       return { u, status: res.status, ok: res.ok };
     } catch (e2) {
-      return { u, status: 0, ok: false, error: String((e2 && e2.message) || e2) };
+      const code = String((e2 && e2.cause && e2.cause.code) || (e2 && e2.name) || "");
+      // no such domain or a bad certificate is broken for visitors too;
+      // a timeout or reset can't tell a dead site from a bot wall
+      const hard = /ENOTFOUND|CERT|ERR_TLS/.test(code);
+      return { u, status: 0, ok: false, hard, error: code || String((e2 && e2.message) || e2) };
     }
   }
 }
@@ -74,18 +81,18 @@ console.log("");
 const broken = [], warned = [];
 for (const r of results) {
   if (r.ok) continue;
-  (SOFT.has(r.status) ? warned : broken).push(r);
+  (SOFT.has(r.status) || (r.status === 0 && !r.hard) ? warned : broken).push(r);
 }
 
 const line = (r) => {
   const code = r.status ? `HTTP ${r.status}` : `error: ${r.error || "no response"}`;
-  return `- [ ] ${r.u} — **${code}** (in ${[...urls.get(r.u)].join(", ")})`;
+  return `- [ ] ${r.u}: **${code}** (in ${[...urls.get(r.u)].join(", ")})`;
 };
 
-let report = `# Link check — ${new Date().toISOString().slice(0, 10)}\n\n`;
-report += `Checked ${list.length} URLs: **${broken.length} broken**, ${warned.length} blocked/rate-limited, ${results.length - broken.length - warned.length} OK.\n\n`;
+let report = `# Link check, ${new Date().toISOString().slice(0, 10)}\n\n`;
+report += `Checked ${list.length} URLs: **${broken.length} broken**, ${warned.length} blocked/timed out, ${results.length - broken.length - warned.length} OK.\n\n`;
 if (broken.length) report += `## Broken links (need fixing)\n\n${broken.map(line).join("\n")}\n\n`;
-if (warned.length) report += `<details><summary>${warned.length} links returned 401/403/429 (likely bot-blocking — usually fine, spot-check)</summary>\n\n${warned.map(line).join("\n")}\n\n</details>\n`;
+if (warned.length) report += `<details><summary>${warned.length} links were blocked (401/403/429) or timed out: usually bot walls, spot-check</summary>\n\n${warned.map(line).join("\n")}\n\n</details>\n`;
 writeFileSync("link-report.md", report);
 console.log(report);
 

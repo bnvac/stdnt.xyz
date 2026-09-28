@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Adding a scholarship? Fill this in and submit — it becomes a tracked issue
+        Adding a scholarship? Fill this in and submit - it becomes a tracked issue
         credited to your GitHub account.
   - type: input
     id: name
@@ -59,7 +59,7 @@ body:
     id: image
     attributes:
       label: Logo or screenshot (optional)
-      description: Drag an image in or paste from your clipboard — GitHub uploads it automatically. A logo or a screenshot of the page is a big help.
+      description: Drag an image in or paste from your clipboard - GitHub uploads it automatically. A logo or a screenshot of the page is a big help.
       placeholder: Drop a logo or screenshot here...
   - type: checkboxes
     id: checks

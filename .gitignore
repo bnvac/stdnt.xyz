@@ -1,4 +1,4 @@
-# dependencies / build noise (none expected — pure static site)
+# dependencies / build noise (none expected - pure static site)
 node_modules/
 .DS_Store
 

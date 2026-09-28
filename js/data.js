@@ -353,7 +353,7 @@ window.RESOURCES = [
   /* ------------------------------------------------------------ college & apply */
   { name: "Common App", url: "https://www.commonapp.org/", category: "college", access: "everyone", mono: "App",
     desc: "Apply to 1,000+ colleges with a single application.", tags: ["college", "application"] },
-  { name: "Common App Fee Waiver", url: "https://www.commonapp.org/apply/fee-waivers", category: "college", access: "student", mono: "Fw",
+  { name: "Common App Fee Waiver", url: "https://appsupport.commonapp.org/applicantsupport/s/article/What-do-I-need-to-know-about-the-Common-App-fee-waiver", category: "college", access: "student", mono: "Fw",
     desc: "Eligible students can apply to college entirely free, with no application fees.", tags: ["fee waiver", "college", "free"] },
   { name: "College Board Fee Waivers", url: "https://satsuite.collegeboard.org/sat/registration/fee-waivers", category: "college", access: "student", mono: "CB",
     desc: "Free SAT registrations, score sends and college application fee waivers if eligible.", tags: ["fee waiver", "sat", "college"] },

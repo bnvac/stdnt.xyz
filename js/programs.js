@@ -2896,7 +2896,7 @@ window.PROGRAMS = [
  },
  {
   "name": "Scripps Research Translational Institute",
-  "url": "https://www.scripps.edu/science-and-medicine/translational-institute/education-and-training/student-research-internship/?tab-2-drawers=1&tab-1-drawers=1",
+  "url": "https://www.scripps.edu/science/translational-institute/education-training/student-research-internship-program/",
   "deadline": "March 31",
   "when": "",
   "cost": "",
