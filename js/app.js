@@ -328,6 +328,9 @@
       return a.name.localeCompare(b.name);
     });
   }
+  // one "Editor's choice" marker site-wide: featured tools and the top-tier
+  // programs (it replaces a gold star that looked like the save button)
+  var PICK = '<span class="ed-pick" title="Editor&#39;s choice: one of our top picks">&#128081; Editor&#39;s choice</span>';
   function toolCard(r, i) {
     var c = CAT[r.category] || { name: r.category };
     var badge = r.access === "student"
@@ -339,8 +342,8 @@
     return '<a class="card' + (internal ? " card-guide" : "") + '" href="' + esc(r.url) + '"' + link + ' style="animation-delay:' +
       Math.min(i * 16, 240) + 'ms">' +
       '<div class="card-top">' + iconHTML(r) +
-      '<div class="card-head"><span class="card-name">' + esc(r.name) + (r.featured ? '&nbsp;<span class="card-star">&#9733;</span>' : "") + "</span>" +
-      '<span class="card-badges">' + badge + verifiedChip(r) + "</span></div>" +
+      '<div class="card-head"><span class="card-name">' + esc(r.name) + "</span>" +
+      '<span class="card-badges">' + badge + (r.featured ? PICK : "") + verifiedChip(r) + "</span></div>" +
       '<span class="card-meta">' + starBtn("tool", r.name) + (internal ? "" : flagBtn(r.name, r.url)) + "</span></div>" +
       (r.value ? '<span class="card-value">' + esc(r.value) + "</span>" : "") +
       '<p class="card-desc">' + esc(r.desc) + "</p>" +
@@ -470,9 +473,22 @@
     if (m) return { t: m[0], full: false };
     return { t: p.cost ? p.cost.split("(")[0].trim().slice(0, 14) : "", full: false };
   }
+  // how hard a program is to get into, shown as a tag (not a letter tier)
+  function selectivity(p) {
+    var s = String(p.accRate || "").trim(), m = s.match(/(<|~)?\s*(\d+(?:\.\d+)?)\s*(?:-\s*(\d+(?:\.\d+)?))?\s*%/);
+    if (m) return (m[1] === "<" ? "Under " : "~") + m[2] + (m[3] ? "-" + m[3] : "") + "% admitted";
+    if (!s || /varies/i.test(s)) return "";
+    if (/per state/i.test(s)) return s;
+    if (/test-based/i.test(s)) return "Test-score based";
+    if (/highly selective|elite/i.test(s)) return "Highly selective";
+    if (/selective/i.test(s)) return "Selective";
+    if (/accessible|^high\b/i.test(s)) return "Open to most";
+    return "";
+  }
   function progRow(p, i) {
     var url = p.url || searchLink(p.name + " program");
-    var rank = p.ranking ? '<span class="rank' + (/^S/.test(p.ranking) ? " s" : "") + '">' + esc(p.ranking) + "</span>" : '<span class="rank ghost"></span>';
+    var sel = selectivity(p);
+    var selTag = sel ? '<span class="tg tg-sel">' + icon("target") + esc(sel) + "</span>" : "";
     var req = reqHTML(reqList(p, "prog").list);
     var si = progStateInfo(p);
     var stateTag = si.restricted ? '<span class="tg tg-state">' + PIN_SVG + esc(si.states.slice(0, 2).join("/")) + " only</span>"
@@ -480,12 +496,12 @@
     var subs = (p.subjects || []).slice(0, 3).map(function (s) { return '<span class="tg">' + esc(s) + "</span>"; }).join("");
     var sub = esc(p.details || (p.subjects || []).join(", ")) + (p.when ? ' <span class="find">&middot; ' + esc(p.when) + "</span>" : "");
     var cost = shortCost(p);
-    return '<div class="row' + (gone(p) ? " row-gone" : "") + '" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' + rank +
+    return '<div class="row' + (gone(p) ? " row-gone" : "") + '" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' +
       logoTile(p.name, p.url, p.logo) +
       '<a class="row-main" href="' + esc(url) + '" target="_blank" rel="noopener">' +
-      '<div class="row-title">' + esc(p.name) + (p.flagship ? '&nbsp;<span class="card-star">&#9733;</span>' : "") + matchBadge("prog", p) + verifiedChip(p) + '&nbsp;<span class="ext">&#8599;</span></div>' +
+      '<div class="row-title">' + esc(p.name) + (/^S/.test(p.ranking || "") ? " " + PICK : "") + matchBadge("prog", p) + verifiedChip(p) + '&nbsp;<span class="ext">&#8599;</span></div>' +
       '<div class="row-sub">' + sub + "</div>" +
-      '<div class="row-tags">' + freshTags(p, url) + req + stateTag + subs + "</div></a>" +
+      '<div class="row-tags">' + freshTags(p, url) + selTag + req + stateTag + subs + "</div></a>" +
       '<span class="row-acts">' + starBtn("prog", p.name) + flagBtn(p.name, url) + "</span>" +
       '<div class="row-right"><span class="row-amt' + (cost.full ? " full" : "") + '">' + esc(cost.t) + "</span>" +
       calCell(p.name, url, p.deadline) + "</div></div>";
@@ -1067,6 +1083,15 @@
       return hit([g.title, g.blurb, (g.tags || []).join(" ")].join(" "), ts);
     });
   }
+  // reading time from the guide's actual text (~220 words a minute), so it
+  // stays right as guides grow instead of trusting a hand-typed number
+  function readMins(g) {
+    if (!g._mins) {
+      var words = String(g.body || "").replace(/<[^>]+>/g, " ").replace(/&[#\w]+;/g, " ").split(/\s+/).filter(Boolean).length;
+      g._mins = Math.max(1, Math.round(words / 220));
+    }
+    return g._mins;
+  }
   function guideCard(g, i) {
     var tags = (g.tags || []).slice(0, 3).map(function (t) { return '<span class="guide-tag">' + esc(t) + "</span>"; }).join("");
     return '<a class="guide-card" href="#guide/' + esc(g.slug) + '" style="animation-delay:' + Math.min(i * 45, 270) + 'ms">' +
@@ -1074,7 +1099,7 @@
       '<span class="guide-card-main">' +
         '<span class="guide-card-title">' + esc(g.title) + "</span>" +
         '<span class="guide-card-blurb">' + esc(g.blurb) + "</span>" +
-        '<span class="guide-card-meta"><span class="guide-mins">' + g.readMins + " min read</span>" + tags + "</span>" +
+        '<span class="guide-card-meta"><span class="guide-mins">' + readMins(g) + " min read</span>" + tags + "</span>" +
       "</span>" +
       '<span class="guide-card-arrow" aria-hidden="true">&rarr;</span></a>';
   }
@@ -1090,7 +1115,7 @@
     return '<header class="guide-rhead">' +
         '<span class="guide-rico" aria-hidden="true">' + icon(g.icon) + "</span>" +
         '<h2 class="guide-rtitle" id="guide-reader-title">' + esc(g.title) + "</h2>" +
-        '<p class="guide-rmeta"><span class="guide-mins">' + g.readMins + " min read</span>" + tags + "</p>" +
+        '<p class="guide-rmeta"><span class="guide-mins">' + readMins(g) + " min read</span>" + tags + "</p>" +
       "</header>" +
       '<div class="guide-rbody">' + g.body + "</div>" +
       '<a class="guide-rback" href="#guides">&larr; All guides</a>';
@@ -1202,17 +1227,38 @@
       return hit([t.title, t.blurb, (t.tags || []).join(" "), (t.columns || []).join(" ")].join(" "), ts);
     });
   }
-  function tplRows(t) { return [t.columns || []].concat(t.sample || []); }
+  // example dates roll forward to their next occurrence, so a sample row
+  // never shows a deadline that has already passed
+  function freshDate(v) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(v)); if (!m) return v;
+    var d = new Date(TODAY.getFullYear(), +m[2] - 1, +m[3]);
+    if (d < TODAY) d.setFullYear(d.getFullYear() + 1);
+    return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  }
+  function tplSample(t) { return (t.sample || []).map(function (r) { return r.map(freshDate); }); }
+  function tplRows(t) { return [t.columns || []].concat(tplSample(t)); }
+  // a small spreadsheet mock-up of exactly what the download contains
+  function tplPreview(t) {
+    var cols = t.columns || [], all = tplSample(t), rows = all.slice(0, 4);   // keep cards even; the footer gives the full count
+    var cell = function (v) { v = v == null ? "" : String(v); return /^https?:/.test(v) ? '<td class="tpl-link">' + esc(v) + "</td>" : "<td>" + esc(v) + "</td>"; };
+    var h = '<tr><th class="tpl-rn"></th>' + cols.map(function (c, i) { return "<th>" + String.fromCharCode(65 + i) + "</th>"; }).join("") + "</tr>";
+    var b = '<tr class="tpl-hrow"><td class="tpl-rn">1</td>' + cols.map(cell).join("") + "</tr>";
+    rows.forEach(function (r, i) { b += '<tr><td class="tpl-rn">' + (i + 2) + "</td>" + cols.map(function (c, j) { return cell(r[j]); }).join("") + "</tr>"; });
+    b += '<tr class="tpl-blank"><td class="tpl-rn">' + (rows.length + 2) + "</td>" + cols.map(function () { return "<td></td>"; }).join("") + "</tr>";
+    return '<div class="tpl-sheet" aria-label="Preview of the ' + esc(t.title) + ' spreadsheet">' +
+      '<div class="tpl-sheet-scroll"><table class="tpl-grid"><thead>' + h + "</thead><tbody>" + b + "</tbody></table></div>" +
+      '<div class="tpl-sheet-foot"><span class="tpl-sheet-tab">Sheet1</span>' +
+      '<span class="tpl-sheet-meta">' + cols.length + " columns &middot; " + all.length + " example rows</span></div></div>";
+  }
   function tplCSV(t) { return tplRows(t).map(function (r) { return r.map(csvCell).join(","); }).join("\r\n"); }
   function tplTSV(t) { return tplRows(t).map(function (r) { return r.map(function (c) { return String(c == null ? "" : c).replace(/\t/g, " "); }).join("\t"); }).join("\n"); }
   function downloadCSV(t) { download(t.slug + ".csv", "﻿" + tplCSV(t), "text/csv;charset=utf-8"); }
   function templateCard(t, i) {
-    var cols = (t.columns || []).map(function (c) { return '<span class="tpl-col">' + esc(c) + "</span>"; }).join("");
     return '<div class="tpl-card" style="animation-delay:' + Math.min(i * 40, 240) + 'ms">' +
       '<div class="tpl-head"><span class="tpl-ico" aria-hidden="true">' + icon(t.icon) + "</span>" +
         '<span class="tpl-headmain"><span class="tpl-title">' + esc(t.title) + "</span>" +
         '<span class="tpl-blurb">' + esc(t.blurb) + "</span></span></div>" +
-      '<div class="tpl-cols">' + cols + "</div>" +
+      tplPreview(t) +
       '<div class="tpl-actions">' +
         '<button class="btn btn-grad tpl-btn" type="button" data-tpl-csv="' + esc(t.slug) + '">' +
           '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Download .csv</button>' +

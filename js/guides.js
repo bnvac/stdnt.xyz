@@ -1,6 +1,7 @@
 /*
  * guides.js - in-site how-to guides shown on the Guides tab.
- * Plain data: each guide has { slug, icon, title, blurb, readMins, tags, body }.
+ * Plain data: each guide has { slug, icon, title, blurb, tags, body }; the
+ * "N min read" label is computed from the body text in app.js.
  * `body` is first-party HTML rendered into the reading overlay (see app.js).
  * To add a guide: copy a block, give it a unique slug, write the body. No build step.
  */
@@ -10,7 +11,6 @@ window.GUIDES = [
     icon: "envelope",
     title: "Cold-email a professor for research",
     blurb: "How students land free, often-remote research by emailing professors the right way - with a proven template.",
-    readMins: 6,
     tags: ["research", "email", "internships", "college"],
     body: `
       <p class="guide-lead">You do not need connections to do real research. Every year students get into labs - often remote, often as a high-schooler or first-year - just by sending a short, specific email to the right professor. Most students never try, so the ones who do stand out.</p>
@@ -68,6 +68,18 @@ Best,
 
       <h3>6. After you get a yes</h3>
       <p>Reply fast, be honest about your time and skills, and deliver the first small task well. One good lab experience leads to a recommendation letter, a co-authorship, and a much easier "yes" the next time.</p>
+      <section class="guide-reddit">
+        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/labrats/" target="_blank" rel="noopener">r/labrats</a>, <a href="https://www.reddit.com/r/gradadmissions/" target="_blank" rel="noopener">r/gradadmissions</a> and <a href="https://www.reddit.com/r/ApplyingToCollege/" target="_blank" rel="noopener">r/ApplyingToCollege</a>:</p>
+        <ul>
+          <li><strong>Email the grad students and postdocs too.</strong> They often reply faster than the professor, and they're usually the ones who would mentor you day to day.</li>
+          <li><strong>Put the ask in the subject line.</strong> "High school student interested in volunteering on [topic] research" gets opened. "Research opportunity?" gets skimmed past.</li>
+          <li><strong>Offer a skill, not just enthusiasm.</strong> "I can clean data in Python and summarize papers" beats "I'm a hard worker." Even basic coding or a lab-safety course makes you easier to say yes to.</li>
+          <li><strong>Ask for a short call, not a position.</strong> "Could we talk for 10 minutes about your work?" is a much easier yes than "Can I join your lab?", and the call is where offers happen.</li>
+          <li><strong>Reach out in winter for a summer spot.</strong> January to March gives labs time to plan a project and find you a desk before summer students are locked in.</li>
+        </ul>
+      </section>
+
       <p class="guide-xref">Want a structured program instead of a cold pitch? See <a href="#guide/summer-research">Land summer research / REUs</a>.</p>
     `
   },
@@ -77,7 +89,6 @@ Best,
     icon: "cap",
     title: "Claim the GitHub Student Pack",
     blurb: "Unlock $200k+ of free developer tools, cloud credits and domains - how to verify and what to redeem first.",
-    readMins: 5,
     tags: ["github", "developer", "free", "cloud", "perks"],
     body: `
       <p class="guide-lead">The <a href="https://education.github.com/pack" target="_blank" rel="noopener">GitHub Student Developer Pack</a> is the single best freebie for any student who writes code: free cloud hosting, domains, AI tools, and pro software, bundled into one verification. Total value is well over $200k.</p>
@@ -118,6 +129,18 @@ Best,
         <li>Set a calendar reminder for credits that expire (cloud credits especially).</li>
         <li>Keep your school email attached to GitHub so renewals stay frictionless.</li>
       </ul>
+      <section class="guide-reddit">
+        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <p class="guide-reddit-src">Common fixes from <a href="https://www.reddit.com/r/github/" target="_blank" rel="noopener">r/github</a> and <a href="https://www.reddit.com/r/csMajors/" target="_blank" rel="noopener">r/csMajors</a> threads, and they match <a href="https://github.com/orgs/community/discussions/111352" target="_blank" rel="noopener">GitHub's own FAQ</a>:</p>
+        <ul>
+          <li><strong>Turn off your VPN and allow location.</strong> "Not near any campus" is one of the most common rejection reasons. Apply from home or school with location on.</li>
+          <li><strong>Make your profile name match your document.</strong> Set your GitHub name and billing info to your legal name, and turn on two-factor authentication before you apply. Mismatches get rejected.</li>
+          <li><strong>Photograph a dated document fresh.</strong> An enrollment letter or class schedule with the current date beats a student ID with no date, and reused or screenshotted images often fail.</li>
+          <li><strong>Be patient after approval.</strong> Copilot and partner offers can take up to 72 hours (sometimes a week) to show up. Reapplying doesn't speed it up.</li>
+          <li><strong>Set a reminder for year-one freebies.</strong> The free domain and many credits last a year. After that, renewal costs real money unless you move or cancel.</li>
+        </ul>
+      </section>
+
       <p class="guide-xref">Stuck on the proof step? See <a href="#guide/verify-student">Verify as a student</a>.</p>
     `
   },
@@ -127,7 +150,6 @@ Best,
     icon: "id",
     title: "Verify as a student",
     blurb: "How SheerID, .edu emails and document checks work - and how to pass them so perks actually unlock.",
-    readMins: 5,
     tags: ["verification", "sheerid", "edu", "perks"],
     body: `
       <p class="guide-lead">Most student perks gate behind a quick check that you're really enrolled. Once you understand the three ways it's done, passing is usually a two-minute job.</p>
@@ -167,6 +189,17 @@ Best,
       <div class="guide-note">
         <strong>Privacy:</strong> verifiers only confirm enrollment status - they don't share your documents with the company offering the perk. Still, only upload to the official verification page (check the URL), never to a random link from an email.
       </div>
+      <section class="guide-reddit">
+        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/college/" target="_blank" rel="noopener">r/college</a> and <a href="https://www.reddit.com/r/Frugal/" target="_blank" rel="noopener">r/Frugal</a>:</p>
+        <ul>
+          <li><strong>Your student portal is a proof machine.</strong> Most portals can print an enrollment verification or current-term schedule with your name, school and date on it, which is exactly what verifiers want.</li>
+          <li><strong>High schoolers can verify too.</strong> A report card or a letter from the school office on letterhead, with the current date, works for most document checks when you don't have a student ID.</li>
+          <li><strong>Verify once, unlock dozens.</strong> UNiDAYS and Student Beans check you one time and then open discounts at hundreds of brands, so start there.</li>
+          <li><strong>Mind the four-year caps.</strong> Student plans like Spotify Premium Student and Apple Music's student plan limit how long you can keep the discount (typically up to four years), so start the clock when you'll actually use it.</li>
+          <li><strong>Re-verify before it lapses.</strong> Most services re-check every 12 months. If a discount suddenly vanishes, that's usually why, and re-verifying takes a minute.</li>
+        </ul>
+      </section>
     `
   },
 
@@ -175,7 +208,6 @@ Best,
     icon: "trophy",
     title: "Find & win scholarships",
     blurb: "Where the legit money is, how to dodge scams, and an essay approach that actually wins.",
-    readMins: 7,
     tags: ["scholarships", "money", "essays", "college"],
     body: `
       <p class="guide-lead">Billions in scholarships go unclaimed every year - not because they're hidden, but because applying is tedious and most students give up. A simple system beats raw talent here.</p>
@@ -213,6 +245,17 @@ Best,
 
       <h3>After you apply</h3>
       <p>Track outcomes, reuse and improve your strongest essays, and send a short thank-you if you win - some awards renew yearly, and a good impression matters. Rejections are just odds; keep volume up.</p>
+      <section class="guide-reddit">
+        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/scholarships/" target="_blank" rel="noopener">r/scholarships</a> and <a href="https://www.reddit.com/r/ApplyingToCollege/" target="_blank" rel="noopener">r/ApplyingToCollege</a>:</p>
+        <ul>
+          <li><strong>Local beats national.</strong> The most common success story is several $500 to $2,000 local awards (community foundations, Rotary, credit unions, employers), not one big national win.</li>
+          <li><strong>Treat "no-essay" scholarships as a lottery.</strong> Most are marketing lead generation with tiny odds. If you enter, use a separate email address so your main inbox stays clean.</li>
+          <li><strong>Recycle essays shamelessly.</strong> Keep a doc of your best paragraphs (a challenge, your goals, community impact) and remix them. Most prompts are variations of the same few questions.</li>
+          <li><strong>Go where the pool is small.</strong> Awards with an extra step, like a video, an interview, a niche major or a local residency rule, get far fewer applicants.</li>
+          <li><strong>Ask how your college handles outside money.</strong> Some schools shrink their own grants when you bring in outside scholarships ("scholarship displacement"), so ask the aid office before you count on the win.</li>
+        </ul>
+      </section>
     `
   },
 
@@ -221,7 +264,6 @@ Best,
     icon: "flask",
     title: "Land summer research / REUs",
     blurb: "Find funded summer research and REUs, hit the right timeline, and apply in a way that gets you in.",
-    readMins: 6,
     tags: ["research", "reu", "summer", "stem", "internships"],
     body: `
       <p class="guide-lead">A summer research program is one of the best things you can do for a STEM path - you do real work, get mentored, and often get <em>paid</em>. Many are fully funded with a stipend and housing. The catch is they fill up months ahead, so timing matters as much as your résumé.</p>
@@ -254,6 +296,18 @@ Best,
 
       <h3>Remote &amp; free options</h3>
       <p>Can't relocate or didn't get a funded spot? Remote research is real - data, computational, and literature work all happen online. The most reliable way in is to email professors directly.</p>
+      <section class="guide-reddit">
+        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/gradadmissions/" target="_blank" rel="noopener">r/gradadmissions</a>, <a href="https://www.reddit.com/r/labrats/" target="_blank" rel="noopener">r/labrats</a> and <a href="https://www.reddit.com/r/college/" target="_blank" rel="noopener">r/college</a>:</p>
+        <ul>
+          <li><strong>Apply to more than feels reasonable.</strong> Popular REUs get hundreds of applications for about ten spots, so students commonly apply to ten or more to land one.</li>
+          <li><strong>Check your own campus first.</strong> In-house summer programs (often called SURF) and your professors' labs are far less competitive than national REUs, and they count just as much.</li>
+          <li><strong>Beginners are the target audience.</strong> Many REUs specifically want students with little or no research experience, especially from schools with few research opportunities, so don't rule yourself out.</li>
+          <li><strong>Name the project you want.</strong> Statements that point to a specific lab or project at that site read as serious. Generic "I love science" essays blend together.</li>
+          <li><strong>National labs run on the same calendar.</strong> The Department of Energy's SULI internships and other national-lab programs pay well and share the winter deadlines, so apply alongside your REUs.</li>
+        </ul>
+      </section>
+
       <p class="guide-xref">Next step: <a href="#guide/cold-email-research">Cold-email a professor for research</a> - the exact template that gets replies.</p>
     `
   },
@@ -263,7 +317,6 @@ Best,
     icon: "medal",
     title: "STEM competitions for high schoolers",
     blurb: "The most beginner-friendly way to find what you love in STEM - the main contests and how to actually study for them.",
-    readMins: 7,
     tags: ["competitions", "stem", "math", "science", "high school"],
     body: `
       <p class="guide-lead">Competitions are the best low-stakes way to discover what you enjoy - and you'll often place well at the regional level just by showing up prepared. If your school doesn't have a team, that's your opening: find a teacher and start one.</p>
@@ -293,6 +346,17 @@ Best,
         <strong>How to study (any of them):</strong> pick subjects you actually enjoy, learn from textbooks + Khan Academy/YouTube, and grind past papers - keeping a list of what you miss. Then join the Discord or forum for your competition; that's where the free practice tests, binders, and study groups live.
       </div>
 
+      <section class="guide-reddit">
+        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/ScienceOlympiad/" target="_blank" rel="noopener">r/ScienceOlympiad</a> and <a href="https://www.reddit.com/r/math/" target="_blank" rel="noopener">r/math</a>:</p>
+        <ul>
+          <li><strong>Past papers are the whole game for AMC.</strong> The Art of Problem Solving wiki has every past AMC and AIME problem with solutions. Timed past tests beat any textbook.</li>
+          <li><strong>Science Olympiad: binders and builds win medals.</strong> A well-organized binder for open-note events and a build tested dozens of times are where teams pick up points. Start builds months early.</li>
+          <li><strong>Go deep on one or two.</strong> Students who place well usually specialize instead of spreading across six contests. Depth also makes a better story for college.</li>
+          <li><strong>For USACO, follow the USACO Guide in order.</strong> Work the problems in sequence and read the editorial after 30 to 60 minutes stuck. That's how most people climb from Bronze to Gold.</li>
+        </ul>
+      </section>
+
       <p class="guide-xref">Ready to go deeper than contests? See <a href="#guide/hs-research">Do real research in high school</a> and <a href="#guide/summer-research">Land summer research / REUs</a>.</p>
       <p class="guide-credit">Distilled from crowdsourced student guides - verify current rules and dates.</p>
     `
@@ -303,7 +367,6 @@ Best,
     icon: "flask",
     title: "Do real research in high school",
     blurb: "How the research path actually works - getting a mentor, doing a project, and competing at science fairs like ISEF and STS.",
-    readMins: 7,
     tags: ["research", "science fair", "isef", "mentorship", "high school"],
     body: `
       <p class="guide-lead">A genuine, hands-on project is your first real step into a scientific field - and a strong signal for college and beyond. Here's how the path actually works.</p>
@@ -336,6 +399,18 @@ Best,
         <li>Also: JSHS, Davidson Fellows, Junior Academies of Science, BioGENEius, and the Breakthrough Junior Challenge.</li>
       </ul>
 
+      <section class="guide-reddit">
+        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/ApplyingToCollege/" target="_blank" rel="noopener">r/ApplyingToCollege</a>, <a href="https://www.reddit.com/r/labrats/" target="_blank" rel="noopener">r/labrats</a> and <a href="https://www.reddit.com/r/highschool/" target="_blank" rel="noopener">r/highschool</a>:</p>
+        <ul>
+          <li><strong>Be skeptical of pricey research programs.</strong> Admissions readers see thousands of pay-to-play projects. A small, real project with a teacher or local professor often reads better than a $5,000 mentorship.</li>
+          <li><strong>Skip pay-to-publish journals.</strong> Paying a "high school journal" to print your paper rarely impresses anyone. Presenting at a science fair or symposium is a more respected signal.</li>
+          <li><strong>Computational projects are the easiest start.</strong> Public datasets (Kaggle, NASA, NIH) plus free Python let you do real analysis from home, no lab required.</li>
+          <li><strong>Keep a research notebook from day one.</strong> Dated notes on what you tried and why make the paper, the poster and every competition form far easier later.</li>
+          <li><strong>Use your regional science fair.</strong> It's the structured path to ISEF, and the judges and mentors you meet there are some of the best contacts for your next project.</li>
+        </ul>
+      </section>
+
       <p class="guide-xref">Getting the mentor is the hard part - see <a href="#guide/cold-email-research">Cold-email a professor for research</a>. For funded summer placements, see <a href="#guide/summer-research">Land summer research / REUs</a>.</p>
       <p class="guide-credit">Distilled from crowdsourced student guides - verify current programs and deadlines.</p>
     `
@@ -346,7 +421,6 @@ Best,
     icon: "clipboard",
     title: "The college admissions playbook",
     blurb: "How holistic admissions really work - the 'spike,' what GPA/APs actually matter, and a grade-by-grade timeline.",
-    readMins: 7,
     tags: ["college", "admissions", "gpa", "strategy", "high school"],
     body: `
       <p class="guide-lead">Admissions at selective schools are <strong>holistic</strong> - GPA and APs are a smaller piece than you think. The biggest lever is finding something you genuinely love and going deep on it.</p>
@@ -372,6 +446,18 @@ Best,
         <li><strong>Fall grade 12:</strong> applications - and keep your grades up; colleges see senior year.</li>
       </ul>
 
+      <section class="guide-reddit">
+        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/ApplyingToCollege/" target="_blank" rel="noopener">r/ApplyingToCollege</a> and <a href="https://www.reddit.com/r/collegeresults/" target="_blank" rel="noopener">r/collegeresults</a>:</p>
+        <ul>
+          <li><strong>Look up each school's Common Data Set (section C7).</strong> It lists how much the school says it weighs rigor, GPA, essays, recommendations, interviews and demonstrated interest.</li>
+          <li><strong>Remember r/ApplyingToCollege is a skewed sample.</strong> The stats you see there are far above typical. Don't let it convince you that you need a dozen APs and a startup.</li>
+          <li><strong>Use r/collegeresults for realistic data.</strong> Real applicant profiles next to their actual decisions are more useful than chance-me threads.</li>
+          <li><strong>Have a financial safety.</strong> A school you'd be happy at that you can afford without relying on aid (often your in-state public), so a thin aid offer never leaves you stuck.</li>
+          <li><strong>Run the Net Price Calculator early.</strong> Every college has one on its website. Many private schools come out cheaper than expected, and some dream schools come out far pricier.</li>
+        </ul>
+      </section>
+
       <p class="guide-xref">Go deeper: <a href="#guide/sat-act">Ace the SAT &amp; ACT</a> · <a href="#guide/college-essay">Write a standout college essay</a> · <a href="#guide/college-apps">College lists, deadlines &amp; rec letters</a>. Also browse <a href="#sch">Scholarships</a> and the <a href="#foryou">For You quiz</a>.</p>
       <p class="guide-credit">Distilled from crowdsourced student advice - admissions specifics change, so verify before relying on any detail.</p>
     `
@@ -382,15 +468,14 @@ Best,
     icon: "pencil",
     title: "Ace the SAT & ACT",
     blurb: "How to choose between them, study for free to a great score, and why the PSAT might matter most of all.",
-    readMins: 6,
     tags: ["sat", "act", "psat", "testing", "college"],
     body: `
       <p class="guide-lead">Test scores aren't the whole picture, but they're one of the first things an admissions officer notices - and nobody perfect-scores by winging it. The good news: you can self-study to a strong score for free.</p>
 
       <h3>SAT or ACT?</h3>
       <ul>
-        <li><strong>SAT:</strong> harder questions but more time each - rewards critical thinking.</li>
-        <li><strong>ACT:</strong> easier questions but very little time - rewards speed and fast reading, and has a science (graph-reading) section.</li>
+        <li><strong>SAT:</strong> fully digital and adaptive, with harder questions but more time each - rewards critical thinking. A built-in Desmos calculator is allowed on all of Math.</li>
+        <li><strong>ACT:</strong> easier questions but very little time - rewards speed and fast reading. Since 2025 it's shorter, and Science is optional (it no longer counts toward your composite).</li>
         <li><strong>Take one timed practice test of each before studying</strong>, then commit to whichever fits you. Rough targets: top schools ~1500+ SAT / ~34+ ACT; mid-high tier ~1430+ / ~30+. You do <em>not</em> need a perfect score to get in.</li>
       </ul>
 
@@ -409,6 +494,18 @@ Best,
       <h3>Don't sleep on the PSAT</h3>
       <p>A strong junior-year PSAT can make you a <strong>National Merit</strong> semifinalist/finalist - an award that brings real scholarship offers and perks. Plenty of students say it did more for them than the SAT itself.</p>
 
+      <section class="guide-reddit">
+        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/Sat/" target="_blank" rel="noopener">r/Sat</a> and <a href="https://www.reddit.com/r/ACT/" target="_blank" rel="noopener">r/ACT</a>:</p>
+        <ul>
+          <li><strong>Save the official Bluebook practice tests.</strong> They're adaptive like the real digital SAT and the best predictor of your score, so take them timed, one at a time, and review every miss.</li>
+          <li><strong>Drill the free College Board Question Bank.</strong> Filter to hard questions to prepare for the tougher second module; the real test gets harder when you do well on the first.</li>
+          <li><strong>Learn Desmos.</strong> The built-in graphing calculator solves many math questions in seconds (systems of equations, intersections, quadratics), and there are endless Desmos trick threads.</li>
+          <li><strong>Plan for two or three attempts.</strong> Most colleges superscore, combining your best section scores across test dates, so one imperfect sitting isn't a disaster.</li>
+          <li><strong>On the ACT, pacing is everything.</strong> Practice with a timer from day one. If you always run out of time on a diagnostic, that's a sign the SAT fits you better.</li>
+        </ul>
+      </section>
+
       <p class="guide-xref">See the big picture in <a href="#guide/college-admissions">The college admissions playbook</a>.</p>
     `
   },
@@ -418,7 +515,6 @@ Best,
     icon: "pencil",
     title: "Write a standout college essay",
     blurb: "The essay is where you stop being a stat sheet and become a person - a process that works, from blank page to final edit.",
-    readMins: 8,
     tags: ["college", "essays", "personal statement", "writing"],
     body: `
       <p class="guide-lead">Your essays may matter as much as your resume and more than your test scores. Until your essay, you look like every other qualified applicant - the essay is where you become a person.</p>
@@ -447,6 +543,18 @@ Best,
       <h3>Free feedback</h3>
       <p>Trade essays with other applicants, use CollegeVine, and the r/ApplyingToCollege and r/CollegeEssayReview communities (take all feedback with a grain of salt). Read real "essays that worked" published by schools like JHU, Tufts, and Harvard.</p>
 
+      <section class="guide-reddit">
+        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/ApplyingToCollege/" target="_blank" rel="noopener">r/ApplyingToCollege</a>:</p>
+        <ul>
+          <li><strong>Cut your first paragraph.</strong> First drafts usually spend the opening warming up. Try deleting it and starting where the story actually begins.</li>
+          <li><strong>Do the swap test.</strong> If a classmate could put their name on your essay and it would still work, it's too generic. Add the details only you know.</li>
+          <li><strong>Keep readers to two or three.</strong> Too many editors sand off your voice. A common regret is an essay that got "fixed" into sounding like nobody.</li>
+          <li><strong>Start the summer before senior year.</strong> Fall fills up fast with classes, supplements and deadlines. A rough draft by August takes the pressure off.</li>
+          <li><strong>Write the way you talk.</strong> Thesaurus words and forced metaphors are an instant tell. If you wouldn't say a sentence out loud, rewrite it.</li>
+        </ul>
+      </section>
+
       <p class="guide-xref">Pair this with <a href="#guide/college-apps">College lists, deadlines &amp; rec letters</a>.</p>
     `
   },
@@ -456,7 +564,6 @@ Best,
     icon: "folder",
     title: "College lists, deadlines & rec letters",
     blurb: "The strategy around your app - ED vs EA, a balanced list, fly-in programs, and how to get a glowing recommendation.",
-    readMins: 8,
     tags: ["college", "early decision", "recommendations", "applications"],
     body: `
       <p class="guide-lead">Where you apply, when, and who vouches for you is as important as the application itself.</p>
@@ -508,6 +615,18 @@ Best,
 [Your name]</pre>
       </div>
 
+      <section class="guide-reddit">
+        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/ApplyingToCollege/" target="_blank" rel="noopener">r/ApplyingToCollege</a>:</p>
+        <ul>
+          <li><strong>Submit a few days early.</strong> The Common App tends to slow down right before big deadlines like November 1 and January 1, and late-night submissions are when things break.</li>
+          <li><strong>Check every applicant portal after you submit.</strong> Schools post missing transcripts, scores or forms there, and many won't email you about it.</li>
+          <li><strong>Ask for recs at the end of junior year.</strong> Teachers get flooded in the fall. Asking in the spring, then sending your brag sheet and a thank-you note, gets you a better letter.</li>
+          <li><strong>Batch similar supplements.</strong> Write all your "Why us" or "community" essays in one sitting, then customize each one with school-specific details.</li>
+          <li><strong>Don't apply ED blind.</strong> Run the Net Price Calculator first. Binding means you can't compare aid offers, so be sure the price works.</li>
+        </ul>
+      </section>
+
       <p class="guide-xref">See also <a href="#guide/college-essay">Write a standout college essay</a> and <a href="#guide/college-admissions">The college admissions playbook</a>.</p>
       <p class="guide-credit">Distilled from crowdsourced student guides and r/ApplyingToCollege - verify current deadlines and policies.</p>
     `
@@ -518,7 +637,6 @@ Best,
     icon: "cash",
     title: "Get financial aid (FAFSA & beyond)",
     blurb: "How to actually pay for college: file the FAFSA, understand grants vs loans, and appeal a weak offer.",
-    readMins: 7,
     tags: ["financial aid", "fafsa", "money", "college", "loans"],
     body: `
       <p class="guide-lead">The sticker price of a college is almost never what people pay. Financial aid - grants, scholarships, work-study, and loans - is how. The single most important thing you can do is <strong>file the FAFSA</strong>, and file it early.</p>
@@ -556,6 +674,18 @@ Best,
         <li>Apply EA to state schools for early aid and scholarship offers.</li>
         <li>Outside scholarships are real money - chase the local ones with smaller pools.</li>
       </ul>
+
+      <section class="guide-reddit">
+        <h3><img class="guide-reddit-logo" src="https://cdn.simpleicons.org/reddit/FF4500" alt="" width="18" height="18" loading="lazy" /> What students on Reddit say</h3>
+        <p class="guide-reddit-src">Advice that keeps coming up on <a href="https://www.reddit.com/r/financialaid/" target="_blank" rel="noopener">r/financialaid</a> and <a href="https://www.reddit.com/r/StudentLoans/" target="_blank" rel="noopener">r/StudentLoans</a>:</p>
+        <ul>
+          <li><strong>Set up StudentAid.gov accounts early.</strong> You and each parent contributor need your own account for the FAFSA, and identity checks can take a few days, so don't wait for the deadline.</li>
+          <li><strong>Appeal with a competing offer.</strong> Colleges often reconsider when you send a better package from a comparable school. Ask politely and attach the other offer.</li>
+          <li><strong>Parent PLUS loans aren't aid.</strong> Award letters sometimes list them as if they were. Subtract every loan to see what you'd really owe.</li>
+          <li><strong>Work-study isn't upfront money.</strong> You still have to find the job, and it pays as you work, so it won't lower your first bill.</li>
+          <li><strong>Call the aid office.</strong> A short, polite phone call often gets a clearer answer, and a faster fix, than weeks of back-and-forth emails.</li>
+        </ul>
+      </section>
 
       <p class="guide-xref">Related: <a href="#guide/win-scholarships">Find &amp; win scholarships</a> and <a href="#guide/college-apps">College lists, deadlines &amp; rec letters</a>.</p>
       <p class="guide-credit">General guidance - financial-aid rules and deadlines change yearly, so confirm current details at studentaid.gov.</p>
