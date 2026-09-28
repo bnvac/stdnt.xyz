@@ -10,11 +10,15 @@
  *   suspect - failed this run for the first time (not shown on the site)
  *   dead    - failed this run and the previous one: the site shows
  *             "Link may be down" on these
- * Also writes link-report.md and, in GitHub Actions, the `dead` count as a
+ * Also writes link-report.md (repo root) and, in GitHub Actions, the `dead` count as a
  * step output for .github/workflows/link-check.yml. Broken third-party links
  * are a content problem, not a script failure, so this always exits 0.
  */
 import { readFileSync, writeFileSync, appendFileSync } from "node:fs";
+import { join } from "node:path";
+import { REPO, SITE_DIR } from "./lib/data.mjs";
+
+process.chdir(SITE_DIR);
 
 const FILES = [
   "js/data.js", "js/scholarships.js", "js/programs.js", "js/programs-extra.js",
@@ -106,7 +110,7 @@ report += `Checked ${list.length} URLs: **${dead.length} dead**, ${suspect.lengt
 if (dead.length) report += `## Dead: failed two checks in a row (flagged on the site)\n\n${dead.map(line).join("\n")}\n\n`;
 if (suspect.length) report += `## Failed this week only (flagged if they fail again next week)\n\n${suspect.map(line).join("\n")}\n\n`;
 if (warned.length) report += `<details><summary>${warned.length} links were blocked (401/403/429) or timed out: usually bot walls, spot-check</summary>\n\n${warned.map(line).join("\n")}\n\n</details>\n`;
-writeFileSync("link-report.md", report);
+writeFileSync(join(REPO, "link-report.md"), report);   // the link-check workflow posts this as the issue body
 console.log(report);
 
 // only a full run updates the status, so a LINK_LIMIT smoke test never wipes it

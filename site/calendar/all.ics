@@ -3264,6 +3264,33 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:prog-llrise-lincoln-laboratory-radar-introduction-for-student-engineers
+ -20270311@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270311
+DTEND;VALUE=DATE:20270312
+SUMMARY:Deadline: LLRISE (Lincoln Laboratory Radar Introduction for Student
+  Engineers)
+DESCRIPTION:Program · Free (you pay travel to MIT)\nDeadline listed as: Ma
+ rch 11\nhttps://www.ll.mit.edu/outreach/llrise\nMore deadlines: https://st
+ dnt.xyz/#deadlines
+URL:https://www.ll.mit.edu/outreach/llrise
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: LLRISE (Lincoln Laboratory Radar Introduction for Stu
+ dent Engineers)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: LLRISE (Lincoln Laboratory Radar Introduction for Stu
+ dent Engineers)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:sch-fontana-transport-inc-scholars-program-20270313@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270313
@@ -4184,6 +4211,30 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: Gloria Barron Prize for Young Heroes
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-llcipher-lincoln-laboratory-cryptography-workshop-20270415@stdnt.x
+ yz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270415
+DTEND;VALUE=DATE:20270416
+SUMMARY:Deadline: LLCipher (Lincoln Laboratory cryptography workshop)
+DESCRIPTION:Program · Free (commuter\, no housing)\nDeadline listed as: Ap
+ ril 15\nhttps://www.ll.mit.edu/outreach/llcipher\nMore deadlines: https://
+ stdnt.xyz/#deadlines
+URL:https://www.ll.mit.edu/outreach/llcipher
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: LLCipher (Lincoln Laboratory cryptography workshop)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: LLCipher (Lincoln Laboratory cryptography workshop)
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT

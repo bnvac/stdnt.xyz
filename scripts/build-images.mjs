@@ -19,7 +19,9 @@ import { writeFileSync, readFileSync, mkdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { chromium } from "playwright";
-import { loadData, esc } from "./lib/data.mjs";
+import { loadData, esc, SITE_DIR } from "./lib/data.mjs";
+
+process.chdir(SITE_DIR);
 
 const only = process.argv[2];   // "og", "icons" or nothing for both
 const browser = await chromium.launch(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {});

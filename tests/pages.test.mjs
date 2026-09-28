@@ -3,7 +3,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, existsSync, readdirSync } from "node:fs";
-import { SITE } from "../scripts/lib/data.mjs";
+import { SITE, SITE_DIR } from "../scripts/lib/data.mjs";
+
+process.chdir(SITE_DIR);   // paths below are inside site/
 
 const read = (f) => readFileSync(f, "utf8");
 const local = (url) => url.replace(`${SITE}/`, "");

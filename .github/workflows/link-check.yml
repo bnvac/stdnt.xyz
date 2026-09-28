@@ -2,7 +2,7 @@ name: Link check
 
 # Checks every external URL in the data files weekly (and on demand). A link
 # counts as dead after failing two runs in a row; dead links get a "Link may
-# be down" note on the site (data/link-status.json) and are listed in one
+# be down" note on the site (site/data/link-status.json) and are listed in one
 # "Broken links" issue, which is updated while any are dead and closed once
 # they're fixed. Broken third-party links don't fail the run.
 
@@ -30,10 +30,10 @@ jobs:
 
       - name: Commit link status if changed
         run: |
-          if [ -n "$(git status --porcelain data/link-status.json)" ]; then
+          if [ -n "$(git status --porcelain site/data/link-status.json)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data/link-status.json
+            git add site/data/link-status.json
             git commit -m "Update link status [skip ci]"
             git pull --rebase --autostash
             git push

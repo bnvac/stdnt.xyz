@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!--
+  Temporary redirect. The site lives in site/ and the "Build and deploy site"
+  workflow publishes it. Until Settings > Pages > Source is set to
+  "GitHub Actions", Pages still serves the repo root, so this forwards
+  visitors to site/. Delete this file and .nojekyll after switching.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>stdnt.xyz</title>
+  <meta name="robots" content="noindex" />
+  <meta http-equiv="refresh" content="0; url=site/" />
+  <script>location.replace("site/" + location.search + location.hash)</script>
+</head>
+<body>
+  <p><a href="site/">Continue to stdnt.xyz</a></p>
+</body>
+</html>

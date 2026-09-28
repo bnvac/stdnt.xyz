@@ -1,26 +1,27 @@
-name: Build site
+name: Build and deploy site
 
 # Regenerates everything that's built from the data files and commits it:
-#   data/hackathons.json          live hackathons (Hack Club API, fetched server-side: it sends no CORS header)
-#   logos/ + js/logos.js          cached favicons and brand icons for new listings
-#   calendar/*.ics                the subscribable deadline feeds
-#   guides/, scholarships/, ...   the crawlable pages, 404.html and sitemap.xml
-# Runs when data or build scripts change on main, and daily so the
-# date-relative output (deadlines page, feeds, hackathons) stays current.
+#   site/data/hackathons.json          live hackathons (Hack Club API, fetched server-side: it sends no CORS header)
+#   site/logos/ + site/js/logos.js     cached favicons and brand icons for new listings
+#   site/calendar/*.ics                the subscribable deadline feeds
+#   site/guides/, site/new/, ...       the crawlable pages, 404.html and sitemap.xml
+# then publishes the site/ folder to GitHub Pages. Runs on every push to main,
+# daily (the deadlines page, feeds and hackathons are date-based) and on demand.
+#
+# Publishing needs Settings > Pages > Source set to "GitHub Actions"; until
+# then the deploy is skipped with a notice instead of failing.
 
 on:
   push:
     branches: [main]
-    paths:
-      - "js/**"
-      - "scripts/**"
-      - "index.html"
   schedule:
     - cron: "0 6 * * *"   # daily 06:00 UTC
   workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: site-build
@@ -29,6 +30,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      deploy: ${{ steps.pages.outputs.deploy }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -36,16 +39,43 @@ jobs:
           node-version: 22
       - run: npm run build
 
-      - name: Commit if changed
+      - name: Commit generated files if changed
         run: |
-          paths="data/hackathons.json logos js/logos.js calendar guides scholarships programs competitions tools discounts deadlines sitemap.xml 404.html"
-          if [ -n "$(git status --porcelain $paths)" ]; then
+          if [ -n "$(git status --porcelain site)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add $paths
+            git add site
             git commit -m "Rebuild generated site files [skip ci]"
             git pull --rebase --autostash
             git push
           else
             echo "No changes."
           fi
+
+      - name: Check that Pages publishes from Actions
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          type=$(gh api "repos/${{ github.repository }}/pages" --jq .build_type 2>/dev/null || echo "not set up")
+          if [ "$type" = "workflow" ]; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::Not deploying: Pages source is \"$type\". Set Settings > Pages > Source to GitHub Actions to publish site/."
+          fi
+
+      - uses: actions/upload-pages-artifact@v5
+        if: steps.pages.outputs.deploy == 'true'
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.deploy == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

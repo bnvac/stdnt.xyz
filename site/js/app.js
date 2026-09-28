@@ -663,9 +663,11 @@
     var tags = lc(item.tags);
     var strict = (item.name + " " + (item.note || "") + " " + tags.join(" ")).toLowerCase();
     var full = (strict + " " + (item.details || "") + " " + (item.level || "") + " " + (item.amountText || "")).toLowerCase();
-    var e = { intlOk: null, needBased: false, incomeMax: null, firstGen: false, gpaMin: null, groups: {} };
+    var e = { intlOk: null, citizensOnly: false, needBased: false, incomeMax: null, firstGen: false, gpaMin: null, groups: {} };
     if (/international|all nationalities|any nationality|regardless of citizenship|students worldwide|non-citizen/.test(full)) e.intlOk = true;
     if (e.intlOk !== true && /u\.s\.? citizen|citizen or permanent|permanent resident|green card|citizens? only|must be a citizen|domestic student/.test(full)) e.intlOk = false;
+    // "U.S. citizens only" / "permanent residents aren't eligible" rules out green-card holders too
+    if (e.intlOk === false && /citizens only|permanent residents? (?:are not|aren't|not) eligible/.test(full)) e.citizensOnly = true;
     if (inArr(tags, "need-based") || /need-based|financial need|low-income|low income|\bpell\b|family income|household income|economic hardship|adversity|demonstrated need/.test(full)) e.needBased = true;
     if (/income|earn|families|household/.test(full)) {
       var mk = full.match(/\$\s?([0-9]{1,3})\s?k\b/), mf = full.match(/\$\s?([0-9]{2,3}),([0-9]{3})\b/);
@@ -729,7 +731,7 @@
     if (w && w.l) add("who", e.groups.immigrant ? w.l.replace(/\s*\/\s*DACA\b/i, "") : w.l, w.good);
     // citizenship: explicit wording first, then the programs' US / International tags
     var countries = ["us", "canada", "mexico", "puerto rico"].filter(function (c) { return inArr(t, c); });
-    if (e.intlOk === false) add("cit", "US citizens / PR");
+    if (e.intlOk === false) add("cit", e.citizensOnly ? "US citizens only" : "US citizens / PR");
     else if (e.intlOk === true) { add("cit", "Intl OK", true); used.international = 1; }
     else if (countries.length > 1) { add("cit", countries.map(function (c) { return c === "us" ? "US" : c.replace(/\b\w/g, function (x) { return x.toUpperCase(); }); }).join(" / ")); countries.forEach(function (c) { used[c] = 1; }); }
     else if (countries[0] === "us") { add("cit", "US students only"); used.us = 1; }
@@ -874,6 +876,7 @@
     ["prog", "STEM programs", function () { return progFiltered().length; }, function () { return PROG.length; }],
     ["competitions", "Competitions", function () { return competitionsFiltered().length; }, function () { return COMPS.length; }],
     ["deadlines", "Deadlines", function () { return deadlinesFiltered().length; }, function () { return deadlineItems().length; }],
+    ["new", "New", function () { return newFiltered().length; }, function () { return newItems().length; }],
     ["guides", "Guides", function () { return guidesFiltered().length; }, function () { return GUIDES.length; }],
     ["templates", "Templates", function () { return templatesFiltered().length; }, function () { return TEMPLATES.length; }],
     ["hackathons", "Hackathons", function () { return hackathonsFiltered().length; }, function () { return HACKATHONS.length; }]
@@ -930,6 +933,11 @@
       meta.textContent = state.q ? ("Showing " + cn + " of " + COMPS.length + " competitions") : (COMPS.length + " competitions");
       empty.hidden = true; return;
     }
+    if (state.tab === "new") {
+      var nw = renderNew(), all = newItems().length;
+      meta.textContent = state.q ? ("Showing " + nw + " of " + all + " new listings") : (all + " listing" + (all === 1 ? "" : "s") + " added in the last " + Math.round(NEW_DAYS / 30) + " months");
+      empty.hidden = true; return;
+    }
     if (state.tab === "hackathons") {
       var hk = renderHackathons();
       meta.textContent = state.q ? ("Showing " + hk + " of " + HACKATHONS.length + " hackathons") : (HACKATHONS.length + " upcoming hackathons");
@@ -947,7 +955,7 @@
     state.tab = tab;
     document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === tab); });
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
-    ["tools", "discounts", "sch", "prog", "competitions", "deadlines", "foryou", "saved", "guides", "templates", "hackathons", "contribute", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
+    ["tools", "discounts", "sch", "prog", "competitions", "deadlines", "new", "foryou", "saved", "guides", "templates", "hackathons", "contribute", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
     document.title = (TAB_TITLES[tab] ? TAB_TITLES[tab] + " · " : "") + "stdnt.xyz";
     var moreBtn = $("#more-btn"); if (moreBtn) moreBtn.classList.toggle("is-active", !!OVERFLOW[tab]);
     closeMore();
@@ -958,6 +966,7 @@
       tab === "competitions" ? "Search competitions..." :
       tab === "hackathons" ? "Search hackathons, cities..." :
       tab === "deadlines" ? "Search deadlines..." :
+      tab === "new" ? "Search new listings..." :
       tab === "saved" ? "Search your saved list..." :
       tab === "guides" ? "Search guides..." :
       tab === "templates" ? "Search templates..." : "Search...";
@@ -1282,9 +1291,9 @@
     }
     return false;
   }
-  var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, deadlines: 1, foryou: 1, saved: 1, guides: 1, templates: 1, hackathons: 1, contribute: 1, about: 1 };
+  var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, deadlines: 1, new: 1, foryou: 1, saved: 1, guides: 1, templates: 1, hackathons: 1, contribute: 1, about: 1 };
   var OVERFLOW = { guides: 1, templates: 1, hackathons: 1, contribute: 1, about: 1 };   // tabs tucked into the "More" menu
-  var TAB_TITLES = { tools: "Free tools & perks", discounts: "Student discounts", sch: "Scholarships", prog: "STEM programs", competitions: "Competitions", deadlines: "Deadlines", foryou: "Find your matches", saved: "Saved", guides: "Guides", templates: "Templates", hackathons: "Hackathons", contribute: "Contribute", about: "About" };
+  var TAB_TITLES = { tools: "Free tools & perks", discounts: "Student discounts", sch: "Scholarships", prog: "STEM programs", competitions: "Competitions", deadlines: "Deadlines", new: "New listings", foryou: "Find your matches", saved: "Saved", guides: "Guides", templates: "Templates", hackathons: "Hackathons", contribute: "Contribute", about: "About" };
   function closeMore() { var m = $("#tab-menu"), b = $("#more-btn"); if (m && !m.hidden) { m.hidden = true; if (b) b.setAttribute("aria-expanded", "false"); } }
   function wireMore() {
     var btn = $("#more-btn"), menu = $("#tab-menu"); if (!btn || !menu) return;
@@ -1419,6 +1428,49 @@
         '<div class="grid">' + items.map(competitionCard).join("") + "</div>";
     });
     box.innerHTML = html || '<p class="muted guides-empty">No competitions match your search.</p>';
+    return list.length;
+  }
+
+  // ---- NEW: recently added listings (each carries added: "YYYY-MM-DD") ----
+  var NEW_DAYS = 180;
+  var NEW_KIND = { tool: "Tool", sch: "Scholarship", prog: "Program", comp: "Competition" };
+  var MONTHS_LONG = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  function newItems() {
+    var cutoff = Date.now() - NEW_DAYS * 864e5, out = [];
+    function add(kind, list) { list.forEach(function (x) { if (x.added && Date.parse(x.added) >= cutoff) out.push({ kind: kind, x: x }); }); }
+    add("tool", RES.concat(DISCOUNTS)); add("sch", SCH); add("prog", PROG); add("comp", COMPS);
+    return out.sort(function (a, b) { return b.x.added.localeCompare(a.x.added) || a.x.name.localeCompare(b.x.name); });
+  }
+  function newFiltered() {
+    var ts = terms();
+    return newItems().filter(function (it) {
+      var x = it.x;
+      return !ts.length || hit([x.name, x.desc, x.details, x.note, (x.tags || []).join(" "), (x.subjects || []).join(" ")].join(" "), ts);
+    });
+  }
+  function newRow(it, i) {
+    var x = it.x, d = new Date(x.added + "T12:00:00");
+    var detail = it.kind === "sch" ? x.amountText : it.kind === "prog" ? shortCost(x).t : it.kind === "comp" ? x.format : x.value;
+    var sub = x.desc || x.details || x.note || "";
+    var logo = x.logo || (x.slug ? siURL(x.slug) : "");
+    return '<div class="row" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' + logoTile(x.name, x.url, logo) +
+      '<a class="row-main" href="' + esc(x.url) + '" target="_blank" rel="noopener">' +
+      '<div class="row-title">' + esc(x.name) + '&nbsp;<span class="ext">&#8599;</span></div>' +
+      (sub ? '<div class="row-sub">' + esc(sub) + "</div>" : "") +
+      '<div class="row-tags"><span class="tg tg-' + it.kind + '">' + NEW_KIND[it.kind] + "</span>" +
+      (detail ? '<span class="tg">' + esc(detail) + "</span>" : "") + (x.deadline ? '<span class="tg">' + (/\d/.test(x.deadline) ? "Due " : "") + esc(x.deadline) + "</span>" : "") + "</div></a>" +
+      '<span class="row-acts">' + starBtn(it.kind, x.name) + flagBtn(x.name, x.url) + "</span>" +
+      '<div class="row-right"><span class="row-added">Added ' + DL_MON[d.getMonth()] + " " + d.getDate() + "</span></div></div>";
+  }
+  function renderNew() {
+    var box = $("#new-list"); if (!box) return 0;
+    var list = newFiltered(), groups = {}, html = "";
+    list.forEach(function (it) { var k = it.x.added.slice(0, 7); (groups[k] = groups[k] || []).push(it); });
+    Object.keys(groups).sort().reverse().forEach(function (k) {
+      html += '<h3 class="saved-h">' + MONTHS_LONG[+k.slice(5, 7) - 1] + " " + k.slice(0, 4) + " <span>" + groups[k].length + "</span></h3>" +
+        '<div class="list">' + groups[k].map(newRow).join("") + "</div>";
+    });
+    box.innerHTML = html || '<p class="muted guides-empty">' + (state.q ? "No new listings match your search." : "Nothing new in the last few months. Check back soon.") + "</p>";
     return list.length;
   }
 

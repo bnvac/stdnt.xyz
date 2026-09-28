@@ -1,11 +1,13 @@
 /*
- * helpers.mjs - boots the real app (index.html plus every script it loads, in
+ * helpers.mjs - boots the real app (site/index.html plus every script it loads, in
  * order) inside jsdom, with the browser APIs jsdom doesn't have stubbed out.
  */
 import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { JSDOM, VirtualConsole } from "jsdom";
+import { SITE_DIR } from "../scripts/lib/data.mjs";
 
-export const HTML = readFileSync("index.html", "utf8");
+export const HTML = readFileSync(join(SITE_DIR, "index.html"), "utf8");
 export const SCRIPTS = [...HTML.matchAll(/<script src="(js\/[\w-]+\.js)(?:\?[^"]*)?"/g)].map((m) => m[1]);
 
 export function boot({ url = "https://stdnt.xyz/", storage = {} } = {}) {
@@ -24,7 +26,7 @@ export function boot({ url = "https://stdnt.xyz/", storage = {} } = {}) {
   window.URL.revokeObjectURL = () => {};
   let copied = "";
   Object.defineProperty(window.navigator, "clipboard", { configurable: true, value: { writeText: (t) => { copied = t; return Promise.resolve(); } } });
-  for (const f of SCRIPTS) window.eval(readFileSync(f, "utf8"));
+  for (const f of SCRIPTS) window.eval(readFileSync(join(SITE_DIR, f), "utf8"));
   const doc = window.document;
   return {
     window, doc, errors,

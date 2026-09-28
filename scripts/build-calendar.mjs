@@ -11,7 +11,9 @@
  * UIDs are stable per listing + date so clients update instead of duplicating.
  */
 import { writeFileSync, mkdirSync } from "node:fs";
-import { loadData, deadlineDates, gone, slugify, SITE } from "./lib/data.mjs";
+import { loadData, deadlineDates, gone, slugify, SITE, SITE_DIR } from "./lib/data.mjs";
+
+process.chdir(SITE_DIR);
 
 const W = loadData();
 const today = new Date();

@@ -6,4 +6,5 @@
 
 - [ ] `npm test` passes
 - [ ] Listings link to the official page (no referral, affiliate or aggregator links)
-- [ ] If I changed a file in `js/` or `css/`, I bumped `?v=N` on every asset in `index.html`
+- [ ] New listings have an `added: "YYYY-MM-DD"` date
+- [ ] If I changed a file in `site/js/` or `site/css/`, I bumped `?v=N` on every asset in `site/index.html`

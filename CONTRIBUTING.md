@@ -32,15 +32,15 @@ Every listing is **one plain object** in a JS file. No build step, no framework.
 
 | File | Holds |
 |---|---|
-| `js/data.js` | tools, perks & free APIs (`window.RESOURCES`) |
-| `js/scholarships.js` | scholarships (`window.SCHOLARSHIPS`) |
-| `js/programs.js`, `js/programs-extra.js` | STEM programs |
-| `js/competitions.js` | competitions |
-| `js/discounts.js` | student discounts |
-| `js/finaid.js` | FAFSA / CSS Profile / state financial-aid dates |
-| `js/guides.js`, `js/templates.js` | the how-to guides and spreadsheet templates |
+| `site/js/data.js` | tools, perks & free APIs (`window.RESOURCES`) |
+| `site/js/scholarships.js` | scholarships (`window.SCHOLARSHIPS`) |
+| `site/js/programs.js`, `site/js/programs-extra.js` | STEM programs |
+| `site/js/competitions.js` | competitions |
+| `site/js/discounts.js` | student discounts |
+| `site/js/finaid.js` | FAFSA / CSS Profile / state financial-aid dates |
+| `site/js/guides.js`, `site/js/templates.js` | the how-to guides and spreadsheet templates |
 
-Example - add a tool in `js/data.js`:
+Example - add a tool in `site/js/data.js`:
 
 ```js
 {
@@ -55,19 +55,21 @@ Example - add a tool in `js/data.js`:
   value: "$50 credit",     // optional highlight
   desc: "One honest sentence about what it is.",
   tags: ["llm", "api"],    // optional, helps search
-  verified: "2026-06"      // optional: YYYY-MM you last confirmed it
+  verified: "2026-06",     // optional: YYYY-MM you last confirmed it
+  added: "2026-10-01"      // the day you add it: puts it on the New tab for six months
 }
 ```
 
-Counts, chips, search, logos and deadlines all update automatically.
+Counts, chips, search, logos and deadlines all update automatically. Give every new
+listing an `added` date (any data file) so it shows up on the **New** tab and page.
 
-**Generated files - don't edit by hand.** The *Build site* workflow rebuilds these
-from the data files whenever data changes on `main` (and daily): the crawlable pages
+**Generated files - don't edit by hand.** The *Build and deploy site* workflow
+rebuilds these inside `site/` on every push to `main` (and daily): the crawlable pages
 in `guides/`, `scholarships/`, `programs/`, `competitions/`, `tools/`, `discounts/`,
-`deadlines/`, plus `404.html` and `sitemap.xml`; the calendar feeds in `calendar/`;
-the cached logos in `logos/` + `js/logos.js`; and `data/hackathons.json`. You don't
+`deadlines/`, `new/`, plus `404.html` and `sitemap.xml`; the calendar feeds in
+`calendar/`; the cached logos in `logos/` + `js/logos.js`; and `data/hackathons.json`. You don't
 need to rebuild them in a pull request. Share images and icons are the exception:
-re-render them with `npm run images` after adding a guide or changing `favicon.svg`.
+re-render them with `npm run images` after adding a guide or changing `site/favicon.svg`.
 
 ### Run it locally
 
@@ -82,8 +84,8 @@ Before opening a pull request:
 1. `npm install` (once), then `npm test`. It runs the data check (missing fields,
    bad URLs, duplicates, unreadable deadlines) and the test suite. The *Checks*
    workflow runs the same thing on every pull request.
-2. If you changed a file in `js/` or `css/`, bump the `?v=N` cache number on every
-   asset in `index.html` (search-and-replace `?v=NN`).
+2. If you changed a file in `site/js/` or `site/css/`, bump the `?v=N` cache number
+   on every asset in `site/index.html` (search-and-replace `?v=NN`).
 3. Use plain hyphens, commas or colons rather than em or en dashes.
 
 See the **Development** section of the [README](README.md) for

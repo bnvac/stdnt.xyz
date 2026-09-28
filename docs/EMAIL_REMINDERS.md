@@ -65,7 +65,7 @@ function sendReminders() {
    Copy the **Web app URL**.
 4. In the Apps Script editor: **Triggers (clock icon) -> Add Trigger** ->
    function `sendReminders`, **Time-driven -> Day timer** (e.g. 7-8am). Save.
-5. In `js/app.js`, set:
+5. In `site/js/app.js`, set:
    ```js
    var REMINDER_ENDPOINT = "https://script.google.com/macros/s/XXXX/exec";
    ```

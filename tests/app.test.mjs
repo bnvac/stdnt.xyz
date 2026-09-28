@@ -86,3 +86,16 @@ test("the partnership with All The Same Organization is credited", () => {
   const app = boot();
   for (const sel of [".about-partner", ".ftr-partner"]) assert.ok(app.$(`${sel} a[href="https://allthesame.org/"]`), sel);
 });
+
+test("the New tab lists every listing added in the last six months, newest first", () => {
+  const cutoff = Date.now() - 180 * 864e5;
+  const expected = [...W.RESOURCES, ...W.DISCOUNTS, ...W.SCHOLARSHIPS, ...W.PROGRAMS, ...W.COMPETITIONS]
+    .filter((x) => x.added && Date.parse(x.added) >= cutoff)
+    .sort((a, b) => b.added.localeCompare(a.added) || a.name.localeCompare(b.name))
+    .map((x) => x.name);
+  const app = boot({ url: "https://stdnt.xyz/#new" });
+  const shown = app.$$("#new-list .row-title").map((t) => t.textContent.replace(/\s*↗\s*$/, "").trim());
+  assert.deepEqual(shown, expected);
+  assert.equal(app.$("#n-new").textContent, String(expected.length));
+  assert.deepEqual(app.errors, []);
+});

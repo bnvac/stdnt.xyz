@@ -49,14 +49,14 @@ Any provider that gives you a **form `action` URL** that accepts a POST with an
 
 ## 3. Wire it into the site
 
-Open **`js/app.js`** and set the endpoint near the top (it's currently empty):
+Open **`site/js/app.js`** and set the endpoint near the top (it's currently empty):
 
 ```js
 // set to your Buttondown/Mailchimp embed-subscribe URL to enable email signup
 var NEWSLETTER_ENDPOINT = "https://buttondown.com/api/emails/embed-subscribe/your-username";
 ```
 
-Then **bump the cache version** so visitors get the change: in `index.html`,
+Then **bump the cache version** so visitors get the change: in `site/index.html`,
 search-and-replace the current `?v=NN` with the next number (e.g. `?v=27` →
 `?v=28`).
 

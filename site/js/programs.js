@@ -2787,13 +2787,11 @@ window.PROGRAMS = [
    "MA"
   ],
   "grades": [
-   "Freshman",
-   "Sophomore",
    "Junior"
   ],
   "ranking": "A",
   "accRate": "Varies (High if prereqs met)",
-  "details": "Project-based, focusing on autonomous systems, quantum software, and AI. Requires rigorous online prereqs.",
+  "details": "Run by MIT Lincoln Laboratory and the MIT School of Engineering for rising seniors. Project-based, focusing on autonomous systems, quantum software, and AI. Requires rigorous online prereqs.",
   "flagship": true
  },
  {

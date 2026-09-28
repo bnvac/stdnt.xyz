@@ -5,7 +5,15 @@
  * with what the site shows.
  */
 import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import vm from "node:vm";
+
+// Everything that gets published lives in site/. Build scripts chdir there
+// (process.chdir(SITE_DIR)) so their relative paths like "js/data.js" or
+// "guides/" point inside it, whatever directory they're started from.
+export const REPO = fileURLToPath(new URL("../../", import.meta.url));
+export const SITE_DIR = join(REPO, "site");
 
 export const SITE = "https://stdnt.xyz";   // live origin used in canonical URLs, sitemaps and feeds
 
@@ -15,7 +23,7 @@ const DATA_FILES = ["js/shared.js", "js/data.js", "js/scholarships.js", "js/prog
 export function loadData(files = DATA_FILES) {
   const sandbox = { window: {} };
   vm.createContext(sandbox);
-  for (const f of files) vm.runInContext(readFileSync(f, "utf8"), sandbox, { filename: f });
+  for (const f of files) vm.runInContext(readFileSync(join(SITE_DIR, f), "utf8"), sandbox, { filename: f });
   return sandbox.window;
 }
 

@@ -13,6 +13,9 @@
  *   node scripts/build-hackathons.mjs
  */
 import { writeFileSync, readFileSync, mkdirSync } from "node:fs";
+import { SITE_DIR } from "./lib/data.mjs";
+
+process.chdir(SITE_DIR);
 
 const HC_API = "https://hackathons.hackclub.com/api/events/upcoming/";
 

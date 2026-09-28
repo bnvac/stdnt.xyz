@@ -4,7 +4,7 @@
  * so search engines can index each guide and each directory section:
  *
  *   guides/                 all guides        guides/<slug>/   one per guide
- *   scholarships/  programs/  competitions/  tools/  discounts/  deadlines/
+ *   scholarships/  programs/  competitions/  tools/  discounts/  deadlines/  new/
  *   sitemap.xml             every page above
  *   404.html                the "page not found" page (not in the sitemap)
  *
@@ -16,7 +16,9 @@
  * the deadlines page stays current).
  */
 import { writeFileSync, mkdirSync, readFileSync, existsSync } from "node:fs";
-import { loadData, deadlineDates, gone, esc, domainOf, SITE } from "./lib/data.mjs";
+import { loadData, deadlineDates, gone, esc, domainOf, SITE, SITE_DIR } from "./lib/data.mjs";
+
+process.chdir(SITE_DIR);
 
 const W = loadData();
 const V = (readFileSync("index.html", "utf8").match(/styles\.css\?v=(\d+)/) || [, "1"])[1];   // same cache version as the app
@@ -108,7 +110,7 @@ ${notFound ? "" : `  <script type="application/ld+json">${JSON.stringify(ld.leng
     ${cta ? `<a class="sp-cta" href="${cta[0]}"><span>${cta[1]}</span> <span aria-hidden="true">&rarr;</span></a>` : ""}
   </main>
   <footer class="sp-ftr">
-    <nav aria-label="Browse">${NAV.concat([["discounts/", "Discounts"]]).map(([h, n]) => `<a href="${h}">${n}</a>`).join("")}</nav>
+    <nav aria-label="Browse">${NAV.concat([["discounts/", "Discounts"], ["new/", "New"]]).map(([h, n]) => `<a href="${h}">${n}</a>`).join("")}</nav>
     <p>stdnt.xyz is a free, open-source directory of what students can get for free, built in partnership with <a href="https://allthesame.org/" target="_blank" rel="noopener">All The Same Organization</a>.</p>
     <p><a href="./#about">How we pick</a> &middot; <a href="https://github.com/bnvac/stdnt.xyz" target="_blank" rel="noopener">GitHub</a></p>
   </footer>
@@ -252,6 +254,27 @@ pages.push("guides/");
     crumbs: [["deadlines/", "Deadlines"]], body: Object.entries(byMonth).map(([m, list]) => section(m.toLowerCase().replace(/\s+/g, "-"), m, "", list.map(r))).join("") || "<p>No deadlines in the next four months.</p>",
     schema: [collection("deadlines/", "Upcoming deadlines", desc)], cta: ["./#deadlines", "See every deadline and add them to your calendar"] }));
   pages.push("deadlines/");
+}
+
+// ---- new listings (anything carrying added: "YYYY-MM-DD" in the last 180 days) ----
+{
+  CURRENT = "new/";
+  const KIND = { tool: "Tool", sch: "Scholarship", prog: "Program", comp: "Competition" };
+  const cutoff = today.getTime() - 180 * 864e5, items = [];
+  const add = (kind, list) => (list || []).forEach((x) => { if (x.added && Date.parse(x.added) >= cutoff) items.push({ kind, x }); });
+  add("tool", [...(W.RESOURCES || []), ...(W.DISCOUNTS || [])]); add("sch", W.SCHOLARSHIPS); add("prog", W.PROGRAMS); add("comp", W.COMPETITIONS);
+  items.sort((a, b) => b.x.added.localeCompare(a.x.added) || a.x.name.localeCompare(b.x.name));
+  const byMonth = {};
+  items.forEach((it) => { const k = `${MONTH[+it.x.added.slice(5, 7) - 1]} ${it.x.added.slice(0, 4)}`; (byMonth[k] = byMonth[k] || []).push(it); });
+  const r = ({ kind, x }) => row(tile(x.name, x.url, x.slug),
+    `<h3>${out(x.url, esc(x.name))}</h3>${x.desc || x.details || x.note ? `<p>${esc(x.desc || x.details || x.note)}</p>` : ""}<div class="row-tags">${chips([KIND[kind], x.amountText || x.value || ""])}</div>`,
+    `<span>Added ${MON[+x.added.slice(5, 7) - 1]} ${+x.added.slice(8, 10)}</span>`);
+  const desc = "The newest free tools, scholarships and STEM programs added to stdnt.xyz, newest first.";
+  save("new/", page({ path: "new/", title: "New free tools, scholarships and STEM programs for students | stdnt.xyz", desc,
+    h1: "New on stdnt.xyz", lead: `${items.length} listing${items.length === 1 ? "" : "s"} added in the last six months, newest first.`,
+    crumbs: [["new/", "New"]], body: Object.entries(byMonth).map(([m, list]) => section(m.toLowerCase().replace(/\s+/g, "-"), m, "", list.map(r))).join("") || "<p>Nothing new in the last six months.</p>",
+    schema: [collection("new/", "New listings", desc), itemList("New listings", items.map((it) => it.x))], cta: ["./#new", "See new listings in the app"] }));
+  pages.push("new/");
 }
 
 // ---- 404 (GitHub Pages serves 404.html for any missing path; not in the sitemap) ----

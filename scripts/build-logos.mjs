@@ -13,7 +13,9 @@
  * get cached automatically.
  */
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync, unlinkSync } from "node:fs";
-import { loadData, domainOf } from "./lib/data.mjs";
+import { loadData, domainOf, SITE_DIR } from "./lib/data.mjs";
+
+process.chdir(SITE_DIR);
 
 const W = loadData();
 const domains = new Set(), slugs = new Set(["reddit"]);   // reddit: the mark on guide tip boxes

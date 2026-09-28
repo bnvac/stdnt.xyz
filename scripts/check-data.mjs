@@ -2,8 +2,8 @@
 /*
  * check-data.mjs - catches data mistakes before they reach the site: missing
  * fields, broken URLs, duplicate listings, unknown categories, deadlines the
- * app can't read, mismatched ?v= cache numbers and em/en dashes (house style
- * is plain hyphens).
+ * app can't read, bad `added` dates (they drive the New tab), mismatched ?v=
+ * cache numbers and em/en dashes (house style is plain hyphens).
  *
  *   npm run check          (also runs first in `npm test` and in CI)
  *
@@ -11,7 +11,7 @@
  */
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import { loadData, deadlineDates, gone, ROLLING } from "./lib/data.mjs";
+import { loadData, deadlineDates, gone, ROLLING, REPO, SITE_DIR } from "./lib/data.mjs";
 
 const W = loadData();
 const errors = [], warnings = [];
@@ -52,6 +52,8 @@ for (const [set, rule] of Object.entries(RULES)) {
     const k = String(x[key] || "").trim().toLowerCase();
     if (k && seen.has(k)) errors.push(`${where}: listed twice (entries ${seen.get(k)} and ${i})`);
     else if (k) seen.set(k, i);
+    if (x.added != null && !(/^\d{4}-\d{2}-\d{2}$/.test(x.added) && Date.parse(x.added) <= Date.now() + 864e5))
+      errors.push(`${where}: added "${x.added}" should be the date it was added, as YYYY-MM-DD`);
     if (rule.deadlines && x.deadline && !gone(x)) {   // closed listings are hidden from deadlines anyway
       const d = String(x.deadline).trim().toLowerCase();
       if (!ROLLING.test(d) && !deadlineDates(d).length) warnings.push(`${where}: deadline "${x.deadline}" has no date the app can count down to`);
@@ -60,24 +62,25 @@ for (const [set, rule] of Object.entries(RULES)) {
 }
 
 // every asset in index.html should share one ?v= cache number
-const html = readFileSync("index.html", "utf8");
+const html = readFileSync(join(SITE_DIR, "index.html"), "utf8");
 const versions = new Set([...html.matchAll(/\.(?:js|css)\?v=(\d+)/g)].map((m) => m[1]));
-if (versions.size !== 1) errors.push(`index.html: assets use different ?v= numbers (${[...versions].join(", ")}); bump them all together`);
-for (const m of html.matchAll(/<script src="([^"?]+)/g)) if (!existsSync(m[1])) errors.push(`index.html: loads ${m[1]}, which doesn't exist`);
-const pageV = existsSync("programs/index.html") && (readFileSync("programs/index.html", "utf8").match(/styles\.css\?v=(\d+)/) || [])[1];
-if (pageV && versions.size === 1 && !versions.has(pageV)) warnings.push(`generated pages use ?v=${pageV}, index.html uses ?v=${[...versions][0]}: run \`npm run build\` (the Build site workflow also does this on main)`);
+if (versions.size !== 1) errors.push(`site/index.html: assets use different ?v= numbers (${[...versions].join(", ")}); bump them all together`);
+for (const m of html.matchAll(/<script src="([^"?]+)/g)) if (!existsSync(join(SITE_DIR, m[1]))) errors.push(`site/index.html: loads ${m[1]}, which doesn't exist`);
+const pagesFile = join(SITE_DIR, "programs/index.html");
+const pageV = existsSync(pagesFile) && (readFileSync(pagesFile, "utf8").match(/styles\.css\?v=(\d+)/) || [])[1];
+if (pageV && versions.size === 1 && !versions.has(pageV)) warnings.push(`generated pages use ?v=${pageV}, site/index.html uses ?v=${[...versions][0]}: run \`npm run build\` (the Build site workflow also does this on main)`);
 
 // house style: no em or en dashes in anything we write (hackathon data comes from an API, so it's skipped)
 const DASH = /[\u2013\u2014]/;
-const SCAN = ["index.html", "404.html", "README.md", "CONTRIBUTING.md", "site.webmanifest", "css", "js", "scripts", "tests", "docs", ".github"];
+const SCAN = ["site/index.html", "site/404.html", "site/site.webmanifest", "site/css", "site/js", "README.md", "CONTRIBUTING.md", "scripts", "tests", "docs", ".github"];
 const TEXT = /\.(html|css|js|mjs|md|yml|yaml|json|webmanifest)$/;
 function* walk(p) {
   if (!existsSync(p)) return;
   if (statSync(p).isDirectory()) for (const f of readdirSync(p)) yield* walk(join(p, f));
   else if (TEXT.test(p) || !p.includes(".")) yield p;
 }
-for (const root of SCAN) for (const f of walk(root)) {
-  readFileSync(f, "utf8").split("\n").forEach((line, i) => { if (DASH.test(line)) errors.push(`${f}:${i + 1}: em/en dash (use a hyphen, comma or colon)`); });
+for (const root of SCAN) for (const f of walk(join(REPO, root))) {
+  readFileSync(f, "utf8").split("\n").forEach((line, i) => { if (DASH.test(line)) errors.push(`${f.slice(REPO.length)}:${i + 1}: em/en dash (use a hyphen, comma or colon)`); });
 }
 
 for (const w of warnings) console.log(`  warn   ${w}`);
