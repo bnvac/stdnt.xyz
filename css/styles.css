@@ -239,9 +239,9 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
   background: color-mix(in srgb, var(--accent) 12%, transparent); padding: .1rem .45rem; border-radius: 5px;
 }
 .card-desc { margin: 0 0 .9rem; font-size: .86rem; color: var(--tx-2); flex: 1; }
-.card-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
-.card-cat { font-size: .72rem; color: var(--tx-3); }
-.card-cta { font-size: .78rem; font-weight: 600; color: var(--accent); }
+.card-foot { display: flex; align-items: center; gap: .3rem; margin-top: auto; }
+.card-cat { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .72rem; color: var(--tx-3); }
+.card-cta { flex: none; margin-left: .3rem; font-size: .78rem; font-weight: 600; color: var(--accent); }
 @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
 /* ============================================================== LISTS (sch / prog) */
@@ -378,11 +378,15 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
 .ftr p { margin: 0 0 .4rem; }
 .ftr a { color: var(--tx-2); text-decoration: underline; }
 .ftr-fine { font-size: .76rem; }
+.ftr-partner { color: var(--tx-2); }
+.ftr-partner a { font-weight: 600; }
 
 /* ============================================================== ABOUT */
 .about { max-width: 860px; margin: .5rem auto 0; }
 .about-title { font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 800; letter-spacing: -.03em; margin: 0 0 .8rem; }
 .about-lead { color: var(--tx-2); font-size: 1.02rem; margin: 0 0 1.6rem; }
+.about-partner { color: var(--tx-2); font-size: .92rem; line-height: 1.6; margin: -.6rem 0 1.6rem; padding: .7rem .95rem; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-2); }
+.about-partner a { color: var(--accent); font-weight: 600; }
 .about-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: .7rem; margin-bottom: 2rem; }
 .astat { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem; text-align: center; }
 .astat b { display: block; font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
@@ -462,6 +466,10 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
 .cal:hover { color: var(--accent); }
 .saved-tools { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; margin: 0 0 1.3rem; }
 .saved-tools .btn { font-size: .82rem; padding: .4rem .8rem; }
+.saved-shared { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: 0 0 1.3rem; padding: .7rem .9rem; border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); border-radius: 12px; background: color-mix(in srgb, var(--accent) 8%, var(--bg-2)); }
+.saved-shared > span { margin-right: auto; color: var(--tx-2); font-size: .9rem; }
+.saved-shared b { color: var(--tx); }
+.saved-shared .btn { font-size: .82rem; padding: .4rem .8rem; }
 .copied { font-size: .8rem; color: var(--evr); font-weight: 600; }
 .quiz-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: .2rem 0 1.4rem; }
 .qselect { font: inherit; font-size: .85rem; color: var(--tx); background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: .45rem .6rem; min-width: 210px; cursor: pointer; }

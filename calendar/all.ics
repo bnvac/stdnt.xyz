@@ -4600,28 +4600,6 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:prog-ynps-research-mentorship-summer-cohort-20270601@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20270601
-DTEND;VALUE=DATE:20270602
-SUMMARY:Deadline: YNPS Research Mentorship Summer Cohort
-DESCRIPTION:Program\nDeadline listed as: June 1\nhttps://youthneuropsycholo
- gy.com/mentorship/\nMore deadlines: https://stdnt.xyz/#deadlines
-URL:https://youthneuropsychology.com/mentorship/
-CATEGORIES:Program
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: YNPS Research Mentorship Summer Cohort
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: YNPS Research Mentorship Summer Cohort
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sch-bow-seat-blue-planet-awareness-contest-20270607@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270607

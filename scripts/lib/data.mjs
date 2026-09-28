@@ -9,7 +9,7 @@ import vm from "node:vm";
 
 export const SITE = "https://stdnt.xyz";   // live origin used in canonical URLs, sitemaps and feeds
 
-const DATA_FILES = ["js/data.js", "js/scholarships.js", "js/programs.js", "js/programs-extra.js",
+const DATA_FILES = ["js/shared.js", "js/data.js", "js/scholarships.js", "js/programs.js", "js/programs-extra.js",
   "js/competitions.js", "js/discounts.js", "js/finaid.js", "js/guides.js", "js/templates.js", "js/hackathons.js"];
 
 export function loadData(files = DATA_FILES) {
@@ -26,7 +26,7 @@ export function gone(item) {
 }
 
 const MONTHS = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
-const ROLLING = /rolling|monthly|quarterly|varies|dependent|psat|open|tbd|announce|check|nomination|^-$/;
+export const ROLLING = /rolling|monthly|quarterly|varies|dependent|psat|open|tbd|announce|check|nomination|^-$/;
 
 // every date named in a deadline string, each rolled to its next occurrence.
 // { date, exact } where exact=false means only a month was given.

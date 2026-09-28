@@ -6,6 +6,7 @@
  *   guides/                 all guides        guides/<slug>/   one per guide
  *   scholarships/  programs/  competitions/  tools/  discounts/  deadlines/
  *   sitemap.xml             every page above
+ *   404.html                the "page not found" page (not in the sitemap)
  *
  *   node scripts/build-pages.mjs
  *
@@ -38,17 +39,7 @@ function tile(name, url, slug) {
 const out = (href, text) => `<a href="${esc(href)}" target="_blank" rel="noopener">${text}</a>`;
 const words = (html) => html.replace(/<[^>]+>/g, " ").replace(/&[#\w]+;/g, " ").split(/\s+/).filter(Boolean).length;
 const minutes = (html) => Math.max(1, Math.round(words(html) / 220));
-function selectivity(p) {   // mirrors selectivity() in app.js
-  const s = String(p.accRate || "").trim(), m = s.match(/(<|~)?\s*(\d+(?:\.\d+)?)\s*(?:-\s*(\d+(?:\.\d+)?))?\s*%/);
-  if (m) return (m[1] === "<" ? "Under " : "~") + m[2] + (m[3] ? "-" + m[3] : "") + "% admitted";
-  if (!s || /varies/i.test(s)) return "";
-  if (/per state/i.test(s)) return s;
-  if (/test-based/i.test(s)) return "Test-score based";
-  if (/highly selective|elite/i.test(s)) return "Highly selective";
-  if (/selective/i.test(s)) return "Selective";
-  if (/accessible|^high\b/i.test(s)) return "Open to most";
-  return "";
-}
+const { selectivity, whenText } = W.SHARED;   // js/shared.js, the same wording the app uses
 const GRADE = { Freshman: 9, Sophomore: 10, Junior: 11, Senior: 12 };
 function grades(list) {
   const n = (list || []).map((g) => GRADE[g]).filter(Boolean).sort((a, b) => a - b);
@@ -60,8 +51,12 @@ const pick = (on) => (on ? ` <span class="ed-pick" title="Editor's choice">&#128
 
 // ---- page shell ---------------------------------------------------------
 const NAV = [["tools/", "Tools"], ["scholarships/", "Scholarships"], ["programs/", "STEM programs"], ["competitions/", "Competitions"], ["deadlines/", "Deadlines"], ["guides/", "Guides"]];
-function page({ path, title, desc, h1, lead, crumbs, body, schema, image = "og.png", type = "website", cta }) {
-  const depth = path.split("/").filter(Boolean).length, base = "../".repeat(depth) || "./";
+function page({ path, title, desc, h1, lead, crumbs = [], body, schema = [], image = "og.png", type = "website", cta, notFound = false }) {
+  const depth = path.split("/").filter(Boolean).length;
+  // relative to <base>; the 404 page writes them from script (see below)
+  const assets = [`<link rel="icon" href="favicon.ico" sizes="32x32" />`, `<link rel="icon" href="favicon.svg" type="image/svg+xml" />`,
+    `<link rel="apple-touch-icon" href="apple-touch-icon.png" />`, `<link rel="manifest" href="site.webmanifest" />`,
+    `<link rel="stylesheet" href="css/styles.css?v=${V}" />`, `<link rel="stylesheet" href="css/pages.css?v=${V}" />`];
   const url = `${SITE}/${path}`;
   const crumb = [["", "Home"], ...crumbs];
   const ld = [{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: crumb.map(([p, n], i) => ({ "@type": "ListItem", position: i + 1, name: n, item: `${SITE}/${p}` })) }, ...schema];
@@ -72,7 +67,12 @@ function page({ path, title, desc, h1, lead, crumbs, body, schema, image = "og.p
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(desc)}" />
-  <link rel="canonical" href="${url}" />
+${notFound ? `  <meta name="robots" content="noindex" />
+  <!-- served at whatever path was requested, so find the site root at runtime
+       (/<repo>/ on github.io, / on the custom domain or the local dev server)
+       and write the relative links after it, where the preload scanner can't
+       fetch them against the wrong path first -->
+  <script>(function(){var p=location.pathname.split("/"),b=/\\.github\\.io$/.test(location.hostname)&&p[1]?"/"+p[1]+"/":"/";document.write('<base href="'+b+'" />'+${JSON.stringify(assets.join(""))})})()</script>` : `  <link rel="canonical" href="${url}" />
   <meta property="og:type" content="${type}" />
   <meta property="og:site_name" content="stdnt.xyz" />
   <meta property="og:title" content="${esc(title)}" />
@@ -85,16 +85,14 @@ function page({ path, title, desc, h1, lead, crumbs, body, schema, image = "og.p
   <meta name="twitter:title" content="${esc(title)}" />
   <meta name="twitter:description" content="${esc(desc)}" />
   <meta name="twitter:image" content="${SITE}/${image}" />
-  <base href="${base}" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234f7cff'/%3E%3Ctext x='50%25' y='53%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='800' font-size='34' fill='white'%3Es%3C/text%3E%3C/svg%3E" />
+  <base href="${"../".repeat(depth) || "./"}" />
+  ${assets.slice(0, 4).join("\n  ")}`}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=${V}" />
-  <link rel="stylesheet" href="css/pages.css?v=${V}" />
-  <script>try{document.documentElement.setAttribute("data-theme",localStorage.getItem("edu-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"))}catch(e){}</script>
-  <script type="application/ld+json">${JSON.stringify(ld.length === 1 ? ld[0] : ld).replace(/</g, "\\u003c")}</script>
-</head>
+${notFound ? "" : `  ${assets.slice(4).join("\n  ")}\n`}  <script>try{document.documentElement.setAttribute("data-theme",localStorage.getItem("edu-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"))}catch(e){}</script>
+${notFound ? "" : `  <script type="application/ld+json">${JSON.stringify(ld.length === 1 ? ld[0] : ld).replace(/</g, "\\u003c")}</script>
+`}</head>
 <body class="sp">
   <header class="sp-hdr">
     <div class="sp-hdr-inner">
@@ -103,7 +101,7 @@ function page({ path, title, desc, h1, lead, crumbs, body, schema, image = "og.p
     </div>
   </header>
   <main class="sp-main">
-    <nav class="sp-crumbs" aria-label="Breadcrumb">${crumb.map(([p, n], i) => i === crumb.length - 1 ? `<span>${esc(n)}</span>` : `<a href="${p || "./"}">${esc(n)}</a>`).join('<span aria-hidden="true">/</span>')}</nav>
+    ${crumbs.length ? `<nav class="sp-crumbs" aria-label="Breadcrumb">${crumb.map(([p, n], i) => i === crumb.length - 1 ? `<span>${esc(n)}</span>` : `<a href="${p || "./"}">${esc(n)}</a>`).join('<span aria-hidden="true">/</span>')}</nav>` : ""}
     <h1 class="sp-h1">${esc(h1)}</h1>
     ${lead ? `<p class="sp-lead">${lead}</p>` : ""}
     ${body}
@@ -111,7 +109,8 @@ function page({ path, title, desc, h1, lead, crumbs, body, schema, image = "og.p
   </main>
   <footer class="sp-ftr">
     <nav aria-label="Browse">${NAV.concat([["discounts/", "Discounts"]]).map(([h, n]) => `<a href="${h}">${n}</a>`).join("")}</nav>
-    <p>stdnt.xyz is a free, open-source directory of what students can get for free. <a href="./#about">How we pick</a> &middot; <a href="https://github.com/bnvac/stdnt.xyz" target="_blank" rel="noopener">GitHub</a></p>
+    <p>stdnt.xyz is a free, open-source directory of what students can get for free, built in partnership with <a href="https://allthesame.org/" target="_blank" rel="noopener">All The Same Organization</a>.</p>
+    <p><a href="./#about">How we pick</a> &middot; <a href="https://github.com/bnvac/stdnt.xyz" target="_blank" rel="noopener">GitHub</a></p>
   </footer>
   <script>document.addEventListener("click",function(e){var b=e.target.closest("[data-copy]");if(!b)return;var p=b.parentNode.querySelector("pre");if(p&&navigator.clipboard){navigator.clipboard.writeText(p.innerText);b.textContent="Copied!";setTimeout(function(){b.textContent="Copy"},1500)}});</script>
 </body>
@@ -179,7 +178,8 @@ pages.push("guides/");
   const PROG = (W.PROGRAMS || []).filter((p) => !gone(p) && p.url).sort((a, b) => ((RANK[a.ranking] ?? 50) - (RANK[b.ranking] ?? 50)) || a.name.localeCompare(b.name));
   const top = PROG.filter((p) => /^S/.test(p.ranking || "")), rest = PROG.filter((p) => !/^S/.test(p.ranking || ""));
   const free = (p) => p.free || /free|fully funded/i.test(p.cost || "");
-  const r = (p) => row(tile(p.name, p.url), `<h3>${out(p.url, esc(p.name))}${pick(/^S/.test(p.ranking || ""))}</h3>${p.details ? `<p>${esc(p.details)}</p>` : ""}<div class="row-tags">${chips([selectivity(p), grades(p.grades), ...(p.subjects || []).slice(0, 3)])}</div>`,
+  const whenLine = (when) => { const w = whenText(when); return w.text ? `<p class="sp-when"${w.past ? ` title="${esc(`Past session: ${w.past}. This year's dates may shift a little.`)}"` : ""}>${esc(w.text)}</p>` : ""; };
+  const r = (p) => row(tile(p.name, p.url), `<h3>${out(p.url, esc(p.name))}${pick(/^S/.test(p.ranking || ""))}</h3>${p.details ? `<p>${esc(p.details)}</p>` : ""}${whenLine(p.when)}<div class="row-tags">${chips([selectivity(p), grades(p.grades), ...(p.subjects || []).slice(0, 3)])}</div>`,
     `<b class="sp-amt">${free(p) ? "Free" : esc((p.cost || "").split("(")[0].trim().slice(0, 18))}</b><span>${esc(p.deadline || "Rolling")}</span>`);
   const desc = `${PROG.length} STEM summer programs, research internships and camps for high school students, with selectivity, grades, cost and deadlines. Many are free or paid.`;
   const secs = [["editors-choice", "Editor's choice", top, "The standouts: highly selective, strong mentorship, usually free or funded."], ["all-programs", "More programs", rest, ""]];
@@ -252,6 +252,24 @@ pages.push("guides/");
     crumbs: [["deadlines/", "Deadlines"]], body: Object.entries(byMonth).map(([m, list]) => section(m.toLowerCase().replace(/\s+/g, "-"), m, "", list.map(r))).join("") || "<p>No deadlines in the next four months.</p>",
     schema: [collection("deadlines/", "Upcoming deadlines", desc)], cta: ["./#deadlines", "See every deadline and add them to your calendar"] }));
   pages.push("deadlines/");
+}
+
+// ---- 404 (GitHub Pages serves 404.html for any missing path; not in the sitemap) ----
+{
+  CURRENT = "";
+  const links = NAV.concat([["discounts/", "Discounts"]]).map(([h, n]) => `<a href="${h}">${n}</a>`).join("");
+  writeFileSync("404.html", page({ path: "404.html", notFound: true, title: "Page not found | stdnt.xyz",
+    desc: "This page doesn't exist. Search stdnt.xyz for free tools, scholarships, STEM programs and deadlines.",
+    h1: "Page not found", lead: "That link is broken or the page has moved. Try searching for what you were after:",
+    body: `<form class="sp-search" action="./" method="get" role="search">
+      <input type="search" name="q" id="q404" placeholder="Scholarships, programs, tools..." aria-label="Search stdnt.xyz" />
+      <button type="submit">Search</button>
+    </form>
+    <p class="sp-sec-blurb">Or browse a section:</p>
+    <nav class="sp-toc" aria-label="Sections">${links}</nav>
+    <script>(function(){var i=document.getElementById("q404"),s=location.pathname.split("/").filter(Boolean).pop()||"";try{s=decodeURIComponent(s)}catch(e){}s=s.replace(/\.html?$/,"").replace(/[-_+]+/g," ").trim();if(i&&s&&!/^stdnt\.xyz$/.test(s))i.value=s})()</script>`,
+    cta: ["./", "Go to the homepage"] }));
+  console.log("wrote 404.html");
 }
 
 // ---- sitemap ---------------------------------------------------------------

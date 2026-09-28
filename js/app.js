@@ -299,6 +299,15 @@
     try { localStorage.setItem("edu-saved", JSON.stringify(Array.from(saved))); } catch (e) {}
   }
   function sid(type, name) { return type + "::" + name; }
+  // Share links ("#saved&list=t1x2y3.s9z8...") carry a short code per item: a
+  // kind letter plus a base-36 hash of its name. Saved ids are names, so a link
+  // keeps working when the lists are reordered.
+  var KIND_CODE = { tool: "t", sch: "s", prog: "p", comp: "c" };
+  function itemCode(id) {
+    var i = id.indexOf("::"), name = id.slice(i + 2), h = 2166136261;
+    for (var j = 0; j < name.length; j++) { h ^= name.charCodeAt(j); h = Math.imul(h, 16777619) >>> 0; }
+    return (KIND_CODE[id.slice(0, i)] || "x") + h.toString(36);
+  }
   function starBtn(type, name) {
     var id = sid(type, name), on = saved.has(id);
     return '<button class="star' + (on ? " on" : "") + '" type="button" data-id="' + esc(id) +
@@ -353,12 +362,13 @@
       Math.min(i * 16, 240) + 'ms">' +
       '<div class="card-top">' + iconHTML(r) +
       '<div class="card-head"><span class="card-name">' + esc(r.name) + "</span>" +
-      '<span class="card-badges">' + badge + (r.featured ? PICK : "") + verifiedChip(r) + "</span></div>" +
-      '<span class="card-meta">' + starBtn("tool", r.name) + (internal ? "" : flagBtn(r.name, r.url)) + "</span></div>" +
+      '<span class="card-badges">' + badge + (r.featured ? PICK : "") + verifiedChip(r) + "</span></div></div>" +
       (r.value ? '<span class="card-value">' + esc(r.value) + "</span>" : "") +
       '<p class="card-desc">' + esc(r.desc) + "</p>" +
       (linkDownBadge(r.url) ? '<div class="card-flags">' + linkDownBadge(r.url) + "</div>" : "") +
+      // save + report live in the footer so long names get the card's full width
       '<div class="card-foot"><span class="card-cat">' + esc(c.name) + "</span>" +
+      '<span class="card-meta">' + starBtn("tool", r.name) + (internal ? "" : flagBtn(r.name, r.url)) + "</span>" +
       '<span class="card-cta">' + cta + "</span></div></a>";
   }
   function renderTools() {
@@ -484,17 +494,8 @@
     return { t: p.cost ? p.cost.split("(")[0].trim().slice(0, 14) : "", full: false };
   }
   // how hard a program is to get into, shown as a tag (not a letter tier)
-  function selectivity(p) {
-    var s = String(p.accRate || "").trim(), m = s.match(/(<|~)?\s*(\d+(?:\.\d+)?)\s*(?:-\s*(\d+(?:\.\d+)?))?\s*%/);
-    if (m) return (m[1] === "<" ? "Under " : "~") + m[2] + (m[3] ? "-" + m[3] : "") + "% admitted";
-    if (!s || /varies/i.test(s)) return "";
-    if (/per state/i.test(s)) return s;
-    if (/test-based/i.test(s)) return "Test-score based";
-    if (/highly selective|elite/i.test(s)) return "Highly selective";
-    if (/selective/i.test(s)) return "Selective";
-    if (/accessible|^high\b/i.test(s)) return "Open to most";
-    return "";
-  }
+  var SHARED = window.SHARED || {};
+  var selectivity = SHARED.selectivity;   // js/shared.js, also used by the static pages
   function progRow(p, i) {
     var url = p.url || searchLink(p.name + " program");
     var sel = selectivity(p);
@@ -504,7 +505,9 @@
     var stateTag = si.restricted ? '<span class="tg tg-state">' + PIN_SVG + esc(si.states.slice(0, 2).join("/")) + " only</span>"
       : (si.located ? '<span class="tg tg-loc">' + PIN_SVG + esc(si.states.slice(0, 2).join("/")) + "</span>" : "");
     var subs = (p.subjects || []).slice(0, 3).map(function (s) { return '<span class="tg">' + esc(s) + "</span>"; }).join("");
-    var sub = esc(p.details || (p.subjects || []).join(", ")) + (p.when ? ' <span class="find">&middot; ' + esc(p.when) + "</span>" : "");
+    var wt = SHARED.whenText(p.when);   // "Usually late June to early August", exact past dates on hover
+    var sub = esc(p.details || (p.subjects || []).join(", ")) + (wt.text ? ' <span class="find"' +
+      (wt.past ? ' title="' + esc("Past session: " + wt.past + ". This year's dates may shift a little.") + '"' : "") + ">&middot; " + esc(wt.text) + "</span>" : "");
     var cost = shortCost(p);
     return '<div class="row' + (gone(p) ? " row-gone" : "") + '" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' +
       logoTile(p.name, p.url, p.logo) +
@@ -523,20 +526,38 @@
   }
 
   // ---- SAVED ---------------------------------------------------------
+  var sharedList = null;   // ids from a shared link, shown instead of your own list until closed
+  function readSharedList() {
+    var m = (location.hash || "").match(/^#saved&list=([\w.]+)/); if (!m) return false;
+    var want = {}; m[1].split(".").forEach(function (c) { want[c] = 1; });
+    sharedList = RES.concat(DISCOUNTS).map(function (r) { return sid("tool", r.name); })
+      .concat(SCH.map(function (s) { return sid("sch", s.name); }), PROG.map(function (p) { return sid("prog", p.name); }), COMPS.map(function (c) { return sid("comp", c.name); }))
+      .filter(function (id, i, all) { return want[itemCode(id)] && all.indexOf(id) === i; });
+    return true;
+  }
+  function shareLink() { return location.origin + location.pathname + "#saved&list=" + Array.from(saved).map(itemCode).join("."); }
   function renderSaved() {
-    var ts = terms();
+    var ts = terms(), set = sharedList ? new Set(sharedList) : saved;
     function f(arr, fields) { return ts.length ? arr.filter(function (x) { return hit(fields(x), ts); }) : arr; }
-    var st = f(RES.concat(DISCOUNTS).filter(function (r) { return saved.has(sid("tool", r.name)); }), function (r) { return [r.name, r.desc, (r.tags || []).join(" ")].join(" "); });
-    var ss = f(SCH.filter(function (s) { return saved.has(sid("sch", s.name)); }), function (s) { return [s.name, s.level, s.note].join(" "); });
-    var sp = f(PROG.filter(function (p) { return saved.has(sid("prog", p.name)); }), function (p) { return [p.name, p.details, (p.subjects || []).join(" ")].join(" "); });
-    var sc = f(COMPS.filter(function (c) { return saved.has(sid("comp", c.name)); }), function (c) { return [c.name, c.desc, (c.tags || []).join(" ")].join(" "); });
+    var st = f(RES.concat(DISCOUNTS).filter(function (r) { return set.has(sid("tool", r.name)); }), function (r) { return [r.name, r.desc, (r.tags || []).join(" ")].join(" "); });
+    var ss = f(SCH.filter(function (s) { return set.has(sid("sch", s.name)); }), function (s) { return [s.name, s.level, s.note].join(" "); });
+    var sp = f(PROG.filter(function (p) { return set.has(sid("prog", p.name)); }), function (p) { return [p.name, p.details, (p.subjects || []).join(" ")].join(" "); });
+    var sc = f(COMPS.filter(function (c) { return set.has(sid("comp", c.name)); }), function (c) { return [c.name, c.desc, (c.tags || []).join(" ")].join(" "); });
     var body = $("#saved-body");
-    if (saved.size === 0) {
+    var sharedBar = sharedList ? '<div class="saved-shared"><span><b>Shared list</b> &middot; ' + set.size + " item" + (set.size === 1 ? "" : "s") + "</span>" +
+      (set.size ? '<button class="btn btn-primary" data-act="keep" type="button">Save all to my list</button>' : "") +
+      '<button class="btn btn-ghost" data-act="mine" type="button">Back to my list</button></div>' : "";
+    if (sharedList && set.size === 0) {
+      body.innerHTML = sharedBar + '<p class="muted" style="padding:1rem 0">None of the items in this shared list are listed anymore.</p>';
+      meta.textContent = ""; empty.hidden = true; return 0;
+    }
+    if (set.size === 0) {
       body.innerHTML = '<div class="saved-empty"><div class="saved-star">' + STAR + "</div>" +
         "<p>Your list is empty.</p><p class=\"saved-hint\">Tap the star on any tool, scholarship or program to save it here. It stays on this device.</p></div>";
       meta.textContent = ""; empty.hidden = true; return 0;
     }
-    var toolbar = '<div class="saved-tools">' +
+    var toolbar = sharedList ? sharedBar : '<div class="saved-tools">' +
+      '<button class="btn btn-ghost" data-act="share" type="button">Share list</button>' +
       '<button class="btn btn-ghost" data-act="copy" type="button">Copy</button>' +
       '<button class="btn btn-ghost" data-act="csv" type="button">Download CSV</button>' +
       '<button class="btn btn-ghost" data-act="ics" type="button">Deadlines (.ics)</button>' +
@@ -549,7 +570,8 @@
     if (sc.length) html += '<h3 class="saved-h">Competitions <span>' + sc.length + "</span></h3><div class=\"grid\">" + sc.map(competitionCard).join("") + "</div>";
     var total = st.length + ss.length + sp.length + sc.length;
     body.innerHTML = toolbar + (html || '<p class="muted" style="padding:1rem 0">No saved items match that search.</p>');
-    meta.textContent = total === saved.size ? ("You have " + saved.size + " saved item" + (saved.size === 1 ? "" : "s")) : ("Showing " + total + " of " + saved.size + " saved");
+    meta.textContent = sharedList ? ("Showing " + total + " shared item" + (total === 1 ? "" : "s"))
+      : total === saved.size ? ("You have " + saved.size + " saved item" + (saved.size === 1 ? "" : "s")) : ("Showing " + total + " of " + saved.size + " saved");
     empty.hidden = true;
     return total;
   }
@@ -1028,6 +1050,17 @@
       else if (act === "copy") { copyText(items.map(function (it) { return it.name + " - " + it.url; }).join("\n")); flash("#saved-copied"); }
       else if (act === "csv") download("stdnt-saved.csv", toCSV(items), "text/csv;charset=utf-8");
       else if (act === "ics") download("stdnt-deadlines.ics", toICS(items), "text/calendar;charset=utf-8");
+      else if (act === "share") {
+        var link = shareLink();   // native share sheet on phones, copy on desktop
+        if (navigator.share && window.matchMedia && matchMedia("(pointer: coarse)").matches) navigator.share({ title: "My stdnt.xyz list", url: link }).catch(function () {});
+        else copyWithFeedback(link, b);
+      }
+      else if (act === "keep" || act === "mine") {
+        if (act === "keep" && sharedList) { sharedList.forEach(function (id) { saved.add(id); }); persistSaved(); $("#n-saved").textContent = saved.size; }
+        sharedList = null;
+        try { history.replaceState(null, "", location.pathname + location.search + "#saved"); } catch (err) {}
+        renderSaved();
+      }
     });
     // report a problem (delegated) - opens the prefilled "report" issue form
     document.addEventListener("click", function (e) {
@@ -1261,6 +1294,7 @@
   }
   function routeHash() {
     if (routeGuideHash()) return true;
+    if (readSharedList()) { switchTab("saved"); return true; }
     if (guideOpen()) closeGuide();
     var h = (location.hash || "").replace(/^#/, "");
     if (TAB_HASHES[h]) { if (state.tab !== h) switchTab(h); return true; }
@@ -1370,11 +1404,10 @@
     var ft = freshTags(c, c.url);
     return '<a class="card" href="' + esc(c.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
       '<div class="card-top">' + logoTile(c.name, c.url, c.logo) +
-      '<span class="card-name">' + esc(c.name) + matchBadge("comp", c) + "</span>" +
-      '<span class="card-meta">' + starBtn("comp", c.name) + flagBtn(c.name, c.url) + "</span></div>" +
+      '<span class="card-name">' + esc(c.name) + matchBadge("comp", c) + "</span></div>" +
       '<p class="card-desc">' + esc(c.desc) + "</p>" +
       (ft ? '<div class="card-flags">' + ft + "</div>" : "") +
-      '<div class="card-foot comp-foot">' + dl + req + "</div></a>";
+      '<div class="card-foot comp-foot">' + dl + req + '<span class="card-meta">' + starBtn("comp", c.name) + flagBtn(c.name, c.url) + "</span></div></a>";
   }
   function renderCompetitions() {
     var box = $("#competitions-grid"); if (!box) return 0;
