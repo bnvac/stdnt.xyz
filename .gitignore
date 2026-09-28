@@ -1,5 +1,5 @@
-# dependencies / build noise (none expected - pure static site)
-node_modules/
+# dev dependencies (the site itself has none)
+node_modules
 .DS_Store
 
 # link checker output (generated in CI)

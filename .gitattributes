@@ -1,0 +1,2 @@
+# calendar feeds must keep their CRLF line endings (RFC 5545), so git never converts them
+*.ics -text

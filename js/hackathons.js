@@ -2,7 +2,7 @@
  * hackathons.js - baked-in fallback list for the Hackathons tab.
  *
  * At runtime app.js fetches data/hackathons.json (same-origin, refreshed daily
- * by .github/workflows/hackathons.yml from the Hack Club Hackathons API) and
+ * by .github/workflows/site-build.yml from the Hack Club Hackathons API) and
  * uses that when available. This array is the offline / first-paint fallback so
  * the tab is never empty. Shape:
  *   { name, url, start, end, city, region, country, cc, format, source, hs }

@@ -1,0 +1,22 @@
+{
+  "name": "stdnt.xyz",
+  "private": true,
+  "description": "Free tools, scholarships, STEM programs and deadlines for students, in one searchable static site.",
+  "license": "MIT",
+  "repository": "github:bnvac/stdnt.xyz",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build-hackathons.mjs && node scripts/build-logos.mjs && node scripts/build-calendar.mjs && node scripts/build-pages.mjs",
+    "build:pages": "node scripts/build-calendar.mjs && node scripts/build-pages.mjs",
+    "images": "node scripts/build-images.mjs",
+    "check": "node scripts/check-data.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "test": "node scripts/check-data.mjs && node --test tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.1"
+  }
+}

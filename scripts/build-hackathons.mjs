@@ -6,7 +6,7 @@
  *
  * The browser can't call the Hack Club API directly - it sends no
  * Access-Control-Allow-Origin header - so this runs server-side in CI
- * (.github/workflows/hackathons.yml), writes a same-origin data/hackathons.json,
+ * (.github/workflows/site-build.yml), writes a same-origin data/hackathons.json,
  * and the static site fetches that. Keeps the site 100% self-contained at
  * runtime (no third-party libraries or proxies) while staying fresh daily.
  *

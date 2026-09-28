@@ -4,9 +4,9 @@ The site is **100% static** - there is no backend, no database, and no way to
 store subscriber emails in this repo (nor would you want to). So the email
 newsletter works by handing signups off to a **third-party email provider**.
 
-Until you connect one, the signup forms still render and the on-site
-**"This week for you"** digest (in the **For You** tab) does the real work - it's
-computed live in the browser, so subscribers aren't missing anything.
+Until you connect one, the signup forms stay hidden (so nobody types an email
+into a form that goes nowhere), and the on-site **"This week for you"** digest in
+the **For You** tab does the real work: it's computed live in the browser.
 
 There are signup forms in two places, both wired to the same setting:
 
@@ -77,16 +77,15 @@ in your provider. Two ways:
 
 - **By hand (simplest):** once a week, open your provider, write a short issue - 5 new scholarships, 3 deadlines, 2 programs - and send. The site's
   **Deadlines** and **For You** tabs are your source material.
-- **Automated:** add a GitHub Action (like the existing
-  `.github/workflows/link-check.yml`) on a weekly `cron` that builds a digest from
-  the data files and calls your provider's "create draft/send" API with a secret
-  token. This repo already uses scheduled Actions, so the pattern is in place.
+- **Automated:** add a GitHub Action on a weekly `cron` (the scheduled
+  `.github/workflows/site-build.yml` shows the pattern) that builds a digest from
+  the data files and calls your provider's "create draft" API with a secret
+  token, so each week's email is waiting for you to press send.
 
 ---
 
 ## How it behaves with no endpoint set
 
-If `NEWSLETTER_ENDPOINT` is `""` (the default), submitting a form shows an honest
-message - *"Email digests aren't switched on yet, but your matches update live
-every visit"* - and points to a GitHub issue so people can ask for it. Nothing
-breaks, and no emails are collected or lost.
+If `NEWSLETTER_ENDPOINT` is `""` (the default), both signup forms are hidden.
+Nothing breaks, and no emails are collected or lost. Set the endpoint and they
+appear on the next deploy.

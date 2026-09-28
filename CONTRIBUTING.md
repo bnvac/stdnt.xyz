@@ -1,7 +1,8 @@
 # Contributing to stdnt.xyz
 
-Thank you - keeping this list fresh and growing is the whole point. There are
-**two ways** to contribute, and **both credit you** automatically.
+Thank you - keeping this list fresh and growing is the whole point. stdnt.xyz is
+built in partnership with [All The Same Organization](https://allthesame.org/).
+There are **two ways** to contribute, and **both credit you** automatically.
 
 ## 1. The easy way - fill out a form (no coding)
 
@@ -37,6 +38,7 @@ Every listing is **one plain object** in a JS file. No build step, no framework.
 | `js/competitions.js` | competitions |
 | `js/discounts.js` | student discounts |
 | `js/finaid.js` | FAFSA / CSS Profile / state financial-aid dates |
+| `js/guides.js`, `js/templates.js` | the how-to guides and spreadsheet templates |
 
 Example - add a tool in `js/data.js`:
 
@@ -59,25 +61,33 @@ Example - add a tool in `js/data.js`:
 
 Counts, chips, search, logos and deadlines all update automatically.
 
-**Generated files - don't edit by hand.** The `site-build` workflow rebuilds these
-from the data files on every change (and daily): the crawlable pages in
-`guides/`, `scholarships/`, `programs/`, `competitions/`, `tools/`, `discounts/`,
-`deadlines/` and `sitemap.xml` (`scripts/build-pages.mjs`), the calendar feeds in
-`calendar/` (`scripts/build-calendar.mjs`), and the cached logos in `logos/` +
-`js/logos.js` (`scripts/build-logos.mjs`). Run any of them locally with `node`.
-Share images (`og.png`, `guides/*/og.png`) are rendered manually with
-`scripts/build-og.mjs` after adding a guide.
+**Generated files - don't edit by hand.** The *Build site* workflow rebuilds these
+from the data files whenever data changes on `main` (and daily): the crawlable pages
+in `guides/`, `scholarships/`, `programs/`, `competitions/`, `tools/`, `discounts/`,
+`deadlines/`, plus `404.html` and `sitemap.xml`; the calendar feeds in `calendar/`;
+the cached logos in `logos/` + `js/logos.js`; and `data/hackathons.json`. You don't
+need to rebuild them in a pull request. Share images and icons are the exception:
+re-render them with `npm run images` after adding a guide or changing `favicon.svg`.
 
 ### Run it locally
 
 ```bash
 git clone https://github.com/bnvac/stdnt.xyz
 cd stdnt.xyz
-python3 -m http.server 8000   # open http://localhost:8000
+npm run dev        # http://localhost:8000
 ```
 
-…or just open `index.html`. When you change a `js/*.js` or `css` file, bump the
-`?v=N` cache number in `index.html` (search-and-replace `?v=NN`).
+Before opening a pull request:
+
+1. `npm install` (once), then `npm test`. It runs the data check (missing fields,
+   bad URLs, duplicates, unreadable deadlines) and the test suite. The *Checks*
+   workflow runs the same thing on every pull request.
+2. If you changed a file in `js/` or `css/`, bump the `?v=N` cache number on every
+   asset in `index.html` (search-and-replace `?v=NN`).
+3. Use plain hyphens, commas or colons rather than em or en dashes.
+
+See the **Development** section of the [README](README.md) for
+every script.
 
 ## How contributions are tracked
 

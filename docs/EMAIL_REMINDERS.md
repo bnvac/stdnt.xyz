@@ -16,8 +16,10 @@ the deadlines currently in view:
 
 (The `date` is `YYYYMMDD` for the next occurrence of that deadline.)
 
-Until an endpoint is set, the button just points people to this doc and to the
-**Add all to calendar (.ics)** export, which already works with zero setup.
+Until an endpoint is set, the button stays hidden. You may not need it at all:
+**Subscribe to deadlines** on the same tab gives people calendar feeds (Google,
+Apple, Outlook) that already remind them a week and a day before each deadline,
+with zero setup.
 
 ---
 

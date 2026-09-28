@@ -6,12 +6,14 @@
 
 ### Every free thing you can get as a student - in one fast, searchable page.
 
-Tools · **free LLM API keys** · student perks · **120+ scholarships** · **190+ STEM programs**
+Tools · **free LLM API keys** · student perks · **120+ scholarships** · **180+ STEM programs**
+
+<sub>In partnership with <a href="https://allthesame.org/">All The Same Organization</a></sub>
 
 <p>
   <a href="#-quick-start"><img alt="Quick start" src="https://img.shields.io/badge/get_started-2_min-4f7cff?style=for-the-badge"></a>
   <img alt="No build step" src="https://img.shields.io/badge/build_step-none-10b981?style=for-the-badge">
-  <img alt="Dependencies" src="https://img.shields.io/badge/dependencies-0-8b5cf6?style=for-the-badge">
+  <img alt="Runtime dependencies" src="https://img.shields.io/badge/runtime_dependencies-0-8b5cf6?style=for-the-badge">
 </p>
 
 <p>
@@ -40,7 +42,7 @@ So this pulls the best of it into **one minimalist site you can actually search*
 - 🚩 **Hack Club** - free hardware, Slack, HCB, Brilliant Premium, CDN…
 - 💻 **Dev / cloud / design / productivity** - JetBrains, Vercel, Figma, Microsoft 365…
 - 💰 **120+ scholarships** - from full-rides to "describe your zombie-apocalypse escape plan"
-- 🔬 **190+ STEM programs** - research, internships & summer programs, filterable by grade
+- 🔬 **180+ STEM programs** - research, internships & summer programs, filterable by grade
 
 > Built to be the live home for community scholarship/program spreadsheets that
 > *"will no longer be updated"* - so nothing good gets lost.
@@ -59,22 +61,25 @@ So this pulls the best of it into **one minimalist site you can actually search*
 | 📚 **Guides** | practical how-tos with tips students share on Reddit, each also a standalone page search engines can index |
 | 👑 **Editor's choice** | a short, unpaid list of standout tools and programs; see *How we pick* on the About tab |
 | 🔗 **Shareable matches** | your quiz answers encode into a link you can send to anyone |
-| 📤 **Export saved** | copy, download **CSV**, export deadlines as **.ics**, or print |
+| 📤 **Share & export saved** | send your list as a **link**, copy it, download **CSV**, export deadlines as **.ics**, or print |
+| 📱 **Installable** | add it to your phone's home screen and it opens like an app |
 | ➕ **Submit a resource** | a button opens a prefilled GitHub issue, no coding needed |
 | 🏷️ **Real brand logos** | self-hosted from [Simple Icons](https://simpleicons.org) and site favicons, with clean monogram fallbacks |
 | 🌗 **Dark / light** | system-aware, remembers your choice |
 | 👁️ **Live view counter** | because watching it climb is fun |
-| ⚡ **Zero dependencies** | pure HTML/CSS/JS - loads instantly, deploys anywhere |
+| ⚡ **No runtime dependencies** | pure HTML/CSS/JS - loads instantly, deploys anywhere |
 
 ## 🚀 Quick start
 
 ```bash
 git clone https://github.com/bnvac/stdnt.xyz
 cd stdnt.xyz
-python3 -m http.server 8000   # then open http://localhost:8000
+npm run dev        # then open http://localhost:8000
 ```
 
-…or just open `index.html`. That's the whole setup. No `npm install`, no toolchain.
+The site itself needs no install and no build step: `npm run dev` is a tiny
+server that behaves like GitHub Pages (you can also just open `index.html`).
+Run `npm install` once if you want to run the tests.
 
 ### Deploy free on GitHub Pages
 **Settings → Pages → Deploy from a branch → `main` / `root`.** Done. (`.nojekyll` is included.)
@@ -83,15 +88,53 @@ python3 -m http.server 8000   # then open http://localhost:8000
 
 ```
 stdnt.xyz/
-├── index.html          # markup + the tabs
-├── css/styles.css      # minimalist theme
+├── index.html               # the app: markup + every tab
+├── css/                     # styles.css (app), pages.css (static pages)
 ├── js/
-│   ├── data.js         # 👈 tools, perks & free APIs
-│   ├── scholarships.js # 👈 scholarship directory
-│   ├── programs.js     # 👈 STEM programs (generated from community sheets)
-│   └── app.js          # render, search, filter, sort, theme, counter
-└── assets/banner.svg
+│   ├── data.js              # 👈 tools, perks & free APIs
+│   ├── scholarships.js      # 👈 scholarships
+│   ├── programs.js          # 👈 STEM programs (+ programs-extra.js)
+│   ├── competitions.js      # 👈 competitions
+│   ├── discounts.js         # 👈 student discounts
+│   ├── finaid.js, guides.js, templates.js, hackathons.js
+│   ├── shared.js            # formatting helpers shared with the build scripts
+│   └── app.js               # render, search, filters, saved list, theme
+├── scripts/                 # build, check and dev tools (see Development)
+├── tests/                   # `npm test`
+├── docs/                    # newsletter + email reminder setup
+├── .github/                 # workflows, issue forms, PR template
+│
+│   generated - rebuilt by the Build site workflow, don't edit by hand:
+├── guides/ scholarships/ programs/ competitions/ tools/ discounts/ deadlines/
+├── 404.html, sitemap.xml    # static pages search engines can index
+├── calendar/*.ics           # subscribable deadline feeds
+├── logos/ + js/logos.js     # cached logos
+└── data/                    # hackathons.json (daily), link-status.json (weekly)
 ```
+
+## 🛠️ Development
+
+| Command | What it does |
+|---|---|
+| `npm run dev` | local server at http://localhost:8000 (`PORT=3000` to change) |
+| `npm test` | data check + test suite (what CI runs on every push and PR) |
+| `npm run check` | just the data check: missing fields, bad URLs, duplicates, unreadable deadlines |
+| `npm run build` | refresh hackathons, cache new logos, rebuild the calendar feeds and static pages |
+| `npm run build:pages` | rebuild only the feeds and static pages (no network) |
+| `npm run check:links` | check every external link (slow; CI does this weekly) |
+| `npm run images` | re-render share images and icons (needs Playwright, see the script header) |
+
+Three GitHub workflows keep things running:
+
+- **Checks** runs `npm test` on every push and pull request.
+- **Build site** regenerates the generated files on `main` whenever data changes, and daily.
+- **Link check** runs weekly. A link counts as dead after failing two weeks in a row: it gets a
+  "Link may be down" note on the site and a line in one "Broken links" issue, which closes
+  itself once everything passes.
+
+House rules: when you change a file in `js/` or `css/`, bump the `?v=N` cache number on every
+asset in `index.html` together. Use plain hyphens rather than em or en dashes (the data
+check enforces both).
 
 ## ➕ Add a freebie (it's one object)
 
@@ -132,10 +175,11 @@ Full details, data shapes and how contributions are tracked are in
 The site is static, so the weekly email digest hands signups to a third-party
 provider (Buttondown / Mailchimp). It's off by default - the on-site
 *"This week for you"* digest works regardless. To switch email on, follow
-**[NEWSLETTER.md](NEWSLETTER.md)** (it's one variable plus a cache bump).
+**[docs/NEWSLETTER.md](docs/NEWSLETTER.md)** (it's one variable plus a cache bump).
 
 ## 🙏 Credits
 
+- Built in partnership with [All The Same Organization](https://allthesame.org/), a youth-led nonprofit that advances equitable access to essential resources and opportunities.
 - Scholarship & STEM-program data adapted from open community spreadsheets.
 - Inspired by Richard O.'s MIT Admissions blog, [*"Where the Free Things Are."*](https://mitadmissions.org/blogs/entry/where-the-free-things-are/)
 - Brand icons by [Simple Icons](https://simpleicons.org). View counter by [Abacus](https://abacus.jasoncameron.dev).
