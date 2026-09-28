@@ -1,7 +1,7 @@
 /*
  * programs.js - STEM summer programs, research & internships.
  * Auto-generated from community spreadsheets (THE_LIST + STEM Programs/Internships
- * by grade). 217 programs. Deadlines are approximate; verify on each site.
+ * by grade). 187 programs. Deadlines are approximate; verify on each site.
  */
 window.PROGRAMS = [
  {
@@ -31,7 +31,7 @@ window.PROGRAMS = [
  },
  {
   "name": "Clark Scholar Summer Program",
-  "url": "",
+  "url": "https://www.depts.ttu.edu/clarkscholars/",
   "deadline": "",
   "when": "June 16 - August 1",
   "cost": "Free (+$750 tax-free stipend & $500 meal card)",
@@ -45,36 +45,17 @@ window.PROGRAMS = [
    "Lubbock",
    "TX"
   ],
-  "grades": [],
+  "grades": [
+   "Junior",
+   "Senior"
+  ],
   "ranking": "S+",
   "accRate": "~ 2-3%",
-  "details": "Only 12 students selected globally. Highly intensive, multidisciplinary research at Texas Tech.",
+  "details": "Only 12 students selected. Intensive, multidisciplinary research with Texas Tech faculty; applicants must be 17 by the start date.",
   "flagship": true
  },
  {
-  "name": "MITES (Minority Introduction to Engineering and Science)",
-  "url": "",
-  "deadline": "",
-  "when": "Late June - Early August (6 wks)",
-  "cost": "Free (Fully Funded)",
-  "free": true,
-  "subjects": [
-   "Engineering",
-   "STEM"
-  ],
-  "tags": [
-   "MIT",
-   "Cambridge",
-   "MA"
-  ],
-  "grades": [],
-  "ranking": "S+",
-  "accRate": "~ 3-5%",
-  "details": "6-week residential program for highly driven, underrepresented students. Incredible pipeline to MIT and Ivies.",
-  "flagship": true
- },
- {
-  "name": "PROMYS (free for family income of < 80k)",
+  "name": "PROMYS",
   "url": "https://promys.org/programs/",
   "deadline": "February 27",
   "when": "June 30 - August 10",
@@ -106,29 +87,8 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "Stanford Institutes of Medicine Summer Research Program (SIMR)",
-  "url": "",
-  "deadline": "",
-  "when": "June 10 - August 1",
-  "cost": "Free (+$500 to $1,500 stipend based on need)",
-  "free": true,
-  "subjects": [
-   "Medicine",
-   "Biological Sciences"
-  ],
-  "tags": [
-   "Stanford",
-   "CA"
-  ],
-  "grades": [],
-  "ranking": "S",
-  "accRate": "~ 3%",
-  "details": "Hands-on research in Stanford labs (immunology, neurobiology, cancer, etc.). Massive boost for pre-meds.",
-  "flagship": true
- },
- {
   "name": "Summer Science Program (SSP)",
-  "url": "",
+  "url": "https://ssp.org/",
   "deadline": "",
   "when": "June 16 - July 24",
   "cost": "$8,800 (Generous aid up to full fee + travel)",
@@ -151,10 +111,10 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "Stanford University Mathematics Camp",
-  "url": "",
+  "name": "Stanford University Mathematics Camp (SUMaC)",
+  "url": "https://sumac.spcs.stanford.edu/",
   "deadline": "",
-  "when": "June 23 - July 19",
+  "when": "4 weeks (residential or online)",
   "cost": "$8,250",
   "free": false,
   "subjects": [
@@ -171,48 +131,8 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "SSRP at Rockefeller University",
-  "url": "",
-  "deadline": "",
-  "when": "June 24 - August 8",
-  "cost": "Free (No stipend, housing not provided)",
-  "free": true,
-  "subjects": [
-   "Biomedical Research"
-  ],
-  "tags": [
-   "New York",
-   "NY"
-  ],
-  "grades": [],
-  "ranking": "S",
-  "accRate": "< 5%",
-  "details": "Highly mentored biomedical research in NYC. Extremely selective; students design and conduct their own research.",
-  "flagship": true
- },
- {
-  "name": "Simons at Stony Brook University",
-  "url": "",
-  "deadline": "",
-  "when": "June 26 - August 9",
-  "cost": "Free (+$1,000 stipend)",
-  "free": true,
-  "subjects": [
-   "STEM Research"
-  ],
-  "tags": [
-   "Stony Brook",
-   "NY"
-  ],
-  "grades": [],
-  "ranking": "S",
-  "accRate": "~ 5%",
-  "details": "Elite STEM research program; students frequently win Regeneron STS with their Simons projects.",
-  "flagship": true
- },
- {
   "name": "UPenn Management & Technology Summer Institute",
-  "url": "",
+  "url": "https://fisher.wharton.upenn.edu/management-technology-summer-institute/",
   "deadline": "",
   "when": "July 7 - July 27",
   "cost": "$9,000",
@@ -234,29 +154,32 @@ window.PROGRAMS = [
  },
  {
   "name": "The Jackson Laboratory Summer Student Program",
-  "url": "",
+  "url": "https://www.jax.org/education-and-learning/high-school-students-and-undergraduates/learn-earn-and-explore",
   "deadline": "",
-  "when": "June 1 - August 10",
-  "cost": "Free (+$6,500 stipend)",
+  "when": "Late May - early August (10 weeks)",
+  "cost": "Free (+ stipend, travel, room & board)",
   "free": true,
   "subjects": [
    "Genetics",
    "Genomics Research"
   ],
   "tags": [
-   "Bar Harbor",
-   "ME / Farmington",
-   "CT"
+   "Maine",
+   "In-person",
+   "Residential",
+   "Stipend"
   ],
-  "grades": [],
+  "grades": [
+   "Senior"
+  ],
   "ranking": "S",
   "accRate": "~ 3-5%",
-  "details": "Elite genetics and genomics research in Maine/Connecticut. Students often publish papers.",
+  "details": "Ten weeks of mentored genetics and genomics research in Bar Harbor, Maine, with travel, room and board covered plus a stipend. High schoolers must be graduating seniors.",
   "flagship": true
  },
  {
   "name": "Telluride Association Summer Seminar (TASS)",
-  "url": "",
+  "url": "https://tellurideassociation.org/",
   "deadline": "",
   "when": "June 23 - August 3",
   "cost": "Free (Fully Funded)",
@@ -278,7 +201,7 @@ window.PROGRAMS = [
  },
  {
   "name": "UT Southwestern STARS Program",
-  "url": "",
+  "url": "https://www.utsouthwestern.edu/education/nondegree-programs/stars/",
   "deadline": "",
   "when": "June - July (8 weeks, variable start/end)",
   "cost": "Free, w/ stipend",
@@ -293,12 +216,12 @@ window.PROGRAMS = [
   "grades": [],
   "ranking": "S",
   "accRate": "Highly Selective",
-  "details": "8 weeks working in a lab at UT Southwestern under a mentor. Results in publication, recieve a stipend. Present a poster at the end",
+  "details": "8 weeks working in a UT Southwestern lab under a mentor, with a stipend and a closing poster presentation.",
   "flagship": true
  },
  {
   "name": "Ross Mathematics Program",
-  "url": "",
+  "url": "https://rossprogram.org/",
   "deadline": "",
   "when": "June 9 - July 19 / June 16 - July 26",
   "cost": "$7,000",
@@ -319,8 +242,8 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "SPARC (Quantitative Skills Development)",
-  "url": "",
+  "name": "SPARC (Summer Program for Applied Rationality and Cognition)",
+  "url": "https://www.sparc.camp/",
   "deadline": "",
   "when": "August 1 - August 12",
   "cost": "Free (Covered by sponsors)",
@@ -340,11 +263,11 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "Stanford STaRS",
-  "url": "",
+  "name": "Stanford STaRS Internship",
+  "url": "https://med.stanford.edu/plasticsurgery/research/stars.html",
   "deadline": "",
   "when": "June 17 - August 2",
-  "cost": "Free (Stipend provided)",
+  "cost": "Free",
   "free": true,
   "subjects": [
    "Biomedical",
@@ -357,15 +280,15 @@ window.PROGRAMS = [
   "grades": [],
   "ranking": "S-",
   "accRate": "Highly Selective",
-  "details": "Clinical and basic science research for local high schoolers. Massive boost for bio/med students.",
+  "details": "Free 7-week wet-lab research internship in Stanford's plastic surgery division. Ages 16+, no lab experience needed.",
   "flagship": true
  },
  {
-  "name": "NIH Biomedical Research",
-  "url": "",
+  "name": "NIH Summer Internship Program (SIP)",
+  "url": "https://www.training.nih.gov/research-training/pb/sip/",
   "deadline": "",
-  "when": "June 10 - August 2 (8 weeks)",
-  "cost": "Free (+$2,300 - $2,500/month stipend)",
+  "when": "Mid-June - early August (8 weeks)",
+  "cost": "Free (+ monthly stipend)",
   "free": true,
   "subjects": [
    "Biomedical Research"
@@ -374,36 +297,17 @@ window.PROGRAMS = [
    "Bethesda",
    "MD"
   ],
-  "grades": [],
+  "grades": [
+   "Senior"
+  ],
   "ranking": "A+",
   "accRate": "~ 5-8%",
-  "details": "Work side-by-side with leading scientists at the National Institutes of Health. Great for aspiring biomedical researchers. NOTE: DEFUNDED AS OF 25-26",
-  "flagship": true
- },
- {
-  "name": "HOPP at Memorial Sloan Kettering Cancer Center",
-  "url": "",
-  "deadline": "",
-  "when": "June 27 - August 22",
-  "cost": "Free (+$1,250 stipend)",
-  "free": true,
-  "subjects": [
-   "Cancer Research",
-   "Medicine"
-  ],
-  "tags": [
-   "New York",
-   "NY"
-  ],
-  "grades": [],
-  "ranking": "A+",
-  "accRate": "< 10%",
-  "details": "Extracurricular science and lab program focusing on cancer research at a world-class facility.",
+  "details": "Paid summer research beside NIH scientists. The high school version (HS-SIP) was folded into SIP: high schoolers must be seniors who are 18 by the start of summer, and US citizens or permanent residents.",
   "flagship": true
  },
  {
   "name": "Garcia Center for Polymers at Engineered Interfaces @ Stony Brook",
-  "url": "",
+  "url": "https://www.stonybrook.edu/garcia/",
   "deadline": "",
   "when": "June 26 - August 9",
   "cost": "$3,000 laboratory usage fee",
@@ -423,8 +327,8 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "Yau Mathcamp @Tsinghua, Shanghai",
-  "url": "",
+  "name": "Yau Mathcamp (Shanghai)",
+  "url": "https://mathcamp.simis.cn/index.html",
   "deadline": "",
   "when": "July 14 - August 23",
   "cost": "Free tuition (Students pay ~2000 RMB for room/board)",
@@ -433,8 +337,8 @@ window.PROGRAMS = [
    "Mathematics"
   ],
   "tags": [
-   "Tsinghua Univ",
-   "China"
+   "China",
+   "International"
   ],
   "grades": [],
   "ranking": "A+",
@@ -443,31 +347,8 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "MIT Beaver Works Summer Institute",
-  "url": "",
-  "deadline": "",
-  "when": "July 8 - August 4",
-  "cost": "Free",
-  "free": true,
-  "subjects": [
-   "Engineering",
-   "Robotics",
-   "Computer Science"
-  ],
-  "tags": [
-   "MIT",
-   "Cambridge",
-   "MA"
-  ],
-  "grades": [],
-  "ranking": "A",
-  "accRate": "Varies (High if prereqs met)",
-  "details": "Project-based, focusing on autonomous systems, quantum software, and AI. Requires rigorous online prereqs.",
-  "flagship": true
- },
- {
   "name": "MathILy @ Bryn Mawr College, PA",
-  "url": "",
+  "url": "https://www.mathily.org/",
   "deadline": "",
   "when": "June 30 - August 3",
   "cost": "$5,300",
@@ -486,8 +367,8 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "The International Summer School for Young Physicists - Perimeter Institute for Theoretical Physics in Canada",
-  "url": "",
+  "name": "Perimeter Institute ISSYP (International Summer School for Young Physicists)",
+  "url": "https://perimeterinstitute.ca/issyp",
   "deadline": "",
   "when": "July 15 - July 26",
   "cost": "$250 CAD (Highly subsidized)",
@@ -496,21 +377,20 @@ window.PROGRAMS = [
    "Theoretical Physics"
   ],
   "tags": [
-   "Waterloo",
-   "Ontario",
-   "Canada"
+   "Canada",
+   "International"
   ],
   "grades": [],
   "ranking": "A",
   "accRate": "Highly Selective",
-  "details": "Deep dive into theoretical physics (quantum mechanics, relativity) at a world-renowned institute.",
+  "details": "Two-week theoretical physics program (quantum mechanics, relativity, cosmology) for students in grades 11-12 who plan to study physics.",
   "flagship": true
  },
  {
-  "name": "Lodha Genius Program (Ashoka University, India)",
-  "url": "",
+  "name": "Lodha Genius Programme (Ashoka University, India)",
+  "url": "https://www.ashoka.edu.in/academic-programme/lodha-genius-ashoka-university-programme/",
   "deadline": "",
-  "when": "May 18 - June 17",
+  "when": "4 weeks each summer + year-round mentoring",
   "cost": "Free (Fully Funded including travel/stay)",
   "free": true,
   "subjects": [
@@ -530,7 +410,7 @@ window.PROGRAMS = [
  },
  {
   "name": "Michigan State University High School Honors Science/Engineering/Mathematics Program (HSHSP)",
-  "url": "",
+  "url": "https://education.msu.edu/hshsp/",
   "deadline": "",
   "when": "June 23 - August 10",
   "cost": "$4,000",
@@ -542,39 +422,19 @@ window.PROGRAMS = [
    "Michigan State Univ",
    "MI"
   ],
-  "grades": [],
+  "grades": [
+   "Junior"
+  ],
   "ranking": "A",
   "accRate": "~ 5-10%",
   "details": "Oldest continuous purely research-oriented program in the US. Highly prestigious.",
   "flagship": true
  },
  {
-  "name": "Summer Academy for Math and Science (SAMS)",
-  "url": "",
-  "deadline": "",
-  "when": "June 22 - August 3",
-  "cost": "Free",
-  "free": true,
-  "subjects": [
-   "STEM",
-   "Quantitative Skills"
-  ],
-  "tags": [
-   "CMU",
-   "Pittsburgh",
-   "PA"
-  ],
-  "grades": [],
-  "ranking": "A",
-  "accRate": "~ 5-10%",
-  "details": "CMU-based program focusing on building STEM skills for underrepresented students.",
-  "flagship": true
- },
- {
   "name": "Notre Dame Leadership Seminars",
-  "url": "",
+  "url": "https://precollege.nd.edu/leadership-seminars/",
   "deadline": "",
-  "when": "July 19 - July 28",
+  "when": "10 days in late June or mid-July",
   "cost": "Free ($50 app fee, fully funded tuition/room/board)",
   "free": true,
   "subjects": [
@@ -586,7 +446,9 @@ window.PROGRAMS = [
    "Univ of Notre Dame",
    "IN"
   ],
-  "grades": [],
+  "grades": [
+   "Junior"
+  ],
   "ranking": "A",
   "accRate": "~ 5-10%",
   "details": "Fully funded, highly competitive seminars exploring complex issues (global health, environment, religion).",
@@ -594,7 +456,7 @@ window.PROGRAMS = [
  },
  {
   "name": "YUVIKA (Indian Space Research Organisation)",
-  "url": "",
+  "url": "https://www.isro.gov.in/YUVIKA.html",
   "deadline": "",
   "when": "May 13 - May 24",
   "cost": "Free (Fully funded by ISRO)",
@@ -614,8 +476,8 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "Iowa Young Writer’s Studio",
-  "url": "",
+  "name": "Iowa Young Writers’ Studio",
+  "url": "https://iyws.program.uiowa.edu/",
   "deadline": "",
   "when": "June 16 - June 29 / July 14 - July 27",
   "cost": "$2,500 (In-person) / $575 (Online)",
@@ -636,8 +498,8 @@ window.PROGRAMS = [
  },
  {
   "name": "National Youth Science Camp",
-  "url": "",
-  "deadline": "",
+  "url": "https://www.nysacademy.org/programs/nyscamp/",
+  "deadline": "March 30",
   "when": "June 29 - July 20",
   "cost": "Free (Fully Funded)",
   "free": true,
@@ -649,52 +511,12 @@ window.PROGRAMS = [
    "Camp Pocahontas",
    "WV"
   ],
-  "grades": [],
+  "grades": [
+   "Senior"
+  ],
   "ranking": "A",
   "accRate": "2 per state",
-  "details": "Prestigious, fully funded program in West Virginia blending STEM lectures with outdoor adventure.",
-  "flagship": true
- },
- {
-  "name": "LEDA Scholars",
-  "url": "",
-  "deadline": "",
-  "when": "June 15 - August 3",
-  "cost": "Free (Fully funded including travel)",
-  "free": true,
-  "subjects": [
-   "Leadership",
-   "College Preparation"
-  ],
-  "tags": [
-   "Princeton Univ",
-   "NJ"
-  ],
-  "grades": [],
-  "ranking": "A",
-  "accRate": "~ 8%",
-  "details": "Empowers high-achieving students from low-income backgrounds with leadership and college prep at Princeton.",
-  "flagship": true
- },
- {
-  "name": "Pediatrics Internship Program @ Stanford (PIPS)",
-  "url": "",
-  "deadline": "",
-  "when": "June 17 - July 26",
-  "cost": "Free (+$3,000 stipend)",
-  "free": true,
-  "subjects": [
-   "Pediatrics",
-   "Medicine"
-  ],
-  "tags": [
-   "Stanford",
-   "CA"
-  ],
-  "grades": [],
-  "ranking": "A",
-  "accRate": "Highly Selective",
-  "details": "Learn about pediatric medicine, research, and clinical care directly from Stanford faculty.",
+  "details": "Fully funded STEAM camp in West Virginia's Monongahela National Forest, blending lectures with outdoor adventure. Typically two delegates per state.",
   "flagship": true
  },
  {
@@ -719,31 +541,11 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "Stanford SiBRP",
-  "url": "",
+  "name": "Stanford Summer Humanities Institute",
+  "url": "https://summerhumanities.spcs.stanford.edu/",
   "deadline": "",
-  "when": "July 8 - August 1",
-  "cost": "Free",
-  "free": true,
-  "subjects": [
-   "Bioengineering"
-  ],
-  "tags": [
-   "Stanford",
-   "CA"
-  ],
-  "grades": [],
-  "ranking": "A",
-  "accRate": "Highly Selective",
-  "details": "Stanford Institutes of Medicine summer program focused specifically on bioengineering.",
-  "flagship": true
- },
- {
-  "name": "Standford Summer Humanities Institute",
-  "url": "",
-  "deadline": "",
-  "when": "June 23 - July 12 / July 14 - Aug 2",
-  "cost": "$8,250",
+  "when": "3 weeks (residential)",
+  "cost": "$8,850 (need-based aid available)",
   "free": false,
   "subjects": [
    "Humanities",
@@ -760,51 +562,8 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "USC Bugs Jr",
-  "url": "",
-  "deadline": "",
-  "when": "June 16-Aug 1",
-  "cost": "Free",
-  "free": true,
-  "subjects": [
-   "Biology",
-   "Medicine",
-   "Biomedical"
-  ],
-  "tags": [
-   "LA",
-   "California"
-  ],
-  "grades": [],
-  "ranking": "A",
-  "accRate": "5-10%",
-  "details": "",
-  "flagship": true
- },
- {
-  "name": "Roswell Park Cancer Institute Summer Programme",
-  "url": "",
-  "deadline": "",
-  "when": "June 24 - August 14",
-  "cost": "$65 application fee, otherwise Free",
-  "free": true,
-  "subjects": [
-   "Cancer Research",
-   "Oncology"
-  ],
-  "tags": [
-   "Buffalo",
-   "NY"
-  ],
-  "grades": [],
-  "ranking": "A-",
-  "accRate": "< 10%",
-  "details": "Immersive cancer research experience in Buffalo, NY. Great for future oncologists/researchers.",
-  "flagship": true
- },
- {
-  "name": "Secondary Student Training Program at University of Iowa",
-  "url": "",
+  "name": "University of Iowa Secondary Student Training Program (SSTP)",
+  "url": "https://belinblank.education.uiowa.edu/students/sstp/",
   "deadline": "",
   "when": "June 19 - July 26",
   "cost": "$7,500 (Residential) / $4,500 (Online)",
@@ -824,51 +583,8 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "MIT Women’s Technology Program",
-  "url": "",
-  "deadline": "",
-  "when": "June 22 - July 19",
-  "cost": "Free (Fully Funded)",
-  "free": true,
-  "subjects": [
-   "Mechanical Engineering",
-   "Computer Science"
-  ],
-  "tags": [
-   "MIT",
-   "Cambridge",
-   "MA"
-  ],
-  "grades": [],
-  "ranking": "A-",
-  "accRate": "~ 5%",
-  "details": "Female-focused introduction to Mechanical Engineering and CS. Very collaborative, no prior experience needed.",
-  "flagship": true
- },
- {
-  "name": "Princeton Laboratory Learning Program (Princeton LLP)",
-  "url": "",
-  "deadline": "",
-  "when": "June 17 - August 9",
-  "cost": "Free (Housing/transport not provided)",
-  "free": true,
-  "subjects": [
-   "STEM",
-   "Engineering Research"
-  ],
-  "tags": [
-   "Princeton Univ",
-   "NJ"
-  ],
-  "grades": [],
-  "ranking": "A-",
-  "accRate": "< 5%",
-  "details": "Unpaid but highly prestigious research internships in Princeton faculty labs.",
-  "flagship": true
- },
- {
   "name": "BU RISE",
-  "url": "",
+  "url": "https://www.bu.edu/summer/high-school-programs/rise-internship-practicum/",
   "deadline": "",
   "when": "June 30 - August 9",
   "cost": "$5,350 (Commuter) / $8,558 (Residential)",
@@ -888,32 +604,11 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "Iowa SSTP",
-  "url": "",
-  "deadline": "",
-  "when": "June 19 - July 26",
-  "cost": "$7,500 (Residential)",
-  "free": false,
-  "subjects": [
-   "STEM Research"
-  ],
-  "tags": [
-   "Univ of Iowa",
-   "Iowa City",
-   "IA"
-  ],
-  "grades": [],
-  "ranking": "A-",
-  "accRate": "~ 10%",
-  "details": "Highly respected 5-week residential research program at the University of Iowa.",
-  "flagship": true
- },
- {
   "name": "Yale Young Writers’ Workshop",
-  "url": "",
-  "deadline": "",
-  "when": "July 7 - July 12 / July 14 - July 19",
-  "cost": "$1,050 (Online) / $2,900 (Residential)",
+  "url": "https://summer.yale.edu/academics/yale-young-writers-workshop",
+  "deadline": "April 1",
+  "when": "1 week in June",
+  "cost": "$3,085 (residential) / $1,380 (online)",
   "free": false,
   "subjects": [
    "Creative Writing"
@@ -930,8 +625,8 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "Brookhaven National Laboratories - High School Research Program",
-  "url": "",
+  "name": "Brookhaven National Laboratory High School Research Program",
+  "url": "https://www.bnl.gov/education/programs/program.php?q=219",
   "deadline": "",
   "when": "July 8 - August 16",
   "cost": "Free",
@@ -946,12 +641,12 @@ window.PROGRAMS = [
   "grades": [],
   "ranking": "B+",
   "accRate": "Varies",
-  "details": "Hands-on STEM research at a US Department of Energy national laboratory.",
+  "details": "Six weeks of hands-on STEM research with Brookhaven staff at a US Department of Energy lab. Free, but you arrange your own daily commute to Upton, NY.",
   "flagship": true
  },
  {
-  "name": "Research Experience at CIERA @ Northwestern",
-  "url": "",
+  "name": "Northwestern CIERA REACH",
+  "url": "https://ciera.northwestern.edu/programs/reach/",
   "deadline": "",
   "when": "June 24 - August 2",
   "cost": "$4,500",
@@ -973,10 +668,10 @@ window.PROGRAMS = [
  },
  {
   "name": "Seattle Children’s Research Training Program",
-  "url": "",
-  "deadline": "",
-  "when": "July 8 - August 2",
-  "cost": "Free (+$16.28/hour stipend)",
+  "url": "https://www.seattlechildrens.org/research/centers-programs/science-education-department/high-school-training-programs/",
+  "deadline": "March 8",
+  "when": "4 weeks (summer)",
+  "cost": "Free (+$2,000 stipend)",
   "free": true,
   "subjects": [
    "Pediatric Medical Research"
@@ -985,39 +680,21 @@ window.PROGRAMS = [
    "Seattle",
    "WA"
   ],
-  "grades": [],
+  "grades": [
+   "Sophomore",
+   "Junior"
+  ],
   "ranking": "B+",
   "accRate": "< 5%",
-  "details": "Top-tier pediatric biomedical research. Students learn lab techniques and attend clinical shadowing.",
+  "details": "Four weeks of lab research training at Seattle Children's for local students from groups underrepresented in biomedical research.",
   "flagship": true
  },
  {
-  "name": "Harvard Student Research Institute (Harvard SRI)",
-  "url": "",
+  "name": "IIT Kharagpur i-KITES",
+  "url": "https://kriti.iitkgp.ac.in/programs/i-kites",
   "deadline": "",
-  "when": "July 1 - July 15 (Approx)",
-  "cost": "Free/Varies",
-  "free": true,
-  "subjects": [
-   "Academic Research"
-  ],
-  "tags": [
-   "Harvard Univ",
-   "Cambridge",
-   "MA"
-  ],
-  "grades": [],
-  "ranking": "B+",
-  "accRate": "Selective",
-  "details": "Student-run or affiliated research introduction (varies by year/structure).",
-  "flagship": true
- },
- {
-  "name": "IIT Kharagpur - iKites research program (6-weeks)",
-  "url": "",
-  "deadline": "",
-  "when": "May 15 - June 30 (Approx)",
-  "cost": "Free/Nominal",
+  "when": "6 weeks (residential)",
+  "cost": "Free (+ stipend, hostel & meals)",
   "free": true,
   "subjects": [
    "Engineering",
@@ -1030,14 +707,14 @@ window.PROGRAMS = [
   "grades": [],
   "ranking": "B+",
   "accRate": "Selective",
-  "details": "Research exposure at one of India’s premier engineering institutes.",
+  "details": "Six-week residential program mixing faculty-led math, physics and life-science coursework with hands-on projects at IIT Kharagpur.",
   "flagship": true
  },
  {
   "name": "UCSB Research Mentorship Program",
-  "url": "",
+  "url": "https://www.summer.ucsb.edu/programs/research-mentorship-program/overview",
   "deadline": "",
-  "when": "June 17 - August 2",
+  "when": "Mid-June - late July (7 weeks)",
   "cost": "$4,700 (Commuter) / $6,599 (Residential)",
   "free": false,
   "subjects": [
@@ -1084,7 +761,7 @@ window.PROGRAMS = [
  },
  {
   "name": "COSMOS: California State Summer School for Mathematics and Science",
-  "url": "",
+  "url": "https://cosmos-ucop.ucdavis.edu/",
   "deadline": "",
   "when": "July 7 - August 3",
   "cost": "$5,005 (CA Residents)",
@@ -1104,9 +781,9 @@ window.PROGRAMS = [
  },
  {
   "name": "Hofstra University Summer Science Research Program",
-  "url": "",
+  "url": "https://www.hofstra.edu/academics/summer-research-program/",
   "deadline": "",
-  "when": "July 5 - August 16",
+  "when": "July (4 weeks)",
   "cost": "$2,500",
   "free": false,
   "subjects": [
@@ -1124,10 +801,10 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "European Space Agency Camp - Norway",
-  "url": "",
+  "name": "European Space Camp (Andøya, Norway)",
+  "url": "https://spacecamp.no/",
   "deadline": "",
-  "when": "August 4 - August 11",
+  "when": "1 week, late July - early August",
   "cost": "Free tuition (Travel/Accommodation covered by student)",
   "free": true,
   "subjects": [
@@ -1141,15 +818,15 @@ window.PROGRAMS = [
   "grades": [],
   "ranking": "B",
   "accRate": "Selective",
-  "details": "Immersive space science camp at the Andøya Space Center in Norway.",
+  "details": "A real rocket campaign at Andøya Space in northern Norway, launch included, with lectures from European scientists. Ages 17-20.",
   "flagship": true
  },
  {
   "name": "Clinical Neuroscience Immersion Experience (CNI-X) @ Stanford",
-  "url": "",
+  "url": "https://med.stanford.edu/psychiatry/special-initiatives/CNIX.html",
   "deadline": "",
-  "when": "July 8 - July 19 / July 22 - Aug 2",
-  "cost": "$2,595",
+  "when": "2 weeks (in person in July, virtual in June)",
+  "cost": "$3,325 (in person) / $1,725 (virtual)",
   "free": false,
   "subjects": [
    "Neuroscience",
@@ -1166,8 +843,8 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "Young Technology Scholars @ Plaksha University",
-  "url": "",
+  "name": "Plaksha YTS+ (Young Technology Scholars)",
+  "url": "https://plaksha.edu.in/hs/young-technology-scholars",
   "deadline": "",
   "when": "June 2 - June 16",
   "cost": "INR 90,000",
@@ -1190,7 +867,7 @@ window.PROGRAMS = [
  },
  {
   "name": "NYU Summer Program in Automation, Robotics, and Coding (SPARC)",
-  "url": "",
+  "url": "https://k12stem.engineering.nyu.edu/programs/sparc",
   "deadline": "",
   "when": "June 17 - June 28 / July 8 - July 19",
   "cost": "$3,220",
@@ -1208,12 +885,12 @@ window.PROGRAMS = [
   "grades": [],
   "ranking": "B",
   "accRate": "Selective",
-  "details": "Hands-on robotics and coding at NYU Tandon. Good intro to mechatronics.",
+  "details": "Hands-on robotics and coding at NYU Tandon. It did not run in summer 2026, so check the page for future sessions.",
   "flagship": true
  },
  {
   "name": "Tufts Summer Research Experience",
-  "url": "",
+  "url": "https://universitycollege.tufts.edu/pre-college",
   "deadline": "",
   "when": "July 1 - August 9",
   "cost": "$6,500 (Commuter only)",
@@ -1233,12 +910,12 @@ window.PROGRAMS = [
   "flagship": true
  },
  {
-  "name": "Duke STAR",
-  "url": "",
-  "deadline": "",
-  "when": "June 17 - July 12",
-  "cost": "$3,000",
-  "free": false,
+  "name": "Duke STAR (Summer Training in Academic Research)",
+  "url": "https://dcri.org/education/dukes-star-program",
+  "deadline": "January 2",
+  "when": "5 weeks (summer)",
+  "cost": "Free (+$4,000 stipend for high schoolers)",
+  "free": true,
   "subjects": [
    "Medical Research",
    "Pharmacology"
@@ -1248,121 +925,91 @@ window.PROGRAMS = [
    "Durham",
    "NC"
   ],
-  "grades": [],
+  "grades": [
+   "Junior",
+   "Senior"
+  ],
   "ranking": "B",
   "accRate": "Selective",
-  "details": "Focuses on pharmacology, medical research, and drug discovery.",
+  "details": "Team research with Duke faculty mentors at the Duke Clinical Research Institute, aiming for co-authorship on a published paper. No research experience needed.",
   "flagship": true
  },
  {
-  "name": "USC Bridge Undergraduate Science Jr",
-  "url": "",
+  "name": "USC Bridge Undergraduate Science (BUGS) Jr",
+  "url": "https://dornsife.usc.edu/bridge-institute/bugs-jr-program/",
   "deadline": "",
-  "when": "July 8 - July 26",
-  "cost": "Free (For underrepresented LA students)",
+  "when": "June 16 - August 1 (7 weeks)",
+  "cost": "Free (+$800 stipend)",
   "free": true,
   "subjects": [
    "STEM",
    "Science"
   ],
   "tags": [
-   "USC",
-   "Los Angeles",
-   "CA"
+   "California",
+   "In-person",
+   "Stipend",
+   "Lab Work"
   ],
-  "grades": [],
+  "grades": [
+   "Freshman",
+   "Sophomore",
+   "Junior",
+   "Senior"
+  ],
   "ranking": "B",
   "accRate": "Selective",
-  "details": "Aimed at underrepresented LA students to bridge the gap in STEM education/research.",
+  "details": "Paid summer research in USC labs on human-health topics, paired with a faculty mentor. No GPA minimum; not residential, so best for LA-area students.",
   "flagship": true
  },
  {
-  "name": "Sci-mi (Science Mentorship Institute)",
-  "url": "",
+  "name": "Berkeley Lab Experiences in Research (EinR)",
+  "url": "https://k12education.lbl.gov/programs/high-school/experiences-in-research",
   "deadline": "",
-  "when": "June 22 - August 10",
-  "cost": "Free",
+  "when": "Mid-June - late July (6 weeks)",
+  "cost": "Free (paid $500/week)",
   "free": true,
-  "subjects": [
-   "STEM Mentorship"
-  ],
-  "tags": [
-   "Remote / Online"
-  ],
-  "grades": [],
-  "ranking": "B",
-  "accRate": "Accessible",
-  "details": "Remote, free mentorship program matching students with mentors to conduct literature reviews/research.",
-  "flagship": true
- },
- {
-  "name": "Berkeley Experiences in Research (EinR)",
-  "url": "",
-  "deadline": "",
-  "when": "June 17 - August 9",
-  "cost": "$4,000 - $5,500",
-  "free": false,
   "subjects": [
    "STEM",
    "Computer Science Research"
   ],
   "tags": [
-   "UC Berkeley",
-   "CA"
+   "California",
+   "Hybrid",
+   "Paid"
   ],
-  "grades": [],
+  "grades": [
+   "Sophomore",
+   "Junior",
+   "Senior"
+  ],
   "ranking": "B",
   "accRate": "Selective",
-  "details": "STEM research experience utilizing UC Berkeley resources and faculty mentorship.",
-  "flagship": true
- },
- {
-  "name": "ASSIP @GMU",
-  "url": "",
-  "deadline": "",
-  "when": "June 18 - August 9",
-  "cost": "$25 app fee + $500 registration fee if accepted",
-  "free": false,
-  "subjects": [
-   "STEM",
-   "Humanities",
-   "Business Research"
-  ],
-  "tags": [
-   "George Mason Univ",
-   "Fairfax",
-   "VA"
-  ],
-  "grades": [],
-  "ranking": "B",
-  "accRate": "~ 10-15%",
-  "details": "George Mason Univ program pairing students with faculty for real-world research. Often leads to publications.",
+  "details": "Paid internship on real projects at Lawrence Berkeley National Lab, hybrid or virtual. For grades 10-12 in Northern California, ages 16+.",
   "flagship": true
  },
  {
   "name": "USC Neuro Scholars",
-  "url": "",
+  "url": "https://www.uschighschoolneurosciencejournalclub.com/",
   "deadline": "",
-  "when": "July 8 - July 26",
-  "cost": "Free for LA residents / Varies",
+  "when": "Late May - early August (biweekly)",
+  "cost": "Free",
   "free": true,
   "subjects": [
    "Neuroscience"
   ],
   "tags": [
-   "USC",
-   "Los Angeles",
-   "CA"
+   "Remote"
   ],
   "grades": [],
   "ranking": "B",
   "accRate": "Selective",
-  "details": "Deep dive into neuroscience, brain structures, and neurological disorders at USC.",
+  "details": "Free virtual journal club: read neuroscience papers, discuss them with USC professors, then build a capstone project.",
   "flagship": true
  },
  {
   "name": "International Space School Educational Trust - UK",
-  "url": "",
+  "url": "https://www.isset.org/",
   "deadline": "",
   "when": "July 22 - July 26",
   "cost": "~£500 - £1,500 (Varies by specific camp)",
@@ -1382,11 +1029,11 @@ window.PROGRAMS = [
  },
  {
   "name": "Helix Medical @ UC Berkeley",
-  "url": "",
+  "url": "https://thehelixgroup.org/",
   "deadline": "",
-  "when": "July 7 - July 20 (Approx)",
-  "cost": "~$2,000",
-  "free": false,
+  "when": "4 weeks (summer)",
+  "cost": "Free",
+  "free": true,
   "subjects": [
    "Medicine",
    "Healthcare"
@@ -1398,13 +1045,13 @@ window.PROGRAMS = [
   "grades": [],
   "ranking": "B-",
   "accRate": "Selective",
-  "details": "Student-run or affiliated program introducing high schoolers to medical sciences and clinical skills.",
+  "details": "Free program run by UC Berkeley students for Bay Area high schoolers from groups underrepresented in medicine: clinical skills labs, shadowing and mentorship.",
   "flagship": true
  },
  {
   "name": "JHU Explore Engineering Innovation Pre-college Program",
-  "url": "",
-  "deadline": "",
+  "url": "https://ei.jhu.edu/programs/eei/",
+  "deadline": "January 30 (early action)",
   "when": "July 1 - July 26",
   "cost": "$3,550 (Commuter) / $5,500 (Residential)",
   "free": false,
@@ -1425,10 +1072,10 @@ window.PROGRAMS = [
  },
  {
   "name": "WPI Frontiers",
-  "url": "",
+  "url": "https://www.wpi.edu/academics/pre-collegiate/summer-programs/frontiers",
   "deadline": "",
-  "when": "July 7 - July 19 / July 21 - Aug 2",
-  "cost": "$3,495 per session",
+  "when": "Two 2-week sessions in July",
+  "cost": "$4,995 per session",
   "free": false,
   "subjects": [
    "STEM",
@@ -1447,7 +1094,7 @@ window.PROGRAMS = [
  },
  {
   "name": "Yale Young Global Scholars",
-  "url": "",
+  "url": "https://globalscholars.yale.edu/",
   "deadline": "",
   "when": "June 23 - July 5 / July 7 - July 19",
   "cost": "$6,500",
@@ -1470,7 +1117,7 @@ window.PROGRAMS = [
  },
  {
   "name": "Johns Hopkins University Center for Talented Youth (CTY)",
-  "url": "",
+  "url": "https://cty.jhu.edu/",
   "deadline": "",
   "when": "June 23 - July 12 / July 14 - Aug 2",
   "cost": "~$3,000 (Online) to ~$6,500 (Residential)",
@@ -1490,7 +1137,7 @@ window.PROGRAMS = [
  },
  {
   "name": "ISSOS International Summer Schools - UK and Switzerland",
-  "url": "",
+  "url": "https://www.issos.com/",
   "deadline": "",
   "when": "June 26 - July 17 / July 21 - Aug 11",
   "cost": "£4,200 (UK) / $7,300 (Yale)",
@@ -1510,7 +1157,7 @@ window.PROGRAMS = [
  },
  {
   "name": "UBC Future Global Leaders",
-  "url": "",
+  "url": "https://extendedlearning.ubc.ca/programs-high-school-students/ubc-future-global-leaders",
   "deadline": "",
   "when": "July 2 - July 12 / July 15 - July 26",
   "cost": "~$3,100 CAD per 2-week course",
@@ -1531,10 +1178,10 @@ window.PROGRAMS = [
  },
  {
   "name": "Rose-Hulman Operation Catapult",
-  "url": "",
+  "url": "https://www.rose-hulman.edu/admissions-and-aid/early-planning/operation-catapult/index.html",
   "deadline": "",
-  "when": "June 9 - June 21 / July 8 - July 19",
-  "cost": "$2,950",
+  "when": "Three ~11-day sessions in June and July",
+  "cost": "$2,700",
   "free": false,
   "subjects": [
    "Engineering",
@@ -1553,7 +1200,7 @@ window.PROGRAMS = [
  },
  {
   "name": "WPI Launch",
-  "url": "",
+  "url": "https://www.wpi.edu/academics/pre-collegiate/summer-programs/launch",
   "deadline": "",
   "when": "June 24 - June 28",
   "cost": "$895",
@@ -1571,33 +1218,6 @@ window.PROGRAMS = [
   "accRate": "Accessible",
   "details": "Shorter, focused STEM workshops for younger high school students (freshmen/sophomores).",
   "flagship": true
- },
- {
-  "name": "Health Services Mentorship Fellowship Program",
-  "url": "https://sites.google.com/view/hsmp-gmu/application-information?authuser=0",
-  "deadline": "January/February",
-  "when": "",
-  "cost": "",
-  "free": false,
-  "subjects": [
-   "Medicine",
-   "Research"
-  ],
-  "tags": [
-   "US",
-   "Remote",
-   "Year-Long"
-  ],
-  "grades": [
-   "Freshman",
-   "Sophomore",
-   "Junior",
-   "Senior"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
  },
  {
   "name": "Columbia BrainSTORM",
@@ -1745,12 +1365,12 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Rockefeller SSRP",
+  "name": "Rockefeller University Summer Science Research Program (SSRP)",
   "url": "https://www.rockefeller.edu/outreach/ssrp/",
-  "deadline": "January 1",
-  "when": "",
-  "cost": "",
-  "free": false,
+  "deadline": "January 2",
+  "when": "June 24 - August 8",
+  "cost": "Free (No stipend, housing not provided)",
+  "free": true,
   "subjects": [
    "Research",
    "STEM"
@@ -1759,16 +1379,18 @@ window.PROGRAMS = [
    "International",
    "Mentorship",
    "In-person",
-   "Lab Work"
+   "Lab Work",
+   "New York",
+   "NY"
   ],
   "grades": [
    "Junior",
    "Senior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "S",
+  "accRate": "< 5%",
+  "details": "Highly mentored biomedical research in NYC. Extremely selective; students design and conduct their own research.",
+  "flagship": true
  },
  {
   "name": "USC Bovard Scholars",
@@ -1844,38 +1466,12 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Columbia ACComPLISHED Summer Cohort",
-  "url": "https://www.neurology.columbia.edu/education/additional-educational-programs/adolescents-caring-community-promoting-literacy-insurance-stroke-health-education-emergencies-and-dementia-accomplished",
+  "name": "Roswell Park SURE-CAN (High School Summer Research Experience in Cancer)",
+  "url": "https://www.roswellpark.org/education/high-school-undergrad/high-school-summer-research-program",
   "deadline": "January 31",
-  "when": "",
-  "cost": "",
-  "free": false,
-  "subjects": [
-   "STEM",
-   "Medicine"
-  ],
-  "tags": [
-   "New York",
-   "Hybrid",
-   "Mentorship"
-  ],
-  "grades": [
-   "Sophomore",
-   "Junior",
-   "Senior"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
-  "name": "Roswell Park SURE-CAN",
-  "url": "https://www.roswellpark.org/education/k-12-undergrad/high-school-summer-research-program",
-  "deadline": "January 31",
-  "when": "",
-  "cost": "",
-  "free": false,
+  "when": "Late June - early August (6 weeks)",
+  "cost": "Free (no application fee)",
+  "free": true,
   "subjects": [
    "Cancer",
    "Biology",
@@ -1888,15 +1484,17 @@ window.PROGRAMS = [
    "New York",
    "Mentorship",
    "In-person",
-   "Lab Work"
+   "Lab Work",
+   "Buffalo",
+   "NY"
   ],
   "grades": [
    "Junior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "A-",
+  "accRate": "< 10%",
+  "details": "Immersive cancer research experience in Buffalo, NY. Great for future oncologists/researchers.",
+  "flagship": true
  },
  {
   "name": "European Summer Program on Rationality",
@@ -1977,11 +1575,11 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Stanford Pediatrics Internship Program",
+  "name": "Stanford Pediatrics Internship Program (PIPS)",
   "url": "https://med.stanford.edu/pediatrics/education/pediatrics-internship-program.html",
   "deadline": "February 1",
-  "when": "",
-  "cost": "",
+  "when": "June 17 - July 26",
+  "cost": "Free (+$3,000 stipend)",
   "free": true,
   "subjects": [
    "Medicine",
@@ -1994,16 +1592,18 @@ window.PROGRAMS = [
    "Stipend",
    "In-person",
    "Mentorship",
-   "Lab Work"
+   "Lab Work",
+   "Stanford",
+   "CA"
   ],
   "grades": [
    "Sophomore",
    "Junior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "A",
+  "accRate": "Highly Selective",
+  "details": "Learn about pediatric medicine, research, and clinical care directly from Stanford faculty.",
+  "flagship": true
  },
  {
   "name": "Carnegie Mellon CS Scholars",
@@ -2105,11 +1705,11 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Simmons Summer Research",
+  "name": "Simons Summer Research Program (Stony Brook)",
   "url": "https://www.stonybrook.edu/commcms/simons/about/about.php",
   "deadline": "February 1",
-  "when": "",
-  "cost": "",
+  "when": "June 26 - August 9",
+  "cost": "Free (+$1,000 stipend)",
   "free": true,
   "subjects": [
    "Research",
@@ -2120,23 +1720,25 @@ window.PROGRAMS = [
    "In-person",
    "Stipend",
    "Mentorship",
-   "Lab Work"
+   "Lab Work",
+   "Stony Brook",
+   "NY"
   ],
   "grades": [
    "Junior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "S",
+  "accRate": "~ 5%",
+  "details": "Elite STEM research program; students frequently win Regeneron STS with their Simons projects.",
+  "flagship": true
  },
  {
   "name": "MITES Summer",
   "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
   "deadline": "February 1",
-  "when": "",
-  "cost": "",
-  "free": false,
+  "when": "Late June - Early August (6 wks)",
+  "cost": "Free (Fully Funded)",
+  "free": true,
   "subjects": [
    "College Readiness",
    "STEM"
@@ -2145,15 +1747,18 @@ window.PROGRAMS = [
    "US",
    "In-person",
    "Residential",
-   "Minority"
+   "Minority",
+   "MIT",
+   "Cambridge",
+   "MA"
   ],
   "grades": [
    "Junior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "S+",
+  "accRate": "~ 3-5%",
+  "details": "6-week residential program for highly driven, underrepresented students. Incredible pipeline to MIT and Ivies.",
+  "flagship": true
  },
  {
   "name": "Pathways to Quantum Summer Immersion",
@@ -2207,12 +1812,12 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Carnegie Mellon SAMS",
+  "name": "Carnegie Mellon SAMS (Summer Academy for Math and Science)",
   "url": "https://www.cmu.edu/pre-college/academic-programs/sams.html",
   "deadline": "February 1",
-  "when": "",
-  "cost": "",
-  "free": false,
+  "when": "June 22 - August 3",
+  "cost": "Free",
+  "free": true,
   "subjects": [
    "Math",
    "STEM",
@@ -2223,15 +1828,18 @@ window.PROGRAMS = [
    "US",
    "Hybrid",
    "Mentorship",
-   "Residential"
+   "Residential",
+   "CMU",
+   "Pittsburgh",
+   "PA"
   ],
   "grades": [
    "Junior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "A",
+  "accRate": "~ 5-10%",
+  "details": "CMU-based program focusing on building STEM skills for underrepresented students.",
+  "flagship": true
  },
  {
   "name": "Harvard CURE Summer",
@@ -2251,11 +1859,11 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Memorial Sloan Kettering Summer Student Program",
+  "name": "Memorial Sloan Kettering (HOPP) Summer Student Program",
   "url": "https://www.mskcc.org/education-training/summer-student",
   "deadline": "February 6",
-  "when": "",
-  "cost": "",
+  "when": "June 27 - August 22",
+  "cost": "Free (+$1,250 stipend)",
   "free": true,
   "subjects": [
    "Cancer",
@@ -2270,15 +1878,16 @@ window.PROGRAMS = [
    "Stipend",
    "Mentorship",
    "In-person",
-   "Lab Work"
+   "Lab Work",
+   "NY"
   ],
   "grades": [
    "Junior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "A+",
+  "accRate": "< 10%",
+  "details": "Extracurricular science and lab program focusing on cancer research at a world-class facility.",
+  "flagship": true
  },
  {
   "name": "Magee-Womens Research Institute Internship",
@@ -2300,33 +1909,6 @@ window.PROGRAMS = [
   ],
   "grades": [
    "Sophomore",
-   "Junior"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
-  "name": "MSKCC Summer Student Program",
-  "url": "https://www.mskcc.org/education-training/summer-student",
-  "deadline": "February 7",
-  "when": "",
-  "cost": "",
-  "free": true,
-  "subjects": [
-   "Research",
-   "Biology",
-   "Medicine"
-  ],
-  "tags": [
-   "New York",
-   "In-person",
-   "Mentorship",
-   "Lab Work",
-   "Stipend"
-  ],
-  "grades": [
    "Junior"
   ],
   "ranking": "",
@@ -2420,11 +2002,11 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "George MasonU ASSIP",
+  "name": "George Mason ASSIP (Aspiring Scientists Summer Internship Program)",
   "url": "https://science.gmu.edu/assip",
   "deadline": "February 15",
-  "when": "",
-  "cost": "",
+  "when": "June 18 - August 12 (8 weeks)",
+  "cost": "$1,299 tuition for 3 college credits + $25 application fee (both waivable with need)",
   "free": false,
   "subjects": [
    "Research",
@@ -2435,17 +2017,20 @@ window.PROGRAMS = [
    "Remote",
    "In-person",
    "Hybrid",
-   "Lab Work"
+   "Lab Work",
+   "George Mason Univ",
+   "Fairfax",
+   "VA"
   ],
   "grades": [
-   "Freshman",
    "Sophomore",
+   "Junior",
    "Senior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "B",
+  "accRate": "~ 10-15%",
+  "details": "8-week research internship with George Mason faculty mentors, remote, hybrid or in person. Ages 15+, or 16+ for wet labs. Often leads to publications.",
+  "flagship": true
  },
  {
   "name": "Harris Internship",
@@ -2502,11 +2087,11 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Stanford SIMR",
-  "url": "http://simr.stanford.edu",
+  "name": "Stanford Institutes of Medicine Summer Research Program (SIMR)",
+  "url": "https://simr.stanford.edu/",
   "deadline": "February 21",
-  "when": "",
-  "cost": "",
+  "when": "June 10 - August 1",
+  "cost": "Free (+$500 to $1,500 stipend based on need)",
   "free": true,
   "subjects": [
    "Research",
@@ -2517,15 +2102,17 @@ window.PROGRAMS = [
    "NorCal",
    "Lab Work",
    "Stipend",
-   "In-person"
+   "In-person",
+   "Stanford",
+   "CA"
   ],
   "grades": [
    "Junior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "S",
+  "accRate": "~ 3%",
+  "details": "Hands-on research in Stanford labs (immunology, neurobiology, cancer, etc.). Massive boost for pre-meds.",
+  "flagship": true
  },
  {
   "name": "NASA SEES (apply for scholarship)",
@@ -2642,7 +2229,7 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "John Hopkins ISPEED",
+  "name": "Johns Hopkins ISPEED",
   "url": "https://www.bme.jhu.edu/academics/pre-college/apply-to-ispeed-bme/",
   "deadline": "February 28",
   "when": "",
@@ -2805,7 +2392,7 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Rockerfeller Summer Neuroscience Program",
+  "name": "Rockefeller Summer Neuroscience Program",
   "url": "https://www.rockefeller.edu/outreach/snp/",
   "deadline": "March 1",
   "when": "",
@@ -3055,12 +2642,12 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Princeton Lab Learning Program",
+  "name": "Princeton Laboratory Learning Program",
   "url": "https://scienceoutreach.princeton.edu/laboratory-learning-program",
   "deadline": "March 15",
-  "when": "",
-  "cost": "",
-  "free": false,
+  "when": "June 17 - August 9",
+  "cost": "Free (Housing/transport not provided)",
+  "free": true,
   "subjects": [
    "Research",
    "STEM"
@@ -3068,17 +2655,19 @@ window.PROGRAMS = [
   "tags": [
    "New Jersey",
    "In-person",
-   "Lab Work"
+   "Lab Work",
+   "Princeton Univ",
+   "NJ"
   ],
   "grades": [
    "Sophomore",
    "Junior",
    "Senior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "A-",
+  "accRate": "< 5%",
+  "details": "Unpaid but highly prestigious research internships in Princeton faculty labs.",
+  "flagship": true
  },
  {
   "name": "JBEI iCLEM",
@@ -3109,7 +2698,7 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "WISTAR Institute Biomedical Research",
+  "name": "Wistar Institute Biomedical Research",
   "url": "https://www.wistar.org/education-training/high-school-program-biomedical-research/",
   "deadline": "March 20",
   "when": "",
@@ -3198,12 +2787,12 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "MIT BWSI (free for family income of 150k of less)",
+  "name": "MIT Beaver Works Summer Institute (BWSI)",
   "url": "https://bwsi.mit.edu/apply-now/",
   "deadline": "March 31",
-  "when": "",
-  "cost": "",
-  "free": false,
+  "when": "July 8 - August 4",
+  "cost": "Free for family income under $200k ($3,000 otherwise; housing not included)",
+  "free": true,
   "subjects": [
    "Engineering",
    "AI/Tech",
@@ -3213,21 +2802,24 @@ window.PROGRAMS = [
   "tags": [
    "US",
    "Remote",
-   "In-person"
+   "In-person",
+   "MIT",
+   "Cambridge",
+   "MA"
   ],
   "grades": [
    "Freshman",
    "Sophomore",
    "Junior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "A",
+  "accRate": "Varies (High if prereqs met)",
+  "details": "Project-based, focusing on autonomous systems, quantum software, and AI. Requires rigorous online prereqs.",
+  "flagship": true
  },
  {
-  "name": "UIUC SpHERE",
-  "url": "https://medicine.illinois.edu/diversity/pathway-programs-and-partnerships/spheres-high-school-research-program",
+  "name": "UIUC SpHERES",
+  "url": "https://wyse.grainger.illinois.edu/summer-programs/young-scholars-summer-research",
   "deadline": "March 31",
   "when": "",
   "cost": "",
@@ -3263,12 +2855,12 @@ window.PROGRAMS = [
   ],
   "ranking": "",
   "accRate": "",
-  "details": "",
+  "details": "Six-week residential research experience in departments across the University of Illinois, for rising 10th-12th graders from seven Midwest states.",
   "flagship": false
  },
  {
-  "name": "UIUC Grainger Engineering Young Scholars",
-  "url": "https://medicine.illinois.edu/diversity/pathway-programs-and-partnerships/spheres-high-school-research-program",
+  "name": "UIUC Grainger Engineering Young Scholars (GEnYuS)",
+  "url": "https://wyse.grainger.illinois.edu/summer-programs/young-scholars-summer-research",
   "deadline": "March 31",
   "when": "",
   "cost": "",
@@ -3299,7 +2891,7 @@ window.PROGRAMS = [
   ],
   "ranking": "",
   "accRate": "",
-  "details": "",
+  "details": "Six weeks of residential research in University of Illinois engineering and physics groups, for rising 10th-12th graders from seven Midwest states.",
   "flagship": false
  },
  {
@@ -3328,7 +2920,7 @@ window.PROGRAMS = [
   "ranking": "",
   "accRate": "",
   "details": "",
-  "flagship": false
+  "flagship": true
  },
  {
   "name": "Santa Clara SES",
@@ -3489,21 +3081,17 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Harvard SRI",
+  "name": "Harvard SRI (OpenBio Laboratory)",
   "url": "https://soco.college.harvard.edu/00003/application/",
   "deadline": "April 1",
   "when": "",
   "cost": "",
   "free": false,
   "subjects": [
-   "Physics",
-   "Research",
-   "Neuroscience",
-   "STEM",
    "Biology",
-   "Coding",
-   "Engineering",
-   "Chemistry"
+   "Research",
+   "Chemistry",
+   "Coding"
   ],
   "tags": [
    "International",
@@ -3516,10 +3104,10 @@ window.PROGRAMS = [
    "Junior",
    "Senior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "B+",
+  "accRate": "Selective",
+  "details": "Run by Harvard's student-led Undergraduate OpenBio Laboratory: high schoolers team up with a mentor on a life-science research project or literature review. No research experience needed.",
+  "flagship": true
  },
  {
   "name": "Yale CCI Exposures Program",
@@ -3756,12 +3344,12 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Sci-MI Mentorship Program",
+  "name": "Sci-MI (Science Mentorship Institute)",
   "url": "https://sci-mi.org/",
   "deadline": "May 1",
-  "when": "",
-  "cost": "",
-  "free": false,
+  "when": "June 22 - August 10",
+  "cost": "Free",
+  "free": true,
   "subjects": [
    "Research",
    "Coding",
@@ -3781,15 +3369,15 @@ window.PROGRAMS = [
    "Junior",
    "Senior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "B",
+  "accRate": "Accessible",
+  "details": "Remote, free mentorship program matching students with mentors to conduct literature reviews/research.",
+  "flagship": true
  },
  {
-  "name": "Health Services Mentorship Program",
+  "name": "Health Services Mentorship Program (HSMP)",
   "url": "https://sites.google.com/view/hsmp-gmu/application-information?authuser=0",
-  "deadline": "May 20",
+  "deadline": "September 19",
   "when": "",
   "cost": "",
   "free": false,
@@ -3812,33 +3400,34 @@ window.PROGRAMS = [
   ],
   "ranking": "",
   "accRate": "",
-  "details": "",
+  "details": "Year-long remote health research internship that prioritizes low-income students; students with research experience can apply as peer-mentor fellows.",
   "flagship": false
  },
  {
   "name": "Stanford iGEM Bioengineering Research Program",
   "url": "https://igem.stanford.edu/education",
   "deadline": "June",
-  "when": "",
-  "cost": "",
-  "free": false,
+  "when": "3 weeks in July (online)",
+  "cost": "Free",
+  "free": true,
   "subjects": [
    "Research",
    "Engineering"
   ],
   "tags": [
    "International",
-   "Remote"
+   "Remote",
+   "Mentorship"
   ],
   "grades": [
    "Freshman",
    "Sophomore",
    "Junior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "A",
+  "accRate": "Highly Selective",
+  "details": "Free online synthetic-biology program from Stanford's iGEM team: speaker sessions, workshops and mentorship from Stanford students toward a research proposal. Prioritizes first-gen and low-income students.",
+  "flagship": true
  },
  {
   "name": "Teens in Health Summer Program",
@@ -3925,33 +3514,6 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Columbia ACComPLISHED Fall Cohort",
-  "url": "https://www.neurology.columbia.edu/education/additional-educational-programs/adolescents-caring-community-promoting-literacy-insurance-stroke-health-education-emergencies-and-dementia-accomplished",
-  "deadline": "August 31",
-  "when": "",
-  "cost": "",
-  "free": false,
-  "subjects": [
-   "STEM",
-   "Medicine"
-  ],
-  "tags": [
-   "New York",
-   "Hybrid",
-   "Mentorship"
-  ],
-  "grades": [
-   "Freshman",
-   "Sophomore",
-   "Junior",
-   "Senior"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
   "name": "OHSU Science Ambassador",
   "url": "https://www.ohsu.edu/onprc/volunteer-opportunities",
   "deadline": "October 19",
@@ -3967,59 +3529,6 @@ window.PROGRAMS = [
    "Oregon",
    "In-person",
    "Year-Long",
-   "Mentorship"
-  ],
-  "grades": [
-   "Freshman",
-   "Sophomore",
-   "Junior",
-   "Senior"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
-  "name": "SEAP",
-  "url": "https://www.navalsteminterns.us/seap/index.html",
-  "deadline": "November 1",
-  "when": "",
-  "cost": "",
-  "free": true,
-  "subjects": [
-   "Research",
-   "STEM"
-  ],
-  "tags": [
-   "US",
-   "In-person",
-   "Lab Work",
-   "Stipend",
-   "Mentorship"
-  ],
-  "grades": [
-   "Sophomore"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
-  "name": "Columbia ACComPLISHED Winter Cohort",
-  "url": "https://www.neurology.columbia.edu/education/additional-educational-programs/adolescents-caring-community-promoting-literacy-insurance-stroke-health-education-emergencies-and-dementia-accomplished",
-  "deadline": "November 31",
-  "when": "",
-  "cost": "",
-  "free": false,
-  "subjects": [
-   "STEM",
-   "Medicine"
-  ],
-  "tags": [
-   "New York",
-   "Hybrid",
    "Mentorship"
   ],
   "grades": [
@@ -4121,25 +3630,6 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "Rockfeller Summer Science Research Program",
-  "url": "https://www.rockefeller.edu/outreach/ssrp/",
-  "deadline": "December 1",
-  "when": "",
-  "cost": "",
-  "free": false,
-  "subjects": [
-   "Research"
-  ],
-  "tags": [],
-  "grades": [
-   "Junior"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
   "name": "Borlaug-Ruan International Internship",
   "url": "https://www.worldfoodprize.org/en/youth_programs/borlaugruan_international_internship/",
   "deadline": "December 1",
@@ -4210,12 +3700,12 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "MIT WTP (free for family income <120k)",
-  "url": "https://web.mit.edu/wtp/",
+  "name": "MIT Women’s Technology Program (WTP)",
+  "url": "https://wtp.mit.edu/",
   "deadline": "December 15",
-  "when": "",
-  "cost": "",
-  "free": false,
+  "when": "June 22 - July 19",
+  "cost": "Free for family income under $120k",
+  "free": true,
   "subjects": [
    "Engineering",
    "Research",
@@ -4226,39 +3716,18 @@ window.PROGRAMS = [
    "Females",
    "US",
    "Mentorship",
-   "Residential"
+   "Residential",
+   "MIT",
+   "Cambridge",
+   "MA"
   ],
   "grades": [
    "Junior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
-  "name": "Columbia ACComPLISHED Fall/Winter/Summer",
-  "url": "https://www.neurology.columbia.edu/education/additional-educational-programs/adolescents-caring-community-promoting-literacy-insurance-stroke-health-education-emergencies-and-dementia-accomplished",
-  "deadline": "Rolling",
-  "when": "",
-  "cost": "",
-  "free": false,
-  "subjects": [
-   "STEM",
-   "Medicine"
-  ],
-  "tags": [
-   "New York",
-   "Hybrid",
-   "Mentorship"
-  ],
-  "grades": [
-   "Freshman"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "A-",
+  "accRate": "~ 5%",
+  "details": "Female-focused introduction to Mechanical Engineering and CS. Very collaborative, no prior experience needed.",
+  "flagship": true
  },
  {
   "name": "OHSU Fluorescence Molecular Imaging Internship",
@@ -4368,23 +3837,6 @@ window.PROGRAMS = [
    "Sophomore",
    "Junior",
    "Senior"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
-  "name": "USA AEOP",
-  "url": "https://www.usaeop.com/program/high-school-internships/",
-  "deadline": "Rolling",
-  "when": "",
-  "cost": "",
-  "free": false,
-  "subjects": [],
-  "tags": [],
-  "grades": [
-   "Junior"
   ],
   "ranking": "",
   "accRate": "",
@@ -4822,40 +4274,6 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "AEOP",
-  "url": "",
-  "deadline": "",
-  "when": "",
-  "cost": "",
-  "free": false,
-  "subjects": [],
-  "tags": [],
-  "grades": [
-   "Sophomore"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
-  "name": "GEnYuS",
-  "url": "",
-  "deadline": "",
-  "when": "",
-  "cost": "",
-  "free": false,
-  "subjects": [],
-  "tags": [],
-  "grades": [
-   "Sophomore"
-  ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
- },
- {
   "name": "CHOP Neurology High School Scholars Program",
   "url": "https://www.chop.edu/centers-programs/division-neurology/neurology-high-school-scholars-program",
   "deadline": "Paused",
@@ -4913,7 +4331,7 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "WASHU Young Scientist Program",
+  "name": "WashU Young Scientist Program",
   "url": "https://sites.wustl.edu/wustlysp/",
   "deadline": "?",
   "when": "",
@@ -5078,12 +4496,12 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "LEDA",
+  "name": "LEDA Scholars",
   "url": "https://ledascholars.org/our-program/leda-scholars-program/recruitment-admissions/apply/",
   "deadline": "Part 1: December 10 | Part 2: Late February",
-  "when": "",
-  "cost": "",
-  "free": false,
+  "when": "June 15 - August 3",
+  "cost": "Free (Fully funded including travel)",
+  "free": true,
   "subjects": [
    "College Readiness"
   ],
@@ -5092,15 +4510,17 @@ window.PROGRAMS = [
    "In-person",
    "Low-Income",
    "Residential",
-   "Mentorship"
+   "Mentorship",
+   "Princeton Univ",
+   "NJ"
   ],
   "grades": [
    "Junior"
   ],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
-  "flagship": false
+  "ranking": "A",
+  "accRate": "~ 8%",
+  "details": "Empowers high-achieving students from low-income backgrounds with leadership and college prep at Princeton.",
+  "flagship": true
  },
  {
   "name": "SLAC Youth Opportunity Program",
@@ -5141,7 +4561,7 @@ window.PROGRAMS = [
  {
   "name": "UColorado Child Health Research Internship",
   "url": "https://www.childrenscolorado.org/research-innovation/training-opportunities/",
-  "deadline": "Feburary 1",
+  "deadline": "February 1",
   "when": "",
   "cost": "",
   "free": false,
@@ -5160,7 +4580,7 @@ window.PROGRAMS = [
  {
   "name": "Cincinnati Children's Hospital Summer Internship",
   "url": "https://www.cincinnatichildrens.org/education/research/high-school/summer-internship",
-  "deadline": "Feburary 1",
+  "deadline": "February 1",
   "when": "",
   "cost": "",
   "free": false,
@@ -5180,7 +4600,7 @@ window.PROGRAMS = [
  {
   "name": "NIH NHLBI Summer Internship",
   "url": "https://www.nhlbi.nih.gov/grants-and-training/training-and-career-development/summer-internship-program",
-  "deadline": "Feburary 1",
+  "deadline": "February 1",
   "when": "",
   "cost": "",
   "free": false,
@@ -5197,7 +4617,7 @@ window.PROGRAMS = [
  {
   "name": "TGen Helios Scholars",
   "url": "https://www.tgen.org/education/helios-scholars-at-tgen/",
-  "deadline": "Feburary 1",
+  "deadline": "February 1",
   "when": "",
   "cost": "",
   "free": false,
@@ -5240,23 +4660,32 @@ window.PROGRAMS = [
   "flagship": false
  },
  {
-  "name": "VCU MLS Transfusion Scholars",
-  "url": "",
+  "name": "VCU Transfusion Services Summer Scholars",
+  "url": "https://dsei.vcu.edu/paths/programs/high-school/mls-path-transfusion-services-summer-scholars/",
   "deadline": "",
-  "when": "",
-  "cost": "",
-  "free": false,
+  "when": "1 week (residential)",
+  "cost": "Free (+$500 stipend)",
+  "free": true,
   "subjects": [],
-  "tags": [],
-  "grades": [],
+  "tags": [
+   "Virginia",
+   "In-person",
+   "Residential",
+   "Stipend"
+  ],
+  "grades": [
+   "Sophomore",
+   "Junior",
+   "Senior"
+  ],
   "ranking": "",
   "accRate": "",
-  "details": "",
+  "details": "Hands-on intro to blood banking and lab science at VCU, with campus housing, meals and a stipend. For rising 11th graders through rising college juniors.",
   "flagship": true
  },
  {
-  "name": "UCSC Science Internship Program",
-  "url": "",
+  "name": "UCSC Scholar Immersion Program (SIP)",
+  "url": "https://sip.ucsc.edu/",
   "deadline": "",
   "when": "",
   "cost": "",
@@ -5266,22 +4695,7 @@ window.PROGRAMS = [
   "grades": [],
   "ranking": "",
   "accRate": "",
-  "details": "",
-  "flagship": true
- },
- {
-  "name": "Scripps translational research institute",
-  "url": "",
-  "deadline": "",
-  "when": "",
-  "cost": "",
-  "free": false,
-  "subjects": [],
-  "tags": [],
-  "grades": [],
-  "ranking": "",
-  "accRate": "",
-  "details": "",
+  "details": "Summer research with UC Santa Cruz mentors across science, engineering, social sciences, humanities and art. Formerly the Science Internship Program.",
   "flagship": true
  }
 ];

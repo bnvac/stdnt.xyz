@@ -8,11 +8,11 @@
     { name: "AEOP (Army Educational Outreach Program)", url: "https://www.usaeop.com/", deadline: "Varies", when: "Year-round", cost: "Free", free: true,
       subjects: ["STEM", "Research", "Engineering"], tags: ["US", "Paid", "Stipend", "In-person", "Remote"], grades: ["Freshman", "Sophomore", "Junior", "Senior"],
       ranking: "A-", accRate: "Varies", flagship: true,
-      details: "Umbrella of free U.S. Army STEM programs and paid apprenticeships (SEAP, REAP, GEMS, UNITE and more), open nationally." },
-    { name: "SEAP (Science & Engineering Apprenticeship Program)", url: "https://www.usaeop.com/program/seap/", deadline: "Nov", when: "Summer (8 weeks)", cost: "Free (+ stipend ~$4,000)", free: true,
+      details: "Umbrella of free U.S. Army STEM programs and paid apprenticeships (REAP, GEMS, UNITE and more), open nationally." },
+    { name: "SEAP (Science & Engineering Apprenticeship Program)", url: "https://www.navalsteminterns.us/internships/seap/", deadline: "November 1", when: "Summer (8 weeks)", cost: "Free (+ stipend ~$4,000)", free: true,
       subjects: ["Research", "STEM", "Engineering"], tags: ["US", "Paid", "Stipend", "In-person", "Lab Work"], grades: ["Sophomore", "Junior", "Senior"],
       ranking: "A", accRate: "Selective", flagship: true,
-      details: "Paid summer apprenticeship in U.S. Navy/Army research labs, working one-on-one with a mentor scientist." },
+      details: "Paid summer apprenticeship in U.S. Navy research labs, working one-on-one with a mentor scientist." },
     { name: "REAP (Research & Engineering Apprenticeship Program)", url: "https://www.usaeop.com/program/reap/", deadline: "Feb", when: "Summer (5-8 weeks)", cost: "Free (+ stipend)", free: true,
       subjects: ["Research", "STEM", "Engineering"], tags: ["US", "Paid", "Stipend", "Minority", "Low-Income", "In-person", "Lab Work"], grades: ["Sophomore", "Junior", "Senior"],
       ranking: "A-", accRate: "Selective", flagship: true,
@@ -34,5 +34,9 @@
       ranking: "B+", accRate: "Selective", flagship: false,
       details: "Volunteer summer research at NIST campuses (MD and CO) for rising seniors and recent grads." }
   ];
-  window.PROGRAMS = (window.PROGRAMS || []).concat(extra);
+  // Drop any community-sheet stub these entries replace (e.g. a bare "SEAP"),
+  // so regenerating programs.js can't bring the duplicate back.
+  var mine = {};
+  extra.forEach(function (p) { mine[p.name.split(" (")[0].toLowerCase()] = 1; });
+  window.PROGRAMS = (window.PROGRAMS || []).filter(function (p) { return !mine[String(p.name).toLowerCase()]; }).concat(extra);
 })();
