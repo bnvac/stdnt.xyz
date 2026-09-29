@@ -25,9 +25,9 @@ test("search counts matches on every tab and links to the other sections", () =>
   assert.deepEqual(app.errors, []);
 });
 
-test("tool and competition cards keep save and report in the footer", () => {
+test("tool, competition and club cards keep save and report in the footer", () => {
   const app = boot();
-  for (const [tab, grid] of [["tools", "#tools-grid"], ["competitions", "#competitions-grid"]]) {
+  for (const [tab, grid] of [["tools", "#tools-grid"], ["competitions", "#competitions-grid"], ["clubs", "#clubs-grid"]]) {
     app.click(app.$(`.tab[data-tab="${tab}"]`));
     const cards = app.$$(`${grid} .card`);
     assert.ok(cards.length > 0, `${tab} has cards`);
@@ -66,10 +66,14 @@ test("a saved list can be shared and opened by someone else", () => {
   assert.equal(b.$(".saved-shared"), null, "banner closes");
 });
 
-test("email signups stay hidden until an endpoint is configured", () => {
+test("the newsletter shows as coming soon until an endpoint is configured", () => {
   const app = boot();
-  const forms = app.$$(".news, .news-band");
-  assert.ok(forms.length >= 1 && forms.every((f) => f.hidden));
+  const boxes = app.$$(".news, .news-band");
+  assert.ok(boxes.length >= 2 && boxes.every((b) => !b.hidden), "both signups show");
+  for (const b of boxes) {
+    assert.equal(b.querySelector(".news-form").hidden, true, "no form that can't send");
+    assert.equal(b.querySelector(".soon-tag").hidden, false, "marked coming soon");
+  }
   assert.equal(app.$("#dl-remind").hidden, true);
 });
 
@@ -84,12 +88,13 @@ test("the subscribe panel links every calendar feed", () => {
 
 test("the partnership with All The Same Organization is credited", () => {
   const app = boot();
+  assert.ok(app.$('.hero-partner[href="https://allthesame.org/"]'), "on the front page");
   for (const sel of [".about-partner", ".ftr-partner"]) assert.ok(app.$(`${sel} a[href="https://allthesame.org/"]`), sel);
 });
 
 test("the New tab lists every listing added in the last six months, newest first", () => {
   const cutoff = Date.now() - 180 * 864e5;
-  const expected = [...W.RESOURCES, ...W.DISCOUNTS, ...W.SCHOLARSHIPS, ...W.PROGRAMS, ...W.COMPETITIONS]
+  const expected = [...W.RESOURCES, ...W.DISCOUNTS, ...W.SCHOLARSHIPS, ...W.PROGRAMS, ...W.COMPETITIONS, ...W.CLUBS]
     .filter((x) => x.added && Date.parse(x.added) >= cutoff)
     .sort((a, b) => b.added.localeCompare(a.added) || a.name.localeCompare(b.name))
     .map((x) => x.name);
@@ -97,5 +102,16 @@ test("the New tab lists every listing added in the last six months, newest first
   const shown = app.$$("#new-list .row-title").map((t) => t.textContent.replace(/\s*↗\s*$/, "").trim());
   assert.deepEqual(shown, expected);
   assert.equal(app.$("#n-new").textContent, String(expected.length));
+  assert.deepEqual(app.errors, []);
+});
+
+test("the clubs tab groups every chapter and volunteer listing, and clubs can be saved", () => {
+  const app = boot({ url: "https://stdnt.xyz/#clubs" });
+  const heads = app.$$("#clubs-grid .saved-h").map((h) => h.textContent.replace(/\s*\d+\s*$/, "").trim());
+  assert.deepEqual(heads, Array.from(W.CLUB_CATS, (c) => c.name));
+  assert.equal(app.$$("#clubs-grid .card").length, W.CLUBS.length);
+  assert.equal(app.$("#n-clubs").textContent, String(W.CLUBS.length));
+  app.click(app.$("#clubs-grid .card .star"));
+  assert.equal(app.$("#n-saved").textContent, "1");
   assert.deepEqual(app.errors, []);
 });

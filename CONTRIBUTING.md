@@ -16,6 +16,7 @@ and pick a category:
 | **Add a scholarship** | A scholarship, grant, or fellowship |
 | **Add a STEM / summer program** | A summer, research, or enrichment program |
 | **Add a competition** | An academic competition or olympiad |
+| **Add a club or volunteer spot** | A club you can start a chapter of, or a place to volunteer |
 | **Add a student discount** | An everyday student deal |
 | **Report a problem** | A dead link, wrong deadline, or defunct listing |
 
@@ -36,6 +37,7 @@ Every listing is **one plain object** in a JS file. No build step, no framework.
 | `site/js/scholarships.js` | scholarships (`window.SCHOLARSHIPS`) |
 | `site/js/programs.js`, `site/js/programs-extra.js` | STEM programs |
 | `site/js/competitions.js` | competitions |
+| `site/js/clubs.js` | clubs to start a chapter of, and places to volunteer (`window.CLUBS`) |
 | `site/js/discounts.js` | student discounts |
 | `site/js/finaid.js` | FAFSA / CSS Profile / state financial-aid dates |
 | `site/js/guides.js`, `site/js/templates.js` | the how-to guides and spreadsheet templates |
@@ -60,12 +62,29 @@ Example - add a tool in `site/js/data.js`:
 }
 ```
 
+A club or volunteer spot in `site/js/clubs.js` looks like this:
+
+```js
+{
+  name: "DECA",
+  url: "https://www.deca.org/start",   // their own start-a-chapter or volunteer page
+  category: "career",                  // see window.CLUB_CATS (career, stem, service,
+                                       //   causes, online, local)
+  who: "High school & college",        // who can take part
+  needs: "10 students + a teacher advisor",   // optional: what it takes
+  cost: "$8 national dues + state dues",      // optional
+  desc: "One honest sentence about what it is.",
+  tags: ["business", "competitions"],
+  added: "2026-10-01"
+}
+```
+
 Counts, chips, search, logos and deadlines all update automatically. Give every new
 listing an `added` date (any data file) so it shows up on the **New** tab and page.
 
 **Generated files - don't edit by hand.** The *Build and deploy site* workflow
 rebuilds these inside `site/` on every push to `main` (and daily): the crawlable pages
-in `guides/`, `scholarships/`, `programs/`, `competitions/`, `tools/`, `discounts/`,
+in `guides/`, `scholarships/`, `programs/`, `competitions/`, `clubs/`, `tools/`, `discounts/`,
 `deadlines/`, `new/`, plus `404.html` and `sitemap.xml`; the calendar feeds in
 `calendar/`; the cached logos in `logos/` + `js/logos.js`; and `data/hackathons.json`. You don't
 need to rebuild them in a pull request. Share images and icons are the exception:

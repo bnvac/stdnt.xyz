@@ -22,7 +22,7 @@ process.chdir(SITE_DIR);
 
 const FILES = [
   "js/data.js", "js/scholarships.js", "js/programs.js", "js/programs-extra.js",
-  "js/competitions.js", "js/discounts.js", "js/finaid.js", "js/guides.js", "js/templates.js"
+  "js/competitions.js", "js/clubs.js", "js/discounts.js", "js/finaid.js", "js/guides.js", "js/templates.js"
 ];
 const URL_RE = /https?:\/\/[^\s"'`<>)\]]+/g;
 const TIMEOUT = 20000;

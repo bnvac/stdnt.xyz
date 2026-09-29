@@ -1,5 +1,5 @@
 /*
- * app.js - renders the tabs (Tools, Scholarships, Programs, Saved),
+ * app.js - renders the tabs (Tools, Scholarships, Programs, Clubs, Saved...),
  * the logo marquee, search/filter/sort, save-to-list, view counter and theme.
  * Data comes from data.js, scholarships.js, programs.js.
  */
@@ -16,6 +16,8 @@
   var DISC_CATS = window.DISCOUNT_CATS || [];
   var COMPS = window.COMPETITIONS || [];
   var COMP_CATS = window.COMPETITION_CATS || [];
+  var CLUBS = window.CLUBS || [];
+  var CLUB_CATS = window.CLUB_CATS || [];
   var HACKATHONS = window.HACKATHONS || [];
   var FINAID = window.FINAID || [];
   var FULL = window.SCH_FULL || 1000000;
@@ -30,6 +32,7 @@
     { icon: "cap", label: "Scholarship", desc: "A scholarship, grant or fellowship students can apply for.", template: "add-scholarship.yml" },
     { icon: "flask", label: "STEM / summer program", desc: "A research, summer or enrichment program.", template: "add-program.yml" },
     { icon: "trophy", label: "Competition", desc: "An academic competition, contest or olympiad.", template: "add-competition.yml" },
+    { icon: "heart", label: "Club or volunteering", desc: "A club you can start a chapter of, or a place to volunteer.", template: "add-club.yml" },
     { icon: "cash", label: "Student discount", desc: "An everyday student deal or discount.", template: "add-discount.yml" },
     { icon: "refresh", label: "Report a problem", desc: "A dead link, wrong deadline or defunct listing.", template: "report.yml" }
   ];
@@ -72,10 +75,15 @@
     atom: '<circle cx="12" cy="12" r="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/>',
     bulb: '<path d="M9.5 18h5M10.5 21h3"/><path d="M12 3a6 6 0 0 0-3.8 10.6c.6.5 1.1 1.2 1.2 2.4h5.2c.1-1.2.6-1.9 1.2-2.4A6 6 0 0 0 12 3z"/>',
     book: '<path d="M12 6c-1.6-1-4-1.5-6-1.5-1.2 0-2 .2-2 .2v13s.8-.2 2-.2c2 0 4.4.5 6 1.5M12 6c1.6-1 4-1.5 6-1.5 1.2 0 2 .2 2 .2v13s-.8-.2-2-.2c-2 0-4.4.5-6 1.5M12 6v13"/>',
+    heart: '<path d="M12 20.3s-7.6-4.6-9.3-9.4C1.5 7.5 3.9 4.4 7.3 4.4c2 0 3.7 1.1 4.7 2.8 1-1.7 2.7-2.8 4.7-2.8 3.4 0 5.8 3.1 4.6 6.5-1.7 4.8-9.3 9.4-9.3 9.4z"/>',
+    megaphone: '<path d="M3 10.2v3.6a1 1 0 0 0 1 1h2.6L13 19V5L6.6 9.2H4a1 1 0 0 0-1 1z"/><path d="M16.5 9a4.2 4.2 0 0 1 0 6M19 6.5a7.8 7.8 0 0 1 0 11"/>',
+    laptop: '<rect x="4" y="5" width="16" height="11" rx="1.6"/><path d="M2 19h20"/>',
+    pin: '<path d="M20 10c0 5.5-8 11-8 11s-8-5.5-8-11a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.6"/>',
     robot: '<rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 8V5"/><circle cx="12" cy="3.5" r="1.5"/><circle cx="9.5" cy="13" r="1"/><circle cx="14.5" cy="13" r="1"/><path d="M10 16h4M3 12v3M21 12v3"/>'
   };
   function icon(key) { return SVG + (ICONS[key] || ICONS.target) + "</svg>"; }
   var COMP_ICON = { science: "flask", math: "math", cs: "code", research: "atom", innovation: "bulb", humanities: "book", robotics: "robot" };
+  var CLUB_ICON = { career: "briefcase", stem: "code", service: "heart", causes: "megaphone", online: "laptop", local: "pin" };
   var PIN_SVG = '<svg class="tg-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.5-8 11-8 11s-8-5.5-8-11a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.4"/></svg>';
 
   // ---- favicon logos (graceful) --------------------------------------
@@ -302,7 +310,7 @@
   // Share links ("#saved&list=t1x2y3.s9z8...") carry a short code per item: a
   // kind letter plus a base-36 hash of its name. Saved ids are names, so a link
   // keeps working when the lists are reordered.
-  var KIND_CODE = { tool: "t", sch: "s", prog: "p", comp: "c" };
+  var KIND_CODE = { tool: "t", sch: "s", prog: "p", comp: "c", club: "o" };
   function itemCode(id) {
     var i = id.indexOf("::"), name = id.slice(i + 2), h = 2166136261;
     for (var j = 0; j < name.length; j++) { h ^= name.charCodeAt(j); h = Math.imul(h, 16777619) >>> 0; }
@@ -531,7 +539,7 @@
     var m = (location.hash || "").match(/^#saved&list=([\w.]+)/); if (!m) return false;
     var want = {}; m[1].split(".").forEach(function (c) { want[c] = 1; });
     sharedList = RES.concat(DISCOUNTS).map(function (r) { return sid("tool", r.name); })
-      .concat(SCH.map(function (s) { return sid("sch", s.name); }), PROG.map(function (p) { return sid("prog", p.name); }), COMPS.map(function (c) { return sid("comp", c.name); }))
+      .concat(SCH.map(function (s) { return sid("sch", s.name); }), PROG.map(function (p) { return sid("prog", p.name); }), COMPS.map(function (c) { return sid("comp", c.name); }), CLUBS.map(function (c) { return sid("club", c.name); }))
       .filter(function (id, i, all) { return want[itemCode(id)] && all.indexOf(id) === i; });
     return true;
   }
@@ -543,6 +551,7 @@
     var ss = f(SCH.filter(function (s) { return set.has(sid("sch", s.name)); }), function (s) { return [s.name, s.level, s.note].join(" "); });
     var sp = f(PROG.filter(function (p) { return set.has(sid("prog", p.name)); }), function (p) { return [p.name, p.details, (p.subjects || []).join(" ")].join(" "); });
     var sc = f(COMPS.filter(function (c) { return set.has(sid("comp", c.name)); }), function (c) { return [c.name, c.desc, (c.tags || []).join(" ")].join(" "); });
+    var sk = f(CLUBS.filter(function (c) { return set.has(sid("club", c.name)); }), function (c) { return [c.name, c.desc, (c.tags || []).join(" ")].join(" "); });
     var body = $("#saved-body");
     var sharedBar = sharedList ? '<div class="saved-shared"><span><b>Shared list</b> &middot; ' + set.size + " item" + (set.size === 1 ? "" : "s") + "</span>" +
       (set.size ? '<button class="btn btn-primary" data-act="keep" type="button">Save all to my list</button>' : "") +
@@ -553,7 +562,7 @@
     }
     if (set.size === 0) {
       body.innerHTML = '<div class="saved-empty"><div class="saved-star">' + STAR + "</div>" +
-        "<p>Your list is empty.</p><p class=\"saved-hint\">Tap the star on any tool, scholarship or program to save it here. It stays on this device.</p></div>";
+        "<p>Your list is empty.</p><p class=\"saved-hint\">Tap the star on any tool, scholarship, program or club to save it here. It stays on this device.</p></div>";
       meta.textContent = ""; empty.hidden = true; return 0;
     }
     var toolbar = sharedList ? sharedBar : '<div class="saved-tools">' +
@@ -568,7 +577,8 @@
     if (ss.length) html += '<h3 class="saved-h">Scholarships <span>' + ss.length + "</span></h3><div class=\"list\">" + ss.map(schRow).join("") + "</div>";
     if (sp.length) html += '<h3 class="saved-h">STEM Programs <span>' + sp.length + "</span></h3><div class=\"list\">" + sp.map(progRow).join("") + "</div>";
     if (sc.length) html += '<h3 class="saved-h">Competitions <span>' + sc.length + "</span></h3><div class=\"grid\">" + sc.map(competitionCard).join("") + "</div>";
-    var total = st.length + ss.length + sp.length + sc.length;
+    if (sk.length) html += '<h3 class="saved-h">Clubs &amp; Volunteering <span>' + sk.length + "</span></h3><div class=\"grid\">" + sk.map(clubCard).join("") + "</div>";
+    var total = st.length + ss.length + sp.length + sc.length + sk.length;
     body.innerHTML = toolbar + (html || '<p class="muted" style="padding:1rem 0">No saved items match that search.</p>');
     meta.textContent = sharedList ? ("Showing " + total + " shared item" + (total === 1 ? "" : "s"))
       : total === saved.size ? ("You have " + saved.size + " saved item" + (saved.size === 1 ? "" : "s")) : ("Showing " + total + " of " + saved.size + " saved");
@@ -581,6 +591,7 @@
     SCH.forEach(function (s) { if (saved.has(sid("sch", s.name))) out.push({ type: "Scholarship", name: s.name, url: s.url, detail: s.amountText || "", deadline: s.deadline || "" }); });
     PROG.forEach(function (p) { if (saved.has(sid("prog", p.name))) out.push({ type: "Program", name: p.name, url: p.url || "", detail: (p.subjects || []).join("; "), deadline: p.deadline || "" }); });
     COMPS.forEach(function (c) { if (saved.has(sid("comp", c.name))) out.push({ type: "Competition", name: c.name, url: c.url, detail: c.format || "", deadline: c.deadline || "" }); });
+    CLUBS.forEach(function (c) { if (saved.has(sid("club", c.name))) out.push({ type: clubKind(c) === "volunteer" ? "Volunteering" : "Club", name: c.name, url: c.url, detail: c.who || "", deadline: "" }); });
     return out;
   }
   function toCSV(items) {
@@ -875,6 +886,7 @@
     ["sch", "Scholarships", function () { return schFiltered().length; }, function () { return SCH.length; }],
     ["prog", "STEM programs", function () { return progFiltered().length; }, function () { return PROG.length; }],
     ["competitions", "Competitions", function () { return competitionsFiltered().length; }, function () { return COMPS.length; }],
+    ["clubs", "Clubs & volunteering", function () { return clubsFiltered().length; }, function () { return CLUBS.length; }],
     ["deadlines", "Deadlines", function () { return deadlinesFiltered().length; }, function () { return deadlineItems().length; }],
     ["new", "New", function () { return newFiltered().length; }, function () { return newItems().length; }],
     ["guides", "Guides", function () { return guidesFiltered().length; }, function () { return GUIDES.length; }],
@@ -933,6 +945,11 @@
       meta.textContent = state.q ? ("Showing " + cn + " of " + COMPS.length + " competitions") : (COMPS.length + " competitions");
       empty.hidden = true; return;
     }
+    if (state.tab === "clubs") {
+      var kn = renderClubs();
+      meta.textContent = state.q ? ("Showing " + kn + " of " + CLUBS.length + " clubs and volunteer spots") : (CLUBS.length + " clubs and places to volunteer");
+      empty.hidden = true; return;
+    }
     if (state.tab === "new") {
       var nw = renderNew(), all = newItems().length;
       meta.textContent = state.q ? ("Showing " + nw + " of " + all + " new listings") : (all + " listing" + (all === 1 ? "" : "s") + " added in the last " + Math.round(NEW_DAYS / 30) + " months");
@@ -955,7 +972,7 @@
     state.tab = tab;
     document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === tab); });
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
-    ["tools", "discounts", "sch", "prog", "competitions", "deadlines", "new", "foryou", "saved", "guides", "templates", "hackathons", "contribute", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
+    ["tools", "discounts", "sch", "prog", "competitions", "clubs", "deadlines", "new", "foryou", "saved", "guides", "templates", "hackathons", "contribute", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
     document.title = (TAB_TITLES[tab] ? TAB_TITLES[tab] + " · " : "") + "stdnt.xyz";
     var moreBtn = $("#more-btn"); if (moreBtn) moreBtn.classList.toggle("is-active", !!OVERFLOW[tab]);
     closeMore();
@@ -964,6 +981,7 @@
       tab === "sch" ? "Search scholarships..." :
       tab === "prog" ? "Search programs, subjects..." :
       tab === "competitions" ? "Search competitions..." :
+      tab === "clubs" ? "Search clubs, causes, volunteering..." :
       tab === "hackathons" ? "Search hackathons, cities..." :
       tab === "deadlines" ? "Search deadlines..." :
       tab === "new" ? "Search new listings..." :
@@ -1102,12 +1120,13 @@
   }
 
   // newsletter signup - hands off to a third-party provider (no backend, no
-  // emails stored in this repo). The signups stay hidden until
-  // NEWSLETTER_ENDPOINT is set, so nobody types an email into a dead form;
-  // the live on-page digest above covers it meanwhile.
+  // emails stored in this repo). Until NEWSLETTER_ENDPOINT is set the signups
+  // show as coming soon (their [data-soon] parts) instead of a form nobody
+  // can send, and point to the deadline calendar meanwhile.
   function wireNewsletter() {
     if (!NEWSLETTER_ENDPOINT) {
-      document.querySelectorAll(".news, .news-band").forEach(function (el) { el.hidden = true; });
+      document.querySelectorAll(".news [data-live], .news-band [data-live]").forEach(function (el) { el.hidden = true; });
+      document.querySelectorAll(".news [data-soon], .news-band [data-soon]").forEach(function (el) { el.hidden = false; });
       return;
     }
     // delegated so any number of .news-form signups (For You + the site-wide
@@ -1291,9 +1310,9 @@
     }
     return false;
   }
-  var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, deadlines: 1, new: 1, foryou: 1, saved: 1, guides: 1, templates: 1, hackathons: 1, contribute: 1, about: 1 };
+  var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, clubs: 1, deadlines: 1, new: 1, foryou: 1, saved: 1, guides: 1, templates: 1, hackathons: 1, contribute: 1, about: 1 };
   var OVERFLOW = { guides: 1, templates: 1, hackathons: 1, contribute: 1, about: 1 };   // tabs tucked into the "More" menu
-  var TAB_TITLES = { tools: "Free tools & perks", discounts: "Student discounts", sch: "Scholarships", prog: "STEM programs", competitions: "Competitions", deadlines: "Deadlines", new: "New listings", foryou: "Find your matches", saved: "Saved", guides: "Guides", templates: "Templates", hackathons: "Hackathons", contribute: "Contribute", about: "About" };
+  var TAB_TITLES = { tools: "Free tools & perks", discounts: "Student discounts", sch: "Scholarships", prog: "STEM programs", competitions: "Competitions", clubs: "Clubs & volunteering", deadlines: "Deadlines", new: "New listings", foryou: "Find your matches", saved: "Saved", guides: "Guides", templates: "Templates", hackathons: "Hackathons", contribute: "Contribute", about: "About" };
   function closeMore() { var m = $("#tab-menu"), b = $("#more-btn"); if (m && !m.hidden) { m.hidden = true; if (b) b.setAttribute("aria-expanded", "false"); } }
   function wireMore() {
     var btn = $("#more-btn"), menu = $("#tab-menu"); if (!btn || !menu) return;
@@ -1431,14 +1450,50 @@
     return list.length;
   }
 
+  // ---- CLUBS & VOLUNTEERING ------------------------------------------
+  // chapters you can start at school, and places to volunteer (clubs.js)
+  var CLUB_KIND = {}; CLUB_CATS.forEach(function (c) { CLUB_KIND[c.id] = c.kind; });
+  function clubKind(c) { return CLUB_KIND[c.category] || "chapter"; }
+  function clubsFiltered() {
+    var ts = terms();
+    return CLUBS.filter(function (c) {
+      if (!ts.length) return true;
+      return hit([c.name, c.desc, c.who, c.needs, c.cost, (c.tags || []).join(" ")].join(" "), ts);
+    });
+  }
+  function clubCard(c, i) {
+    var chips = [];
+    if (c.who) chips.push({ k: "who", l: c.who, good: /^(open to all|all ages)/i.test(c.who) });
+    if (c.cost) chips.push({ k: "money", l: c.cost, good: /^(free|no startup fee)\b/i.test(c.cost) });
+    var need = c.needs ? '<p class="club-need">' + icon("clipboard") + "<span><b>" + (clubKind(c) === "volunteer" ? "What it takes" : "To start one") + ":</b> " + esc(c.needs) + "</span></p>" : "";
+    var ft = freshTags(c, c.url);
+    return '<a class="card" href="' + esc(c.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
+      '<div class="card-top">' + logoTile(c.name, c.url, c.logo) + '<span class="card-name">' + esc(c.name) + "</span></div>" +
+      '<p class="card-desc">' + esc(c.desc) + "</p>" + need +
+      (ft ? '<div class="card-flags">' + ft + "</div>" : "") +
+      '<div class="card-foot comp-foot">' + reqHTML(chips) + '<span class="card-meta">' + starBtn("club", c.name) + flagBtn(c.name, c.url) + "</span></div></a>";
+  }
+  function renderClubs() {
+    var box = $("#clubs-grid"); if (!box) return 0;
+    var list = clubsFiltered(), html = "";
+    CLUB_CATS.forEach(function (cat) {
+      var items = list.filter(function (c) { return c.category === cat.id; });
+      if (!items.length) return;
+      html += '<h3 class="saved-h saved-h-ico">' + icon(CLUB_ICON[cat.id]) + esc(cat.name) + " <span>" + items.length + "</span></h3>" +
+        '<div class="grid">' + items.map(clubCard).join("") + "</div>";
+    });
+    box.innerHTML = html || '<p class="muted guides-empty">No clubs or volunteer spots match your search.</p>';
+    return list.length;
+  }
+
   // ---- NEW: recently added listings (each carries added: "YYYY-MM-DD") ----
   var NEW_DAYS = 180;
-  var NEW_KIND = { tool: "Tool", sch: "Scholarship", prog: "Program", comp: "Competition" };
+  var NEW_KIND = { tool: "Tool", sch: "Scholarship", prog: "Program", comp: "Competition", club: "Club" };
   var MONTHS_LONG = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   function newItems() {
     var cutoff = Date.now() - NEW_DAYS * 864e5, out = [];
     function add(kind, list) { list.forEach(function (x) { if (x.added && Date.parse(x.added) >= cutoff) out.push({ kind: kind, x: x }); }); }
-    add("tool", RES.concat(DISCOUNTS)); add("sch", SCH); add("prog", PROG); add("comp", COMPS);
+    add("tool", RES.concat(DISCOUNTS)); add("sch", SCH); add("prog", PROG); add("comp", COMPS); add("club", CLUBS);
     return out.sort(function (a, b) { return b.x.added.localeCompare(a.x.added) || a.x.name.localeCompare(b.x.name); });
   }
   function newFiltered() {
@@ -1450,14 +1505,15 @@
   }
   function newRow(it, i) {
     var x = it.x, d = new Date(x.added + "T12:00:00");
-    var detail = it.kind === "sch" ? x.amountText : it.kind === "prog" ? shortCost(x).t : it.kind === "comp" ? x.format : x.value;
+    var detail = it.kind === "sch" ? x.amountText : it.kind === "prog" ? shortCost(x).t : it.kind === "comp" ? x.format : it.kind === "club" ? x.who : x.value;
+    var kindLabel = it.kind === "club" && clubKind(x) === "volunteer" ? "Volunteering" : NEW_KIND[it.kind];
     var sub = x.desc || x.details || x.note || "";
     var logo = x.logo || (x.slug ? siURL(x.slug) : "");
     return '<div class="row" style="animation-delay:' + Math.min(i * 6, 180) + 'ms">' + logoTile(x.name, x.url, logo) +
       '<a class="row-main" href="' + esc(x.url) + '" target="_blank" rel="noopener">' +
       '<div class="row-title">' + esc(x.name) + '&nbsp;<span class="ext">&#8599;</span></div>' +
       (sub ? '<div class="row-sub">' + esc(sub) + "</div>" : "") +
-      '<div class="row-tags"><span class="tg tg-' + it.kind + '">' + NEW_KIND[it.kind] + "</span>" +
+      '<div class="row-tags"><span class="tg tg-' + it.kind + '">' + kindLabel + "</span>" +
       (detail ? '<span class="tg">' + esc(detail) + "</span>" : "") + (x.deadline ? '<span class="tg">' + (/\d/.test(x.deadline) ? "Due " : "") + esc(x.deadline) + "</span>" : "") + "</div></a>" +
       '<span class="row-acts">' + starBtn(it.kind, x.name) + flagBtn(x.name, x.url) + "</span>" +
       '<div class="row-right"><span class="row-added">Added ' + DL_MON[d.getMonth()] + " " + d.getDate() + "</span></div></div>";
@@ -1914,6 +1970,7 @@
   $("#n-deadlines").textContent = deadlineItems().length;
   $("#n-discounts").textContent = DISCOUNTS.length;
   $("#n-competitions").textContent = COMPS.length;
+  $("#n-clubs").textContent = CLUBS.length;
   $("#n-hackathons").textContent = HACKATHONS.length;
   fillStats();
   var deepLink = applyHash();
@@ -1931,6 +1988,7 @@
   renderDeadlines();
   renderDiscounts();
   renderCompetitions();
+  renderClubs();
   renderHackathons();
   loadHackathons();
   loadLinkStatus();

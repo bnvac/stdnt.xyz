@@ -4,7 +4,7 @@
  * so search engines can index each guide and each directory section:
  *
  *   guides/                 all guides        guides/<slug>/   one per guide
- *   scholarships/  programs/  competitions/  tools/  discounts/  deadlines/  new/
+ *   scholarships/  programs/  competitions/  clubs/  tools/  discounts/  deadlines/  new/
  *   sitemap.xml             every page above
  *   404.html                the "page not found" page (not in the sitemap)
  *
@@ -52,7 +52,7 @@ const chips = (arr) => arr.filter(Boolean).map((t) => `<span class="tg">${esc(t)
 const pick = (on) => (on ? ` <span class="ed-pick" title="Editor's choice">&#128081; Editor's choice</span>` : "");
 
 // ---- page shell ---------------------------------------------------------
-const NAV = [["tools/", "Tools"], ["scholarships/", "Scholarships"], ["programs/", "STEM programs"], ["competitions/", "Competitions"], ["deadlines/", "Deadlines"], ["guides/", "Guides"]];
+const NAV = [["tools/", "Tools"], ["scholarships/", "Scholarships"], ["programs/", "STEM programs"], ["competitions/", "Competitions"], ["clubs/", "Clubs"], ["deadlines/", "Deadlines"], ["guides/", "Guides"]];
 function page({ path, title, desc, h1, lead, crumbs = [], body, schema = [], image = "og.png", type = "website", cta, notFound = false }) {
   const depth = path.split("/").filter(Boolean).length;
   // relative to <base>; the 404 page writes them from script (see below)
@@ -208,6 +208,20 @@ pages.push("guides/");
   pages.push("competitions/");
 }
 
+// ---- clubs & volunteering ------------------------------------------------------
+{
+  CURRENT = "clubs/";
+  const CLUBS = W.CLUBS || [], CATS = W.CLUB_CATS || [];
+  const r = (c) => row(tile(c.name, c.url), `<h3>${out(c.url, esc(c.name))}</h3>${c.desc ? `<p>${esc(c.desc)}</p>` : ""}${c.needs ? `<p class="sp-when">${esc(c.needs)}</p>` : ""}<div class="row-tags">${chips([c.who, c.cost])}</div>`, "");
+  const secs = CATS.map((c) => [c.id, c.name, CLUBS.filter((x) => x.category === c.id)]);
+  const desc = `${CLUBS.length} clubs you can start a chapter of at your school (DECA, FBLA, HOSA, Key Club and more) and places to volunteer in person or online, with who can join and what it takes.`;
+  save("clubs/", page({ path: "clubs/", title: "Clubs to start at your school and places to volunteer | stdnt.xyz", desc,
+    h1: "Clubs and volunteering for students", lead: "Start a chapter of a national club at your school, or volunteer in person or online. Rules and dues vary by state, so check each official page.",
+    crumbs: [["clubs/", "Clubs & volunteering"]], body: toc(secs.map(([id, t, a]) => [id, t, a.length])) + secs.map(([id, t, a]) => section(id, t, "", a.map(r))).join(""),
+    schema: [collection("clubs/", "Clubs and volunteering", desc), itemList("Clubs and volunteering", CLUBS)], cta: ["./#clubs", "See clubs and volunteering in the app"] }));
+  pages.push("clubs/");
+}
+
 // ---- tools ---------------------------------------------------------------
 {
   CURRENT = "tools/";
@@ -259,15 +273,15 @@ pages.push("guides/");
 // ---- new listings (anything carrying added: "YYYY-MM-DD" in the last 180 days) ----
 {
   CURRENT = "new/";
-  const KIND = { tool: "Tool", sch: "Scholarship", prog: "Program", comp: "Competition" };
+  const KIND = { tool: "Tool", sch: "Scholarship", prog: "Program", comp: "Competition", club: "Club" };
   const cutoff = today.getTime() - 180 * 864e5, items = [];
   const add = (kind, list) => (list || []).forEach((x) => { if (x.added && Date.parse(x.added) >= cutoff) items.push({ kind, x }); });
-  add("tool", [...(W.RESOURCES || []), ...(W.DISCOUNTS || [])]); add("sch", W.SCHOLARSHIPS); add("prog", W.PROGRAMS); add("comp", W.COMPETITIONS);
+  add("tool", [...(W.RESOURCES || []), ...(W.DISCOUNTS || [])]); add("sch", W.SCHOLARSHIPS); add("prog", W.PROGRAMS); add("comp", W.COMPETITIONS); add("club", W.CLUBS);
   items.sort((a, b) => b.x.added.localeCompare(a.x.added) || a.x.name.localeCompare(b.x.name));
   const byMonth = {};
   items.forEach((it) => { const k = `${MONTH[+it.x.added.slice(5, 7) - 1]} ${it.x.added.slice(0, 4)}`; (byMonth[k] = byMonth[k] || []).push(it); });
   const r = ({ kind, x }) => row(tile(x.name, x.url, x.slug),
-    `<h3>${out(x.url, esc(x.name))}</h3>${x.desc || x.details || x.note ? `<p>${esc(x.desc || x.details || x.note)}</p>` : ""}<div class="row-tags">${chips([KIND[kind], x.amountText || x.value || ""])}</div>`,
+    `<h3>${out(x.url, esc(x.name))}</h3>${x.desc || x.details || x.note ? `<p>${esc(x.desc || x.details || x.note)}</p>` : ""}<div class="row-tags">${chips([KIND[kind], x.amountText || x.value || x.who || ""])}</div>`,
     `<span>Added ${MON[+x.added.slice(5, 7) - 1]} ${+x.added.slice(8, 10)}</span>`);
   const desc = "The newest free tools, scholarships and STEM programs added to stdnt.xyz, newest first.";
   save("new/", page({ path: "new/", title: "New free tools, scholarships and STEM programs for students | stdnt.xyz", desc,

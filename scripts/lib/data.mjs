@@ -18,7 +18,7 @@ export const SITE_DIR = join(REPO, "site");
 export const SITE = "https://stdnt.xyz";   // live origin used in canonical URLs, sitemaps and feeds
 
 const DATA_FILES = ["js/shared.js", "js/data.js", "js/scholarships.js", "js/programs.js", "js/programs-extra.js",
-  "js/competitions.js", "js/discounts.js", "js/finaid.js", "js/guides.js", "js/templates.js", "js/hackathons.js"];
+  "js/competitions.js", "js/clubs.js", "js/discounts.js", "js/finaid.js", "js/guides.js", "js/templates.js", "js/hackathons.js"];
 
 export function loadData(files = DATA_FILES) {
   const sandbox = { window: {} };

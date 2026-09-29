@@ -18,6 +18,7 @@ const errors = [], warnings = [];
 let listings = 0;
 
 const CATEGORY_IDS = new Set((W.CATEGORIES || []).map((c) => c.id));
+const CLUB_CAT_IDS = new Set((W.CLUB_CATS || []).map((c) => c.id));
 const oneOf = (field, values) => (x) => values.has(x[field]) ? "" : `${field} "${x[field]}" is not one of: ${[...values].join(", ")}`;
 const RULES = {
   RESOURCES: { required: ["name", "url", "category", "access", "desc"], checks: [oneOf("category", CATEGORY_IDS), oneOf("access", new Set(["student", "everyone"]))], internalLinks: true },
@@ -25,6 +26,7 @@ const RULES = {
   SCHOLARSHIPS: { required: ["name", "url", "amountText"], checks: [oneOf("group", new Set(["big", "essay", "creative", "general", "noessay"]))], deadlines: true },
   PROGRAMS: { required: ["name", "url"], deadlines: true },
   COMPETITIONS: { required: ["name", "url", "category", "desc"], checks: [oneOf("category", new Set(["science", "math", "cs", "research", "innovation", "humanities", "robotics"]))], deadlines: true },
+  CLUBS: { required: ["name", "url", "category", "who", "desc"], checks: [oneOf("category", CLUB_CAT_IDS)] },
   FINAID: { required: ["name", "url", "deadline"], deadlines: true },
   GUIDES: { key: "slug", required: ["slug", "title", "blurb", "body"], checks: [(g) => /^[a-z0-9-]+$/.test(g.slug) ? "" : `slug "${g.slug}" should be lowercase-with-hyphens`], noUrl: true },
   TEMPLATES: { key: "slug", required: ["slug", "title", "columns"], noUrl: true },

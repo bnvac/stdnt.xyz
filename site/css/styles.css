@@ -431,6 +431,20 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
 .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
 .btn-ghost { background: var(--card); color: var(--tx); border-color: var(--line-2); }
 .btn-ghost:hover { border-color: var(--tx-3); transform: translateY(-1px); }
+/* the All The Same partnership, right under the calls to action */
+.hero-partner {
+  display: inline-flex; align-items: center; gap: .6rem; margin-top: 1.3rem;
+  padding: .3rem .95rem .3rem .3rem; font-size: .86rem; color: var(--tx-2);
+  background: color-mix(in srgb, #ec4899 5%, var(--bg-2)); border: 1px solid color-mix(in srgb, #ec4899 22%, var(--line));
+  border-radius: 999px; transition: border-color .15s, color .15s, transform .15s;
+}
+.hero-partner img { flex: none; width: 30px; height: 30px; padding: 2px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+.hero-partner b { color: var(--tx); font-weight: 700; }
+.hero-partner-go { color: var(--tx-3); transition: transform .15s, color .15s; }
+.hero-partner:hover { color: var(--tx); border-color: color-mix(in srgb, #ec4899 50%, var(--line)); transform: translateY(-1px); }
+.hero-partner:hover .hero-partner-go { color: #ec4899; transform: translateX(2px); }
+.hero-partner-txt { text-align: left; line-height: 1.3; }
+@media (max-width: 480px) { .hero-partner { font-size: .8rem; border-radius: 18px; } }
 .hero-note { margin: 1.1rem 0 0; font-size: .8rem; color: var(--tx-3); }
 .hero-note a { color: var(--tx-2); text-decoration: underline; }
 
@@ -671,6 +685,11 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
   background: color-mix(in srgb, var(--accent) 12%, var(--bg-2)); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
 }
 .comp-foot { display: flex; flex-wrap: wrap; gap: .35rem; }
+/* clubs & volunteering: what it takes to start a chapter or to help */
+.club-need { display: flex; gap: .4rem; margin: -.35rem 0 .85rem; font-size: .8rem; line-height: 1.45; color: var(--tx-2); }
+.club-need svg { width: 14px; height: 14px; flex: none; margin-top: .15rem; color: var(--accent); }
+.club-need b { color: var(--tx); font-weight: 600; }
+.tg-club { color: #f59e0b; border-color: color-mix(in srgb, #f59e0b 40%, transparent); }
 
 /* =========================================================== HACKATHONS */
 .hk-updated {
@@ -922,6 +941,9 @@ html.guide-open { overflow: hidden; }
 .news-band-form .news-input { min-width: 220px; }
 .news-band-note { position: relative; color: var(--tx-3); font-size: .8rem; margin: .9rem 0 0; }
 .news-band-note a { color: var(--accent); text-decoration: underline; }
+/* shown until a newsletter provider is connected (see wireNewsletter) */
+.soon-tag { display: inline-block; margin-left: .45rem; padding: .16rem .55rem; vertical-align: .22em; font-size: .62rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: linear-gradient(135deg, var(--accent), var(--stu)); border-radius: 999px; }
+.news-band-alt { flex: none; }
 
 /* ============================================================ MEDIA KIT */
 .mediakit { margin: 1.8rem 0 .4rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 18px; background: var(--card); }

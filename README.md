@@ -36,6 +36,7 @@ So this pulls the best of it into **one minimalist site you can actually search*
 - 💻 **Dev / cloud / design / productivity** - JetBrains, Vercel, Figma, Microsoft 365…
 - 💰 **120+ scholarships** - from full-rides to "describe your zombie-apocalypse escape plan"
 - 🔬 **180+ STEM programs** - research, internships & summer programs, filterable by grade
+- 🤝 **Clubs & volunteering** - start a DECA, HOSA or Key Club chapter at your school, or volunteer online from age 13
 
 > Built to be the live home for community scholarship/program spreadsheets that
 > *"will no longer be updated"* - so nothing good gets lost.
@@ -45,13 +46,14 @@ So this pulls the best of it into **one minimalist site you can actually search*
 | | |
 |---|---|
 | 🔎 **Instant search** | filter as you type, with live match counts on every tab and shareable `?q=` links (`/` to focus, `Esc` to clear) |
-| 🗂️ **14 sections** | Tools · Discounts · Scholarships · STEM Programs · Competitions · Deadlines · New · For You · Saved · Guides · Templates · Hackathons · Contribute · About |
+| 🗂️ **15 sections** | Tools · Discounts · Scholarships · STEM Programs · Competitions · Clubs & Volunteering · Deadlines · New · For You · Saved · Guides · Templates · Hackathons · Contribute · About |
 | ✦ **"For You" quiz** | answer a few questions (income, background, grade…) and get matched to scholarships & programs, all computed on-device |
 | ⭐ **Save to list** | star any item to build a personal list (saved on-device) |
 | 🎚️ **Smart filters** | segmented access toggle, category/type/grade chips, free-only |
 | ↕️ **Sorting** | by amount, **closing soon**, deadline, **top picks**, or **acceptance rate** |
 | 📅 **Deadlines** | "closing soon" badges, a month calendar, **.ics** export, and **subscribable feeds** for Google, Apple and Outlook that update themselves |
 | 📚 **Guides** | practical how-tos with tips students share on Reddit, each also a standalone page search engines can index |
+| 🤝 **Clubs & volunteering** | national clubs you can start a chapter of (DECA, HOSA, Key Club...) and places to volunteer, each with who can join, what it takes and the cost |
 | 👑 **Editor's choice** | a short, unpaid list of standout tools and programs; see *How we pick* on the About tab |
 | 🆕 **New listings** | a New tab and page with everything added in the last six months |
 | 🔗 **Shareable matches** | your quiz answers encode into a link you can send to anyone |
@@ -69,7 +71,7 @@ Two ways, **both credit you automatically**:
 
 1. **No coding** - open the [Contribute page](https://bnvac.github.io/stdnt.xyz/#contribute)
    or pick a category at [New issue](https://github.com/bnvac/stdnt.xyz/issues/new/choose).
-   Each is a short form (tool, scholarship, program, competition, discount, or a
+   Each is a short form (tool, scholarship, program, competition, club, discount, or a
    fix report). Submit it and it becomes a tracked, labelled issue.
 2. **A pull request** - every listing is one object in a `site/js/*.js` file. A new
    tool goes in `window.RESOURCES` in `site/js/data.js`:

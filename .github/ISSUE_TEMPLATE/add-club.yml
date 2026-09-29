@@ -1,0 +1,67 @@
+name: Add a club or volunteer spot
+description: A club you can start a chapter of at school, or a place to volunteer
+title: "[Club] "
+labels: ["contribution", "club"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Know a club students can start at their school, or a good place to volunteer?
+        Fill this in and submit - it becomes a tracked issue credited to your GitHub account.
+  - type: input
+    id: name
+    attributes:
+      label: Organization name
+      placeholder: e.g. DECA, Key Club, Zooniverse
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Official link
+      description: Their own start-a-chapter or volunteer page if they have one.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Career & business club (DECA, FBLA, HOSA...)
+        - STEM & coding club
+        - Service club
+        - Causes & advocacy club
+        - Volunteer online
+        - Volunteer near you
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: who
+    attributes:
+      label: Who can take part
+      placeholder: e.g. High school, Ages 13-17, 18+
+  - type: input
+    id: needs
+    attributes:
+      label: What it takes to start a chapter or to help
+      placeholder: e.g. 10 students and a teacher advisor, or 2 hours a week
+  - type: input
+    id: cost
+    attributes:
+      label: Cost or dues
+      placeholder: e.g. Free, or $8 per member plus state dues
+  - type: textarea
+    id: desc
+    attributes:
+      label: One sentence on what it is
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Quick checks
+      options:
+        - label: It's open to students and currently active
+          required: true
