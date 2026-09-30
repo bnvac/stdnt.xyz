@@ -243,15 +243,15 @@
     var s = String(d || "").trim().toLowerCase();
     if (!s || /rolling|monthly|quarterly|varies|dependent|psat|open|tbd|announce|check|nomination|^-$/.test(s)) return { rolling: true, date: null, days: null, soon: false };
     // several dates ("Apr / Aug", "Part 1: Dec 10 | Part 2: Late Feb") -> whichever is due next
-    var re = /(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s*(\d{1,2})?/g, m, dt = null;
+    var re = /(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s*(\d{1,2})?/g, m, dt = null, exact = false;
     while ((m = re.exec(s))) {
       var c = new Date(TODAY.getFullYear(), MONTHS[m[1]] - 1, m[2] ? +m[2] : 15);
       if (c < TODAY) c = new Date(TODAY.getFullYear() + 1, MONTHS[m[1]] - 1, m[2] ? +m[2] : 15);
-      if (!dt || c < dt) dt = c;
+      if (!dt || c < dt) { dt = c; exact = !!m[2]; }   // month-only dates count from the 15th
     }
     if (!dt) return { rolling: true, date: null, days: null, soon: false };
     var days = Math.round((dt - TODAY) / 86400000);
-    return { rolling: false, date: dt, days: days, soon: days <= 30 };
+    return { rolling: false, date: dt, days: days, soon: days <= 30, exact: exact };
   }
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   function ymd(dt) { return dt.getFullYear() + pad(dt.getMonth() + 1) + pad(dt.getDate()); }
@@ -1886,12 +1886,11 @@
       { icon: ICO_CLOCK, target: deadlineItems().length, label: "live deadlines", cls: "" }
     ];
     box.innerHTML = cards.map(function (c, i) {
-      return '<div class="hstat' + c.cls + '" style="animation-delay:' + (i * 80) + 'ms">' +
-        '<span class="hstat-ico" aria-hidden="true">' + c.icon + "</span>" +
+      return '<div class="hstat' + c.cls + '" style="animation-delay:' + (i * 70) + 'ms">' +
         '<b class="hstat-n">' + (c.money ? "$0" : "0") + "</b>" +
-        '<span class="hstat-l">' + c.label + "</span></div>";
+        '<span class="hstat-l"><span class="hstat-ico" aria-hidden="true">' + c.icon + "</span>" + c.label + "</span></div>";
     }).join("");
-    box.hidden = false;
+    var board = $("#hero-board"); if (board) board.hidden = false;
     var nums = box.querySelectorAll(".hstat-n");
     cards.forEach(function (c, i) { if (nums[i]) countUp(nums[i], c.target, !!c.money); });
   }
@@ -1926,11 +1925,20 @@
     var box = $("#hero-soon"); if (!box) return;
     var all = deadlineItems().filter(function (it) { return it.info.days >= 0; });
     if (!all.length) { box.hidden = true; return; }
-    var chips = all.slice(0, 4).map(function (it) {
-      return '<a class="soon-chip" href="' + esc(it.url) + '" target="_blank" rel="noopener"><b>' + DL_MON[it.info.date.getMonth()] + " " + it.info.date.getDate() + "</b> " + esc(it.name) + "</a>";
+    var items = all.slice(0, 4).map(function (it) {
+      var d = it.info.days, mon = DL_MON[it.info.date.getMonth()];
+      // month-only deadlines get no made-up day: "Late Sep" keeps its wording, a bare "Oct" reads "Sometime in October"
+      var rough = /\b(early|mid|late|opens)\b|~/i.test(it.deadline) ? esc(it.deadline) : "Sometime in " + MONTHS_LONG[it.info.date.getMonth()];
+      var when = !it.info.exact ? rough : d === 0 ? "Today" : d === 1 ? "Tomorrow" : "In " + d + " days";
+      return '<a class="soon-item" href="' + esc(it.url) + '" target="_blank" rel="noopener"' + (it.info.exact ? ' title="' + mon + " " + it.info.date.getDate() + '"' : "") + ">" +
+        '<span class="soon-date" aria-hidden="true">' + (it.info.exact ? "<b>" + it.info.date.getDate() + "</b><i>" + mon + "</i>" : "<b>" + mon + "</b>") + "</span>" +
+        '<span class="soon-txt"><span class="soon-name">' + esc(it.name) + '</span><span class="soon-in' + (it.info.exact && d <= 3 ? " urgent" : "") + '">' + when + "</span></span></a>";
     }).join("");
-    box.innerHTML = '<span class="soon-label">' + ICO_CLOCK + ' Closing soon</span>' + chips + '<a class="soon-all" href="#deadlines">See all ' + all.length + " &rarr;</a>";
+    box.innerHTML = '<div class="soon-head"><span class="soon-label"><span class="soon-dot" aria-hidden="true"></span>Closing soon</span>' +
+      '<a class="soon-all" href="#deadlines">All ' + all.length + " deadlines &rarr;</a></div>" +
+      '<div class="soon-list">' + items + "</div>";
     box.hidden = false;
+    var board = $("#hero-board"); if (board) board.hidden = false;
   }
 
   // ---- SEO (structured data, JS-rendered) ----------------------------
