@@ -191,6 +191,29 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:sch-stephen-j-brady-stop-hunger-scholarship-20261020@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+SUMMARY:Deadline: Stephen J. Brady Stop Hunger Scholarship
+DESCRIPTION:Scholarship · $10\,000 + $5\,000 grant\nDeadline listed as: Oc
+ t 20\nhttps://www.us.stop-hunger.org/grants/youth-scholarships\nMore deadl
+ ines: https://stdnt.xyz/#deadlines
+URL:https://www.us.stop-hunger.org/grants/youth-scholarships
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Stephen J. Brady Stop Hunger Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Stephen J. Brady Stop Hunger Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:sch-us-bank-student-scholarship-20261030@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261030
@@ -233,6 +256,29 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: Coca-Cola Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-vfw-patriots-pen-20261031@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Deadline: VFW Patriot's Pen
+DESCRIPTION:Scholarship · Up to $5\,000\nDeadline listed as: Oct 31\nhttps
+ ://www.vfw.org/community/youth-and-education/youth-scholarships\nMore dead
+ lines: https://stdnt.xyz/#deadlines
+URL:https://www.vfw.org/community/youth-and-education/youth-scholarships
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: VFW Patriot's Pen
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: VFW Patriot's Pen
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -370,6 +416,29 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline in November: Diamond Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-hispanic-heritage-youth-awards-20261101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Deadline: Hispanic Heritage Youth Awards
+DESCRIPTION:Scholarship · Up to $4\,000\nDeadline listed as: Nov 1\nhttps:
+ //hispanicheritage.org/youth-awards/\nMore deadlines: https://stdnt.xyz/#d
+ eadlines
+URL:https://hispanicheritage.org/youth-awards/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Hispanic Heritage Youth Awards
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Hispanic Heritage Youth Awards
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -536,6 +605,28 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:comp-nasa-space-apps-challenge-20261114@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Deadline: NASA Space Apps Challenge
+DESCRIPTION:Competition · Team\nDeadline listed as: Nov 14\nhttps://www.sp
+ aceappschallenge.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.spaceappschallenge.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NASA Space Apps Challenge
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NASA Space Apps Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:sch-jack-kent-cooke-foundation-20261116@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261116
@@ -555,6 +646,29 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: Jack Kent Cooke Foundation
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-samsung-solve-for-tomorrow-20261123@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261123
+DTEND;VALUE=DATE:20261124
+SUMMARY:Deadline: Samsung Solve for Tomorrow
+DESCRIPTION:Competition · Class team\nDeadline listed as: Nov 23\nhttps://
+ www.samsung.com/us/solvefortomorrow/\nMore deadlines: https://stdnt.xyz/#d
+ eadlines
+URL:https://www.samsung.com/us/solvefortomorrow/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Samsung Solve for Tomorrow
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Samsung Solve for Tomorrow
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -627,6 +741,28 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:sch-coolidge-scholarship-20261201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Deadline: Coolidge Scholarship
+DESCRIPTION:Scholarship · Full ride\nDeadline listed as: Dec 1\nhttps://co
+ olidgescholars.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://coolidgescholars.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Coolidge Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Coolidge Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:sch-dell-scholars-20261201@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261201
@@ -646,6 +782,30 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: Dell Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-equitable-excellence-scholarship-20261201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Deadline in December: Equitable Excellence Scholarship
+DESCRIPTION:Scholarship · $20\,000 ($5\,000/yr)\nDeadline listed as: Mid-D
+ ec (exact day varies\, check the site)\nhttps://equitable.com/foundation/e
+ quitable-excellence-scholarship\nMore deadlines: https://stdnt.xyz/#deadli
+ nes
+URL:https://equitable.com/foundation/equitable-excellence-scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in December: Equitable Excellence Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in December: Equitable Excellence Scholarship
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -693,6 +853,28 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: Research Science Institute (RSI)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-ron-brown-scholar-program-20261201@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:Deadline: Ron Brown Scholar Program
+DESCRIPTION:Scholarship · $40\,000\nDeadline listed as: Dec 1\nhttps://ron
+ brown.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://ronbrown.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Ron Brown Scholar Program
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Ron Brown Scholar Program
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -857,6 +1039,29 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: Burger King Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-mathcounts-competition-series-20261215@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:Deadline: MATHCOUNTS Competition Series
+DESCRIPTION:Competition · Team or solo\nDeadline listed as: Dec 15\nhttps:
+ //www.mathcounts.org/programs/mathcounts-competition-series\nMore deadline
+ s: https://stdnt.xyz/#deadlines
+URL:https://www.mathcounts.org/programs/mathcounts-competition-series
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: MATHCOUNTS Competition Series
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: MATHCOUNTS Competition Series
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -2611,6 +2816,28 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:comp-blue-ocean-student-entrepreneur-competition-20270221@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270221
+DTEND;VALUE=DATE:20270222
+SUMMARY:Deadline: Blue Ocean Student Entrepreneur Competition
+DESCRIPTION:Competition · Solo or team\nDeadline listed as: Feb 21\nhttps:
+ //blueoceancompetition.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://blueoceancompetition.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Blue Ocean Student Entrepreneur Competition
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Blue Ocean Student Entrepreneur Competition
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:prog-nyu-arise-20270221@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270221
@@ -2871,6 +3098,29 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:sch-afsa-national-high-school-essay-contest-20270301@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline in March: AFSA National High School Essay Contest
+DESCRIPTION:Scholarship · $2\,500 + DC trip\nDeadline listed as: Mar (exac
+ t day varies\, check the site)\nhttps://afsa.org/essay-contest\nMore deadl
+ ines: https://stdnt.xyz/#deadlines
+URL:https://afsa.org/essay-contest
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in March: AFSA National High School Essay Contest
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in March: AFSA National High School Essay Contest
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:prog-ai4all-20270301@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270301
@@ -3079,6 +3329,29 @@ BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: Kaiser Permanente Summer Youth Employment Program (LA
  UNCH)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-picoctf-20270301@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline in March: picoCTF
+DESCRIPTION:Competition · Team or solo\nDeadline listed as: Mar (exact day
+  varies\, check the site)\nhttps://picoctf.org/\nMore deadlines: https://s
+ tdnt.xyz/#deadlines
+URL:https://picoctf.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in March: picoCTF
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in March: picoCTF
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -3962,6 +4235,29 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:comp-genes-in-space-20270401@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Deadline in April: Genes in Space
+DESCRIPTION:Competition · Solo or pair\nDeadline listed as: Apr (exact day
+  varies\, check the site)\nhttps://www.genesinspace.org/\nMore deadlines: 
+ https://stdnt.xyz/#deadlines
+URL:https://www.genesinspace.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in April: Genes in Space
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in April: Genes in Space
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:prog-harvard-sri-openbio-laboratory-20270401@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270401
@@ -4026,6 +4322,29 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: Project Yellow Light
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-purple-comet-math-meet-20270401@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Deadline in April: Purple Comet! Math Meet
+DESCRIPTION:Competition · Team\nDeadline listed as: Apr (exact day varies\
+ , check the site)\nhttps://purplecomet.org/\nMore deadlines: https://stdnt
+ .xyz/#deadlines
+URL:https://purplecomet.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in April: Purple Comet! Math Meet
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in April: Purple Comet! Math Meet
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -4863,6 +5182,29 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:comp-hmmt-harvard-mit-math-tournament-20270901@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270901
+DTEND;VALUE=DATE:20270902
+SUMMARY:Deadline in September: HMMT (Harvard-MIT Math Tournament)
+DESCRIPTION:Competition · Team\nDeadline listed as: Sep (exact day varies\
+ , check the site)\nhttps://www.hmmt.org/\nMore deadlines: https://stdnt.xy
+ z/#deadlines
+URL:https://www.hmmt.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in September: HMMT (Harvard-MIT Math Tournament)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in September: HMMT (Harvard-MIT Math Tournament)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:sch-questbridge-national-college-match-20270901@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270901
@@ -4882,6 +5224,34 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline in September: QuestBridge National College Match
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-wharton-global-high-school-investment-competition-20270901@stdnt.x
+ yz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270901
+DTEND;VALUE=DATE:20270902
+SUMMARY:Deadline in September: Wharton Global High School Investment Compet
+ ition
+DESCRIPTION:Competition · Team\nDeadline listed as: Sep (exact day varies\
+ , check the site)\nhttps://globalyouth.wharton.upenn.edu/competitions/inve
+ stment-competition/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://globalyouth.wharton.upenn.edu/competitions/investment-competiti
+ on/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in September: Wharton Global High School Investment Co
+ mpetition
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in September: Wharton Global High School Investment Co
+ mpetition
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT

@@ -79,7 +79,7 @@
   };
   function icon(key) { return SVG + (ICONS[key] || ICONS.target) + "</svg>"; }
   var COMP_ICON = { science: "flask", math: "math", cs: "code", research: "atom", innovation: "bulb", humanities: "book", robotics: "robot" };
-  var CLUB_ICON = { career: "briefcase", stem: "code", service: "heart", causes: "megaphone", online: "laptop", local: "pin" };
+  var CLUB_ICON = { career: "briefcase", stem: "code", service: "heart", causes: "megaphone", academic: "book", online: "laptop", local: "pin" };
   var PIN_SVG = '<svg class="tg-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.5-8 11-8 11s-8-5.5-8-11a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.4"/></svg>';
 
   // ---- favicon logos (graceful) --------------------------------------
@@ -1974,25 +1974,26 @@
     box.innerHTML = '<p class="perks-label">A few things you can get</p><div class="perks-row">' + html + "</div>";
     box.hidden = false;
   }
+  // logos of organizations with listings on the site (assets/brands, from Wikimedia Commons).
+  // CSS turns them one-colour; height comes from each logo's aspect ratio so wide wordmarks
+  // and compact marks carry about the same visual weight
   var INSTITUTIONS = [
-    { name: "MIT", domain: "mit.edu" }, { name: "Stanford", domain: "stanford.edu" }, { name: "Harvard", domain: "harvard.edu" },
-    { name: "Caltech", domain: "caltech.edu" }, { name: "Princeton", domain: "princeton.edu" }, { name: "Yale", domain: "yale.edu" },
-    { name: "Columbia", domain: "columbia.edu" }, { name: "UC Berkeley", domain: "berkeley.edu" }, { name: "Cornell", domain: "cornell.edu" },
-    { name: "Johns Hopkins", domain: "jhu.edu" }, { name: "Carnegie Mellon", domain: "cmu.edu" }, { name: "Stony Brook", domain: "stonybrook.edu" },
-    { name: "NASA", domain: "nasa.gov" }, { name: "NSF", domain: "nsf.gov" }, { name: "Cold Spring Harbor", domain: "cshl.edu" },
-    { name: "Brookhaven Lab", domain: "bnl.gov" }, { name: "Society for Science", domain: "societyforscience.org" }, { name: "Regeneron", domain: "regeneron.com" },
-    { name: "Davidson", domain: "davidsongifted.org" }, { name: "Coca-Cola", domain: "coca-cola.com" }, { name: "Gates Foundation", domain: "gatesfoundation.org" },
-    { name: "QuestBridge", domain: "questbridge.org" }, { name: "Posse Foundation", domain: "possefoundation.org" }, { name: "Google", domain: "google.com" }, { name: "Microsoft", domain: "microsoft.com" }
+    { name: "MIT", logo: "mit", ratio: 1.78 }, { name: "Google", logo: "google", ratio: 2.96 },
+    { name: "Stanford University", logo: "stanford", ratio: 4.77 }, { name: "NASA", logo: "nasa", ratio: 3.59 },
+    { name: "Harvard University", logo: "harvard", ratio: 3.64 }, { name: "Microsoft", logo: "microsoft", ratio: 4.69 },
+    { name: "Yale University", logo: "yale", ratio: 2.31 }, { name: "Coca-Cola", logo: "coca-cola", ratio: 3.19 },
+    { name: "Carnegie Mellon University", logo: "cmu", ratio: 11.16 }, { name: "GitHub", logo: "github", ratio: 3.51 }
   ];
   function renderLogos() {
     var t = $("#logos-track"); if (!t) return;
-    var html = INSTITUTIONS.map(function (o) {
-      return '<a class="logo-tile" href="https://' + o.domain + '" target="_blank" rel="noopener">' +
-        (faviconURL(o.domain) ? '<img src="' + faviconURL(o.domain) + '" alt="" loading="lazy" width="20" height="20" />' : "") +
-        "<span>" + esc(o.name) + "</span></a>";
-    }).join("");
-    t.innerHTML = html + html;   // duplicate for a seamless marquee loop
-    t.querySelectorAll("img").forEach(function (img) { img.addEventListener("error", function () { img.style.display = "none"; }); });
+    function row(copy) {
+      return INSTITUTIONS.map(function (o) {
+        var h = Math.round(Math.min(34, Math.max(15, 26 * Math.pow(4 / o.ratio, 0.4))));
+        return '<span class="inst-logo"' + (copy ? ' aria-hidden="true"' : "") + '><img src="assets/brands/' + o.logo + '.svg" alt="' + (copy ? "" : esc(o.name)) +
+          '" height="' + h + '" width="' + Math.round(h * o.ratio) + '" /></span>';
+      }).join("");
+    }
+    t.innerHTML = row(false) + row(true);   // a second copy makes the marquee loop seamlessly
   }
   function renderHero() {
     if (quizAnswered()) {

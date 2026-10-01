@@ -100,6 +100,51 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:comp-nasa-space-apps-challenge-20261114@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Deadline: NASA Space Apps Challenge
+DESCRIPTION:Competition · Team\nDeadline listed as: Nov 14\nhttps://www.sp
+ aceappschallenge.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.spaceappschallenge.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NASA Space Apps Challenge
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NASA Space Apps Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-samsung-solve-for-tomorrow-20261123@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261123
+DTEND;VALUE=DATE:20261124
+SUMMARY:Deadline: Samsung Solve for Tomorrow
+DESCRIPTION:Competition · Class team\nDeadline listed as: Nov 23\nhttps://
+ www.samsung.com/us/solvefortomorrow/\nMore deadlines: https://stdnt.xyz/#d
+ eadlines
+URL:https://www.samsung.com/us/solvefortomorrow/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Samsung Solve for Tomorrow
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Samsung Solve for Tomorrow
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:comp-scholastic-art-writing-awards-20261201@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261201
@@ -119,6 +164,29 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline in December: Scholastic Art & Writing Awards
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-mathcounts-competition-series-20261215@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:Deadline: MATHCOUNTS Competition Series
+DESCRIPTION:Competition · Team or solo\nDeadline listed as: Dec 15\nhttps:
+ //www.mathcounts.org/programs/mathcounts-competition-series\nMore deadline
+ s: https://stdnt.xyz/#deadlines
+URL:https://www.mathcounts.org/programs/mathcounts-competition-series
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: MATHCOUNTS Competition Series
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: MATHCOUNTS Competition Series
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -169,6 +237,97 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:comp-blue-ocean-student-entrepreneur-competition-20270221@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270221
+DTEND;VALUE=DATE:20270222
+SUMMARY:Deadline: Blue Ocean Student Entrepreneur Competition
+DESCRIPTION:Competition · Solo or team\nDeadline listed as: Feb 21\nhttps:
+ //blueoceancompetition.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://blueoceancompetition.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Blue Ocean Student Entrepreneur Competition
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Blue Ocean Student Entrepreneur Competition
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-picoctf-20270301@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Deadline in March: picoCTF
+DESCRIPTION:Competition · Team or solo\nDeadline listed as: Mar (exact day
+  varies\, check the site)\nhttps://picoctf.org/\nMore deadlines: https://s
+ tdnt.xyz/#deadlines
+URL:https://picoctf.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in March: picoCTF
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in March: picoCTF
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-genes-in-space-20270401@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Deadline in April: Genes in Space
+DESCRIPTION:Competition · Solo or pair\nDeadline listed as: Apr (exact day
+  varies\, check the site)\nhttps://www.genesinspace.org/\nMore deadlines: 
+ https://stdnt.xyz/#deadlines
+URL:https://www.genesinspace.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in April: Genes in Space
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in April: Genes in Space
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-purple-comet-math-meet-20270401@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Deadline in April: Purple Comet! Math Meet
+DESCRIPTION:Competition · Team\nDeadline listed as: Apr (exact day varies\
+ , check the site)\nhttps://purplecomet.org/\nMore deadlines: https://stdnt
+ .xyz/#deadlines
+URL:https://purplecomet.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in April: Purple Comet! Math Meet
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in April: Purple Comet! Math Meet
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:comp-breakthrough-junior-challenge-20270601@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270601
@@ -188,6 +347,57 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline in June: Breakthrough Junior Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-hmmt-harvard-mit-math-tournament-20270901@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270901
+DTEND;VALUE=DATE:20270902
+SUMMARY:Deadline in September: HMMT (Harvard-MIT Math Tournament)
+DESCRIPTION:Competition · Team\nDeadline listed as: Sep (exact day varies\
+ , check the site)\nhttps://www.hmmt.org/\nMore deadlines: https://stdnt.xy
+ z/#deadlines
+URL:https://www.hmmt.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in September: HMMT (Harvard-MIT Math Tournament)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in September: HMMT (Harvard-MIT Math Tournament)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-wharton-global-high-school-investment-competition-20270901@stdnt.x
+ yz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270901
+DTEND;VALUE=DATE:20270902
+SUMMARY:Deadline in September: Wharton Global High School Investment Compet
+ ition
+DESCRIPTION:Competition · Team\nDeadline listed as: Sep (exact day varies\
+ , check the site)\nhttps://globalyouth.wharton.upenn.edu/competitions/inve
+ stment-competition/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://globalyouth.wharton.upenn.edu/competitions/investment-competiti
+ on/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in September: Wharton Global High School Investment Co
+ mpetition
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in September: Wharton Global High School Investment Co
+ mpetition
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT

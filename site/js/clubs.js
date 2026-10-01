@@ -12,6 +12,7 @@ window.CLUB_CATS = [
   { id: "stem", name: "STEM & coding", kind: "chapter" },
   { id: "service", name: "Service", kind: "chapter" },
   { id: "causes", name: "Causes & advocacy", kind: "chapter" },
+  { id: "academic", name: "Academic & debate", kind: "chapter" },
   { id: "online", name: "Volunteer online", kind: "volunteer" },
   { id: "local", name: "Volunteer near you", kind: "volunteer" }
 ];
@@ -46,6 +47,9 @@ window.CLUBS = [
     needs: "A Family and Consumer Sciences teacher as adviser", cost: "Dues vary by state",
     desc: "For culinary, fashion, early childhood, interior design and hospitality students: 50+ competitive events, service projects and leadership.",
     tags: ["culinary", "fashion", "education", "hospitality", "competitions", "ctso"], added: "2026-09-29" },
+  { name: "JA Company Program (Junior Achievement)", url: "https://jausa.ja.org/programs/ja-company-program", category: "career", who: "High school",
+    needs: "Your local Junior Achievement office, in school or after school",
+    desc: "Launch and run a real student business over a semester or a school year with volunteer mentors, then compete for JA Company of the Year.", tags: ["business", "entrepreneurship", "startup"], added: "2026-10-01" },
 
   // STEM & coding
   { name: "Hack Club", url: "https://hackclub.com/clubs/", category: "stem", who: "High school",
@@ -101,6 +105,9 @@ window.CLUBS = [
     needs: "A Kiwanis sponsor, an advisor + 15 members", cost: "Member dues",
     desc: "Key Club's college counterpart: a student-run campus service and leadership club, sponsored by a local Kiwanis club.",
     tags: ["service", "leadership", "kiwanis", "college", "volunteering"], added: "2026-09-29" },
+  { name: "Keystone Club (Boys & Girls Clubs)", url: "https://www.bgca.org/programs/character-leadership/keystone/", category: "service", who: "Ages 14-18",
+    needs: "A Boys & Girls Club and an adult advisor",
+    desc: "The Boys & Girls Clubs' teen leadership club: members elect officers and run service, career and community projects, with a national conference each year.", tags: ["leadership", "service", "teens"], added: "2026-10-01" },
 
   // causes & advocacy
   { name: "UNICEF Clubs", url: "https://www.unicefusa.org/about-unicef-usa/community-alliance-child-rights/unicef-clubs", category: "causes", who: "High school & college",
@@ -127,6 +134,19 @@ window.CLUBS = [
     needs: "A faculty advisor + your school's approval",
     desc: "Raise money and awareness for free cleft surgeries, with training and support from Operation Smile's student programs team.",
     tags: ["health", "fundraising", "international", "service"], added: "2026-09-29" },
+  // academic & debate
+  { name: "National Speech & Debate Association (NSDA)", url: "https://www.speechanddebate.org/student-team-starter-guide/", category: "academic", who: "Middle & high school",
+    needs: "A teacher advisor signs your school up", cost: "$149/yr per school + $20/student",
+    desc: "Start a speech and debate team: tournaments, honor society recognition and the national tournament. Grants help new and Title I programs cover dues.", tags: ["debate", "speech", "public speaking", "competitions"], added: "2026-10-01" },
+  { name: "National Honor Society (NHS)", url: "https://www.nationalhonorsociety.org/principals/start-a-chapter/", category: "academic", who: "High school",
+    needs: "Your school applies (not students): a principal plus a six-member faculty council", cost: "$385/year, paid by the school",
+    desc: "The best-known high school honor society, built on scholarship, service, leadership and character. Members can apply for the NHS Scholarship.", tags: ["honor society", "service", "leadership"], added: "2026-10-01" },
+  { name: "Quill and Scroll", url: "https://quillandscroll.org/school-charters/", category: "academic", who: "High school journalists",
+    needs: "A school newspaper, yearbook, magazine, broadcast or website and its adviser", cost: "No annual dues; $25 once per member",
+    desc: "The international honor society for high school journalists: a lifetime charter for your school's student media, plus writing contests and scholarships.", tags: ["journalism", "writing", "honor society", "media"], added: "2026-10-01" },
+  { name: "Tri-M Music Honor Society", url: "https://nafme.org/student-opportunities/tri-m-music-honor-society/start-or-renew-your-chapter/", category: "academic", who: "Middle & high school",
+    needs: "Any faculty member as chapter advisor", cost: "$100/year per chapter",
+    desc: "NAfME's music honor society: chapters recognize student musicians and run music service projects in their schools and communities.", tags: ["music", "honor society", "service"], added: "2026-10-01" },
 
   // volunteer online
   { name: "Schoolhouse.world", url: "https://schoolhouse.world/", category: "online", who: "High school & up",
@@ -167,6 +187,10 @@ window.CLUBS = [
   { name: "SciStarter", url: "https://scistarter.org/", category: "online", who: "Open to all", cost: "Free",
     desc: "Search citizen science projects you can do online or near you, and track your contributions in one place.",
     tags: ["citizen science", "research", "science", "volunteering"], added: "2026-09-29" },
+  { name: "iNaturalist", url: "https://www.inaturalist.org/", category: "online", who: "13+ (under 13 with a parent)", cost: "Free",
+    desc: "Photograph plants, animals and fungi; the community identifies them and your observations feed real biodiversity research.", tags: ["citizen science", "nature", "biology", "volunteering"], added: "2026-10-01" },
+  { name: "NASA Citizen Science", url: "https://science.nasa.gov/citizen-science/", category: "online", who: "Open to all", cost: "Free",
+    desc: "About 50 NASA projects anyone can join from a phone or laptop, from hunting for exoplanets to classifying galaxies; 500+ volunteers have co-authored papers.", tags: ["citizen science", "space", "astronomy", "volunteering"], added: "2026-10-01" },
 
   // volunteer near you
   { name: "DoSomething", url: "https://dosomething.org/", category: "local", who: "Ages 13-25 (US)", cost: "Free",
@@ -185,6 +209,9 @@ window.CLUBS = [
   { name: "Special Olympics", url: "https://www.specialolympics.org/get-involved/volunteer", category: "local", who: "Varies by program",
     desc: "Coach, officiate, help at events or play alongside athletes with intellectual disabilities as a Unified partner through your local program.",
     tags: ["volunteering", "sports", "inclusion", "disability"], added: "2026-09-29" },
+  { name: "Audubon Christmas Bird Count", url: "https://www.audubon.org/community-science/christmas-bird-count", category: "local", who: "Open to all", cost: "Free",
+    needs: "Email the organizer of a count circle near you",
+    desc: "Join a one-day bird count in your area between December 14 and January 5, part of one of the longest-running community science projects.", tags: ["birds", "citizen science", "outdoors", "volunteering"], added: "2026-10-01" },
   { name: "AmeriCorps", url: "https://americorps.gov/", category: "local", who: "Mostly 18+ (some programs 16-17)",
     needs: "A full- or part-time term of service",
     desc: "National service in tutoring, disaster response, conservation and more. Most programs pay a living allowance, and a full-time term earns an education award worth the maximum Pell Grant.",

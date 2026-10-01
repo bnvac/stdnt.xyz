@@ -36,6 +36,10 @@ window.DISCOUNTS = [
     desc: "Student rate on Peacock Premium streaming.", tags: ["video"] },
   { name: "Paramount+ Student", url: "https://www.paramountplus.com/", category: "media", access: "student", mono: "P+",
     desc: "Student discount on Paramount+ streaming.", tags: ["video"] },
+  { name: "HBO Max Student", url: "https://www.hbomax.com/student", category: "media", access: "student", mono: "Mx", value: "50% off",
+    desc: "Half price on HBO Max Basic with Ads for up to 12 months, for US college students 18+ verified through UNiDAYS.", tags: ["video", "streaming", "movies"], added: "2026-10-01" },
+  { name: "Pandora Premium Student", url: "https://www.pandora.com/upgrade/premium/student", category: "media", access: "student", mono: "Pa", value: "50% off",
+    desc: "Pandora Premium at half price for college students for up to four years; verify each year with SheerID and sign up on the website.", tags: ["music", "audio"], added: "2026-10-01" },
 
   // software
   { name: "Microsoft 365 Education", url: "https://www.microsoft.com/en-us/education/products/office", category: "software", access: "student", mono: "MS",
@@ -48,6 +52,8 @@ window.DISCOUNTS = [
     desc: "Free AutoCAD, Fusion, Maya and more for verified students.", value: "Free", tags: ["cad", "3d", "engineering"] },
   { name: "Squarespace Student", url: "https://www.squarespace.com/", category: "software", access: "student", mono: "Sq",
     desc: "Student discount on Squarespace website plans for your portfolio.", tags: ["website", "portfolio"] },
+  { name: "Headspace Student Plan", url: "https://www.headspace.com/studentplan", category: "software", access: "student", mono: "Hs", value: "$9.99/year",
+    desc: "The meditation and sleep app for $9.99 a year (about 85% off) for verified college students 18+ in the US and a few other countries.", tags: ["meditation", "mental health", "sleep"], added: "2026-10-01" },
 
   // shopping & tech
   { name: "Amazon Prime Student", url: "https://www.amazon.com/amazonprime", category: "shopping", access: "student", mono: "Pr",
@@ -60,12 +66,22 @@ window.DISCOUNTS = [
     desc: "Student discount on Nike via verification (SheerID).", value: "10% off", tags: ["apparel", "shoes"] },
   { name: "Adidas Student", url: "https://www.adidas.com/us/student-discount", category: "shopping", access: "student", mono: "Ai",
     desc: "Student discount at Adidas through verification.", tags: ["apparel", "shoes"] },
+  { name: "HP Education Store", url: "https://www.hp.com/us-en/shop/cv/hp-education", category: "shopping", access: "student", mono: "HP", value: "Up to 40% off",
+    desc: "Education pricing on HP laptops, monitors and printers for US students, parents and teachers; sign up with an email, no student ID needed.", tags: ["laptop", "computer", "printer"], added: "2026-10-01" },
+  { name: "Lenovo Student Discount", url: "https://www.lenovo.com/us/en/landingpage/students-and-teachers/", category: "shopping", access: "student", mono: "Le", value: "Up to 10% off",
+    desc: "An extra discount on Lenovo laptops and PCs for college students 18+ (incoming students too) and teachers, verified with ID.me in the cart.", tags: ["laptop", "computer"], added: "2026-10-01" },
+  { name: "Microsoft Store Education", url: "https://www.microsoft.com/en-us/store/b/education", category: "shopping", access: "student", mono: "Ms", value: "Up to 10% off",
+    desc: "Up to 10% off select Surface devices, PCs and accessories for K-12 and college students, parents and teachers.", tags: ["laptop", "surface", "computer"], added: "2026-10-01" },
+  { name: "Walmart+ Student", url: "https://www.walmart.com/plus/student", category: "shopping", access: "student", mono: "W+", value: "50% off",
+    desc: "Walmart+ for $6.47 a month or $49 a year for college students 18+ (verified by SheerID), with all the regular benefits like free delivery. New members get 30 days free.", tags: ["shopping", "delivery", "groceries"], added: "2026-10-01" },
 
   // food
   { name: "Grubhub+ Student", url: "https://www.grubhub.com/", category: "food", access: "student", mono: "GH",
     desc: "Free Grubhub+ for students: $0 delivery fees on eligible orders.", tags: ["delivery", "food"] },
   { name: "DoorDash DashPass (Student)", url: "https://www.doordash.com/", category: "food", access: "student", mono: "DD",
     desc: "Discounted DashPass for students with reduced fees on eligible orders.", tags: ["delivery", "food"] },
+  { name: "Uber One for Students", url: "https://www.uber.com/us/en/uber-one/student/", category: "food", access: "student", mono: "U1", value: "$4.99/mo",
+    desc: "Uber One for $4.99 a month or $48 a year for college students 18+: $0 delivery fees on eligible Uber Eats orders and Uber One credits on rides. Try 4 weeks free.", tags: ["food", "delivery", "rides"], added: "2026-10-01" },
 
   // travel
   { name: "StudentUniverse", url: "https://www.studentuniverse.com/", category: "travel", access: "student", mono: "SU",

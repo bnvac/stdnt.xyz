@@ -23,7 +23,6 @@ const url = (u) => { const d = domainOf(u); if (d) domains.add(d); };
 [W.RESOURCES, W.DISCOUNTS].forEach((a) => (a || []).forEach((r) => { if (r.logo) return; if (r.slug) slugs.add(r.slug); else url(r.url); }));
 [W.SCHOLARSHIPS, W.PROGRAMS, W.COMPETITIONS, W.CLUBS, W.HACKATHONS, W.FINAID].forEach((a) => (a || []).forEach((x) => { if (!x.logo) url(x.url); }));
 try { JSON.parse(readFileSync("data/hackathons.json", "utf8")).events.forEach((e) => url(e.url)); } catch {}
-for (const m of readFileSync("js/app.js", "utf8").matchAll(/domain: "([a-z0-9.-]+)"/g)) domains.add(m[1]);   // hero marquee
 (W.SPONSORS || []).forEach((s) => s.slug && slugs.add(s.slug));
 
 mkdirSync("logos/si", { recursive: true });

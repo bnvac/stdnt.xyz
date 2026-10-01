@@ -89,6 +89,12 @@ window.RESOURCES = [
     desc: "Independent web-search API with a free tier - handy for building your own search or RAG features.", tags: ["search", "api"] },
   { name: "Google Cloud Free Tier", url: "https://cloud.google.com/free", category: "apis", access: "everyone", slug: "googlecloud",
     value: "$300 credit", desc: "$300 in credits plus always-free products - compute, storage, and AI APIs to build real projects.", tags: ["cloud", "credit", "api", "google"] },
+  { name: "GitHub Models", url: "https://docs.github.com/en/github-models", category: "apis", access: "everyone", slug: "github",
+    desc: "Try and call popular AI models free with just a GitHub account, from a playground or the API; rate-limited and made for prototyping.", tags: ["llm", "api", "free", "github"], added: "2026-10-01" },
+  { name: "NVIDIA API Catalog (NIM)", url: "https://build.nvidia.com/", category: "apis", access: "everyone", mono: "NV",
+    desc: "A free API key for hosted open models through the free NVIDIA Developer Program, with starter credits for prototyping.", tags: ["llm", "api", "nvidia", "inference"], added: "2026-10-01" },
+  { name: "Cohere", url: "https://dashboard.cohere.com/", category: "apis", access: "everyone", mono: "Co",
+    desc: "Every account gets a free trial API key: 1,000 calls a month to Command chat models plus embed and rerank, for learning and prototyping (not production).", tags: ["llm", "api", "embeddings", "free"], added: "2026-10-01" },
 
   /* -------------------------------------------------------------- hackclub */
   { name: "Hack Club", url: "https://hackclub.com/", category: "hackclub", access: "student", slug: "hackclub", featured: true,
@@ -191,6 +197,10 @@ window.RESOURCES = [
     desc: "Despite the name, a clear crash course for nearly every STEM subject - chemistry, calculus, physics, stats and more.", tags: ["youtube", "chemistry", "physics", "stem"] },
   { name: "Desmos Graphing Calculator", url: "https://www.desmos.com/calculator", category: "learning", access: "everyone", mono: "fx",
     desc: "Free, powerful online graphing calculator (and a 3D version) to visualize equations and tackle math homework.", tags: ["graphing", "calculator", "math"] },
+  { name: "GeoGebra", url: "https://www.geogebra.org/", category: "learning", access: "everyone", mono: "GG",
+    desc: "Free graphing, geometry, 3D and CAS calculators plus ready-made interactive lessons, in one app for school or home.", tags: ["math", "graphing", "geometry", "calculator"], added: "2026-10-01" },
+  { name: "Exercism", url: "https://exercism.org/", category: "learning", access: "everyone", mono: "Ex",
+    desc: "Free coding practice in 80+ programming languages, with optional feedback from volunteer mentors. Run by a nonprofit.", tags: ["coding", "programming", "practice", "mentoring"], added: "2026-10-01" },
 
   /* ------------------------------------------------------------- testprep */
   { name: "Khan Academy SAT Prep", url: "https://www.khanacademy.org/digital-sat", category: "testprep", access: "everyone", slug: "khanacademy",
@@ -217,6 +227,8 @@ window.RESOURCES = [
     desc: "Another big student-discount network with exclusive codes for tech, clothing, food and entertainment.", tags: ["discounts", "deals", "shopping"] },
   { name: "Apple Education Pricing", url: "https://www.apple.com/us-edu/store", category: "lifestyle", access: "student", slug: "apple",
     desc: "Discounts on Mac and iPad for students and educators, often with seasonal back-to-school gift-card promos.", tags: ["apple", "mac", "ipad", "discount"] },
+  { name: "Planet Fitness High School Summer Pass", url: "https://www.planetfitness.com/summerpass", category: "lifestyle", access: "everyone", mono: "PF",
+    desc: "Teens 14-19 work out free all summer at a Planet Fitness near them in the US and Canada (under 18s sign up with a parent). Usually runs June to August.", tags: ["fitness", "gym", "summer", "teens"], added: "2026-10-01" },
 
   /* ------------------------------------------------------------- files & pdfs */
   { name: "iLovePDF", url: "https://www.ilovepdf.com/", category: "files", access: "everyone", slug: "ilovepdf", featured: true,
@@ -269,6 +281,8 @@ window.RESOURCES = [
     desc: "Step-by-step math solver for algebra, calculus, trig and more.", tags: ["math", "solver", "steps"] },
   { name: "NotebookLM", url: "https://notebooklm.google.com/", category: "ai", access: "everyone", slug: "notebooklm",
     desc: "Google's free AI research assistant that reasons over your own notes, PDFs and sources.", tags: ["ai", "research", "notes", "google"] },
+  { name: "Ollama", url: "https://ollama.com/", category: "ai", access: "everyone", mono: "Ol",
+    desc: "Free, open-source app to download and run open AI models (Llama, Gemma, DeepSeek and more) on your own computer, with a local API. Works offline once a model is downloaded.", tags: ["llm", "local", "open source", "offline"], added: "2026-10-01" },
   { name: "Bitwarden", url: "https://bitwarden.com/", category: "productivity", access: "everyone", slug: "bitwarden",
     desc: "Free, open-source password manager that syncs across all your devices.", tags: ["password", "security", "open source"] },
   { name: "Proton", url: "https://proton.me/", category: "productivity", access: "everyone", slug: "proton",
@@ -463,6 +477,10 @@ window.RESOURCES = [
     desc: "Free open-access scholarly books from MIT Press.", tags: ["books", "academic", "mit"] },
   { name: "Bookshare", url: "https://www.bookshare.org/", category: "books", access: "student", added: "2026-07-22", verified: "2026-07",
     desc: "Free ebook library for students with a reading or print disability.", tags: ["accessibility", "ebooks", "disability"] },
+  { name: "Libby", url: "https://libbyapp.com/", category: "books", access: "everyone", mono: "Li",
+    desc: "Borrow ebooks, audiobooks and magazines free from your public library with a library card: no fees, holds included, read on your phone or tablet.", tags: ["ebooks", "audiobooks", "library", "free"], added: "2026-10-01" },
+  { name: "Kanopy", url: "https://www.kanopy.com/", category: "books", access: "everyone", mono: "Ka",
+    desc: "Stream films, documentaries and courses free and ad-free with a library card or university login, if your library or school takes part.", tags: ["movies", "documentaries", "library", "free"], added: "2026-10-01" },
 
   /* ------------------------------------------------------------- international */
   { name: "Chevening (UK)", url: "https://www.chevening.org/", category: "intl", access: "everyone", added: "2026-07-22", verified: "2026-07",

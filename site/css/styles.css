@@ -691,6 +691,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
 .club-need { display: flex; gap: .4rem; margin: -.35rem 0 .85rem; font-size: .8rem; line-height: 1.45; color: var(--tx-2); }
 .club-need svg { width: 14px; height: 14px; flex: none; margin-top: .15rem; color: var(--accent); }
 .club-need b { color: var(--tx); font-weight: 600; }
+.card .tg-req { white-space: normal; text-align: left; }   /* long chips (club costs) wrap instead of spilling out of the card */
 .tg-club { color: #f59e0b; border-color: color-mix(in srgb, #f59e0b 40%, transparent); }
 
 /* =========================================================== HACKATHONS */
@@ -758,17 +759,33 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem)
   .hstat:nth-child(3) { border-left: 0; }
 }
 
-/* institution logo marquee */
-.logos { max-width: var(--maxw); margin: .2rem auto 1.4rem; padding: 0 clamp(1rem, 4vw, 2rem); }
-.logos-label { text-align: center; font-size: .74rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--tx-3); margin: 0 0 .85rem; }
-.logos-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
-.logos-track { display: flex; gap: 1.1rem; width: max-content; animation: marquee 120s linear infinite; }
+/* supporters + logos of institutions with listings (renderLogos) */
+.logos { display: flex; align-items: flex-start; max-width: var(--maxw); margin: .4rem auto 1.6rem; padding: 0 clamp(1rem, 4vw, 2rem); }
+.logos-group { min-width: 0; }
+.logos-supporter { flex: none; margin-right: clamp(1.4rem, 3.5vw, 2.6rem); padding-right: clamp(1.4rem, 3.5vw, 2.6rem); border-right: 1px solid var(--line); }
+.logos-from { flex: 1; }
+.logos-label { margin: 0 0 .8rem; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--tx-3); }
+.supporter { display: inline-flex; align-items: center; gap: .65rem; height: 40px; white-space: nowrap; font-size: .9rem; font-weight: 700; letter-spacing: -.01em; line-height: 1.15; color: var(--tx); }
+.supporter img { flex: none; width: 40px; height: 40px; padding: 3px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+.supporter:hover span { text-decoration: underline; text-underline-offset: 3px; }
+.logos-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.logos-track { display: flex; align-items: center; width: max-content; height: 40px; animation: marquee 50s linear infinite; }
 .logos-track:hover { animation-play-state: paused; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.logo-tile { flex: none; display: inline-flex; align-items: center; gap: .5rem; padding: .5rem .9rem; white-space: nowrap; background: var(--card); border: 1px solid var(--line); border-radius: 999px; transition: border-color .15s, transform .15s; }
-.logo-tile:hover { border-color: var(--line-2); transform: translateY(-2px); }
-.logo-tile img { width: 20px; height: 20px; border-radius: 4px; flex: none; }
-.logo-tile span { font-size: .85rem; font-weight: 600; color: var(--tx-2); }
+/* spacing as a right margin (not gap) so both copies are the same width and the loop doesn't jump */
+.inst-logo { flex: none; display: flex; align-items: center; margin-right: clamp(2.4rem, 5vw, 3.6rem); }
+.inst-logo img { display: block; filter: brightness(0); opacity: .45; }
+[data-theme="dark"] .inst-logo img { filter: brightness(0) invert(1); opacity: .5; }
+@media (max-width: 760px) {
+  .logos { flex-direction: column; align-items: center; text-align: center; }
+  .logos-supporter { margin: 0 0 1.1rem; padding: 0 0 1.1rem; border-right: 0; border-bottom: 1px solid var(--line); }
+  .logos-from { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logos-track { flex-wrap: wrap; justify-content: center; width: auto; height: auto; row-gap: 1.2rem; }
+  .logos-track [aria-hidden] { display: none; }
+  .logos-marquee { -webkit-mask-image: none; mask-image: none; }
+}
 /* closing soon: one row of pills, like the search bar and buttons */
 .hero-soon { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .45rem; max-width: 980px; margin: 1.5rem auto 0; }
 .soon-label { display: inline-flex; align-items: center; gap: .45rem; margin-right: .25rem; font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--tx-3); white-space: nowrap; }

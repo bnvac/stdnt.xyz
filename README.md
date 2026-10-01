@@ -1,10 +1,10 @@
 <div align="center">
 
-<a href="https://bnvac.github.io/stdnt.xyz/"><img src=".github/banner.svg" alt="stdnt.xyz: where students get free stuff. 190+ free tools, 120+ scholarships and 180+ STEM programs." width="100%" /></a>
+<a href="https://bnvac.github.io/stdnt.xyz/"><img src=".github/banner.svg" alt="stdnt.xyz: where students get free stuff. 200+ free tools, 130+ scholarships and 180+ STEM programs." width="100%" /></a>
 
 ### Every free thing you can get as a student - in one fast, searchable page.
 
-Tools · **free LLM API keys** · student perks · **120+ scholarships** · **180+ STEM programs**
+Tools · **free LLM API keys** · student perks · **130+ scholarships** · **180+ STEM programs**
 
 <p>
   <a href="https://bnvac.github.io/stdnt.xyz/"><img alt="Open the site" src="https://img.shields.io/badge/open_the_site-stdnt.xyz-4f7cff?style=for-the-badge"></a>
@@ -34,7 +34,7 @@ So this pulls the best of it into **one minimalist site you can actually search*
 - 🔑 **Free API keys** - Gemini, Groq, Cerebras, OpenRouter, Hugging Face, Hack Club AI & more
 - 🚩 **Hack Club** - free hardware, Slack, HCB, Brilliant Premium, CDN…
 - 💻 **Dev / cloud / design / productivity** - JetBrains, Vercel, Figma, Microsoft 365…
-- 💰 **120+ scholarships** - from full-rides to "describe your zombie-apocalypse escape plan"
+- 💰 **130+ scholarships** - from full-rides to "describe your zombie-apocalypse escape plan"
 - 🔬 **180+ STEM programs** - research, internships & summer programs, filterable by grade
 - 🤝 **Clubs & volunteering** - start a DECA, HOSA or Key Club chapter at your school, or volunteer online from age 13
 
