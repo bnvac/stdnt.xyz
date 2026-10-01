@@ -41,12 +41,8 @@
 
   var ICON_CDN = "https://cdn.simpleicons.org/";
   var STAR = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.6 1.1 6.45L12 18.9 6.2 21l1.1-6.45L2.6 9.95l6.5-.95z"/></svg>';
-  // line icons (currentColor, sized by CSS) - used in the hero + hackathons tab
+  // line icons (currentColor, sized by CSS) - used in the hackathons tab
   var SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
-  var ICO_MONEY = SVG + '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5h0M18 14.5h0"/></svg>';
-  var ICO_TROPHY = SVG + '<path d="M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 6H4.5v1A3.5 3.5 0 0 0 8 10.5M17 6h2.5v1A3.5 3.5 0 0 1 16 10.5"/><path d="M9.5 18h5M12 14v4M8.5 21h7"/></svg>';
-  var ICO_CAP = SVG + '<path d="M12 4 2 9l10 5 10-5-10-5z"/><path d="M6 11.3V16c0 1.2 2.7 2.4 6 2.4s6-1.2 6-2.4v-4.7"/><path d="M22 9.2v5"/></svg>';
-  var ICO_CLOCK = SVG + '<circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 1.8"/></svg>';
   var ICO_CAL = SVG + '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>';
   var ICO_PIN = SVG + '<path d="M20 10c0 5.5-8 11-8 11s-8-5.5-8-11a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.6"/></svg>';
   var ICO_GLOBE = SVG + '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15 0 18M12 3c-2.6 2.6-2.6 15 0 18"/></svg>';
@@ -1880,19 +1876,103 @@
     var box = $("#hero-stats"); if (!box) return;
     var dollars = SCH.reduce(function (a, s) { return a + ((s.amount > 0 && s.amount < FULL) ? s.amount : 0); }, 0);
     var cards = [
-      { icon: ICO_MONEY, target: dollars, money: true, label: "in scholarships", cls: " money" },
-      { icon: ICO_TROPHY, target: SCH.length, label: "scholarships", cls: "" },
-      { icon: ICO_CAP, target: PROG.length, label: "STEM programs", cls: "" },
-      { icon: ICO_CLOCK, target: deadlineItems().length, label: "live deadlines", cls: "" }
+      { target: dollars, money: true, label: "in scholarships", cls: " money" },
+      { target: SCH.length, label: "scholarships", cls: "" },
+      { target: PROG.length, label: "STEM programs", cls: "" },
+      { target: deadlineItems().length, label: "live deadlines", cls: "" }
     ];
     box.innerHTML = cards.map(function (c, i) {
       return '<div class="hstat' + c.cls + '" style="animation-delay:' + (i * 70) + 'ms">' +
-        '<b class="hstat-n">' + (c.money ? "$0" : "0") + "</b>" +
-        '<span class="hstat-l"><span class="hstat-ico" aria-hidden="true">' + c.icon + "</span>" + c.label + "</span></div>";
+        '<b class="hstat-n">' + (c.money ? "$0" : "0") + '</b><span class="hstat-l">' + c.label + "</span></div>";
     }).join("");
     var board = $("#hero-board"); if (board) board.hidden = false;
     var nums = box.querySelectorAll(".hstat-n");
     cards.forEach(function (c, i) { if (nums[i]) countUp(nums[i], c.target, !!c.money); });
+  }
+  // ---- hero perks: drawn stand-ins for real listings -----------------
+  // Each links to its listing and shows that listing's deal (no brand logos).
+  // A perk whose listing is gone just drops out.
+  var HERO_PERKS = [
+    { art: "laptop", name: "MacBook & iPad", find: "Apple Education Pricing", deal: "Edu pricing", tilt: -4 },
+    { art: "headphones", name: "Spotify Premium", find: "Spotify Premium Student", tilt: 3 },
+    { art: "gift", name: "GitHub Pack", find: "GitHub Student Developer Pack", tilt: -3 },
+    { art: "sparkle", name: "Google Gemini", find: "Google Gemini for Students", tilt: 4 },
+    { art: "books", name: "Textbooks", find: "OpenStax", deal: "Free", tilt: -2 },
+    { art: "bag", name: "Amazon Prime", find: "Amazon Prime Student", tilt: 3 }
+  ];
+  function pkShade(id) { return '<radialGradient id="' + id + '"><stop offset="0" style="stop-color:var(--pk-shadow)"/><stop offset="1" style="stop-color:var(--pk-shadow);stop-opacity:0"/></radialGradient>'; }
+  function pkGrad(id, a, b, c, dir) {
+    return '<linearGradient id="' + id + '" x1="0" y1="0" x2="' + (dir === "x" ? 1 : dir === "xy" ? 1 : 0) + '" y2="' + (dir === "x" ? 0 : 1) + '">' +
+      '<stop offset="0" stop-color="' + a + '"/>' + (c ? '<stop offset=".55" stop-color="' + b + '"/><stop offset="1" stop-color="' + c + '"/>' : '<stop offset="1" stop-color="' + b + '"/>') + "</linearGradient>";
+  }
+  function pkStar(x, y, r, fill) {   // four-point sparkle centred on x,y
+    var k = r * 0.28;
+    return '<path d="M' + x + " " + (y - r) + "C" + (x + k) + " " + (y - k) + " " + (x + k) + " " + (y - k) + " " + (x + r) + " " + y + "C" + (x + k) + " " + (y + k) + " " + (x + k) + " " + (y + k) + " " + x + " " + (y + r) +
+      "C" + (x - k) + " " + (y + k) + " " + (x - k) + " " + (y + k) + " " + (x - r) + " " + y + "C" + (x - k) + " " + (y - k) + " " + (x - k) + " " + (y - k) + " " + x + " " + (y - r) + 'z" fill="' + fill + '"/>';
+  }
+  var PK = '<svg viewBox="0 0 96 96" focusable="false">';
+  var PERK_ART = {
+    laptop: PK + "<defs>" + pkGrad("pk-l1", "#f3f5f9", "#b1b7c6") + pkGrad("pk-l2", "#4f7cff", "#8b5cf6", "#ec4899", "xy") + pkGrad("pk-l3", "#e8ebf2", "#8e95a7") + pkShade("pk-l4") + "</defs>" +
+      '<ellipse cx="48" cy="81" rx="40" ry="5.5" fill="url(#pk-l4)"/>' +
+      '<rect x="16" y="17" width="64" height="46" rx="5" fill="url(#pk-l1)" stroke="#8f96a8" stroke-opacity=".35" stroke-width=".8"/>' +
+      '<rect x="19" y="20" width="58" height="39" rx="2.5" fill="#10121a"/>' +
+      '<rect x="20.5" y="21.5" width="55" height="36" rx="1.6" fill="url(#pk-l2)"/>' +
+      '<rect x="29" y="28" width="38" height="6" rx="3" fill="#fff" fill-opacity=".92"/>' +
+      '<rect x="29" y="38" width="17.5" height="12" rx="2" fill="#fff" fill-opacity=".38"/><rect x="49.5" y="38" width="17.5" height="12" rx="2" fill="#fff" fill-opacity=".38"/>' +
+      '<path d="M20.5 21.5h29l-17 36h-12z" fill="#fff" fill-opacity=".12"/>' +
+      '<path d="M7 63.5h82l-3.4 6a4 4 0 0 1-3.5 2H13.9a4 4 0 0 1-3.5-2z" fill="url(#pk-l3)" stroke="#8f96a8" stroke-opacity=".35" stroke-width=".8"/>' +
+      '<rect x="39" y="63.5" width="18" height="2.4" rx="1.2" fill="#838a9c"/></svg>',
+    headphones: PK + "<defs>" + pkGrad("pk-h1", "#8b5cf6", "#ec4899", null, "x") + pkGrad("pk-h2", "#3b405e", "#161927") + pkShade("pk-h3") + "</defs>" +
+      '<ellipse cx="48" cy="84" rx="33" ry="5" fill="url(#pk-h3)"/>' +
+      '<path d="M22.5 58V46.5a25.5 25.5 0 0 1 51 0V58" fill="none" stroke="url(#pk-h1)" stroke-width="7" stroke-linecap="round"/>' +
+      '<rect x="12" y="49" width="21" height="31" rx="9" fill="url(#pk-h2)"/><rect x="63" y="49" width="21" height="31" rx="9" fill="url(#pk-h2)"/>' +
+      '<rect x="16.5" y="53.5" width="12" height="22" rx="6" fill="url(#pk-h1)"/><rect x="67.5" y="53.5" width="12" height="22" rx="6" fill="url(#pk-h1)"/>' +
+      '<path d="M15.5 59a8 8 0 0 1 5.5-6.5M66.5 59a8 8 0 0 1 5.5-6.5" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.8" stroke-linecap="round"/>' +
+      '<circle cx="76" cy="27" r="3.4" fill="#4f7cff"/><circle cx="87" cy="24" r="3.4" fill="#4f7cff"/>' +
+      '<path d="M78.4 27V14.5l11-3V24" fill="none" stroke="#4f7cff" stroke-width="2.4" stroke-linejoin="round"/></svg>',
+    gift: PK + "<defs>" + pkGrad("pk-g1", "#5b86ff", "#8b5cf6", null, "xy") + pkGrad("pk-g2", "#8fa9ff", "#a78bfa", null, "x") + pkGrad("pk-g3", "#f472b6", "#db2777") + pkShade("pk-g4") + "</defs>" +
+      '<ellipse cx="48" cy="84" rx="35" ry="5" fill="url(#pk-g4)"/>' +
+      '<rect x="19" y="45" width="58" height="36" rx="5" fill="url(#pk-g1)"/>' +
+      '<rect x="15" y="34" width="66" height="15" rx="4" fill="url(#pk-g2)"/>' +
+      '<rect x="43" y="34" width="10" height="47" fill="url(#pk-g3)"/>' +
+      '<path d="M48 34c-4-9-16-13-18-6-1.6 5.6 9 6.6 18 6zM48 34c4-9 16-13 18-6 1.6 5.6-9 6.6-18 6z" fill="url(#pk-g3)"/>' +
+      '<circle cx="48" cy="33.5" r="3.6" fill="#f9a8d4"/>' +
+      '<rect x="19" y="37.5" width="20" height="3" rx="1.5" fill="#fff" fill-opacity=".4"/>' +
+      pkStar(82, 20, 7, "#f5b83d") + pkStar(13, 22, 4.5, "#f5b83d") + "</svg>",
+    sparkle: PK + "<defs>" + pkGrad("pk-s1", "#4f7cff", "#8b5cf6", "#ec4899", "xy") +
+      '<radialGradient id="pk-s2"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".4"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>' + pkShade("pk-s3") + "</defs>" +
+      '<ellipse cx="46" cy="85" rx="26" ry="4.5" fill="url(#pk-s3)"/>' +
+      '<circle cx="44" cy="42" r="36" fill="url(#pk-s2)"/>' +
+      pkStar(44, 41, 30, "url(#pk-s1)") + pkStar(76, 66, 12, "url(#pk-s1)") + pkStar(19, 67, 7, "#f5b83d") + "</svg>",
+    books: PK + "<defs>" + pkGrad("pk-b1", "#6d8fff", "#3f63e6") + pkGrad("pk-b2", "#a78bfa", "#7c3aed") + pkGrad("pk-b3", "#f472b6", "#db2777") + pkShade("pk-b4") + "</defs>" +
+      '<ellipse cx="48" cy="84" rx="37" ry="5" fill="url(#pk-b4)"/>' +
+      '<rect x="12" y="63" width="70" height="17" rx="3.5" fill="url(#pk-b1)"/><rect x="72" y="66" width="7" height="11" rx="1.5" fill="#eef0f6"/><rect x="20" y="63" width="3.5" height="17" fill="#fff" fill-opacity=".28"/>' +
+      '<rect x="18" y="46" width="62" height="17" rx="3.5" fill="url(#pk-b2)"/><rect x="21" y="49" width="7" height="11" rx="1.5" fill="#eef0f6"/><rect x="68" y="46" width="3.5" height="17" fill="#fff" fill-opacity=".28"/>' +
+      '<g transform="rotate(-5 47 38)"><rect x="15" y="29" width="64" height="17" rx="3.5" fill="url(#pk-b3)"/><rect x="69" y="32" width="7" height="11" rx="1.5" fill="#eef0f6"/>' +
+      '<rect x="24" y="29" width="3.5" height="17" fill="#fff" fill-opacity=".28"/><path d="M54 29v13l3.2-2.4 3.2 2.4V29z" fill="#f5b83d"/></g></svg>',
+    bag: PK + "<defs>" + pkGrad("pk-t1", "#fbbf24", "#f97316", null, "xy") + pkShade("pk-t2") + "</defs>" +
+      '<ellipse cx="46" cy="85" rx="31" ry="5" fill="url(#pk-t2)"/>' +
+      '<path d="M35 40v-8a12 12 0 0 1 24 0v8" fill="none" stroke="#c2410c" stroke-width="4" stroke-linecap="round"/>' +
+      '<path d="M20 38h54l-3.6 40.3a4 4 0 0 1-4 3.7H27.6a4 4 0 0 1-4-3.7z" fill="url(#pk-t1)"/>' +
+      '<path d="M20 38h54l-.45 5H20.45z" fill="#fff" fill-opacity=".25"/>' +
+      '<circle cx="35" cy="46" r="2" fill="#9a3412"/><circle cx="59" cy="46" r="2" fill="#9a3412"/>' +
+      '<g transform="rotate(14 70 62)"><path d="M60 52h16.5a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H60l-7-10z" fill="#fff"/><circle cx="59.5" cy="62" r="1.8" fill="#f97316"/>' +
+      '<g fill="none" stroke="#ec4899" stroke-width="1.8" stroke-linecap="round"><circle cx="65.5" cy="58" r="2.2"/><circle cx="73.5" cy="66" r="2.2"/><path d="M74 57l-9 10"/></g></g></svg>'
+  };
+  function renderHeroPerks() {
+    var box = $("#hero-perks"); if (!box) return;
+    var pool = RES.concat(DISCOUNTS);
+    var html = HERO_PERKS.map(function (p) {
+      var hits = pool.filter(function (x) { return x.name === p.find && !gone(x); });
+      if (!hits.length) return "";
+      var deal = p.deal || (hits.filter(function (x) { return x.value; })[0] || {}).value || "";
+      return '<a class="perk" href="' + esc(hits[0].url) + '" target="_blank" rel="noopener" style="--tilt:' + p.tilt + 'deg">' +
+        '<span class="perk-art" aria-hidden="true"><span class="perk-float">' + PERK_ART[p.art] + "</span></span>" +
+        '<span class="perk-name">' + esc(p.name) + "</span>" + (deal ? '<span class="perk-deal">' + esc(deal) + "</span>" : "") + "</a>";
+    }).join("");
+    if (!html) return;
+    box.innerHTML = '<p class="perks-label">A few things you can get</p><div class="perks-row">' + html + "</div>";
+    box.hidden = false;
   }
   var INSTITUTIONS = [
     { name: "MIT", domain: "mit.edu" }, { name: "Stanford", domain: "stanford.edu" }, { name: "Harvard", domain: "harvard.edu" },
@@ -1925,18 +2005,15 @@
     var box = $("#hero-soon"); if (!box) return;
     var all = deadlineItems().filter(function (it) { return it.info.days >= 0; });
     if (!all.length) { box.hidden = true; return; }
-    var items = all.slice(0, 4).map(function (it) {
+    var items = all.slice(0, 3).map(function (it) {
       var d = it.info.days, mon = DL_MON[it.info.date.getMonth()];
-      // month-only deadlines get no made-up day: "Late Sep" keeps its wording, a bare "Oct" reads "Sometime in October"
-      var rough = /\b(early|mid|late|opens)\b|~/i.test(it.deadline) ? esc(it.deadline) : "Sometime in " + MONTHS_LONG[it.info.date.getMonth()];
-      var when = !it.info.exact ? rough : d === 0 ? "Today" : d === 1 ? "Tomorrow" : "In " + d + " days";
-      return '<a class="soon-item" href="' + esc(it.url) + '" target="_blank" rel="noopener"' + (it.info.exact ? ' title="' + mon + " " + it.info.date.getDate() + '"' : "") + ">" +
-        '<span class="soon-date" aria-hidden="true">' + (it.info.exact ? "<b>" + it.info.date.getDate() + "</b><i>" + mon + "</i>" : "<b>" + mon + "</b>") + "</span>" +
-        '<span class="soon-txt"><span class="soon-name">' + esc(it.name) + '</span><span class="soon-in' + (it.info.exact && d <= 3 ? " urgent" : "") + '">' + when + "</span></span></a>";
+      // month-only deadlines ("Oct", "Late Sep") show just the month, never a made-up day
+      var when = !it.info.exact ? mon : d === 0 ? "Today" : d === 1 ? "Tomorrow" : mon + " " + it.info.date.getDate();
+      return '<a class="soon-chip" href="' + esc(it.url) + '" target="_blank" rel="noopener"' + (it.info.exact ? "" : ' title="' + esc(it.deadline) + '"') + ">" +
+        '<span class="soon-when' + (it.info.exact && d <= 3 ? " urgent" : "") + '">' + when + '</span><span class="soon-name">' + esc(it.name) + "</span></a>";
     }).join("");
-    box.innerHTML = '<div class="soon-head"><span class="soon-label"><span class="soon-dot" aria-hidden="true"></span>Closing soon</span>' +
-      '<a class="soon-all" href="#deadlines">All ' + all.length + " deadlines &rarr;</a></div>" +
-      '<div class="soon-list">' + items + "</div>";
+    box.innerHTML = '<span class="soon-label"><span class="soon-dot" aria-hidden="true"></span>Closing soon</span>' + items +
+      '<a class="soon-all" href="#deadlines">All ' + all.length + " &rarr;</a>";
     box.hidden = false;
     var board = $("#hero-board"); if (board) board.hidden = false;
   }
@@ -2002,6 +2079,7 @@
   loadLinkStatus();
   renderHero();
   renderHeroStats();
+  renderHeroPerks();
   renderLogos();
   wire();
   wireGuideOverlay();
