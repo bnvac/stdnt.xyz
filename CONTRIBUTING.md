@@ -6,7 +6,7 @@ There are **two ways** to contribute, and **both credit you** automatically.
 
 ## 1. The easy way - fill out a form (no coding)
 
-Go to the **[Contribute page](https://bnvac.github.io/stdnt.xyz/#contribute)** on
+Go to the **[Contribute page](https://stdnt.xyz/#contribute)** on
 the site, or open a [new issue](https://github.com/bnvac/stdnt.xyz/issues/new/choose)
 and pick a category:
 

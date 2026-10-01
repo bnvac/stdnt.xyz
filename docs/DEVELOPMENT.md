@@ -117,18 +117,23 @@ Two are rendered by hand when needed: the share images and icons
 
 ## Deploying
 
-The *Build and deploy site* workflow publishes to GitHub Pages. One-time setup:
-**Settings → Pages → Source: GitHub Actions**. Until that's set, the workflow
-skips the deploy with a notice and Pages serves the repo root, where a
-temporary `index.html` forwards visitors to `site/`. Delete that file and
-`.nojekyll` once the source is switched.
+The *Build and deploy site* workflow publishes `site/` to GitHub Pages on every
+push to `main` and daily. It relies on two settings:
 
-To serve it at stdnt.xyz, add the domain under **Settings → Pages → Custom
-domain** (deploys from Actions don't need a `CNAME` file), point its DNS at
-GitHub Pages (`A` records for `185.199.108.153`, `185.199.109.153`,
-`185.199.110.153` and `185.199.111.153`, plus a `CNAME` from `www` to
-`bnvac.github.io`), then tick **Enforce HTTPS**. Canonical URLs, the sitemap
-and the feeds already use `https://stdnt.xyz` (`SITE` in `scripts/lib/data.mjs`).
+- **Settings → Pages → Source: GitHub Actions.** If the source is anything
+  else, the workflow skips the deploy with a notice instead of failing.
+- **Settings → Environments → github-pages** must allow deployments from
+  `main`. If you ever rename the default branch, update this rule too: until
+  you do, every deploy fails within a second with "not allowed to deploy to
+  github-pages due to environment protection rules".
+
+The site is served at https://stdnt.xyz. The domain is set under **Settings →
+Pages → Custom domain** (deploys from Actions don't need a `CNAME` file), its
+DNS points at GitHub Pages (`A` records for `185.199.108.153`,
+`185.199.109.153`, `185.199.110.153` and `185.199.111.153`, plus a `CNAME`
+from `www` to `bnvac.github.io`), and **Enforce HTTPS** is on. Canonical URLs,
+the sitemap and the feeds use `https://stdnt.xyz` (`SITE` in
+`scripts/lib/data.mjs`).
 
 ## Newsletter and email reminders
 

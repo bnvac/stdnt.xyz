@@ -1,13 +1,13 @@
 <div align="center">
 
-<a href="https://bnvac.github.io/stdnt.xyz/"><img src=".github/banner.svg" alt="stdnt.xyz: where students get free stuff. 200+ free tools, 130+ scholarships and 180+ STEM programs." width="100%" /></a>
+<a href="https://stdnt.xyz/"><img src=".github/banner.svg" alt="stdnt.xyz: where students get free stuff. 200+ free tools, 130+ scholarships and 180+ STEM programs." width="100%" /></a>
 
 ### Every free thing you can get as a student - in one fast, searchable page.
 
 Tools · **free LLM API keys** · student perks · **130+ scholarships** · **180+ STEM programs**
 
 <p>
-  <a href="https://bnvac.github.io/stdnt.xyz/"><img alt="Open the site" src="https://img.shields.io/badge/open_the_site-stdnt.xyz-4f7cff?style=for-the-badge"></a>
+  <a href="https://stdnt.xyz/"><img alt="Open the site" src="https://img.shields.io/badge/open_the_site-stdnt.xyz-4f7cff?style=for-the-badge"></a>
   <a href="https://github.com/bnvac/stdnt.xyz/issues/new/choose"><img alt="Add a freebie" src="https://img.shields.io/badge/add_a_freebie-no_coding-8b5cf6?style=for-the-badge"></a>
 </p>
 
@@ -69,7 +69,7 @@ So this pulls the best of it into **one minimalist site you can actually search*
 
 Two ways, **both credit you automatically**:
 
-1. **No coding** - open the [Contribute page](https://bnvac.github.io/stdnt.xyz/#contribute)
+1. **No coding** - open the [Contribute page](https://stdnt.xyz/#contribute)
    or pick a category at [New issue](https://github.com/bnvac/stdnt.xyz/issues/new/choose).
    Each is a short form (tool, scholarship, program, competition, club, discount, or a
    fix report). Submit it and it becomes a tracked, labelled issue.
