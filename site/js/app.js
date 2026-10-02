@@ -894,15 +894,13 @@
     ["hackathons", "Hackathons", function () { return hackathonsFiltered().length; }, function () { return HACKATHONS.length; }]
   ];
   function syncSearch() {
-    var q = state.q, others = [], more = 0;
+    var q = state.q, others = [];
     SEARCHABLE.forEach(function (s) {
       var n = q ? s[2]() : s[3](), el = $("#n-" + s[0]);
       if (el) { el.textContent = n; el.parentNode.classList.toggle("tab-miss", !!q && n === 0); }
-      if (!q || !n) return;
-      if (OVERFLOW[s[0]]) more += n;
-      if (s[0] !== state.tab) others.push('<button class="xs-chip" type="button" data-xs="' + s[0] + '">' + esc(s[1]) + ' <span class="xs-n">' + n + "</span></button>");
+      if (q && n && s[0] !== state.tab) others.push('<button class="xs-chip" type="button" data-xs="' + s[0] + '">' + esc(s[1]) + ' <span class="xs-n">' + n + "</span></button>");
     });
-    var mn = $("#more-n"); if (mn) { mn.textContent = more; mn.hidden = !more; }
+    fitTabs();   // new counts change the tabs' widths
     var box = $("#xsearch"); if (!box) return;
     box.hidden = !others.length;
     box.innerHTML = others.length ? '<span class="xs-lead">Also matching &ldquo;' + esc(q) + "&rdquo;</span>" + others.join("") : "";
@@ -974,9 +972,9 @@
     document.querySelectorAll(".filterset").forEach(function (f) { f.hidden = f.dataset.for !== tab; });
     ["tools", "discounts", "sch", "prog", "competitions", "clubs", "deadlines", "new", "foryou", "saved", "guides", "templates", "hackathons", "contribute", "about"].forEach(function (t) { $("#panel-" + t).hidden = t !== tab; });
     document.title = (TAB_TITLES[tab] ? TAB_TITLES[tab] + " · " : "") + "stdnt.xyz";
-    var moreBtn = $("#more-btn"); if (moreBtn) moreBtn.classList.toggle("is-active", !!OVERFLOW[tab]);
-    closeMore();
-    var bar = $(".tabs"), on = OVERFLOW[tab] ? moreBtn : $('.tabs > .tab[data-tab="' + tab + '"]');
+    var moreBtn = $("#more-btn"), tucked = inMenu(tab); if (moreBtn) moreBtn.classList.toggle("is-active", tucked);
+    closeMore(); closeNav();
+    var bar = $(".tabs"), on = tucked ? moreBtn : $('.tabs > .tab[data-tab="' + tab + '"]');
     if (bar && on && bar.scrollWidth > bar.clientWidth) bar.scrollLeft += on.getBoundingClientRect().left - bar.getBoundingClientRect().left - (bar.clientWidth - on.offsetWidth) / 2;
     search.placeholder = tab === "tools" ? "Search tools, APIs, perks..." :
       tab === "discounts" ? "Search student discounts..." :
@@ -1047,11 +1045,13 @@
       $("#tools-access").querySelectorAll(".seg").forEach(function (s) { s.classList.toggle("is-active", s.dataset.access === "all"); });
       render();
     });
-    // hero announcement / CTA buttons jump to a tab
+    // hero buttons and the header links jump to a tab; a modified click on a link
+    // still opens its #section in a new tab
     document.addEventListener("click", function (e) {
       var g = e.target.closest("[data-goto]"); if (!g) return;
+      if (g.tagName === "A") { if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; e.preventDefault(); }
       switchTab(g.dataset.goto);
-      var nav = document.querySelector(".tabs"); if (nav) nav.scrollIntoView({ behavior: "smooth", block: "start" });
+      var bar = $(".tabs-bar"); if (bar) bar.scrollIntoView({ behavior: "smooth", block: "start" });
     });
     // quiz answers
     var qf = $("#quiz-form");
@@ -1301,14 +1301,103 @@
     return false;
   }
   var TAB_HASHES = { tools: 1, discounts: 1, sch: 1, prog: 1, competitions: 1, clubs: 1, deadlines: 1, new: 1, foryou: 1, saved: 1, guides: 1, templates: 1, hackathons: 1, contribute: 1, about: 1 };
-  var OVERFLOW = { guides: 1, templates: 1, hackathons: 1, contribute: 1, about: 1 };   // tabs tucked into the "More" menu
   var TAB_TITLES = { tools: "Free tools & perks", discounts: "Student discounts", sch: "Scholarships", prog: "STEM programs", competitions: "Competitions", clubs: "Clubs & volunteering", deadlines: "Deadlines", new: "New listings", foryou: "Find your matches", saved: "Saved", guides: "Guides", templates: "Templates", hackathons: "Hackathons", contribute: "Contribute", about: "About" };
   function closeMore() { var m = $("#tab-menu"), b = $("#more-btn"); if (m && !m.hidden) { m.hidden = true; if (b) b.setAttribute("aria-expanded", "false"); } }
+  function inMenu(tab) { return !!document.querySelector('#tab-menu [data-tab="' + tab + '"]'); }
+  // The bar shows as many tabs as fit, in order; the rest move to the top of the More menu
+  // (Guides, Templates, Hackathons, Contribute and About always live there). Phones keep
+  // every tab in the bar and scroll it sideways instead.
+  // Only tabs that change place are moved (moving a node drops its focus). Each tab is
+  // measured as a hidden copy in the bar, so it gets its bar width (not its stretched or
+  // menu width) wherever it sits.
+  var BAR_TABS = null;
+  function barWidth(t, bar, more) {
+    var c = t.cloneNode(true);
+    c.querySelectorAll("[id]").forEach(function (e) { e.removeAttribute("id"); });
+    c.style.cssText = "position:absolute;visibility:hidden;pointer-events:none";
+    bar.insertBefore(c, more);
+    var w = c.offsetWidth;
+    bar.removeChild(c);
+    return w;
+  }
+  function fitTabs() {
+    var bar = $(".tabs"), more = $(".tab-more"), menu = $("#tab-menu");
+    if (!bar || !more || !menu || !bar.offsetParent) { syncMore(); return; }   // not laid out (hidden, or no layout engine)
+    if (!BAR_TABS) BAR_TABS = [].slice.call(bar.querySelectorAll(".tab"));
+    var cut = BAR_TABS.length;
+    if (window.innerWidth > 640) {
+      var room = bar.clientWidth - parseFloat(getComputedStyle(bar).paddingLeft) - more.offsetWidth, used = 0;
+      for (var i = 0; i < BAR_TABS.length; i++) { used += barWidth(BAR_TABS[i], bar, more); if (used > room) { cut = i; break; } }
+    }
+    // the bar always holds a run from the start, so tabs re-enter at its end and leave from it
+    BAR_TABS.forEach(function (t, i) { if (i < cut && t.parentNode !== bar) { bar.insertBefore(t, more); t.setAttribute("role", "tab"); } });
+    for (var j = BAR_TABS.length - 1; j >= cut; j--) {
+      var t = BAR_TABS[j];
+      if (t.parentNode !== menu) { menu.insertBefore(t, menu.firstElementChild); t.setAttribute("role", "menuitem"); }
+    }
+    syncMore();
+  }
+  // More lights up when the active tab is in its menu; while searching it counts the matches in there
+  function syncMore() {
+    var mb = $("#more-btn"); if (mb) mb.classList.toggle("is-active", inMenu(state.tab));
+    var n = 0;
+    if (state.q) document.querySelectorAll("#tab-menu .tab-n").forEach(function (el) { n += +el.textContent || 0; });
+    var mn = $("#more-n"); if (mn) { mn.textContent = n; mn.hidden = !n; }
+  }
   function wireMore() {
     var btn = $("#more-btn"), menu = $("#tab-menu"); if (!btn || !menu) return;
     btn.addEventListener("click", function (e) { e.stopPropagation(); var open = menu.hidden; menu.hidden = !open; btn.setAttribute("aria-expanded", String(open)); });
     document.addEventListener("click", function (e) { if (!menu.hidden && !e.target.closest(".tab-more, .tab-menu")) closeMore(); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMore(); });
+  }
+  // ---- header links: as many as fit sit in the bar, the rest fold into More ----
+  // (all of them on phones, where the button reads Menu)
+  function closeNav() { var m = $("#nav-menu"), b = $("#nav-btn"); if (m && !m.hidden) { m.hidden = true; if (b) b.setAttribute("aria-expanded", "false"); } }
+  function fitNav() {
+    var row = $("#hdr-links"), wrap = $("#nav-more"); if (!row || !wrap || !row.offsetParent) return;
+    var links = [].slice.call(row.querySelectorAll(".hdr-link")), items = [].slice.call(document.querySelectorAll("#nav-menu .nav-item"));
+    links.forEach(function (a) { a.hidden = false; });
+    wrap.hidden = true;
+    var cut = links.length;
+    if (row.scrollWidth > row.clientWidth) {
+      wrap.hidden = false;   // the row shrinks to make room for the button
+      var room = row.clientWidth, used = 0;
+      for (var i = 0; i < links.length; i++) {
+        used += links[i].offsetWidth + (parseFloat(getComputedStyle(links[i]).marginLeft) || 0);
+        if (used > room) { cut = i; break; }
+      }
+    }
+    links.forEach(function (a, i) { a.hidden = i >= cut; });
+    items.forEach(function (a, i) { a.hidden = i < cut; });
+    document.querySelectorAll("#nav-menu .nav-group").forEach(function (g) { g.hidden = !g.querySelector(".nav-item:not([hidden])"); });
+    $("#nav-btn-l").textContent = cut ? "More" : "Menu";
+  }
+  function wireNav() {
+    var btn = $("#nav-btn"), menu = $("#nav-menu");
+    if (btn && menu) {
+      btn.addEventListener("click", function (e) { e.stopPropagation(); var open = menu.hidden; menu.hidden = !open; btn.setAttribute("aria-expanded", String(open)); });
+      document.addEventListener("click", function (e) { if (!menu.hidden && !e.target.closest(".nav-more")) closeNav(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeNav(); });
+    }
+    // refit on width changes only (phones fire resize when the address bar slides)
+    var lastW = window.innerWidth, raf = 0;
+    window.addEventListener("resize", function () {
+      if (window.innerWidth === lastW) return;
+      lastW = window.innerWidth;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () { closeNav(); closeMore(); fitNav(); fitTabs(); });
+    });
+    // web fonts change every width, so fit again whenever one finishes loading
+    var refit = function () { fitNav(); fitTabs(); };
+    if (document.fonts) {
+      if (document.fonts.ready) document.fonts.ready.then(refit);
+      if (document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", refit);
+    }
+    window.addEventListener("load", refit);
+    // the view count arrives late and the Saved count grows, both widening the right side
+    var right = $(".hdr-right");
+    if (right && window.ResizeObserver) new ResizeObserver(function () { fitNav(); }).observe(right);
+    fitNav();
   }
   function routeHash() {
     if (routeGuideHash()) return true;
@@ -1887,24 +1976,34 @@
   // Each links to its listing and shows that listing's deal (no brand logos).
   // A perk whose listing is gone just drops out.
   var HERO_PERKS = [
-    { art: "laptop", name: "MacBook & iPad", find: "Apple Education Pricing", deal: "Edu pricing" },
-    { art: "headphones", name: "Spotify Premium", find: "Spotify Premium Student" },
-    { art: "gift", name: "GitHub Pack", find: "GitHub Student Developer Pack" },
-    { art: "sparkle", name: "Google Gemini", find: "Google Gemini for Students" },
-    { art: "books", name: "Textbooks", find: "OpenStax", deal: "Free" },
-    { art: "bag", name: "Amazon Prime", find: "Amazon Prime Student" }
+    { art: "laptop", tint: "#6b8cff", name: "MacBook & iPad", find: "Apple Education Pricing", deal: "Edu pricing" },
+    { art: "headphones", tint: "#34d399", name: "Spotify Premium", find: "Spotify Premium Student" },
+    { art: "gift", tint: "#f472b6", name: "GitHub Pack", find: "GitHub Student Developer Pack" },
+    { art: "sparkle", tint: "#a78bfa", name: "Google Gemini", find: "Google Gemini for Students" },
+    { art: "books", tint: "#fbbf24", name: "Textbooks", find: "OpenStax", deal: "Free" },
+    { art: "bag", tint: "#fb923c", name: "Amazon Prime", find: "Amazon Prime Student" }
   ];
-  // one line-icon set on a 24 grid: 1.6 stroke, round caps and joins, black on a white tile (CSS)
-  var PK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">';
+  // one line-icon set on a 24 grid: 1.6 stroke, round caps and joins, with a soft fill of the
+  // same color behind the main shape. CSS sets the color (the perk's tint) and the black tile.
+  function pk(fill, line) {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">' +
+      '<g fill="currentColor" fill-opacity=".2" stroke="none">' + fill + "</g>" + line + "</svg>";
+  }
+  var BOOK = "M12 6.5c-2-1.25-4.5-1.75-8.25-1.75a.75.75 0 0 0-.75.75v11.75c0 .41.34.75.75.75 3.75 0 6.25.5 8.25 1.75 2-1.25 4.5-1.75 8.25-1.75" +
+    ".41 0 .75-.34.75-.75V5.5a.75.75 0 0 0-.75-.75c-3.75 0-6.25.5-8.25 1.75z";
+  var STAR = "M11 4.5Q12.5 11.5 19.5 13Q12.5 14.5 11 21.5Q9.5 14.5 2.5 13Q9.5 11.5 11 4.5z";
+  var BAG = "M5 7.5h14v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z";
+  var SCREEN = '<rect x="4" y="5" width="16" height="11" rx="2"/>';
+  var CUPS = '<rect x="4" y="13.25" width="4.75" height="6.5" rx="1.75"/><rect x="15.25" y="13.25" width="4.75" height="6.5" rx="1.75"/>';
   var PERK_ART = {
-    laptop: PK + '<rect x="4" y="5" width="16" height="11" rx="2"/><path d="M2.5 19h19"/></svg>',
-    headphones: PK + '<path d="M4 16v-3.75a8 8 0 0 1 16 0V16"/><rect x="4" y="13.25" width="4.75" height="6.5" rx="1.75"/><rect x="15.25" y="13.25" width="4.75" height="6.5" rx="1.75"/></svg>',
-    gift: PK + '<rect x="3.5" y="7.5" width="17" height="4" rx="1"/><path d="M5 11.5v7.25c0 .97.78 1.75 1.75 1.75h10.5c.97 0 1.75-.78 1.75-1.75V11.5M12 7.5v13' +
-      'M12 7.5c-.9-2.6-2.6-4.25-4.25-4.25a2.125 2.125 0 0 0 0 4.25M12 7.5c.9-2.6 2.6-4.25 4.25-4.25a2.125 2.125 0 0 1 0 4.25"/></svg>',
-    sparkle: PK + '<path d="M11 4.5Q12.5 11.5 19.5 13Q12.5 14.5 11 21.5Q9.5 14.5 2.5 13Q9.5 11.5 11 4.5z"/><path d="M19 2.75v4.5M16.75 5h4.5"/></svg>',
-    books: PK + '<path d="M12 6.5c-2-1.25-4.5-1.75-8.25-1.75a.75.75 0 0 0-.75.75v11.75c0 .41.34.75.75.75 3.75 0 6.25.5 8.25 1.75 2-1.25 4.5-1.75 8.25-1.75' +
-      '.41 0 .75-.34.75-.75V5.5a.75.75 0 0 0-.75-.75c-3.75 0-6.25.5-8.25 1.75zM12 6.5v13.25"/></svg>',
-    bag: PK + '<path d="M5 7.5h14v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M9 10.5v-4a3 3 0 0 1 6 0v4"/></svg>'
+    laptop: pk(SCREEN, SCREEN + '<path d="M2.5 19h19"/>'),
+    headphones: pk(CUPS, '<path d="M4 16v-3.75a8 8 0 0 1 16 0V16"/>' + CUPS),
+    gift: pk('<path d="M5 11.5h14v7.25c0 .97-.78 1.75-1.75 1.75H6.75C5.78 20.5 5 19.72 5 18.75z"/>',
+      '<rect x="3.5" y="7.5" width="17" height="4" rx="1"/><path d="M5 11.5v7.25c0 .97.78 1.75 1.75 1.75h10.5c.97 0 1.75-.78 1.75-1.75V11.5M12 7.5v13' +
+      'M12 7.5c-.9-2.6-2.6-4.25-4.25-4.25a2.125 2.125 0 0 0 0 4.25M12 7.5c.9-2.6 2.6-4.25 4.25-4.25a2.125 2.125 0 0 1 0 4.25"/>'),
+    sparkle: pk('<path d="' + STAR + '"/>', '<path d="' + STAR + '"/><path d="M19 2.75v4.5M16.75 5h4.5"/>'),
+    books: pk('<path d="' + BOOK + '"/>', '<path d="' + BOOK + 'M12 6.5v13.25"/>'),
+    bag: pk('<path d="' + BAG + '"/>', '<path d="' + BAG + '"/><path d="M9 10.5v-4a3 3 0 0 1 6 0v4"/>')
   };
   function renderHeroPerks() {
     var box = $("#hero-perks"); if (!box) return;
@@ -1914,7 +2013,7 @@
       if (!hits.length) return "";
       var deal = p.deal || (hits.filter(function (x) { return x.value; })[0] || {}).value || "";
       return '<a class="perk" href="' + esc(hits[0].url) + '" target="_blank" rel="noopener">' +
-        '<span class="perk-art" aria-hidden="true">' + PERK_ART[p.art] + "</span>" +
+        '<span class="perk-art" style="--tint:' + p.tint + '" aria-hidden="true">' + PERK_ART[p.art] + "</span>" +
         '<span class="perk-name">' + esc(p.name) + "</span>" + (deal ? '<span class="perk-deal">' + esc(deal) + "</span>" : "") +
         '<span class="perk-get">Get</span></a>';
     }).join("");
@@ -1936,7 +2035,7 @@
     var t = $("#logos-track"); if (!t) return;
     function row(copy) {
       return INSTITUTIONS.map(function (o) {
-        var h = Math.round(Math.min(34, Math.max(15, 26 * Math.pow(4 / o.ratio, 0.4))));
+        var h = Math.round(Math.min(40, Math.max(22, 36 * Math.pow(4 / o.ratio, 0.4))));
         return '<span class="inst-logo"' + (copy ? ' aria-hidden="true"' : "") + '><img src="assets/brands/' + o.logo + '.svg" alt="' + (copy ? "" : esc(o.name)) +
           '" height="' + h + '" width="' + Math.round(h * o.ratio) + '" /></span>';
       }).join("");
@@ -1944,17 +2043,31 @@
     t.innerHTML = row(false) + row(true);   // a second copy makes the marquee loop seamlessly
   }
   // ---- hero logo wheel: app icons of listed tools, drifting in rows ----
+  // Each icon opens its listing. The wheel is aria-hidden and its links skip the tab order:
+  // every one of these listings is reachable from the Tools tab.
   var WHEEL = ["github", "notion", "figma", "spotify", "googlegemini", "jetbrains", "cursor", "perplexity", "replit", "vercel",
     "digitalocean", "cloudflare", "supabase", "mongodb", "overleaf", "khanacademy", "coursera", "quizlet", "anki", "obsidian",
     "postman", "blender", "autodesk", "huggingface", "kaggle", "apple", "zoom", "miro", "framer", "codecademy",
     "freecodecamp", "hackclub", "googlecolab", "zotero", "davinciresolve", "netlify"];
+  var WHEEL_PICK = { hackclub: "Hack Club" };   // the listing an icon opens when several share it (default: the first)
+  // brand colors too dark to see on the black tiles; these draw white instead
+  var SI_DARK = { github: 1, notion: 1, jetbrains: 1, cursor: 1, vercel: 1, autodesk: 1, apple: 1, miro: 1, codecademy: 1, freecodecamp: 1, davinciresolve: 1 };
   function renderIconWheel() {
     var box = $("#icon-wheel"); if (!box) return;
-    var slugs = WHEEL.filter(function (s) { return LOGOS.si && LOGOS.si[s]; });
-    if (slugs.length < 9) return;
-    var per = Math.ceil(slugs.length / 3), rows = [0, 1, 2].map(function (i) { return slugs.slice(i * per, (i + 1) * per); });
+    var pool = RES.concat(DISCOUNTS);
+    var apps = WHEEL.map(function (s) {
+      if (!LOGOS.si || !LOGOS.si[s]) return null;
+      var hits = pool.filter(function (x) { return x.slug === s && !gone(x); });
+      var x = hits.filter(function (h) { return h.name === WHEEL_PICK[s]; })[0] || hits[0];
+      return x ? { slug: s, name: x.name, url: x.url } : null;
+    }).filter(Boolean);
+    if (apps.length < 9) return;
+    var per = Math.ceil(apps.length / 3), rows = [0, 1, 2].map(function (i) { return apps.slice(i * per, (i + 1) * per); });
     function tiles(row) {
-      return row.map(function (s) { return '<span class="wheel-tile"><span class="wheel-app"><img src="logos/si/' + s + '.svg" alt="" width="30" height="30" /></span></span>'; }).join("");
+      return row.map(function (a) {
+        return '<a class="wheel-tile' + (SI_DARK[a.slug] ? " is-ink" : "") + '" href="' + esc(a.url) + '" target="_blank" rel="noopener" title="' + esc(a.name) + '" tabindex="-1">' +
+          '<img src="logos/si/' + a.slug + '.svg" alt="" width="38" height="38" /></a>';
+      }).join("");
     }
     // two copies per row so the drift loops without a jump
     box.innerHTML = rows.map(function (row, i) {
@@ -2056,6 +2169,7 @@
   wireNewsletter();
   wireMediaKit();
   wireMore();
+  wireNav();
   initViews();
   (function () {
     var hdr = document.querySelector(".hdr"); if (!hdr) return;
