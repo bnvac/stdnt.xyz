@@ -1894,64 +1894,17 @@
     { art: "books", name: "Textbooks", find: "OpenStax", deal: "Free" },
     { art: "bag", name: "Amazon Prime", find: "Amazon Prime Student" }
   ];
-  function pkShade(id) { return '<radialGradient id="' + id + '"><stop offset="0" style="stop-color:var(--pk-shadow)"/><stop offset="1" style="stop-color:var(--pk-shadow);stop-opacity:0"/></radialGradient>'; }
-  function pkGrad(id, a, b, c, dir) {
-    return '<linearGradient id="' + id + '" x1="0" y1="0" x2="' + (dir === "x" ? 1 : dir === "xy" ? 1 : 0) + '" y2="' + (dir === "x" ? 0 : 1) + '">' +
-      '<stop offset="0" stop-color="' + a + '"/>' + (c ? '<stop offset=".55" stop-color="' + b + '"/><stop offset="1" stop-color="' + c + '"/>' : '<stop offset="1" stop-color="' + b + '"/>') + "</linearGradient>";
-  }
-  function pkStar(x, y, r, fill) {   // four-point sparkle centred on x,y
-    var k = r * 0.28;
-    return '<path d="M' + x + " " + (y - r) + "C" + (x + k) + " " + (y - k) + " " + (x + k) + " " + (y - k) + " " + (x + r) + " " + y + "C" + (x + k) + " " + (y + k) + " " + (x + k) + " " + (y + k) + " " + x + " " + (y + r) +
-      "C" + (x - k) + " " + (y + k) + " " + (x - k) + " " + (y + k) + " " + (x - r) + " " + y + "C" + (x - k) + " " + (y - k) + " " + (x - k) + " " + (y - k) + " " + x + " " + (y - r) + 'z" fill="' + fill + '"/>';
-  }
-  var PK = '<svg viewBox="0 0 96 96" focusable="false">';
+  // one line-icon set on a 24 grid: 1.6 stroke, round caps and joins, black on a white tile (CSS)
+  var PK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">';
   var PERK_ART = {
-    laptop: PK + "<defs>" + pkGrad("pk-l1", "#f3f5f9", "#b1b7c6") + pkGrad("pk-l2", "#4f7cff", "#8b5cf6", "#ec4899", "xy") + pkGrad("pk-l3", "#e8ebf2", "#8e95a7") + pkShade("pk-l4") + "</defs>" +
-      '<ellipse cx="48" cy="81" rx="40" ry="5.5" fill="url(#pk-l4)"/>' +
-      '<rect x="16" y="17" width="64" height="46" rx="5" fill="url(#pk-l1)" stroke="#8f96a8" stroke-opacity=".35" stroke-width=".8"/>' +
-      '<rect x="19" y="20" width="58" height="39" rx="2.5" fill="#10121a"/>' +
-      '<rect x="20.5" y="21.5" width="55" height="36" rx="1.6" fill="url(#pk-l2)"/>' +
-      '<rect x="29" y="28" width="38" height="6" rx="3" fill="#fff" fill-opacity=".92"/>' +
-      '<rect x="29" y="38" width="17.5" height="12" rx="2" fill="#fff" fill-opacity=".38"/><rect x="49.5" y="38" width="17.5" height="12" rx="2" fill="#fff" fill-opacity=".38"/>' +
-      '<path d="M20.5 21.5h29l-17 36h-12z" fill="#fff" fill-opacity=".12"/>' +
-      '<path d="M7 63.5h82l-3.4 6a4 4 0 0 1-3.5 2H13.9a4 4 0 0 1-3.5-2z" fill="url(#pk-l3)" stroke="#8f96a8" stroke-opacity=".35" stroke-width=".8"/>' +
-      '<rect x="39" y="63.5" width="18" height="2.4" rx="1.2" fill="#838a9c"/></svg>',
-    headphones: PK + "<defs>" + pkGrad("pk-h1", "#8b5cf6", "#ec4899", null, "x") + pkGrad("pk-h2", "#3b405e", "#161927") + pkShade("pk-h3") + "</defs>" +
-      '<ellipse cx="48" cy="84" rx="33" ry="5" fill="url(#pk-h3)"/>' +
-      '<path d="M22.5 58V46.5a25.5 25.5 0 0 1 51 0V58" fill="none" stroke="url(#pk-h1)" stroke-width="7" stroke-linecap="round"/>' +
-      '<rect x="12" y="49" width="21" height="31" rx="9" fill="url(#pk-h2)"/><rect x="63" y="49" width="21" height="31" rx="9" fill="url(#pk-h2)"/>' +
-      '<rect x="16.5" y="53.5" width="12" height="22" rx="6" fill="url(#pk-h1)"/><rect x="67.5" y="53.5" width="12" height="22" rx="6" fill="url(#pk-h1)"/>' +
-      '<path d="M15.5 59a8 8 0 0 1 5.5-6.5M66.5 59a8 8 0 0 1 5.5-6.5" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.8" stroke-linecap="round"/>' +
-      '<circle cx="76" cy="27" r="3.4" fill="#4f7cff"/><circle cx="87" cy="24" r="3.4" fill="#4f7cff"/>' +
-      '<path d="M78.4 27V14.5l11-3V24" fill="none" stroke="#4f7cff" stroke-width="2.4" stroke-linejoin="round"/></svg>',
-    gift: PK + "<defs>" + pkGrad("pk-g1", "#5b86ff", "#8b5cf6", null, "xy") + pkGrad("pk-g2", "#8fa9ff", "#a78bfa", null, "x") + pkGrad("pk-g3", "#f472b6", "#db2777") + pkShade("pk-g4") + "</defs>" +
-      '<ellipse cx="48" cy="84" rx="35" ry="5" fill="url(#pk-g4)"/>' +
-      '<rect x="19" y="45" width="58" height="36" rx="5" fill="url(#pk-g1)"/>' +
-      '<rect x="15" y="34" width="66" height="15" rx="4" fill="url(#pk-g2)"/>' +
-      '<rect x="43" y="34" width="10" height="47" fill="url(#pk-g3)"/>' +
-      '<path d="M48 34c-4-9-16-13-18-6-1.6 5.6 9 6.6 18 6zM48 34c4-9 16-13 18-6 1.6 5.6-9 6.6-18 6z" fill="url(#pk-g3)"/>' +
-      '<circle cx="48" cy="33.5" r="3.6" fill="#f9a8d4"/>' +
-      '<rect x="19" y="37.5" width="20" height="3" rx="1.5" fill="#fff" fill-opacity=".4"/>' +
-      pkStar(82, 20, 7, "#f5b83d") + pkStar(13, 22, 4.5, "#f5b83d") + "</svg>",
-    sparkle: PK + "<defs>" + pkGrad("pk-s1", "#4f7cff", "#8b5cf6", "#ec4899", "xy") +
-      '<radialGradient id="pk-s2"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".4"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>' + pkShade("pk-s3") + "</defs>" +
-      '<ellipse cx="46" cy="85" rx="26" ry="4.5" fill="url(#pk-s3)"/>' +
-      '<circle cx="44" cy="42" r="36" fill="url(#pk-s2)"/>' +
-      pkStar(44, 41, 30, "url(#pk-s1)") + pkStar(76, 66, 12, "url(#pk-s1)") + pkStar(19, 67, 7, "#f5b83d") + "</svg>",
-    books: PK + "<defs>" + pkGrad("pk-b1", "#6d8fff", "#3f63e6") + pkGrad("pk-b2", "#a78bfa", "#7c3aed") + pkGrad("pk-b3", "#f472b6", "#db2777") + pkShade("pk-b4") + "</defs>" +
-      '<ellipse cx="48" cy="84" rx="37" ry="5" fill="url(#pk-b4)"/>' +
-      '<rect x="12" y="63" width="70" height="17" rx="3.5" fill="url(#pk-b1)"/><rect x="72" y="66" width="7" height="11" rx="1.5" fill="#eef0f6"/><rect x="20" y="63" width="3.5" height="17" fill="#fff" fill-opacity=".28"/>' +
-      '<rect x="18" y="46" width="62" height="17" rx="3.5" fill="url(#pk-b2)"/><rect x="21" y="49" width="7" height="11" rx="1.5" fill="#eef0f6"/><rect x="68" y="46" width="3.5" height="17" fill="#fff" fill-opacity=".28"/>' +
-      '<g transform="rotate(-5 47 38)"><rect x="15" y="29" width="64" height="17" rx="3.5" fill="url(#pk-b3)"/><rect x="69" y="32" width="7" height="11" rx="1.5" fill="#eef0f6"/>' +
-      '<rect x="24" y="29" width="3.5" height="17" fill="#fff" fill-opacity=".28"/><path d="M54 29v13l3.2-2.4 3.2 2.4V29z" fill="#f5b83d"/></g></svg>',
-    bag: PK + "<defs>" + pkGrad("pk-t1", "#fbbf24", "#f97316", null, "xy") + pkShade("pk-t2") + "</defs>" +
-      '<ellipse cx="46" cy="85" rx="31" ry="5" fill="url(#pk-t2)"/>' +
-      '<path d="M35 40v-8a12 12 0 0 1 24 0v8" fill="none" stroke="#c2410c" stroke-width="4" stroke-linecap="round"/>' +
-      '<path d="M20 38h54l-3.6 40.3a4 4 0 0 1-4 3.7H27.6a4 4 0 0 1-4-3.7z" fill="url(#pk-t1)"/>' +
-      '<path d="M20 38h54l-.45 5H20.45z" fill="#fff" fill-opacity=".25"/>' +
-      '<circle cx="35" cy="46" r="2" fill="#9a3412"/><circle cx="59" cy="46" r="2" fill="#9a3412"/>' +
-      '<g transform="rotate(14 70 62)"><path d="M60 52h16.5a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H60l-7-10z" fill="#fff"/><circle cx="59.5" cy="62" r="1.8" fill="#f97316"/>' +
-      '<g fill="none" stroke="#ec4899" stroke-width="1.8" stroke-linecap="round"><circle cx="65.5" cy="58" r="2.2"/><circle cx="73.5" cy="66" r="2.2"/><path d="M74 57l-9 10"/></g></g></svg>'
+    laptop: PK + '<rect x="4" y="5" width="16" height="11" rx="2"/><path d="M2.5 19h19"/></svg>',
+    headphones: PK + '<path d="M4 16v-3.75a8 8 0 0 1 16 0V16"/><rect x="4" y="13.25" width="4.75" height="6.5" rx="1.75"/><rect x="15.25" y="13.25" width="4.75" height="6.5" rx="1.75"/></svg>',
+    gift: PK + '<rect x="3.5" y="7.5" width="17" height="4" rx="1"/><path d="M5 11.5v7.25c0 .97.78 1.75 1.75 1.75h10.5c.97 0 1.75-.78 1.75-1.75V11.5M12 7.5v13' +
+      'M12 7.5c-.9-2.6-2.6-4.25-4.25-4.25a2.125 2.125 0 0 0 0 4.25M12 7.5c.9-2.6 2.6-4.25 4.25-4.25a2.125 2.125 0 0 1 0 4.25"/></svg>',
+    sparkle: PK + '<path d="M11 4.5Q12.5 11.5 19.5 13Q12.5 14.5 11 21.5Q9.5 14.5 2.5 13Q9.5 11.5 11 4.5z"/><path d="M19 2.75v4.5M16.75 5h4.5"/></svg>',
+    books: PK + '<path d="M12 6.5c-2-1.25-4.5-1.75-8.25-1.75a.75.75 0 0 0-.75.75v11.75c0 .41.34.75.75.75 3.75 0 6.25.5 8.25 1.75 2-1.25 4.5-1.75 8.25-1.75' +
+      '.41 0 .75-.34.75-.75V5.5a.75.75 0 0 0-.75-.75c-3.75 0-6.25.5-8.25 1.75zM12 6.5v13.25"/></svg>',
+    bag: PK + '<path d="M5 7.5h14v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M9 10.5v-4a3 3 0 0 1 6 0v4"/></svg>'
   };
   function renderHeroPerks() {
     var box = $("#hero-perks"); if (!box) return;
