@@ -285,11 +285,13 @@
   function flash(sel) { var el = $(sel); if (!el) return; el.hidden = false; clearTimeout(el._t); el._t = setTimeout(function () { el.hidden = true; }, 1600); }
   function csvCell(v) { v = String(v == null ? "" : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
   function icsEsc(v) { return String(v || "").replace(/([,;\\])/g, "\\$1").replace(/\n/g, " "); }
+  var SI_LIGHT = { tldraw: 1, handshake: 1 };
   function iconHTML(item) {
     // an explicit logo wins, then a Simple Icons slug, then favicon, then a monogram
     var inner = '<span class="ic-mono">' + esc(item.mono || monoFrom(item.name)) + "</span>";
     if (item.logo) return '<span class="ic-wrap">' + inner + '<img class="ic-fav" src="' + esc(item.logo) + '" alt="" loading="lazy" /></span>';
-    if (item.slug) return '<span class="ic-wrap"><span class="ic" style="--src:url(\'' + esc(siURL(item.slug)) + '\')"></span></span>';
+    // brand marks in their own colors on a white tile; the few near-white ones get a dark tile
+    if (item.slug) return '<span class="ic-wrap' + (SI_LIGHT[item.slug] ? " ic-dark" : "") + '"><img class="ic-svg" src="' + esc(siURL(item.slug)) + '" alt="" loading="lazy" /></span>';
     var dom = domainOf(item.url);
     if (dom && faviconURL(dom)) inner += '<img class="ic-fav" src="' + faviconURL(dom) + '" alt="" loading="lazy" />';
     return '<span class="ic-wrap">' + inner + "</span>";
@@ -367,13 +369,14 @@
     return '<a class="card' + (internal ? " card-guide" : "") + '" href="' + esc(r.url) + '"' + link + ' style="animation-delay:' +
       Math.min(i * 12, 180) + 'ms">' +
       '<div class="card-top">' + iconHTML(r) +
-      '<div class="card-head"><span class="card-label"><span class="card-cat">' + esc(c.name) + "</span>" + (r.featured ? PICK : "") + "</span>" +
-      '<span class="card-name">' + esc(r.name) + (internal ? "" : '&nbsp;<span class="ext">&#8599;</span>') + "</span></div></div>" +
+      '<div class="card-head"><span class="card-name">' + esc(r.name) + "</span>" +
+      '<span class="card-cat">' + esc(c.name) + "</span></div>" +
+      '<span class="card-get">' + (internal ? "Read" : "Get") + "</span></div>" +
       '<p class="card-desc">' + esc(r.desc) + "</p>" +
       (linkDownBadge(r.url) ? '<div class="card-flags">' + linkDownBadge(r.url) + "</div>" : "") +
       // save + report live in the footer so long names get the card's full width
       '<div class="card-foot"><span class="card-badges">' + (r.value ? '<span class="card-value">' + esc(r.value) + "</span>" : "") +
-      badge + verifiedChip(r) + (internal ? '<span class="card-cta">Read the guide &rarr;</span>' : "") + "</span>" +
+      badge + (r.featured ? PICK : "") + verifiedChip(r) + "</span>" +
       '<span class="card-meta">' + starBtn("tool", r.name) + (internal ? "" : flagBtn(r.name, r.url)) + "</span></div></a>";
   }
   function renderTools() {
@@ -1419,7 +1422,7 @@
     var ft = freshTags(c, c.url);
     return '<a class="card" href="' + esc(c.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
       '<div class="card-top">' + logoTile(c.name, c.url, c.logo) +
-      '<span class="card-name">' + esc(c.name) + matchBadge("comp", c) + "</span></div>" +
+      '<span class="card-name">' + esc(c.name) + matchBadge("comp", c) + '</span><span class="card-get">Visit</span></div>' +
       '<p class="card-desc">' + esc(c.desc) + "</p>" +
       (ft ? '<div class="card-flags">' + ft + "</div>" : "") +
       '<div class="card-foot comp-foot">' + dl + req + '<span class="card-meta">' + starBtn("comp", c.name) + flagBtn(c.name, c.url) + "</span></div></a>";
@@ -1455,7 +1458,7 @@
     var need = c.needs ? '<p class="club-need">' + icon("clipboard") + "<span><b>" + (clubKind(c) === "volunteer" ? "What it takes" : "To start one") + ":</b> " + esc(c.needs) + "</span></p>" : "";
     var ft = freshTags(c, c.url);
     return '<a class="card" href="' + esc(c.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
-      '<div class="card-top">' + logoTile(c.name, c.url, c.logo) + '<span class="card-name">' + esc(c.name) + "</span></div>" +
+      '<div class="card-top">' + logoTile(c.name, c.url, c.logo) + '<span class="card-name">' + esc(c.name) + '</span><span class="card-get">Visit</span></div>' +
       '<p class="card-desc">' + esc(c.desc) + "</p>" + need +
       (ft ? '<div class="card-flags">' + ft + "</div>" : "") +
       '<div class="card-foot comp-foot">' + reqHTML(chips) + '<span class="card-meta">' + starBtn("club", c.name) + flagBtn(c.name, c.url) + "</span></div></a>";
@@ -1558,7 +1561,7 @@
     tags += '<span class="tg hk-src">' + esc(h.source) + "</span>";
     return '<a class="card hk-card" href="' + esc(h.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
       '<div class="card-top">' + logoTile(h.name, h.url, h.logo) +
-        '<span class="card-name">' + esc(h.name) + pill + "</span></div>" +
+        '<span class="card-name">' + esc(h.name) + pill + '</span><span class="card-get">Visit</span></div>' +
       '<div class="hk-info">' +
         '<span class="hk-line">' + ICO_CAL + "<span>" + hkDate(h) + "</span></span>" +
         '<span class="hk-line">' + (h.format === "online" ? ICO_GLOBE : ICO_PIN) + "<span>" + esc(hkLoc(h)) + "</span></span></div>" +
@@ -1959,10 +1962,11 @@
       var deal = p.deal || (hits.filter(function (x) { return x.value; })[0] || {}).value || "";
       return '<a class="perk" href="' + esc(hits[0].url) + '" target="_blank" rel="noopener">' +
         '<span class="perk-art" aria-hidden="true">' + PERK_ART[p.art] + "</span>" +
-        '<span class="perk-name">' + esc(p.name) + "</span>" + (deal ? '<span class="perk-deal">' + esc(deal) + "</span>" : "") + "</a>";
+        '<span class="perk-name">' + esc(p.name) + "</span>" + (deal ? '<span class="perk-deal">' + esc(deal) + "</span>" : "") +
+        '<span class="perk-get">Get</span></a>';
     }).join("");
     if (!html) return;
-    box.innerHTML = '<p class="perks-label">A few things you can get</p><div class="perks-row">' + html + "</div>";
+    box.innerHTML = '<div class="sec-head"><h2 class="sec-title">A few things you can get</h2><p class="sec-sub">Popular student deals, each linked to its listing.</p></div><div class="perks-row">' + html + "</div>";
     box.hidden = false;
   }
   // logos of organizations with listings on the site (assets/brands, from Wikimedia Commons).
@@ -1985,6 +1989,24 @@
       }).join("");
     }
     t.innerHTML = row(false) + row(true);   // a second copy makes the marquee loop seamlessly
+  }
+  // ---- hero logo wheel: app icons of listed tools, drifting in rows ----
+  var WHEEL = ["github", "notion", "figma", "spotify", "googlegemini", "jetbrains", "cursor", "perplexity", "replit", "vercel",
+    "digitalocean", "cloudflare", "supabase", "mongodb", "overleaf", "khanacademy", "coursera", "quizlet", "anki", "obsidian",
+    "postman", "blender", "autodesk", "huggingface", "kaggle", "apple", "zoom", "miro", "framer", "codecademy",
+    "freecodecamp", "hackclub", "googlecolab", "zotero", "davinciresolve", "netlify"];
+  function renderIconWheel() {
+    var box = $("#icon-wheel"); if (!box) return;
+    var slugs = WHEEL.filter(function (s) { return LOGOS.si && LOGOS.si[s]; });
+    if (slugs.length < 9) return;
+    var per = Math.ceil(slugs.length / 3), rows = [0, 1, 2].map(function (i) { return slugs.slice(i * per, (i + 1) * per); });
+    function tiles(row) {
+      return row.map(function (s) { return '<span class="wheel-tile"><span class="wheel-app"><img src="logos/si/' + s + '.svg" alt="" width="30" height="30" /></span></span>'; }).join("");
+    }
+    // two copies per row so the drift loops without a jump
+    box.innerHTML = rows.map(function (row, i) {
+      return '<div class="wheel-row' + (i === 1 ? " wheel-rev" : "") + '"><div class="wheel-track">' + tiles(row) + tiles(row) + "</div></div>";
+    }).join("");
   }
   function renderHero() {
     if (quizAnswered()) {
@@ -2073,6 +2095,7 @@
   renderHeroStats();
   renderHeroPerks();
   renderLogos();
+  renderIconWheel();
   wire();
   wireGuideOverlay();
   wireTemplates();
