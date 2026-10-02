@@ -2014,13 +2014,14 @@
 
   // ---- theme ---------------------------------------------------------
   function initTheme() {
-    var sv = localStorage.getItem("edu-theme");
+    // storage can be blocked (private windows, blocked site data): fall back to the system theme
+    var sv = null; try { sv = localStorage.getItem("edu-theme"); } catch (e) {}
     var light = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
     document.documentElement.setAttribute("data-theme", sv || (light ? "light" : "dark"));
     $("#theme-toggle").addEventListener("click", function () {
       var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
       document.documentElement.setAttribute("data-theme", next);
-      localStorage.setItem("edu-theme", next);
+      try { localStorage.setItem("edu-theme", next); } catch (e) {}
     });
   }
 
