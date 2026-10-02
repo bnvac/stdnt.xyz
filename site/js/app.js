@@ -75,7 +75,10 @@
     megaphone: '<path d="M3 10.2v3.6a1 1 0 0 0 1 1h2.6L13 19V5L6.6 9.2H4a1 1 0 0 0-1 1z"/><path d="M16.5 9a4.2 4.2 0 0 1 0 6M19 6.5a7.8 7.8 0 0 1 0 11"/>',
     laptop: '<rect x="4" y="5" width="16" height="11" rx="1.6"/><path d="M2 19h20"/>',
     pin: '<path d="M20 10c0 5.5-8 11-8 11s-8-5.5-8-11a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.6"/>',
-    robot: '<rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 8V5"/><circle cx="12" cy="3.5" r="1.5"/><circle cx="9.5" cy="13" r="1"/><circle cx="14.5" cy="13" r="1"/><path d="M10 16h4M3 12v3M21 12v3"/>'
+    robot: '<rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 8V5"/><circle cx="12" cy="3.5" r="1.5"/><circle cx="9.5" cy="13" r="1"/><circle cx="14.5" cy="13" r="1"/><path d="M10 16h4M3 12v3M21 12v3"/>',
+    tag: '<path d="M3 3h8.2l9.4 9.4a2 2 0 0 1 0 2.8l-5.4 5.4a2 2 0 0 1-2.8 0L3 11.2z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+    sparkle: '<path d="M12 3q1.5 7.5 9 9-7.5 1.5-9 9-1.5-7.5-9-9 7.5-1.5 9-9z"/>',
+    info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5h.01"/>'
   };
   function icon(key) { return SVG + (ICONS[key] || ICONS.target) + "</svg>"; }
   var COMP_ICON = { science: "flask", math: "math", cs: "code", research: "atom", innovation: "bulb", humanities: "book", robotics: "robot" };
@@ -1350,54 +1353,84 @@
     document.addEventListener("click", function (e) { if (!menu.hidden && !e.target.closest(".tab-more, .tab-menu")) closeMore(); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMore(); });
   }
-  // ---- header links: as many as fit sit in the bar, the rest fold into More ----
-  // (all of them on phones, where the button reads Menu)
-  function closeNav() { var m = $("#nav-menu"), b = $("#nav-btn"); if (m && !m.hidden) { m.hidden = true; if (b) b.setAttribute("aria-expanded", "false"); } }
-  function fitNav() {
-    var row = $("#hdr-links"), wrap = $("#nav-more"); if (!row || !wrap || !row.offsetParent) return;
-    var links = [].slice.call(row.querySelectorAll(".hdr-link")), items = [].slice.call(document.querySelectorAll("#nav-menu .nav-item"));
-    links.forEach(function (a) { a.hidden = false; });
-    wrap.hidden = true;
-    var cut = links.length;
-    if (row.scrollWidth > row.clientWidth) {
-      wrap.hidden = false;   // the row shrinks to make room for the button
-      var room = row.clientWidth, used = 0;
-      for (var i = 0; i < links.length; i++) {
-        used += links[i].offsetWidth + (parseFloat(getComputedStyle(links[i]).marginLeft) || 0);
-        if (used > room) { cut = i; break; }
-      }
-    }
-    links.forEach(function (a, i) { a.hidden = i >= cut; });
-    items.forEach(function (a, i) { a.hidden = i < cut; });
-    document.querySelectorAll("#nav-menu .nav-group").forEach(function (g) { g.hidden = !g.querySelector(".nav-item:not([hidden])"); });
-    $("#nav-btn-l").textContent = cut ? "More" : "Menu";
+  // ---- header menus: Browse and Project (the footer's groups), one Menu on phones ----
+  var NAV_BROWSE = [
+    { tab: "sch", label: "Scholarships", desc: "From $500 awards to full rides", ic: "cap", tint: "#6b8cff", n: function () { return SCH.length; } },
+    { tab: "prog", label: "STEM programs", desc: "Summer programs and research", ic: "flask", tint: "#34d399", n: function () { return PROG.length; } },
+    { tab: "competitions", label: "Competitions", desc: "Olympiads, contests and challenges", ic: "trophy", tint: "#fbbf24", n: function () { return COMPS.length; } },
+    { tab: "tools", label: "Free tools", desc: "Software, AI tools and API keys", ic: "laptop", tint: "#a78bfa", n: function () { return RES.length; } },
+    { tab: "discounts", label: "Discounts", desc: "Student pricing on everyday things", ic: "tag", tint: "#fb923c", n: function () { return DISCOUNTS.length; } },
+    { tab: "deadlines", label: "Deadlines", desc: "Every upcoming date in one list", ic: "calendar", tint: "#f472b6", n: function () { return deadlineItems().length; } },
+    { tab: "new", label: "New", desc: "Listings added in the last few weeks", ic: "sparkle", tint: "#22d3ee", n: function () { return newItems().length; } },
+    { tab: "guides", label: "Guides", desc: "How-tos for apps, aid and research", ic: "book", tint: "#f87171", n: function () { return GUIDES.length; } }
+  ];
+  var NAV_PROJECT = [
+    { tab: "about", label: "About", desc: "How we pick listings, and who we are", ic: "info", tint: "#e4e4e7" },
+    { tab: "contribute", label: "Contribute", desc: "Add a listing or report a broken link", ic: "pencil", tint: "#e4e4e7" },
+    { href: GH_REPO, label: "GitHub", desc: "The source code, open to pull requests", ic: "code", tint: "#e4e4e7" }
+  ];
+  var NAV_MATCH = { tab: "foryou", label: "Find your matches", desc: "Answer a few questions to see what fits you", ic: "target", tint: "#a78bfa" };
+  function navItem(x, short) {
+    var to = x.href ? ' href="' + esc(x.href) + '" target="_blank" rel="noopener"' : ' href="#' + x.tab + '" data-goto="' + x.tab + '"';
+    return '<a class="nav-item"' + to + '><span class="nav-ic" style="--tint:' + x.tint + '">' + icon(x.ic) + "</span>" +
+      '<span class="nav-txt"><span class="nav-t">' + esc(x.label) + (x.n ? ' <span class="nav-n">' + commas(x.n()) + "</span>" : "") +
+      (x.href ? ' <span class="nav-out" aria-hidden="true">&#8599;</span>' : "") + "</span>" + (short ? "" : '<span class="nav-d">' + esc(x.desc) + "</span>") + "</span></a>";
   }
+  function renderNav() {
+    var all = function (list, short) { return list.map(function (x) { return navItem(x, short); }).join(""); };
+    var b = $("#dd-browse"), p = $("#dd-project"), m = $("#dd-all");
+    if (b) b.innerHTML = all(NAV_BROWSE) + '<div class="nav-feature">' + navItem(NAV_MATCH) + "</div>";
+    if (p) p.innerHTML = all(NAV_PROJECT);
+    if (m) m.innerHTML = '<p class="nav-h">Browse</p>' + all(NAV_BROWSE, true) + navItem(NAV_MATCH, true) + '<p class="nav-h">Project</p>' + all(NAV_PROJECT, true);
+  }
+  function setDD(dd, open) {
+    var b = dd.querySelector(".nav-trig"), p = dd.querySelector(".nav-panel");
+    dd.classList.toggle("is-open", open); p.hidden = !open; b.setAttribute("aria-expanded", String(open));
+    if (!open) dd.removeAttribute("data-how");
+  }
+  function closeNav(except) { document.querySelectorAll(".nav-dd.is-open").forEach(function (d) { if (d !== except) setDD(d, false); }); }
   function wireNav() {
-    var btn = $("#nav-btn"), menu = $("#nav-menu");
-    if (btn && menu) {
-      btn.addEventListener("click", function (e) { e.stopPropagation(); var open = menu.hidden; menu.hidden = !open; btn.setAttribute("aria-expanded", String(open)); });
-      document.addEventListener("click", function (e) { if (!menu.hidden && !e.target.closest(".nav-more")) closeNav(); });
-      document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeNav(); });
-    }
-    // refit on width changes only (phones fire resize when the address bar slides)
+    renderNav();
+    // click opens and pins a menu; on a mouse, hovering opens it too and leaving closes it
+    var hover = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    document.querySelectorAll(".nav-dd").forEach(function (dd) {
+      var t = 0;
+      dd.querySelector(".nav-trig").addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = !dd.classList.contains("is-open") || dd.getAttribute("data-how") === "hover";
+        closeNav(dd); setDD(dd, open);
+        if (open) dd.setAttribute("data-how", "click");
+      });
+      if (hover) {
+        dd.addEventListener("mouseenter", function () {
+          clearTimeout(t);
+          if (!dd.classList.contains("is-open")) { closeNav(dd); setDD(dd, true); dd.setAttribute("data-how", "hover"); }
+        });
+        dd.addEventListener("mouseleave", function () { if (dd.getAttribute("data-how") === "hover") t = setTimeout(function () { setDD(dd, false); }, 180); });
+      }
+      // tabbing out of a menu closes it
+      dd.addEventListener("focusout", function (e) { if (!dd.contains(e.relatedTarget)) setDD(dd, false); });
+    });
+    document.addEventListener("click", function (e) { if (!e.target.closest(".nav-dd") || e.target.closest(".nav-item")) closeNav(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      var open = $(".nav-dd.is-open"); if (!open) return;
+      closeNav(); open.querySelector(".nav-trig").focus();
+    });
+    // the tab bar refits on width changes only (phones fire resize when the address bar slides)
     var lastW = window.innerWidth, raf = 0;
     window.addEventListener("resize", function () {
       if (window.innerWidth === lastW) return;
       lastW = window.innerWidth;
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(function () { closeNav(); closeMore(); fitNav(); fitTabs(); });
+      raf = requestAnimationFrame(function () { closeNav(); closeMore(); fitTabs(); });
     });
     // web fonts change every width, so fit again whenever one finishes loading
-    var refit = function () { fitNav(); fitTabs(); };
     if (document.fonts) {
-      if (document.fonts.ready) document.fonts.ready.then(refit);
-      if (document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", refit);
+      if (document.fonts.ready) document.fonts.ready.then(fitTabs);
+      if (document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", fitTabs);
     }
-    window.addEventListener("load", refit);
-    // the view count arrives late and the Saved count grows, both widening the right side
-    var right = $(".hdr-right");
-    if (right && window.ResizeObserver) new ResizeObserver(function () { fitNav(); }).observe(right);
-    fitNav();
+    window.addEventListener("load", fitTabs);
   }
   function routeHash() {
     if (routeGuideHash()) return true;

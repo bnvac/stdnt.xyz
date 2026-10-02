@@ -29,7 +29,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
   <meta name="theme-color" content="#07080a" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-  <link rel="stylesheet" href="css/styles.css?v=51" />
+  <link rel="stylesheet" href="css/styles.css?v=52" />
 </head>
 <body>
   <!-- ============================================================ HEADER -->
@@ -38,41 +38,23 @@
     <a class="brand" href="#top" aria-label="stdnt.xyz home">
       <span class="brand-name">stdnt<span class="brand-dim">.xyz</span></span>
     </a>
-    <nav class="hdr-nav" id="hdr-nav" aria-label="Site">
-      <div class="hdr-links" id="hdr-links">
-        <a class="hdr-link" href="#sch" data-goto="sch">Scholarships</a>
-        <a class="hdr-link" href="#prog" data-goto="prog">STEM programs</a>
-        <a class="hdr-link" href="#competitions" data-goto="competitions">Competitions</a>
-        <a class="hdr-link" href="#tools" data-goto="tools">Free tools</a>
-        <a class="hdr-link" href="#discounts" data-goto="discounts">Discounts</a>
-        <a class="hdr-link" href="#deadlines" data-goto="deadlines">Deadlines</a>
-        <a class="hdr-link" href="#new" data-goto="new">New</a>
-        <a class="hdr-link" href="#guides" data-goto="guides">Guides</a>
-        <a class="hdr-link hdr-proj" href="#about" data-goto="about">About</a>
-        <a class="hdr-link" href="#contribute" data-goto="contribute">Contribute</a>
+    <!-- section menus, filled by renderNav(); phones get one Menu with both groups -->
+    <nav class="hdr-nav" aria-label="Site">
+      <div class="nav-dd">
+        <button class="nav-trig" type="button" aria-expanded="false" aria-controls="dd-browse">Browse<svg class="nav-caret" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-panel nav-panel-browse" id="dd-browse" hidden></div>
       </div>
-      <div class="nav-more" id="nav-more" hidden>
-        <button class="nav-btn" id="nav-btn" type="button" aria-expanded="false" aria-controls="nav-menu"><span id="nav-btn-l">More</span><span class="nav-caret" aria-hidden="true">&#9662;</span></button>
-        <div class="nav-menu" id="nav-menu" hidden>
-          <div class="nav-group"><p class="nav-h">Browse</p>
-            <a class="nav-item" href="#sch" data-goto="sch">Scholarships</a>
-            <a class="nav-item" href="#prog" data-goto="prog">STEM programs</a>
-            <a class="nav-item" href="#competitions" data-goto="competitions">Competitions</a>
-            <a class="nav-item" href="#tools" data-goto="tools">Free tools</a>
-            <a class="nav-item" href="#discounts" data-goto="discounts">Discounts</a>
-            <a class="nav-item" href="#deadlines" data-goto="deadlines">Deadlines</a>
-            <a class="nav-item" href="#new" data-goto="new">New</a>
-            <a class="nav-item" href="#guides" data-goto="guides">Guides</a>
-          </div>
-          <div class="nav-group"><p class="nav-h">Project</p>
-            <a class="nav-item" href="#about" data-goto="about">About</a>
-            <a class="nav-item" href="#contribute" data-goto="contribute">Contribute</a>
-          </div>
-        </div>
+      <div class="nav-dd">
+        <button class="nav-trig" type="button" aria-expanded="false" aria-controls="dd-project">Project<svg class="nav-caret" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-panel nav-panel-project" id="dd-project" hidden></div>
+      </div>
+      <div class="nav-dd nav-dd-all">
+        <button class="nav-trig" type="button" aria-expanded="false" aria-controls="dd-all">Menu<svg class="nav-caret" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-panel nav-panel-all" id="dd-all" hidden></div>
       </div>
     </nav>
     <div class="hdr-right">
-      <button class="tab tab-saved" data-tab="saved" type="button" title="Saved"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.6 1.1 6.45L12 18.9 6.2 21l1.1-6.45L2.6 9.95l6.5-.95z"/></svg><span class="tab-saved-l">Saved</span><span class="tab-n" id="n-saved">0</span></button>
+      <button class="tab tab-saved" data-tab="saved" type="button"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.6 1.1 6.45L12 18.9 6.2 21l1.1-6.45L2.6 9.95l6.5-.95z"/></svg><span class="tab-saved-l">Saved</span><span class="tab-n" id="n-saved">0</span></button>
       <a class="ico-link" href="https://github.com/bnvac/stdnt.xyz" target="_blank" rel="noopener" aria-label="GitHub repository">
         <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.41-1.27.74-1.56-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.27 1.19-3.07-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.17a11 11 0 0 1 5.8 0c2.2-1.48 3.17-1.17 3.17-1.17.63 1.59.23 2.76.11 3.05.74.8 1.19 1.82 1.19 3.07 0 4.41-2.69 5.38-5.25 5.66.42.37.8 1.1.8 2.22v3.29c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
       </a>
@@ -602,19 +584,19 @@
     </article>
   </div>
 
-  <script src="js/shared.js?v=51"></script>
-  <script src="js/data.js?v=51"></script>
-  <script src="js/scholarships.js?v=51"></script>
-  <script src="js/programs.js?v=51"></script>
-  <script src="js/programs-extra.js?v=51"></script>
-  <script src="js/guides.js?v=51"></script>
-  <script src="js/templates.js?v=51"></script>
-  <script src="js/discounts.js?v=51"></script>
-  <script src="js/competitions.js?v=51"></script>
-  <script src="js/clubs.js?v=51"></script>
-  <script src="js/hackathons.js?v=51"></script>
-  <script src="js/finaid.js?v=51"></script>
-  <script src="js/logos.js?v=51"></script>
-  <script src="js/app.js?v=51"></script>
+  <script src="js/shared.js?v=52"></script>
+  <script src="js/data.js?v=52"></script>
+  <script src="js/scholarships.js?v=52"></script>
+  <script src="js/programs.js?v=52"></script>
+  <script src="js/programs-extra.js?v=52"></script>
+  <script src="js/guides.js?v=52"></script>
+  <script src="js/templates.js?v=52"></script>
+  <script src="js/discounts.js?v=52"></script>
+  <script src="js/competitions.js?v=52"></script>
+  <script src="js/clubs.js?v=52"></script>
+  <script src="js/hackathons.js?v=52"></script>
+  <script src="js/finaid.js?v=52"></script>
+  <script src="js/logos.js?v=52"></script>
+  <script src="js/app.js?v=52"></script>
 </body>
 </html>
