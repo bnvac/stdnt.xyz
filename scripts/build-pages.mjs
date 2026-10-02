@@ -49,7 +49,8 @@ function grades(list) {
   return n.length === 1 ? `Grade ${n[0]}` : n[n.length - 1] - n[0] === n.length - 1 ? `Grades ${n[0]}-${n[n.length - 1]}` : `Grades ${n.join(", ")}`;
 }
 const chips = (arr) => arr.filter(Boolean).map((t) => `<span class="tg">${esc(t)}</span>`).join("");
-const pick = (on) => (on ? ` <span class="ed-pick" title="Editor's choice">&#128081; Editor's choice</span>` : "");
+const CROWN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg>';
+const pick = (on) => (on ? ` <span class="ed-pick" title="Editor's choice">${CROWN}Editor's choice</span>` : "");
 
 // ---- page shell ---------------------------------------------------------
 const NAV = [["tools/", "Tools"], ["scholarships/", "Scholarships"], ["programs/", "STEM programs"], ["competitions/", "Competitions"], ["clubs/", "Clubs"], ["deadlines/", "Deadlines"], ["guides/", "Guides"]];
@@ -91,7 +92,7 @@ ${notFound ? `  <meta name="robots" content="noindex" />
   ${assets.slice(0, 4).join("\n  ")}`}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
 ${notFound ? "" : `  ${assets.slice(4).join("\n  ")}\n`}  <script>try{document.documentElement.setAttribute("data-theme",localStorage.getItem("edu-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"))}catch(e){}</script>
 ${notFound ? "" : `  <script type="application/ld+json">${JSON.stringify(ld.length === 1 ? ld[0] : ld).replace(/</g, "\\u003c")}</script>
 `}</head>

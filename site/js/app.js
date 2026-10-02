@@ -257,9 +257,11 @@
       encodeURIComponent("Apply: " + name) + "&dates=" + ymd(dt) + "/" + ymd(d2) +
       "&details=" + encodeURIComponent("Application deadline for " + name + (url ? "\n" + url : ""));
   }
-  function calCell(name, url, deadline) {
+  function calCell(name, url, deadline, linkOnly) {
     var info = dlInfo(deadline); var due = esc(deadline || "");
     if (!info.date) return '<span class="row-due">' + (due || "Rolling") + "</span>";
+    // deadline rows already show the date on the left: just the calendar link
+    if (linkOnly) return '<span class="row-due"><a class="cal" href="' + gcal(name, url, info.date) + '" target="_blank" rel="noopener" title="Add deadline to Google Calendar" aria-label="Add to calendar">' + CAL_SVG + "</a></span>";
     var soon = info.soon ? " soon" : "";
     var left = info.days <= 60 ? ' &middot; ' + info.days + "d" : "";
     return '<span class="row-due' + soon + '">' + due + left +
@@ -353,7 +355,8 @@
   }
   // one "Editor's choice" marker site-wide: featured tools and the top-tier
   // programs (it replaces a gold star that looked like the save button)
-  var PICK = '<span class="ed-pick" title="Editor&#39;s choice: see How we pick in About">&#128081; Editor&#39;s choice</span>';
+  var CROWN_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg>';
+  var PICK = '<span class="ed-pick" title="Editor&#39;s choice: see How we pick in About">' + CROWN_SVG + '<span class="pick-t">Editor&#39;s choice</span></span>';
   function toolCard(r, i) {
     var c = CAT[r.category] || { name: r.category };
     var badge = r.access === "student"
@@ -361,19 +364,17 @@
       : '<span class="badge badge-evr">Everyone</span>';
     var internal = /^#/.test(r.url || "");
     var link = internal ? "" : ' target="_blank" rel="noopener"';
-    var cta = internal ? "Read the guide &rarr;" : "Get it &rarr;";
     return '<a class="card' + (internal ? " card-guide" : "") + '" href="' + esc(r.url) + '"' + link + ' style="animation-delay:' +
-      Math.min(i * 16, 240) + 'ms">' +
+      Math.min(i * 12, 180) + 'ms">' +
       '<div class="card-top">' + iconHTML(r) +
-      '<div class="card-head"><span class="card-name">' + esc(r.name) + "</span>" +
-      '<span class="card-badges">' + badge + (r.featured ? PICK : "") + verifiedChip(r) + "</span></div></div>" +
-      (r.value ? '<span class="card-value">' + esc(r.value) + "</span>" : "") +
+      '<div class="card-head"><span class="card-label"><span class="card-cat">' + esc(c.name) + "</span>" + (r.featured ? PICK : "") + "</span>" +
+      '<span class="card-name">' + esc(r.name) + (internal ? "" : '&nbsp;<span class="ext">&#8599;</span>') + "</span></div></div>" +
       '<p class="card-desc">' + esc(r.desc) + "</p>" +
       (linkDownBadge(r.url) ? '<div class="card-flags">' + linkDownBadge(r.url) + "</div>" : "") +
       // save + report live in the footer so long names get the card's full width
-      '<div class="card-foot"><span class="card-cat">' + esc(c.name) + "</span>" +
-      '<span class="card-meta">' + starBtn("tool", r.name) + (internal ? "" : flagBtn(r.name, r.url)) + "</span>" +
-      '<span class="card-cta">' + cta + "</span></div></a>";
+      '<div class="card-foot"><span class="card-badges">' + (r.value ? '<span class="card-value">' + esc(r.value) + "</span>" : "") +
+      badge + verifiedChip(r) + (internal ? '<span class="card-cta">Read the guide &rarr;</span>' : "") + "</span>" +
+      '<span class="card-meta">' + starBtn("tool", r.name) + (internal ? "" : flagBtn(r.name, r.url)) + "</span></div></a>";
   }
   function renderTools() {
     var list = toolsFiltered();
@@ -972,6 +973,8 @@
     document.title = (TAB_TITLES[tab] ? TAB_TITLES[tab] + " · " : "") + "stdnt.xyz";
     var moreBtn = $("#more-btn"); if (moreBtn) moreBtn.classList.toggle("is-active", !!OVERFLOW[tab]);
     closeMore();
+    var bar = $(".tabs"), on = OVERFLOW[tab] ? moreBtn : $('.tabs > .tab[data-tab="' + tab + '"]');
+    if (bar && on && bar.scrollWidth > bar.clientWidth) bar.scrollLeft += on.getBoundingClientRect().left - bar.getBoundingClientRect().left - (bar.clientWidth - on.offsetWidth) / 2;
     search.placeholder = tab === "tools" ? "Search tools, APIs, perks..." :
       tab === "discounts" ? "Search student discounts..." :
       tab === "sch" ? "Search scholarships..." :
@@ -998,7 +1001,11 @@
       }
     }, true);
     document.querySelectorAll(".tab").forEach(function (t) {
-      t.addEventListener("click", function () { switchTab(t.dataset.tab); });
+      t.addEventListener("click", function () {
+        switchTab(t.dataset.tab);
+        // Saved lives in the header: bring the list into view
+        if (t.closest(".hdr")) { var bar = $(".tabs-bar"); if (bar) bar.scrollIntoView({ behavior: "smooth", block: "start" }); }
+      });
     });
     $("#tools-access").addEventListener("click", function (e) {
       var b = e.target.closest(".seg"); if (!b) return;
@@ -1139,22 +1146,6 @@
       if (note) note.textContent = "Thanks! Check your inbox to confirm your subscription.";
       form.reset();
     });
-  }
-
-  // ---- hero logo collage ---------------------------------------------
-  function buildCollage() {
-    var L = $("#collage-l"), R = $("#collage-r"); if (!L || !R) return;
-    var slugs = []; var seen = {};
-    RES.forEach(function (r) { if (r.slug && !seen[r.slug]) { seen[r.slug] = 1; slugs.push(r.slug); } });
-    function tiles(arr) {
-      return arr.map(function (s, i) {
-        var rot = ((i * 5) % 9) - 4; // -4..4 deg
-        return '<span class="ctile" style="transform:rotate(' + rot + 'deg)"><span class="ic" style="--src:url(\'' + siURL(s) + '\')"></span></span>';
-      }).join("");
-    }
-    var n = Math.min(14, Math.floor(slugs.length / 2));
-    L.innerHTML = tiles(slugs.slice(0, n));
-    R.innerHTML = tiles(slugs.slice(n, n * 2));
   }
 
   // ---- sponsors + stats ----------------------------------------------
@@ -1313,7 +1304,7 @@
   function wireMore() {
     var btn = $("#more-btn"), menu = $("#tab-menu"); if (!btn || !menu) return;
     btn.addEventListener("click", function (e) { e.stopPropagation(); var open = menu.hidden; menu.hidden = !open; btn.setAttribute("aria-expanded", String(open)); });
-    document.addEventListener("click", function (e) { if (!menu.hidden && !e.target.closest(".tab-more")) closeMore(); });
+    document.addEventListener("click", function (e) { if (!menu.hidden && !e.target.closest(".tab-more, .tab-menu")) closeMore(); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMore(); });
   }
   function routeHash() {
@@ -1423,7 +1414,7 @@
     });
   }
   function competitionCard(c, i) {
-    var dl = c.deadline ? '<span class="tg tg-comp">' + esc(c.deadline) + "</span>" : "";
+    var dl = c.deadline ? '<span class="tg tg-when">' + icon("calendar") + esc(c.deadline) + "</span>" : "";
     var req = reqHTML(reqList(c, "comp").list);
     var ft = freshTags(c, c.url);
     return '<a class="card" href="' + esc(c.url) + '" target="_blank" rel="noopener" style="animation-delay:' + Math.min(i * 16, 240) + 'ms">' +
@@ -1687,7 +1678,7 @@
         '<div class="row-tags"><span class="tg tg-' + it.kind + '">' + label + "</span>" + (it.meta ? '<span class="tg">' + esc(it.meta) + "</span>" : "") + linkDownBadge(it.url) + "</div>" +
       "</a>" +
       '<span class="row-acts">' + starBtn(it.kind, it.name) + flagBtn(it.name, it.url) + "</span>" +
-      '<div class="row-right">' + calCell(it.name, it.url, it.deadline) + "</div></div>";
+      '<div class="row-right">' + calCell(it.name, it.url, it.deadline, true) + "</div></div>";
   }
   function renderDeadlines() {
     var box = $("#deadlines-list"); if (!box) return 0;
@@ -1893,12 +1884,12 @@
   // Each links to its listing and shows that listing's deal (no brand logos).
   // A perk whose listing is gone just drops out.
   var HERO_PERKS = [
-    { art: "laptop", name: "MacBook & iPad", find: "Apple Education Pricing", deal: "Edu pricing", tilt: -4 },
-    { art: "headphones", name: "Spotify Premium", find: "Spotify Premium Student", tilt: 3 },
-    { art: "gift", name: "GitHub Pack", find: "GitHub Student Developer Pack", tilt: -3 },
-    { art: "sparkle", name: "Google Gemini", find: "Google Gemini for Students", tilt: 4 },
-    { art: "books", name: "Textbooks", find: "OpenStax", deal: "Free", tilt: -2 },
-    { art: "bag", name: "Amazon Prime", find: "Amazon Prime Student", tilt: 3 }
+    { art: "laptop", name: "MacBook & iPad", find: "Apple Education Pricing", deal: "Edu pricing" },
+    { art: "headphones", name: "Spotify Premium", find: "Spotify Premium Student" },
+    { art: "gift", name: "GitHub Pack", find: "GitHub Student Developer Pack" },
+    { art: "sparkle", name: "Google Gemini", find: "Google Gemini for Students" },
+    { art: "books", name: "Textbooks", find: "OpenStax", deal: "Free" },
+    { art: "bag", name: "Amazon Prime", find: "Amazon Prime Student" }
   ];
   function pkShade(id) { return '<radialGradient id="' + id + '"><stop offset="0" style="stop-color:var(--pk-shadow)"/><stop offset="1" style="stop-color:var(--pk-shadow);stop-opacity:0"/></radialGradient>'; }
   function pkGrad(id, a, b, c, dir) {
@@ -1966,8 +1957,8 @@
       var hits = pool.filter(function (x) { return x.name === p.find && !gone(x); });
       if (!hits.length) return "";
       var deal = p.deal || (hits.filter(function (x) { return x.value; })[0] || {}).value || "";
-      return '<a class="perk" href="' + esc(hits[0].url) + '" target="_blank" rel="noopener" style="--tilt:' + p.tilt + 'deg">' +
-        '<span class="perk-art" aria-hidden="true"><span class="perk-float">' + PERK_ART[p.art] + "</span></span>" +
+      return '<a class="perk" href="' + esc(hits[0].url) + '" target="_blank" rel="noopener">' +
+        '<span class="perk-art" aria-hidden="true">' + PERK_ART[p.art] + "</span>" +
         '<span class="perk-name">' + esc(p.name) + "</span>" + (deal ? '<span class="perk-deal">' + esc(deal) + "</span>" : "") + "</a>";
     }).join("");
     if (!html) return;
@@ -2063,7 +2054,6 @@
   var subBtn = $("#submit-resource");
   if (subBtn) subBtn.href = GH_REPO + "/issues/new/choose";   // the per-category contribute forms
   initTheme();
-  buildCollage();
   buildCatChips();
   buildSchChips();
   buildProgChips();
