@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-28T12:23:40.176Z",
+  "updated": "2026-10-04T11:42:59.710Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 19,
+  "count": 18,
   "events": [
     {
       "name": "Capitol",
@@ -10,19 +10,6 @@
       "end": "2026-10-09",
       "city": "Washington",
       "region": "District of Columbia",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "Dublin hacx",
-      "url": "https://www.dublinhacx.com/",
-      "start": "2026-10-03",
-      "end": "2026-10-03",
-      "city": "San Ramon",
-      "region": "California",
       "country": "United States",
       "cc": "US",
       "format": "in-person",
