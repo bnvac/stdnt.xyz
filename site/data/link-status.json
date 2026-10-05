@@ -1,9 +1,11 @@
 {
-  "updated": "2026-09-28T19:58:00.471Z",
-  "checked": 540,
-  "dead": [],
-  "suspect": [
-    "https://www.fra.org/",
+  "updated": "2026-10-05T21:02:23.216Z",
+  "checked": 637,
+  "dead": [
     "https://www.redcrossblood.org/hosting-a-blood-drive/leaders-save-lives.html"
+  ],
+  "suspect": [
+    "https://www.amazon.com/joinstudent",
+    "https://www.spaceappschallenge.org/"
   ]
 }
