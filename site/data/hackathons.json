@@ -1,21 +1,8 @@
 {
-  "updated": "2026-10-05T13:26:11.336Z",
+  "updated": "2026-10-09T12:28:58.309Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 17,
+  "count": 16,
   "events": [
-    {
-      "name": "Capitol",
-      "url": "https://capitol.hackclub.com/",
-      "start": "2026-09-01",
-      "end": "2026-10-09",
-      "city": "Washington",
-      "region": "District of Columbia",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
     {
       "name": "Banana Hacks",
       "url": "https://www.bananahacks.tech",
