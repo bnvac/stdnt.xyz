@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-09T12:28:58.309Z",
+  "updated": "2026-10-10T11:48:06.374Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 16,
+  "count": 18,
   "events": [
     {
       "name": "Banana Hacks",
@@ -121,6 +121,19 @@
       "hs": true
     },
     {
+      "name": "OCSEFhacks",
+      "url": "https://ocsefhacks.org/",
+      "start": "2026-11-14",
+      "end": "2026-11-15",
+      "city": "Westminster",
+      "region": "California",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
       "name": "ONHacks",
       "url": "https://onhacks.ca",
       "start": "2026-11-15",
@@ -156,6 +169,19 @@
       "country": "Worldwide",
       "cc": "",
       "format": "online",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Hack Peel",
+      "url": "https://hackpeel.ca",
+      "start": "2026-12-12",
+      "end": "2026-12-13",
+      "city": "Mississauga",
+      "region": "Ontario",
+      "country": "Canada",
+      "cc": "CA",
+      "format": "in-person",
       "source": "Hack Club",
       "hs": true
     },
