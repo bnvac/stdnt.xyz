@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-10T11:48:06.374Z",
+  "updated": "2026-10-11T11:59:51.363Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 18,
+  "count": 17,
   "events": [
     {
       "name": "Banana Hacks",
@@ -23,19 +23,6 @@
       "end": "2026-10-11",
       "city": "Princeton",
       "region": "New Jersey",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "Hyphen-Hacks",
-      "url": "https://www.hyphen-hacks.com/",
-      "start": "2026-10-10",
-      "end": "2026-10-10",
-      "city": "San Francisco",
-      "region": "California",
       "country": "United States",
       "cc": "US",
       "format": "in-person",
