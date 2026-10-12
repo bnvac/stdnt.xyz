@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-11T11:59:51.363Z",
+  "updated": "2026-10-12T14:15:26.574Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 17,
+  "count": 16,
   "events": [
     {
       "name": "Banana Hacks",
@@ -13,19 +13,6 @@
       "country": "Worldwide",
       "cc": "",
       "format": "online",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "hackPHS",
-      "url": "https://hackphs.tech",
-      "start": "2026-10-10",
-      "end": "2026-10-11",
-      "city": "Princeton",
-      "region": "New Jersey",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
       "source": "Hack Club",
       "hs": true
     },

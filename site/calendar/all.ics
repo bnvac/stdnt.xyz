@@ -9,28 +9,6 @@ X-WR-CALDESC:Scholarship\, program\, competition and financial-aid deadline
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:sch-dr-pepper-tuition-giveaway-20261011@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261011
-DTEND;VALUE=DATE:20261012
-SUMMARY:Deadline: Dr Pepper Tuition Giveaway
-DESCRIPTION:Scholarship · $100\,000\nDeadline listed as: Oct 11\nhttps://w
- ww.drpeppertuition.com/\nMore deadlines: https://stdnt.xyz/#deadlines
-URL:https://www.drpeppertuition.com/
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Dr Pepper Tuition Giveaway
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Dr Pepper Tuition Giveaway
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sch-chick-fil-a-leadership-scholarship-20261018@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261018
@@ -5276,6 +5254,28 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline in October: Phi Theta Kappa Transfer Scholarships
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-dr-pepper-tuition-giveaway-20271011@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271011
+DTEND;VALUE=DATE:20271012
+SUMMARY:Deadline: Dr Pepper Tuition Giveaway
+DESCRIPTION:Scholarship · $100\,000\nDeadline listed as: Oct 11\nhttps://w
+ ww.drpeppertuition.com/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.drpeppertuition.com/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Dr Pepper Tuition Giveaway
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Dr Pepper Tuition Giveaway
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
