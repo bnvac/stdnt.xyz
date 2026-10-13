@@ -1,21 +1,8 @@
 {
-  "updated": "2026-10-12T14:15:26.574Z",
+  "updated": "2026-10-13T13:25:18.170Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 16,
+  "count": 15,
   "events": [
-    {
-      "name": "Banana Hacks",
-      "url": "https://www.bananahacks.tech",
-      "start": "2026-10-09",
-      "end": "2026-10-12",
-      "city": "",
-      "region": "",
-      "country": "Worldwide",
-      "cc": "",
-      "format": "online",
-      "source": "Hack Club",
-      "hs": true
-    },
     {
       "name": "Blank Page",
       "url": "https://blankpagehacks.com",
