@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13T13:25:18.170Z",
+  "updated": "2026-10-15T10:46:10.478Z",
   "source": "hackathons.hackclub.com API + curated MLH",
   "count": 15,
   "events": [
@@ -162,8 +162,8 @@
     {
       "name": "Sentinel Hacks",
       "url": "https://www.sentinelhacks.tech/",
-      "start": "2027-01-09",
-      "end": "2027-01-09",
+      "start": "2027-01-23",
+      "end": "2027-01-23",
       "city": "Sunnyvale",
       "region": "California",
       "country": "United States",
