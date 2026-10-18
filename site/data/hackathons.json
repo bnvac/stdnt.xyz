@@ -1,21 +1,8 @@
 {
-  "updated": "2026-10-15T10:46:10.478Z",
+  "updated": "2026-10-18T10:16:52.718Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 15,
+  "count": 13,
   "events": [
-    {
-      "name": "Blank Page",
-      "url": "https://blankpagehacks.com",
-      "start": "2026-10-17",
-      "end": "2026-10-17",
-      "city": "Cambridge",
-      "region": "Massachusetts",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
     {
       "name": "MathHacks 2.0",
       "url": "https://mathhacks.ca/",
@@ -65,19 +52,6 @@
       "country": "Worldwide",
       "cc": "",
       "format": "online",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "Haven",
-      "url": "https://haven.hackclub.com",
-      "start": "2026-11-14",
-      "end": "2026-11-15",
-      "city": "Charters Towers",
-      "region": "Queensland",
-      "country": "Australia",
-      "cc": "AU",
-      "format": "in-person",
       "source": "Hack Club",
       "hs": true
     },
