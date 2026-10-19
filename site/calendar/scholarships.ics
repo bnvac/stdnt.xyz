@@ -8,29 +8,6 @@ X-WR-CALDESC:Scholarship deadlines from stdnt.xyz.
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:sch-chick-fil-a-leadership-scholarship-20261018@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261018
-DTEND;VALUE=DATE:20261019
-SUMMARY:Deadline: Chick-fil-A Leadership Scholarship
-DESCRIPTION:Scholarship · Up to $25\,000\nDeadline listed as: Oct 18\nhttp
- s://www.chick-fil-a.com/scholarships\nMore deadlines: https://stdnt.xyz/#d
- eadlines
-URL:https://www.chick-fil-a.com/scholarships
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Chick-fil-A Leadership Scholarship
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Chick-fil-A Leadership Scholarship
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sch-stephen-j-brady-stop-hunger-scholarship-20261020@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261020
@@ -2165,6 +2142,29 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: Dr Pepper Tuition Giveaway
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-chick-fil-a-leadership-scholarship-20271018@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271018
+DTEND;VALUE=DATE:20271019
+SUMMARY:Deadline: Chick-fil-A Leadership Scholarship
+DESCRIPTION:Scholarship · Up to $25\,000\nDeadline listed as: Oct 18\nhttp
+ s://www.chick-fil-a.com/scholarships\nMore deadlines: https://stdnt.xyz/#d
+ eadlines
+URL:https://www.chick-fil-a.com/scholarships
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Chick-fil-A Leadership Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Chick-fil-A Leadership Scholarship
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
