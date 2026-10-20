@@ -9,28 +9,6 @@ X-WR-CALDESC:Scholarship\, program\, competition and financial-aid deadline
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:prog-ohsu-science-ambassador-20261019@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261019
-DTEND;VALUE=DATE:20261020
-SUMMARY:Deadline: OHSU Science Ambassador
-DESCRIPTION:Program\nDeadline listed as: October 19\nhttps://www.ohsu.edu/o
- nprc/volunteer-opportunities\nMore deadlines: https://stdnt.xyz/#deadlines
-URL:https://www.ohsu.edu/onprc/volunteer-opportunities
-CATEGORIES:Program
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: OHSU Science Ambassador
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: OHSU Science Ambassador
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sch-stephen-j-brady-stop-hunger-scholarship-20261020@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261020
@@ -5276,6 +5254,28 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: Chick-fil-A Leadership Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-ohsu-science-ambassador-20271019@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271019
+DTEND;VALUE=DATE:20271020
+SUMMARY:Deadline: OHSU Science Ambassador
+DESCRIPTION:Program\nDeadline listed as: October 19\nhttps://www.ohsu.edu/o
+ nprc/volunteer-opportunities\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.ohsu.edu/onprc/volunteer-opportunities
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: OHSU Science Ambassador
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: OHSU Science Ambassador
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
