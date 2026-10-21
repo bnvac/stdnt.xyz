@@ -9,29 +9,6 @@ X-WR-CALDESC:Scholarship\, program\, competition and financial-aid deadline
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:sch-stephen-j-brady-stop-hunger-scholarship-20261020@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261020
-DTEND;VALUE=DATE:20261021
-SUMMARY:Deadline: Stephen J. Brady Stop Hunger Scholarship
-DESCRIPTION:Scholarship · $10\,000 + $5\,000 grant\nDeadline listed as: Oc
- t 20\nhttps://www.us.stop-hunger.org/grants/youth-scholarships\nMore deadl
- ines: https://stdnt.xyz/#deadlines
-URL:https://www.us.stop-hunger.org/grants/youth-scholarships
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Stephen J. Brady Stop Hunger Scholarship
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Stephen J. Brady Stop Hunger Scholarship
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sch-us-bank-student-scholarship-20261030@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261030
@@ -5276,6 +5253,29 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: OHSU Science Ambassador
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-stephen-j-brady-stop-hunger-scholarship-20271020@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271020
+DTEND;VALUE=DATE:20271021
+SUMMARY:Deadline: Stephen J. Brady Stop Hunger Scholarship
+DESCRIPTION:Scholarship · $10\,000 + $5\,000 grant\nDeadline listed as: Oc
+ t 20\nhttps://www.us.stop-hunger.org/grants/youth-scholarships\nMore deadl
+ ines: https://stdnt.xyz/#deadlines
+URL:https://www.us.stop-hunger.org/grants/youth-scholarships
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Stephen J. Brady Stop Hunger Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Stephen J. Brady Stop Hunger Scholarship
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
