@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-21T11:03:15.825Z",
+  "updated": "2026-10-23T10:55:38.404Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 13,
+  "count": 14,
   "events": [
     {
       "name": "Founding-100",
@@ -65,6 +65,19 @@
       "country": "United States",
       "cc": "US",
       "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Teens Hack Houston",
+      "url": "https://tripleh.space/",
+      "start": "2026-11-14",
+      "end": "2026-11-21",
+      "city": "Houston",
+      "region": "Texas",
+      "country": "United States",
+      "cc": "US",
+      "format": "hybrid",
       "source": "Hack Club",
       "hs": true
     },
