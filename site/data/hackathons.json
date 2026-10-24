@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-23T10:55:38.404Z",
+  "updated": "2026-10-24T10:10:22.411Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 14,
+  "count": 15,
   "events": [
     {
       "name": "Founding-100",
@@ -117,6 +117,19 @@
       "country": "Worldwide",
       "cc": "",
       "format": "online",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Mango Hacks",
+      "url": "https://mangohacks.ecily.org",
+      "start": "2026-12-05",
+      "end": "2026-12-06",
+      "city": "Pleasanton",
+      "region": "California",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
       "source": "Hack Club",
       "hs": true
     },
