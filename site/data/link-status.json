@@ -1,9 +1,11 @@
 {
-  "updated": "2026-10-19T18:59:49.939Z",
+  "updated": "2026-10-26T19:03:19.577Z",
   "checked": 637,
   "dead": [
     "https://www.redcrossblood.org/hosting-a-blood-drive/leaders-save-lives.html",
     "https://www.spaceappschallenge.org/"
   ],
-  "suspect": []
+  "suspect": [
+    "https://educationusa.state.gov/"
+  ]
 }
