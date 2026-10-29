@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-25T10:35:39.696Z",
+  "updated": "2026-10-29T12:11:08.196Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 14,
+  "count": 15,
   "events": [
     {
       "name": "Founding-100",
@@ -152,6 +152,19 @@
       "start": "2027-01-23",
       "end": "2027-01-23",
       "city": "Sunnyvale",
+      "region": "California",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Beacon Hacks",
+      "url": "https://beaconhacks.com",
+      "start": "2027-01-30",
+      "end": "2027-01-31",
+      "city": "Belmont",
       "region": "California",
       "country": "United States",
       "cc": "US",
