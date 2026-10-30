@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-29T12:11:08.196Z",
+  "updated": "2026-10-30T12:01:34.214Z",
   "source": "hackathons.hackclub.com API + curated MLH",
   "count": 15,
   "events": [
@@ -26,19 +26,6 @@
       "country": "United States",
       "cc": "US",
       "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "Build for Earth",
-      "url": "https://earth.firstcommit.xyz",
-      "start": "2026-11-08",
-      "end": "2027-01-16",
-      "city": "",
-      "region": "",
-      "country": "Worldwide",
-      "cc": "",
-      "format": "online",
       "source": "Hack Club",
       "hs": true
     },
@@ -181,6 +168,19 @@
       "region": "Pennsylvania",
       "country": "United States",
       "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Pakistan Hardware Hack 27",
+      "url": "https://teenhacks.org/",
+      "start": "2027-02-27",
+      "end": "2027-02-28",
+      "city": "Lahore",
+      "region": "Punjab",
+      "country": "Pakistan",
+      "cc": "PK",
       "format": "in-person",
       "source": "Hack Club",
       "hs": true
