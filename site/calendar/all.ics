@@ -9,75 +9,6 @@ X-WR-CALDESC:Scholarship\, program\, competition and financial-aid deadline
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:sch-coca-cola-scholars-20261031@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261101
-SUMMARY:Deadline: Coca-Cola Scholars
-DESCRIPTION:Scholarship · $20\,000\nDeadline listed as: Oct 31\nhttps://ww
- w.coca-colascholarsfoundation.org/\nMore deadlines: https://stdnt.xyz/#dea
- dlines
-URL:https://www.coca-colascholarsfoundation.org/
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Coca-Cola Scholars
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Coca-Cola Scholars
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sch-vfw-patriots-pen-20261031@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261101
-SUMMARY:Deadline: VFW Patriot's Pen
-DESCRIPTION:Scholarship · Up to $5\,000\nDeadline listed as: Oct 31\nhttps
- ://www.vfw.org/community/youth-and-education/youth-scholarships\nMore dead
- lines: https://stdnt.xyz/#deadlines
-URL:https://www.vfw.org/community/youth-and-education/youth-scholarships
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: VFW Patriot's Pen
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: VFW Patriot's Pen
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sch-vfw-voice-of-democracy-20261031@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261101
-SUMMARY:Deadline: VFW Voice of Democracy
-DESCRIPTION:Scholarship · Up to $35\,000\nDeadline listed as: Oct 31\nhttp
- s://www.vfw.org/community/youth-and-education/youth-scholarships\nMore dea
- dlines: https://stdnt.xyz/#deadlines
-URL:https://www.vfw.org/community/youth-and-education/youth-scholarships
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: VFW Voice of Democracy
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: VFW Voice of Democracy
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:comp-amc-aime-usamo-20261101@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261101
@@ -5276,6 +5207,75 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: U.S. Bank Student Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-coca-cola-scholars-20271031@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271031
+DTEND;VALUE=DATE:20271101
+SUMMARY:Deadline: Coca-Cola Scholars
+DESCRIPTION:Scholarship · $20\,000\nDeadline listed as: Oct 31\nhttps://ww
+ w.coca-colascholarsfoundation.org/\nMore deadlines: https://stdnt.xyz/#dea
+ dlines
+URL:https://www.coca-colascholarsfoundation.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Coca-Cola Scholars
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Coca-Cola Scholars
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-vfw-patriots-pen-20271031@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271031
+DTEND;VALUE=DATE:20271101
+SUMMARY:Deadline: VFW Patriot's Pen
+DESCRIPTION:Scholarship · Up to $5\,000\nDeadline listed as: Oct 31\nhttps
+ ://www.vfw.org/community/youth-and-education/youth-scholarships\nMore dead
+ lines: https://stdnt.xyz/#deadlines
+URL:https://www.vfw.org/community/youth-and-education/youth-scholarships
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: VFW Patriot's Pen
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: VFW Patriot's Pen
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-vfw-voice-of-democracy-20271031@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271031
+DTEND;VALUE=DATE:20271101
+SUMMARY:Deadline: VFW Voice of Democracy
+DESCRIPTION:Scholarship · Up to $35\,000\nDeadline listed as: Oct 31\nhttp
+ s://www.vfw.org/community/youth-and-education/youth-scholarships\nMore dea
+ dlines: https://stdnt.xyz/#deadlines
+URL:https://www.vfw.org/community/youth-and-education/youth-scholarships
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: VFW Voice of Democracy
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: VFW Voice of Democracy
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT

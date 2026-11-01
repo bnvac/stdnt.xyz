@@ -1,21 +1,8 @@
 {
-  "updated": "2026-10-30T12:01:34.214Z",
+  "updated": "2026-11-01T12:34:41.355Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 15,
+  "count": 14,
   "events": [
-    {
-      "name": "Founding-100",
-      "url": "https://founding-100.waycode.in/",
-      "start": "2026-10-22",
-      "end": "2026-10-31",
-      "city": "",
-      "region": "",
-      "country": "Worldwide",
-      "cc": "",
-      "format": "online",
-      "source": "Hack Club",
-      "hs": true
-    },
     {
       "name": "Falcon Hacks",
       "url": "https://falconhacks2026.com",
