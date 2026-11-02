@@ -9,259 +9,6 @@ X-WR-CALDESC:Scholarship\, program\, competition and financial-aid deadline
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:comp-amc-aime-usamo-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline in November: AMC → AIME → USAMO
-DESCRIPTION:Competition · Solo\nDeadline listed as: November (exact day va
- ries\, check the site)\nhttps://maa.org/maa-invitational-competitions\nMor
- e deadlines: https://stdnt.xyz/#deadlines
-URL:https://maa.org/maa-invitational-competitions
-CATEGORIES:Competition
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: AMC → AIME → USAMO
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: AMC → AIME → USAMO
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sch-carbrain-scholarship-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline: CarBrain Scholarship
-DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Nov 1\nhttps://carb
- rain.com/scholarship\nMore deadlines: https://stdnt.xyz/#deadlines
-URL:https://carbrain.com/scholarship
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: CarBrain Scholarship
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: CarBrain Scholarship
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:comp-conrad-challenge-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline in November: Conrad Challenge
-DESCRIPTION:Competition · Team\nDeadline listed as: November (exact day va
- ries\, check the site)\nhttps://www.conradchallenge.org/\nMore deadlines: 
- https://stdnt.xyz/#deadlines
-URL:https://www.conradchallenge.org/
-CATEGORIES:Competition
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Conrad Challenge
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Conrad Challenge
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:aid-css-profile-due-early-decision-action-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:CSS Profile due (Early Decision / Action)
-DESCRIPTION:Financial aid · CSS Profile\nDeadline listed as: Nov 1\nhttps:
- //cssprofile.collegeboard.org/\nMore deadlines: https://stdnt.xyz/#deadlin
- es
-URL:https://cssprofile.collegeboard.org/
-CATEGORIES:Financial aid
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:CSS Profile due (Early Decision / Action)
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:CSS Profile due (Early Decision / Action)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:comp-diamond-challenge-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline in November: Diamond Challenge
-DESCRIPTION:Competition · Team\nDeadline listed as: November (exact day va
- ries\, check the site)\nhttps://diamondchallenge.org/\nMore deadlines: htt
- ps://stdnt.xyz/#deadlines
-URL:https://diamondchallenge.org/
-CATEGORIES:Competition
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Diamond Challenge
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Diamond Challenge
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sch-hispanic-heritage-youth-awards-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline: Hispanic Heritage Youth Awards
-DESCRIPTION:Scholarship · Up to $4\,000\nDeadline listed as: Nov 1\nhttps:
- //hispanicheritage.org/youth-awards/\nMore deadlines: https://stdnt.xyz/#d
- eadlines
-URL:https://hispanicheritage.org/youth-awards/
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Hispanic Heritage Youth Awards
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Hispanic Heritage Youth Awards
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:prog-nreip-naval-research-enterprise-internship-program-20261101@stdnt.
- xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline: NREIP (Naval Research Enterprise Internship Program)
-DESCRIPTION:Program · Free (+ stipend)\nDeadline listed as: Nov 1\nhttps:/
- /www.navalsteminterns.us/internships/nreip/\nMore deadlines: https://stdnt
- .xyz/#deadlines
-URL:https://www.navalsteminterns.us/internships/nreip/
-CATEGORIES:Program
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: NREIP (Naval Research Enterprise Internship Program)
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: NREIP (Naval Research Enterprise Internship Program)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sch-regeneron-science-talent-search-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline in November: Regeneron Science Talent Search
-DESCRIPTION:Scholarship · Up to $250\,000\nDeadline listed as: Nov (exact 
- day varies\, check the site)\nhttps://www.societyforscience.org/regeneron-
- sts/\nMore deadlines: https://stdnt.xyz/#deadlines
-URL:https://www.societyforscience.org/regeneron-sts/
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Regeneron Science Talent Search
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Regeneron Science Talent Search
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:comp-regeneron-science-talent-search-sts-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline in November: Regeneron Science Talent Search (STS)
-DESCRIPTION:Competition · Solo\nDeadline listed as: November (exact day va
- ries\, check the site)\nhttps://www.societyforscience.org/regeneron-sts/\n
- More deadlines: https://stdnt.xyz/#deadlines
-URL:https://www.societyforscience.org/regeneron-sts/
-CATEGORIES:Competition
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Regeneron Science Talent Search (STS)
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Regeneron Science Talent Search (STS)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sch-robertson-scholars-dukeunc-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline in November: Robertson Scholars (Duke/UNC)
-DESCRIPTION:Scholarship · Full ride\nDeadline listed as: Nov (exact day va
- ries\, check the site)\nhttps://robertsonscholars.org/\nMore deadlines: ht
- tps://stdnt.xyz/#deadlines
-URL:https://robertsonscholars.org/
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Robertson Scholars (Duke/UNC)
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Robertson Scholars (Duke/UNC)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:prog-seap-science-engineering-apprenticeship-program-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline: SEAP (Science & Engineering Apprenticeship Program)
-DESCRIPTION:Program · Free (+ stipend ~$4\,000)\nDeadline listed as: Novem
- ber 1\nhttps://www.navalsteminterns.us/internships/seap/\nMore deadlines: 
- https://stdnt.xyz/#deadlines
-URL:https://www.navalsteminterns.us/internships/seap/
-CATEGORIES:Program
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: SEAP (Science & Engineering Apprenticeship Program)
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: SEAP (Science & Engineering Apprenticeship Program)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sch-prudential-emerging-visionaries-20261104@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261104
@@ -5276,6 +5023,259 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: VFW Voice of Democracy
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-amc-aime-usamo-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline in November: AMC → AIME → USAMO
+DESCRIPTION:Competition · Solo\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://maa.org/maa-invitational-competitions\nMor
+ e deadlines: https://stdnt.xyz/#deadlines
+URL:https://maa.org/maa-invitational-competitions
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: AMC → AIME → USAMO
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: AMC → AIME → USAMO
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-carbrain-scholarship-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline: CarBrain Scholarship
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Nov 1\nhttps://carb
+ rain.com/scholarship\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://carbrain.com/scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: CarBrain Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: CarBrain Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-conrad-challenge-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline in November: Conrad Challenge
+DESCRIPTION:Competition · Team\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://www.conradchallenge.org/\nMore deadlines: 
+ https://stdnt.xyz/#deadlines
+URL:https://www.conradchallenge.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Conrad Challenge
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Conrad Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aid-css-profile-due-early-decision-action-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:CSS Profile due (Early Decision / Action)
+DESCRIPTION:Financial aid · CSS Profile\nDeadline listed as: Nov 1\nhttps:
+ //cssprofile.collegeboard.org/\nMore deadlines: https://stdnt.xyz/#deadlin
+ es
+URL:https://cssprofile.collegeboard.org/
+CATEGORIES:Financial aid
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile due (Early Decision / Action)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile due (Early Decision / Action)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-diamond-challenge-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline in November: Diamond Challenge
+DESCRIPTION:Competition · Team\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://diamondchallenge.org/\nMore deadlines: htt
+ ps://stdnt.xyz/#deadlines
+URL:https://diamondchallenge.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Diamond Challenge
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Diamond Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-hispanic-heritage-youth-awards-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline: Hispanic Heritage Youth Awards
+DESCRIPTION:Scholarship · Up to $4\,000\nDeadline listed as: Nov 1\nhttps:
+ //hispanicheritage.org/youth-awards/\nMore deadlines: https://stdnt.xyz/#d
+ eadlines
+URL:https://hispanicheritage.org/youth-awards/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Hispanic Heritage Youth Awards
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Hispanic Heritage Youth Awards
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-nreip-naval-research-enterprise-internship-program-20271101@stdnt.
+ xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline: NREIP (Naval Research Enterprise Internship Program)
+DESCRIPTION:Program · Free (+ stipend)\nDeadline listed as: Nov 1\nhttps:/
+ /www.navalsteminterns.us/internships/nreip/\nMore deadlines: https://stdnt
+ .xyz/#deadlines
+URL:https://www.navalsteminterns.us/internships/nreip/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NREIP (Naval Research Enterprise Internship Program)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NREIP (Naval Research Enterprise Internship Program)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-regeneron-science-talent-search-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline in November: Regeneron Science Talent Search
+DESCRIPTION:Scholarship · Up to $250\,000\nDeadline listed as: Nov (exact 
+ day varies\, check the site)\nhttps://www.societyforscience.org/regeneron-
+ sts/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.societyforscience.org/regeneron-sts/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Regeneron Science Talent Search
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Regeneron Science Talent Search
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-regeneron-science-talent-search-sts-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline in November: Regeneron Science Talent Search (STS)
+DESCRIPTION:Competition · Solo\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://www.societyforscience.org/regeneron-sts/\n
+ More deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.societyforscience.org/regeneron-sts/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Regeneron Science Talent Search (STS)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Regeneron Science Talent Search (STS)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-robertson-scholars-dukeunc-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline in November: Robertson Scholars (Duke/UNC)
+DESCRIPTION:Scholarship · Full ride\nDeadline listed as: Nov (exact day va
+ ries\, check the site)\nhttps://robertsonscholars.org/\nMore deadlines: ht
+ tps://stdnt.xyz/#deadlines
+URL:https://robertsonscholars.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Robertson Scholars (Duke/UNC)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Robertson Scholars (Duke/UNC)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-seap-science-engineering-apprenticeship-program-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline: SEAP (Science & Engineering Apprenticeship Program)
+DESCRIPTION:Program · Free (+ stipend ~$4\,000)\nDeadline listed as: Novem
+ ber 1\nhttps://www.navalsteminterns.us/internships/seap/\nMore deadlines: 
+ https://stdnt.xyz/#deadlines
+URL:https://www.navalsteminterns.us/internships/seap/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SEAP (Science & Engineering Apprenticeship Program)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SEAP (Science & Engineering Apprenticeship Program)
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT

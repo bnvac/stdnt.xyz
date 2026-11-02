@@ -8,53 +8,6 @@ X-WR-CALDESC:STEM summer program and internship deadlines from stdnt.xyz.
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:prog-nreip-naval-research-enterprise-internship-program-20261101@stdnt.
- xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline: NREIP (Naval Research Enterprise Internship Program)
-DESCRIPTION:Program · Free (+ stipend)\nDeadline listed as: Nov 1\nhttps:/
- /www.navalsteminterns.us/internships/nreip/\nMore deadlines: https://stdnt
- .xyz/#deadlines
-URL:https://www.navalsteminterns.us/internships/nreip/
-CATEGORIES:Program
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: NREIP (Naval Research Enterprise Internship Program)
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: NREIP (Naval Research Enterprise Internship Program)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:prog-seap-science-engineering-apprenticeship-program-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline: SEAP (Science & Engineering Apprenticeship Program)
-DESCRIPTION:Program · Free (+ stipend ~$4\,000)\nDeadline listed as: Novem
- ber 1\nhttps://www.navalsteminterns.us/internships/seap/\nMore deadlines: 
- https://stdnt.xyz/#deadlines
-URL:https://www.navalsteminterns.us/internships/seap/
-CATEGORIES:Program
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: SEAP (Science & Engineering Apprenticeship Program)
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: SEAP (Science & Engineering Apprenticeship Program)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:prog-bbg-garden-apprenticeship-20261201@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261201
@@ -2582,6 +2535,53 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: OHSU Science Ambassador
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-nreip-naval-research-enterprise-internship-program-20271101@stdnt.
+ xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline: NREIP (Naval Research Enterprise Internship Program)
+DESCRIPTION:Program · Free (+ stipend)\nDeadline listed as: Nov 1\nhttps:/
+ /www.navalsteminterns.us/internships/nreip/\nMore deadlines: https://stdnt
+ .xyz/#deadlines
+URL:https://www.navalsteminterns.us/internships/nreip/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NREIP (Naval Research Enterprise Internship Program)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NREIP (Naval Research Enterprise Internship Program)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prog-seap-science-engineering-apprenticeship-program-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline: SEAP (Science & Engineering Apprenticeship Program)
+DESCRIPTION:Program · Free (+ stipend ~$4\,000)\nDeadline listed as: Novem
+ ber 1\nhttps://www.navalsteminterns.us/internships/seap/\nMore deadlines: 
+ https://stdnt.xyz/#deadlines
+URL:https://www.navalsteminterns.us/internships/seap/
+CATEGORIES:Program
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SEAP (Science & Engineering Apprenticeship Program)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: SEAP (Science & Engineering Apprenticeship Program)
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT

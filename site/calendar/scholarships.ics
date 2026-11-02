@@ -8,97 +8,6 @@ X-WR-CALDESC:Scholarship deadlines from stdnt.xyz.
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:sch-carbrain-scholarship-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline: CarBrain Scholarship
-DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Nov 1\nhttps://carb
- rain.com/scholarship\nMore deadlines: https://stdnt.xyz/#deadlines
-URL:https://carbrain.com/scholarship
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: CarBrain Scholarship
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: CarBrain Scholarship
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sch-hispanic-heritage-youth-awards-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline: Hispanic Heritage Youth Awards
-DESCRIPTION:Scholarship · Up to $4\,000\nDeadline listed as: Nov 1\nhttps:
- //hispanicheritage.org/youth-awards/\nMore deadlines: https://stdnt.xyz/#d
- eadlines
-URL:https://hispanicheritage.org/youth-awards/
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Hispanic Heritage Youth Awards
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Hispanic Heritage Youth Awards
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sch-regeneron-science-talent-search-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline in November: Regeneron Science Talent Search
-DESCRIPTION:Scholarship · Up to $250\,000\nDeadline listed as: Nov (exact 
- day varies\, check the site)\nhttps://www.societyforscience.org/regeneron-
- sts/\nMore deadlines: https://stdnt.xyz/#deadlines
-URL:https://www.societyforscience.org/regeneron-sts/
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Regeneron Science Talent Search
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Regeneron Science Talent Search
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sch-robertson-scholars-dukeunc-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline in November: Robertson Scholars (Duke/UNC)
-DESCRIPTION:Scholarship · Full ride\nDeadline listed as: Nov (exact day va
- ries\, check the site)\nhttps://robertsonscholars.org/\nMore deadlines: ht
- tps://stdnt.xyz/#deadlines
-URL:https://robertsonscholars.org/
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Robertson Scholars (Duke/UNC)
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Robertson Scholars (Duke/UNC)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sch-prudential-emerging-visionaries-20261104@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261104
@@ -2165,6 +2074,97 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: VFW Voice of Democracy
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-carbrain-scholarship-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline: CarBrain Scholarship
+DESCRIPTION:Scholarship · $1\,000\nDeadline listed as: Nov 1\nhttps://carb
+ rain.com/scholarship\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://carbrain.com/scholarship
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: CarBrain Scholarship
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: CarBrain Scholarship
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-hispanic-heritage-youth-awards-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline: Hispanic Heritage Youth Awards
+DESCRIPTION:Scholarship · Up to $4\,000\nDeadline listed as: Nov 1\nhttps:
+ //hispanicheritage.org/youth-awards/\nMore deadlines: https://stdnt.xyz/#d
+ eadlines
+URL:https://hispanicheritage.org/youth-awards/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Hispanic Heritage Youth Awards
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Hispanic Heritage Youth Awards
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-regeneron-science-talent-search-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline in November: Regeneron Science Talent Search
+DESCRIPTION:Scholarship · Up to $250\,000\nDeadline listed as: Nov (exact 
+ day varies\, check the site)\nhttps://www.societyforscience.org/regeneron-
+ sts/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.societyforscience.org/regeneron-sts/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Regeneron Science Talent Search
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Regeneron Science Talent Search
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-robertson-scholars-dukeunc-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline in November: Robertson Scholars (Duke/UNC)
+DESCRIPTION:Scholarship · Full ride\nDeadline listed as: Nov (exact day va
+ ries\, check the site)\nhttps://robertsonscholars.org/\nMore deadlines: ht
+ tps://stdnt.xyz/#deadlines
+URL:https://robertsonscholars.org/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Robertson Scholars (Duke/UNC)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Robertson Scholars (Duke/UNC)
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT

@@ -8,29 +8,6 @@ X-WR-CALDESC:FAFSA\, CSS Profile and state aid dates.
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:aid-css-profile-due-early-decision-action-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:CSS Profile due (Early Decision / Action)
-DESCRIPTION:Financial aid · CSS Profile\nDeadline listed as: Nov 1\nhttps:
- //cssprofile.collegeboard.org/\nMore deadlines: https://stdnt.xyz/#deadlin
- es
-URL:https://cssprofile.collegeboard.org/
-CATEGORIES:Financial aid
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:CSS Profile due (Early Decision / Action)
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:CSS Profile due (Early Decision / Action)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:aid-css-profile-due-regular-decision-20270201@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270201
@@ -142,6 +119,29 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:FAFSA opens
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aid-css-profile-due-early-decision-action-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:CSS Profile due (Early Decision / Action)
+DESCRIPTION:Financial aid · CSS Profile\nDeadline listed as: Nov 1\nhttps:
+ //cssprofile.collegeboard.org/\nMore deadlines: https://stdnt.xyz/#deadlin
+ es
+URL:https://cssprofile.collegeboard.org/
+CATEGORIES:Financial aid
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile due (Early Decision / Action)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSS Profile due (Early Decision / Action)
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT

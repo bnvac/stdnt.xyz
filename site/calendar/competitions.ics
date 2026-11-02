@@ -8,98 +8,6 @@ X-WR-CALDESC:Academic competition deadlines from stdnt.xyz.
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:comp-amc-aime-usamo-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline in November: AMC → AIME → USAMO
-DESCRIPTION:Competition · Solo\nDeadline listed as: November (exact day va
- ries\, check the site)\nhttps://maa.org/maa-invitational-competitions\nMor
- e deadlines: https://stdnt.xyz/#deadlines
-URL:https://maa.org/maa-invitational-competitions
-CATEGORIES:Competition
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: AMC → AIME → USAMO
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: AMC → AIME → USAMO
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:comp-conrad-challenge-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline in November: Conrad Challenge
-DESCRIPTION:Competition · Team\nDeadline listed as: November (exact day va
- ries\, check the site)\nhttps://www.conradchallenge.org/\nMore deadlines: 
- https://stdnt.xyz/#deadlines
-URL:https://www.conradchallenge.org/
-CATEGORIES:Competition
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Conrad Challenge
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Conrad Challenge
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:comp-diamond-challenge-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline in November: Diamond Challenge
-DESCRIPTION:Competition · Team\nDeadline listed as: November (exact day va
- ries\, check the site)\nhttps://diamondchallenge.org/\nMore deadlines: htt
- ps://stdnt.xyz/#deadlines
-URL:https://diamondchallenge.org/
-CATEGORIES:Competition
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Diamond Challenge
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Diamond Challenge
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:comp-regeneron-science-talent-search-sts-20261101@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Deadline in November: Regeneron Science Talent Search (STS)
-DESCRIPTION:Competition · Solo\nDeadline listed as: November (exact day va
- ries\, check the site)\nhttps://www.societyforscience.org/regeneron-sts/\n
- More deadlines: https://stdnt.xyz/#deadlines
-URL:https://www.societyforscience.org/regeneron-sts/
-CATEGORIES:Competition
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Regeneron Science Talent Search (STS)
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline in November: Regeneron Science Talent Search (STS)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:comp-nasa-space-apps-challenge-20261114@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261114
@@ -398,6 +306,98 @@ BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline in September: Wharton Global High School Investment Co
  mpetition
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-amc-aime-usamo-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline in November: AMC → AIME → USAMO
+DESCRIPTION:Competition · Solo\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://maa.org/maa-invitational-competitions\nMor
+ e deadlines: https://stdnt.xyz/#deadlines
+URL:https://maa.org/maa-invitational-competitions
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: AMC → AIME → USAMO
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: AMC → AIME → USAMO
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-conrad-challenge-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline in November: Conrad Challenge
+DESCRIPTION:Competition · Team\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://www.conradchallenge.org/\nMore deadlines: 
+ https://stdnt.xyz/#deadlines
+URL:https://www.conradchallenge.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Conrad Challenge
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Conrad Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-diamond-challenge-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline in November: Diamond Challenge
+DESCRIPTION:Competition · Team\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://diamondchallenge.org/\nMore deadlines: htt
+ ps://stdnt.xyz/#deadlines
+URL:https://diamondchallenge.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Diamond Challenge
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Diamond Challenge
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-regeneron-science-talent-search-sts-20271101@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Deadline in November: Regeneron Science Talent Search (STS)
+DESCRIPTION:Competition · Solo\nDeadline listed as: November (exact day va
+ ries\, check the site)\nhttps://www.societyforscience.org/regeneron-sts/\n
+ More deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.societyforscience.org/regeneron-sts/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Regeneron Science Talent Search (STS)
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline in November: Regeneron Science Talent Search (STS)
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
