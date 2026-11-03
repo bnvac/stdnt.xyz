@@ -2024,7 +2024,9 @@
   }
   var BOOK = "M12 6.5c-2-1.25-4.5-1.75-8.25-1.75a.75.75 0 0 0-.75.75v11.75c0 .41.34.75.75.75 3.75 0 6.25.5 8.25 1.75 2-1.25 4.5-1.75 8.25-1.75" +
     ".41 0 .75-.34.75-.75V5.5a.75.75 0 0 0-.75-.75c-3.75 0-6.25.5-8.25 1.75z";
-  var STAR = "M11 4.5Q12.5 11.5 19.5 13Q12.5 14.5 11 21.5Q9.5 14.5 2.5 13Q9.5 11.5 11 4.5z";
+  // Not STAR: that name already holds the save button's icon, and a second var
+  // in the same scope silently replaced it, printing this path on every card.
+  var SPARKLE = "M11 4.5Q12.5 11.5 19.5 13Q12.5 14.5 11 21.5Q9.5 14.5 2.5 13Q9.5 11.5 11 4.5z";
   var BAG = "M5 7.5h14v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z";
   var SCREEN = '<rect x="4" y="5" width="16" height="11" rx="2"/>';
   var CUPS = '<rect x="4" y="13.25" width="4.75" height="6.5" rx="1.75"/><rect x="15.25" y="13.25" width="4.75" height="6.5" rx="1.75"/>';
@@ -2034,7 +2036,7 @@
     gift: pk('<path d="M5 11.5h14v7.25c0 .97-.78 1.75-1.75 1.75H6.75C5.78 20.5 5 19.72 5 18.75z"/>',
       '<rect x="3.5" y="7.5" width="17" height="4" rx="1"/><path d="M5 11.5v7.25c0 .97.78 1.75 1.75 1.75h10.5c.97 0 1.75-.78 1.75-1.75V11.5M12 7.5v13' +
       'M12 7.5c-.9-2.6-2.6-4.25-4.25-4.25a2.125 2.125 0 0 0 0 4.25M12 7.5c.9-2.6 2.6-4.25 4.25-4.25a2.125 2.125 0 0 1 0 4.25"/>'),
-    sparkle: pk('<path d="' + STAR + '"/>', '<path d="' + STAR + '"/><path d="M19 2.75v4.5M16.75 5h4.5"/>'),
+    sparkle: pk('<path d="' + SPARKLE + '"/>', '<path d="' + SPARKLE + '"/><path d="M19 2.75v4.5M16.75 5h4.5"/>'),
     books: pk('<path d="' + BOOK + '"/>', '<path d="' + BOOK + 'M12 6.5v13.25"/>'),
     bag: pk('<path d="' + BAG + '"/>', '<path d="' + BAG + '"/><path d="M9 10.5v-4a3 3 0 0 1 6 0v4"/>')
   };
