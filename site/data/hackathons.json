@@ -1,7 +1,7 @@
 {
-  "updated": "2026-11-01T12:34:41.355Z",
+  "updated": "2026-11-04T13:41:26.519Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 14,
+  "count": 15,
   "events": [
     {
       "name": "Falcon Hacks",
@@ -178,6 +178,19 @@
       "start": "2027-04-17",
       "end": "2027-04-18",
       "city": "San Francisco",
+      "region": "California",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Almaden Hacks",
+      "url": "https://almadenhacks.com",
+      "start": "2027-06-05",
+      "end": "2027-06-05",
+      "city": "San Jose",
       "region": "California",
       "country": "United States",
       "cc": "US",
