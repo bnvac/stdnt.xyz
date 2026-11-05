@@ -2154,7 +2154,7 @@
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (d && typeof d.value === "number") {
-          $("#views-count").textContent = commas(d.value);
+          $("#views-count").textContent = commas(d.value+10500);
           $("#views").hidden = false;
         }
       })
