@@ -8,29 +8,6 @@ X-WR-CALDESC:Scholarship deadlines from stdnt.xyz.
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:sch-prudential-emerging-visionaries-20261104@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261104
-DTEND;VALUE=DATE:20261105
-SUMMARY:Deadline: Prudential Emerging Visionaries
-DESCRIPTION:Scholarship · Up to $15\,000\nDeadline listed as: Nov 4\nhttps
- ://www.changemakers.com/en/challenge/emergingvisionaries\nMore deadlines: 
- https://stdnt.xyz/#deadlines
-URL:https://www.changemakers.com/en/challenge/emergingvisionaries
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Prudential Emerging Visionaries
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Prudential Emerging Visionaries
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sch-elks-national-foundation-mvs-20261113@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261113
@@ -2165,6 +2142,29 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline in November: Robertson Scholars (Duke/UNC)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-prudential-emerging-visionaries-20271104@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271104
+DTEND;VALUE=DATE:20271105
+SUMMARY:Deadline: Prudential Emerging Visionaries
+DESCRIPTION:Scholarship · Up to $15\,000\nDeadline listed as: Nov 4\nhttps
+ ://www.changemakers.com/en/challenge/emergingvisionaries\nMore deadlines: 
+ https://stdnt.xyz/#deadlines
+URL:https://www.changemakers.com/en/challenge/emergingvisionaries
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Prudential Emerging Visionaries
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Prudential Emerging Visionaries
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
