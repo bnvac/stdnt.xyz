@@ -1,21 +1,8 @@
 {
-  "updated": "2026-11-04T13:41:26.519Z",
+  "updated": "2026-11-08T12:39:19.509Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 15,
+  "count": 14,
   "events": [
-    {
-      "name": "Falcon Hacks",
-      "url": "https://falconhacks2026.com",
-      "start": "2026-11-07",
-      "end": "2026-11-08",
-      "city": "Pleasanton",
-      "region": "California",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
     {
       "name": "OCSEFhacks",
       "url": "https://ocsefhacks.org/",
