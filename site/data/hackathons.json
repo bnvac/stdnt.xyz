@@ -1,7 +1,7 @@
 {
-  "updated": "2026-11-08T12:39:19.509Z",
+  "updated": "2026-11-11T13:27:23.455Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 14,
+  "count": 16,
   "events": [
     {
       "name": "OCSEFhacks",
@@ -26,6 +26,19 @@
       "country": "United States",
       "cc": "US",
       "format": "hybrid",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "UnlockedHacks",
+      "url": "https://unlockedhacks.org/",
+      "start": "2026-11-14",
+      "end": "2026-11-14",
+      "city": "Portland",
+      "region": "Oregon",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
       "source": "Hack Club",
       "hs": true
     },
@@ -99,6 +112,19 @@
       "url": "https://www.cosmohacks.com/",
       "start": "2026-12-18",
       "end": "2026-12-21",
+      "city": "",
+      "region": "",
+      "country": "Worldwide",
+      "cc": "",
+      "format": "online",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "checkpoint 1 — games for good",
+      "url": "https://checkpointhacks.org/",
+      "start": "2027-01-08",
+      "end": "2027-01-10",
       "city": "",
       "region": "",
       "country": "Worldwide",
