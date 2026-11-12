@@ -1,7 +1,7 @@
 {
-  "updated": "2026-11-11T13:27:23.455Z",
+  "updated": "2026-11-12T14:31:07.309Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 16,
+  "count": 17,
   "events": [
     {
       "name": "OCSEFhacks",
@@ -181,6 +181,19 @@
       "region": "Punjab",
       "country": "Pakistan",
       "cc": "PK",
+      "format": "in-person",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "checkpoint journeys — hanoi",
+      "url": "https://hanoi.checkpointhacks.org/",
+      "start": "2027-03-20",
+      "end": "2027-03-20",
+      "city": "Hà Đông",
+      "region": "Hà Nội",
+      "country": "Vietnam",
+      "cc": "VN",
       "format": "in-person",
       "source": "Hack Club",
       "hs": true
