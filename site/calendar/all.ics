@@ -9,29 +9,6 @@ X-WR-CALDESC:Scholarship\, program\, competition and financial-aid deadline
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:sch-elks-national-foundation-mvs-20261113@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261113
-DTEND;VALUE=DATE:20261114
-SUMMARY:Deadline: Elks National Foundation MVS
-DESCRIPTION:Scholarship · Up to $50\,000\nDeadline listed as: Nov 13\nhttp
- s://www.elks.org/scholars/scholarships/mvs.cfm\nMore deadlines: https://st
- dnt.xyz/#deadlines
-URL:https://www.elks.org/scholars/scholarships/mvs.cfm
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Elks National Foundation MVS
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Elks National Foundation MVS
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:comp-nasa-space-apps-challenge-20261114@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261114
@@ -5276,6 +5253,29 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: Prudential Emerging Visionaries
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-elks-national-foundation-mvs-20271113@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271113
+DTEND;VALUE=DATE:20271114
+SUMMARY:Deadline: Elks National Foundation MVS
+DESCRIPTION:Scholarship · Up to $50\,000\nDeadline listed as: Nov 13\nhttp
+ s://www.elks.org/scholars/scholarships/mvs.cfm\nMore deadlines: https://st
+ dnt.xyz/#deadlines
+URL:https://www.elks.org/scholars/scholarships/mvs.cfm
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Elks National Foundation MVS
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Elks National Foundation MVS
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT

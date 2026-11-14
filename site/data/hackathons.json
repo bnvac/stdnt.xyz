@@ -1,7 +1,7 @@
 {
-  "updated": "2026-11-12T14:31:07.309Z",
+  "updated": "2026-11-14T12:53:41.526Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 17,
+  "count": 18,
   "events": [
     {
       "name": "OCSEFhacks",
@@ -130,6 +130,19 @@
       "country": "Worldwide",
       "cc": "",
       "format": "online",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Earth Hacks 2027",
+      "url": "https://earthhacks.dev",
+      "start": "2027-01-23",
+      "end": "2027-01-24",
+      "city": "San Francisco",
+      "region": "California",
+      "country": "United States",
+      "cc": "US",
+      "format": "in-person",
       "source": "Hack Club",
       "hs": true
     },
