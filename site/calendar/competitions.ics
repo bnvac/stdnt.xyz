@@ -8,28 +8,6 @@ X-WR-CALDESC:Academic competition deadlines from stdnt.xyz.
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:comp-nasa-space-apps-challenge-20261114@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261114
-DTEND;VALUE=DATE:20261115
-SUMMARY:Deadline: NASA Space Apps Challenge
-DESCRIPTION:Competition · Team\nDeadline listed as: Nov 14\nhttps://www.sp
- aceappschallenge.org/\nMore deadlines: https://stdnt.xyz/#deadlines
-URL:https://www.spaceappschallenge.org/
-CATEGORIES:Competition
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: NASA Space Apps Challenge
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: NASA Space Apps Challenge
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:comp-samsung-solve-for-tomorrow-20261123@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261123
@@ -398,6 +376,28 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline in November: Regeneron Science Talent Search (STS)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-nasa-space-apps-challenge-20271114@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271114
+DTEND;VALUE=DATE:20271115
+SUMMARY:Deadline: NASA Space Apps Challenge
+DESCRIPTION:Competition · Team\nDeadline listed as: Nov 14\nhttps://www.sp
+ aceappschallenge.org/\nMore deadlines: https://stdnt.xyz/#deadlines
+URL:https://www.spaceappschallenge.org/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NASA Space Apps Challenge
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: NASA Space Apps Challenge
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT

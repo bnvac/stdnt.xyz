@@ -1,7 +1,7 @@
 {
-  "updated": "2026-11-14T12:53:41.526Z",
+  "updated": "2026-11-15T13:21:20.925Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 18,
+  "count": 17,
   "events": [
     {
       "name": "OCSEFhacks",
@@ -26,19 +26,6 @@
       "country": "United States",
       "cc": "US",
       "format": "hybrid",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "UnlockedHacks",
-      "url": "https://unlockedhacks.org/",
-      "start": "2026-11-14",
-      "end": "2026-11-14",
-      "city": "Portland",
-      "region": "Oregon",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
       "source": "Hack Club",
       "hs": true
     },
