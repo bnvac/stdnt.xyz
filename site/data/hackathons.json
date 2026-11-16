@@ -1,21 +1,8 @@
 {
-  "updated": "2026-11-15T13:21:20.925Z",
+  "updated": "2026-11-16T14:35:36.437Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 17,
+  "count": 15,
   "events": [
-    {
-      "name": "OCSEFhacks",
-      "url": "https://ocsefhacks.org/",
-      "start": "2026-11-14",
-      "end": "2026-11-15",
-      "city": "Westminster",
-      "region": "California",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
     {
       "name": "Teens Hack Houston",
       "url": "https://tripleh.space/",
@@ -26,19 +13,6 @@
       "country": "United States",
       "cc": "US",
       "format": "hybrid",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "ONHacks",
-      "url": "https://onhacks.ca",
-      "start": "2026-11-15",
-      "end": "2026-11-15",
-      "city": "Toronto",
-      "region": "Ontario",
-      "country": "Canada",
-      "cc": "CA",
-      "format": "in-person",
       "source": "Hack Club",
       "hs": true
     },
