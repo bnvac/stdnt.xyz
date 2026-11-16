@@ -1,9 +1,12 @@
 {
-  "updated": "2026-11-09T22:51:41.948Z",
+  "updated": "2026-11-16T22:43:59.028Z",
   "checked": 637,
   "dead": [
     "https://www.redcrossblood.org/hosting-a-blood-drive/leaders-save-lives.html",
     "https://www.spaceappschallenge.org/"
   ],
-  "suspect": []
+  "suspect": [
+    "https://www.davisputter.org/apply",
+    "https://www.gutenberg.org/"
+  ]
 }
