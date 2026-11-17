@@ -1,7 +1,7 @@
 {
-  "updated": "2026-11-16T14:35:36.437Z",
+  "updated": "2026-11-17T15:25:04.007Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 15,
+  "count": 17,
   "events": [
     {
       "name": "Teens Hack Houston",
@@ -30,6 +30,19 @@
       "hs": true
     },
     {
+      "name": "EvoHacks II",
+      "url": "https://evohacks.xyz/",
+      "start": "2026-11-21",
+      "end": "2026-11-22",
+      "city": "",
+      "region": "",
+      "country": "Worldwide",
+      "cc": "",
+      "format": "online",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
       "name": "Pixel Forge Mega Jam",
       "url": "https://pixelforgejam.org/",
       "start": "2026-11-28",
@@ -39,6 +52,19 @@
       "country": "Worldwide",
       "cc": "",
       "format": "online",
+      "source": "Hack Club",
+      "hs": true
+    },
+    {
+      "name": "Hack The Rex",
+      "url": "https://www.hacktherex.com/",
+      "start": "2026-12-03",
+      "end": "2026-12-03",
+      "city": "Etobicoke",
+      "region": "Ontario",
+      "country": "Canada",
+      "cc": "CA",
+      "format": "in-person",
       "source": "Hack Club",
       "hs": true
     },

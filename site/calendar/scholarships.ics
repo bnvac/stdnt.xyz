@@ -8,29 +8,6 @@ X-WR-CALDESC:Scholarship deadlines from stdnt.xyz.
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:sch-jack-kent-cooke-foundation-20261116@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261116
-DTEND;VALUE=DATE:20261117
-SUMMARY:Deadline: Jack Kent Cooke Foundation
-DESCRIPTION:Scholarship · Up to $55k/yr\nDeadline listed as: Nov 16\nhttps
- ://www.jkcf.org/our-scholarships/college-scholarship-program/\nMore deadli
- nes: https://stdnt.xyz/#deadlines
-URL:https://www.jkcf.org/our-scholarships/college-scholarship-program/
-CATEGORIES:Scholarship
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Jack Kent Cooke Foundation
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Jack Kent Cooke Foundation
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sch-americanism-essay-contest-fra-20261201@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261201
@@ -2165,6 +2142,29 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: Elks National Foundation MVS
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sch-jack-kent-cooke-foundation-20271116@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271116
+DTEND;VALUE=DATE:20271117
+SUMMARY:Deadline: Jack Kent Cooke Foundation
+DESCRIPTION:Scholarship · Up to $55k/yr\nDeadline listed as: Nov 16\nhttps
+ ://www.jkcf.org/our-scholarships/college-scholarship-program/\nMore deadli
+ nes: https://stdnt.xyz/#deadlines
+URL:https://www.jkcf.org/our-scholarships/college-scholarship-program/
+CATEGORIES:Scholarship
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Jack Kent Cooke Foundation
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Jack Kent Cooke Foundation
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
