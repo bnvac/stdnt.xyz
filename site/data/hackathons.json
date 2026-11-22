@@ -1,34 +1,8 @@
 {
-  "updated": "2026-11-17T15:25:04.007Z",
+  "updated": "2026-11-22T13:57:18.598Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 17,
+  "count": 15,
   "events": [
-    {
-      "name": "Teens Hack Houston",
-      "url": "https://tripleh.space/",
-      "start": "2026-11-14",
-      "end": "2026-11-21",
-      "city": "Houston",
-      "region": "Texas",
-      "country": "United States",
-      "cc": "US",
-      "format": "hybrid",
-      "source": "Hack Club",
-      "hs": true
-    },
-    {
-      "name": "Snowglobe",
-      "url": "https://snowglobe.hackclub.com/",
-      "start": "2026-11-20",
-      "end": "2026-11-22",
-      "city": "San Francisco",
-      "region": "California",
-      "country": "United States",
-      "cc": "US",
-      "format": "in-person",
-      "source": "Hack Club",
-      "hs": true
-    },
     {
       "name": "EvoHacks II",
       "url": "https://evohacks.xyz/",
