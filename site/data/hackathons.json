@@ -1,21 +1,8 @@
 {
-  "updated": "2026-11-22T13:57:18.598Z",
+  "updated": "2026-11-23T17:12:36.869Z",
   "source": "hackathons.hackclub.com API + curated MLH",
-  "count": 15,
+  "count": 14,
   "events": [
-    {
-      "name": "EvoHacks II",
-      "url": "https://evohacks.xyz/",
-      "start": "2026-11-21",
-      "end": "2026-11-22",
-      "city": "",
-      "region": "",
-      "country": "Worldwide",
-      "cc": "",
-      "format": "online",
-      "source": "Hack Club",
-      "hs": true
-    },
     {
       "name": "Pixel Forge Mega Jam",
       "url": "https://pixelforgejam.org/",
