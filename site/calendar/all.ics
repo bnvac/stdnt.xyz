@@ -9,29 +9,6 @@ X-WR-CALDESC:Scholarship\, program\, competition and financial-aid deadline
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:comp-samsung-solve-for-tomorrow-20261123@stdnt.xyz
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261123
-DTEND;VALUE=DATE:20261124
-SUMMARY:Deadline: Samsung Solve for Tomorrow
-DESCRIPTION:Competition · Class team\nDeadline listed as: Nov 23\nhttps://
- www.samsung.com/us/solvefortomorrow/\nMore deadlines: https://stdnt.xyz/#d
- eadlines
-URL:https://www.samsung.com/us/solvefortomorrow/
-CATEGORIES:Competition
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Samsung Solve for Tomorrow
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Deadline: Samsung Solve for Tomorrow
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sch-americanism-essay-contest-fra-20261201@stdnt.xyz
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261201
@@ -5276,6 +5253,29 @@ END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Deadline: Jack Kent Cooke Foundation
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:comp-samsung-solve-for-tomorrow-20271123@stdnt.xyz
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271123
+DTEND;VALUE=DATE:20271124
+SUMMARY:Deadline: Samsung Solve for Tomorrow
+DESCRIPTION:Competition · Class team\nDeadline listed as: Nov 23\nhttps://
+ www.samsung.com/us/solvefortomorrow/\nMore deadlines: https://stdnt.xyz/#d
+ eadlines
+URL:https://www.samsung.com/us/solvefortomorrow/
+CATEGORIES:Competition
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Samsung Solve for Tomorrow
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Deadline: Samsung Solve for Tomorrow
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
